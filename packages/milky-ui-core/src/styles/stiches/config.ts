@@ -12,6 +12,15 @@ import {
   radii,
 } from "@milky-ui/tokens";
 
+import {
+  borderUtils,
+  colorUtils,
+  marginUtils,
+  paddingUtils,
+  sizeUtils,
+  flexUtils,
+} from "./utils";
+
 export const {
   styled,
   createTheme,
@@ -28,6 +37,15 @@ export const {
     lineHeights,
     radii,
     colors,
+  },
+
+  utils: {
+    ...marginUtils,
+    ...paddingUtils,
+    ...borderUtils,
+    ...sizeUtils,
+    ...flexUtils,
+    ...colorUtils,
   },
 });
 

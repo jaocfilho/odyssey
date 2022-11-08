@@ -11,7 +11,7 @@ export const colorUtils = {
    *
    */
   solidColor: (value: Stitches.PropertyValue<"color">) => ({
-    bgColor: `$${value}9`,
+    backgroundColor: `$${value}9`,
   }),
 
   /**
@@ -21,7 +21,7 @@ export const colorUtils = {
   solidColorScheme: (value: Stitches.PropertyValue<"color">) => ({
     solidColor: value,
     "&:hover": {
-      bgColor: `$${value}10`,
+      backgroundColor: `$${value}10`,
     },
   }),
 
@@ -34,7 +34,7 @@ export const colorUtils = {
    */
   outlineColorScheme: (value: Stitches.PropertyValue<"color">) => ({
     border: "$borderWidth$2",
-    bgColor: `$${value}1`,
+    backgroundColor: `$${value}1`,
     borderSolid: true,
     borderColor: `$${value}7`,
     "&:hover": {
@@ -50,12 +50,12 @@ export const colorUtils = {
    * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
    */
   fadedColorScheme: (value: Stitches.PropertyValue<"color">) => ({
-    bgColor: `$${value}4`,
+    backgroundColor: `$${value}4`,
     "&:hover": {
-      bgColor: `$${value}5`,
+      backgroundColor: `$${value}5`,
     },
     "&:active": {
-      bgColor: `$${value}6`,
+      backgroundColor: `$${value}6`,
     },
   }),
 
@@ -67,12 +67,12 @@ export const colorUtils = {
    * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
    */
   fadedAColorScheme: (value: Stitches.PropertyValue<"color">) => ({
-    bgColor: `$${value}3`,
+    backgroundColor: `$${value}3`,
     "&:hover": {
-      bgColor: `$${value}4`,
+      backgroundColor: `$${value}4`,
     },
     "&:active": {
-      bgColor: `$${value}5`,
+      backgroundColor: `$${value}5`,
     },
   }),
 
