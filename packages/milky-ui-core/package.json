@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@milky-ui/tokens": "workspace:*",
-    "satellite": "workspace:*",
-    "@stitches/react": "^1.2.8"
+    "@radix-ui/react-avatar": "^1.0.1",
+    "@stitches/react": "^1.2.8",
+    "satellite": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

@@ -1,9 +1,9 @@
 export const flexUtils = {
-  justifyCenter: (value: boolean) => ({
+  justifyContentCenter: (value: boolean) => ({
     justifyContent: "center",
   }),
 
-  alignCenter: (value: boolean) => ({
+  alignItemsCenter: (value: boolean) => ({
     alignItems: "center",
   }),
 };
