@@ -1,8 +1,8 @@
 {
   "name": "@milky-ui/core",
   "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*",
