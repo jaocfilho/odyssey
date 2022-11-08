@@ -18,7 +18,6 @@ import {
   marginUtils,
   paddingUtils,
   sizeUtils,
-  flexUtils,
 } from "./utils";
 
 export const {
@@ -44,7 +43,6 @@ export const {
     ...paddingUtils,
     ...borderUtils,
     ...sizeUtils,
-    ...flexUtils,
     ...colorUtils,
   },
 });

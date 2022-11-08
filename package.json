@@ -13,7 +13,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "turbomap": "pnpm --filter @turbomap/front dev"
+    "codeflux": "pnpm --filter @codeflux/front"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
