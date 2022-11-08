@@ -18,6 +18,9 @@ import { styled } from "../../styles/stiches";
  * - You can pass a `boxBg` boolean prop when you want it to have the
  * default app background color. This is helpfull when you want to build
  * widget or card components.
+ *
+ * #### Props
+ * - cursorPointer: `boolean` - changes the `cursor` to `"pointer"`
  * 
  */
 export const Box = styled("div", {
@@ -55,6 +58,12 @@ export const Box = styled("div", {
     fullHeight: {
       true: {
         hFull: true,
+      },
+    },
+
+    cursorPointer: {
+      true: {
+        cursor: "pointer",
       },
     },
   },
