@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@milky-ui/tokens": "workspace:*",
+    "satellite": "workspace:*",
     "@stitches/react": "^1.2.8"
   },
   "devDependencies": {
@@ -18,6 +19,7 @@
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",

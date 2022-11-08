@@ -2,10 +2,10 @@ import type { Color } from "../styles/stiches/types";
 
 import { describe, expect, it } from "vitest";
 
+import { assertObjectProperties } from "satellite";
 import { colorsArray } from "@milky-ui/tokens";
 
 import { createColorVariants, createCompoundColorVariants } from ".";
-// import { assertObjectHasTheCorrectStructure } from "../../tests";
 
 describe("theme utils", () => {
   describe("createColorVariants", () => {
@@ -16,7 +16,7 @@ describe("theme utils", () => {
         }),
       });
 
-      // assertObjectHasTheCorrectStructure(colorsArray, colorVariants);
+      assertObjectProperties(colorsArray, colorVariants);
     });
 
     it("should return the correct format for each color", () => {
