@@ -1,11 +1,15 @@
 {
-  "name": "ui",
+  "name": "@milky-ui/core",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*"
+  },
+  "dependencies": {
+    "@milky-ui/tokens": "workspace:*",
+    "@stitches/react": "^1.2.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

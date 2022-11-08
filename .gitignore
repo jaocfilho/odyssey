@@ -34,3 +34,5 @@ yarn-error.log*
 
 # pnpm cache
 pnpm-store
+.pnpm-store
+/pnpm-store
