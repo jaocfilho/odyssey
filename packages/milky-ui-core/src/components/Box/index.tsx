@@ -66,6 +66,12 @@ export const Box = styled("div", {
         cursor: "pointer",
       },
     },
+
+    pt: {
+      "1": {
+        pt: "$1"
+      }
+    }
   },
 });
 

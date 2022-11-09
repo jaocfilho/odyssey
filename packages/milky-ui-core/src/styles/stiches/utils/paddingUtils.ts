@@ -1,6 +1,6 @@
 import { Stitches } from "../types";
 
-export const paddingUtils = {
+export const directionAbbreviationsUtils = {
   // Abbreviated padding properties
   p: (value: Stitches.PropertyValue<"padding">) => ({
     padding: value,
@@ -25,4 +25,8 @@ export const paddingUtils = {
     paddingTop: value,
     paddingBottom: value,
   }),
+};
+
+export const paddingUtils = {
+  ...directionAbbreviationsUtils,
 };

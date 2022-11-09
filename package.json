@@ -13,7 +13,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "codeflux": "pnpm --filter @codeflux/front"
+    "codeflux": "pnpm --filter @codeflux/front",
+    "milkyui": "pnpm --filter @milky-ui/core"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",

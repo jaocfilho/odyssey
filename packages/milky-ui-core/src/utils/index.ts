@@ -5,7 +5,9 @@ import type {
   CompoundColorVariant,
 } from "../styles/stiches/types";
 
-import { colorsArray } from "@milky-ui/tokens";
+import { colorsArray, space } from "@milky-ui/tokens";
+
+import { directionAbbreviationsUtils } from "../styles/stiches/utils";
 
 type CreateColorVariantsParams = {
   variantFormat: (color: Color) => Css;
@@ -91,6 +93,31 @@ export const createCompoundColorVariants = ({
   colors.forEach((color) => {
     const variant = variantFormat(color);
     variantsMap.push({ color, ...variant });
+  });
+
+  return variantsMap;
+};
+
+export const createPaddingVariants = () => {
+  const directions = Object.keys(directionAbbreviationsUtils);
+  const tokens = Object.keys(space);
+
+  const variantsMap = [];
+
+  directions.map((direction) => {
+    const tokensMap = [];
+
+    tokens.map((token) => {
+      const format = { [direction]: `$${token}` };
+
+      const variant = [token, format];
+      tokensMap.push(variant);
+    });
+
+    // transforms tokensMap into an object
+    const variants = Object.fromEntries(tokensMap);
+
+    variantsMap.push({ [direction]: variants });
   });
 
   return variantsMap;
