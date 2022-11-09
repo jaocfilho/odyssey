@@ -132,33 +132,42 @@ export const createSpaceVariantsMap = (property: string) => {
   return tokensMap;
 };
 
+type SpaceVariant = {
+  [k: string]: SpaceCssDeclaration;
+};
+
 /**
  * Converts a space variants map for a given property into an
  * object, where each key is a scale from `space` tokens.
- * 
+ *
  * @param property A string representing a css property.
+ *
  * @example
- * const variants = crateSpaceVariants("px");
- * variants // { "1": { px: "$1" }, "2": { px: "$2" }, ... }
- *  
+ * const variant = convertVariantsMapToObject("px");
+ * variant // { "1": { px: "$1" }, "2": { px: "$2" }, ... }
+ *
  */
-export const crateSpaceVariants = (property: string) => {
+export const convertVariantsMapToObject = (property: string): SpaceVariant => {
   const spaceVariantsMap = createSpaceVariantsMap(property);
 
   // transforms spaceVariantsMap into an object
-  const variants = Object.fromEntries(spaceVariantsMap);
+  const variant = Object.fromEntries(spaceVariantsMap);
 
-  return variants;
+  return variant;
 };
 
-export const createPaddingVariants = () => {
-  const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
-
+export const createSpaceVariants = (properties: string[]) => {
   const variantsMap = properties.map((property) => {
-    const variants = crateSpaceVariants(property)
+    const variants = convertVariantsMapToObject(property);
 
     return { [property]: variants };
   });
 
   return variantsMap;
+};
+
+export const createPaddingVariants = () => {
+  const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
+
+  return createSpaceVariants(properties);
 };

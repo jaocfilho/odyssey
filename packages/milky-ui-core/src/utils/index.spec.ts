@@ -8,10 +8,11 @@ import { colorsArray, spaceScales } from "@milky-ui/tokens";
 import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
 
 import {
-  crateSpaceVariants,
+  convertVariantsMapToObject,
   createColorVariants,
   createCompoundColorVariants,
   createPaddingVariants,
+  createSpaceVariants,
   createSpaceVariantsMap,
 } from ".";
 
@@ -126,6 +127,12 @@ describe("theme utils", () => {
       });
     });
 
+    it("should correctly return the tokens values on the first element", () => {
+      tokensMap.forEach(([token, _]) => {
+        expect(spaceScales).toContain(token);
+      });
+    })
+
     it("should containg a property key on each css declaration", () => {
       tokensMap.forEach(([_, declaration]) => {
         expect(declaration).toHaveProperty(property);
@@ -142,9 +149,9 @@ describe("theme utils", () => {
     });
   });
 
-  describe("crateSpaceVariants", () => {
+  describe("convertVariantsMapToObject", () => {
     const property = "px";
-    const variants = crateSpaceVariants(property);
+    const variants = convertVariantsMapToObject(property);
 
     it("should return an object containing all variants", () => {
       const variantsKeys = Object.keys(variants);
@@ -153,31 +160,26 @@ describe("theme utils", () => {
     });
   });
 
-  // describe("createPaddingVariants", () => {
-  //   it("should return an object containing all padding properties as keys", () => {
-  //     const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
+  describe("createSpaceVariants", () => {
+    const properties = ["px", "py"];
+    const variants = createSpaceVariants(properties);
 
-  //     const paddingVariants = createPaddingVariants();
+    it("should return an object containing all properties as keys", () => {
+      const variantsKeys = Object.keys(variants);
 
-  //     const variants = Object.keys(paddingVariants);
+      expect(variantsKeys).toEqual(properties);
+    })
+  });
 
-  //     assertObjectProperties(variants, properties);
-  //   });
+  describe("createPaddingVariants", () => {
+    it("should return an object containing all padding properties as keys", () => {
+      const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
 
-  //   it("should have all tokens variants on each object", () => {
-  //     const paddingVariants = createPaddingVariants();
+      const paddingVariants = createPaddingVariants();
 
-  //     const variantsKeys = Object.keys(paddingVariants);
+      const variants = Object.keys(paddingVariants);
 
-  //     variantsKeys.forEach((key) => {
-  //       const variant = paddingVariants[key];
-  //       const options = Object.keys(variant);
-  //       options.sort();
-
-  //       spaceScales.sort();
-
-  //       expect(options).toEqual(spaceScales);
-  //     });
-  //   });
-  // });
+      assertObjectProperties(variants, properties);
+    });
+  });
 });
