@@ -5,13 +5,14 @@ import { describe, expect, it } from "vitest";
 import { assertObjectProperties } from "satellite";
 import { colorsArray, spaceScales } from "@milky-ui/tokens";
 
-import { directionAbbreviationsUtils } from "../styles/stiches/utils";
+import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
 
 import {
+  crateSpaceVariants,
   createColorVariants,
   createCompoundColorVariants,
   createPaddingVariants,
-  createSpaceTokensMap,
+  createSpaceVariantsMap,
 } from ".";
 
 describe("theme utils", () => {
@@ -111,9 +112,9 @@ describe("theme utils", () => {
     });
   });
 
-  describe("createSpaceTokensMap", () => {
+  describe("createSpaceVariantsMap", () => {
     const property = "px";
-    const tokensMap = createSpaceTokensMap(property);
+    const tokensMap = createSpaceVariantsMap(property);
 
     it("should return an array of the size of the amount of tokens", () => {
       expect(tokensMap.length).toEqual(spaceScales.length);
@@ -141,15 +142,26 @@ describe("theme utils", () => {
     });
   });
 
+  describe("crateSpaceVariants", () => {
+    const property = "px";
+    const variants = crateSpaceVariants(property);
+
+    it("should return an object containing all variants", () => {
+      const variantsKeys = Object.keys(variants);
+
+      expect(variantsKeys).toEqual(spaceScales);
+    });
+  });
+
   // describe("createPaddingVariants", () => {
-  //   it("should return an object containing all directions as keys", () => {
-  //     const directionOptions = Object.keys(directionAbbreviationsUtils);
+  //   it("should return an object containing all padding properties as keys", () => {
+  //     const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
 
   //     const paddingVariants = createPaddingVariants();
 
   //     const variants = Object.keys(paddingVariants);
 
-  //     assertObjectProperties(variants, directionOptions);
+  //     assertObjectProperties(variants, properties);
   //   });
 
   //   it("should have all tokens variants on each object", () => {
@@ -162,10 +174,9 @@ describe("theme utils", () => {
   //       const options = Object.keys(variant);
   //       options.sort();
 
-  //       const tokens = Object.keys(space);
-  //       tokens.sort();
+  //       spaceScales.sort();
 
-  //       expect(options).toEqual(tokens);
+  //       expect(options).toEqual(spaceScales);
   //     });
   //   });
   // });

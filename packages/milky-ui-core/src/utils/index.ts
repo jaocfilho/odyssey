@@ -12,7 +12,7 @@ import type {
 
 import { colorsArray, spaceScales } from "@milky-ui/tokens";
 
-import { directionAbbreviationsUtils } from "../styles/stiches/utils";
+import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
 
 type CreateColorVariantsParams = {
   variantFormat: (color: Color) => Css;
@@ -117,11 +117,11 @@ type SpaceTokenMap = [SpaceTokenScale, SpaceCssDeclaration];
  * @param property A string representing a css property.
  *
  * @example
- * const tokensMap = createSpaceTokensMap('px');
+ * const tokensMap = createSpaceVariantsMap('px');
  * tokensMap // [["1", { px: "$1" }], ["2", { px: "$2" }] ...]
  *
  */
-export const createSpaceTokensMap = (property: string) => {
+export const createSpaceVariantsMap = (property: string) => {
   const tokensMap = spaceScales.map((tokenValue) => {
     const prefixedToken: PrefixedSpaceTokenScale = `$${tokenValue}`;
     // creates a css declaration for each token value
@@ -132,25 +132,32 @@ export const createSpaceTokensMap = (property: string) => {
   return tokensMap;
 };
 
+/**
+ * Converts a space variants map for a given property into an
+ * object, where each key is a scale from `space` tokens.
+ * 
+ * @param property A string representing a css property.
+ * @example
+ * const variants = crateSpaceVariants("px");
+ * variants // { "1": { px: "$1" }, "2": { px: "$2" }, ... }
+ *  
+ */
+export const crateSpaceVariants = (property: string) => {
+  const spaceVariantsMap = createSpaceVariantsMap(property);
+
+  // transforms spaceVariantsMap into an object
+  const variants = Object.fromEntries(spaceVariantsMap);
+
+  return variants;
+};
+
 export const createPaddingVariants = () => {
-  const directions = Object.keys(directionAbbreviationsUtils);
+  const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
 
-  const variantsMap = [];
+  const variantsMap = properties.map((property) => {
+    const variants = crateSpaceVariants(property)
 
-  directions.map((direction) => {
-    const tokensMap = [];
-
-    spaceScales.map((token) => {
-      const format = { [direction]: `$${token}` };
-
-      const variant = [token, format];
-      tokensMap.push(variant);
-    });
-
-    // transforms tokensMap into an object
-    const variants = Object.fromEntries(tokensMap);
-
-    variantsMap.push({ [direction]: variants });
+    return { [property]: variants };
   });
 
   return variantsMap;
