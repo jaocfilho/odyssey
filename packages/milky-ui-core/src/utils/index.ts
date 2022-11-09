@@ -1,11 +1,16 @@
 import type {
+  PrefixedSpaceTokenScale,
+  SpaceTokenScale,
+} from "@milky-ui/tokens";
+
+import type {
   Css,
   Color,
   ColorVariant,
   CompoundColorVariant,
 } from "../styles/stiches/types";
 
-import { colorsArray, space } from "@milky-ui/tokens";
+import { colorsArray, spaceScales } from "@milky-ui/tokens";
 
 import { directionAbbreviationsUtils } from "../styles/stiches/utils";
 
@@ -98,16 +103,44 @@ export const createCompoundColorVariants = ({
   return variantsMap;
 };
 
+type SpaceCssDeclaration = {
+  [property: string]: PrefixedSpaceTokenScale;
+};
+
+type SpaceTokenMap = [SpaceTokenScale, SpaceCssDeclaration];
+
+/**
+ * Receives a css property and returns an array of tuples for each
+ * `space` token value. Each tuple has a token value and a
+ * css declaration, where the property value is the token value.
+ *
+ * @param property A string representing a css property.
+ *
+ * @example
+ * const tokensMap = createSpaceTokensMap('px');
+ * tokensMap // [["1", { px: "$1" }], ["2", { px: "$2" }] ...]
+ *
+ */
+export const createSpaceTokensMap = (property: string) => {
+  const tokensMap = spaceScales.map((tokenValue) => {
+    const prefixedToken: PrefixedSpaceTokenScale = `$${tokenValue}`;
+    // creates a css declaration for each token value
+    const declaration = { [property]: prefixedToken };
+    return [tokenValue, declaration] as SpaceTokenMap;
+  });
+
+  return tokensMap;
+};
+
 export const createPaddingVariants = () => {
   const directions = Object.keys(directionAbbreviationsUtils);
-  const tokens = Object.keys(space);
 
   const variantsMap = [];
 
   directions.map((direction) => {
     const tokensMap = [];
 
-    tokens.map((token) => {
+    spaceScales.map((token) => {
       const format = { [direction]: `$${token}` };
 
       const variant = [token, format];
