@@ -131,7 +131,7 @@ describe("theme utils", () => {
       tokensMap.forEach(([token, _]) => {
         expect(spaceScales).toContain(token);
       });
-    })
+    });
 
     it("should containg a property key on each css declaration", () => {
       tokensMap.forEach(([_, declaration]) => {
@@ -168,7 +168,16 @@ describe("theme utils", () => {
       const variantsKeys = Object.keys(variants);
 
       expect(variantsKeys).toEqual(properties);
-    })
+    });
+
+    it("should have all variants for each property", () => {
+      properties.forEach((property) => {
+        const variant = variants[property];
+        const scales = Object.keys(variant);
+
+        expect(scales).toEqual(spaceScales);
+      });
+    });
   });
 
   describe("createPaddingVariants", () => {

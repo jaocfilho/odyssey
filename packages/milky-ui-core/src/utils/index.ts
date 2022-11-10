@@ -132,8 +132,8 @@ export const createSpaceVariantsMap = (property: string) => {
   return tokensMap;
 };
 
-type SpaceVariant = {
-  [k: string]: SpaceCssDeclaration;
+type ScaleVariant = {
+  [spaceScale: string]: SpaceCssDeclaration;
 };
 
 /**
@@ -147,7 +147,7 @@ type SpaceVariant = {
  * variant // { "1": { px: "$1" }, "2": { px: "$2" }, ... }
  *
  */
-export const convertVariantsMapToObject = (property: string): SpaceVariant => {
+export const convertVariantsMapToObject = (property: string): ScaleVariant => {
   const spaceVariantsMap = createSpaceVariantsMap(property);
 
   // transforms spaceVariantsMap into an object
@@ -156,14 +156,20 @@ export const convertVariantsMapToObject = (property: string): SpaceVariant => {
   return variant;
 };
 
+type SpaceVariant = {
+  [property: string]: ScaleVariant;
+};
+
 export const createSpaceVariants = (properties: string[]) => {
   const variantsMap = properties.map((property) => {
     const variants = convertVariantsMapToObject(property);
 
-    return { [property]: variants };
+    return [property, variants];
   });
 
-  return variantsMap;
+  const variants: SpaceVariant = Object.fromEntries(variantsMap);
+
+  return variants;
 };
 
 export const createPaddingVariants = () => {
