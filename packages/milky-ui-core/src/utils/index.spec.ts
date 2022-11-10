@@ -13,6 +13,7 @@ import {
   createCompoundColorVariants,
   createPaddingVariants,
   createSpaceVariants,
+  createSpaceScalesVariantsMap,
   createSpaceVariantsMap,
 } from ".";
 
@@ -113,34 +114,34 @@ describe("theme utils", () => {
     });
   });
 
-  describe("createSpaceVariantsMap", () => {
+  describe("createSpaceScalesVariantsMap", () => {
     const property = "px";
-    const tokensMap = createSpaceVariantsMap(property);
+    const spaceScalesMap = createSpaceScalesVariantsMap(property);
 
     it("should return an array of the size of the amount of tokens", () => {
-      expect(tokensMap.length).toEqual(spaceScales.length);
+      expect(spaceScalesMap.length).toEqual(spaceScales.length);
     });
 
     it("should return an array of 2 dimensional tuples", () => {
-      tokensMap.forEach((tuple) => {
+      spaceScalesMap.forEach((tuple) => {
         expect(tuple).toHaveLength(2);
       });
     });
 
     it("should correctly return the tokens values on the first element", () => {
-      tokensMap.forEach(([token, _]) => {
+      spaceScalesMap.forEach(([token, _]) => {
         expect(spaceScales).toContain(token);
       });
     });
 
     it("should containg a property key on each css declaration", () => {
-      tokensMap.forEach(([_, declaration]) => {
+      spaceScalesMap.forEach(([_, declaration]) => {
         expect(declaration).toHaveProperty(property);
       });
     });
 
     it("should containg the correct token value on each declaration", () => {
-      tokensMap.forEach(([token, declaration]) => {
+      spaceScalesMap.forEach(([token, declaration]) => {
         const value = declaration[property];
         const expectedValue = `$${token}`;
 
@@ -157,6 +158,21 @@ describe("theme utils", () => {
       const variantsKeys = Object.keys(variants);
 
       expect(variantsKeys).toEqual(spaceScales);
+    });
+  });
+
+  describe("createSpaceVariantsMap", () => {
+    const properties = ["px", "py"];
+    const variantsMap = createSpaceVariantsMap(properties);
+
+    it("should return an array of the size of the properties", () => {
+      expect(variantsMap.length).toEqual(properties.length);
+    });
+
+    it("should have each property on the first position of each tuple", () => {
+      variantsMap.forEach(([property, _]) => {
+        expect(properties).toContain(property);
+      });
     });
   });
 
@@ -186,9 +202,7 @@ describe("theme utils", () => {
 
       const paddingVariants = createPaddingVariants();
 
-      const variants = Object.keys(paddingVariants);
-
-      assertObjectProperties(variants, properties);
+      assertObjectProperties(properties, paddingVariants);
     });
   });
 });

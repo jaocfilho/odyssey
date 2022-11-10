@@ -1,6 +1,7 @@
 import type { ComponentProps } from "../../utils/types";
 
 import { styled } from "../../styles/stiches";
+import { createPaddingVariants } from "../../utils";
 
 /**
  * `Box` is an abstraction for the `div` element.
@@ -67,11 +68,7 @@ export const Box = styled("div", {
       },
     },
 
-    pt: {
-      "1": {
-        pt: "$1"
-      }
-    }
+    ...createPaddingVariants(),
   },
 });
 

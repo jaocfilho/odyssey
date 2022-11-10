@@ -107,7 +107,7 @@ type SpaceCssDeclaration = {
   [property: string]: PrefixedSpaceTokenScale;
 };
 
-type SpaceTokenMap = [SpaceTokenScale, SpaceCssDeclaration];
+type SpaceScalesMap = [SpaceTokenScale, SpaceCssDeclaration];
 
 /**
  * Receives a css property and returns an array of tuples for each
@@ -117,19 +117,19 @@ type SpaceTokenMap = [SpaceTokenScale, SpaceCssDeclaration];
  * @param property A string representing a css property.
  *
  * @example
- * const tokensMap = createSpaceVariantsMap('px');
- * tokensMap // [["1", { px: "$1" }], ["2", { px: "$2" }] ...]
+ * const scalesMap = createSpaceScalesVariantsMap('px');
+ * scalesMap // [["1", { px: "$1" }], ["2", { px: "$2" }] ...]
  *
  */
-export const createSpaceVariantsMap = (property: string) => {
-  const tokensMap = spaceScales.map((tokenValue) => {
+export const createSpaceScalesVariantsMap = (property: string) => {
+  const scalesMap = spaceScales.map((tokenValue) => {
     const prefixedToken: PrefixedSpaceTokenScale = `$${tokenValue}`;
     // creates a css declaration for each token value
     const declaration = { [property]: prefixedToken };
-    return [tokenValue, declaration] as SpaceTokenMap;
+    return [tokenValue, declaration] as SpaceScalesMap;
   });
 
-  return tokensMap;
+  return scalesMap;
 };
 
 type ScaleVariant = {
@@ -148,12 +148,40 @@ type ScaleVariant = {
  *
  */
 export const convertVariantsMapToObject = (property: string): ScaleVariant => {
-  const spaceVariantsMap = createSpaceVariantsMap(property);
+  const spaceScalesMap = createSpaceScalesVariantsMap(property);
 
-  // transforms spaceVariantsMap into an object
-  const variant = Object.fromEntries(spaceVariantsMap);
+  // transforms spaceScalesMap into an object
+  const variant = Object.fromEntries(spaceScalesMap);
 
   return variant;
+};
+
+type SpaceVariantsMap = [string, ScaleVariant];
+
+/**
+ * Receives an array of css properties and returns an array of
+ * tuples. Each tuple contains a property from the `properties`
+ * array and an object containing all possible scale variants
+ * from the `space` tokens.
+ *
+ * @param properties An array of strings representing css properties
+ *
+ * @example
+ * const variantsMap = createSpaceVariantsMap(["px", "py"]);
+ * [
+ *   "px": { 1: px: "$1", 2: px: "$2", ... },
+ *   "py": { 1: px: "$1", 2: px: "$2", ... },
+ * ]
+ *
+ */
+export const createSpaceVariantsMap = (properties: string[]) => {
+  const variantsMap = properties.map((property) => {
+    const variants = convertVariantsMapToObject(property);
+
+    return [property, variants] as SpaceVariantsMap;
+  });
+
+  return variantsMap;
 };
 
 type SpaceVariant = {
@@ -161,11 +189,7 @@ type SpaceVariant = {
 };
 
 export const createSpaceVariants = (properties: string[]) => {
-  const variantsMap = properties.map((property) => {
-    const variants = convertVariantsMapToObject(property);
-
-    return [property, variants];
-  });
+  const variantsMap = createSpaceVariantsMap(properties);
 
   const variants: SpaceVariant = Object.fromEntries(variantsMap);
 
