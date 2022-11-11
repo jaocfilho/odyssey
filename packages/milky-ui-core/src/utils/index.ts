@@ -4,11 +4,8 @@ import type {
   Color,
 } from "@milky-ui/tokens";
 
-import type {
-  Css,
-  ColorVariant,
-  CompoundColorVariant,
-} from "../styles/stiches/types";
+import type { Css } from "../styles/stiches/types";
+import type { ColorVariant, CompoundColorVariant } from "./types";
 
 import { colorsArray, spaceScales } from "@milky-ui/tokens";
 
@@ -220,7 +217,7 @@ export const createSpaceVariants = (properties: string[]) => {
 /**
  * Returns an object of space variants for each padding
  * abbreviation utils.
- * 
+ *
  */
 export const createPaddingVariants = () => {
   const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
