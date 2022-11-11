@@ -12,36 +12,7 @@ importers:
       prettier: 2.7.1
       turbo: 1.6.3
 
-  apps/docs:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@types/node': ^17.0.12
-      '@types/react': ^18.0.22
-      '@types/react-dom': ^18.0.7
-      eslint: 7.32.0
-      eslint-config-custom: workspace:*
-      milky-ui: workspace:*
-      next: 13.0.0
-      react: 18.2.0
-      react-dom: 18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.5.3
-    dependencies:
-      milky-ui: link:../../packages/milky-ui
-      next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    devDependencies:
-      '@babel/core': 7.20.2
-      '@types/node': 17.0.45
-      '@types/react': 18.0.25
-      '@types/react-dom': 18.0.8
-      eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.8.4
-
-  apps/turbomap-front:
+  apps/codeflux-front:
     specifiers:
       '@babel/core': ^7.0.0
       '@types/node': ^17.0.12
@@ -71,6 +42,35 @@ importers:
       eslint-config-custom: link:../../packages/eslint-config-custom
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
+
+  apps/docs:
+    specifiers:
+      '@babel/core': ^7.0.0
+      '@types/node': ^17.0.12
+      '@types/react': ^18.0.22
+      '@types/react-dom': ^18.0.7
+      eslint: 7.32.0
+      eslint-config-custom: workspace:*
+      milky-ui: workspace:*
+      next: 13.0.0
+      react: 18.2.0
+      react-dom: 18.2.0
+      tsconfig: workspace:*
+      typescript: ^4.5.3
+    dependencies:
+      milky-ui: link:../../packages/milky-ui
+      next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@babel/core': 7.20.2
+      '@types/node': 17.0.45
+      '@types/react': 18.0.25
+      '@types/react-dom': 18.0.8
+      eslint: 7.32.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.8.4
 
   packages/eslint-config-custom:
     specifiers:

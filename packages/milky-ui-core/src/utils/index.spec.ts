@@ -1,9 +1,7 @@
-import type { Color } from "../styles/stiches/types";
-
 import { describe, expect, it } from "vitest";
 
 import { assertObjectProperties } from "satellite";
-import { colorsArray, spaceScales } from "@milky-ui/tokens";
+import { colorsArray, spaceScales, Color } from "@milky-ui/tokens";
 
 import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
 

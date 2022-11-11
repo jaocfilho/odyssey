@@ -5,4 +5,4 @@ export * from "./fonts";
 export * from "./line-height";
 export * from "./radii";
 export * from "./border-width";
-export { colors, darkColors, colorsArray } from "./colors";
+export * from "./colors";

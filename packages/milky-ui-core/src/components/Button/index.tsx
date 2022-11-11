@@ -1,4 +1,8 @@
-import { createColorVariants, createCompoundColorVariants } from "../../utils";
+import {
+  createColorVariants,
+  createCompoundColorVariants,
+} from "../../utils";
+
 import { styled } from "../../styles/stiches";
 
 export const BaseButton = styled("button", {

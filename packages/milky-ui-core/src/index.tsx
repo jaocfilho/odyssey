@@ -5,4 +5,4 @@ export * from "./components/Box";
 export * from "./components/Flex";
 
 // Stiches imports
-export * from "./styles/stiches/config";
+export * from "./styles/stiches";

@@ -70,3 +70,7 @@ export const colorsArray = [
   "teal",
   "plum",
 ] as const;
+
+// color types
+export type Color = typeof colorsArray[number];
+export type Colors = readonly Color[];

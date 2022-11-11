@@ -1,11 +1,11 @@
 import type {
   PrefixedSpaceTokenScale,
   SpaceTokenScale,
+  Color,
 } from "@milky-ui/tokens";
 
 import type {
   Css,
-  Color,
   ColorVariant,
   CompoundColorVariant,
 } from "../styles/stiches/types";
