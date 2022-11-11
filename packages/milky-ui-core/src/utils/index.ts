@@ -188,6 +188,27 @@ type SpaceVariant = {
   [property: string]: ScaleVariant;
 };
 
+/**
+ * Receives an array of css properties and creates an object
+ * of space scales variants, for each property on the array.
+ *
+ * @param properties An array of strings representing css properties.
+ *
+ * @example
+ * const variants = createSpaceVariants(["px", "py"]);
+ * {
+ *   "px": {
+ *     1: { px: "$1" },
+ *     2: { px: "$2" },
+ *     ...
+ *   },
+ *   "py": {
+ *     1: { py: "$1" },
+ *     2: { py: "$2" },
+ *     ...
+ *   },
+ * }
+ */
 export const createSpaceVariants = (properties: string[]) => {
   const variantsMap = createSpaceVariantsMap(properties);
 
@@ -196,6 +217,11 @@ export const createSpaceVariants = (properties: string[]) => {
   return variants;
 };
 
+/**
+ * Returns an object of space variants for each padding
+ * abbreviation utils.
+ * 
+ */
 export const createPaddingVariants = () => {
   const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
 
