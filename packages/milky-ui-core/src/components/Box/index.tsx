@@ -1,6 +1,6 @@
 import type { ComponentProps } from "../../utils/types";
 
-import { createPaddingVariants } from "../../utils";
+import { createMarginVariants, createPaddingVariants } from "../../utils";
 
 import { styled } from "../../styles/stiches";
 
@@ -21,8 +21,13 @@ import { styled } from "../../styles/stiches";
  * default app background color. This is helpfull when you want to build
  * widget or card components.
  *
- * #### Props
+ * #### Shorthand Props
  * - cursorPointer: `boolean` - changes the `cursor` to `"pointer"`
+ * 
+ * - padding abbreviations: `number` - you can pass any padding
+ * abbreviation as props
+ * @example
+ * <Box px={4} />
  * 
  */
 export const Box = styled("div", {
@@ -70,6 +75,7 @@ export const Box = styled("div", {
     },
 
     ...createPaddingVariants(),
+    ...createMarginVariants(),
   },
 });
 

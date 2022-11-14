@@ -9,7 +9,10 @@ import type { ColorVariant, CompoundColorVariant } from "./types";
 
 import { colorsArray, spaceScales } from "@milky-ui/tokens";
 
-import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
+import {
+  marginPropertiesAbbreviationsUtils,
+  paddingPropertiesAbbreviationsUtils,
+} from "../styles/stiches/utils";
 
 type CreateColorVariantsParams = {
   variantFormat: (color: Color) => Css;
@@ -221,6 +224,17 @@ export const createSpaceVariants = (properties: string[]) => {
  */
 export const createPaddingVariants = () => {
   const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
+
+  return createSpaceVariants(properties);
+};
+
+/**
+ * Returns an object of space variants for each margin
+ * abbreviation utils.
+ *
+ */
+export const createMarginVariants = () => {
+  const properties = Object.keys(marginPropertiesAbbreviationsUtils);
 
   return createSpaceVariants(properties);
 };

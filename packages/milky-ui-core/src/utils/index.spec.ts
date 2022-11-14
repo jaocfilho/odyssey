@@ -3,7 +3,10 @@ import { describe, expect, it } from "vitest";
 import { assertObjectProperties } from "satellite";
 import { colorsArray, spaceScales, Color } from "@milky-ui/tokens";
 
-import { paddingPropertiesAbbreviationsUtils } from "../styles/stiches/utils";
+import {
+  marginPropertiesAbbreviationsUtils,
+  paddingPropertiesAbbreviationsUtils,
+} from "../styles/stiches/utils";
 
 import {
   convertVariantsMapToObject,
@@ -13,6 +16,7 @@ import {
   createSpaceVariants,
   createSpaceScalesVariantsMap,
   createSpaceVariantsMap,
+  createMarginVariants,
 } from ".";
 
 describe("theme utils", () => {
@@ -199,6 +203,16 @@ describe("theme utils", () => {
       const properties = Object.keys(paddingPropertiesAbbreviationsUtils);
 
       const paddingVariants = createPaddingVariants();
+
+      assertObjectProperties(properties, paddingVariants);
+    });
+  });
+
+  describe("createMarginVariants", () => {
+    it("should return an object containing all padding properties as keys", () => {
+      const properties = Object.keys(marginPropertiesAbbreviationsUtils);
+
+      const paddingVariants = createMarginVariants();
 
       assertObjectProperties(properties, paddingVariants);
     });

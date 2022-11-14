@@ -1,6 +1,6 @@
 import { Stitches } from "../types";
 
-export const marginUtils = {
+export const marginPropertiesAbbreviationsUtils = {
   // Abbreviated margin properties
   m: (value: Stitches.PropertyValue<"margin">) => ({
     margin: value,
@@ -25,4 +25,8 @@ export const marginUtils = {
     marginTop: value,
     marginBottom: value,
   }),
+};
+
+export const marginUtils = {
+  ...marginPropertiesAbbreviationsUtils,
 };
