@@ -1,36 +1,7 @@
-import { Flex, styled, createColorVariants, ComponentProps } from "milky-ui";
+import { BarContainer, BarContainerProps } from "./styles";
 
-export const Bar = styled(Flex, {
-  // Locally scoped tokens
-  $$roadmapCellRounded: "$space$1",
+export type BarProps = Required<Pick<BarContainerProps, "color" | "type">>;
 
-  width: "100%",
-  height: "100%",
-
-  variants: {
-    type: {
-      starting: {
-        roundedLeft: "$$roadmapCellRounded",
-      },
-      progress: {},
-      ending: {
-        roundedRight: "$$roadmapCellRounded",
-      },
-      solo: {
-        rounded: "$$roadmapCellRounded",
-      },
-    },
-
-    color: createColorVariants({
-      variantFormat: (color) => ({
-        solidColorScheme: color,
-      }),
-    }),
-  },
-
-  defaultVariants: {
-    color: "gray",
-  },
-});
-
-export type BarProps = ComponentProps<typeof Bar>;
+export const Bar = ({ color, type }: BarProps) => {
+  return <BarContainer cursorPointer color={color} type={type} />;
+};

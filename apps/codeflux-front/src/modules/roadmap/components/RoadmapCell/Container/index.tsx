@@ -11,7 +11,7 @@ type ContainerProps = {
  */
 export const Container = ({ children }: ContainerProps) => {
   return (
-    <Flex noShrink css={{ width: "$12", height: "$10" }}>
+    <Flex noShrink css={{ width: "$space$10", height: "$space$8" }}>
       {children}
     </Flex>
   );

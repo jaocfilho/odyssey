@@ -12,7 +12,7 @@ export const AuthenticatedPageShell = ({
   children,
 }: AuthenticatedPageShellProps) => {
   return (
-    <Flex direction="column">
+    <Flex direction="column" fullHeight>
       <AuthenticatedPageHeader />
       {children}
     </Flex>
