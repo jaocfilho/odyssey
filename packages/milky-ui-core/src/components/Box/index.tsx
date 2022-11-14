@@ -24,10 +24,11 @@ import { styled } from "../../styles/stiches";
  * #### Shorthand Props
  * - cursorPointer: `boolean` - changes the `cursor` to `"pointer"`
  * 
- * - padding abbreviations: `number` - you can pass any padding
- * abbreviation as props
- * @example
- * <Box px={4} />
+ * - padding abbreviations: `number` - you can use any padding
+ * abbreviation, like `px` or `pr` as props
+ * 
+ * - margin abbreviations: `number` - you can use any margin
+ * abbreviation, `my` or `ml` as props
  * 
  */
 export const Box = styled("div", {

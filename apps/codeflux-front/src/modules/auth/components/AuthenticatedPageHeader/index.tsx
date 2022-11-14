@@ -1,13 +1,14 @@
-import { Avatar, Flex } from "milky-ui";
+import { Flex } from "milky-ui";
 
 import { Logo } from "../../../../components/Logo";
+import { ActionsArea } from "./ActionsArea";
 
 export const AuthenticatedPageHeader = () => {
   return (
     <Flex boxBg px={6}>
-      <Flex fullWidth css={{ my: "$2", justifyContent: "space-between" }}>
+      <Flex fullWidth my={2} css={{ justifyContent: "space-between" }}>
         <Logo />
-        <Avatar src="https://github.com/jaocfilho.png" alt="José Augusto" />
+        <ActionsArea />
       </Flex>
     </Flex>
   );
