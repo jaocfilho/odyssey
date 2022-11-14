@@ -4,6 +4,7 @@ import {
 } from "../../utils";
 
 import { styled } from "../../styles/stiches";
+import { ComponentProps } from "../../utils/types";
 
 export const BaseButton = styled("button", {
   // css reset
@@ -103,3 +104,5 @@ export const Button = styled(BaseButton, {
   py: "$2",
   px: "$4",
 });
+
+export type ButtonProps = ComponentProps<typeof Button>;

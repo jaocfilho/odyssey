@@ -2,19 +2,26 @@ import type { ComponentProps } from "../../utils/types";
 
 import { styled } from "../../styles/stiches";
 import { Box } from "../Box";
+import { createGapVariants } from "../../utils"
 
 /**
- * `Flex` is a `Box` with display set to flex and
- * comes with helpful style shorthand.
+ * `Flex` is a `Box` with display set to flex that
+ * comes with helpful shorthand props.
  *
  * It renders a `div` element.
  *
- * Using the `Flex` component, here are some helpful shorthand props:
- * - You can change it's flexDirection via `direction` prop
- * - You can pass a `noWrap` boolean prop instead of `flexWrap: "nowrap"`
- * - You can pass a `noShrink` boolean prop instead of `flexShrink: 0`
- *
- * You can also use all the `Box` component shorthands.
+ * #### Shorthand props
+ * In addition to using all `Box` props, you can use some specific
+ * `Flex` shorthand props
+ * 
+ * - direction?: `"row" | "column"` - flex direction. It defaults to
+ * `"row"`.
+ * 
+ * - noShrink: `boolean` - if its `true` sets the flex shrink factor
+ * to 0.
+ * 
+ * - noWrap: `boolean` - if its `true` sets the `flex-wrap`
+ * property to `"nowrap"`.
  * 
  */
 export const Flex = styled(Box, {
@@ -37,6 +44,14 @@ export const Flex = styled(Box, {
         flexShrink: 0,
       },
     },
+
+    justifyContent: {
+      spaceBetween: {
+        justifyContent: "space-between",
+      },
+    },
+
+    ...createGapVariants(),
   },
 
   defaultVariants: {

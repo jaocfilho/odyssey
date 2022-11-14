@@ -238,3 +238,13 @@ export const createMarginVariants = () => {
 
   return createSpaceVariants(properties);
 };
+
+/**
+ * Returns an object of space variants for the gap property.
+ *
+ */
+export const createGapVariants = () => {
+  const properties = ['gap'];
+
+  return createSpaceVariants(properties);
+};
