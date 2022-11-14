@@ -49,6 +49,12 @@ export const BaseButton = styled("button", {
         fontSize: "$lg",
       },
     },
+
+    cursorPointer: {
+      true: {
+        cursor: "pointer",
+      },
+    },
   },
 
   compoundVariants: [
@@ -97,6 +103,7 @@ export const BaseButton = styled("button", {
     color: "gray",
     variant: "solid",
     size: "medium",
+    cursorPointer: true,
   },
 });
 

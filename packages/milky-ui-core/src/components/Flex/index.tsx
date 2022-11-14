@@ -23,6 +23,9 @@ import { createGapVariants } from "../../utils"
  * - noWrap: `boolean` - if its `true` sets the `flex-wrap`
  * property to `"nowrap"`.
  * 
+ * - gap: `number` - sets the `gap` between the items inside
+ * the `Flex`.
+ * 
  */
 export const Flex = styled(Box, {
   display: "flex",
