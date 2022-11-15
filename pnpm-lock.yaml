@@ -15,9 +15,13 @@ importers:
   apps/codeflux-front:
     specifiers:
       '@babel/core': ^7.0.0
+      '@testing-library/jest-dom': ^5.16.5
+      '@testing-library/react': ^13.4.0
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
+      '@types/testing-library__jest-dom': ^5.14.5
+      '@vitejs/plugin-react': ^2.2.0
       eslint: 7.32.0
       eslint-config-custom: workspace:*
       milky-ui: workspace:*
@@ -28,6 +32,7 @@ importers:
       react-dom: 18.2.0
       tsconfig: workspace:*
       typescript: 4.7.4
+      vitest: ^0.25.0
     dependencies:
       milky-ui: link:../../packages/milky-ui
       next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
@@ -37,13 +42,18 @@ importers:
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
       '@babel/core': 7.20.2
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@types/node': 17.0.45
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
+      '@types/testing-library__jest-dom': 5.14.5
+      '@vitejs/plugin-react': 2.2.0
       eslint: 7.32.0
       eslint-config-custom: link:../../packages/eslint-config-custom
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
+      vitest: 0.25.0
 
   apps/docs:
     specifiers:
@@ -845,6 +855,20 @@ packages:
       dom-accessibility-api: 0.5.14
       lodash: 4.17.21
       redent: 3.0.0
+    dev: true
+
+  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.1
+      '@testing-library/dom': 8.19.0
+      '@types/react-dom': 18.0.8
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: true
 
   /@testing-library/react/13.4.0_react@18.2.0:
@@ -3089,7 +3113,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -3214,7 +3237,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
