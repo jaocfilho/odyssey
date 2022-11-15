@@ -15,4 +15,6 @@ describe("RoadmapRow", () => {
 
     expect(container).toBeInTheDocument();
   });
+
+  it("should correctly pass each cell to its components");
 });
