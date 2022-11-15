@@ -1,10 +1,17 @@
 import { AuthenticatedPageShell } from "../modules/auth";
-import { RoadmapCell } from "../modules/roadmap";
+import { RoadmapRow } from "../modules/roadmap";
 
 export default function Web() {
+  const cells = [
+    { color: "purple", type: "starting" },
+    { color: "purple", type: "progress" },
+    { color: "purple", type: "ending" },
+    { color: "purple", type: "solo" },
+  ];
+
   return (
     <AuthenticatedPageShell>
-      <RoadmapCell color="purple" type="solo"  />
+      <RoadmapRow cells={cells} />
     </AuthenticatedPageShell>
   );
 }

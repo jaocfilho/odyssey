@@ -1,0 +1,1 @@
+export type { TRoadmapCell } from "./cell";
