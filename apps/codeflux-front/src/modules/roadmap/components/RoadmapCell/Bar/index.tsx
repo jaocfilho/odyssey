@@ -1,6 +1,8 @@
-import { BarContainer, BarContainerProps } from "./styles";
+import type { TRoadmapCell } from "../../../types";
 
-export type BarProps = Required<Pick<BarContainerProps, "color" | "type">>;
+import { BarContainer } from "./styles";
+
+export type BarProps = TRoadmapCell;
 
 export const Bar = ({ color, type }: BarProps) => {
   return <BarContainer my={2} cursorPointer color={color} type={type} />;

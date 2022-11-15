@@ -9,6 +9,6 @@ export * from "./components/IconButton";
 export * from "./styles/stiches";
 
 // Utils imports
-export type { ComponentProps } from "./utils/types";
+export type { ComponentProps, TColor } from "./utils/types";
 
 export { createColorVariants } from "./utils";

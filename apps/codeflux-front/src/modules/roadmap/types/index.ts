@@ -1,1 +1,2 @@
-export type { TRoadmapCell } from "./cell";
+export type { TRoadmapCell } from "./roadmapCell";
+export type { TRoadmapRow } from "./roadmapRow";

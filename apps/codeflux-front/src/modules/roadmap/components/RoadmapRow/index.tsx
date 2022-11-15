@@ -1,12 +1,10 @@
-import type { TRoadmapCell } from "../../types";
+import type { TRoadmapRow } from "../../types";
 
 import { Flex } from "milky-ui";
 
 import { RoadmapCell } from "../RoadmapCell";
 
-type RoadmapRowProps = {
-  cells: TRoadmapCell[];
-};
+type RoadmapRowProps = TRoadmapRow;
 
 export const RoadmapRow = ({ cells }: RoadmapRowProps) => {
   return (
