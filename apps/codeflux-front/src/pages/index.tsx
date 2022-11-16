@@ -6,7 +6,7 @@ export default function Web() {
     { color: "purple", type: "starting" },
     { color: "purple", type: "progress" },
     { color: "purple", type: "ending" },
-    { color: "purple", type: "solo" },
+    { color: "purple", type: "empty" },
   ];
 
   return (
