@@ -11,6 +11,6 @@ export const generateRoadmapCell = (): TRoadmapCell => {
   return { type, color };
 };
 
-export const generateRoadmapCellArray = (count: 5): TRoadmapCell[] => {
+export const generateRoadmapCellArray = (count = 5): TRoadmapCell[] => {
   return [...new Array(count)].map(() => generateRoadmapCell());
 };
