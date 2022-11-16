@@ -3,6 +3,7 @@ import type { TRoadmapCell } from "../../types";
 import { faker } from "@faker-js/faker";
 
 import { roadmapCellColors, roadmapCellTypes } from "../../constants";
+import { callMultipleTimes } from "satellite";
 
 export const generateRoadmapCell = (): TRoadmapCell => {
   const color = faker.helpers.arrayElement(roadmapCellColors);
@@ -12,5 +13,12 @@ export const generateRoadmapCell = (): TRoadmapCell => {
 };
 
 export const generateRoadmapCellArray = (count = 5): TRoadmapCell[] => {
-  return [...new Array(count)].map(() => generateRoadmapCell());
+  const cells: TRoadmapCell[] = [];
+
+  callMultipleTimes(() => {
+    const cell = generateRoadmapCell();
+    cells.push(cell);
+  }, count);
+
+  return cells;
 };

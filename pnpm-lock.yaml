@@ -31,6 +31,7 @@ importers:
       phosphor-react: ^1.4.1
       react: 18.2.0
       react-dom: 18.2.0
+      satellite: workspace:*
       tsconfig: workspace:*
       typescript: 4.7.4
       vitest: ^0.25.0
@@ -41,6 +42,7 @@ importers:
       phosphor-react: 1.4.1_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      satellite: link:../../packages/satellite
     devDependencies:
       '@babel/core': 7.20.2
       '@faker-js/faker': 7.6.0
@@ -180,13 +182,27 @@ importers:
 
   packages/satellite:
     specifiers:
+      '@satellite/functions': workspace:*
       '@satellite/tests': workspace:*
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
       tsconfig: workspace:*
       typescript: 4.7.4
     dependencies:
+      '@satellite/functions': link:../satellite-functions
       '@satellite/tests': link:../satellite-tests
+    devDependencies:
+      eslint: 7.32.0
+      eslint-config-custom: link:../eslint-config-custom
+      tsconfig: link:../tsconfig
+      typescript: 4.7.4
+
+  packages/satellite-functions:
+    specifiers:
+      eslint: ^7.32.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      typescript: 4.7.4
     devDependencies:
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom

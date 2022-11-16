@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "milky-ui": "workspace:*",
+    "satellite": "workspace:*",
     "next": "13.0.0",
     "next-themes": "^0.2.1",
     "phosphor-react": "^1.4.1",
