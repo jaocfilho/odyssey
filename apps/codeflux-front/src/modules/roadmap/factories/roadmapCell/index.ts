@@ -1,11 +1,24 @@
-import type { TRoadmapCell } from "../../types";
+import type { TRoadmapCell, CellTypes } from "../../types";
 
 import { faker } from "@faker-js/faker";
 
-import { roadmapCellColors, roadmapCellTypes } from "../../constants";
 import { callMultipleTimes } from "satellite";
 
-export const generateRoadmapCell = (): TRoadmapCell => {
+import { roadmapCellColors, roadmapCellTypes } from "../../constants";
+
+type GenerateRoadmapCellParams = {
+  excludedTypes?: CellTypes[];
+};
+
+export const generateRoadmapCell = (
+  params: GenerateRoadmapCellParams = {}
+): TRoadmapCell => {
+  const { excludedTypes } = params;
+
+  // const types = roadmapCellTypes.filter((t) => {
+  //   return !excludedTypes?.includes(t);
+  // })
+
   const color = faker.helpers.arrayElement(roadmapCellColors);
   const type = faker.helpers.arrayElement(roadmapCellTypes);
 

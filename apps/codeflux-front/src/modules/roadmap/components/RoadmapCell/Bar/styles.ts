@@ -19,6 +19,9 @@ export const BarContainer = styled(Flex, {
       solo: {
         rounded: "$$roadmapCellRounded",
       },
+      empty: {
+        display: "none",
+      },
     },
 
     color: createColorVariants({

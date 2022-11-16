@@ -22,4 +22,5 @@ export const roadmapCellTypes: CellTypes[] = [
   "progress",
   "solo",
   "starting",
+  "empty",
 ];

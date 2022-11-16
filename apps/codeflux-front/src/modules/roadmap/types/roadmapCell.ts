@@ -1,6 +1,6 @@
 import { TColor } from "milky-ui";
 
-type CellTypes = "starting" | "progress" | "ending" | "solo";
+export type CellTypes = "starting" | "progress" | "ending" | "solo" | "empty";
 
 /**
  * This type represents a roadmap cell object.
