@@ -182,6 +182,7 @@ importers:
 
   packages/satellite:
     specifiers:
+      '@satellite/arrays': workspace:*
       '@satellite/functions': workspace:*
       '@satellite/tests': workspace:*
       eslint: ^7.32.0
@@ -189,8 +190,21 @@ importers:
       tsconfig: workspace:*
       typescript: 4.7.4
     dependencies:
+      '@satellite/arrays': link:../satellite-arrays
       '@satellite/functions': link:../satellite-functions
       '@satellite/tests': link:../satellite-tests
+    devDependencies:
+      eslint: 7.32.0
+      eslint-config-custom: link:../eslint-config-custom
+      tsconfig: link:../tsconfig
+      typescript: 4.7.4
+
+  packages/satellite-arrays:
+    specifiers:
+      eslint: ^7.32.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      typescript: 4.7.4
     devDependencies:
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom
