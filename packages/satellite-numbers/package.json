@@ -1,16 +1,11 @@
 {
-  "name": "satellite",
+  "name": "@satellite/numbers",
   "version": "0.0.0",
   "main": "./index.ts",
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*"
-  },
-  "dependencies": {
-    "@satellite/functions": "workspace:*",
-    "@satellite/numbers": "workspace:*",
-    "@satellite/arrays": "workspace:*"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
