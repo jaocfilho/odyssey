@@ -26,7 +26,7 @@ const createProgressCells = ({ count, color }: CreateProgressCellsParams) => {
 
 type GenerateRoadmapBarParams = {
   size: number;
-  color?: CellColors;
+  color: CellColors;
 };
 
 export const generateRoadmapBar = ({

@@ -2,7 +2,7 @@ import type { TRoadmapCell, CellTypes, CellColors } from "../../types";
 
 import { faker } from "@faker-js/faker";
 
-import { callMultipleTimes, getArrayDifference } from "satellite";
+import { getArrayDifference } from "satellite";
 
 import { roadmapCellColors, roadmapCellTypes } from "../../constants";
 
@@ -128,18 +128,4 @@ export const generateProgressCell = ({
   excludedColors,
 }: GenerateProgressCellParams = {}) => {
   return generateRoadmapCell({ type: "progress", color, excludedColors });
-};
-
-export const generateRoadmapCellArray = (
-  count = 5,
-  params: GenerateRoadmapCellParams = {}
-): TRoadmapCell[] => {
-  const cells: TRoadmapCell[] = [];
-
-  callMultipleTimes(() => {
-    const cell = generateRoadmapCell(params);
-    cells.push(cell);
-  }, count);
-
-  return cells;
 };

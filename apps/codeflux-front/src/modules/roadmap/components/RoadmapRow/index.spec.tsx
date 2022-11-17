@@ -4,14 +4,14 @@ import { beforeEach, describe, vi, it, expect } from "vitest";
 
 import { RoadmapCell } from "../RoadmapCell";
 import { RoadmapRow } from ".";
-import { generateRoadmapCellArray } from "../../factories";
+import { generateRoadmapBar } from "../../factories";
 
 vi.mock("../RoadmapCell", () => ({
   RoadmapCell: vi.fn(),
 }));
 
 describe("RoadmapRow", () => {
-  const cells = generateRoadmapCellArray();
+  const cells = generateRoadmapBar({ size: 5, color: "purple" });
 
   beforeEach(() => {
     vi.restoreAllMocks();
