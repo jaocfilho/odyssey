@@ -44,10 +44,11 @@ export const inRange = ({
  * Receives a min and a max numbers and returns a random
  * integer between both.
  * 
+ * TODO complete documentation
+ * 
  * @param min An integer
  * @param max An integer
  * 
- * TODO complete documentation
  */
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);

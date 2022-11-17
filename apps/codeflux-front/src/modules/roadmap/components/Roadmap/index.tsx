@@ -1,8 +1,8 @@
-import { generateRoadmapCellArray } from "../../factories";
+import { generateRoadmapBar } from "../../factories";
 import { RoadmapRow } from "../RoadmapRow";
 
 export const Roadmap = () => {
-  const cells = generateRoadmapCellArray(20);
+  const cells = generateRoadmapBar({ size: 5, color: "purple" });
 
   return (
     <RoadmapRow cells={cells} />

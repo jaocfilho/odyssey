@@ -118,6 +118,18 @@ export const generateSoloCell = ({
   return generateRoadmapCell({ type: "solo", color, excludedColors });
 };
 
+type GenerateProgressCellParams = {
+  excludedColors?: CellColors[];
+  color?: CellColors;
+};
+
+export const generateProgressCell = ({
+  color,
+  excludedColors,
+}: GenerateProgressCellParams = {}) => {
+  return generateRoadmapCell({ type: "progress", color, excludedColors });
+};
+
 export const generateRoadmapCellArray = (
   count = 5,
   params: GenerateRoadmapCellParams = {}
