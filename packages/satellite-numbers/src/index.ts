@@ -41,10 +41,13 @@ export const inRange = ({
 };
 
 /**
- * Receives a min and a max numbers and returns a random
- * integer between both.
+ * Returns a random integer between min (inclusive)
+ * and max (inclusive).
  * 
- * TODO complete documentation
+ * The value is no lower than min
+ * (or the next integer greater than min if min isn't an integer)
+ * and no greater than max
+ * (or the next integer lower than max if max isn't an integer).
  * 
  * @param min An integer
  * @param max An integer

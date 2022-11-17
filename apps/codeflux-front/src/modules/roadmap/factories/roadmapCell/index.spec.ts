@@ -1,6 +1,7 @@
 import { describe, expect } from "vitest";
 
 import {
+  generateEmptyCell,
   generateEndingCell,
   generateProgressCell,
   generateSoloCell,
@@ -55,4 +56,11 @@ describe("roadmapCell factories", () => {
       expect(cell.color).toBe("purple");
     });
   });
+
+  describe("generateEmptyCell", () => {
+    it("should return an empty cell", () => {
+      const cell = generateEmptyCell();
+      expect(cell.type).toBe("empty");
+    })
+  })
 });

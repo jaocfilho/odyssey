@@ -129,3 +129,7 @@ export const generateProgressCell = ({
 }: GenerateProgressCellParams = {}) => {
   return generateRoadmapCell({ type: "progress", color, excludedColors });
 };
+
+export const generateEmptyCell = () => {
+  return generateRoadmapCell({ type: "empty" });
+};
