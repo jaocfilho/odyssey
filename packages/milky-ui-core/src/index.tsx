@@ -4,7 +4,6 @@ export * from "./components/Button";
 export * from "./components/Box";
 export * from "./components/Flex";
 export * from "./components/IconButton";
-export * from "./components/ScrollArea";
 
 // Stiches imports
 export * from "./styles/stiches";
