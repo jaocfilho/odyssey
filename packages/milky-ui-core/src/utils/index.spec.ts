@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { assertObjectProperties } from "satellite";
+import { assertObjectProperties } from "@satellite/tests";
 import { colorsArray, spaceScales, Color } from "@milky-ui/tokens";
 
 import {

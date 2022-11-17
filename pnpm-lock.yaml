@@ -130,6 +130,7 @@ importers:
     specifiers:
       '@milky-ui/tokens': workspace:*
       '@radix-ui/react-avatar': ^1.0.1
+      '@satellite/tests': workspace:*
       '@stitches/react': ^1.2.8
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
@@ -151,6 +152,7 @@ importers:
       '@stitches/react': 1.2.8_react@18.2.0
       satellite: link:../satellite
     devDependencies:
+      '@satellite/tests': link:../satellite-tests
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_react@18.2.0
       '@types/react': 18.0.25
@@ -184,7 +186,6 @@ importers:
     specifiers:
       '@satellite/arrays': workspace:*
       '@satellite/functions': workspace:*
-      '@satellite/tests': workspace:*
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
       tsconfig: workspace:*
@@ -192,7 +193,6 @@ importers:
     dependencies:
       '@satellite/arrays': link:../satellite-arrays
       '@satellite/functions': link:../satellite-functions
-      '@satellite/tests': link:../satellite-tests
     devDependencies:
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom

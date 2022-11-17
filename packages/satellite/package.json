@@ -8,7 +8,6 @@
     "lint": "eslint *.ts*"
   },
   "dependencies": {
-    "@satellite/tests": "workspace:*",
     "@satellite/functions": "workspace:*",
     "@satellite/arrays": "workspace:*"
   },
