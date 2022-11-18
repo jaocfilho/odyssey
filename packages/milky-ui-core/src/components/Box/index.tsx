@@ -32,6 +32,9 @@ import { styled } from "../../styles/stiches";
  * 
  */
 export const Box = styled("div", {
+  // reset
+  boxSizing: "border-box",
+
   variants: {
     textCenter: {
       true: {
