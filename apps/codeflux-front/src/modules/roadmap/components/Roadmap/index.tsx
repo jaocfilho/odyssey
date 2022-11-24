@@ -1,10 +1,14 @@
+import { ScrollArea } from "milky-ui";
+
 import { generateRoadmapBar } from "../../factories";
 import { RoadmapRow } from "../RoadmapRow";
 
 export const Roadmap = () => {
-  const cells = generateRoadmapBar({ size: 5, color: "purple" });
+  const cells = generateRoadmapBar({ size: 120, color: "purple" });
 
   return (
-    <RoadmapRow cells={cells} />
+    <ScrollArea css={{ width: 650, height: 200 }}>
+      <RoadmapRow cells={cells} />
+    </ScrollArea>
   );
 };
