@@ -14,6 +14,12 @@ type ScrollAreaProps = {
   css: ScrollAreaRootProps["css"];
 };
 
+/**
+ * Augments native scroll functionality for custom,
+ * cross-browser styling.
+ * 
+ * @reference https://www.radix-ui.com/docs/primitives/components/scroll-area
+ */
 export const ScrollArea = ({ children, css }: ScrollAreaProps) => {
   return (
     <ScrollAreaRoot css={css}>
