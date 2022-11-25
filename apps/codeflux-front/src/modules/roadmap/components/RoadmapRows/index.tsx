@@ -1,5 +1,7 @@
+import type { TRoadmapRow } from "../../types";
+
 import { Flex } from "milky-ui";
-import { TRoadmapRow } from "../../types";
+
 import { RoadmapRow } from "../RoadmapRow";
 
 type RoadmapRowsProps = {

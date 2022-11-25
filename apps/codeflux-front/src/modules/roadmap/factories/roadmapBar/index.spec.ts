@@ -8,7 +8,7 @@ describe("generateRoadmapBar", () => {
 
     const [starting] = cells.splice(0, 1);
     const [ending] = cells.splice(-1, 1);
-    
+
     expect(starting.type).toBe("starting");
     expect(ending.type).toBe("ending");
 
@@ -22,6 +22,12 @@ describe("generateRoadmapBar", () => {
 
     cells.forEach((cell) => {
       expect(cell.color).toBe("purple");
-    })
+    });
+  });
+
+  it("should throw error if size is smaller than 2", () => {
+    expect(() =>
+      generateRoadmapBar({ size: 1, color: "purple" })
+    ).toThrowError();
   });
 });

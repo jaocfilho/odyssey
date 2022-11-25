@@ -31,21 +31,25 @@ type GenerateRoadmapBarParams = {
 
 /**
  * Creates a roadmap bar.
- * 
+ *
  * A roadmap bar happens when in a sequence of roadmap cells,
  * the first cell is a `starting` cell, the last cell is an `ending`
  * cell and all the cells in between are `progress` cells.
- * 
+ *
  * You can customize it by passing `size` and `color` values.
- * 
+ *
  * @param size An integer.
  * @param color A string.
- * 
+ *
  */
 export const generateRoadmapBar = ({
   size,
   color,
 }: GenerateRoadmapBarParams) => {
+  if (size < 2) {
+    throw new Error("roadmap bar size must be bigger than 2.");
+  }
+
   const starting = generateStartingCell({ color });
   const ending = generateEndingCell({ color });
 
