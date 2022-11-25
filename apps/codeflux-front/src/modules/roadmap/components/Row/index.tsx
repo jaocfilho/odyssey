@@ -6,7 +6,7 @@ import { Cell } from "../Cell";
 
 type RoadmapRowProps = TRoadmapRow;
 
-export const RoadmapRow = ({ cells }: RoadmapRowProps) => {
+export const Row = ({ cells }: RoadmapRowProps) => {
   return (
     <Flex>
       {cells.map((cell, index) => (
