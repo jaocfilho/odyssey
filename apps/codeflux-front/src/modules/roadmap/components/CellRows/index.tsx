@@ -4,11 +4,11 @@ import { Flex } from "milky-ui";
 
 import { CellRow } from "../CellRow";
 
-type RoadmapRowsProps = {
+type CellRowsProps = {
   rows: TRoadmapRow[];
 };
 
-export const Rows = ({ rows }: RoadmapRowsProps) => {
+export const CellRows = ({ rows }: CellRowsProps) => {
   return (
     <Flex direction="column" gap={4}>
       {rows.map((row, index) => (
