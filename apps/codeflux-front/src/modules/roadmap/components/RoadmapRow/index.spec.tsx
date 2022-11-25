@@ -2,12 +2,12 @@ import { render } from "@testing-library/react";
 
 import { beforeEach, describe, vi, it, expect } from "vitest";
 
-import { RoadmapCell } from "../RoadmapCell";
+import { Cell } from "../Cell";
 import { RoadmapRow } from ".";
 import { generateRoadmapBar } from "../../factories";
 
-vi.mock("../RoadmapCell", () => ({
-  RoadmapCell: vi.fn(),
+vi.mock("../Cell", () => ({
+  Cell: vi.fn(),
 }));
 
 describe("RoadmapRow", () => {
@@ -26,6 +26,6 @@ describe("RoadmapRow", () => {
   it("should correctly render a RoadmapCell for each cell", () => {
     render(<RoadmapRow cells={cells} />);
 
-    expect(RoadmapCell).toHaveBeenCalledTimes(cells.length);
+    expect(Cell).toHaveBeenCalledTimes(cells.length);
   });
 });

@@ -3,7 +3,7 @@ import { Container } from "./Container";
 
 export type RoadmapCellProps = BarProps;
 
-export const RoadmapCell = ({ color, type }: RoadmapCellProps) => {
+export const Cell = ({ color, type }: RoadmapCellProps) => {
   return (
     <Container>
       <Bar color={color} type={type} />
