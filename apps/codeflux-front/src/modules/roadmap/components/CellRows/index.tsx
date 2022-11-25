@@ -1,11 +1,11 @@
-import type { TRoadmapRow } from "../../types";
+import type { TCellsRow } from "../../types";
 
 import { Flex } from "milky-ui";
 
 import { CellRow } from "../CellRow";
 
 type CellRowsProps = {
-  rows: TRoadmapRow[];
+  rows: TCellsRow[];
 };
 
 export const CellRows = ({ rows }: CellRowsProps) => {

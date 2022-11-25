@@ -1,10 +1,10 @@
-import type { TRoadmapRow } from "../../types";
+import type { TCellsRow } from "../../types";
 
 import { Flex } from "milky-ui";
 
 import { Cell } from "../Cell";
 
-type CellRowProps = TRoadmapRow;
+type CellRowProps = TCellsRow;
 
 export const CellRow = ({ cells }: CellRowProps) => {
   return (
