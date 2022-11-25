@@ -8,7 +8,7 @@ type RoadmapRowsProps = {
   rows: TRoadmapRow[];
 };
 
-export const RoadmapRows = ({ rows }: RoadmapRowsProps) => {
+export const Rows = ({ rows }: RoadmapRowsProps) => {
   return (
     <Flex direction="column" gap={4}>
       {rows.map((row, index) => (
