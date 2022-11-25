@@ -4,9 +4,9 @@ import { Flex } from "milky-ui";
 
 import { Cell } from "../Cell";
 
-type RoadmapRowProps = TRoadmapRow;
+type CellRowProps = TRoadmapRow;
 
-export const Row = ({ cells }: RoadmapRowProps) => {
+export const CellRow = ({ cells }: CellRowProps) => {
   return (
     <Flex>
       {cells.map((cell, index) => (
