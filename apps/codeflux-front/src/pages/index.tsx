@@ -1,4 +1,4 @@
-import { AuthenticatedPageShell } from "../modules/auth";
+import { AuthenticatedPageShell } from "../modules/pageShells";
 import { Roadmap } from "../modules/roadmap";
 
 export default function Web() {

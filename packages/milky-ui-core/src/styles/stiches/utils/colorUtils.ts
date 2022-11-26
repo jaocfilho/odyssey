@@ -7,7 +7,7 @@ export const colorUtils = {
   }),
 
   /**
-   * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds
+   * @reference https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds
    *
    */
   solidColor: (value: Stitches.PropertyValue<"color">) => ({
@@ -15,7 +15,7 @@ export const colorUtils = {
   }),
 
   /**
-   * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds
+   * @reference https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-910-solid-backgrounds
    *
    */
   solidColorScheme: (value: Stitches.PropertyValue<"color">) => ({
@@ -30,7 +30,7 @@ export const colorUtils = {
   }),
 
   /**
-   * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-68-borders
+   * @reference https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-68-borders
    */
   outlineColorScheme: (value: Stitches.PropertyValue<"color">) => ({
     border: "$borderWidth$2",
@@ -47,7 +47,7 @@ export const colorUtils = {
   }),
 
   /**
-   * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
+   * @reference https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
    */
   fadedColorScheme: (value: Stitches.PropertyValue<"color">) => ({
     backgroundColor: `$${value}4`,
@@ -64,7 +64,7 @@ export const colorUtils = {
   }),
 
   /**
-   * https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
+   * @reference https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
    */
   fadedAColorScheme: (value: Stitches.PropertyValue<"color">) => ({
     backgroundColor: `$${value}3`,
