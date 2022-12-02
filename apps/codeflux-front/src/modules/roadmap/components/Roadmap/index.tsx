@@ -4,7 +4,7 @@ import { CellsArea } from "../CellsArea";
 
 export const Roadmap = () => {
   return (
-    <Flex>
+    <Flex autoHorizontalMargin>
       <CellsArea />
     </Flex>
   );

@@ -23,13 +23,15 @@ import { styled } from "../../styles/stiches";
  *
  * #### Shorthand Props
  * - cursorPointer: `boolean` - changes the `cursor` to `"pointer"`
+ *
+ * - autoHorizontalMargin: `boolean` - sets the margin x to `"auto"`
  * 
  * - padding abbreviations: `number` - you can use any padding
  * abbreviation, like `px` or `pr` as props
- * 
+ *
  * - margin abbreviations: `number` - you can use any margin
  * abbreviation, `my` or `ml` as props
- * 
+ *
  */
 export const Box = styled("div", {
   // reset
@@ -75,6 +77,12 @@ export const Box = styled("div", {
     cursorPointer: {
       true: {
         cursor: "pointer",
+      },
+    },
+
+    autoHorizontalMargin: {
+      true: {
+        mx: "auto",
       },
     },
 
