@@ -1,7 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { globalStyles } from "milky-ui";
-import RootProviders from "./providers";
+import { globalStyles } from 'milky-ui';
+
+import RootProviders from './providers';
 
 type RootLayoutProps = {
   children: ReactNode;

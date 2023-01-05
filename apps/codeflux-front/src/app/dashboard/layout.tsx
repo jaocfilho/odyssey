@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { AuthenticatedPageShell } from "../../modules/pageShells";
+import { AuthenticatedPageShell } from '../../modules/pageShells';
 
 type DashboardLayoutProps = {
   children: ReactNode;

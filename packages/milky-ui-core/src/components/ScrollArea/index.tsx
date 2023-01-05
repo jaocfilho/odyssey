@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+'use client';
+
+import type { ReactNode } from 'react';
 
 import {
   ScrollAreaCorner,
@@ -7,17 +9,17 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
   ScrollAreaViewport,
-} from "./styles";
+} from './styles';
 
 type ScrollAreaProps = {
   children: ReactNode;
-  css: ScrollAreaRootProps["css"];
+  css: ScrollAreaRootProps['css'];
 };
 
 /**
  * Augments native scroll functionality for custom,
  * cross-browser styling.
- * 
+ *
  * @reference https://www.radix-ui.com/docs/primitives/components/scroll-area
  */
 export const ScrollArea = ({ children, css }: ScrollAreaProps) => {

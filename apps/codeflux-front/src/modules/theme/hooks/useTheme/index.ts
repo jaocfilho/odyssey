@@ -1,4 +1,4 @@
-import { useTheme as useThemeBase } from "next-themes";
+import { useTheme as useThemeBase } from 'next-themes';
 
 type UseThemeReturn = {
   theme: string | undefined;
@@ -10,21 +10,21 @@ type UseThemeReturn = {
 export const useTheme = (): UseThemeReturn => {
   const { theme, setTheme } = useThemeBase();
 
-  const setDarkTheme = () => setTheme("dark");
-  const setLightTheme = () => setTheme("light");
+  const setDarkTheme = () => setTheme('dark');
+  const setLightTheme = () => setTheme('light');
 
   const alternateTheme = () => {
     switch (theme) {
-      case "dark":
+      case 'dark':
         setLightTheme();
         break;
 
-      case "light":
+      case 'light':
         setDarkTheme();
         break;
 
       default:
-        throw new Error("Invalid theme");
+        throw new Error('Invalid theme');
     }
   };
 

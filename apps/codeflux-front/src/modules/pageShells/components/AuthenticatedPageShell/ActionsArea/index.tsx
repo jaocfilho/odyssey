@@ -1,6 +1,6 @@
-import { Avatar, Flex } from "milky-ui";
+import { Avatar, Flex } from 'milky-ui';
 
-import { ThemeButton } from "../../../../theme";
+import { ThemeButton } from '../../../../theme';
 
 export const ActionsArea = () => {
   return (

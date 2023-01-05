@@ -1,10 +1,12 @@
-import { Sun } from "phosphor-react";
+'use client';
 
-import { IconButton, IconButtonProps } from "milky-ui";
+import { Sun } from 'phosphor-react';
 
-import { useTheme } from "../../hooks/useTheme";
+import { IconButton, IconButtonProps } from 'milky-ui';
 
-export type ThemeButtonProps = Pick<IconButtonProps, "size">;
+import { useTheme } from '../../hooks/useTheme';
+
+export type ThemeButtonProps = Pick<IconButtonProps, 'size'>;
 
 export const ThemeButton = ({ size }: ThemeButtonProps) => {
   const { alternateTheme } = useTheme();
