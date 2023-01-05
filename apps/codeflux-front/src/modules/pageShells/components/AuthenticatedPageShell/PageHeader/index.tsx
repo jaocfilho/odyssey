@@ -11,7 +11,7 @@ export const PageHeader = () => {
         <Logo />
         <ActionsArea />
       </Flex>
-      <NavArea />
+      {/* <NavArea /> */}
     </Flex>
   );
 };

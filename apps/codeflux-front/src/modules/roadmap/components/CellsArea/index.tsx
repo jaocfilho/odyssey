@@ -17,7 +17,7 @@ export const CellsArea = () => {
   ]
 
   return (
-    <ScrollArea css={{ width: 650, height: 200 }}>
+    <ScrollArea css={{ width: 700, height: 400 }}>
       <CellRows rows={rows} />
     </ScrollArea>
   );
