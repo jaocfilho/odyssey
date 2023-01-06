@@ -52,6 +52,15 @@ export const Flex = styled(Box, {
       spaceBetween: {
         justifyContent: 'space-between',
       },
+      center: {
+        justifyContent: 'center',
+      },
+    },
+
+    alignContent: {
+      center: {
+        alignContent: 'center',
+      },
     },
 
     ...createGapVariants(),
