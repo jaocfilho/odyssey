@@ -63,6 +63,12 @@ export const Flex = styled(Box, {
       },
     },
 
+    alignItems: {
+      center: {
+        alignItems: 'center',
+      },
+    },
+
     ...createGapVariants(),
   },
 

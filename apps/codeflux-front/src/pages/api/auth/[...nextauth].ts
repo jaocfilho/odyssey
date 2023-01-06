@@ -6,9 +6,9 @@ import GithubProvider from 'next-auth/providers/github';
 export const authOptions = {
   providers: [
     GithubProvider({
-      // TODO properly configure turbo to recognize local app vars
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
+      // TODO properly check if public variables are ok on production
+      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID!,
+      clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET!,
     }),
   ],
 };
