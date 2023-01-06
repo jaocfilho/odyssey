@@ -1,6 +1,6 @@
-import { Flex } from "milky-ui";
+import { Flex } from 'milky-ui';
 
-import { CellsArea } from "../CellsArea";
+import { CellsArea } from '../CellsArea';
 
 export const Roadmap = () => {
   return (
