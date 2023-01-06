@@ -33,10 +33,35 @@ export const TextElement = styled('p', {
         fontWeight: '$bold',
       },
     },
+
+    letterSpacing: {
+      tightest: {
+        letterSpacing: '$tightest',
+      },
+      tighter: {
+        letterSpacing: '$tighter',
+      },
+      tight: {
+        letterSpacing: '$tight',
+      },
+      normal: {
+        letterSpacing: '$normal',
+      },
+      wide: {
+        letterSpacing: '$wide',
+      },
+      wider: {
+        letterSpacing: '$wider',
+      },
+      widest: {
+        letterSpacing: '$widest',
+      },
+    },
   },
 
   defaultVariants: {
     fontWeight: 'regular',
+    letterSpacing: 'normal',
   },
 });
 

@@ -1,4 +1,4 @@
-import { createStitches } from "@stitches/react";
+import { createStitches } from '@stitches/react';
 
 import {
   borderWidth,
@@ -10,7 +10,8 @@ import {
   fonts,
   lineHeights,
   radii,
-} from "@milky-ui/tokens";
+  letterSpacings,
+} from '@milky-ui/tokens';
 
 import {
   borderUtils,
@@ -18,7 +19,7 @@ import {
   marginUtils,
   paddingUtils,
   sizeUtils,
-} from "./utils";
+} from './utils';
 
 export const {
   styled,
@@ -36,6 +37,7 @@ export const {
     lineHeights,
     radii,
     colors,
+    letterSpacings,
   },
 
   utils: {
@@ -55,11 +57,11 @@ export const globalStyles = globalCss({
   body: {
     margin: 0,
     padding: 0,
-    boxSizing: "border-box",
+    boxSizing: 'border-box',
 
-    background: "$gray1",
-    color: "$gray11",
+    background: '$gray1',
+    color: '$gray11',
 
-    fontFamily: "$default",
+    fontFamily: '$default',
   },
 });
