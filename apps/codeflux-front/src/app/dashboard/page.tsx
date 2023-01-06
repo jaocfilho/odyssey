@@ -1,5 +1,5 @@
-import { Roadmap } from '../../modules/roadmap';
+import DashboardPage from './DashboardPage';
 
-export default function DashboardPage() {
-  return <Roadmap />;
+export default function Page() {
+  return <DashboardPage />;
 }

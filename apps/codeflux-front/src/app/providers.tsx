@@ -1,10 +1,10 @@
 'use client';
 
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from 'next-themes';
 
-import { darkTheme, lightTheme } from "milky-ui";
+import { darkTheme, lightTheme } from 'milky-ui';
 
 type RootProvidersProps = {
   children: ReactNode;

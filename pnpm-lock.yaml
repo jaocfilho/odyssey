@@ -16,6 +16,7 @@ importers:
     specifiers:
       '@babel/core': ^7.0.0
       '@faker-js/faker': ^7.6.0
+      '@next/font': ^13.1.1
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
       '@types/node': ^17.0.12
@@ -37,6 +38,7 @@ importers:
       typescript: 4.7.4
       vitest: ^0.25.0
     dependencies:
+      '@next/font': 13.1.1
       milky-ui: link:../../packages/milky-ui
       next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
       next-auth: 4.18.7_r5sq4deac3rmm2d5onhwvomqve
@@ -646,6 +648,10 @@ packages:
     resolution: {integrity: sha512-z+gnX4Zizatqatc6f4CQrcC9oN8Us3Vrq/OLyc98h7K/eWctrnV91zFZodmJHUjx0cITY8uYM7LXD7IdYkg3kg==}
     dependencies:
       glob: 7.1.7
+    dev: false
+
+  /@next/font/13.1.1:
+    resolution: {integrity: sha512-amygRorS05hYK1/XQRZo5qBl7l2fpHnezeKU/cNveWU5QJg+sg8gMGkUXHtvesNKpiKIJshBRH1TzvO+2sKpvQ==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.0.0:
