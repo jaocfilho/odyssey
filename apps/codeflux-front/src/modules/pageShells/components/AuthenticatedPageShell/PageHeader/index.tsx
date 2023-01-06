@@ -1,3 +1,5 @@
+'use client';
+
 import { Flex } from 'milky-ui';
 
 import { Logo } from '../../../../../components/Logo';

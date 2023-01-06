@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import { Flex } from "milky-ui";
+import { Flex } from 'milky-ui';
 
-import { PageHeader } from "./PageHeader";
+import { PageHeader } from './PageHeader';
 
 type AuthenticatedPageShellProps = {
   children: ReactNode;
