@@ -1,26 +1,42 @@
-import type { ComponentProps } from "../../utils/types";
+import type { ComponentProps } from '../../utils/types';
 
-import { styled } from "../../styles/stiches";
+import { styled } from '../../styles/stiches';
 
-export const TextElement = styled("p", {
+export const TextElement = styled('p', {
   // css reset
-  all: "unset",
+  all: 'unset',
 
   variants: {
     variant: {
       h1: {
-        fontSize: "$4xl",
+        fontSize: '$4xl',
       },
       h2: {
-        fontSize: "$2xl",
+        fontSize: '$2xl',
       },
       h3: {
-        fontSize: "$xl",
+        fontSize: '$xl',
       },
       h4: {
-        fontSize: "$lg",
+        fontSize: '$lg',
       },
     },
+
+    fontWeight: {
+      regular: {
+        fontWeight: '$regular',
+      },
+      medium: {
+        fontWeight: '$medium',
+      },
+      bold: {
+        fontWeight: '$bold',
+      },
+    },
+  },
+
+  defaultVariants: {
+    fontWeight: 'regular',
   },
 });
 
