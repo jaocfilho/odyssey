@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
-import { AuthenticatedPageShell } from '../../modules/pageShells';
+import AuthenticatedLayout from '../AuthenticatedLayout';
 
 type DashboardLayoutProps = {
   children: ReactNode;
 };
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  return <AuthenticatedPageShell>{children}</AuthenticatedPageShell>;
+  return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
 }
