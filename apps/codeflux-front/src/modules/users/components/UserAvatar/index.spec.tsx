@@ -11,3 +11,9 @@ describe('BaseUserAvatar', () => {
     expect(container).toBeInTheDocument();
   });
 });
+
+// TODO write tests
+describe('UserAvatar', () => {
+  it('should render empty if user is null');
+  it('should pass user properties to base component');
+});
