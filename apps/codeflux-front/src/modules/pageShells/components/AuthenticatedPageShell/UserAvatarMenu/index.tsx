@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from 'milky-ui';
+import { DropdownMenu, DropdownMenuContent } from 'milky-ui';
 
 import { UserAvatar } from '../../../../users';
+import { LogoutItem } from './LogoutItem';
 
 type BaseUserAvatarMenuProps = {
   trigger: ReactNode;
@@ -12,7 +13,7 @@ export const BaseUserAvatarMenu = ({ trigger }: BaseUserAvatarMenuProps) => {
   return (
     <DropdownMenu trigger={trigger}>
       <DropdownMenuContent>
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <LogoutItem />
       </DropdownMenuContent>
     </DropdownMenu>
   );
