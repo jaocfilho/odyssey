@@ -3,14 +3,35 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { styled } from '../../styles/stiches';
 import { createColorVariants } from '../../utils';
 
-export const DropdownMenuPortalContainer = styled(DropdownMenu.Portal, {});
+export const DropdownMenuTrigger = styled(DropdownMenu.Trigger, {
+  all: 'unset',
+});
+
+export const DropdownMenuPortalContainer = styled(DropdownMenu.Portal, {
+  all: 'unset',
+});
 
 const contentStyles = {
   minWidth: 220,
+  py: '$4',
+
   rounded: '$sm',
-  padding: '$2',
+  border: '$borderWidth$1',
+  borderSolid: true,
 
   bgColor: '$gray1',
+
+  variants: {
+    borderColor: createColorVariants({
+      variantFormat: (color) => ({
+        borderColor: `$${color}7`,
+      }),
+    }),
+  },
+
+  defaultVariants: {
+    borderColor: 'gray',
+  },
 };
 
 export const DropdownMenuContentContainer = styled(DropdownMenu.Content, {
@@ -24,25 +45,29 @@ export const DropdownMenuSubContentContainer = styled(DropdownMenu.SubContent, {
 const itemStyles = {
   all: 'unset',
 
-  rounded: '$xs',
+  px: '$4',
+  py: '$2',
+
+  fontSize: '$md',
 
   display: 'flex',
   alignItems: 'center',
 
+  cursor: 'pointer',
+
   variants: {
-    color: createColorVariants({
+    colorScheme: createColorVariants({
       variantFormat: (color) => ({
         lowContrastTextColor: color,
-        '&[data-highlighted]': {
-          solidColor: color,
-          colorHighlightedTextColor: color,
+        '&:hover': {
+          bgColor: `$${color}4`,
         },
       }),
     }),
   },
 
   defaultVariants: {
-    color: 'gray',
+    colorScheme: 'gray',
   },
 };
 

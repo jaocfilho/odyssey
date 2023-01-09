@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import {
+  DropdownMenuTrigger,
   DropdownMenuContentContainer,
   DropdownMenuSubContentContainer,
   DropdownMenuPortalContainer,
@@ -21,7 +22,7 @@ export type DropdownMenuProps = {
 export const DropdownMenu = ({ children, trigger }: DropdownMenuProps) => {
   return (
     <RadixDropdownMenu.Root>
-      <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>
+      <DropdownMenuTrigger>{trigger}</DropdownMenuTrigger>
       <DropdownMenuPortalContainer>{children}</DropdownMenuPortalContainer>
     </RadixDropdownMenu.Root>
   );
