@@ -1,7 +1,8 @@
 // Components imports
 export * from './components/Avatar';
-export * from './components/Button';
 export * from './components/Box';
+export * from './components/Button';
+export * from './components/DropdownMenu';
 export * from './components/Flex';
 export * from './components/IconButton';
 export * from './components/JsonView';

@@ -1,25 +1,22 @@
-import {
-  createColorVariants,
-  createCompoundColorVariants,
-} from "../../utils";
+import { createColorVariants, createCompoundColorVariants } from '../../utils';
 
-import { styled } from "../../styles/stiches";
-import { ComponentProps } from "../../utils/types";
+import { styled } from '../../styles/stiches';
+import { ComponentProps } from '../../utils/types';
 
-export const BaseButton = styled("button", {
+export const BaseButton = styled('button', {
   // css reset
-  all: "unset",
+  all: 'unset',
 
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 
-  fontFamily: "inherit",
-  fontWeight: "$medium",
+  fontFamily: 'inherit',
+  fontWeight: '$medium',
 
-  rounded: "$xs",
+  rounded: '$xs',
 
-  color: "$gray11",
+  color: '$gray11',
 
   variants: {
     color: createColorVariants({
@@ -35,24 +32,24 @@ export const BaseButton = styled("button", {
 
     size: {
       small: {
-        height: "$space$4",
-        fontSize: "$sm",
+        height: '$space$4',
+        fontSize: '$sm',
       },
 
       medium: {
-        height: "$space$5",
-        fontSize: "$md",
+        height: '$space$5',
+        fontSize: '$md',
       },
 
       large: {
-        height: "$space$6",
-        fontSize: "$lg",
+        height: '$space$6',
+        fontSize: '$lg',
       },
     },
 
     cursorPointer: {
       true: {
-        cursor: "pointer",
+        cursor: 'pointer',
       },
     },
   },
@@ -60,9 +57,9 @@ export const BaseButton = styled("button", {
   compoundVariants: [
     ...createCompoundColorVariants({
       variantFormat: (color) => ({
-        variant: "solid",
+        variant: 'solid',
         css: {
-          solidTextColor: true,
+          colorContrastTextColor: true,
           solidColorScheme: color,
         },
       }),
@@ -70,9 +67,9 @@ export const BaseButton = styled("button", {
 
     ...createCompoundColorVariants({
       variantFormat: (color) => ({
-        variant: "outline",
+        variant: 'outline',
         css: {
-          outlineTextColor: color,
+          lowContrastTextColor: color,
           outlineColorScheme: color,
         },
       }),
@@ -80,9 +77,9 @@ export const BaseButton = styled("button", {
 
     ...createCompoundColorVariants({
       variantFormat: (color) => ({
-        variant: "faded",
+        variant: 'faded',
         css: {
-          fadedTextColor: color,
+          lowContrastTextColor: color,
           fadedColorScheme: color,
         },
       }),
@@ -90,9 +87,9 @@ export const BaseButton = styled("button", {
 
     ...createCompoundColorVariants({
       variantFormat: (color) => ({
-        variant: "fadedA",
+        variant: 'fadedA',
         css: {
-          fadedATextColor: color,
+          lowContrastTextColor: color,
           fadedAColorScheme: color,
         },
       }),
@@ -100,16 +97,16 @@ export const BaseButton = styled("button", {
   ],
 
   defaultVariants: {
-    color: "gray",
-    variant: "solid",
-    size: "medium",
+    color: 'gray',
+    variant: 'solid',
+    size: 'medium',
     cursorPointer: true,
   },
 });
 
 export const Button = styled(BaseButton, {
-  py: "$2",
-  px: "$4",
+  py: '$2',
+  px: '$4',
 });
 
 export type ButtonProps = ComponentProps<typeof Button>;
