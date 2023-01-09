@@ -1,6 +1,6 @@
 import { Avatar } from 'milky-ui';
 
-import { useUser } from '../../';
+import { useUser } from '../../hooks/useUser';
 
 type BaseUserAvatarProps = {
   image: string;

@@ -5,8 +5,10 @@ import { TUser } from '../../types';
 export const useUser = () => {
   const { data } = useSession();
 
-  if (data === null) return null;
+  if (data) {
+    const { user } = data;
+    return user as TUser;
+  }
 
-  const { user } = data;
-  return user as TUser;
+  return null;
 };
