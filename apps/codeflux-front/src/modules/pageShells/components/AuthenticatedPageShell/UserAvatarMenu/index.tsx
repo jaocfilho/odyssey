@@ -19,5 +19,5 @@ export const BaseUserAvatarMenu = ({ trigger }: BaseUserAvatarMenuProps) => {
 };
 
 export const UserAvatarMenu = () => {
-  return <BaseUserAvatarMenu trigger={<UserAvatar />} />;
+  return <BaseUserAvatarMenu trigger={<UserAvatar cursorPointer />} />;
 };

@@ -1,42 +1,42 @@
-import type { ComponentProps } from "../../utils/types";
+import type { ComponentProps } from '../../utils/types';
 
-import * as Avatar from "@radix-ui/react-avatar";
+import * as Avatar from '@radix-ui/react-avatar';
 
-import { styled } from "../../styles/stiches";
+import { styled } from '../../styles/stiches';
 
 export const AvatarContainer = styled(Avatar.Root, {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  verticalAlign: "middle",
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
 
-  overflow: "hidden",
+  overflow: 'hidden',
 
   roundedFull: true,
 
   variants: {
     size: {
       small: {
-        height: "$space$7",
-        width: "$space$7",
+        height: '$space$7',
+        width: '$space$7',
       },
       medium: {
-        height: "$space$8",
-        width: "$space$8",
+        height: '$space$8',
+        width: '$space$8',
       },
       large: {
-        height: "$space$10",
-        width: "$space$10",
+        height: '$space$10',
+        width: '$space$10',
       },
       larger: {
-        height: "$space$12",
-        width: "$space$12",
+        height: '$space$12',
+        width: '$space$12',
       },
     },
   },
 
   defaultVariants: {
-    size: "medium",
+    size: 'medium',
   },
 });
 
@@ -45,8 +45,16 @@ export type AvatarContainerProps = ComponentProps<typeof AvatarContainer>;
 export const AvatarImage = styled(Avatar.Image, {
   hFull: true,
   wFull: true,
-  objectFit: "cover",
-  rounded: "inherit",
+  objectFit: 'cover',
+  rounded: 'inherit',
+
+  variants: {
+    cursorPointer: {
+      true: {
+        cursor: 'pointer',
+      },
+    },
+  },
 });
 
 export type AvatarImageProps = ComponentProps<typeof AvatarImage>;
@@ -54,10 +62,10 @@ export type AvatarImageProps = ComponentProps<typeof AvatarImage>;
 export const AvatarFallback = styled(Avatar.Fallback, {
   hFull: true,
   wFull: true,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  rounded: "inherit",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  rounded: 'inherit',
 });
 
 export type AvatarFallbackProps = ComponentProps<typeof AvatarFallback>;
