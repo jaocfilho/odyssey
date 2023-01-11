@@ -9,6 +9,11 @@ type CellContainerProps = {
   height?: Css['height'];
 };
 
+/**
+ * This components represents a cell container and it is meant to be used
+ * by both timeline and regular cells on the roadmap.
+ *
+ */
 export const CellContainer = ({
   children,
   height = '$space$10',

@@ -1,8 +1,12 @@
-import type { ComponentProps } from "../../utils/types";
+import type { ComponentProps } from '../../utils/types';
 
-import { createMarginVariants, createPaddingVariants } from "../../utils";
+import {
+  createMarginVariants,
+  createPaddingVariants,
+  createColorVariants,
+} from '../../utils';
 
-import { styled } from "../../styles/stiches";
+import { styled } from '../../styles/stiches';
 
 /**
  * `Box` is an abstraction for the `div` element.
@@ -25,7 +29,7 @@ import { styled } from "../../styles/stiches";
  * - cursorPointer: `boolean` - changes the `cursor` to `"pointer"`
  *
  * - autoHorizontalMargin: `boolean` - sets the margin x to `"auto"`
- * 
+ *
  * - padding abbreviations: `number` - you can use any padding
  * abbreviation, like `px` or `pr` as props
  *
@@ -33,20 +37,20 @@ import { styled } from "../../styles/stiches";
  * abbreviation, `my` or `ml` as props
  *
  */
-export const Box = styled("div", {
+export const Box = styled('div', {
   // reset
-  boxSizing: "border-box",
+  boxSizing: 'border-box',
 
   variants: {
     textCenter: {
       true: {
-        textAlign: "center",
+        textAlign: 'center',
       },
     },
 
     boxBg: {
       true: {
-        bgColor: "$gray3",
+        bgColor: '$gray3',
       },
     },
 
@@ -76,15 +80,39 @@ export const Box = styled("div", {
 
     cursorPointer: {
       true: {
-        cursor: "pointer",
+        cursor: 'pointer',
       },
     },
 
     autoHorizontalMargin: {
       true: {
-        mx: "auto",
+        mx: 'auto',
       },
     },
+
+    colorContrastTextColor: {
+      true: {
+        colorContrastTextColor: true,
+      },
+    },
+
+    lowContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        lowContrastTextColor: color,
+      }),
+    }),
+
+    highContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        highContrastTextColor: color,
+      }),
+    }),
+
+    colorHighlightedTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        colorHighlightedTextColor: color,
+      }),
+    }),
 
     ...createPaddingVariants(),
     ...createMarginVariants(),
