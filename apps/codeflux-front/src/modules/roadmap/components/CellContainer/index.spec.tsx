@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 
 import { describe, expect, it } from 'vitest';
 
-import { Container } from '.';
+import { CellContainer } from '.';
 
-describe('Container', () => {
+describe('CellContainer', () => {
   it('should render', () => {
-    render(<Container>test</Container>);
+    render(<CellContainer>test</CellContainer>);
 
     expect(screen.getByText('test')).toBeInTheDocument();
   });

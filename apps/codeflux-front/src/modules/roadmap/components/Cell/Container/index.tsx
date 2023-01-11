@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { Flex } from "milky-ui";
+import { CellContainer } from '../../CellContainer';
 
 type ContainerProps = {
   children: ReactNode;
@@ -10,9 +10,5 @@ type ContainerProps = {
  * The external container of a roadmap cell.
  */
 export const Container = ({ children }: ContainerProps) => {
-  return (
-    <Flex noShrink css={{ width: "$space$16", height: "$space$10" }}>
-      {children}
-    </Flex>
-  );
+  return <CellContainer height="$space$10">{children}</CellContainer>;
 };

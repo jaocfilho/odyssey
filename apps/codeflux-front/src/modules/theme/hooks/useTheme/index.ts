@@ -8,6 +8,7 @@ type UseThemeReturn = {
 };
 
 export const useTheme = (): UseThemeReturn => {
+  // TODO tests
   const { theme, setTheme } = useThemeBase();
 
   const setDarkTheme = () => setTheme('dark');
