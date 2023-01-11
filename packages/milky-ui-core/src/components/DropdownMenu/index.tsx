@@ -19,6 +19,10 @@ export type DropdownMenuProps = {
   trigger: ReactNode;
 };
 
+type DropdownMenuWrapperProps = {
+  children: ReactNode;
+};
+
 export const DropdownMenu = ({ children, trigger }: DropdownMenuProps) => {
   return (
     <RadixDropdownMenu.Root>
@@ -39,3 +43,18 @@ export const DropdownMenuItem = DropdownMenuItemContainer;
 export const DropdownMenuCheckboxItem = DropdownMenuCheckboxItemContainer;
 
 export const DropdownMenuRadioItem = DropdownMenuRadioItemContainer;
+
+/**
+ * This component wraps all DropdownMenu children components. It is
+ * used for testing purposes since DropdownMenu uses the context api.
+ *
+ */
+export const DropdownMenuOpenWrapper = ({
+  children,
+}: DropdownMenuWrapperProps) => {
+  return (
+    <RadixDropdownMenu.Root open>
+      <DropdownMenuContentContainer>{children}</DropdownMenuContentContainer>
+    </RadixDropdownMenu.Root>
+  );
+};

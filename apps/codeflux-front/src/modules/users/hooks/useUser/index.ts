@@ -1,13 +1,13 @@
 import { useSession } from 'next-auth/react';
 
-import { TUser } from '../../types';
+import { IUser } from '../../types';
 
 export const useUser = () => {
   const { data } = useSession();
 
   if (data) {
     const { user } = data;
-    return user as TUser;
+    return user as IUser;
   }
 
   return null;
