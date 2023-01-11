@@ -9,16 +9,22 @@ export const TextElement = styled('p', {
   variants: {
     variant: {
       h1: {
-        fontSize: '$4xl',
+        fontSize: '$6xl',
       },
       h2: {
-        fontSize: '$2xl',
+        fontSize: '$4xl',
       },
       h3: {
-        fontSize: '$xl',
+        fontSize: '$2xl',
       },
       h4: {
+        fontSize: '$xl',
+      },
+      h5: {
         fontSize: '$lg',
+      },
+      p: {
+        fontSize: '$md',
       },
     },
 
@@ -60,6 +66,7 @@ export const TextElement = styled('p', {
   },
 
   defaultVariants: {
+    variant: 'p',
     fontWeight: 'regular',
     letterSpacing: 'normal',
   },

@@ -2,19 +2,19 @@ import type {
   PrefixedSpaceTokenScale,
   SpaceTokenScale,
   Color,
-} from "@milky-ui/tokens";
+} from '@milky-ui/tokens';
 
-import type { Css } from "../styles/stiches/types";
-import type { ColorVariant, CompoundColorVariant } from "./types";
+import type { Css } from '../styles/stiches/types';
+import type { ColorVariant, CompoundColorVariant } from './types';
 
-import { colorsArray, spaceScales } from "@milky-ui/tokens";
+import { colorsArray, spaceScales } from '@milky-ui/tokens';
 
-import { getArrayDifference } from "satellite";
+import { getArrayDifference } from 'satellite';
 
 import {
   marginPropertiesAbbreviationsUtils,
   paddingPropertiesAbbreviationsUtils,
-} from "../styles/stiches/utils";
+} from '../styles/stiches/utils';
 
 type CreateColorVariantsParams = {
   variantFormat: (color: Color) => Css;
@@ -60,7 +60,7 @@ export const createColorVariants = ({
 };
 
 type CreateCompoundColorVariantsParams = {
-  variantFormat: (color: Color) => Omit<CompoundColorVariant, "color">;
+  variantFormat: (color: Color) => Omit<CompoundColorVariant, 'color'>;
   excludedColors?: Color[];
 };
 
@@ -245,4 +245,35 @@ export const createGapVariants = () => {
   const properties = ['gap'];
 
   return createSpaceVariants(properties);
+};
+
+export const createTextColorVariants = () => {
+  // TODO create a helper function that handles the variant everytime a new one is created.
+  // TODO tests
+
+  return {
+    colorContrastTextColor: {
+      true: {
+        colorContrastTextColor: true,
+      },
+    },
+
+    lowContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        lowContrastTextColor: color,
+      }),
+    }),
+
+    highContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        highContrastTextColor: color,
+      }),
+    }),
+
+    colorHighlightedTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        colorHighlightedTextColor: color,
+      }),
+    }),
+  };
 };

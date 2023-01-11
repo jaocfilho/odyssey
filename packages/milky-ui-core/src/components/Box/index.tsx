@@ -3,7 +3,7 @@ import type { ComponentProps } from '../../utils/types';
 import {
   createMarginVariants,
   createPaddingVariants,
-  createColorVariants,
+  createTextColorVariants,
 } from '../../utils';
 
 import { styled } from '../../styles/stiches';
@@ -42,18 +42,7 @@ export const Box = styled('div', {
   boxSizing: 'border-box',
 
   variants: {
-    textCenter: {
-      true: {
-        textAlign: 'center',
-      },
-    },
-
-    boxBg: {
-      true: {
-        bgColor: '$gray3',
-      },
-    },
-
+    // size variants
     widthScreen: {
       true: {
         wScreen: true,
@@ -78,11 +67,9 @@ export const Box = styled('div', {
       },
     },
 
-    cursorPointer: {
-      true: {
-        cursor: 'pointer',
-      },
-    },
+    // space variants
+    ...createPaddingVariants(),
+    ...createMarginVariants(),
 
     autoHorizontalMargin: {
       true: {
@@ -90,32 +77,42 @@ export const Box = styled('div', {
       },
     },
 
-    colorContrastTextColor: {
+    // text variants
+    textAlignCenter: {
       true: {
-        colorContrastTextColor: true,
+        textAlign: 'center',
       },
     },
 
-    lowContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        lowContrastTextColor: color,
-      }),
-    }),
+    textJustifyCenter: {
+      true: {
+        textJustify: 'center',
+      },
+    },
 
-    highContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        highContrastTextColor: color,
-      }),
-    }),
+    textCenter: {
+      true: {
+        textJustify: 'center',
+        textAlign: 'center',
+      },
+    },
 
-    colorHighlightedTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        colorHighlightedTextColor: color,
-      }),
-    }),
+    // text color variants
+    ...createTextColorVariants(),
 
-    ...createPaddingVariants(),
-    ...createMarginVariants(),
+    // color variants
+    boxBg: {
+      true: {
+        bgColor: '$gray3',
+      },
+    },
+
+    // other variants
+    cursorPointer: {
+      true: {
+        cursor: 'pointer',
+      },
+    },
   },
 });
 
