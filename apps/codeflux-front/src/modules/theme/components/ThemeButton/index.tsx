@@ -6,9 +6,9 @@ import { IconButton, IconButtonProps } from 'milky-ui';
 
 import { useTheme } from '../../hooks/useTheme';
 
-export type ThemeButtonProps = Pick<IconButtonProps, 'size'>;
+export type ThemeButtonProps = Partial<Pick<IconButtonProps, 'size'>>;
 
-export const ThemeButton = ({ size }: ThemeButtonProps) => {
+export const ThemeButton = ({ size = 'medium' }: ThemeButtonProps) => {
   const { alternateTheme } = useTheme();
 
   return (

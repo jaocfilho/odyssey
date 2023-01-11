@@ -15,17 +15,14 @@ vi.mock('next-auth/react', () => ({
 describe('LogoutItem', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    render(<LogoutItem />, { wrapper: DropdownMenuOpenWrapper });
   });
 
   it('should render', () => {
-    render(<LogoutItem />, { wrapper: DropdownMenuOpenWrapper });
-
     expect(screen.getByText('Log out')).toBeInTheDocument();
   });
 
   it('should callback `signOut` on click', async () => {
-    render(<LogoutItem />, { wrapper: DropdownMenuOpenWrapper });
-
     const container = screen.getByText('Log out');
     await userEvent.click(container);
 
