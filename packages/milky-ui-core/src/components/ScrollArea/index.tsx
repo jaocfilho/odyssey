@@ -2,18 +2,22 @@
 
 import type { ReactNode } from 'react';
 
+import { Css } from '../../styles/stiches';
+
 import {
   ScrollAreaCorner,
   ScrollAreaRoot,
-  ScrollAreaRootProps,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
+  ScrollAreaViewportProps,
   ScrollAreaViewport,
 } from './styles';
 
 type ScrollAreaProps = {
   children: ReactNode;
-  css: ScrollAreaRootProps['css'];
+  width?: Css['width'];
+  height?: Css['height'];
+  onScroll?: ScrollAreaViewportProps['onScroll'];
 };
 
 /**
@@ -22,10 +26,15 @@ type ScrollAreaProps = {
  *
  * @reference https://www.radix-ui.com/docs/primitives/components/scroll-area
  */
-export const ScrollArea = ({ children, css }: ScrollAreaProps) => {
+export const ScrollArea = ({
+  children,
+  height,
+  width,
+  onScroll,
+}: ScrollAreaProps) => {
   return (
-    <ScrollAreaRoot css={css}>
-      <ScrollAreaViewport>{children}</ScrollAreaViewport>
+    <ScrollAreaRoot css={{ height, width }}>
+      <ScrollAreaViewport onScroll={onScroll}>{children}</ScrollAreaViewport>
       <ScrollAreaScrollbar orientation="vertical">
         <ScrollAreaThumb />
       </ScrollAreaScrollbar>

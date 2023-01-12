@@ -13,7 +13,7 @@ import type {
 
 import { colorsArray, spaceScales } from '@milky-ui/tokens';
 
-import { getArrayDifference } from 'satellite';
+import { arrayDifference } from 'satellite';
 
 import {
   marginPropertiesAbbreviationsUtils,
@@ -53,7 +53,7 @@ export const createColorVariants = ({
   excludedColors = [],
 }: CreateColorVariantsParams): ColorVariant => {
   // remove all excluded colors from the main colors array
-  const colors = getArrayDifference(colorsArray, excludedColors);
+  const colors = arrayDifference(colorsArray, excludedColors);
 
   // create a list of key-value pairs
   const variantsMap = colors.map((color) => {
@@ -96,7 +96,7 @@ export const createCompoundColorVariants = ({
   excludedColors = [],
 }: CreateCompoundColorVariantsParams): CompoundColorVariant[] => {
   // remove all excluded colors from the main colors array
-  const colors = getArrayDifference(colorsArray, excludedColors);
+  const colors = arrayDifference(colorsArray, excludedColors);
 
   const variantsMap: CompoundColorVariant[] = [];
   // for each color, add a variant to variantsMap
@@ -302,10 +302,7 @@ export const createTextColorVariants = ({
   excludedVariants = [],
 }: CreateTextColorVariantsParams) => {
   // remove all excluded text colors from the main text color variants array
-  const textColors = getArrayDifference(
-    textColorVariantsNames,
-    excludedVariants
-  );
+  const textColors = arrayDifference(textColorVariantsNames, excludedVariants);
 
   const variantsMap = textColors.map((textColorVariant) => {
     const variantMap = createTextColorVariant({

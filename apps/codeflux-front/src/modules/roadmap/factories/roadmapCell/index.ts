@@ -1,10 +1,10 @@
-import type { TRoadmapCell, CellTypes, CellColors } from "../../types";
+import type { TRoadmapCell, CellTypes, CellColors } from '../../types';
 
-import { faker } from "@faker-js/faker";
+import { faker } from '@faker-js/faker';
 
-import { getArrayDifference } from "satellite";
+import { arrayDifference } from 'satellite';
 
-import { roadmapCellColors, roadmapCellTypes } from "../../constants";
+import { roadmapCellColors, roadmapCellTypes } from '../../constants';
 
 type CreateRoadmapCellParams = {
   colorOptions: CellColors[];
@@ -38,7 +38,7 @@ const createRoadmapCell = ({
 const getTypeOptions = (excludedTypes: CellTypes[] = []) => {
   if (excludedTypes.length === 0) return roadmapCellTypes;
 
-  const typeOptions = getArrayDifference(roadmapCellTypes, excludedTypes);
+  const typeOptions = arrayDifference(roadmapCellTypes, excludedTypes);
 
   return typeOptions;
 };
@@ -51,7 +51,7 @@ const getTypeOptions = (excludedTypes: CellTypes[] = []) => {
 const getColorOptions = (excludedColors: CellColors[] = []) => {
   if (excludedColors.length === 0) return roadmapCellColors;
 
-  const colorOptions = getArrayDifference(roadmapCellColors, excludedColors);
+  const colorOptions = arrayDifference(roadmapCellColors, excludedColors);
 
   return colorOptions;
 };
@@ -91,7 +91,7 @@ export const generateStartingCell = ({
   color,
   excludedColors,
 }: GenerateStartingCellParams = {}) => {
-  return generateRoadmapCell({ type: "starting", color, excludedColors });
+  return generateRoadmapCell({ type: 'starting', color, excludedColors });
 };
 
 type GenerateEndingCellParams = {
@@ -103,7 +103,7 @@ export const generateEndingCell = ({
   color,
   excludedColors,
 }: GenerateEndingCellParams = {}) => {
-  return generateRoadmapCell({ type: "ending", color, excludedColors });
+  return generateRoadmapCell({ type: 'ending', color, excludedColors });
 };
 
 type GenerateSoloCellParams = {
@@ -115,7 +115,7 @@ export const generateSoloCell = ({
   color,
   excludedColors,
 }: GenerateSoloCellParams = {}) => {
-  return generateRoadmapCell({ type: "solo", color, excludedColors });
+  return generateRoadmapCell({ type: 'solo', color, excludedColors });
 };
 
 type GenerateProgressCellParams = {
@@ -127,9 +127,9 @@ export const generateProgressCell = ({
   color,
   excludedColors,
 }: GenerateProgressCellParams = {}) => {
-  return generateRoadmapCell({ type: "progress", color, excludedColors });
+  return generateRoadmapCell({ type: 'progress', color, excludedColors });
 };
 
 export const generateEmptyCell = () => {
-  return generateRoadmapCell({ type: "empty" });
+  return generateRoadmapCell({ type: 'empty' });
 };
