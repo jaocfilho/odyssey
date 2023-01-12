@@ -1,3 +1,5 @@
+import type { UIEvent } from 'react';
+
 import { Flex } from 'milky-ui';
 
 import { generateRoadmapBar } from '../../factories';
@@ -20,11 +22,16 @@ const createFakeRows = () => {
 };
 
 type CellsAreaProps = {
-  handleScroll: (newValue: number) => void;
+  changeScrollPosition: (newValue: number) => void;
 };
 
-export const CellsArea = ({ handleScroll }: CellsAreaProps) => {
+export const CellsArea = ({ changeScrollPosition }: CellsAreaProps) => {
   const rows = createFakeRows();
+
+  const handleScroll = (event: UIEvent<HTMLDivElement>) => {
+    const { target } = event;
+    changeScrollPosition((target as HTMLDivElement).scrollLeft);
+  };
 
   return (
     <Flex
@@ -33,6 +40,7 @@ export const CellsArea = ({ handleScroll }: CellsAreaProps) => {
       css={{
         overflow: 'auto',
       }}
+      onScroll={handleScroll}
     >
       <CellRows rows={rows} />
     </Flex>

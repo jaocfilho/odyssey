@@ -6,17 +6,15 @@ import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
 
 export const Roadmap = () => {
-  const [scroll, setScroll] = useState(0);
+  const [scrollPosition, setScroll] = useState(0);
 
-  const handleScroll = (newValue: number) => setScroll(newValue);
-
-  console.log(scroll);
+  const changeScrollPosition = (newValue: number) => setScroll(newValue);
 
   return (
     <Flex autoHorizontalMargin>
       <Flex direction="column" css={{ width: 700, height: 400 }}>
-        <Timeline />
-        <CellsArea handleScroll={handleScroll} />
+        <Timeline scrollPosition={scrollPosition} />
+        <CellsArea changeScrollPosition={changeScrollPosition} />
       </Flex>
     </Flex>
   );
