@@ -5,7 +5,11 @@ import type {
 } from '@milky-ui/tokens';
 
 import type { Css } from '../styles/stiches/types';
-import type { ColorVariant, CompoundColorVariant } from './types';
+import type {
+  ColorVariant,
+  CompoundColorVariant,
+  TextColorVariant,
+} from './types';
 
 import { colorsArray, spaceScales } from '@milky-ui/tokens';
 
@@ -250,6 +254,22 @@ export const createGapVariants = () => {
   return createSpaceVariants(properties);
 };
 
+type CreateTextColorVariantParams = {
+  textColorVariant: TextColorVariants;
+  textVariantFormat: (textColorVariant: TextColorVariants, color: Color) => Css;
+};
+
+export const createTextColorVariant = ({
+  textColorVariant,
+  textVariantFormat,
+}: CreateTextColorVariantParams) => {
+  const variantFormat = createColorVariants({
+    variantFormat: (color) => textVariantFormat(textColorVariant, color),
+  });
+
+  return [textColorVariant, variantFormat];
+};
+
 type CreateTextColorVariantsParams = {
   textVariantFormat: (textColorVariant: TextColorVariants, color: Color) => Css;
   excludedVariants?: TextColorVariants[];
@@ -287,16 +307,34 @@ export const createTextColorVariants = ({
     excludedVariants
   );
 
-  const textColorVariants = textColors.map((variant) => {
-    const format = {
-      // create color variants for each text variant
-      [variant]: createColorVariants({
-        variantFormat: (color) => textVariantFormat(variant, color),
-      }),
-    };
+  const textColorVariants: Partial<TextColorVariant> = {};
 
-    return format;
+  textColors.forEach((variant) => {
+    const variantFormat = createColorVariants({
+      // create color variants for each text variant
+      variantFormat: (color) => textVariantFormat(variant, color),
+    });
+
+    Object.defineProperty(textColorVariants, variant, variantFormat);
   });
 
-  return textColorVariants;
+  return {
+    lowContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        lowContrastTextColor: color,
+      }),
+    }),
+
+    highContrastTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        highContrastTextColor: color,
+      }),
+    }),
+
+    colorHighlightedTextColor: createColorVariants({
+      variantFormat: (color) => ({
+        colorHighlightedTextColor: color,
+      }),
+    }),
+  };
 };
