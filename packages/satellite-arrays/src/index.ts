@@ -1,2 +1,3 @@
-export * from './getArrayDifference';
-export * from './getArrayIntersection';
+export * from './arrayDifference';
+export * from './arrayIntersection';
+export * from './mapRange';

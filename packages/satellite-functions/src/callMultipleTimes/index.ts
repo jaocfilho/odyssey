@@ -1,15 +1,15 @@
-type CallMultipleTImesCallback = (index: number) => void;
+type CallMultipleTimesCallback = (index: number) => void;
 
 /**
- * Run a given callback multiple times.
+ * Calls a defined callback multiple times.
  *
- * @param callback The callback to be called on each iteration.
- * @param calls The number of calls.
+ * @param callbackFn A function that accepts an number argument.
+ * @param calls A number representing the number of calls.
  *
  */
 export const callMultipleTimes = (
-  callback: CallMultipleTImesCallback,
+  callbackFn: CallMultipleTimesCallback,
   calls: number
 ) => {
-  [...new Array(calls)].forEach((_, index) => callback(index));
+  [...new Array(calls)].forEach((_, index) => callbackFn(index));
 };

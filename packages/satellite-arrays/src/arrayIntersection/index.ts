@@ -1,4 +1,4 @@
-import { SimpleOrReadonlyArray } from '../types';
+import type { SimpleOrReadonlyArray } from '../types';
 
 /**
  * Receives two arrays and return an array containing the
@@ -8,10 +8,10 @@ import { SimpleOrReadonlyArray } from '../types';
  * @param array2 An array.
  * 
  * @example
- * getArrayIntersection([1,2,3], [2,3]); // [2, 3]
+ * arrayIntersection([1,2,3], [2,3]); // [2, 3]
 
  */
-export const getArrayIntersection = <T>(
+export const arrayIntersection = <T>(
   array1: SimpleOrReadonlyArray<T>,
   array2: SimpleOrReadonlyArray<T>
 ): T[] => {

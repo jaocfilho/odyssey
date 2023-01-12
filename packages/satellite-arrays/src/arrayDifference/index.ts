@@ -1,4 +1,4 @@
-import { SimpleOrReadonlyArray } from '../types';
+import type { SimpleOrReadonlyArray } from '../types';
 
 /**
  * Receives two arrays and returns an array containing only
@@ -9,10 +9,10 @@ import { SimpleOrReadonlyArray } from '../types';
  * @param excludedArray An array.
  *
  * @example
- * getArrayDifference([1,2,3], [2,3]); // [1]
+ * arrayDifference([1,2,3], [2,3]); // [1]
  *
  */
-export const getArrayDifference = <T>(
+export const arrayDifference = <T>(
   array: SimpleOrReadonlyArray<T>,
   excludedArray: SimpleOrReadonlyArray<T>
 ): T[] => {
