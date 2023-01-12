@@ -10,7 +10,7 @@ export const TimelineDateCell = () => {
         fullHeight
         justifyContent="center"
         alignItems="center"
-        lowContrastTextColor="purple"
+        lowContrastTextColor="gray"
       >
         <Text>Sat 1</Text>
       </Flex>

@@ -262,7 +262,7 @@ type CreateTextColorVariantParams = {
 export const createTextColorVariant = ({
   textColorVariant,
   textVariantFormat,
-}: CreateTextColorVariantParams) => {
+}: CreateTextColorVariantParams): [TextColorVariants, ColorVariant] => {
   const variantFormat = createColorVariants({
     variantFormat: (color) => textVariantFormat(textColorVariant, color),
   });
@@ -307,16 +307,22 @@ export const createTextColorVariants = ({
     excludedVariants
   );
 
-  const textColorVariants: Partial<TextColorVariant> = {};
-
-  textColors.forEach((variant) => {
-    const variantFormat = createColorVariants({
-      // create color variants for each text variant
-      variantFormat: (color) => textVariantFormat(variant, color),
+  const variantsMap = textColors.map((textColorVariant) => {
+    const variantMap = createTextColorVariant({
+      textColorVariant,
+      textVariantFormat,
     });
 
-    Object.defineProperty(textColorVariants, variant, variantFormat);
+    return variantMap;
   });
+
+  // remove all excluded variants from the variants types.
+  const variants = Object.fromEntries(variantsMap) as Omit<
+    TextColorVariant,
+    keyof typeof excludedVariants
+  >;
+
+  return variants;
 
   return {
     lowContrastTextColor: createColorVariants({
