@@ -5,7 +5,7 @@ import { TimelineDateCell } from '../TimelineDateCell';
 export const Timeline = () => {
   return (
     <Flex>
-      <TimelineDateCell />
+      <TimelineDateCell value="Sat 01" />
     </Flex>
   );
 };

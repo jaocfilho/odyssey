@@ -2,7 +2,11 @@ import { Flex, Text } from 'milky-ui';
 
 import { CellContainer } from '../CellContainer';
 
-export const TimelineDateCell = () => {
+type TimelineDateCellProps = {
+  value: string;
+};
+
+export const TimelineDateCell = ({ value }: TimelineDateCellProps) => {
   return (
     <CellContainer>
       <Flex
@@ -12,7 +16,7 @@ export const TimelineDateCell = () => {
         alignItems="center"
         lowContrastTextColor="gray"
       >
-        <Text>Sat 1</Text>
+        <Text>{value}</Text>
       </Flex>
     </CellContainer>
   );
