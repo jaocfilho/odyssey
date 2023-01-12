@@ -18,6 +18,12 @@ const textColorVariants = {
   }),
 };
 
+export type TextColorVariants = keyof typeof textColorVariants;
+
+export const textColorVariantsNames = Object.keys(
+  textColorVariants
+) as readonly TextColorVariants[];
+
 export const colorUtils = {
   ...textColorVariants,
 

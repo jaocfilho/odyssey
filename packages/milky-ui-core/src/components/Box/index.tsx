@@ -98,7 +98,18 @@ export const Box = styled('div', {
     },
 
     // text color variants
-    ...createTextColorVariants(),
+    ...createTextColorVariants({
+      textVariantFormat: (variant, color) => ({
+        [variant]: color,
+      }),
+      excludedVariants: ['colorContrastTextColor'],
+    }),
+
+    colorContrastTextColor: {
+      true: {
+        colorContrastTextColor: true,
+      },
+    },
 
     // color variants
     boxBg: {

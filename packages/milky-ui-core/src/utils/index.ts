@@ -14,6 +14,8 @@ import { getArrayDifference } from 'satellite';
 import {
   marginPropertiesAbbreviationsUtils,
   paddingPropertiesAbbreviationsUtils,
+  TextColorVariants,
+  textColorVariantsNames,
 } from '../styles/stiches/utils';
 
 type CreateColorVariantsParams = {
@@ -25,7 +27,8 @@ type CreateColorVariantsParams = {
  * Creates an object of color variants.
  *
  * Receives a callback to handle the format of each color variant.
- * The returned object contains each color as key.
+ * The callback receives a color variant as param and must
+ * a CSS object.
  *
  * By default, it uses all colors from the main theme, but you can
  * pass an optional array of excluded colors to change this.
@@ -247,33 +250,53 @@ export const createGapVariants = () => {
   return createSpaceVariants(properties);
 };
 
-export const createTextColorVariants = () => {
-  // TODO create a helper function that handles the variant everytime a new one is created.
+type CreateTextColorVariantsParams = {
+  textVariantFormat: (textColorVariant: TextColorVariants, color: Color) => Css;
+  excludedVariants?: TextColorVariants[];
+};
+
+/**
+ * Creates an object of text color variants.
+ *
+ * Receives a callback to handle the format of each variant.
+ * The callback receives a text and a color variant params
+ * respectively, and must return a CSS object.
+ *
+ * By default, it uses all variants from the main theme, but you can
+ * pass an optional array of excluded variants to change this.
+ *
+ * @param variantFormat A callback.
+ * @param excludedVariants An optional array of text color variants.
+ *
+ * @example
+ * const textColorVariants = createTextColorVariants({
+ * variantFormat: (variant, color) => ({
+ *     [variant]: color,
+ *   }),
+ * });
+ *
+ */
+export const createTextColorVariants = ({
+  textVariantFormat,
+  excludedVariants = [],
+}: CreateTextColorVariantsParams) => {
   // TODO tests
+  // remove all excluded text colors from the main text color variants array
+  const textColors = getArrayDifference(
+    textColorVariantsNames,
+    excludedVariants
+  );
 
-  return {
-    colorContrastTextColor: {
-      true: {
-        colorContrastTextColor: true,
-      },
-    },
-
-    lowContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        lowContrastTextColor: color,
+  const textColorVariants = textColors.map((variant) => {
+    const format = {
+      // create color variants for each text variant
+      [variant]: createColorVariants({
+        variantFormat: (color) => textVariantFormat(variant, color),
       }),
-    }),
+    };
 
-    highContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        highContrastTextColor: color,
-      }),
-    }),
+    return format;
+  });
 
-    colorHighlightedTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        colorHighlightedTextColor: color,
-      }),
-    }),
-  };
+  return textColorVariants;
 };
