@@ -6,6 +6,7 @@ import { colorsArray, spaceScales, Color } from '@milky-ui/tokens';
 import {
   marginPropertiesAbbreviationsUtils,
   paddingPropertiesAbbreviationsUtils,
+  textColorVariantsNames,
 } from '../styles/stiches/utils';
 
 import {
@@ -18,6 +19,7 @@ import {
   createSpaceVariantsMap,
   createMarginVariants,
   createTextColorVariant,
+  createTextColorVariants,
 } from '.';
 
 describe('theme utils', () => {
@@ -236,13 +238,29 @@ describe('theme utils', () => {
     });
 
     it('should pass the variant as the first callback param', () => {
-      const [colorVariant, _] = createTextColorVariant({
+      createTextColorVariant({
         textColorVariant: 'highContrastTextColor',
         textVariantFormat,
       });
 
       const firstParam = textVariantFormat.mock.calls[0][0];
       expect(firstParam).toEqual('highContrastTextColor');
+    });
+  });
+
+  describe('createTextColorVariants', () => {
+    const textVariantFormat = vi.fn();
+
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it('should return an object with all text variants as keys', () => {
+      const textColorVariants = createTextColorVariants({
+        textVariantFormat,
+      });
+
+      assertObjectProperties(textColorVariantsNames, textColorVariants);
     });
   });
 });

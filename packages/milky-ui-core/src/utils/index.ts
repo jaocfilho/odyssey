@@ -259,6 +259,7 @@ type CreateTextColorVariantParams = {
   textVariantFormat: (textColorVariant: TextColorVariants, color: Color) => Css;
 };
 
+/** Helper function meant to be used by `createTextColorVariants` */
 export const createTextColorVariant = ({
   textColorVariant,
   textVariantFormat,
@@ -300,7 +301,6 @@ export const createTextColorVariants = ({
   textVariantFormat,
   excludedVariants = [],
 }: CreateTextColorVariantsParams) => {
-  // TODO tests
   // remove all excluded text colors from the main text color variants array
   const textColors = getArrayDifference(
     textColorVariantsNames,
@@ -323,24 +323,4 @@ export const createTextColorVariants = ({
   >;
 
   return variants;
-
-  return {
-    lowContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        lowContrastTextColor: color,
-      }),
-    }),
-
-    highContrastTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        highContrastTextColor: color,
-      }),
-    }),
-
-    colorHighlightedTextColor: createColorVariants({
-      variantFormat: (color) => ({
-        colorHighlightedTextColor: color,
-      }),
-    }),
-  };
 };
