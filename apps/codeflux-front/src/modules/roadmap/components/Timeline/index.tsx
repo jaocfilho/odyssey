@@ -1,5 +1,6 @@
-import { Flex } from 'milky-ui';
 import { useEffect, useRef } from 'react';
+
+import { Flex } from 'milky-ui';
 
 import { mapRange } from 'satellite';
 

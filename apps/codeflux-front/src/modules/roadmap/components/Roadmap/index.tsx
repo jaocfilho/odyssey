@@ -6,7 +6,7 @@ import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
 
 export const Roadmap = () => {
-  const [scrollPosition, setScroll] = useState(0);
+  const [scrollPosition, setScroll] = useState(300);
 
   const changeScrollPosition = (newValue: number) => setScroll(newValue);
 

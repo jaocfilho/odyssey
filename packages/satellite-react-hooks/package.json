@@ -8,12 +8,18 @@
     "lint": "eslint *.ts*"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
-    "react": "^18.2.0",
+    "@satellite/tests": "workspace:*",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "typescript": "4.7.4"
+    "@vitejs/plugin-react": "^2.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "jsdom": "^20.0.2",
+    "react": "^18.2.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.7.4",
+    "vitest": "^0.25.0"
   }
 }
