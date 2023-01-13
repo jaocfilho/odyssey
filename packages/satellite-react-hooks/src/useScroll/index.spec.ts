@@ -1,23 +1,13 @@
-import { MutableRefObject, RefObject } from 'react';
+import { RefObject } from 'react';
 
-import {
-  act,
-  renderHook,
-  WaitForNextUpdate,
-} from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 import { useRefStub, useRefMock } from '@satellite/tests';
 
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
-import { useBaseScroll, UseBaseScrollProps, UseBaseScrollReturn } from '.';
-
-type LocalTestContext = {
-  hookReturn: UseBaseScrollReturn;
-  rerender: (props?: UseBaseScrollProps<HTMLElement> | undefined) => void;
-  waitForNextUpdate: WaitForNextUpdate;
-};
+import { useBaseScroll, UseBaseScrollProps } from '.';
 
 describe('useBaseScroll', () => {
   vi.mock('./helpers', () => ({
@@ -25,40 +15,33 @@ describe('useBaseScroll', () => {
     elementIsHtmlElement: vi.fn().mockReturnValue(true),
   }));
 
-  beforeEach<LocalTestContext>((context) => {
+  const { rerender: refRerender, result: ref } = useRefStub;
+
+  const { result, rerender } = renderHook(
+    (props: UseBaseScrollProps<HTMLElement>) => useBaseScroll(props),
+    {
+      initialProps: {
+        direction: 'left',
+        scroll: ref.current as RefObject<HTMLElement>,
+      },
+    }
+  );
+
+  beforeEach(() => {
     vi.resetAllMocks();
 
-    const { rerender: refRerender, result: ref } = useRefStub;
     refRerender();
-
-    const { result, rerender, waitForNextUpdate } = renderHook(
-      (props: UseBaseScrollProps<HTMLElement>) => useBaseScroll(props),
-      {
-        initialProps: {
-          direction: 'left',
-          scroll: ref.current as RefObject<HTMLElement>,
-        },
-      }
-    );
-
-    // injects hookReturn inside the context of every test
-    context.hookReturn = result.current;
-    context.rerender = rerender;
-    context.waitForNextUpdate = waitForNextUpdate;
+    rerender();
   });
 
-  it('should return an array with 0 as first element', ({
-    hookReturn,
-  }: LocalTestContext) => {
-    const [scrollPosition, _] = hookReturn;
+  it('should return an array with 0 as first element', () => {
+    const [scrollPosition, _] = result.current;
     expect(scrollPosition).toBe(0);
   });
 
-  it('should return an array with a function as second element', ({
-    hookReturn,
-  }: LocalTestContext) => {
-    const [_, changeScrollPosition] = hookReturn;
-    expect(typeof changeScrollPosition === 'function').toBeTruthy();
+  it('should return an array with a function as second element', () => {
+    const [_, changeScrollPosition] = result.current;
+    expect(typeof changeScrollPosition).toBe('function');
   });
 
   // it('should change scrollPosition when changeScrollPosition is called', async ({
