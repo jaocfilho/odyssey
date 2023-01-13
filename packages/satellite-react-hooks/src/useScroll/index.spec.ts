@@ -52,10 +52,8 @@ describe('updateScrollPosition', () => {
 });
 
 describe('useBaseScroll', () => {
-  const updateScrollPosition = vi.fn();
-
   vi.mock('.', () => ({
-    updateScrollPosition,
+    updateScrollPosition: vi.fn(),
   }));
 
   beforeEach<LocalTestContext>(async (context) => {
@@ -109,9 +107,14 @@ describe('useBaseScroll', () => {
 
   // it('should call `updateScrollPosition` on render', ({
   //   hookReturn,
-  //   waitForNextUpdate,
+  //   rerender,
   // }: LocalTestContext) => {
   //   const [scrollPosition, changeScrollPosition] = hookReturn;
+
+  //   const scroll = useRefMock() as MutableRefObject<HTMLElement>;
+
+  //   act(() => rerender({ scroll, direction: 'left' }));
+
   //   expect(updateScrollPosition).toHaveBeenCalled();
   // });
 });
