@@ -17,7 +17,7 @@ type UseScrollProps = {
   initialScrollTopValue?: number;
 };
 
-const useBaseScroll = <T extends HTMLElement>({
+export const useBaseScroll = <T extends HTMLElement>({
   scroll,
   direction,
   initialValue = 0,
