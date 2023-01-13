@@ -279,14 +279,26 @@ importers:
 
   packages/satellite-tests:
     specifiers:
+      '@testing-library/react': ^13.4.0
+      '@testing-library/react-hooks': ^8.0.1
+      '@types/react': ^18.0.17
+      '@types/react-dom': ^18.0.6
+      '@vitejs/plugin-react': ^2.2.0
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
+      react: ^18.2.0
       tsconfig: workspace:*
       typescript: 4.7.4
       vitest: ^0.25.0
     devDependencies:
+      '@testing-library/react': 13.4.0_react@18.2.0
+      '@testing-library/react-hooks': 8.0.1_fan5qbzahqtxlm5dzefqlqx5ia
+      '@types/react': 18.0.25
+      '@types/react-dom': 18.0.8
+      '@vitejs/plugin-react': 2.2.0
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom
+      react: 18.2.0
       tsconfig: link:../tsconfig
       typescript: 4.7.4
       vitest: 0.25.0

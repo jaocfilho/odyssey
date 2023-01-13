@@ -5,7 +5,9 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*"
+    "lint": "eslint *.ts*",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@satellite/tests": "workspace:*",
