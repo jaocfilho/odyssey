@@ -1,18 +1,23 @@
-import { MutableRefObject } from 'react';
+/** Helper functions meant to be used by `useScroll` */
 
-/** Helper function meant to be used by `useBaseScroll` */
 export const updateScrollPosition = <T extends HTMLElement>(
-  scroll: MutableRefObject<T>,
+  element: T,
   direction: 'left' | 'top',
   value: number
 ) => {
   if (direction === 'left') {
-    scroll.current.scrollLeft = value;
+    element.scrollLeft = value;
   }
 
   if (direction === 'top') {
-    scroll.current.scrollTop = value;
+    element.scrollTop = value;
   }
 
-  return scroll;
+  return element;
+};
+
+export const elementIsHtmlElement = <T extends HTMLElement>(
+  element: T | null
+): element is T => {
+  return element !== null;
 };

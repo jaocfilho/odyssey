@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { MutableRefObject, RefObject } from 'react';
 
 import {
   act,
@@ -10,12 +10,8 @@ import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 import { useRefStub, useRefMock } from '@satellite/tests';
 
-import {
-  useBaseScroll,
-  UseBaseScrollProps,
-  UseBaseScrollReturn,
-  updateScrollPosition,
-} from '.';
+import { updateScrollPosition, elementIsHtmlElement } from './helpers';
+import { useBaseScroll, UseBaseScrollProps, UseBaseScrollReturn } from '.';
 
 type LocalTestContext = {
   hookReturn: UseBaseScrollReturn;
@@ -23,37 +19,10 @@ type LocalTestContext = {
   waitForNextUpdate: WaitForNextUpdate;
 };
 
-describe('updateScrollPosition', () => {
-  beforeEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it('should change `scrollLeft` property when direction is `left`', () => {
-    useRefMock.mockReturnValueOnce({
-      current: { scrollLeft: 0 },
-    });
-    const scroll = useRefMock() as MutableRefObject<HTMLElement>;
-
-    updateScrollPosition(scroll, 'left', 50);
-
-    expect(scroll.current.scrollLeft).toBe(50);
-  });
-
-  it('should change `scrollTop` property when direction is `top`', () => {
-    useRefMock.mockReturnValueOnce({
-      current: { scrollTop: 0 },
-    });
-    const scroll = useRefMock() as MutableRefObject<HTMLElement>;
-
-    updateScrollPosition(scroll, 'top', 50);
-
-    expect(scroll.current.scrollTop).toBe(50);
-  });
-});
-
 describe('useBaseScroll', () => {
-  vi.mock('.', () => ({
+  vi.mock('./helpers', () => ({
     updateScrollPosition: vi.fn(),
+    elementIsHtmlElement: vi.fn().mockReturnValue(true),
   }));
 
   beforeEach<LocalTestContext>(async (context) => {
@@ -67,7 +36,7 @@ describe('useBaseScroll', () => {
       {
         initialProps: {
           direction: 'left',
-          scroll: ref.current as MutableRefObject<HTMLElement>,
+          scroll: ref.current as RefObject<HTMLElement>,
         },
       }
     );
@@ -106,14 +75,11 @@ describe('useBaseScroll', () => {
   // });
 
   // it('should call `updateScrollPosition` on render', ({
-  //   hookReturn,
   //   rerender,
   // }: LocalTestContext) => {
-  //   const [scrollPosition, changeScrollPosition] = hookReturn;
-
   //   const scroll = useRefMock() as MutableRefObject<HTMLElement>;
 
-  //   act(() => rerender({ scroll, direction: 'left' }));
+  //   rerender({ scroll, direction: 'left' });
 
   //   expect(updateScrollPosition).toHaveBeenCalled();
   // });

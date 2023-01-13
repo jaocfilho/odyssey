@@ -1,13 +1,9 @@
-import {
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+
+import { updateScrollPosition, elementIsHtmlElement } from './helpers';
 
 export type UseBaseScrollProps<T extends HTMLElement> = {
-  scroll: MutableRefObject<T>;
+  scroll: RefObject<T>;
   direction: 'left' | 'top';
   initialValue?: number;
 };
@@ -20,23 +16,6 @@ export type UseBaseScrollReturn = [
 type UseScrollProps = {
   initialScrollLeftValue?: number;
   initialScrollTopValue?: number;
-};
-
-/** Helper function meant to be used by `useBaseScroll` */
-export const updateScrollPosition = <T extends HTMLElement>(
-  scroll: MutableRefObject<T>,
-  direction: 'left' | 'top',
-  value: number
-) => {
-  if (direction === 'left') {
-    scroll.current.scrollLeft = value;
-  }
-
-  if (direction === 'top') {
-    scroll.current.scrollTop = value;
-  }
-
-  return scroll;
 };
 
 export const useBaseScroll = <T extends HTMLElement>({
@@ -52,8 +31,9 @@ export const useBaseScroll = <T extends HTMLElement>({
   );
 
   useEffect(() => {
-    if (scroll.current) {
-      updateScrollPosition(scroll, direction, scrollPosition);
+    const { current } = scroll;
+    if (elementIsHtmlElement<T>(current)) {
+      updateScrollPosition<T>(current, direction, scrollPosition);
     }
   }, [scroll, direction, scrollPosition]);
 
@@ -64,14 +44,20 @@ export const useScroll = <T extends HTMLElement>({
   initialScrollLeftValue = 0,
   initialScrollTopValue = 0,
 }: UseScrollProps) => {
+  const scroll = useRef<T>(null);
+
+  const [] = useBaseScroll({
+    scroll,
+    direction: 'left',
+    initialValue: initialScrollLeftValue,
+  });
+
   const [scrollLeftPosition, setScrollLeftPosition] = useState(
     initialScrollLeftValue
   );
   const [scrollTopPosition, setScrollTopPosition] = useState(
     initialScrollTopValue
   );
-
-  const scroll = useRef<T>();
 
   const changeScrollLeftPosition = useCallback(
     (newValue: number) => setScrollLeftPosition(newValue),

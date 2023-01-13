@@ -14,7 +14,7 @@ describe('updateScrollPosition', () => {
     });
     const scroll = useRefMock() as MutableRefObject<HTMLElement>;
 
-    updateScrollPosition(scroll, 'left', 50);
+    updateScrollPosition(scroll.current, 'left', 50);
 
     expect(scroll.current.scrollLeft).toBe(50);
   });
@@ -25,7 +25,7 @@ describe('updateScrollPosition', () => {
     });
     const scroll = useRefMock() as MutableRefObject<HTMLElement>;
 
-    updateScrollPosition(scroll, 'top', 50);
+    updateScrollPosition(scroll.current, 'top', 50);
 
     expect(scroll.current.scrollTop).toBe(50);
   });
