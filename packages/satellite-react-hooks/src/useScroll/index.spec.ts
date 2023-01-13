@@ -4,33 +4,33 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
-import { useRefStub, useRefMock } from '@satellite/tests';
-
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
 import { useBaseScroll, UseBaseScrollProps } from '.';
 
 describe('useBaseScroll', () => {
+  let current = {};
+  const useRefMock = vi.fn(() => ({ current }));
+
   vi.mock('./helpers', () => ({
     updateScrollPosition: vi.fn(),
-    elementIsHtmlElement: vi.fn().mockReturnValue(true),
+    elementIsHtmlElement: vi.fn(),
   }));
 
-  const { rerender: refRerender, result: ref } = useRefStub;
+  const scroll = useRefMock() as RefObject<HTMLElement>;
 
   const { result, rerender } = renderHook(
     (props: UseBaseScrollProps<HTMLElement>) => useBaseScroll(props),
     {
       initialProps: {
         direction: 'left',
-        scroll: ref.current as RefObject<HTMLElement>,
+        scroll,
       },
     }
   );
 
   beforeEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
 
-    refRerender();
     rerender();
   });
 
@@ -44,26 +44,9 @@ describe('useBaseScroll', () => {
     expect(typeof changeScrollPosition).toBe('function');
   });
 
-  // it('should change scrollPosition when changeScrollPosition is called', async ({
-  //   hookReturn,
-  //   waitForNextUpdate,
-  // }: LocalTestContext) => {
-  //   const [scrollPosition, changeScrollPosition] = hookReturn;
+  it('should not call updateScrollPosition if current is not a html element', () => {
+    vi.mocked(elementIsHtmlElement).mockReturnValueOnce(false);
 
-  //   const newValue = 50;
-
-  //   changeScrollPosition(newValue);
-  //   await waitForNextUpdate();
-  //   expect(scrollPosition).toBe(newValue);
-  // });
-
-  // it('should call `updateScrollPosition` on render', ({
-  //   rerender,
-  // }: LocalTestContext) => {
-  //   const scroll = useRefMock() as MutableRefObject<HTMLElement>;
-
-  //   rerender({ scroll, direction: 'left' });
-
-  //   expect(updateScrollPosition).toHaveBeenCalled();
-  // });
+    expect(updateScrollPosition).not.toBeCalled();
+  });
 });

@@ -1,9 +1,12 @@
-import { useRefMock } from '@satellite/tests';
 import { MutableRefObject } from 'react';
+
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { updateScrollPosition } from '.';
 
 describe('updateScrollPosition', () => {
+  const useRefMock = vi.fn();
+
   beforeEach(() => {
     vi.restoreAllMocks();
   });
