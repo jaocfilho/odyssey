@@ -25,7 +25,7 @@ describe('useBaseScroll', () => {
     elementIsHtmlElement: vi.fn().mockReturnValue(true),
   }));
 
-  beforeEach<LocalTestContext>(async (context) => {
+  beforeEach<LocalTestContext>((context) => {
     vi.resetAllMocks();
 
     const { rerender: refRerender, result: ref } = useRefStub;
