@@ -1,20 +1,21 @@
-import { useState } from 'react';
-
 import { Flex } from 'milky-ui';
+
+import { useScroll } from '@satellite/react-hooks';
 
 import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
 
 export const Roadmap = () => {
-  const [scrollPosition, setScroll] = useState(300);
-
-  const changeScrollPosition = (newValue: number) => setScroll(newValue);
+  const {
+    scroll: timelineScroll,
+    changeScrollLeftPosition: changeTimelineScroll,
+  } = useScroll<HTMLDivElement>();
 
   return (
     <Flex autoHorizontalMargin>
       <Flex direction="column" css={{ width: 700, height: 400 }}>
-        <Timeline scrollPosition={scrollPosition} />
-        <CellsArea changeScrollPosition={changeScrollPosition} />
+        <Timeline scroll={timelineScroll} />
+        <CellsArea changeTimelineScroll={changeTimelineScroll} />
       </Flex>
     </Flex>
   );

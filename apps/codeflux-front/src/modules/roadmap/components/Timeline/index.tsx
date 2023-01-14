@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { RefObject } from 'react';
 
 import { Flex } from 'milky-ui';
 
@@ -7,29 +7,21 @@ import { mapRange } from 'satellite';
 import { TimelineDateCell } from '../TimelineDateCell';
 
 type TimelineProps = {
-  scrollPosition: number;
+  scroll: RefObject<HTMLDivElement>;
 };
 
-export const Timeline = ({ scrollPosition }: TimelineProps) => {
-  const ref = useRef<HTMLDivElement>();
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.scrollLeft = scrollPosition;
-    }
-  }, [scrollPosition]);
-
+export const Timeline = ({ scroll }: TimelineProps) => {
   return (
     <Flex
       fullWidth
       css={{
         overflow: 'hidden',
       }}
-      ref={ref}
+      ref={scroll}
     >
       {mapRange(
         (index) => (
-          <TimelineDateCell value={`Sat ${index}`} />
+          <TimelineDateCell key={index} value={`Sat ${index}`} />
         ),
         30
       )}

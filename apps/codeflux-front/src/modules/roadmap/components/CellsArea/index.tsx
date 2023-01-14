@@ -22,15 +22,24 @@ const createFakeRows = () => {
 };
 
 type CellsAreaProps = {
-  changeScrollPosition: (newValue: number) => void;
+  changeTimelineScroll: (newValue: number) => void;
 };
 
-export const CellsArea = ({ changeScrollPosition }: CellsAreaProps) => {
+export const CellsArea = ({ changeTimelineScroll }: CellsAreaProps) => {
   const rows = createFakeRows();
+
+  // typechecker helper
+  const targetIsDivElement = (
+    target: EventTarget
+  ): target is HTMLDivElement => {
+    return !!target;
+  };
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     const { target } = event;
-    changeScrollPosition((target as HTMLDivElement).scrollLeft);
+    if (targetIsDivElement(target)) {
+      changeTimelineScroll(target.scrollLeft);
+    }
   };
 
   return (
@@ -39,6 +48,7 @@ export const CellsArea = ({ changeScrollPosition }: CellsAreaProps) => {
       fullWidth
       css={{
         overflow: 'auto',
+        scrollBehavior: 'smooth',
       }}
       onScroll={handleScroll}
     >

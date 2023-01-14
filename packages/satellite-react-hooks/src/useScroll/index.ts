@@ -49,11 +49,11 @@ export const useBaseScroll = <T extends HTMLElement>({
   return [scrollPosition, changeScrollPosition];
 };
 
-export const useScroll: UseScroll<HTMLElement> = ({
+export const useScroll = <T extends HTMLElement>({
   initialScrollLeftValue,
   initialScrollTopValue,
-} = {}) => {
-  const scroll = useRef<HTMLElement>(null);
+}: UseScrollProps = {}): UseScrollReturn<T> => {
+  const scroll = useRef<T>(null);
 
   const [scrollLeftPosition, changeScrollLeftPosition] = useBaseScroll({
     scroll,
