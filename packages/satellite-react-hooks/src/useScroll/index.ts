@@ -1,6 +1,6 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
-import { useNumber } from '../useNumber';
+import { RefObject, useEffect, useRef } from 'react';
 
+import { useNumber } from '../useNumber';
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
 
 export type UseBaseScrollProps<T extends HTMLElement> = {
@@ -14,15 +14,27 @@ export type UseBaseScrollReturn = [
   changeScrollPosition: (newValue: number) => void
 ];
 
-type UseScrollProps = {
+export type UseScrollProps = {
   initialScrollLeftValue?: number;
   initialScrollTopValue?: number;
 };
 
+export type UseScrollReturn<T> = {
+  scroll: RefObject<T>;
+  changeScrollLeftPosition: (newValue: number) => void;
+  scrollLeftPosition: number;
+  changeScrollTopPosition: (newValue: number) => void;
+  scrollTopPosition: number;
+};
+
+type UseScroll<T extends HTMLElement> = (
+  props?: UseScrollProps
+) => UseScrollReturn<T>;
+
 export const useBaseScroll = <T extends HTMLElement>({
   scroll,
   direction,
-  initialValue = 0,
+  initialValue,
 }: UseBaseScrollProps<T>): UseBaseScrollReturn => {
   const { number: scrollPosition, changeNumber: changeScrollPosition } =
     useNumber({ initialValue });
@@ -37,45 +49,29 @@ export const useBaseScroll = <T extends HTMLElement>({
   return [scrollPosition, changeScrollPosition];
 };
 
-export const useScroll = <T extends HTMLElement>({
-  initialScrollLeftValue = 0,
-  initialScrollTopValue = 0,
-}: UseScrollProps) => {
-  const scroll = useRef<T>(null);
+export const useScroll: UseScroll<HTMLElement> = ({
+  initialScrollLeftValue,
+  initialScrollTopValue,
+} = {}) => {
+  const scroll = useRef<HTMLElement>(null);
 
-  const [] = useBaseScroll({
+  const [scrollLeftPosition, changeScrollLeftPosition] = useBaseScroll({
     scroll,
     direction: 'left',
     initialValue: initialScrollLeftValue,
   });
 
-  const [scrollLeftPosition, setScrollLeftPosition] = useState(
-    initialScrollLeftValue
-  );
-  const [scrollTopPosition, setScrollTopPosition] = useState(
-    initialScrollTopValue
-  );
+  const [scrollTopPosition, changeScrollTopPosition] = useBaseScroll({
+    scroll,
+    direction: 'top',
+    initialValue: initialScrollTopValue,
+  });
 
-  const changeScrollLeftPosition = useCallback(
-    (newValue: number) => setScrollLeftPosition(newValue),
-    [setScrollLeftPosition]
-  );
-  const changeScrollTopPosition = useCallback(
-    (newValue: number) => setScrollTopPosition(newValue),
-    [setScrollTopPosition]
-  );
-
-  useEffect(() => {
-    if (scroll.current) {
-      scroll.current.scrollLeft = scrollLeftPosition;
-    }
-  }, [scrollLeftPosition]);
-
-  useEffect(() => {
-    if (scroll.current) {
-      scroll.current.scrollTop = scrollTopPosition;
-    }
-  }, [scrollTopPosition]);
-
-  return { changeScrollLeftPosition };
+  return {
+    scroll,
+    changeScrollLeftPosition,
+    scrollLeftPosition,
+    changeScrollTopPosition,
+    scrollTopPosition,
+  };
 };

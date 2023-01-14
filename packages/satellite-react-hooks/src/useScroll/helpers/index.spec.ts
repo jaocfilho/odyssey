@@ -2,7 +2,7 @@ import { MutableRefObject } from 'react';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { updateScrollPosition } from '.';
+import { elementIsHtmlElement, updateScrollPosition } from '.';
 
 describe('updateScrollPosition', () => {
   const useRefMock = vi.fn();
@@ -31,5 +31,12 @@ describe('updateScrollPosition', () => {
     updateScrollPosition(scroll.current, 'top', 50);
 
     expect(scroll.current.scrollTop).toBe(50);
+  });
+});
+
+describe('elementIsHtmlElement', () => {
+  it('should return false if element is null', () => {
+    const isHtmlElement = elementIsHtmlElement<HTMLDivElement>(null);
+    expect(isHtmlElement).toBeFalsy();
   });
 });

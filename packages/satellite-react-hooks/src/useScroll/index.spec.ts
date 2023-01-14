@@ -1,11 +1,16 @@
 import { RefObject } from 'react';
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 
-import { describe, it, beforeEach, expect, vi } from 'vitest';
+import { describe, it, beforeEach, expect, vi, assertType } from 'vitest';
 
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
-import { useBaseScroll, UseBaseScrollProps } from '.';
+import {
+  useBaseScroll,
+  UseBaseScrollProps,
+  useScroll,
+  UseScrollReturn,
+} from '.';
 
 describe('useBaseScroll', () => {
   let current = {};
@@ -48,5 +53,12 @@ describe('useBaseScroll', () => {
     vi.mocked(elementIsHtmlElement).mockReturnValueOnce(false);
 
     expect(updateScrollPosition).not.toBeCalled();
+  });
+});
+
+describe('useScroll', () => {
+  it('should return the correct type', () => {
+    const { result } = renderHook(() => useScroll());
+    assertType<UseScrollReturn<HTMLElement>>(result.current);
   });
 });
