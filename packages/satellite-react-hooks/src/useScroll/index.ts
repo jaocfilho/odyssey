@@ -27,7 +27,7 @@ export type UseScrollReturn<T> = {
   scrollTopPosition: number;
 };
 
-type UseScroll<T extends HTMLElement> = (
+export type UseScroll<T extends HTMLElement> = (
   props?: UseScrollProps
 ) => UseScrollReturn<T>;
 
@@ -49,6 +49,23 @@ export const useBaseScroll = <T extends HTMLElement>({
   return [scrollPosition, changeScrollPosition];
 };
 
+/**
+ * A hook that controls the scrollbars of a component
+ *
+ * @param initialScrollLeftValue - The initial value of the left scroll position
+ * @param initialScrollTopValue - The initial value of the top scroll position
+ *
+ * @return scroll - A ref object that points to the element that the scrollbar controls.
+ * @return changeScrollLeftPosition - A function that sets the position of the horizontal scrollbar.
+ * @return scrollLeftPosition - the current position of the horizontal scrollbar
+ * @return changeScrollTopPosition - A function that sets the position of the vertical scrollbar.
+ * @return scrollTopPosition - the current position of the vertical scrollbar.
+ *
+ * @example
+ *
+ * const { scroll, changeScrollLeftPosition } = useScroll<HTMLDivElement>();
+ *
+ */
 export const useScroll = <T extends HTMLElement>({
   initialScrollLeftValue,
   initialScrollTopValue,
