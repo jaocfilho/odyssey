@@ -3,7 +3,7 @@ import { RepositoryRow } from '../RepositoryRow';
 
 export const RepositoriesArea = () => {
   return (
-    <Flex direction="column">
+    <Flex direction="column" gap={4}>
       <RepositoryRow repository="codeflux" />
       <RepositoryRow repository="milky-ui" />
       <RepositoryRow repository="satellite" />
