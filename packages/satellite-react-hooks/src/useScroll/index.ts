@@ -19,6 +19,9 @@ export type UseScrollProps = {
   initialScrollTopValue?: number;
 };
 
+/**
+ * @typeParam T - Type of the HtmlElement
+ */
 export type UseScrollReturn<T> = {
   scroll: RefObject<T>;
   changeScrollLeftPosition: (newValue: number) => void;
@@ -51,6 +54,8 @@ export const useBaseScroll = <T extends HTMLElement>({
 
 /**
  * A hook that controls the scrollbars of a component
+ *
+ * @template T - Type of the HtmlElement
  *
  * @param initialScrollLeftValue - The initial value of the left scroll position
  * @param initialScrollTopValue - The initial value of the top scroll position
