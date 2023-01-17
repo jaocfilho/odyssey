@@ -2,11 +2,11 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { beforeEach, describe, expect, it, assertType } from 'vitest';
 
-import { useNumber, UseNumberProps, UseNumberReturn } from '.';
+import { useNumberState, UseNumberStateProps, UseNumberStateReturn } from '.';
 
-describe('useNumber', () => {
-  const { result, rerender } = renderHook((props: UseNumberProps) =>
-    useNumber(props)
+describe('useNumberState', () => {
+  const { result, rerender } = renderHook((props: UseNumberStateProps) =>
+    useNumberState(props)
   );
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('useNumber', () => {
   });
 
   it('should return an object', () => {
-    assertType<UseNumberReturn>(result.current);
+    assertType<UseNumberStateReturn>(result.current);
   });
 
   it('should return a number property with 0 as value', () => {
@@ -29,7 +29,7 @@ describe('useNumber', () => {
   });
 
   it('should return the initialValue when its passed', async () => {
-    const { result } = renderHook(() => useNumber({ initialValue: 10 }));
+    const { result } = renderHook(() => useNumberState({ initialValue: 10 }));
 
     const { number } = result.current;
 

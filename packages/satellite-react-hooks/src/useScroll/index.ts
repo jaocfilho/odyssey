@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react';
 
-import { useNumber } from '../useNumber';
+import { useNumberState } from '../useNumberState';
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
 
 export type UseBaseScrollProps<T extends HTMLElement> = {
@@ -37,7 +37,7 @@ export const useBaseScroll = <T extends HTMLElement>({
   initialValue,
 }: UseBaseScrollProps<T>): UseBaseScrollReturn => {
   const { number: scrollPosition, changeNumber: changeScrollPosition } =
-    useNumber({ initialValue });
+    useNumberState({ initialValue });
 
   useEffect(() => {
     const { current } = scroll;

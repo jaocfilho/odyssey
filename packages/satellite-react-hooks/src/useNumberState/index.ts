@@ -1,18 +1,20 @@
 import { useCallback, useState } from 'react';
 
-export type UseNumberProps = {
+export type UseNumberStateProps = {
   initialValue?: number;
 };
 
-export type UseNumberReturn = {
+export type UseNumberStateReturn = {
   number: number;
   changeNumber: (newValue: number) => void;
   reset: () => void;
 };
 
-export type UseNumber = (props?: UseNumberProps) => UseNumberReturn;
+export type UseNumberState = (
+  props?: UseNumberStateProps
+) => UseNumberStateReturn;
 
-export const useNumber: UseNumber = ({ initialValue = 0 } = {}) => {
+export const useNumberState: UseNumberState = ({ initialValue = 0 } = {}) => {
   const [number, setNumber] = useState(initialValue);
 
   const changeNumber = useCallback(
