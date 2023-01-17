@@ -1,9 +1,13 @@
-import { Flex } from "milky-ui";
+import { Flex, Text } from 'milky-ui';
 
-export const RepositoryRow = () => {
+type RepositoryRowProps = {
+  repository: string;
+};
+
+export const RepositoryRow = ({ repository }: RepositoryRowProps) => {
   return (
     <Flex>
-      
+      <Text variant="h3">{repository}</Text>
     </Flex>
   );
 };

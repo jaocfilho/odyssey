@@ -5,14 +5,16 @@ export const updateScrollPosition = <T extends HTMLElement>(
   direction: 'left' | 'top',
   value: number
 ) => {
-  if (direction === 'left') {
-    element.scrollLeft = value;
+  switch (direction) {
+    case 'left':
+      element.scrollLeft = value;
+      break;
+    case 'top':
+      element.scrollTop = value;
+      break;
+    default:
+      throw new Error(`Invalid direction: ${direction}`);
   }
-
-  if (direction === 'top') {
-    element.scrollTop = value;
-  }
-
   return element;
 };
 
