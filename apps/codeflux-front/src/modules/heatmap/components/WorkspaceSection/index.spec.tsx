@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 
 import { describe, expect, it } from 'vitest';
 
-import { RepositoryRow } from '.';
+import { WorkspaceSection } from '.';
 
-describe('RepositoryRow', () => {
+describe('WorkspaceSection', () => {
   it('should render the repository name as text', () => {
     const repository = 'test-repo';
-    render(<RepositoryRow repository={repository} />);
+    render(<WorkspaceSection repository={repository} />);
     expect(screen.getByText(repository)).toBeInTheDocument();
   });
 });

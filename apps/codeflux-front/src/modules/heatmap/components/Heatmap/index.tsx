@@ -4,7 +4,7 @@ import { useScroll } from '@satellite/react-hooks';
 
 import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
-import { RepositoriesArea } from '../RepositoriesArea';
+import { WorkspacesArea } from '../WorkspacesArea';
 
 export const Heatmap = () => {
   const {
@@ -15,7 +15,7 @@ export const Heatmap = () => {
   return (
     <Flex autoHorizontalMargin css={{ width: 700, height: 400 }}>
       <Flex css={{ width: '100%', height: '100%' }}>
-        <RepositoriesArea />
+        <WorkspacesArea />
         <Flex direction="column" css={{ width: '100%', height: '100%' }}>
           <Timeline scroll={timelineScroll} />
           <CellsArea changeTimelineScroll={changeTimelineScroll} />
