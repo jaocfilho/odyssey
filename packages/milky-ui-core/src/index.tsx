@@ -1,14 +1,14 @@
 // Components imports
-export * from './components/Avatar';
-export * from './components/Box';
-export * from './components/Button';
-export * from './components/DropdownMenu';
-export * from './components/Flex';
-export * from './components/Grid';
-export * from './components/IconButton';
-export * from './components/JsonView';
-export * from './components/ScrollArea';
-export * from './components/Text';
+export * from './modules/Avatar';
+export * from './modules/Box';
+export * from './modules/Button';
+export * from './modules/DropdownMenu';
+export * from './modules/Flex';
+export * from './modules/Grid';
+export * from './modules/IconButton';
+export * from './modules/JsonView';
+export * from './modules/ScrollArea';
+export * from './modules/Text';
 
 // Stiches imports
 export * from './styles/stiches';
