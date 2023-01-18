@@ -6,7 +6,7 @@ import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
 import { RepositoriesArea } from '../RepositoriesArea';
 
-export const Roadmap = () => {
+export const Heatmap = () => {
   const {
     scroll: timelineScroll,
     changeScrollLeftPosition: changeTimelineScroll,

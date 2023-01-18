@@ -2,12 +2,12 @@
 
 import { Flex } from 'milky-ui';
 
-import { Roadmap } from '../../modules/roadmap';
+import { Heatmap } from '../../modules/heatmap';
 
 export default function DashboardPage() {
   return (
     <Flex fullWidth>
-      <Roadmap />
+      <Heatmap />
     </Flex>
   );
 }
