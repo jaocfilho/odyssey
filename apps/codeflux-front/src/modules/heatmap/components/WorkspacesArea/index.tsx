@@ -1,10 +1,24 @@
+import { RefObject } from 'react';
+
 import { Flex } from 'milky-ui';
 
 import { WorkspaceSection } from '../WorkspaceSection';
 
-export const WorkspacesArea = () => {
+type WorkspacesAreaProps = {
+  scroll: RefObject<HTMLDivElement>;
+};
+
+export const WorkspacesArea = ({ scroll }: WorkspacesAreaProps) => {
   return (
-    <Flex direction="column" gap={4}>
+    <Flex
+      fullHeight
+      css={{
+        overflow: 'hidden',
+      }}
+      direction="column"
+      noShrink
+      ref={scroll}
+    >
       <WorkspaceSection repository="codeflux" />
       <WorkspaceSection repository="milky-ui" />
       <WorkspaceSection repository="satellite" />

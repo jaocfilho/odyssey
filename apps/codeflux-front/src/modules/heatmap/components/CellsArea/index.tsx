@@ -22,10 +22,14 @@ const createFakeRows = () => {
 };
 
 type CellsAreaProps = {
-  changeTimelineScroll: (newValue: number) => void;
+  changeCalendarScroll: (newValue: number) => void;
+  changeWorkspacesScroll: (newValue: number) => void;
 };
 
-export const CellsArea = ({ changeTimelineScroll }: CellsAreaProps) => {
+export const CellsArea = ({
+  changeCalendarScroll,
+  changeWorkspacesScroll,
+}: CellsAreaProps) => {
   const rows = createFakeRows();
 
   // typechecker helper
@@ -38,7 +42,8 @@ export const CellsArea = ({ changeTimelineScroll }: CellsAreaProps) => {
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     const { target } = event;
     if (targetIsDivElement(target)) {
-      changeTimelineScroll(target.scrollLeft);
+      changeCalendarScroll(target.scrollLeft);
+      changeWorkspacesScroll(target.scrollTop);
     }
   };
 

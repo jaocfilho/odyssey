@@ -1,25 +1,34 @@
 import { Flex } from 'milky-ui';
 
-import { useScroll } from '@satellite/react-hooks';
-
 import { CellsArea } from '../CellsArea';
 import { Timeline } from '../Timeline';
 import { WorkspacesArea } from '../WorkspacesArea';
+import { useHeatmapScroll } from '../../hooks';
 
 export const Heatmap = () => {
   const {
-    scroll: timelineScroll,
-    changeScrollLeftPosition: changeTimelineScroll,
-  } = useScroll<HTMLDivElement>();
+    calendarScroll,
+    changeCalendarScroll,
+    changeWorkspacesScroll,
+    workspacesScroll,
+  } = useHeatmapScroll();
 
   return (
     <Flex autoHorizontalMargin css={{ width: 700, height: 400 }}>
-      <Flex css={{ width: '100%', height: '100%' }}>
+      {/* <Flex css={{ width: '100%', height: '100%' }}>
         <WorkspacesArea />
         <Flex direction="column" css={{ width: '100%', height: '100%' }}>
-          <Timeline scroll={timelineScroll} />
+          <Timeline scroll={calendarScroll} />
           <CellsArea changeTimelineScroll={changeTimelineScroll} />
         </Flex>
+      </Flex> */}
+
+      <Flex fullHeight fullWidth gap={8}>
+        <WorkspacesArea scroll={workspacesScroll} />
+        <CellsArea
+          changeWorkspacesScroll={changeWorkspacesScroll}
+          changeCalendarScroll={changeCalendarScroll}
+        />
       </Flex>
     </Flex>
   );
