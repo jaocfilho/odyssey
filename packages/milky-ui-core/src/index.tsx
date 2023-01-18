@@ -4,6 +4,7 @@ export * from './components/Box';
 export * from './components/Button';
 export * from './components/DropdownMenu';
 export * from './components/Flex';
+export * from './components/Grid';
 export * from './components/IconButton';
 export * from './components/JsonView';
 export * from './components/ScrollArea';
