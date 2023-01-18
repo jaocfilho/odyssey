@@ -5,10 +5,8 @@ import { ForwardedRef, forwardRef } from 'react';
 import { GridContainer } from './styles';
 import { Css } from '../../styles/stiches';
 
-export type GridProps = ComponentProps<typeof GridContainer> & {
-  gridTemplateColumns?: Css['gridTemplateColumns'];
-  gridTemplateRows?: Css['gridTemplateRows'];
-};
+export type GridProps = ComponentProps<typeof GridContainer> &
+  Pick<Css, 'gridTemplateColumns' | 'gridTemplateRows'>;
 
 const BaseGrid = (
   { gridTemplateColumns, gridTemplateRows, css, ...rest }: GridProps,
