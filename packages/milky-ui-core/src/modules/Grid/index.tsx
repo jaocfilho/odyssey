@@ -6,13 +6,38 @@ import { GridContainer } from './styles';
 import { Css } from '../../styles/stiches';
 
 export type GridProps = ComponentProps<typeof GridContainer> &
-  Pick<Css, 'gridTemplateColumns' | 'gridTemplateRows'>;
+  Pick<
+    Css,
+    | 'gridTemplateColumns'
+    | 'gridTemplateRows'
+    | 'gridAutoColumns'
+    | 'gridAutoRows'
+    | 'gridAutoFlow'
+    | 'gridGap'
+  >;
 
 const BaseGrid = (
-  { gridTemplateColumns, gridTemplateRows, css, ...rest }: GridProps,
+  {
+    gridTemplateColumns,
+    gridAutoColumns,
+    gridTemplateRows,
+    gridAutoRows,
+    gridAutoFlow,
+    gridGap,
+    css,
+    ...rest
+  }: GridProps,
   ref: ForwardedRef<HTMLDivElement>
 ) => {
-  const finalCss: Css = { gridTemplateColumns, gridTemplateRows, ...css };
+  const finalCss: Css = {
+    gridTemplateColumns,
+    gridAutoColumns,
+    gridTemplateRows,
+    gridAutoRows,
+    gridAutoFlow,
+    gridGap,
+    ...css,
+  };
 
   return <GridContainer css={finalCss} {...rest} ref={ref} />;
 };
