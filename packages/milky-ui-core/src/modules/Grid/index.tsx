@@ -9,9 +9,11 @@ export type GridProps = ComponentProps<typeof GridContainer> &
   Pick<
     Css,
     | 'gridTemplateColumns'
-    | 'gridTemplateRows'
     | 'gridAutoColumns'
+    | 'gridColumnGap'
+    | 'gridTemplateRows'
     | 'gridAutoRows'
+    | 'gridRowGap'
     | 'gridAutoFlow'
     | 'gridGap'
   >;
@@ -20,8 +22,10 @@ const BaseGrid = (
   {
     gridTemplateColumns,
     gridAutoColumns,
+    gridColumnGap,
     gridTemplateRows,
     gridAutoRows,
+    gridRowGap,
     gridAutoFlow,
     gridGap,
     css,
@@ -32,8 +36,10 @@ const BaseGrid = (
   const finalCss: Css = {
     gridTemplateColumns,
     gridAutoColumns,
+    gridColumnGap,
     gridTemplateRows,
     gridAutoRows,
+    gridRowGap,
     gridAutoFlow,
     gridGap,
     ...css,
