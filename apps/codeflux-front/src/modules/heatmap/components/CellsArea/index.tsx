@@ -1,5 +1,3 @@
-import type { UIEvent } from 'react';
-
 import { Flex } from 'milky-ui';
 
 import { generateRoadmapBar } from '../../factories';
@@ -21,29 +19,11 @@ const createFakeRows = () => {
   return rows;
 };
 
-type CellsAreaProps = {
-  changeCalendarScroll: (newValue: number) => void;
-};
-
-export const CellsArea = ({ changeCalendarScroll }: CellsAreaProps) => {
+export const CellsArea = () => {
   const rows = createFakeRows();
 
-  // typechecker helper
-  const targetIsDivElement = (
-    target: EventTarget
-  ): target is HTMLDivElement => {
-    return !!target;
-  };
-
-  const handleScroll = (event: UIEvent<HTMLDivElement>) => {
-    const { target } = event;
-    if (targetIsDivElement(target)) {
-      changeCalendarScroll(target.scrollLeft);
-    }
-  };
-
   return (
-    <Flex fullHeight fullWidth onScroll={handleScroll}>
+    <Flex fullHeight fullWidth>
       <CellRows rows={rows} />
     </Flex>
   );

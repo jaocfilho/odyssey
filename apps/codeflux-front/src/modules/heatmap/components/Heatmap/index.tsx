@@ -1,9 +1,8 @@
 import { Flex } from 'milky-ui';
 
-import { CellsArea } from '../CellsArea';
 import { Calendar } from '../Calendar';
-import { WorkspacesArea } from '../WorkspacesArea';
 import { useHeatmapScroll } from '../../hooks';
+import { TimelineArea } from '../TimelineArea';
 
 export const Heatmap = () => {
   const { calendarScroll, changeCalendarScroll } = useHeatmapScroll();
@@ -18,16 +17,7 @@ export const Heatmap = () => {
       }}
     >
       <Calendar scroll={calendarScroll} />
-      <Flex
-        fullWidth
-        fullHeight
-        css={{
-          overflow: 'auto',
-        }}
-      >
-        <WorkspacesArea />
-        <CellsArea changeCalendarScroll={changeCalendarScroll} />
-      </Flex>
+      <TimelineArea changeCalendarScroll={changeCalendarScroll} />
     </Flex>
   );
 };
