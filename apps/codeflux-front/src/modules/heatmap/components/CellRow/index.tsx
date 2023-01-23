@@ -1,8 +1,8 @@
-import type { TCellsRow } from "../../types";
+import type { TCellsRow } from '../../types';
 
-import { Flex } from "milky-ui";
+import { Flex } from 'milky-ui';
 
-import { Cell } from "../Cell";
+import { Cell } from '../Cell';
 
 type CellRowProps = TCellsRow;
 

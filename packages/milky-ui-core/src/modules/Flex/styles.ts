@@ -23,27 +23,6 @@ export const FlexContainer = styled(Box, {
       },
     },
 
-    justifyContent: {
-      spaceBetween: {
-        justifyContent: 'space-between',
-      },
-      center: {
-        justifyContent: 'center',
-      },
-    },
-
-    alignContent: {
-      center: {
-        alignContent: 'center',
-      },
-    },
-
-    alignItems: {
-      center: {
-        alignItems: 'center',
-      },
-    },
-
     ...createGapVariants(),
   },
 

@@ -2,12 +2,32 @@ import type { ComponentProps } from '../../utils/types';
 
 import { ForwardedRef, forwardRef } from 'react';
 
+import { Css } from '../../styles/stiches';
 import { FlexContainer } from './styles';
 
-export type FlexProps = ComponentProps<typeof FlexContainer>;
+export type FlexProps = ComponentProps<typeof FlexContainer> &
+  Pick<Css, 'position' | 'alignItems' | 'alignContent' | 'justifyContent'>;
 
-const BaseFlex = (props: FlexProps, ref: ForwardedRef<HTMLDivElement>) => {
-  return <FlexContainer {...props} ref={ref} />;
+const BaseFlex = (
+  {
+    position,
+    alignItems,
+    alignContent,
+    justifyContent,
+    css,
+    ...rest
+  }: FlexProps,
+  ref: ForwardedRef<HTMLDivElement>
+) => {
+  const finalCss: Css = {
+    position,
+    alignItems,
+    alignContent,
+    justifyContent,
+    ...css,
+  };
+
+  return <FlexContainer {...rest} css={finalCss} ref={ref} />;
 };
 
 /**

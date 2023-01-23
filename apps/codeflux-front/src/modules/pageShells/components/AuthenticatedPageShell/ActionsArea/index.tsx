@@ -5,7 +5,7 @@ import { UserAvatarMenu } from '../UserAvatarMenu';
 
 export const ActionsArea = () => {
   return (
-    <Flex justifyContent="spaceBetween" gap={4}>
+    <Flex justifyContent="space-between" gap={4}>
       <ThemeButton size="large" />
       <UserAvatarMenu />
     </Flex>

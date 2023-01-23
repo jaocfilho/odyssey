@@ -23,13 +23,9 @@ const createFakeRows = () => {
 
 type CellsAreaProps = {
   changeCalendarScroll: (newValue: number) => void;
-  changeWorkspacesScroll: (newValue: number) => void;
 };
 
-export const CellsArea = ({
-  changeCalendarScroll,
-  changeWorkspacesScroll,
-}: CellsAreaProps) => {
+export const CellsArea = ({ changeCalendarScroll }: CellsAreaProps) => {
   const rows = createFakeRows();
 
   // typechecker helper
@@ -43,20 +39,11 @@ export const CellsArea = ({
     const { target } = event;
     if (targetIsDivElement(target)) {
       changeCalendarScroll(target.scrollLeft);
-      changeWorkspacesScroll(target.scrollTop);
     }
   };
 
   return (
-    <Flex
-      fullHeight
-      fullWidth
-      css={{
-        overflow: 'auto',
-        scrollBehavior: 'smooth',
-      }}
-      onScroll={handleScroll}
-    >
+    <Flex fullHeight fullWidth onScroll={handleScroll}>
       <CellRows rows={rows} />
     </Flex>
   );

@@ -1,8 +1,8 @@
-import type { TCellsRow } from "../../types";
+import type { TCellsRow } from '../../types';
 
-import { Flex } from "milky-ui";
+import { Flex } from 'milky-ui';
 
-import { CellRow } from "../CellRow";
+import { CellRow } from '../CellRow';
 
 type CellRowsProps = {
   rows: TCellsRow[];
@@ -10,7 +10,7 @@ type CellRowsProps = {
 
 export const CellRows = ({ rows }: CellRowsProps) => {
   return (
-    <Flex direction="column" gap={4}>
+    <Flex fullHeight direction="column" gap={4}>
       {rows.map((row, index) => (
         <CellRow key={index} {...row} />
       ))}

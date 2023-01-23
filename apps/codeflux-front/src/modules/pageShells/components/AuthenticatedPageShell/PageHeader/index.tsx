@@ -8,7 +8,7 @@ import { ActionsArea } from '../ActionsArea';
 export const PageHeader = () => {
   return (
     <Flex direction="column" boxBg px={6}>
-      <Flex fullWidth my={2} css={{ justifyContent: 'space-between' }}>
+      <Flex fullWidth justifyContent="space-between" my={2}>
         <Logo />
         <ActionsArea />
       </Flex>
