@@ -21,7 +21,7 @@ export const Calendar = ({ scroll }: CalendarProps) => {
     >
       {mapRange(
         (index) => (
-          <CalendarDateCell key={index} value={`Sat ${index}`} />
+          <CalendarDateCell key={index} value={`${index}`} />
         ),
         30
       )}
