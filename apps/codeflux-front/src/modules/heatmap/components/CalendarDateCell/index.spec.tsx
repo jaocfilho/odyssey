@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 
 import { describe, expect } from 'vitest';
 
-import { TimelineDateCell } from '.';
+import { CalendarDateCell } from '.';
 
-describe('TImelineDateCell', () => {
+describe('CalendarDateCell', () => {
   it('should render', () => {
     const value = 'Any';
-    render(<TimelineDateCell value={value} />);
+    render(<CalendarDateCell value={value} />);
 
     expect(screen.getByText(value)).toBeInTheDocument();
   });

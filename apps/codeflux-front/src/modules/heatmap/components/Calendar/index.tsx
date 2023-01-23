@@ -4,13 +4,13 @@ import { Flex } from 'milky-ui';
 
 import { mapRange } from 'satellite';
 
-import { TimelineDateCell } from '../TimelineDateCell';
+import { CalendarDateCell } from '../CalendarDateCell';
 
-type TimelineProps = {
+type CalendarProps = {
   scroll: RefObject<HTMLDivElement>;
 };
 
-export const Timeline = ({ scroll }: TimelineProps) => {
+export const Calendar = ({ scroll }: CalendarProps) => {
   return (
     <Flex
       fullWidth
@@ -21,7 +21,7 @@ export const Timeline = ({ scroll }: TimelineProps) => {
     >
       {mapRange(
         (index) => (
-          <TimelineDateCell key={index} value={`Sat ${index}`} />
+          <CalendarDateCell key={index} value={`Sat ${index}`} />
         ),
         30
       )}

@@ -6,7 +6,7 @@ type TimelineDateCellProps = {
   value: string;
 };
 
-export const TimelineDateCell = ({ value }: TimelineDateCellProps) => {
+export const CalendarDateCell = ({ value }: TimelineDateCellProps) => {
   return (
     <CellContainer>
       <Flex
