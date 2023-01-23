@@ -12,8 +12,10 @@ export const WorkspacesArea = ({ scroll }: WorkspacesAreaProps) => {
   return (
     <Flex
       fullHeight
+      fullWidth
       css={{
         overflow: 'hidden',
+        maxWidth: 150,
       }}
       direction="column"
       noShrink

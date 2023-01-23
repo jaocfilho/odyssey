@@ -5,6 +5,8 @@ import { ForwardedRef, forwardRef } from 'react';
 import { GridContainer } from './styles';
 import { Css } from '../../styles/stiches';
 
+export * from './GridItem';
+
 export type GridProps = ComponentProps<typeof GridContainer> &
   Pick<
     Css,
@@ -16,11 +18,14 @@ export type GridProps = ComponentProps<typeof GridContainer> &
     | 'gridRowGap'
     | 'gridAutoFlow'
     | 'gridGap'
-  >;
+  > & {
+    columns?: number;
+  };
 
 const BaseGrid = (
   {
-    gridTemplateColumns,
+    columns,
+    gridTemplateColumns = 'repeat(12, 1fr)',
     gridAutoColumns,
     gridColumnGap,
     gridTemplateRows,
@@ -33,6 +38,10 @@ const BaseGrid = (
   }: GridProps,
   ref: ForwardedRef<HTMLDivElement>
 ) => {
+  if (columns) {
+    gridTemplateColumns = `repeat(${columns}, 1fr)`;
+  }
+
   const finalCss: Css = {
     gridTemplateColumns,
     gridAutoColumns,
