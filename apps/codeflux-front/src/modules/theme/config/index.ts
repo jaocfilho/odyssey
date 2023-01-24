@@ -2,11 +2,13 @@ import { globalCss } from 'milky-ui';
 
 export const globalStyles = globalCss({
   body: {
+    $$backgroundColor: '$colors$gray1',
+
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
 
-    background: '$gray1',
+    background: '$$backgroundColor',
     color: '$gray11',
 
     fontFamily: '$default',

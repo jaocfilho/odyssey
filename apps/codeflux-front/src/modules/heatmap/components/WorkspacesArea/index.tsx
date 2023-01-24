@@ -4,7 +4,7 @@ import { WorkspaceSection } from '../WorkspaceSection';
 
 export const WorkspacesArea = () => {
   return (
-    <Flex position="sticky" css={{ left: 0, bgColor: '$gray1' }}>
+    <Flex position="sticky" css={{ left: 0, bgColor: '$$backgroundColor' }}>
       <Flex direction="column" mr={8}>
         <WorkspaceSection repository="codeflux" />
         <WorkspaceSection repository="milky-ui" />
