@@ -6,19 +6,9 @@ import { mapRange } from 'satellite';
 
 import { CalendarDateCell } from '../CalendarDateCell';
 
-type CalendarProps = {
-  scroll: RefObject<HTMLDivElement>;
-};
-
-export const Calendar = ({ scroll }: CalendarProps) => {
+export const Calendar = () => {
   return (
-    <Flex
-      fullWidth
-      css={{
-        overflow: 'hidden',
-      }}
-      ref={scroll}
-    >
+    <Flex>
       {mapRange(
         (index) => (
           <CalendarDateCell key={index} value={`${index}`} />

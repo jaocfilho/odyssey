@@ -10,8 +10,8 @@ type CellContainerProps = {
 };
 
 /**
- * This components represents a cell container and it is meant to be used
- * by both timeline and regular cells on the roadmap.
+ * This components is used to keep width consistency between
+ * both calendar and regular cells on the heatmap.
  *
  */
 export const CellContainer = ({
