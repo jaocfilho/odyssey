@@ -2,14 +2,17 @@ import { globalCss } from 'milky-ui';
 
 export const globalStyles = globalCss({
   body: {
-    $$backgroundColor: '$colors$gray1',
+    $$appBackgroundColor: '$colors$gray1',
+    $$subtleAppBackgroundColor: '$colors$gray2',
+    $$appLowContrastTextColor: '$colors$gray11',
+    $$appHighContrastTextColor: '$colors$gray12',
 
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
 
-    background: '$$backgroundColor',
-    color: '$gray11',
+    background: '$$appBackgroundColor',
+    color: '$$appLowContrastTextColor',
 
     fontFamily: '$default',
   },
