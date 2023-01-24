@@ -6,7 +6,8 @@ import { SessionProvider } from 'next-auth/react';
 
 import { ThemeProvider } from 'next-themes';
 
-import { darkTheme, lightTheme, globalStyles } from 'milky-ui';
+import { darkTheme, lightTheme } from 'milky-ui';
+import { globalStyles } from '../modules/theme';
 
 type RootProvidersProps = {
   children: ReactNode;
