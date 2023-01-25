@@ -1,8 +1,6 @@
 import { Flex } from 'milky-ui';
 
-import { mapRange } from 'satellite';
-
-import { CalendarDateCell } from '../CalendarDateCell';
+import { CalendarDates } from '../CalendarDates';
 import { CalendarMonth } from '../CalendarMonth';
 
 export const Calendar = () => {
@@ -18,14 +16,7 @@ export const Calendar = () => {
           <CalendarMonth month="December" />
         </Flex>
       </Flex>
-      <Flex>
-        {mapRange(
-          (index) => (
-            <CalendarDateCell key={index} value={`${index + 1}`} />
-          ),
-          30
-        )}
-      </Flex>
+      <CalendarDates />
     </Flex>
   );
 };

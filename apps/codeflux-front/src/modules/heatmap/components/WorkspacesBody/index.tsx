@@ -3,7 +3,7 @@ import { Flex } from 'milky-ui';
 import { WorkspacesAreaContainer } from '../WorkspacesAreaContainer';
 import { WorkspaceSection } from '../WorkspaceSection';
 
-export const WorkspacesArea = () => {
+export const WorkspacesBody = () => {
   return (
     <WorkspacesAreaContainer>
       <Flex direction="column" mr={8}>

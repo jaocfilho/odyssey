@@ -1,12 +1,12 @@
 import { Flex } from 'milky-ui';
 
 import { CellsArea } from '../CellsArea';
-import { WorkspacesArea } from '../WorkspacesArea';
+import { WorkspacesBody } from '../WorkspacesBody';
 
 export const TimelineArea = () => {
   return (
     <Flex>
-      <WorkspacesArea />
+      <WorkspacesBody />
       <CellsArea />
     </Flex>
   );
