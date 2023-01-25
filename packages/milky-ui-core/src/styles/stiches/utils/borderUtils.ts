@@ -1,5 +1,19 @@
 import { Stitches } from '../types';
 
+const borderBasicUtils = {
+  b: (value: Stitches.PropertyValue<'borderWidth'>) => ({
+    borderWidth: value,
+  }),
+
+  bStyle: (value: Stitches.PropertyValue<'borderStyle'>) => ({
+    borderStyle: value,
+  }),
+
+  bColor: (value: Stitches.PropertyValue<'borderColor'>) => ({
+    borderColor: value,
+  }),
+};
+
 const borderLeftUtils = {
   bl: (value: Stitches.PropertyValue<'borderLeftWidth'>) => ({
     borderLeftWidth: value,
@@ -14,30 +28,84 @@ const borderLeftUtils = {
   }),
 };
 
-export const borderUtils = {
-  ...borderLeftUtils,
-
-  // Abbreviated border properties
-  b: (value: Stitches.PropertyValue<'border'>) => ({
-    border: value,
-  }),
-
-  br: (value: Stitches.PropertyValue<'border'>) => ({
+const borderRightUtils = {
+  br: (value: Stitches.PropertyValue<'borderRightWidth'>) => ({
     borderRightWidth: value,
   }),
 
-  bt: (value: Stitches.PropertyValue<'border'>) => ({
+  brStyle: (value: Stitches.PropertyValue<'borderRightStyle'>) => ({
+    borderRightStyle: value,
+  }),
+
+  brColor: (value: Stitches.PropertyValue<'borderRightColor'>) => ({
+    borderRightColor: value,
+  }),
+};
+
+const borderTopUtils = {
+  bt: (value: Stitches.PropertyValue<'borderTop'>) => ({
     borderTopWidth: value,
   }),
 
-  bb: (value: Stitches.PropertyValue<'border'>) => ({
+  btStyle: (value: Stitches.PropertyValue<'borderTopStyle'>) => ({
+    borderTopStyle: value,
+  }),
+
+  btColor: (value: Stitches.PropertyValue<'borderTopColor'>) => ({
+    borderTopColor: value,
+  }),
+};
+
+const borderBottomUtils = {
+  bb: (value: Stitches.PropertyValue<'borderBottom'>) => ({
     borderBottomWidth: value,
   }),
 
-  bx: (value: Stitches.PropertyValue<'border'>) => ({
-    bl: value,
-    br: value,
+  bbStyle: (value: Stitches.PropertyValue<'borderBottomStyle'>) => ({
+    borderBottomStyle: value,
   }),
+
+  bbColor: (value: Stitches.PropertyValue<'borderBottomColor'>) => ({
+    borderBottomColor: value,
+  }),
+};
+
+const borderXUtils = {
+  bx: (
+    value:
+      | Stitches.PropertyValue<'borderRightWidth'>
+      | Stitches.PropertyValue<'borderLeftWidth'>
+  ) => ({
+    borderRightWidth: value,
+    borderLeftWidth: value,
+  }),
+
+  bxStyle: (
+    value:
+      | Stitches.PropertyValue<'borderRightStyle'>
+      | Stitches.PropertyValue<'borderLeftStyle'>
+  ) => ({
+    borderRightStyle: value,
+    borderLeftStyle: value,
+  }),
+
+  bxColor: (
+    value:
+      | Stitches.PropertyValue<'borderRightColor'>
+      | Stitches.PropertyValue<'borderLeftColor'>
+  ) => ({
+    borderRightColor: value,
+    borderLeftColor: value,
+  }),
+};
+
+export const borderUtils = {
+  ...borderBasicUtils,
+  ...borderLeftUtils,
+  ...borderRightUtils,
+  ...borderTopUtils,
+  ...borderBottomUtils,
+  ...borderXUtils,
 
   borderSolid: (value: boolean) => ({
     borderStyle: 'solid',
