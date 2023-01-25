@@ -1,5 +1,3 @@
-import { RefObject } from 'react';
-
 import { Flex } from 'milky-ui';
 
 import { mapRange } from 'satellite';
