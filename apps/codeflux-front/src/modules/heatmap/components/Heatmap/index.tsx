@@ -1,7 +1,8 @@
 import { Flex } from 'milky-ui';
 
 import { Calendar } from '../Calendar';
-import { TimelineArea } from '../TimelineArea';
+import { HeatmapBody } from '../HeatmapBody';
+import { HeatmapHeader } from '../HeatmapHeader';
 
 export const Heatmap = () => {
   return (
@@ -21,8 +22,8 @@ export const Heatmap = () => {
           overflow: 'auto',
         }}
       >
-        <Calendar />
-        <TimelineArea />
+        <HeatmapHeader />
+        <HeatmapBody />
       </Flex>
     </Flex>
   );
