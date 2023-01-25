@@ -1,5 +1,9 @@
-import { Flex } from 'milky-ui';
+import { Text } from 'milky-ui';
 
-export const CalendarMonth = () => {
-  return <Flex></Flex>;
+type CalendarMonthProps = {
+  month: string;
+};
+
+export const CalendarMonth = ({ month }: CalendarMonthProps) => {
+  return <Text>{month}</Text>;
 };
