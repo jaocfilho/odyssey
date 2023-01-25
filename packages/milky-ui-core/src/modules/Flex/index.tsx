@@ -6,7 +6,17 @@ import { Css } from '../../styles/stiches';
 import { FlexContainer } from './styles';
 
 export type FlexProps = ComponentProps<typeof FlexContainer> &
-  Pick<Css, 'position' | 'alignItems' | 'alignContent' | 'justifyContent'>;
+  Pick<
+    Css,
+    | 'position'
+    | 'alignItems'
+    | 'alignContent'
+    | 'justifyContent'
+    | 'b'
+    | 'bb'
+    | 'bbColor'
+    | 'bbStyle'
+  >;
 
 const BaseFlex = (
   {
@@ -14,6 +24,10 @@ const BaseFlex = (
     alignItems,
     alignContent,
     justifyContent,
+    b,
+    bb,
+    bbColor,
+    bbStyle,
     css,
     ...rest
   }: FlexProps,
@@ -24,6 +38,10 @@ const BaseFlex = (
     alignItems,
     alignContent,
     justifyContent,
+    b,
+    bb,
+    bbColor,
+    bbStyle,
     ...css,
   };
 

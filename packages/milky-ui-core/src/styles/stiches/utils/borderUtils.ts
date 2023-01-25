@@ -57,7 +57,7 @@ const borderTopUtils = {
 };
 
 const borderBottomUtils = {
-  bb: (value: Stitches.PropertyValue<'borderBottom'>) => ({
+  bb: (value: Stitches.PropertyValue<'borderBottomWidth'>) => ({
     borderBottomWidth: value,
   }),
 

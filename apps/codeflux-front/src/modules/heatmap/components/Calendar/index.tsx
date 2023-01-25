@@ -11,7 +11,7 @@ export const Calendar = () => {
     <Flex css={{ bl: 1, blStyle: 'solid', blColor: '$gray6' }}>
       {mapRange(
         (index) => (
-          <CalendarDateCell key={index} value={`${index}`} />
+          <CalendarDateCell key={index} value={`${index + 1}`} />
         ),
         30
       )}
