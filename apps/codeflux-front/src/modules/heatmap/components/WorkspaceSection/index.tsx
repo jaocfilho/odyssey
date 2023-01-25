@@ -7,7 +7,7 @@ type WorkspaceSectionProps = {
 export const WorkspaceSection = ({ repository }: WorkspaceSectionProps) => {
   return (
     <Flex alignItems="center" noShrink css={{ height: '$space$10' }} my={2}>
-      <Text variant="h3">{repository}</Text>
+      <Text variant="h4">{repository}</Text>
     </Flex>
   );
 };
