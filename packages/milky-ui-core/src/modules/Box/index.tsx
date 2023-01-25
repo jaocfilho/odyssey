@@ -112,9 +112,9 @@ export const Box = styled('div', {
     },
 
     // color variants
-    boxBg: {
+    appBackgroundColor: {
       true: {
-        bgColor: '$gray3',
+        bgColor: '$$appBackgroundColor',
       },
     },
 
