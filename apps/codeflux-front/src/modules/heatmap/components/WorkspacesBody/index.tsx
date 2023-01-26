@@ -1,16 +1,15 @@
 import { Flex } from 'milky-ui';
 
 import { WorkspacesAreaContainer } from '../WorkspacesAreaContainer';
-import { WorkspaceSection } from '../WorkspaceSection';
+import { WorkspaceSections } from '../WorkspaceSections';
 
 export const WorkspacesBody = () => {
+  const workspaces = ['codeflux', 'mily-ui', 'satellite', 'orbitals'];
+
   return (
     <WorkspacesAreaContainer>
-      <Flex direction="column" mr={8}>
-        <WorkspaceSection repository="codeflux" />
-        <WorkspaceSection repository="milky-ui" />
-        <WorkspaceSection repository="satellite" />
-        <WorkspaceSection repository="orbitals" />
+      <Flex mr={8}>
+        <WorkspaceSections workspaces={workspaces} />
       </Flex>
     </WorkspacesAreaContainer>
   );

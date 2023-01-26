@@ -5,9 +5,9 @@ import { describe, expect, it } from 'vitest';
 import { WorkspaceSection } from '.';
 
 describe('WorkspaceSection', () => {
-  it('should render the repository name as text', () => {
-    const repository = 'test-repo';
-    render(<WorkspaceSection repository={repository} />);
-    expect(screen.getByText(repository)).toBeInTheDocument();
+  it('should render the workspace name as text', () => {
+    const workspace = 'test-repo';
+    render(<WorkspaceSection workspace={workspace} />);
+    expect(screen.getByText(workspace)).toBeInTheDocument();
   });
 });
