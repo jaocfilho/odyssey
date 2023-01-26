@@ -8,7 +8,7 @@ type CellRowsProps = {
   rows: TCellsRow[];
 };
 
-export const CellRows = ({ rows }: CellRowsProps) => {
+export const HeatmapRows = ({ rows }: CellRowsProps) => {
   return (
     <Flex fullHeight direction="column" gap={4}>
       {rows.map((row, index) => (
