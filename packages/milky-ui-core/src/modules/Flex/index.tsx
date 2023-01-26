@@ -16,6 +16,9 @@ export type FlexProps = ComponentProps<typeof FlexContainer> &
     | 'bb'
     | 'bbColor'
     | 'bbStyle'
+    | 'br'
+    | 'brColor'
+    | 'brStyle'
   >;
 
 const BaseFlex = (
@@ -28,6 +31,9 @@ const BaseFlex = (
     bb,
     bbColor,
     bbStyle,
+    br,
+    brColor,
+    brStyle,
     css,
     ...rest
   }: FlexProps,
@@ -42,6 +48,9 @@ const BaseFlex = (
     bb,
     bbColor,
     bbStyle,
+    br,
+    brColor,
+    brStyle,
     ...css,
   };
 

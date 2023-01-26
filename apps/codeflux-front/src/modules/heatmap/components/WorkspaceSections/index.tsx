@@ -1,4 +1,5 @@
 import { Flex } from 'milky-ui';
+
 import { WorkspaceSection } from '../WorkspaceSection';
 
 type WorkspaceSectionsProps = {

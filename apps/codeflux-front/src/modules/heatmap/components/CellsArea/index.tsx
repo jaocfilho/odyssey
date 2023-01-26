@@ -23,8 +23,20 @@ export const CellsArea = () => {
   const rows = createFakeRows();
 
   return (
-    <Flex fullHeight fullWidth>
-      <CellRows rows={rows} />
+    <Flex fullHeight fullWidth position="relative">
+      <Flex fullHeight fullWidth position="absolute" css={{ zIndex: 10 }}>
+        <CellRows rows={rows} />
+      </Flex>
+      <Flex fullHeight fullWidth position="absolute" css={{ zIndex: 1 }}>
+        <Flex
+          fullHeight
+          direction="column"
+          br={1}
+          brStyle="solid"
+          brColor="$gray6"
+          css={{ width: '$space$16', '&:hover': { bgColor: '$gray2' } }}
+        />
+      </Flex>
     </Flex>
   );
 };
