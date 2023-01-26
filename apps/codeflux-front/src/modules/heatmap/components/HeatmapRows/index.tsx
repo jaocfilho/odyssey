@@ -10,7 +10,7 @@ type CellRowsProps = {
 
 export const HeatmapRows = ({ rows }: CellRowsProps) => {
   return (
-    <Flex fullHeight direction="column" gap={4}>
+    <Flex fullHeight direction="column" position="absolute" gap={4}>
       {rows.map((row, index) => (
         <CellRow key={index} {...row} />
       ))}

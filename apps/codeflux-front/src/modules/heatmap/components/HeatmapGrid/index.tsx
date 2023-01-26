@@ -1,7 +1,6 @@
 import { Flex } from 'milky-ui';
 
 import { generateRoadmapBar } from '../../factories';
-import { HeatmapColumn } from '../HeatmapColumn';
 import { HeatmapColumns } from '../HeatmapColumns';
 import { HeatmapRows } from '../HeatmapRows';
 
@@ -21,14 +20,12 @@ const createFakeRows = () => {
   return rows;
 };
 
-export const CellsArea = () => {
+export const HeatmapGrid = () => {
   const rows = createFakeRows();
 
   return (
     <Flex fullHeight fullWidth position="relative">
-      <Flex fullHeight fullWidth position="absolute">
-        <HeatmapRows rows={rows} />
-      </Flex>
+      <HeatmapRows rows={rows} />
       <HeatmapColumns columns={30} />
     </Flex>
   );
