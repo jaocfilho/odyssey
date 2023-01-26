@@ -4,9 +4,9 @@ import { Flex } from 'milky-ui';
 
 import { Cell } from '../Cell';
 
-type CellRowProps = TCellsRow;
+type HeatmapRowProps = TCellsRow;
 
-export const CellRow = ({ cells }: CellRowProps) => {
+export const HeatmapRow = ({ cells }: HeatmapRowProps) => {
   return (
     <Flex>
       {cells.map((cell, index) => (
