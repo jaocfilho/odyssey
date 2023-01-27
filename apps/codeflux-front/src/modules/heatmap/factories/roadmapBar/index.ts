@@ -1,12 +1,12 @@
-import type { CellColors, TRoadmapCell } from "../../types";
+import type { CellColors, TRoadmapCell } from '../../types';
 
-import { callMultipleTimes } from "satellite";
+import { callMultipleTimes } from 'satellite';
 
 import {
   generateEndingCell,
   generateStartingCell,
   generateProgressCell,
-} from "../roadmapCell";
+} from '../roadmapCell';
 
 type CreateProgressCellsParams = {
   count: number;
@@ -24,7 +24,7 @@ const createProgressCells = ({ count, color }: CreateProgressCellsParams) => {
   return progressCells;
 };
 
-type GenerateRoadmapBarParams = {
+export type GenerateRoadmapBarParams = {
   size: number;
   color: CellColors;
 };
@@ -47,7 +47,7 @@ export const generateRoadmapBar = ({
   color,
 }: GenerateRoadmapBarParams) => {
   if (size < 2) {
-    throw new Error("roadmap bar size must be bigger than 2.");
+    throw new Error('roadmap bar size must be bigger than 2.');
   }
 
   const starting = generateStartingCell({ color });

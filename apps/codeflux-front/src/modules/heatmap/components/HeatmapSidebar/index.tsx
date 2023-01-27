@@ -1,4 +1,5 @@
 import { Flex, Text } from 'milky-ui';
+import { TopAreaContainer } from '../TopAreaContainer';
 
 import { WorkspaceSections } from '../WorkspaceSections';
 
@@ -14,9 +15,11 @@ export const HeatmapSidebar = () => {
       brColor="$gray6"
       css={{ minWidth: 180 }}
     >
-      <Flex p={4} bb={1} bbStyle="solid" bbColor="$gray6">
-        <Text variant="h4">Workspaces</Text>
-      </Flex>
+      <TopAreaContainer>
+        <Flex p={4}>
+          <Text variant="h4">Workspaces</Text>
+        </Flex>
+      </TopAreaContainer>
       <WorkspaceSections workspaces={workspaces} />
     </Flex>
   );

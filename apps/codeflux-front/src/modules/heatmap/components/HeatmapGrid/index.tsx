@@ -1,22 +1,19 @@
-import { ReactNode } from 'react';
-
 import { Flex } from 'milky-ui';
 
 import { HeatmapGridColumns } from '../HeatmapGridColumns';
 import { HeatmapGridRows } from '../HeatmapGridRows';
+import { TCellsRow } from '../../types';
 
 type HeatmapGridProps = {
-  rows: number;
+  rows: TCellsRow[];
   columns: number;
-  children?: ReactNode;
 };
 
-export const HeatmapGrid = ({ columns, rows, children }: HeatmapGridProps) => {
+export const HeatmapGrid = ({ columns, rows }: HeatmapGridProps) => {
   return (
     <Flex fullHeight fullWidth position="relative">
-      <Flex position="absolute">{children}</Flex>
       <Flex position="relative">
-        <HeatmapGridRows rows={rows} columns={columns} />
+        <HeatmapGridRows rows={rows} />
         <HeatmapGridColumns columns={columns} />
       </Flex>
     </Flex>

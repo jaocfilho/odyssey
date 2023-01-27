@@ -1,28 +1,31 @@
 import { render } from '@testing-library/react';
 
-import { beforeEach, describe, expect, vi } from 'vitest';
+import { beforeEach, describe, vi, it, expect } from 'vitest';
 
-import { CellContainer } from '../CellContainer';
+import { Cell } from '../Cell';
 import { HeatmapGridRow } from '.';
+import { generateRoadmapBar } from '../../factories';
 
-describe('HeatmapGridRow', () => {
-  vi.mock('../CellContainer', () => ({
-    CellContainer: vi.fn(),
-  }));
+vi.mock('../Cell', () => ({
+  Cell: vi.fn(),
+}));
+
+describe('HeatmapRow', () => {
+  const cells = generateRoadmapBar({ size: 5, color: 'purple' });
 
   beforeEach(() => {
     vi.restoreAllMocks();
   });
 
   it('should render', () => {
-    const { container } = render(<HeatmapGridRow size={1} />);
+    const { container } = render(<HeatmapGridRow cells={cells} />);
+
     expect(container).toBeInTheDocument();
   });
 
-  it('should call CellContainer times the size of the row', () => {
-    const size = 30;
+  it('should call Cell for each cell', () => {
+    render(<HeatmapGridRow cells={cells} />);
 
-    render(<HeatmapGridRow size={size} />);
-    expect(CellContainer).toHaveBeenCalledTimes(size);
+    expect(Cell).toHaveBeenCalledTimes(cells.length);
   });
 });

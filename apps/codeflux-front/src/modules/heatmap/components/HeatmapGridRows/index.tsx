@@ -1,20 +1,19 @@
 import { Flex } from 'milky-ui';
-import { ROADMAP_ROW_GAP } from '../../constants';
 
+import { TCellsRow } from '../../types';
 import { HeatmapGridRow } from '../HeatmapGridRow';
 
 type HeatmapGridRowsProps = {
-  rows: number;
-  columns: number;
+  rows: TCellsRow[];
 };
 
-export const HeatmapGridRows = ({ rows, columns }: HeatmapGridRowsProps) => {
-  const rowsMapper = [...new Array(rows)];
-
+export const HeatmapGridRows = ({ rows }: HeatmapGridRowsProps) => {
   return (
-    <Flex direction="column" role="heatmapRows" gap={ROADMAP_ROW_GAP}>
-      {rowsMapper.map((_, index) => (
-        <HeatmapGridRow key={index} size={columns} />
+    <Flex direction="column" role="heatmapRows" css={{ zIndex: 100 }}>
+      {rows.map((row, index) => (
+        <Flex key={index} bb={1} bbStyle="solid" bbColor="$gray6">
+          <HeatmapGridRow {...row} />
+        </Flex>
       ))}
     </Flex>
   );

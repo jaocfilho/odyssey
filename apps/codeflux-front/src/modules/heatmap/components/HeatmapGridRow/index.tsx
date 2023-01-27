@@ -1,20 +1,16 @@
+import type { TCellsRow } from '../../types';
+
 import { Flex } from 'milky-ui';
 
-import { CellContainer } from '../CellContainer';
+import { Cell } from '../Cell';
 
-type HeatmapGridRowProps = {
-  size: number;
-};
+type HeatmapGridRowProps = TCellsRow;
 
-export const HeatmapGridRow = ({ size }: HeatmapGridRowProps) => {
-  const sizeMapper = [...new Array(size)];
-
+export const HeatmapGridRow = ({ cells }: HeatmapGridRowProps) => {
   return (
-    <Flex bb={1} bbStyle="solid" bbColor="$gray6">
-      {sizeMapper.map((_, index) => (
-        <CellContainer key={index}>
-          <Flex />
-        </CellContainer>
+    <Flex my={2}>
+      {cells.map((cell, index) => (
+        <Cell key={index} {...cell} />
       ))}
     </Flex>
   );

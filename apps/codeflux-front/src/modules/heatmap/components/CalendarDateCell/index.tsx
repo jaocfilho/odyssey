@@ -11,7 +11,6 @@ export const CalendarDateCell = ({ value }: TimelineDateCellProps) => {
     <CellContainer>
       <Flex
         fullWidth
-        fullHeight
         justifyContent="center"
         alignItems="center"
         lowContrastTextColor="gray"
