@@ -1,18 +1,18 @@
 import { Flex } from 'milky-ui';
 
-import { HeatmapColumn } from '../HeatmapColumn';
+import { HeatmapGridColumn } from '../HeatmapGridColumn';
 
-type HeatmapColumnsProps = {
+type HeatmapGridColumnsProps = {
   columns: number;
 };
 
-export const HeatmapColumns = ({ columns }: HeatmapColumnsProps) => {
+export const HeatmapGridColumns = ({ columns }: HeatmapGridColumnsProps) => {
   const columnsMapper = [...new Array(columns)];
 
   return (
     <Flex fullHeight fullWidth role="heatmapColumns">
       {columnsMapper.map((_, index) => (
-        <HeatmapColumn key={index} />
+        <HeatmapGridColumn key={index} />
       ))}
     </Flex>
   );
