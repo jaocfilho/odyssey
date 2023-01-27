@@ -7,7 +7,7 @@ import { HeatmapGridColumns } from '.';
 
 describe('HeatmapGridColumns', () => {
   vi.mock('../HeatmapGridColumn', () => ({
-    HeatmapGridColumn: vi.fn(() => null),
+    HeatmapGridColumn: vi.fn(),
   }));
 
   beforeEach(() => {
