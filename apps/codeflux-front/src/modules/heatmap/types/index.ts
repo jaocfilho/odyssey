@@ -1,2 +1,6 @@
-export type { TRoadmapCell, CellTypes, CellColors } from "./roadmapCell";
-export type { TCellsRow } from "./cellRow";
+export type {
+  THeatmapCell as TRoadmapCell,
+  CellTypes,
+  CellColors,
+} from './heatmapCell';
+export type { TCellsRow } from './cellRow';
