@@ -14,7 +14,6 @@ export const HeatmapRows = ({ rows }: CellRowsProps) => {
     <Flex
       fullHeight
       direction="column"
-      position="absolute"
       gap={ROADMAP_ROW_GAP}
       css={{ zIndex: 100 }}
     >
