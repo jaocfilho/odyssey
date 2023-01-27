@@ -10,7 +10,7 @@ export const HeatmapGridColumns = ({ columns }: HeatmapGridColumnsProps) => {
   const columnsMapper = [...new Array(columns)];
 
   return (
-    <Flex fullHeight fullWidth role="heatmapColumns">
+    <Flex fullHeight fullWidth role="heatmapColumns" position="absolute">
       {columnsMapper.map((_, index) => (
         <HeatmapGridColumn key={index} />
       ))}

@@ -10,5 +10,5 @@ type ContainerProps = {
  * The external container of a roadmap cell.
  */
 export const Container = ({ children }: ContainerProps) => {
-  return <CellContainer height="$space$10">{children}</CellContainer>;
+  return <CellContainer>{children}</CellContainer>;
 };

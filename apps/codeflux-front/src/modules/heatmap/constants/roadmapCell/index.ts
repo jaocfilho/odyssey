@@ -26,3 +26,4 @@ export const roadmapCellTypes: CellTypes[] = [
 ];
 
 export const ROADMAP_CELL_WIDTH = '$space$16';
+export const ROADMAP_CELL_HEIGHT = '$space$10';
