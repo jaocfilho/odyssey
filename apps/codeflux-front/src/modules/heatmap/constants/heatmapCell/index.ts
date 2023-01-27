@@ -3,7 +3,7 @@ import type { TRoadmapCell } from '../../types';
 type Color = TRoadmapCell['color'];
 type CellTypes = TRoadmapCell['type'];
 
-export const roadmapCellColors: Color[] = [
+export const heatmapCellColors: Color[] = [
   'blue',
   'crimson',
   'cyan',
@@ -17,7 +17,7 @@ export const roadmapCellColors: Color[] = [
   'violet',
 ];
 
-export const roadmapCellTypes: CellTypes[] = [
+export const heatmapCellTypes: CellTypes[] = [
   'ending',
   'progress',
   'solo',
@@ -25,5 +25,5 @@ export const roadmapCellTypes: CellTypes[] = [
   'empty',
 ];
 
-export const ROADMAP_CELL_WIDTH = '$space$16';
-export const ROADMAP_CELL_HEIGHT = '$space$10';
+export const HEATMAP_CELL_WIDTH = '$space$16';
+export const HEATMAP_CELL_HEIGHT = '$space$10';

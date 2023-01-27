@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 
 import { arrayDifference } from 'satellite';
 
-import { roadmapCellColors, roadmapCellTypes } from '../../constants';
+import { heatmapCellColors, heatmapCellTypes } from '../../constants';
 
 type CreateRoadmapCellParams = {
   colorOptions: CellColors[];
@@ -36,9 +36,9 @@ const createRoadmapCell = ({
  *
  */
 const getTypeOptions = (excludedTypes: CellTypes[] = []) => {
-  if (excludedTypes.length === 0) return roadmapCellTypes;
+  if (excludedTypes.length === 0) return heatmapCellTypes;
 
-  const typeOptions = arrayDifference(roadmapCellTypes, excludedTypes);
+  const typeOptions = arrayDifference(heatmapCellTypes, excludedTypes);
 
   return typeOptions;
 };
@@ -49,9 +49,9 @@ const getTypeOptions = (excludedTypes: CellTypes[] = []) => {
  *
  */
 const getColorOptions = (excludedColors: CellColors[] = []) => {
-  if (excludedColors.length === 0) return roadmapCellColors;
+  if (excludedColors.length === 0) return heatmapCellColors;
 
-  const colorOptions = arrayDifference(roadmapCellColors, excludedColors);
+  const colorOptions = arrayDifference(heatmapCellColors, excludedColors);
 
   return colorOptions;
 };
