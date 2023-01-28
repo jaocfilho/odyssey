@@ -1,8 +1,8 @@
-import type { TRoadmapCell } from '../../../types';
+import type { THeatmapCell } from '../../../types';
 
 import { BarContainer } from './styles';
 
-export type BarProps = TRoadmapCell;
+export type BarProps = THeatmapCell;
 
 export const Bar = ({ color, type }: BarProps) => {
   return (

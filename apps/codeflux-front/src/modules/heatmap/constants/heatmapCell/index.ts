@@ -1,7 +1,7 @@
-import type { TRoadmapCell } from '../../types';
+import type { THeatmapCell } from '../../types';
 
-type Color = TRoadmapCell['color'];
-type CellTypes = TRoadmapCell['type'];
+type Color = THeatmapCell['color'];
+type CellTypes = THeatmapCell['type'];
 
 export const heatmapCellColors: Color[] = [
   'blue',
@@ -25,5 +25,5 @@ export const heatmapCellTypes: CellTypes[] = [
   'empty',
 ];
 
-export const HEATMAP_CELL_WIDTH = '$space$16';
+export const HEATMAP_CELL_WIDTH = '$space$20';
 export const HEATMAP_CELL_HEIGHT = '$space$10';

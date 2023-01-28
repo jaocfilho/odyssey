@@ -1,4 +1,4 @@
-import type { TRoadmapCell, CellTypes, CellColors } from '../../types';
+import type { THeatmapCell, CellTypes, CellColors } from '../../types';
 
 import { faker } from '@faker-js/faker';
 
@@ -18,7 +18,7 @@ const createRoadmapCell = ({
   typeOptions,
   color = undefined,
   type = undefined,
-}: CreateRoadmapCellParams): TRoadmapCell => {
+}: CreateRoadmapCellParams): THeatmapCell => {
   if (color === undefined) {
     color = faker.helpers.arrayElement(colorOptions);
   }
@@ -68,7 +68,7 @@ export const generateRoadmapCell = ({
   excludedColors,
   color,
   type,
-}: GenerateRoadmapCellParams = {}): TRoadmapCell => {
+}: GenerateRoadmapCellParams = {}): THeatmapCell => {
   const typeOptions = getTypeOptions(excludedTypes);
   const colorOptions = getColorOptions(excludedColors);
 

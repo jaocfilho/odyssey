@@ -7,8 +7,8 @@ import { TopAreaContainer } from '../TopAreaContainer';
 export const Calendar = () => {
   return (
     <TopAreaContainer>
-      <Flex ml={4}>
-        <Flex position="sticky" css={{ left: 0 }}>
+      <Flex mb={4}>
+        <Flex pl={4} position="sticky" css={{ left: 0 }}>
           <CalendarMonth month="December" />
         </Flex>
       </Flex>

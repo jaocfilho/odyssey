@@ -17,10 +17,11 @@ export const TopAreaContainer = ({
   return (
     <Flex
       fullHeight
+      fullWidth
       direction="column"
+      justifyContent="end"
       {...borderConfig}
-      py={2}
-      css={{ maxHeight: 60 }}
+      css={{ maxHeight: 92 }}
     >
       {children}
     </Flex>

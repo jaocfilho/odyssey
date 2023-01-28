@@ -1,15 +1,15 @@
 import { Flex } from 'milky-ui';
 
-import { generateRoadmapBar } from '../../factories';
+import { generateHeatmapRow } from '../../factories';
 import { Calendar } from '../Calendar';
 import { HeatmapGrid } from '../HeatmapGrid';
 import { HeatmapSidebar } from '../HeatmapSidebar';
 
 const createFakeRows = () => {
-  const purple = generateRoadmapBar({ size: 14, color: 'purple' });
-  const crimson = generateRoadmapBar({ size: 22, color: 'crimson' });
-  const cyan = generateRoadmapBar({ size: 24, color: 'cyan' });
-  const red = generateRoadmapBar({ size: 7, color: 'red' });
+  const purple = generateHeatmapRow();
+  const crimson = generateHeatmapRow({ color: 'crimson' });
+  const cyan = generateHeatmapRow({ color: 'cyan' });
+  const red = generateHeatmapRow({ color: 'red' });
 
   const rows = [
     { cells: purple },

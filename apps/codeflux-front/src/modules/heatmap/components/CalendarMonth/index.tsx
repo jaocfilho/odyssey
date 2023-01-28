@@ -5,5 +5,5 @@ type CalendarMonthProps = {
 };
 
 export const CalendarMonth = ({ month }: CalendarMonthProps) => {
-  return <Text>{month}</Text>;
+  return <Text variant="h5">{month}</Text>;
 };

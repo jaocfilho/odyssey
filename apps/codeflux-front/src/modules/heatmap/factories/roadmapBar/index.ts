@@ -1,4 +1,4 @@
-import type { CellColors, TRoadmapCell } from '../../types';
+import type { CellColors, THeatmapCell } from '../../types';
 
 import { callMultipleTimes } from 'satellite';
 
@@ -6,6 +6,7 @@ import {
   generateEndingCell,
   generateStartingCell,
   generateProgressCell,
+  generateEmptyCell,
 } from '../roadmapCell';
 
 type CreateProgressCellsParams = {
@@ -14,7 +15,7 @@ type CreateProgressCellsParams = {
 };
 
 const createProgressCells = ({ count, color }: CreateProgressCellsParams) => {
-  const progressCells: TRoadmapCell[] = [];
+  const progressCells: THeatmapCell[] = [];
 
   callMultipleTimes(() => {
     const cell = generateProgressCell({ color });
@@ -22,6 +23,21 @@ const createProgressCells = ({ count, color }: CreateProgressCellsParams) => {
   }, count);
 
   return progressCells;
+};
+
+type GenerateEmptyBarParams = {
+  size?: number;
+};
+
+export const generateEmptyBar = ({ size = 3 }: GenerateEmptyBarParams = {}) => {
+  const cells: THeatmapCell[] = [];
+
+  callMultipleTimes(() => {
+    const cell = generateEmptyCell();
+    cells.push(cell);
+  }, 3);
+
+  return cells;
 };
 
 export type GenerateRoadmapBarParams = {

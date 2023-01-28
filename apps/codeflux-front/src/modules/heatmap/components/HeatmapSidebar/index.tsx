@@ -1,5 +1,6 @@
 import { Flex, Text } from 'milky-ui';
 import { HEATMAP_GRID_BORDER_RIGHT } from '../../constants';
+import { CellContainer } from '../CellContainer';
 import { TopAreaContainer } from '../TopAreaContainer';
 
 import { WorkspaceSections } from '../WorkspaceSections';
@@ -15,9 +16,9 @@ export const HeatmapSidebar = () => {
       css={{ minWidth: 180 }}
     >
       <TopAreaContainer border>
-        <Flex p={4}>
+        <CellContainer width="100%">
           <Text variant="h4">Workspaces</Text>
-        </Flex>
+        </CellContainer>
       </TopAreaContainer>
       <WorkspaceSections workspaces={workspaces} />
     </Flex>

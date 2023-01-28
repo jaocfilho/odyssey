@@ -1,6 +1,11 @@
 import { mapRange } from 'satellite';
-import { TCellsRow } from '../../types';
-import { generateRoadmapBar, GenerateRoadmapBarParams } from '../roadmapBar';
+
+import { CellColors, TCellsRow } from '../../types';
+import {
+  generateEmptyBar,
+  generateRoadmapBar,
+  GenerateRoadmapBarParams,
+} from '../roadmapBar';
 
 type GenerateRoadmapRowParams = {
   size?: number;
@@ -17,4 +22,23 @@ export const generateRoadmapRow = ({
   }, size);
 
   return rows as TCellsRow[];
+};
+
+type GenerateHeatmapRowParams = {
+  color?: CellColors;
+};
+
+export const generateHeatmapRow = ({
+  color = 'purple',
+}: GenerateHeatmapRowParams = {}) => {
+  const cells = [
+    ...generateEmptyBar(), //3
+    ...generateRoadmapBar({ size: 6, color }), //9
+    ...generateEmptyBar({ size: 4 }), //13
+    ...generateRoadmapBar({ size: 9, color }), //22
+    ...generateEmptyBar({ size: 2 }), //24
+    ...generateRoadmapBar({ size: 6, color }), //30
+  ];
+
+  return cells;
 };
