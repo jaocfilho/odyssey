@@ -1,4 +1,9 @@
-import { useTheme as useThemeBase } from 'next-themes';
+import { useTheme as useThemeNext } from 'next-themes';
+
+export type UseThemeBaseProps = {
+  theme: string | undefined;
+  setTheme: (theme: string) => void;
+};
 
 type UseThemeReturn = {
   theme: string | undefined;
@@ -7,10 +12,7 @@ type UseThemeReturn = {
   alternateTheme: () => void;
 };
 
-export const useTheme = (): UseThemeReturn => {
-  // TODO tests
-  const { theme, setTheme } = useThemeBase();
-
+export const useThemeBase = ({ theme, setTheme }: UseThemeBaseProps) => {
   const setDarkTheme = () => setTheme('dark');
   const setLightTheme = () => setTheme('light');
 
@@ -30,4 +32,10 @@ export const useTheme = (): UseThemeReturn => {
   };
 
   return { theme, setDarkTheme, setLightTheme, alternateTheme };
+};
+
+export const useTheme = (): UseThemeReturn => {
+  const { theme, setTheme } = useThemeNext();
+
+  return useThemeBase({ theme, setTheme });
 };

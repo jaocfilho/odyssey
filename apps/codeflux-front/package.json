@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.1",
+    "@satellite/react-hooks": "workspace:*",
     "milky-ui": "workspace:*",
     "next": "13.0.0",
     "next-auth": "^4.18.7",
@@ -19,14 +20,14 @@
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "satellite": "workspace:*",
-    "@satellite/react-hooks": "workspace:*"
+    "satellite": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@faker-js/faker": "^7.6.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
