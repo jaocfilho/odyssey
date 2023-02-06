@@ -1,3 +1,3 @@
-export * from './components/ThemeButton';
+export * from './components';
 
 export * from './config';
