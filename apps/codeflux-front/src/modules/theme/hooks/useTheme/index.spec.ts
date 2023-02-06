@@ -4,6 +4,7 @@ import { describe, it, vi } from 'vitest';
 
 import { useTheme } from 'next-themes';
 
+import { assertObjectProperties } from '@satellite/tests';
 import { useTheme as useThemeTest, useThemeBase, UseThemeBaseProps } from '.';
 
 describe('useThemeBase', () => {
@@ -23,6 +24,17 @@ describe('useThemeBase', () => {
   beforeEach(() => {
     theme = '';
     vi.restoreAllMocks();
+  });
+
+  it('should return the correct object', () => {
+    const properties = [
+      'theme',
+      'setDarkTheme',
+      'setLightTheme',
+      'alternateTheme',
+    ];
+
+    assertObjectProperties(properties, result.current);
   });
 
   it('should pass `dark` to setTheme on setDarkTheme call', () => {

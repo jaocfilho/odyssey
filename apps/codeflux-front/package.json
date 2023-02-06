@@ -13,6 +13,7 @@
   "dependencies": {
     "@next/font": "^13.1.1",
     "@satellite/react-hooks": "workspace:*",
+    "@satellite/tests": "workspace:*",
     "milky-ui": "workspace:*",
     "next": "13.0.0",
     "next-auth": "^4.18.7",

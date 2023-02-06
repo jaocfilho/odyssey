@@ -18,6 +18,7 @@ importers:
       '@faker-js/faker': ^7.6.0
       '@next/font': ^13.1.1
       '@satellite/react-hooks': workspace:*
+      '@satellite/tests': workspace:*
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
       '@testing-library/react-hooks': ^8.0.1
@@ -43,6 +44,7 @@ importers:
     dependencies:
       '@next/font': 13.1.1
       '@satellite/react-hooks': link:../../packages/satellite-react-hooks
+      '@satellite/tests': link:../../packages/satellite-tests
       milky-ui: link:../../packages/milky-ui
       next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
       next-auth: 4.18.7_r5sq4deac3rmm2d5onhwvomqve
