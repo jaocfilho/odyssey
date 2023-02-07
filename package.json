@@ -13,7 +13,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "codeflux": "pnpm --filter @codeflux/front",
+    "turboflux": "pnpm --filter @turboflux/front",
     "milkyui": "pnpm --filter @milky-ui/core"
   },
   "devDependencies": {
