@@ -1,5 +1,5 @@
 {
-  "name": "@turboflux/front",
+  "name": "@turboflux/client",
   "version": "0.0.0",
   "private": true,
   "scripts": {
