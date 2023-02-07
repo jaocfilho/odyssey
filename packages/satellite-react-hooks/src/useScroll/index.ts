@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react';
 
-import { useNumberState } from '../useNumberState';
+import { useNumberState } from '../use-number-state';
 import { updateScrollPosition, elementIsHtmlElement } from './helpers';
 
 export type UseBaseScrollProps<T extends HTMLElement> = {

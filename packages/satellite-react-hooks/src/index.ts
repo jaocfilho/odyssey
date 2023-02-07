@@ -1,4 +1,4 @@
 export type { UseScrollProps, UseScrollReturn } from './useScroll';
 export { useScroll } from './useScroll';
 
-export * from './useNumberState';
+export * from './use-number-state';
