@@ -17,7 +17,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install -g pnpm && pnpm install turbo --global && pnpm i",
+	"postCreateCommand": "npm install -g pnpm turbo && pnpm i",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
