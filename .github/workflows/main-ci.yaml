@@ -42,12 +42,12 @@ jobs:
 
       - name: Install turborepo
         run: pnpm install turbo --global
-        env:
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Run tests
         run: pnpm test
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
