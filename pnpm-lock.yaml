@@ -10,65 +10,6 @@ importers:
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.3
 
-  apps/codeflux-front:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@faker-js/faker': ^7.6.0
-      '@next/font': ^13.1.1
-      '@satellite/react-hooks': workspace:*
-      '@satellite/tests': workspace:*
-      '@testing-library/jest-dom': ^5.16.5
-      '@testing-library/react': ^13.4.0
-      '@testing-library/react-hooks': ^8.0.1
-      '@testing-library/user-event': ^14.4.3
-      '@types/node': ^17.0.12
-      '@types/react': ^18.0.22
-      '@types/react-dom': ^18.0.7
-      '@types/testing-library__jest-dom': ^5.14.5
-      '@vitejs/plugin-react': ^2.2.0
-      eslint: 7.32.0
-      eslint-config-custom: workspace:*
-      milky-ui: workspace:*
-      next: 13.0.0
-      next-auth: ^4.18.7
-      next-themes: ^0.2.1
-      phosphor-react: ^1.4.1
-      react: 18.2.0
-      react-dom: 18.2.0
-      satellite: workspace:*
-      tsconfig: workspace:*
-      typescript: 4.9.5
-      vitest: ^0.25.0
-    dependencies:
-      '@next/font': 13.1.1
-      '@satellite/react-hooks': link:../../packages/satellite-react-hooks
-      '@satellite/tests': link:../../packages/satellite-tests
-      milky-ui: link:../../packages/milky-ui
-      next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
-      next-auth: 4.18.7_r5sq4deac3rmm2d5onhwvomqve
-      next-themes: 0.2.1_r5sq4deac3rmm2d5onhwvomqve
-      phosphor-react: 1.4.1_react@18.2.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      satellite: link:../../packages/satellite
-    devDependencies:
-      '@babel/core': 7.20.2
-      '@faker-js/faker': 7.6.0
-      '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-      '@testing-library/react-hooks': 8.0.1_2zx2umvpluuhvlq44va5bta2da
-      '@testing-library/user-event': 14.4.3
-      '@types/node': 17.0.45
-      '@types/react': 18.0.25
-      '@types/react-dom': 18.0.8
-      '@types/testing-library__jest-dom': 5.14.5
-      '@vitejs/plugin-react': 2.2.0
-      eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-      vitest: 0.25.0
-
   packages/eslint-config-custom:
     specifiers:
       eslint: ^7.23.0
@@ -280,6 +221,65 @@ importers:
 
   packages/tsconfig:
     specifiers: {}
+
+  turboflux/client:
+    specifiers:
+      '@babel/core': ^7.0.0
+      '@faker-js/faker': ^7.6.0
+      '@next/font': ^13.1.1
+      '@satellite/react-hooks': workspace:*
+      '@satellite/tests': workspace:*
+      '@testing-library/jest-dom': ^5.16.5
+      '@testing-library/react': ^13.4.0
+      '@testing-library/react-hooks': ^8.0.1
+      '@testing-library/user-event': ^14.4.3
+      '@types/node': ^17.0.12
+      '@types/react': ^18.0.22
+      '@types/react-dom': ^18.0.7
+      '@types/testing-library__jest-dom': ^5.14.5
+      '@vitejs/plugin-react': ^2.2.0
+      eslint: 7.32.0
+      eslint-config-custom: workspace:*
+      milky-ui: workspace:*
+      next: 13.0.0
+      next-auth: ^4.18.7
+      next-themes: ^0.2.1
+      phosphor-react: ^1.4.1
+      react: 18.2.0
+      react-dom: 18.2.0
+      satellite: workspace:*
+      tsconfig: workspace:*
+      typescript: 4.9.5
+      vitest: ^0.25.0
+    dependencies:
+      '@next/font': 13.1.1
+      '@satellite/react-hooks': link:../../packages/satellite-react-hooks
+      '@satellite/tests': link:../../packages/satellite-tests
+      milky-ui: link:../../packages/milky-ui
+      next: 13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
+      next-auth: 4.18.7_r5sq4deac3rmm2d5onhwvomqve
+      next-themes: 0.2.1_r5sq4deac3rmm2d5onhwvomqve
+      phosphor-react: 1.4.1_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      satellite: link:../../packages/satellite
+    devDependencies:
+      '@babel/core': 7.20.2
+      '@faker-js/faker': 7.6.0
+      '@testing-library/jest-dom': 5.16.5
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@testing-library/react-hooks': 8.0.1_2zx2umvpluuhvlq44va5bta2da
+      '@testing-library/user-event': 14.4.3
+      '@types/node': 17.0.45
+      '@types/react': 18.0.25
+      '@types/react-dom': 18.0.8
+      '@types/testing-library__jest-dom': 5.14.5
+      '@vitejs/plugin-react': 2.2.0
+      eslint: 7.32.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+      vitest: 0.25.0
 
 packages:
 
