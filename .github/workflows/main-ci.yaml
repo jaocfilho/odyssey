@@ -40,6 +40,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Install turborepo
+        run: pnpm install turbo --global
+
       - name: Install dependencies
         run: pnpm install
 
