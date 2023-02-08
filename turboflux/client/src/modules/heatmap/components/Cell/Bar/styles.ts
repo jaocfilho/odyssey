@@ -2,7 +2,8 @@ import { Flex, styled, createColorVariants, ComponentProps } from 'milky-ui';
 
 export const BarContainer = styled(Flex, {
   // Locally scoped tokens
-  $$roadmapCellRounded: '$space$1',
+  $$heatmapCellRounded: '$space$1',
+  $$heatmapCellMarginX: '$space$4',
 
   width: '100%',
   height: '100%',
@@ -10,14 +11,17 @@ export const BarContainer = styled(Flex, {
   variants: {
     type: {
       starting: {
-        roundedLeft: '$$roadmapCellRounded',
+        roundedLeft: '$$heatmapCellRounded',
+        ml: '$$heatmapCellMarginX',
       },
       progress: {},
       ending: {
-        roundedRight: '$$roadmapCellRounded',
+        roundedRight: '$$heatmapCellRounded',
+        mr: '$$heatmapCellMarginX',
       },
       solo: {
-        rounded: '$$roadmapCellRounded',
+        rounded: '$$heatmapCellRounded',
+        mx: '$$heatmapCellMarginX',
       },
       empty: {
         display: 'none',

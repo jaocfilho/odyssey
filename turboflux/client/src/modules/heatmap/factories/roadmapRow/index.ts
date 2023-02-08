@@ -6,6 +6,7 @@ import {
   generateRoadmapBar,
   GenerateRoadmapBarParams,
 } from '../roadmapBar';
+import { generateSoloCell } from '../roadmapCell';
 
 type GenerateRoadmapRowParams = {
   size?: number;
@@ -32,8 +33,9 @@ export const generateHeatmapRow = ({
   color = 'purple',
 }: GenerateHeatmapRowParams = {}) => {
   const cells = [
-    ...generateEmptyBar(), //3
-    ...generateRoadmapBar({ size: 6, color }), //9
+    generateSoloCell({ color }), // 1
+    ...generateEmptyBar(), //4
+    ...generateRoadmapBar({ size: 5, color }), //9
     ...generateEmptyBar({ size: 4 }), //13
     ...generateRoadmapBar({ size: 9, color }), //22
     ...generateEmptyBar({ size: 2 }), //24
