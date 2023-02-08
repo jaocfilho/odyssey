@@ -2,6 +2,7 @@ import { Flex } from 'milky-ui';
 
 import { generateHeatmapRow } from '../../factories';
 import { Calendar } from '../Calendar';
+import { HeatmapContextProvider } from '../HeatmapContextProvider';
 import { HeatmapGrid } from '../HeatmapGrid';
 import { HeatmapSidebar } from '../HeatmapSidebar';
 
@@ -21,7 +22,7 @@ const createFakeRows = () => {
   return rows;
 };
 
-export const Heatmap = () => {
+const HeatmapBase = () => {
   const rows = createFakeRows();
 
   return (
@@ -43,5 +44,13 @@ export const Heatmap = () => {
         <HeatmapGrid rows={rows} columns={30} />
       </Flex>
     </Flex>
+  );
+};
+
+export const Heatmap = () => {
+  return (
+    <HeatmapContextProvider>
+      <HeatmapBase />
+    </HeatmapContextProvider>
   );
 };
