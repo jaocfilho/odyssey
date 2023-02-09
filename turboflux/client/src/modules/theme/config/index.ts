@@ -1,4 +1,6 @@
-import { globalCss } from 'milky-ui';
+import { globalCss, standartThemeColors } from 'milky-ui';
+
+export const themeColors = standartThemeColors;
 
 export const globalStyles = globalCss({
   body: {

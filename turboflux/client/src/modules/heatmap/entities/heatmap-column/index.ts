@@ -1,3 +1,10 @@
 import { z } from 'zod';
 
-export const heatmapColumnSchema = z.object({});
+import { heatmapCellSchema } from '../heatmap-cell';
+
+export const heatmapColumnSchema = z.object({
+  date: z.date(),
+  cells: z.array(heatmapCellSchema),
+});
+
+export type HeatmapColumn = z.infer<typeof heatmapColumnSchema>;

@@ -22,6 +22,8 @@ import {
   textColorVariantsNames,
 } from '../styles/stiches/utils';
 
+export const standartThemeColors = colorsArray;
+
 type CreateColorVariantsParams = {
   variantFormat: (color: Color) => Css;
   excludedColors?: Color[];

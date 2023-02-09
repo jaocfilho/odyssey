@@ -16,4 +16,4 @@ export * from './styles/stiches';
 // Utils imports
 export type { ComponentProps, TColor } from './utils/types';
 
-export { createColorVariants } from './utils';
+export { createColorVariants, standartThemeColors } from './utils';
