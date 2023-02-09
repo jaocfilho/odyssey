@@ -1,1 +1,1 @@
-export * from './useHeatmapScroll';
+export * from './use-heatmap-columns';

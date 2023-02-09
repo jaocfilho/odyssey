@@ -22,7 +22,11 @@ const createFakeRows = () => {
   return rows;
 };
 
-const HeatmapBase = () => {
+type HeatmapBaseProps = {
+  columns: number;
+};
+
+const HeatmapBase = ({ columns }: HeatmapBaseProps) => {
   const rows = createFakeRows();
 
   return (
@@ -41,7 +45,7 @@ const HeatmapBase = () => {
         }}
       >
         <Calendar />
-        <HeatmapGrid rows={rows} columns={30} />
+        <HeatmapGrid rows={rows} columns={columns} />
       </Flex>
     </Flex>
   );
@@ -50,7 +54,7 @@ const HeatmapBase = () => {
 export const Heatmap = () => {
   return (
     <HeatmapContextProvider>
-      <HeatmapBase />
+      <HeatmapBase columns={30} />
     </HeatmapContextProvider>
   );
 };

@@ -251,6 +251,7 @@ importers:
       tsconfig: workspace:*
       typescript: 4.9.5
       vitest: ^0.25.0
+      zod: ^3.20.6
     dependencies:
       '@next/font': 13.1.1
       '@satellite/react-hooks': link:../../packages/satellite-react-hooks
@@ -263,6 +264,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       satellite: link:../../packages/satellite
+      zod: 3.20.6
     devDependencies:
       '@babel/core': 7.20.2
       '@faker-js/faker': 7.6.0
@@ -4427,3 +4429,7 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+
+  /zod/3.20.6:
+    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+    dev: false
