@@ -13,3 +13,4 @@ export const heatmapCellSchema = z.object({
 });
 
 export type HeatmapCell = z.infer<typeof heatmapCellSchema>;
+export type HeatmapCells = HeatmapCell[];
