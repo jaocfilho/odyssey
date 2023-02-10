@@ -1,23 +1,19 @@
 import { Flex } from 'milky-ui';
 
+import { Calendar } from '../Calendar';
+
 import {
   HeatmapGridColumns,
   HeatmapGridColumnsProps,
 } from '../HeatmapGridColumns';
-import { HeatmapGridRows } from '../HeatmapGridRows';
-import { TCellsRow } from '../../types';
 
-type HeatmapGridProps = Pick<HeatmapGridColumnsProps, 'columns'> & {
-  rows: TCellsRow[];
-};
+type HeatmapGridProps = Pick<HeatmapGridColumnsProps, 'columns'>;
 
-export const HeatmapGrid = ({ columns, rows }: HeatmapGridProps) => {
+export const HeatmapColumns = ({ columns }: HeatmapGridProps) => {
   return (
-    <Flex fullHeight fullWidth position="relative">
-      <Flex position="relative">
-        {/* <HeatmapGridRows rows={rows} /> */}
-        <HeatmapGridColumns columns={columns} />
-      </Flex>
+    <Flex fullHeight fullWidth direction="column">
+      <Calendar />
+      <HeatmapGridColumns columns={columns} />
     </Flex>
   );
 };

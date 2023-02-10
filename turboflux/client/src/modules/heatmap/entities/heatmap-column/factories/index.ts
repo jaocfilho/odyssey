@@ -3,32 +3,42 @@ import { faker } from '@faker-js/faker';
 import { mapRange } from 'satellite';
 
 import { HeatmapColumn, HeatmapColumns } from '..';
+import { HeatmapCell } from '../../heatmap-cell';
 import { createRandomHeatmapCell } from '../../heatmap-cell/factories';
 
-type CreateRandomHeatmapCellOptions = Pick<Partial<HeatmapColumn>, 'date'> & {
-  cells?: number;
-};
+type CreateRandomHeatmapColumnOptions = Pick<Partial<HeatmapColumn>, 'date'> &
+  Pick<Partial<HeatmapCell>, 'type'> & {
+    cells?: number;
+  };
 
 export const createRandomHeatmapColumn = (
-  options?: CreateRandomHeatmapCellOptions
+  options?: CreateRandomHeatmapColumnOptions
 ): HeatmapColumn => {
+  const cellType = options?.type;
+  const numCells = options?.cells;
+
   return {
     date: options?.date || faker.date.recent(),
     cells: mapRange(
-      () => createRandomHeatmapCell(),
-      options?.cells || 4
+      () => createRandomHeatmapCell({ type: cellType }),
+      numCells || 4
     ) as HeatmapColumn['cells'],
   };
 };
 
-export const createRandomHeatmapColumns = (options?: {
+type CreateRandomHeatmapColumnsOptions = CreateRandomHeatmapColumnOptions & {
   columns?: number;
-  cells?: number;
-}): HeatmapColumns => {
+};
+
+export const createRandomHeatmapColumns = (
+  options?: CreateRandomHeatmapColumnsOptions
+): HeatmapColumns => {
   const numColumns = options?.columns ?? 15;
+  const cellType = options?.type;
+  const numCells = options?.cells;
 
   return mapRange(
-    () => createRandomHeatmapColumn({ cells: options?.cells }),
+    () => createRandomHeatmapColumn({ cells: numCells, type: cellType }),
     numColumns
   ) as HeatmapColumns;
 };

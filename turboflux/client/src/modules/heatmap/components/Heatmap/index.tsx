@@ -1,32 +1,12 @@
 import { Flex } from 'milky-ui';
-import { createRandomHeatmapColumns } from '../../entities';
 
-import { generateHeatmapRow } from '../../factories';
-import { Calendar } from '../Calendar';
+import { createRandomHeatmapColumns } from '../../entities';
 import { HeatmapContextProvider } from '../HeatmapContextProvider';
-import { HeatmapGrid } from '../HeatmapGrid';
+import { HeatmapColumns } from '../HeatmapGrid';
 import { HeatmapSidebar } from '../HeatmapSidebar';
 
-const createFakeRows = () => {
-  const purple = generateHeatmapRow();
-  const crimson = generateHeatmapRow({ color: 'crimson' });
-  const cyan = generateHeatmapRow({ color: 'cyan' });
-  const red = generateHeatmapRow({ color: 'red' });
-
-  const rows = [
-    { cells: purple },
-    { cells: crimson },
-    { cells: cyan },
-    { cells: red },
-  ];
-
-  return rows;
-};
-
 const HeatmapBase = () => {
-  const rows = createFakeRows();
-
-  const columns = createRandomHeatmapColumns();
+  const columns = createRandomHeatmapColumns({ type: 'progress' });
 
   return (
     <Flex
@@ -38,13 +18,11 @@ const HeatmapBase = () => {
     >
       <HeatmapSidebar />
       <Flex
-        direction="column"
         css={{
           overflow: 'auto',
         }}
       >
-        <Calendar />
-        <HeatmapGrid rows={rows} columns={columns} />
+        <HeatmapColumns columns={columns} />
       </Flex>
     </Flex>
   );
