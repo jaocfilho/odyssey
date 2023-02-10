@@ -1,4 +1,5 @@
 import { Flex } from 'milky-ui';
+import { createRandomHeatmapColumns } from '../../entities';
 
 import { generateHeatmapRow } from '../../factories';
 import { Calendar } from '../Calendar';
@@ -22,12 +23,10 @@ const createFakeRows = () => {
   return rows;
 };
 
-type HeatmapBaseProps = {
-  columns: number;
-};
-
-const HeatmapBase = ({ columns }: HeatmapBaseProps) => {
+const HeatmapBase = () => {
   const rows = createFakeRows();
+
+  const columns = createRandomHeatmapColumns();
 
   return (
     <Flex
@@ -54,7 +53,7 @@ const HeatmapBase = ({ columns }: HeatmapBaseProps) => {
 export const Heatmap = () => {
   return (
     <HeatmapContextProvider>
-      <HeatmapBase columns={30} />
+      <HeatmapBase />
     </HeatmapContextProvider>
   );
 };

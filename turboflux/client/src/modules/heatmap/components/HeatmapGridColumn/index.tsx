@@ -1,11 +1,16 @@
 import { Flex } from 'milky-ui';
 
-import { CellContainer } from '../CellContainer';
+import { HeatmapColumn } from '../../entities';
+import { Cell } from '../Cell';
 
-export const HeatmapGridColumn = () => {
+type HeatmapGridColumnProps = Pick<HeatmapColumn, 'cells'>;
+
+export const HeatmapGridColumn = ({ cells }: HeatmapGridColumnProps) => {
   return (
-    <CellContainer height="100%">
-      <Flex br={1} brStyle="solid" brColor="$gray6" />
-    </CellContainer>
+    <Flex br={1} brStyle="solid" brColor="$gray6" direction="column" fullHeight>
+      {cells.map((cell, index) => (
+        <Cell key={index} {...cell} />
+      ))}
+    </Flex>
   );
 };

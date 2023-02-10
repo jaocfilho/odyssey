@@ -8,3 +8,4 @@ export const heatmapColumnSchema = z.object({
 });
 
 export type HeatmapColumn = z.infer<typeof heatmapColumnSchema>;
+export type HeatmapColumns = HeatmapColumn[];
