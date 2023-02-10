@@ -6,5 +6,15 @@ export const listCommitsService = async () => {
     repo: 'odyssey',
   });
 
-  console.log(response);
+  return response;
+};
+
+export const getCommitService = async () => {
+  const response = await octokit.rest.repos.getCommit({
+    owner: 'jaocfilho',
+    repo: 'odyssey',
+    ref: '72826d8b808637814be64cf8ba23f012bea293b7',
+  });
+
+  return response;
 };

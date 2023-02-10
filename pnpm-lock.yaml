@@ -227,6 +227,7 @@ importers:
       '@babel/core': ^7.0.0
       '@faker-js/faker': ^7.6.0
       '@next/font': ^13.1.1
+      '@octokit/types': ^9.0.0
       '@satellite/react-hooks': workspace:*
       '@satellite/tests': workspace:*
       '@testing-library/jest-dom': ^5.16.5
@@ -270,6 +271,7 @@ importers:
     devDependencies:
       '@babel/core': 7.20.2
       '@faker-js/faker': 7.6.0
+      '@octokit/types': 9.0.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-hooks': 8.0.1_2zx2umvpluuhvlq44va5bta2da
@@ -1001,7 +1003,6 @@ packages:
 
   /@octokit/openapi-types/16.0.0:
     resolution: {integrity: sha512-JbFWOqTJVLHZSUUoF4FzAZKYtqdxWu9Z5m2QQnOyEa04fOFljvyh7D3GYKbfuaSWisqehImiVIMG4eyJeP5VEA==}
-    dev: false
 
   /@octokit/plugin-paginate-rest/6.0.0_@octokit+core@4.2.0:
     resolution: {integrity: sha512-Sq5VU1PfT6/JyuXPyt04KZNVsFOSBaYOAq2QRZUwzVlI10KFvcbUo8lR258AAQL1Et60b0WuVik+zOWKLuDZxw==}
@@ -1073,7 +1074,6 @@ packages:
     resolution: {integrity: sha512-LUewfj94xCMH2rbD5YJ+6AQ4AVjFYTgpp6rboWM5T7N3IsIF65SBEOVcYMGAEzO/kKNiNaW4LoWtoThOhH06gw==}
     dependencies:
       '@octokit/openapi-types': 16.0.0
-    dev: false
 
   /@octokit/webhooks-methods/3.0.2:
     resolution: {integrity: sha512-Vlnv5WBscf07tyAvfDbp7pTkMZUwk7z7VwEF32x6HqI+55QRwBTcT+D7DDjZXtad/1dU9E32x0HmtDlF9VIRaQ==}
