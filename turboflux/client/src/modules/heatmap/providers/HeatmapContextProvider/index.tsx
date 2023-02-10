@@ -1,9 +1,10 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 
+import { HeatmapColumns } from '../../entities';
 import { useHeatmapColumns } from '../../hooks';
 
 type HeatmapContextValue = {
-  columns: number;
+  columns: HeatmapColumns;
 };
 
 const heatmapContext = createContext({} as HeatmapContextValue);
@@ -23,3 +24,5 @@ export const HeatmapContextProvider = ({
     <heatmapContext.Provider value={value}>{children}</heatmapContext.Provider>
   );
 };
+
+export const useHeatmap = () => useContext(heatmapContext);
