@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import { mapRange } from 'satellite';
 
-import { cellColors, cellTypes, HeatmapCell, HeatmapCells } from '..';
+import { cellColors, cellTypes, HeatmapCell, HeatmapCells } from '../entity';
 
 type CreateRandomHeatmapCellOptions = Partial<HeatmapCell>;
 

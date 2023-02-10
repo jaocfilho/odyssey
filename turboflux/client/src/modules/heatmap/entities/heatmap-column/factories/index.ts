@@ -4,7 +4,7 @@ import { mapRange } from 'satellite';
 
 import { HeatmapColumn, HeatmapColumns } from '..';
 import { HeatmapCell } from '../../heatmap-cell';
-import { createRandomHeatmapCells } from '../../heatmap-cell/factories';
+import { createRandomHeatmapCells } from '../../heatmap-cell';
 
 type CreateRandomHeatmapColumnOptions = Pick<Partial<HeatmapColumn>, 'date'> &
   Pick<Partial<HeatmapCell>, 'type'> & {

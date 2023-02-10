@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { heatmapCellSchema } from '../heatmap-cell';
+import { heatmapCellSchema } from '../heatmap-cell/entity';
 
 export const heatmapColumnSchema = z.object({
   date: z.date(),
