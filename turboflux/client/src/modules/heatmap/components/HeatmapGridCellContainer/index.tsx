@@ -15,7 +15,7 @@ type CellContainerProps = {
  * different components on the heatmap.
  *
  */
-export const CellContainer = ({
+export const HeatmapGridCellContainer = ({
   children,
   height = HEATMAP_CELL_HEIGHT,
   width = HEATMAP_CELL_WIDTH,

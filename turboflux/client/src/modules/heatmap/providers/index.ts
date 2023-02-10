@@ -1,1 +1,1 @@
-export * from './HeatmapContextProvider';
+export * from './heatmap-context';

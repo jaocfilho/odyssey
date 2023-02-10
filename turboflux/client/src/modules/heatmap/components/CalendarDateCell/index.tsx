@@ -1,6 +1,6 @@
 import { Flex, Text } from 'milky-ui';
 
-import { CellContainer } from '../CellContainer';
+import { HeatmapGridCellContainer } from '../HeatmapGridCellContainer';
 
 type TimelineDateCellProps = {
   value: string;
@@ -8,7 +8,7 @@ type TimelineDateCellProps = {
 
 export const CalendarDateCell = ({ value }: TimelineDateCellProps) => {
   return (
-    <CellContainer>
+    <HeatmapGridCellContainer>
       <Flex
         fullWidth
         justifyContent="center"
@@ -17,6 +17,6 @@ export const CalendarDateCell = ({ value }: TimelineDateCellProps) => {
       >
         <Text>{value}</Text>
       </Flex>
-    </CellContainer>
+    </HeatmapGridCellContainer>
   );
 };

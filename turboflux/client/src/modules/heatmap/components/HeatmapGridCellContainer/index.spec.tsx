@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 
 import { describe, expect, it } from 'vitest';
 
-import { CellContainer } from '.';
+import { HeatmapGridCellContainer } from '.';
 
-describe('CellContainer', () => {
+describe('HeatmapGridCellContainer', () => {
   it('should render', () => {
-    render(<CellContainer>test</CellContainer>);
+    render(<HeatmapGridCellContainer>test</HeatmapGridCellContainer>);
 
     expect(screen.getByText('test')).toBeInTheDocument();
   });
