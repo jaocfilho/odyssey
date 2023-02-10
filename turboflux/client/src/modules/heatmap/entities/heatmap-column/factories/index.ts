@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import { mapRange } from 'satellite';
 
-import { HeatmapColumn, HeatmapColumns } from '..';
+import { HeatmapColumn, HeatmapColumns } from '../entity';
 import { HeatmapCell } from '../../heatmap-cell';
 import { createRandomHeatmapCells } from '../../heatmap-cell';
 
