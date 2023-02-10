@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, vi } from 'vitest';
 
 import { HeatmapGridColumn } from '../HeatmapGridColumn';
 import { HeatmapGridColumns } from '.';
+import { createRandomHeatmapColumns } from '../../entities';
 
 describe('HeatmapGridColumns', () => {
   vi.mock('../HeatmapGridColumn', () => ({
@@ -11,18 +12,20 @@ describe('HeatmapGridColumns', () => {
   }));
 
   beforeEach(() => {
-    vi.restoreAllMocks();
+    vi.resetAllMocks();
   });
 
   it('should render', () => {
-    const { container } = render(<HeatmapGridColumns columns={1} />);
+    const columns = createRandomHeatmapColumns();
+
+    const { container } = render(<HeatmapGridColumns columns={columns} />);
     expect(container).toBeInTheDocument();
   });
 
   it('should call a HeatmapGridColumn for each column', () => {
-    const columns = 30;
+    const columns = createRandomHeatmapColumns();
 
     render(<HeatmapGridColumns columns={columns} />);
-    expect(HeatmapGridColumn).toHaveBeenCalledTimes(columns);
+    expect(HeatmapGridColumn).toHaveBeenCalledTimes(columns.length);
   });
 });

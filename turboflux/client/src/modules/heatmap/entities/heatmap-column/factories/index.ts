@@ -4,13 +4,16 @@ import { mapRange } from 'satellite';
 
 import { HeatmapColumn, HeatmapColumns } from '..';
 import { HeatmapCell } from '../../heatmap-cell';
-import { createRandomHeatmapCell } from '../../heatmap-cell/factories';
+import { createRandomHeatmapCells } from '../../heatmap-cell/factories';
 
 type CreateRandomHeatmapColumnOptions = Pick<Partial<HeatmapColumn>, 'date'> &
   Pick<Partial<HeatmapCell>, 'type'> & {
     cells?: number;
   };
 
+/**
+ * This factory is intended to be used by tests only.
+ */
 export const createRandomHeatmapColumn = (
   options?: CreateRandomHeatmapColumnOptions
 ): HeatmapColumn => {
@@ -19,10 +22,7 @@ export const createRandomHeatmapColumn = (
 
   return {
     date: options?.date || faker.date.recent(),
-    cells: mapRange(
-      () => createRandomHeatmapCell({ type: cellType }),
-      numCells || 4
-    ) as HeatmapColumn['cells'],
+    cells: createRandomHeatmapCells({ cells: numCells, type: cellType }),
   };
 };
 
@@ -30,6 +30,9 @@ type CreateRandomHeatmapColumnsOptions = CreateRandomHeatmapColumnOptions & {
   columns?: number;
 };
 
+/**
+ * This factory is intended to be used by tests only.
+ */
 export const createRandomHeatmapColumns = (
   options?: CreateRandomHeatmapColumnsOptions
 ): HeatmapColumns => {

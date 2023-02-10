@@ -1,7 +1,6 @@
 import { Flex } from 'milky-ui';
 
 import { Calendar } from '../Calendar';
-
 import {
   HeatmapGridColumns,
   HeatmapGridColumnsProps,

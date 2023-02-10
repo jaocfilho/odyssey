@@ -2,7 +2,7 @@ import { Flex } from 'milky-ui';
 
 import { createRandomHeatmapColumns } from '../../entities';
 import { HeatmapContextProvider } from '../HeatmapContextProvider';
-import { HeatmapColumns } from '../HeatmapGrid';
+import { HeatmapColumns } from '../HeatmapColumns';
 import { HeatmapSidebar } from '../HeatmapSidebar';
 
 const HeatmapBase = () => {

@@ -1,9 +1,14 @@
 import { faker } from '@faker-js/faker';
 
-import { cellColors, cellTypes, HeatmapCell } from '..';
+import { mapRange } from 'satellite';
+
+import { cellColors, cellTypes, HeatmapCell, HeatmapCells } from '..';
 
 type CreateRandomHeatmapCellOptions = Partial<HeatmapCell>;
 
+/**
+ * This factory is intended to be used by tests only.
+ */
 export function createRandomHeatmapCell(
   options?: CreateRandomHeatmapCellOptions
 ): HeatmapCell {
@@ -12,3 +17,22 @@ export function createRandomHeatmapCell(
     type: options?.type || faker.helpers.arrayElement(cellTypes),
   };
 }
+
+type CreateRandomHeatmapCellsOptions = CreateRandomHeatmapCellOptions & {
+  cells?: number;
+};
+
+/**
+ * This factory is intended to be used by tests only.
+ */
+export const createRandomHeatmapCells = (
+  options?: CreateRandomHeatmapCellsOptions
+): HeatmapCells => {
+  const cellType = options?.type;
+  const numCells = options?.cells;
+
+  return mapRange(
+    () => createRandomHeatmapCell({ type: cellType }),
+    numCells || 4
+  ) as HeatmapCells;
+};
