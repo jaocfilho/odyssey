@@ -1,5 +1,18 @@
+import {
+  GetResponseTypeFromEndpointMethod,
+  GetResponseDataTypeFromEndpointMethod,
+} from '@octokit/types';
+
 import { getRepositoriesEndpoints } from '../../../../lib';
 import { CommitInput, Commit, createCommitService } from '../../entities';
+
+const repositories = getRepositoriesEndpoints();
+
+export type OcktokitGetCommitFn = typeof repositories.getCommit;
+export type GetCommitResponse =
+  GetResponseTypeFromEndpointMethod<OcktokitGetCommitFn>;
+type GetCommitResponseData =
+  GetResponseDataTypeFromEndpointMethod<OcktokitGetCommitFn>;
 
 type GetCommitParams = {
   owner: string;
@@ -18,6 +31,15 @@ export const getCommit = async ({ owner, repo, ref }: GetCommitParams) => {
   return response;
 };
 
+export const handleResponse = (response: GetCommitResponse): Commit | null => {
+  if (response.status === 200) {
+    const commit = createCommitService(response.data as CommitInput);
+    return commit;
+  }
+
+  return null;
+};
+
 type GetCommitServiceParams = GetCommitParams;
 
 export const getCommitService = async ({
@@ -31,10 +53,5 @@ export const getCommitService = async ({
     ref,
   });
 
-  if (response.status === 200) {
-    const commit = createCommitService(response.data as CommitInput);
-    return commit;
-  }
-
-  return null;
+  return handleResponse(response);
 };

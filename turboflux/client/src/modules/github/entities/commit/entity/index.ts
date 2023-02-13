@@ -1,14 +1,5 @@
 import { z } from 'zod';
 
-import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
-
-import { getRepositoriesEndpoints } from '../../../../../lib';
-
-const repositories = getRepositoriesEndpoints();
-export type CommitResponseData = GetResponseDataTypeFromEndpointMethod<
-  typeof repositories.getCommit
->;
-
 const authorSchema = z.object({
   name: z.string(),
   email: z.string().email(),
