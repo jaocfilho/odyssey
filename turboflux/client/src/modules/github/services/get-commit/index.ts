@@ -1,7 +1,4 @@
-import {
-  GetResponseTypeFromEndpointMethod,
-  GetResponseDataTypeFromEndpointMethod,
-} from '@octokit/types';
+import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
 import { getRepositoriesEndpoints } from '../../../../lib';
 import { CommitInput, Commit, createCommitService } from '../../entities';
@@ -11,8 +8,6 @@ const repositories = getRepositoriesEndpoints();
 export type OcktokitGetCommitFn = typeof repositories.getCommit;
 export type GetCommitResponse =
   GetResponseTypeFromEndpointMethod<OcktokitGetCommitFn>;
-type GetCommitResponseData =
-  GetResponseDataTypeFromEndpointMethod<OcktokitGetCommitFn>;
 
 type GetCommitParams = {
   owner: string;

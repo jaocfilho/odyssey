@@ -6,7 +6,13 @@ const authorSchema = z.object({
   date: z.string().datetime(),
 });
 
+export type AuthorInput = z.input<typeof authorSchema>;
+export type Author = z.output<typeof authorSchema>;
+
 const commiterSchema = authorSchema;
+
+export type CommiterInput = z.input<typeof commiterSchema>;
+export type Commiter = z.output<typeof commiterSchema>;
 
 export const commitSchema = z.object({
   sha: z.string(),

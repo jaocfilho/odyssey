@@ -9,14 +9,14 @@ type CreateRandomHeatmapCellOptions = Partial<HeatmapCell>;
 /**
  * This factory is intended to be used by tests only.
  */
-export function createRandomHeatmapCell(
+export const createRandomHeatmapCell = (
   options?: CreateRandomHeatmapCellOptions
-): HeatmapCell {
+): HeatmapCell => {
   return {
     color: options?.color || faker.helpers.arrayElement(cellColors),
     type: options?.type || faker.helpers.arrayElement(cellTypes),
   };
-}
+};
 
 type CreateRandomHeatmapCellsOptions = CreateRandomHeatmapCellOptions & {
   cells?: number;
