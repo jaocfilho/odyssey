@@ -2,7 +2,12 @@ import { z } from 'zod';
 
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 
-import { octokit } from '../../../../../lib';
+import { getRepositoriesEndpoints } from '../../../../../lib';
+
+const repositories = getRepositoriesEndpoints();
+export type CommitResponseData = GetResponseDataTypeFromEndpointMethod<
+  typeof repositories.getCommit
+>;
 
 const authorSchema = z.object({
   name: z.string(),
@@ -16,15 +21,12 @@ export const commitSchema = z.object({
   sha: z.string(),
   commit: z.object({
     author: authorSchema,
+    message: z.string(),
     committer: commiterSchema,
     url: z.string().url(),
   }),
 });
 
 export type CommitInput = z.input<typeof commitSchema>;
-export type CommitOutput = z.output<typeof commitSchema>;
-
-export type Commit = GetResponseDataTypeFromEndpointMethod<
-  typeof octokit.rest.repos.getCommit
->;
+export type Commit = z.output<typeof commitSchema>;
 export type Commits = Commit[];
