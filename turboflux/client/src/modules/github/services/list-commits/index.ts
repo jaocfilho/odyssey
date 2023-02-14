@@ -1,4 +1,4 @@
-import { getRepositoriesEndpoints } from '../../../../lib';
+import { getRepositoriesEndpoints } from '../../../../lib/octokit';
 
 export const listCommitsService = async () => {
   const repositories = getRepositoriesEndpoints();

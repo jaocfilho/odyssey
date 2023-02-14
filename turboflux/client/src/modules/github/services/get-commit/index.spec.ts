@@ -1,11 +1,11 @@
 import { describe, it, vi } from 'vitest';
 
 import { getCommit, GetCommitResponse, handleResponse } from '.';
-import { getRepositoriesEndpoints } from '../../../../lib';
+import { getRepositoriesEndpoints } from '../../../../lib/octokit';
 import { createCommitService } from '../../entities';
 
 describe('getCommit', () => {
-  vi.mock('../../../../lib', () => ({
+  vi.mock('../../../../lib/octokit', () => ({
     getRepositoriesEndpoints: vi.fn(),
   }));
 

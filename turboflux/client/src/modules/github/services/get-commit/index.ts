@@ -1,6 +1,6 @@
 import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
-import { getRepositoriesEndpoints } from '../../../../lib';
+import { getRepositoriesEndpoints } from '../../../../lib/octokit';
 import { CommitInput, Commit, createCommitService } from '../../entities';
 
 const repositories = getRepositoriesEndpoints();
