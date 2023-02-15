@@ -1,10 +1,18 @@
 import { getRepositoriesEndpoints } from '../../../../lib/octokit';
 
-export const listCommitsService = async () => {
+type ListCommitsServiceParams = {
+  owner: string;
+  repo: string;
+};
+
+export const listCommitsService = async ({
+  owner,
+  repo,
+}: ListCommitsServiceParams) => {
   const repositories = getRepositoriesEndpoints();
   const response = await repositories.listCommits({
-    owner: 'jaocfilho',
-    repo: 'odyssey',
+    owner,
+    repo,
   });
 
   return response;

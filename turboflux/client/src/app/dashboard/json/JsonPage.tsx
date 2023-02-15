@@ -12,10 +12,12 @@ export default function JsonPage() {
   useEffect(() => {
     const getData = async () => {
       const ref = '72826d8b808637814be64cf8ba23f012bea293b7';
+      const owner = 'jaocfilho';
+      const repo = 'odyssey';
 
       const commit = await getCommitService({
-        owner: 'jaocfilho',
-        repo: 'odyssey',
+        owner,
+        repo,
         ref,
       });
 
