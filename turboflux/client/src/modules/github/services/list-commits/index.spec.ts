@@ -1,21 +1,31 @@
 import { describe, it, vi } from 'vitest';
-import { listCommitsService } from '.';
 
 import { getRepositoriesEndpoints } from '../../../../lib/octokit';
+import { handleResponse } from './handleResponse';
+import { listCommitsService } from '.';
 
 describe('listCommitsService', () => {
   vi.mock('../../../../lib/octokit', () => ({
     getRepositoriesEndpoints: vi.fn(),
   }));
 
-  it('should request to the correct endpoint', async () => {
-    const listCommitsMock = vi.fn();
-    vi.mocked(getRepositoriesEndpoints).mockReturnValue({
-      // @ts-expect-error
-      listCommits: listCommitsMock,
-    });
+  vi.mock('./handleResponse', () => ({
+    handleResponse: vi.fn(),
+  }));
 
-    await listCommitsService({ owner: 'any', repo: 'any' });
+  const listCommitsMock = vi.fn();
+  vi.mocked(getRepositoriesEndpoints).mockReturnValue({
+    // @ts-expect-error
+    listCommits: listCommitsMock,
+  });
+
+  it('should request to the correct endpoint', () => {
+    listCommitsService({ owner: 'any', repo: 'any' });
     expect(listCommitsMock).toHaveBeenCalled();
+  });
+
+  it('should call handleResponse', () => {
+    listCommitsService({ owner: 'any', repo: 'any' });
+    expect(handleResponse).toHaveBeenCalled();
   });
 });
