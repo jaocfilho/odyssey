@@ -2,9 +2,9 @@ import { describe, it, vi } from 'vitest';
 
 import { getRepositoriesEndpoints } from '../../../../lib/octokit';
 import { handleResponse } from './handleResponse';
-import { listCommitsService } from '.';
+import { listCommitsUseCase } from '.';
 
-describe('listCommitsService', () => {
+describe('listCommitsUseCase', () => {
   vi.mock('../../../../lib/octokit', () => ({
     getRepositoriesEndpoints: vi.fn(),
   }));
@@ -20,12 +20,12 @@ describe('listCommitsService', () => {
   });
 
   it('should request to the correct endpoint', () => {
-    listCommitsService({ owner: 'any', repo: 'any' });
+    listCommitsUseCase({ owner: 'any', repo: 'any' });
     expect(listCommitsMock).toHaveBeenCalled();
   });
 
   it('should call handleResponse', () => {
-    listCommitsService({ owner: 'any', repo: 'any' });
+    listCommitsUseCase({ owner: 'any', repo: 'any' });
     expect(handleResponse).toHaveBeenCalled();
   });
 });
