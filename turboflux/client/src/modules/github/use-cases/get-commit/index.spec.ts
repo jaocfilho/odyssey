@@ -1,40 +1,31 @@
 import { describe, it, vi } from 'vitest';
 
-import { getCommit, GetCommitResponse, handleResponse } from '.';
+import { handleResponse } from './handleResponse';
 import { getRepositoriesEndpoints } from '../../../../lib/octokit';
-import { createCommitService } from '../../entities';
+import { getCommitUseCase } from '.';
 
-describe('getCommit', () => {
+describe('getCommitUseCase', () => {
   vi.mock('../../../../lib/octokit', () => ({
     getRepositoriesEndpoints: vi.fn(),
   }));
 
-  it('should request to the correct endpoint', async () => {
-    const getCommitMock = vi.fn();
-    vi.mocked(getRepositoriesEndpoints).mockReturnValue({
-      // @ts-expect-error
-      getCommit: getCommitMock,
-    });
-
-    await getCommit({ owner: 'any', ref: 'any', repo: 'any' });
-    expect(getCommitMock).toHaveBeenCalled();
-  });
-});
-
-describe('handleResponse', () => {
-  vi.mock('../../entities', () => ({
-    createCommitService: vi.fn(),
+  vi.mock('./handleResponse', () => ({
+    handleResponse: vi.fn(),
   }));
 
-  it('should return null if response is !== 200', () => {
-    const response = { status: 100 };
-    const commit = handleResponse(response as GetCommitResponse);
-    expect(commit).toBeNull();
+  const getCommitMock = vi.fn();
+  vi.mocked(getRepositoriesEndpoints).mockReturnValue({
+    // @ts-expect-error
+    getCommit: getCommitMock,
   });
 
-  it('should call `createCommitService` if status is 200', () => {
-    const response = { status: 200, data: {} };
-    handleResponse(response as GetCommitResponse);
-    expect(createCommitService).toHaveBeenCalled();
+  it('should request to the correct endpoint', async () => {
+    await getCommitUseCase({ owner: 'any', ref: 'any', repo: 'any' });
+    expect(getCommitMock).toHaveBeenCalled();
+  });
+
+  it('should call handleResponse', () => {
+    getCommitUseCase({ owner: 'any', ref: 'any', repo: 'any' });
+    expect(handleResponse).toHaveBeenCalled();
   });
 });
