@@ -1,4 +1,4 @@
-import { describe, it, vi } from 'vitest';
+import { describe, it, vi, expect } from 'vitest';
 
 import { ListCommitsResponse } from '../types';
 import { parseData } from '../parseData';

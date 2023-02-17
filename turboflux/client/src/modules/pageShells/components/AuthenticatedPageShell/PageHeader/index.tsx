@@ -2,7 +2,7 @@
 
 import { Flex } from 'milky-ui';
 
-import { Logo } from '../../../../../components/Logo';
+import { Logo } from '../../../../../components';
 import { ActionsArea } from '../ActionsArea';
 
 export const PageHeader = () => {

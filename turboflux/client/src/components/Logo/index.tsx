@@ -1,5 +1,6 @@
-import { Box } from 'milky-ui';
 import Image from 'next/image';
+
+import { Box } from 'milky-ui';
 
 import logo from '../../../public/logo.svg';
 
