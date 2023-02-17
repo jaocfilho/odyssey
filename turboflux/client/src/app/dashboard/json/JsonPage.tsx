@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 
 import { Flex, JsonView } from 'milky-ui';
+import { Commit } from '@orbital/github';
 
-import { Commit, getCommitService } from '../../../modules/github';
+import { github } from '../../../lib/github';
 
 export default function JsonPage() {
   const [data, setData] = useState<Commit | null>(null);
@@ -15,7 +16,7 @@ export default function JsonPage() {
       const owner = 'jaocfilho';
       const repo = 'odyssey';
 
-      const commit = await getCommitService({
+      const commit = await github.repositories.getCommit({
         owner,
         repo,
         ref,

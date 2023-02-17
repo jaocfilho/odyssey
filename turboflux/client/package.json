@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.1",
+    "@orbital/github": "workspace:*",
     "@satellite/react-hooks": "workspace:*",
     "@satellite/tests": "workspace:*",
     "milky-ui": "workspace:*",
