@@ -10,8 +10,8 @@ import {
 export class Repositories {
   constructor(private repos: Repos) {}
 
-  async listCommits({ owner, repo }: ListCommitsUseCaseParams) {
-    return await listCommitsUseCase({ owner, repo }, this.repos);
+  async listCommits(params: ListCommitsUseCaseParams) {
+    return await listCommitsUseCase(params, this.repos);
   }
 
   async getCommit({ owner, repo, ref }: GetCommitUseCaseParams) {

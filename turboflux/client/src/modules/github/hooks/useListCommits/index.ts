@@ -11,10 +11,12 @@ export const useListCommits = () => {
     const getData = async () => {
       const owner = 'jaocfilho';
       const repo = 'odyssey';
+      const path = './turboflux/client';
 
       const newCommits = await github.repositories.listCommits({
         owner,
         repo,
+        path,
       });
 
       setCommits(newCommits);

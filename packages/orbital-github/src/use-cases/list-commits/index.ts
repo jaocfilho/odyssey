@@ -1,19 +1,14 @@
 import { Repos } from '../../types';
 import { handleResponse } from './handleResponse';
+import { ListCommitsRequestParams } from './types';
 
-export type ListCommitsUseCaseParams = {
-  owner: string;
-  repo: string;
-};
+export type ListCommitsUseCaseParams = ListCommitsRequestParams;
 
 export const listCommitsUseCase = async (
-  { owner, repo }: ListCommitsUseCaseParams,
+  params: ListCommitsUseCaseParams,
   repositories: Repos
 ) => {
-  const response = await repositories.listCommits({
-    owner,
-    repo,
-  });
+  const response = await repositories.listCommits(params);
 
   return handleResponse(response);
 };
