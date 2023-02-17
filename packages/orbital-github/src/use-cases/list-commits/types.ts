@@ -1,11 +1,11 @@
+import { Octokit } from 'octokit';
 import {
   GetResponseTypeFromEndpointMethod,
   GetResponseDataTypeFromEndpointMethod,
 } from '@octokit/types';
 
-import { getRepositoriesEndpoints } from '../../../../lib/octokit';
-
-const repositories = getRepositoriesEndpoints();
+const octokit = new Octokit();
+const repositories = octokit.rest.repos;
 
 export type OcktokitListCommitsFn = typeof repositories.listCommits;
 export type ListCommitsResponse =

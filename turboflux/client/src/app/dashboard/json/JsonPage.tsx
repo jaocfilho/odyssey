@@ -2,14 +2,14 @@
 
 import { Flex, JsonView } from 'milky-ui';
 
-import { useGetCommit } from '../../../modules/github';
+import { useListCommits } from '../../../modules/github';
 
 export default function JsonPage() {
-  const { commit } = useGetCommit();
+  const { commits } = useListCommits();
 
   return (
     <Flex fullWidth>
-      <JsonView value={commit} />
+      <JsonView value={commits} />
     </Flex>
   );
 }
