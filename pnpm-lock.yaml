@@ -108,6 +108,23 @@ importers:
       tsconfig: link:../tsconfig
       typescript: 4.9.5
 
+  packages/orbital-dayjs:
+    specifiers:
+      dayjs: ^1.11.7
+      eslint: 7.32.0
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+      typescript: 4.9.5
+      vitest: ^0.25.0
+    dependencies:
+      dayjs: 1.11.7
+    devDependencies:
+      eslint: 7.32.0
+      eslint-config-custom: link:../eslint-config-custom
+      tsconfig: link:../tsconfig
+      typescript: 4.9.5
+      vitest: 0.25.0
+
   packages/orbital-github:
     specifiers:
       '@faker-js/faker': ^7.6.0
@@ -2160,6 +2177,10 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
     dev: true
+
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+    dev: false
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}

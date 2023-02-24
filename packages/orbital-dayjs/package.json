@@ -1,0 +1,20 @@
+{
+  "name": "@orbital/dayjs",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5",
+    "vitest": "^0.25.0"
+  }
+}
