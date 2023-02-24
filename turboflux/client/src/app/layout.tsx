@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Roboto_Flex } from '@next/font/google';
+import { Roboto_Flex } from 'next/font/google';
 
 import RootProviders from './providers';
 

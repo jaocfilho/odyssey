@@ -9,8 +9,8 @@ const nextConfig = {
   },
 
   reactStrictMode: true,
+  transpilePackages: ['milky-ui'],
   experimental: {
-    transpilePackages: ['milky-ui'],
     appDir: true,
   },
 };
