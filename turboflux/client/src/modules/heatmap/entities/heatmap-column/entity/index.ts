@@ -4,7 +4,7 @@ import { heatmapCellSchema } from '../../heatmap-cell/entity';
 
 export const heatmapColumnSchema = z.object({
   date: z.date(),
-  cells: z.array(heatmapCellSchema),
+  cells: z.array(heatmapCellSchema).default([]),
 });
 
 export type HeatmapColumnInput = z.input<typeof heatmapColumnSchema>;

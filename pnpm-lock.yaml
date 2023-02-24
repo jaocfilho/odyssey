@@ -267,6 +267,7 @@ importers:
       '@babel/core': ^7.0.0
       '@faker-js/faker': ^7.6.0
       '@octokit/types': ^9.0.0
+      '@orbital/dayjs': workspace:*
       '@orbital/github': workspace:*
       '@satellite/react-hooks': workspace:*
       '@satellite/tests': workspace:*
@@ -295,6 +296,7 @@ importers:
       vitest: ^0.25.0
       zod: ^3.20.6
     dependencies:
+      '@orbital/dayjs': link:../../packages/orbital-dayjs
       '@orbital/github': link:../../packages/orbital-github
       '@satellite/react-hooks': link:../../packages/satellite-react-hooks
       '@satellite/tests': link:../../packages/satellite-tests

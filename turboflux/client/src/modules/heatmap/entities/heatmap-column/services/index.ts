@@ -1,10 +1,9 @@
 import { HeatmapColumnInput, heatmapColumnSchema } from '../entity';
 
-export const createHeatmapColumnService = ({
+export const createHeatmapColumn = ({
   date,
   cells,
 }: HeatmapColumnInput) => {
-  // TODO tests
   const heatmapCell = heatmapColumnSchema.parse({ date, cells });
 
   return heatmapCell;

@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@orbital/dayjs": "workspace:*",
     "@orbital/github": "workspace:*",
     "@satellite/react-hooks": "workspace:*",
     "@satellite/tests": "workspace:*",

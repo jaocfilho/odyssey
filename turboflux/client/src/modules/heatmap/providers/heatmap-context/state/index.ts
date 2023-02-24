@@ -1,1 +1,7 @@
-export type HeatmapState = {};
+import { HeatmapColumns } from "../../../entities";
+
+export type HeatmapState = {
+  columns: HeatmapColumns;
+};
+
+const initialState = {};
