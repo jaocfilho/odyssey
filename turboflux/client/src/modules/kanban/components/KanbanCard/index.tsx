@@ -1,6 +1,6 @@
 import { Flex } from 'milky-ui';
 
-type KanbanCardProps = {
+export type KanbanCardProps = {
   title: string;
 };
 
