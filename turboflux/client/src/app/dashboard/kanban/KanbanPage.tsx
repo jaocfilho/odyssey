@@ -1,11 +1,11 @@
-'use client';
+import { Flex } from 'milky-ui';
 
-import { Flex, Text } from 'milky-ui';
+import { Kanban } from '../../../modules/kanban';
 
 export default function KanbanPage() {
   return (
     <Flex fullWidth>
-      <Text>Kanban Page</Text>
+      <Kanban />
     </Flex>
   );
 }
