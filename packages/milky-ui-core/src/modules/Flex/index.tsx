@@ -13,6 +13,8 @@ export type FlexProps = ComponentProps<typeof FlexContainer> &
     | 'alignContent'
     | 'justifyContent'
     | 'b'
+    | 'bStyle'
+    | 'bColor'
     | 'bb'
     | 'bbColor'
     | 'bbStyle'
@@ -28,6 +30,8 @@ const BaseFlex = (
     alignContent,
     justifyContent,
     b,
+    bStyle,
+    bColor,
     bb,
     bbColor,
     bbStyle,
@@ -45,6 +49,8 @@ const BaseFlex = (
     alignContent,
     justifyContent,
     b,
+    bStyle,
+    bColor,
     bb,
     bbColor,
     bbStyle,

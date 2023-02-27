@@ -5,5 +5,9 @@ export type KanbanCardProps = {
 };
 
 export const KanbanCard = ({ title }: KanbanCardProps) => {
-  return <Flex direction="column">{title}</Flex>;
+  return (
+    <Flex p={4} b={1} bStyle="solid" bColor="$gray6">
+      {title}
+    </Flex>
+  );
 };

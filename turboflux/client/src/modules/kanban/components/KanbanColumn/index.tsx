@@ -1,6 +1,6 @@
 import { Flex, Text } from 'milky-ui';
 
-import { KanbanCard } from '../KanbanCard';
+import { KanbanCards } from '../KanbanCards';
 
 type KanbanColumnProps = {
   title: string;
@@ -8,18 +8,13 @@ type KanbanColumnProps = {
 
 export const KanbanColumn = ({ title }: KanbanColumnProps) => {
   const cardTitle = 'anyTitle';
+  const cards = [{ title: cardTitle }];
 
   return (
-    <Flex fullWidth direction="column" gap={4}>
+    <Flex direction="column" gap={4}>
       <Text>{title}</Text>
 
-      <Flex direction="column" gap={4}>
-        <KanbanCard title={cardTitle} />
-        <KanbanCard title={cardTitle} />
-        <KanbanCard title={cardTitle} />
-        <KanbanCard title={cardTitle} />
-        <KanbanCard title={cardTitle} />
-      </Flex>
+      <KanbanCards cards={cards} />
     </Flex>
   );
 };
