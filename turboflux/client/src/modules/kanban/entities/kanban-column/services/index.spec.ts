@@ -1,9 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { kanbanColumnSchema } from '../entity';
+import { KanbanColumn, kanbanColumnSchema } from '../entity';
 import { generateRandomKanbanColumn } from '../factories';
 import { generateRandomKanbanCard } from '../../kanban-card/factories';
-import { addCardToKanbanColumn, createKanbanColumn } from '.';
+import {
+  addCardToKanbanColumn,
+  createKanbanColumn,
+  updateKanbanColumn,
+} from '.';
 
 describe('createKanbanColumn', () => {
   it('should return a valid kanban column when given valid input', () => {
@@ -38,5 +42,18 @@ describe('addCardToKanbanColumn', () => {
     const expected = newColumn.cards[newColumn.cards.length - 1];
 
     expect(card).toEqual(expected);
+  });
+});
+
+describe('updateKanbanColumn', () => {
+  it('should correctly update a column', () => {
+    const column = generateRandomKanbanColumn();
+
+    const newColumnProps = generateRandomKanbanCard() as Partial<KanbanColumn>;
+    delete newColumnProps.id;
+
+    const updatedColumn = updateKanbanColumn({ column, newColumnProps });
+    expect(updatedColumn.id).toEqual(column.id);
+    expect(updatedColumn.title).toEqual(newColumnProps.title);
   });
 });

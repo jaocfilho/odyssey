@@ -15,6 +15,19 @@ export const createKanbanColumn = ({
   return kanbanColumn;
 };
 
+type NewColumnProps = Omit<Partial<KanbanColumn>, 'id'>;
+type UpdateKanbanColumnParams = {
+  column: KanbanColumn;
+  newColumnProps: NewColumnProps;
+};
+
+export const updateKanbanColumn = ({
+  column,
+  newColumnProps,
+}: UpdateKanbanColumnParams): KanbanColumn => {
+  return { ...column, ...newColumnProps };
+};
+
 type AddCardToKanbanColumnParams = {
   column: KanbanColumn;
   card: KanbanCard;
