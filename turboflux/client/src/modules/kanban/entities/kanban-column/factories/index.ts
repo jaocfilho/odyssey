@@ -16,6 +16,7 @@ export const generateRandomKanbanColumn = (
   const numCards = options?.cardsLength;
 
   return {
+    id: options?.id || faker.datatype.uuid(),
     title: options?.title || faker.lorem.words(),
     cards: options?.cards || generateRandomKanbanCardArray({ cards: numCards }),
   };

@@ -13,6 +13,7 @@ export const generateRandomKanbanCard = (
   options?: GenerateRandomKanbanCardOptions
 ): KanbanCard => {
   return {
+    id: options?.id || faker.datatype.uuid(),
     title: options?.title || faker.lorem.words(),
   };
 };
