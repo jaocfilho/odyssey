@@ -282,6 +282,7 @@ importers:
       '@vitejs/plugin-react': ^2.2.0
       eslint: 7.32.0
       eslint-config-custom: workspace:*
+      immer: ^9.0.19
       milky-ui: workspace:*
       next: 13.2.1
       next-auth: ^4.18.7
@@ -300,6 +301,7 @@ importers:
       '@orbital/github': link:../../packages/orbital-github
       '@satellite/react-hooks': link:../../packages/satellite-react-hooks
       '@satellite/tests': link:../../packages/satellite-tests
+      immer: 9.0.19
       milky-ui: link:../../packages/milky-ui
       next: 13.2.1_mqvh5p7ejg4taogoj6tpk3gd5a
       next-auth: 4.18.7_qgtcjgzkkjtbiyvnx7d32fl5vu
@@ -3266,6 +3268,10 @@ packages:
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+    dev: false
+
+  /immer/9.0.19:
+    resolution: {integrity: sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==}
     dev: false
 
   /import-fresh/3.3.0:

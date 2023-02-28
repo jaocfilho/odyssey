@@ -21,6 +21,9 @@ type GenerateRandomKanbanCardArrayOptions = {
   cards?: number;
 };
 
+/**
+ * This factory is intended to be used by tests only.
+ */
 export const generateRandomKanbanCardArray = (
   options?: GenerateRandomKanbanCardArrayOptions
 ) => {
