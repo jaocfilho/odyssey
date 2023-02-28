@@ -19,6 +19,7 @@ export const heatmapCellSchema = z.object({
   type,
 });
 
-export type HeatmapCellInput = z.input<typeof heatmapCellSchema>;
-export type HeatmapCell = z.output<typeof heatmapCellSchema>;
+type THeatmapCellSchema = typeof heatmapCellSchema;
+export type HeatmapCellInput = z.input<THeatmapCellSchema>;
+export type HeatmapCell = z.output<THeatmapCellSchema>;
 export type HeatmapCells = HeatmapCell[];
