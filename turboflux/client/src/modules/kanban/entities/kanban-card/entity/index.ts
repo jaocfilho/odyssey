@@ -6,5 +6,5 @@ export const kanbanCardSchema = z.object({
 
 type TKanbanCardSchema = typeof kanbanCardSchema;
 export type kanbanCardInput = z.input<TKanbanCardSchema>;
-export type kanbanCard = z.output<TKanbanCardSchema>;
-export type kanbanCards = kanbanCard[];
+export type KanbanCard = z.output<TKanbanCardSchema>;
+export type KanbanCards = KanbanCard[];
