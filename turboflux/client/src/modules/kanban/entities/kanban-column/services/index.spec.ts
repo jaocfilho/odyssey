@@ -6,6 +6,7 @@ import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
   addCardToKanbanColumn,
   createKanbanColumn,
+  removeCardByIdFromKanbanColumn,
   updateKanbanColumn,
 } from '.';
 
@@ -55,5 +56,19 @@ describe('updateKanbanColumn', () => {
     const updatedColumn = updateKanbanColumn({ column, newColumnProps });
     expect(updatedColumn.id).toEqual(column.id);
     expect(updatedColumn.title).toEqual(newColumnProps.title);
+  });
+});
+
+describe('removeCardByIdFromKanbanColumn', () => {
+  it('should remove the correct card', () => {
+    const column = generateRandomKanbanColumn();
+    const card = column.cards[0];
+
+    const updatedColumn = removeCardByIdFromKanbanColumn({
+      column,
+      cardId: card.id,
+    });
+
+    expect(updatedColumn.cards).not.toContain(card);
   });
 });
