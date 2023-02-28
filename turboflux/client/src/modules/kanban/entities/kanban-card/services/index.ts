@@ -1,7 +1,7 @@
-import { kanbanCardInput, kanbanCardSchema } from '../entity';
+import { KanbanCardInput, kanbanCardSchema } from '../entity';
 
 type CreateKanbanCardProps = {
-  cardProps: kanbanCardInput;
+  cardProps: KanbanCardInput;
 };
 
 export const createKanbanCard = ({ cardProps }: CreateKanbanCardProps) => {

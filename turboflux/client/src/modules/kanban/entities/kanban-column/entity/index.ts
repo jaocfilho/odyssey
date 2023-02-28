@@ -8,6 +8,6 @@ export const kanbanColumnSchema = z.object({
 });
 
 type TKanbanColumnSchema = typeof kanbanColumnSchema;
-export type kanbanColumnInput = z.input<TKanbanColumnSchema>;
-export type kanbanColumn = z.output<TKanbanColumnSchema>;
-export type kanbanColumns = kanbanColumn[];
+export type KanbanColumnInput = z.input<TKanbanColumnSchema>;
+export type KanbanColumn = z.output<TKanbanColumnSchema>;
+export type KanbanColumns = KanbanColumn[];

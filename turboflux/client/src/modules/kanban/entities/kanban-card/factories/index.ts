@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker';
 
-import { KanbanCard } from '../entity';
+import { mapRange } from 'satellite';
+
+import { KanbanCard, KanbanCards } from '../entity';
 
 type GenerateRandomKanbanCardOptions = Partial<KanbanCard>;
 
@@ -13,4 +15,19 @@ export const generateRandomKanbanCard = (
   return {
     title: options?.title || faker.lorem.words(),
   };
+};
+
+type GenerateRandomKanbanCardArrayOptions = {
+  cards?: number;
+};
+
+export const generateRandomKanbanCardArray = (
+  options?: GenerateRandomKanbanCardArrayOptions
+) => {
+  const numCards = options?.cards;
+
+  return mapRange(
+    () => generateRandomKanbanCard(),
+    numCards || 4
+  ) as KanbanCards;
 };
