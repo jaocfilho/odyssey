@@ -51,7 +51,6 @@ export const removeCardByIdFromKanbanColumn = ({
   column,
   cardId,
 }: RemoveCardByIdFromKanbanColumnParams) => {
-  // TODO more tests
   return produce(column, (draft) => {
     const index = draft.cards.findIndex((todo) => todo.id === cardId);
     if (index !== -1) draft.cards.splice(index, 1);

@@ -1,7 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { KanbanColumn, kanbanColumnSchema } from '../entity';
-import { generateRandomKanbanColumn } from '../factories';
+import {
+  generateRandomKanbanColumn,
+  generateRandomKanbanColumnInput,
+} from '../factories';
 import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
   addCardToKanbanColumn,
@@ -12,14 +15,12 @@ import {
 
 describe('createKanbanColumn', () => {
   it('should return a valid kanban column when given valid input', () => {
-    const columnProps = generateRandomKanbanColumn();
+    const columnProps = generateRandomKanbanColumnInput();
 
     const parseSpy = vi.spyOn(kanbanColumnSchema, 'parse');
     createKanbanColumn({ columnProps });
 
     expect(parseSpy).toHaveBeenCalledWith(columnProps);
-
-    parseSpy.mockRestore();
   });
 });
 
@@ -70,5 +71,15 @@ describe('removeCardByIdFromKanbanColumn', () => {
     });
 
     expect(updatedColumn.cards).not.toContain(card);
+  });
+
+  it('should return the same column if the card is not found', () => {
+    const column = generateRandomKanbanColumn();
+
+    const updatedColumn = removeCardByIdFromKanbanColumn({
+      column,
+      cardId: 'any',
+    });
+    expect(updatedColumn).toEqual(column);
   });
 });

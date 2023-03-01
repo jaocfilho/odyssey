@@ -2,7 +2,39 @@ import { faker } from '@faker-js/faker';
 
 import { mapRange } from 'satellite';
 
-import { KanbanCard, KanbanCards } from '../entity';
+import { KanbanCard, KanbanCardInput, KanbanCards } from '../entity';
+
+type GenerateRandomKanbanCardInputOptions = Partial<KanbanCardInput>;
+
+/**
+ * This factory is intended to be used by tests only.
+ */
+export const generateRandomKanbanCardInput = (
+  options?: GenerateRandomKanbanCardInputOptions
+): KanbanCardInput => {
+  return {
+    id: options?.id || faker.datatype.uuid(),
+    title: options?.title || faker.lorem.words(),
+  };
+};
+
+type GenerateRandomKanbanCardInputArrayOptions = {
+  cards?: number;
+};
+
+/**
+ * This factory is intended to be used by tests only.
+ */
+export const generateRandomKanbanCardInputArray = (
+  options?: GenerateRandomKanbanCardInputArrayOptions
+) => {
+  const numCards = options?.cards;
+
+  return mapRange(
+    () => generateRandomKanbanCardInput(),
+    numCards || faker.datatype.number({ min: 1, max: 4 })
+  ) as KanbanCardInput[];
+};
 
 type GenerateRandomKanbanCardOptions = Partial<KanbanCard>;
 
@@ -32,6 +64,6 @@ export const generateRandomKanbanCardArray = (
 
   return mapRange(
     () => generateRandomKanbanCard(),
-    numCards || 4
+    numCards || faker.datatype.number({ min: 1, max: 4 })
   ) as KanbanCards;
 };
