@@ -56,4 +56,15 @@ describe('removeColumnById', () => {
 
     expect(updatedBoard.columns).not.toContain(column);
   });
+
+  it('should return the same board if the column is not found', () => {
+    const board = generateRandomKanbanBoard();
+
+    const updatedBoard = removeColumnById({
+      board,
+      columnId: 'any',
+    });
+
+    expect(updatedBoard).toEqual(board);
+  });
 });

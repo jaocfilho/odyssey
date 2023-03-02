@@ -7,7 +7,7 @@ import {
 } from '../factories';
 import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
-  addCardToKanbanColumn,
+  addCard,
   createKanbanColumn,
   removeCardById,
   updateKanbanColumn,
@@ -24,13 +24,13 @@ describe('createKanbanColumn', () => {
   });
 });
 
-describe('addCardToKanbanColumn', () => {
+describe('addCard', () => {
   it('should add a card to a column', () => {
     const column = generateRandomKanbanColumn();
     const card = generateRandomKanbanCard();
 
     const totalCards = column.cards.length;
-    const newColumn = addCardToKanbanColumn({ column, card });
+    const newColumn = addCard({ column, card });
 
     const expected = totalCards + 1;
     expect(newColumn.cards).toHaveLength(expected);
@@ -40,7 +40,7 @@ describe('addCardToKanbanColumn', () => {
     const column = generateRandomKanbanColumn();
     const card = generateRandomKanbanCard();
 
-    const newColumn = addCardToKanbanColumn({ column, card });
+    const newColumn = addCard({ column, card });
     const expected = newColumn.cards[newColumn.cards.length - 1];
 
     expect(card).toEqual(expected);

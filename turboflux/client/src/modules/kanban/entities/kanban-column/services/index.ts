@@ -28,15 +28,12 @@ export const updateKanbanColumn = ({
   return { ...column, ...newColumnProps };
 };
 
-type AddCardToKanbanColumnParams = {
+type AddCardParams = {
   column: KanbanColumn;
   card: KanbanCard;
 };
 
-export const addCardToKanbanColumn = ({
-  column,
-  card,
-}: AddCardToKanbanColumnParams) => {
+export const addCard = ({ column, card }: AddCardParams) => {
   return produce(column, (draft) => {
     draft.cards.push(card);
   });
