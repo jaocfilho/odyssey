@@ -1,10 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { createColumn } from '.';
-import { generateRandomKanbanBoard } from '../../../entities/kanban-board';
 import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column';
-
 import { addColumnToBoardUseCase } from '../../../use-cases';
+import { generateRandomKanbanState } from '../../factories';
 
 vi.mock('../../../use-cases', () => ({
   addColumnToBoardUseCase: vi.fn(),
@@ -12,8 +11,7 @@ vi.mock('../../../use-cases', () => ({
 
 describe('createColumn', () => {
   it('should call addColumnToBoardUseCase', () => {
-    const board = generateRandomKanbanBoard();
-    const draft = { board };
+    const draft = generateRandomKanbanState();
 
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
@@ -21,7 +19,7 @@ describe('createColumn', () => {
     createColumn(draft, payload);
 
     expect(addColumnToBoardUseCase).toHaveBeenCalledWith({
-      board,
+      board: draft.board,
       columnProps,
     });
   });

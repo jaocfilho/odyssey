@@ -1,8 +1,8 @@
 import { CreateColumnPayload } from './create-column';
 
-type CreateColumn = {
+export type CreateColumnAction = {
   type: 'CREATE_COLUMN';
   payload: CreateColumnPayload;
 };
 
-export type Action = CreateColumn;
+export type Action = CreateColumnAction;
