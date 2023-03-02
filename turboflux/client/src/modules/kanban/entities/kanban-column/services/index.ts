@@ -42,15 +42,12 @@ export const addCardToKanbanColumn = ({
   });
 };
 
-type RemoveCardByIdFromKanbanColumnParams = {
+type RemoveCardByIdParams = {
   column: KanbanColumn;
   cardId: string;
 };
 
-export const removeCardByIdFromKanbanColumn = ({
-  column,
-  cardId,
-}: RemoveCardByIdFromKanbanColumnParams) => {
+export const removeCardById = ({ column, cardId }: RemoveCardByIdParams) => {
   return produce(column, (draft) => {
     const index = draft.cards.findIndex((todo) => todo.id === cardId);
     if (index !== -1) draft.cards.splice(index, 1);

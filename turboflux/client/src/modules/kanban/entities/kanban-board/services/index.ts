@@ -13,16 +13,28 @@ export const createKanbanBoard = ({ boardProps }: CreateKanbanBoardParams) => {
   return kanbanBoard;
 };
 
-type AddColumnToKanbanBoardParams = {
+type AddColumnParams = {
   board: KanbanBoard;
   column: KanbanColumn;
 };
 
-export const addColumnToKanbanBoard = ({
-  board,
-  column,
-}: AddColumnToKanbanBoardParams) => {
+export const addColumn = ({ board, column }: AddColumnParams) => {
   return produce(board, (draft) => {
     draft.columns.push(column);
+  });
+};
+
+type RemoveColumnByIdParams = {
+  board: KanbanBoard;
+  columnId: string;
+};
+
+export const removeColumnById = ({
+  board,
+  columnId,
+}: RemoveColumnByIdParams) => {
+  return produce(board, (draft) => {
+    const index = draft.columns.findIndex((todo) => todo.id === columnId);
+    if (index !== -1) draft.columns.splice(index, 1);
   });
 };

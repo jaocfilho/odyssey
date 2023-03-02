@@ -9,7 +9,7 @@ import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
   addCardToKanbanColumn,
   createKanbanColumn,
-  removeCardByIdFromKanbanColumn,
+  removeCardById,
   updateKanbanColumn,
 } from '.';
 
@@ -60,12 +60,12 @@ describe('updateKanbanColumn', () => {
   });
 });
 
-describe('removeCardByIdFromKanbanColumn', () => {
+describe('removeCardById', () => {
   it('should remove the correct card', () => {
     const column = generateRandomKanbanColumn();
     const card = column.cards[0];
 
-    const updatedColumn = removeCardByIdFromKanbanColumn({
+    const updatedColumn = removeCardById({
       column,
       cardId: card.id,
     });
@@ -76,7 +76,7 @@ describe('removeCardByIdFromKanbanColumn', () => {
   it('should return the same column if the card is not found', () => {
     const column = generateRandomKanbanColumn();
 
-    const updatedColumn = removeCardByIdFromKanbanColumn({
+    const updatedColumn = removeCardById({
       column,
       cardId: 'any',
     });
