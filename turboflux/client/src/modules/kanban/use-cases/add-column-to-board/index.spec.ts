@@ -1,4 +1,5 @@
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
+
 import { addColumnToBoardUseCase } from '.';
 import { generateRandomKanbanBoard } from '../../entities/kanban-board';
 import { generateRandomKanbanColumnInput } from '../../entities/kanban-column';

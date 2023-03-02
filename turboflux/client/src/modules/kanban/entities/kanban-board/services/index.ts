@@ -19,6 +19,7 @@ type AddColumnParams = {
 };
 
 export const addColumn = ({ board, column }: AddColumnParams) => {
+  // TODO check if column is already inside board before pushing
   return produce(board, (draft) => {
     draft.columns.push(column);
   });
