@@ -1,9 +1,9 @@
-import { CreateColumnPayload } from './create-column';
+import { AddColumnPayload } from './add-column';
 import { RemoveColumnPayload } from './remove-column';
 
 export type CreateColumnAction = {
   type: 'CREATE_COLUMN';
-  payload: CreateColumnPayload;
+  payload: AddColumnPayload;
 };
 
 export type RemoveColumnAction = {

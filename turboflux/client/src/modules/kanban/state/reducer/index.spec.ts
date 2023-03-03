@@ -4,14 +4,14 @@ import { kanbanStateReducer } from '.';
 import { generateRandomKanbanColumnInput } from '../../entities/kanban-column';
 import { CreateColumnAction } from '../actions';
 import { generateRandomKanbanState } from '../factories';
-import { createColumn } from '../actions/create-column';
+import { addColumn } from '../actions/add-column';
 
-vi.mock('../actions/create-column', () => ({
-  createColumn: vi.fn(),
+vi.mock('../actions/add-column', () => ({
+  addColumn: vi.fn(),
 }));
 
 describe('kanbanStateReducer', () => {
-  it('should call createColumn when action is CREATE_COLUMN', () => {
+  it('should call addColumn when action is CREATE_COLUMN', () => {
     const draft = generateRandomKanbanState();
     const columnProps = generateRandomKanbanColumnInput();
 
@@ -22,6 +22,6 @@ describe('kanbanStateReducer', () => {
 
     kanbanStateReducer(draft, action);
 
-    expect(createColumn).toHaveBeenCalledWith(draft, action.payload);
+    expect(addColumn).toHaveBeenCalledWith(draft, action.payload);
   });
 });

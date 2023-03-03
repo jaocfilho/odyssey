@@ -1,7 +1,7 @@
 import { KanbanBoard } from '../../entities/kanban-board';
 import { InvalidKanbanReducerActionError } from '../../errors';
 import { KanbanReducerAction } from '../actions';
-import { createColumn } from '../actions/create-column';
+import { addColumn } from '../actions/add-column';
 import { removeColumn } from '../actions/remove-column';
 
 export type KanbanState = {
@@ -15,7 +15,7 @@ export const kanbanStateReducer = (
   switch (action.type) {
     case 'CREATE_COLUMN':
       const createColumnPayload = action.payload;
-      createColumn(draft, createColumnPayload);
+      addColumn(draft, createColumnPayload);
       break;
 
     case 'REMOVE_COLUMN':

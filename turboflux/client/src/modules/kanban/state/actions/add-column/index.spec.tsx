@@ -1,18 +1,18 @@
 import { describe, expect, it, assertType } from 'vitest';
 
-import { createColumn } from '.';
+import { addColumn } from '.';
 import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column';
 import { generateRandomKanbanState } from '../../factories';
 import { KanbanState } from '../../reducer';
 
-describe('createColumn', () => {
+describe('addColumn', () => {
   it('should return the kanban state', () => {
     const draft = generateRandomKanbanState();
 
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
 
-    const nextState = createColumn(draft, payload);
+    const nextState = addColumn(draft, payload);
 
     assertType<KanbanState>(nextState);
   });
@@ -23,7 +23,7 @@ describe('createColumn', () => {
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
 
-    const nextState = createColumn(draft, payload);
+    const nextState = addColumn(draft, payload);
 
     const expectedColumn = nextState.board.columns.find(
       (column) => column.id === columnProps.id
