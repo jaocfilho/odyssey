@@ -8,7 +8,6 @@ type removeColumnFromBoardUseCaseParams = {
 export const removeColumnFromBoardUseCase = ({
   board,
   columnId,
-}: removeColumnFromBoardUseCaseParams) => {
-  // TODO tests
+}: removeColumnFromBoardUseCaseParams): KanbanBoard => {
   return removeColumnById({ board, columnId });
 };

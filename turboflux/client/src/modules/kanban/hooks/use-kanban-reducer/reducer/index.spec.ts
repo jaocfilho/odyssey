@@ -7,11 +7,11 @@ import { reducer } from '.';
 describe('reducer', () => {
   const draft = generateRandomKanbanState();
 
-  it('should add a column to the board when action is CREATE_COLUMN', () => {
+  it('should add a column to the board when action is ADD_COLUMN', () => {
     const columnProps = generateRandomKanbanColumnInput();
 
     const nextState = reducer(draft, {
-      type: 'CREATE_COLUMN',
+      type: 'ADD_COLUMN',
       payload: { columnProps },
     });
 

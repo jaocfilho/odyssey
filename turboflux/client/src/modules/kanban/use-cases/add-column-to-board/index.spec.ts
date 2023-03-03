@@ -1,7 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, assertType } from 'vitest';
 
 import { addColumnToBoardUseCase } from '.';
-import { generateRandomKanbanBoard } from '../../entities/kanban-board';
+import {
+  generateRandomKanbanBoard,
+  KanbanBoard,
+} from '../../entities/kanban-board';
 import { generateRandomKanbanColumnInput } from '../../entities/kanban-column';
 
 describe('addColumnToBoardUseCase', () => {
@@ -16,5 +19,17 @@ describe('addColumnToBoardUseCase', () => {
 
     const column = updatedBoard.columns[0];
     expect(column.id).toEqual(columnProps.id);
+  });
+
+  it('should return a kanban board', () => {
+    const board = generateRandomKanbanBoard({ columns: [] });
+    const columnProps = generateRandomKanbanColumnInput();
+
+    const updatedBoard = addColumnToBoardUseCase({
+      board,
+      columnProps,
+    });
+
+    assertType<KanbanBoard>(updatedBoard);
   });
 });

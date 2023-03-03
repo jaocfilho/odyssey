@@ -2,7 +2,7 @@ import { AddColumnPayload } from './add-column';
 import { RemoveColumnPayload } from './remove-column';
 
 export type CreateColumnAction = {
-  type: 'CREATE_COLUMN';
+  type: 'ADD_COLUMN';
   payload: AddColumnPayload;
 };
 

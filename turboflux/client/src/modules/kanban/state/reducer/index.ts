@@ -13,7 +13,7 @@ export const kanbanStateReducer = (
   action: KanbanReducerAction
 ) => {
   switch (action.type) {
-    case 'CREATE_COLUMN':
+    case 'ADD_COLUMN':
       const createColumnPayload = action.payload;
       addColumn(draft, createColumnPayload);
       break;
