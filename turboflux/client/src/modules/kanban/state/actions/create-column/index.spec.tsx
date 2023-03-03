@@ -1,41 +1,34 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, assertType } from 'vitest';
 
 import { createColumn } from '.';
 import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column';
-import { addColumnToBoardUseCase } from '../../../use-cases';
 import { generateRandomKanbanState } from '../../factories';
-
-vi.mock('../../../use-cases', () => ({
-  addColumnToBoardUseCase: vi.fn(),
-}));
+import { KanbanState } from '../../reducer';
 
 describe('createColumn', () => {
-  it('should call addColumnToBoardUseCase', () => {
+  it('should return the kanban state', () => {
     const draft = generateRandomKanbanState();
 
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
 
-    createColumn(draft, payload);
+    const nextState = createColumn(draft, payload);
 
-    expect(addColumnToBoardUseCase).toHaveBeenCalledWith({
-      board: draft.board,
-      columnProps,
-    });
+    assertType<KanbanState>(nextState);
   });
 
-  // it('should create a new column and add it to the draft board', () => {
-  //   const draft = generateRandomKanbanState();
+  it('should create a new column and add it to the draft board', () => {
+    const draft = generateRandomKanbanState();
 
-  //   const columnProps = generateRandomKanbanColumnInput();
-  //   const payload = { columnProps };
+    const columnProps = generateRandomKanbanColumnInput();
+    const payload = { columnProps };
 
-  //   const nextState = createColumn(draft, payload);
+    const nextState = createColumn(draft, payload);
 
-  //   const expectedColumn = nextState.board.columns.find(
-  //     (column) => column.id === columnProps.id
-  //   );
+    const expectedColumn = nextState.board.columns.find(
+      (column) => column.id === columnProps.id
+    );
 
-  //   expect(expectedColumn).toBeTruthy();
-  // });
+    expect(expectedColumn).toBeTruthy();
+  });
 });
