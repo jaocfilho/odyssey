@@ -22,7 +22,7 @@ describe('createKanbanBoard', () => {
 });
 
 describe('addColumn', () => {
-  it('should add a card to a column', () => {
+  it('should add a column to a board', () => {
     const board = generateRandomKanbanBoard();
     const column = generateRandomKanbanColumn();
 
@@ -33,7 +33,7 @@ describe('addColumn', () => {
     expect(updatedBoard.columns).toHaveLength(expected);
   });
 
-  it('should add the card to the end of the column', () => {
+  it('should add the column to the end of the board', () => {
     const board = generateRandomKanbanBoard();
     const column = generateRandomKanbanColumn();
 
@@ -41,6 +41,15 @@ describe('addColumn', () => {
     const expected = updatedBoard.columns[updatedBoard.columns.length - 1];
 
     expect(column).toEqual(expected);
+  });
+
+  it('should return the same board if column is duplicated', () => {
+    const board = generateRandomKanbanBoard();
+    const column = board.columns[0];
+
+    const updatedBoard = addColumn({ board, column });
+
+    expect(updatedBoard).toEqual(board);
   });
 });
 

@@ -17,7 +17,8 @@ type AddColumnParams = {
 };
 
 export const addColumn = ({ board, column }: AddColumnParams): KanbanBoard => {
-  // TODO check if column is already inside board before pushing
+  const isDuplicated = !!board.columns.find((col) => col.id === column.id);
+  if (isDuplicated) return board;
 
   const boardToUpdate = board;
   boardToUpdate.columns.push(column);
