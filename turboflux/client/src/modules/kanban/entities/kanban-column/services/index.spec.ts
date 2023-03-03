@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi, assertType } from 'vitest';
 
 import { KanbanColumn, kanbanColumnSchema } from '../entity';
 import {
@@ -25,29 +25,58 @@ describe('createKanbanColumn', () => {
 });
 
 describe('addCard', () => {
+  it('should return a column', () => {
+    const column = generateRandomKanbanColumn();
+    const card = generateRandomKanbanCard();
+
+    const updatedColumn = addCard({ column, card });
+
+    assertType<KanbanColumn>(updatedColumn);
+  });
+
   it('should add a card to a column', () => {
     const column = generateRandomKanbanColumn();
     const card = generateRandomKanbanCard();
 
     const totalCards = column.cards.length;
-    const newColumn = addCard({ column, card });
+    const updatedColumn = addCard({ column, card });
 
     const expected = totalCards + 1;
-    expect(newColumn.cards).toHaveLength(expected);
+    expect(updatedColumn.cards).toHaveLength(expected);
   });
 
   it('should add the card to the end of the column', () => {
     const column = generateRandomKanbanColumn();
     const card = generateRandomKanbanCard();
 
-    const newColumn = addCard({ column, card });
-    const expected = newColumn.cards[newColumn.cards.length - 1];
+    const updatedColumn = addCard({ column, card });
+    const expected = updatedColumn.cards[updatedColumn.cards.length - 1];
 
     expect(card).toEqual(expected);
+  });
+
+  it('should return the same column if card is duplicated', () => {
+    const column = generateRandomKanbanColumn();
+    const card = column.cards[0];
+
+    const updatedColumn = addCard({ column, card });
+
+    expect(updatedColumn).toEqual(column);
   });
 });
 
 describe('updateKanbanColumn', () => {
+  it('should return a column', () => {
+    const column = generateRandomKanbanColumn();
+
+    const newColumnProps = generateRandomKanbanCard() as Partial<KanbanColumn>;
+    delete newColumnProps.id;
+
+    const updatedColumn = updateKanbanColumn({ column, newColumnProps });
+
+    assertType<KanbanColumn>(updatedColumn);
+  });
+
   it('should correctly update a column', () => {
     const column = generateRandomKanbanColumn();
 

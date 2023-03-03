@@ -33,10 +33,14 @@ type AddCardParams = {
   card: KanbanCard;
 };
 
-export const addCard = ({ column, card }: AddCardParams) => {
-  return produce(column, (draft) => {
-    draft.cards.push(card);
-  });
+export const addCard = ({ column, card }: AddCardParams): KanbanColumn => {
+  const isDuplicated = !!column.cards.find((c) => c.id === column.id);
+  if (isDuplicated) return column;
+
+  const columnToUpdate = column;
+  columnToUpdate.cards.push(card);
+
+  return columnToUpdate;
 };
 
 type RemoveCardByIdParams = {
