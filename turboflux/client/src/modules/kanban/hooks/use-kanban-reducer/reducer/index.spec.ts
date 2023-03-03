@@ -5,8 +5,9 @@ import { generateRandomKanbanState } from '../../../state';
 import { reducer } from '.';
 
 describe('reducer', () => {
+  const draft = generateRandomKanbanState();
+
   it('should add a column to the board when action is CREATE_COLUMN', () => {
-    const draft = generateRandomKanbanState();
     const columnProps = generateRandomKanbanColumnInput();
 
     const nextState = reducer(draft, {
@@ -19,5 +20,20 @@ describe('reducer', () => {
     );
 
     expect(expectedColumn).toBeTruthy();
+  });
+
+  it('should remove a column from the board when action is REMOVE_COLUMN', () => {
+    const columnToRemove = draft.board.columns[0];
+
+    const nextState = reducer(draft, {
+      type: 'REMOVE_COLUMN',
+      payload: { columnId: columnToRemove.id },
+    });
+
+    const expected = nextState.board.columns.find(
+      (column) => column.id === columnToRemove.id
+    );
+
+    expect(expected).toBeUndefined();
   });
 });

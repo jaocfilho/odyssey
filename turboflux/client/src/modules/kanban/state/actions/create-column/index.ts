@@ -9,9 +9,12 @@ export type CreateColumnPayload = {
 export const createColumn = (
   draft: KanbanState,
   payload: CreateColumnPayload
-) => {
-  return addColumnToBoardUseCase({
+): KanbanState => {
+  // TODO change tests to removeColumn style
+  const board = addColumnToBoardUseCase({
     board: draft.board,
     columnProps: payload.columnProps,
   });
+
+  return { ...draft, board };
 };

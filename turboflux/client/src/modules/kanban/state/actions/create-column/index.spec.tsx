@@ -23,4 +23,19 @@ describe('createColumn', () => {
       columnProps,
     });
   });
+
+  // it('should create a new column and add it to the draft board', () => {
+  //   const draft = generateRandomKanbanState();
+
+  //   const columnProps = generateRandomKanbanColumnInput();
+  //   const payload = { columnProps };
+
+  //   const nextState = createColumn(draft, payload);
+
+  //   const expectedColumn = nextState.board.columns.find(
+  //     (column) => column.id === columnProps.id
+  //   );
+
+  //   expect(expectedColumn).toBeTruthy();
+  // });
 });
