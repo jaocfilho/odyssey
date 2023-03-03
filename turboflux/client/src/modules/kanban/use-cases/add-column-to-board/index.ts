@@ -12,7 +12,7 @@ type AddColumnToBoardUseCaseParams = {
 export const addColumnToBoardUseCase = ({
   board,
   columnProps,
-}: AddColumnToBoardUseCaseParams) => {
+}: AddColumnToBoardUseCaseParams): KanbanBoard => {
   const column = createKanbanColumn({ columnProps });
   return addColumn({ board, column });
 };

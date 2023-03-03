@@ -11,7 +11,7 @@ vi.mock('../actions/create-column', () => ({
 }));
 
 describe('kanbanStateReducer', () => {
-  it('should add a column to the board when action is CREATE_COLUMN', () => {
+  it('should call createColumn when action is CREATE_COLUMN', () => {
     const draft = generateRandomKanbanState();
     const columnProps = generateRandomKanbanColumnInput();
 

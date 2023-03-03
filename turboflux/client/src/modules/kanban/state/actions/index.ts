@@ -5,4 +5,4 @@ export type CreateColumnAction = {
   payload: CreateColumnPayload;
 };
 
-export type Action = CreateColumnAction;
+export type KanbanReducerAction = CreateColumnAction;

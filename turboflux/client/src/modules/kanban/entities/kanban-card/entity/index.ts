@@ -1,9 +1,9 @@
-import { randomUUID } from 'node:crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 import { z } from 'zod';
 
 export const kanbanCardSchema = z.object({
-  id: z.string().uuid().default(randomUUID()),
+  id: z.string().uuid().default(uuidv4()),
   title: z.string(),
 });
 

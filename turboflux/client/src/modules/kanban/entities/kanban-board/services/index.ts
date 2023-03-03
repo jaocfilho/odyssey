@@ -1,5 +1,3 @@
-import produce from 'immer';
-
 import { KanbanColumn } from '../../kanban-column';
 import { KanbanBoard, KanbanBoardInput, kanbanBoardSchema } from '../entity';
 
@@ -18,11 +16,13 @@ type AddColumnParams = {
   column: KanbanColumn;
 };
 
-export const addColumn = ({ board, column }: AddColumnParams) => {
+export const addColumn = ({ board, column }: AddColumnParams): KanbanBoard => {
   // TODO check if column is already inside board before pushing
-  return produce(board, (draft) => {
-    draft.columns.push(column);
-  });
+
+  const boardToUpdate = board;
+  boardToUpdate.columns.push(column);
+
+  return boardToUpdate;
 };
 
 type RemoveColumnByIdParams = {
@@ -34,8 +34,12 @@ export const removeColumnById = ({
   board,
   columnId,
 }: RemoveColumnByIdParams) => {
-  return produce(board, (draft) => {
-    const index = draft.columns.findIndex((todo) => todo.id === columnId);
-    if (index !== -1) draft.columns.splice(index, 1);
-  });
+  const boardToUpdate = board;
+
+  const index = boardToUpdate.columns.findIndex(
+    (column) => column.id === columnId
+  );
+  if (index !== -1) boardToUpdate.columns.splice(index, 1);
+
+  return boardToUpdate;
 };

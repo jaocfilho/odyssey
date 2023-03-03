@@ -7,6 +7,10 @@ export const generateRandomKanbanState = (
   options?: GenerateRandomKanbanStateOptions
 ): KanbanState => {
   return {
-    board: options?.board || generateRandomKanbanBoard(),
+    board:
+      options?.board ||
+      generateRandomKanbanBoard({
+        columns: [],
+      }),
   };
 };
