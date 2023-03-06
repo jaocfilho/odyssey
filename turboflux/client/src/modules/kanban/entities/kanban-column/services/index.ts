@@ -48,9 +48,14 @@ type RemoveCardByIdParams = {
   cardId: string;
 };
 
-export const removeCardById = ({ column, cardId }: RemoveCardByIdParams) => {
-  return produce(column, (draft) => {
-    const index = draft.cards.findIndex((todo) => todo.id === cardId);
-    if (index !== -1) draft.cards.splice(index, 1);
-  });
+export const removeCardById = ({
+  column,
+  cardId,
+}: RemoveCardByIdParams): KanbanColumn => {
+  const columnToUpdate = column;
+
+  const index = columnToUpdate.cards.findIndex((card) => card.id === cardId);
+  if (index !== -1) columnToUpdate.cards.splice(index, 1);
+
+  return columnToUpdate;
 };

@@ -34,7 +34,7 @@ type RemoveColumnByIdParams = {
 export const removeColumnById = ({
   board,
   columnId,
-}: RemoveColumnByIdParams) => {
+}: RemoveColumnByIdParams): KanbanBoard => {
   const boardToUpdate = board;
 
   const index = boardToUpdate.columns.findIndex(
