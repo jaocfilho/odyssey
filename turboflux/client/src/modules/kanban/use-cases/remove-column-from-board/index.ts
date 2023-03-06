@@ -1,6 +1,6 @@
 import { KanbanBoard, removeColumnById } from '../../entities/kanban-board';
 
-type removeColumnFromBoardUseCaseParams = {
+type RemoveColumnFromBoardUseCaseParams = {
   board: KanbanBoard;
   columnId: string;
 };
@@ -8,6 +8,6 @@ type removeColumnFromBoardUseCaseParams = {
 export const removeColumnFromBoardUseCase = ({
   board,
   columnId,
-}: removeColumnFromBoardUseCaseParams): KanbanBoard => {
+}: RemoveColumnFromBoardUseCaseParams): KanbanBoard => {
   return removeColumnById({ board, columnId });
 };

@@ -7,7 +7,7 @@ import {
 } from '../../entities/kanban-board';
 
 describe('removeColumnFromBoardUseCase', () => {
-  it('should remove a column from the board given a id', () => {
+  it('should remove a column from the board given an id', () => {
     const board = generateRandomKanbanBoard();
     const columnToRemove = board.columns[0];
 
