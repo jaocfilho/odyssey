@@ -1,5 +1,3 @@
-import produce from 'immer';
-
 import { KanbanCard } from '../../kanban-card';
 import { KanbanColumn, KanbanColumnInput, kanbanColumnSchema } from '../entity';
 
