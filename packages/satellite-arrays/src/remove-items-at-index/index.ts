@@ -3,10 +3,9 @@ import { SimpleOrReadonlyArray } from '../types';
 /**
  * Removes an item at a specified index in an array, returning a new array.
  *
- * @template TItem The type of item in the array.
- * @param {TItem[] | ReadonlyArray<TItem>} array The array to remove the item from.
- * @param {number} index The index of the item to remove.
- * @returns {TItem[]} A new array with the item removed at the specified index.
+ * @param array The array to remove the item from.
+ * @param index The index of the item to remove.
+ * @returns A new array with the item removed at the specified index.
  *
  * @example
  * Remove the first item from an array

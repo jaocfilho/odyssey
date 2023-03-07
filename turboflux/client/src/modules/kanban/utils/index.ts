@@ -1,6 +1,17 @@
-import { insertItemAtIndex, removeItemAtIndex } from 'satellite';
+import {
+  insertItemAtIndex,
+  removeItemAtIndex,
+  isIndexOutOfBounds,
+  IndexOutOfBoundError,
+} from 'satellite';
 
 export const moveItem = <TItem>(array: TItem[], from: number, to: number) => {
+  const fromIsOutOfBound = isIndexOutOfBounds(array, from);
+  const toIsOutOfBound = isIndexOutOfBounds(array, to);
+  if (fromIsOutOfBound || toIsOutOfBound) {
+    throw new IndexOutOfBoundError();
+  }
+
   if (from === to) return array;
 
   const item = array[from];
