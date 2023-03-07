@@ -25,6 +25,22 @@ describe('moveColumnUseCase', () => {
     expect(updatedBoard.columns[3]).toEqual(board.columns[1]);
   });
 
+  it('should return the same board if both indexes are the same', () => {
+    const columns = generateRandomKanbanColumnArray({ columns: 5 });
+    const board = generateRandomKanbanBoard({ columns });
+
+    const from = 2;
+    const to = 2;
+
+    const updatedBoard = moveColumnUseCase({
+      board,
+      from,
+      to,
+    });
+
+    expect(updatedBoard).toEqual(board);
+  });
+
   it('should return a kanban board', () => {
     const columns = generateRandomKanbanColumnArray({ columns: 5 });
     const board = generateRandomKanbanBoard({ columns });

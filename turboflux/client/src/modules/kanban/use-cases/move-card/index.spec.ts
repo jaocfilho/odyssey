@@ -19,7 +19,7 @@ describe('moveCardUseCase', () => {
     expect(updatedColumn.cards[3]).toEqual(column.cards[1]);
   });
 
-  it('should return the same card if both indexes are the same', () => {
+  it('should return the same column if both indexes are the same', () => {
     const column = generateRandomKanbanColumn({ cardsLength: 5 });
 
     const from = 2;
