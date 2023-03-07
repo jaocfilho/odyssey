@@ -9,6 +9,7 @@ import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
   addCard,
   createKanbanColumn,
+  moveCard,
   removeCardById,
   updateKanbanColumn,
 } from '.';
@@ -109,6 +110,31 @@ describe('removeCardById', () => {
       column,
       cardId: 'any',
     });
+    expect(updatedColumn).toEqual(column);
+  });
+});
+
+describe('moveCard', () => {
+  it('should move a card from one index to another', () => {
+    const column = generateRandomKanbanColumn({ cardsLength: 5 });
+
+    const from = 1;
+    const to = 3;
+
+    const updatedColumn = moveCard({ column, from, to });
+
+    expect(updatedColumn.cards.length).toEqual(column.cards.length);
+    expect(updatedColumn.cards[3]).toEqual(column.cards[1]);
+  });
+
+  it('should return the same card if both indexes are the same', () => {
+    const column = generateRandomKanbanColumn({ cardsLength: 5 });
+
+    const from = 2;
+    const to = 2;
+
+    const updatedColumn = moveCard({ column, from, to });
+
     expect(updatedColumn).toEqual(column);
   });
 });

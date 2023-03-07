@@ -1,3 +1,4 @@
+import { moveItem } from '../../../utils';
 import { KanbanCard } from '../../kanban-card';
 import { KanbanColumn, KanbanColumnInput, kanbanColumnSchema } from '../entity';
 
@@ -56,4 +57,21 @@ export const removeCardById = ({
   if (index !== -1) columnToUpdate.cards.splice(index, 1);
 
   return columnToUpdate;
+};
+
+type MoveCardParams = {
+  column: KanbanColumn;
+  from: number;
+  to: number;
+};
+
+export const moveCard = ({
+  column,
+  from,
+  to,
+}: MoveCardParams): KanbanColumn => {
+  const columnToUpdate = column;
+
+  const updatedCards = moveItem(columnToUpdate.cards, from, to);
+  return { ...columnToUpdate, cards: updatedCards };
 };

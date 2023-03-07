@@ -95,7 +95,7 @@ describe('moveColumn', () => {
     expect(updatedBoard.columns[3]).toEqual(board.columns[1]);
   });
 
-  it('should return the same board if indexes are the same', () => {
+  it('should return the same board if both indexes are the same', () => {
     const columns = generateRandomKanbanColumnArray({ columns: 5 });
     const board = generateRandomKanbanBoard({ columns });
 
