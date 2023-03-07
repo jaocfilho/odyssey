@@ -9,15 +9,15 @@ import { SimpleOrReadonlyArray } from '../types';
  * @returns {TItem[]} A new array with the item removed at the specified index.
  *
  * @example
- * // Remove the first item from an array
+ * Remove the first item from an array
  * const result = removeItemAtIndex([1, 2, 3], 0); // [2, 3]
  *
  * @example
- * // Remove an item in the middle of an array
+ * Remove an item in the middle of an array
  * const result = removeItemAtIndex([1, 2, 3, 4], 2); // [1, 2, 4]
  *
  * @example
- * // Remove the last item from an array
+ * Remove the last item from an array
  * const result = removeItemAtIndex([1, 2, 3], 2); // [1, 2]
  */
 export const removeItemAtIndex = <TItem>(
