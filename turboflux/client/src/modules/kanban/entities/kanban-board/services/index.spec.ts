@@ -1,12 +1,15 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { kanbanBoardSchema } from '../entity';
-import { addColumn, createKanbanBoard, removeColumnById } from '.';
+import { addColumn, createKanbanBoard, moveColumn, removeColumnById } from '.';
 import {
   generateRandomKanbanBoard,
   generateRandomKanbanBoardInput,
 } from '../factories';
-import { generateRandomKanbanColumn } from '../../kanban-column/factories';
+import {
+  generateRandomKanbanColumn,
+  generateRandomKanbanColumnArray,
+} from '../../kanban-column/factories';
 
 describe('createKanbanBoard', () => {
   it('should return a valid kanban board when given valid input', () => {
@@ -73,6 +76,33 @@ describe('removeColumnById', () => {
       board,
       columnId: 'any',
     });
+
+    expect(updatedBoard).toEqual(board);
+  });
+});
+
+describe('moveColumn', () => {
+  it('should move a column from one index to another', () => {
+    const columns = generateRandomKanbanColumnArray({ columns: 5 });
+    const board = generateRandomKanbanBoard({ columns });
+
+    const from = 1;
+    const to = 3;
+
+    const updatedBoard = moveColumn({ board, from, to });
+
+    expect(updatedBoard.columns.length).toEqual(board.columns.length);
+    expect(updatedBoard.columns[3]).toEqual(board.columns[1]);
+  });
+
+  it('should return the same board if indexes are the same', () => {
+    const columns = generateRandomKanbanColumnArray({ columns: 5 });
+    const board = generateRandomKanbanBoard({ columns });
+
+    const from = 2;
+    const to = 2;
+
+    const updatedBoard = moveColumn({ board, from, to });
 
     expect(updatedBoard).toEqual(board);
   });

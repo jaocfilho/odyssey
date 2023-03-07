@@ -1,3 +1,4 @@
+import { moveItem } from '../../../utils';
 import { KanbanColumn } from '../../kanban-column';
 import { KanbanBoard, KanbanBoardInput, kanbanBoardSchema } from '../entity';
 
@@ -43,4 +44,21 @@ export const removeColumnById = ({
   if (index !== -1) boardToUpdate.columns.splice(index, 1);
 
   return boardToUpdate;
+};
+
+type MoveColumnParams = {
+  board: KanbanBoard;
+  from: number;
+  to: number;
+};
+
+export const moveColumn = ({
+  board,
+  from,
+  to,
+}: MoveColumnParams): KanbanBoard => {
+  const boardToUpdate = board;
+
+  const updatedColumns = moveItem(boardToUpdate.columns, from, to);
+  return { ...boardToUpdate, columns: updatedColumns };
 };

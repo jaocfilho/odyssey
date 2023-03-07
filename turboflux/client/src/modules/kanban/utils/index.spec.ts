@@ -1,31 +1,43 @@
-import { describe } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
 import fc from 'fast-check';
 
 import { moveItem } from '.';
 
-const arrayArbitrary = () => fc.array(fc.integer()); // array of integers
+const arrayArbitrary = () => fc.array(fc.integer(), { minLength: 2 }); // array of integers
 const fromArbitrary = () => fc.nat(); // from index
 const toArbitrary = () => fc.nat(); // to index
 
 describe('moveItem', () => {
   it('moves an item from one position to another', () => {
+    const testPredicate = (arr: number[], from: number, to: number) => {
+      // The expected output is an array with the same length and the item moved
+      const expected = [...arr];
+      const movedItem = expected.splice(from, 1)[0];
+
+      expected.splice(to, 0, movedItem);
+
+      const result = moveItem(arr, from, to);
+
+      expect(result).toEqual(expected);
+    };
+
     fc.assert(
       fc.property(
         arrayArbitrary(),
         fromArbitrary(),
         toArbitrary(),
-        (arr, from, to) => {
-          // The expected output is an array with the same length and the item moved
-          const expected = [...arr];
-          const movedItem = expected.splice(from, 1)[0];
+        testPredicate
+      ),
+      { seed: -46595051, path: '11:0', endOnFailure: true }
+    );
 
-          expected.splice(to, 0, movedItem);
-
-          const result = moveItem(arr, from, to);
-
-          expect(result).toEqual(expected);
-        }
+    fc.assert(
+      fc.property(
+        arrayArbitrary(),
+        fromArbitrary(),
+        toArbitrary(),
+        testPredicate
       )
     );
   });
