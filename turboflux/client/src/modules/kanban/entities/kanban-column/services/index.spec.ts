@@ -3,12 +3,14 @@ import { describe, expect, it, vi, assertType } from 'vitest';
 import { KanbanColumn, kanbanColumnSchema } from '../entity';
 import {
   generateRandomKanbanColumn,
+  generateRandomKanbanColumnArray,
   generateRandomKanbanColumnInput,
 } from '../factories';
 import { generateRandomKanbanCard } from '../../kanban-card/factories';
 import {
   addCard,
   createKanbanColumn,
+  getColumnById,
   moveCard,
   removeCardById,
   updateKanbanColumn,
@@ -136,5 +138,36 @@ describe('moveCard', () => {
     const updatedColumn = moveCard({ column, from, to });
 
     expect(updatedColumn).toEqual(column);
+  });
+});
+
+describe('getColumnById', () => {
+  it('should return a column if it belongs to the list', () => {
+    const columns = generateRandomKanbanColumnArray();
+
+    const columnId = columns[0].id;
+    const expected = getColumnById({ columns, columnId });
+
+    expect(expected).toBeTruthy();
+    expect(expected?.column.id).toEqual(columnId);
+  });
+
+  it('should return a column index if it belongs to the list', () => {
+    const columns = generateRandomKanbanColumnArray();
+
+    const columnId = columns[0].id;
+    const expected = getColumnById({ columns, columnId });
+
+    expect(expected).toBeTruthy();
+    expect(expected?.index).toEqual(0);
+  });
+
+  it('should return undefined if the id does not belongs the list', () => {
+    const columns = generateRandomKanbanColumnArray();
+
+    const columnId = 'anyId';
+    const expected = getColumnById({ columns, columnId });
+
+    expect(expected).toBeUndefined();
   });
 });

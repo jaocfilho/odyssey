@@ -1,6 +1,11 @@
 import { moveItem } from '../../../utils';
 import { KanbanCard } from '../../kanban-card';
-import { KanbanColumn, KanbanColumnInput, kanbanColumnSchema } from '../entity';
+import {
+  KanbanColumn,
+  KanbanColumnInput,
+  KanbanColumns,
+  kanbanColumnSchema,
+} from '../entity';
 
 type CreateKanbanColumnParams = {
   columnProps: KanbanColumnInput;
@@ -74,4 +79,30 @@ export const moveCard = ({
 
   const updatedCards = moveItem(columnToUpdate.cards, from, to);
   return { ...columnToUpdate, cards: updatedCards };
+};
+
+type GetColumnByIdParams = {
+  columns: KanbanColumns;
+  columnId: string;
+};
+
+type GetColumnByIdReturn =
+  | {
+      column: KanbanColumn;
+      index: number;
+    }
+  | undefined;
+
+export const getColumnById = ({
+  columns,
+  columnId,
+}: GetColumnByIdParams): GetColumnByIdReturn => {
+  const index = columns.findIndex((c) => c.id === columnId);
+
+  if (index !== -1) {
+    const column = columns[index];
+    return { column, index };
+  }
+
+  return undefined;
 };

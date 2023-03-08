@@ -1,7 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { kanbanBoardSchema } from '../entity';
-import { addColumn, createKanbanBoard, moveColumn, removeColumnById } from '.';
+import {
+  addColumn,
+  createKanbanBoard,
+  getColumnById,
+  moveColumn,
+  removeColumnById,
+} from '.';
 import {
   generateRandomKanbanBoard,
   generateRandomKanbanBoardInput,

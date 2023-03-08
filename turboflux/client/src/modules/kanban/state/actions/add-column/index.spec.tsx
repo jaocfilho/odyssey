@@ -7,23 +7,23 @@ import { KanbanState } from '../../reducer';
 
 describe('addColumn', () => {
   it('should return the kanban state', () => {
-    const draft = generateRandomKanbanState();
+    const state = generateRandomKanbanState();
 
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
 
-    const nextState = addColumn(draft, payload);
+    const nextState = addColumn(state, payload);
 
     assertType<KanbanState>(nextState);
   });
 
-  it('should create a new column and add it to the draft board', () => {
-    const draft = generateRandomKanbanState();
+  it('should create a new column and add it to the state board', () => {
+    const state = generateRandomKanbanState();
 
     const columnProps = generateRandomKanbanColumnInput();
     const payload = { columnProps };
 
-    const nextState = addColumn(draft, payload);
+    const nextState = addColumn(state, payload);
 
     const expectedColumn = nextState.board.columns.find(
       (column) => column.id === columnProps.id
