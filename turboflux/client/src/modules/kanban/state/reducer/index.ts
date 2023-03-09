@@ -3,6 +3,7 @@ import { InvalidKanbanReducerActionError } from '../../errors';
 import { KanbanReducerAction } from '../actions';
 import { addCard } from '../actions/add-card';
 import { addColumn } from '../actions/add-column';
+import { removeCard } from '../actions/remove-card';
 import { removeColumn } from '../actions/remove-column';
 
 export type KanbanState = {
@@ -27,6 +28,11 @@ export const kanbanStateReducer = (
     case 'ADD_CARD':
       const addCardPayload = action.payload;
       addCard(draft, addCardPayload);
+      break;
+
+    case 'REMOVE_CARD':
+      const removeCardPayload = action.payload;
+      removeCard(draft, removeCardPayload);
       break;
 
     default:

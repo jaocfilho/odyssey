@@ -9,11 +9,13 @@ import {
   CreateColumnAction,
   RemoveColumnAction,
   AddCardAction,
+  RemoveCardAction,
 } from '../actions';
 import { generateRandomKanbanState } from '../factories';
 import { addColumn } from '../actions/add-column';
 import { removeColumn } from '../actions/remove-column';
 import { addCard } from '../actions/add-card';
+import { removeCard } from '../actions/remove-card';
 import { generateRandomKanbanCardInput } from '../../entities/kanban-card';
 
 vi.mock('../actions/add-column', () => ({
@@ -26,6 +28,10 @@ vi.mock('../actions/remove-column', () => ({
 
 vi.mock('../actions/add-card', () => ({
   addCard: vi.fn(),
+}));
+
+vi.mock('../actions/remove-card', () => ({
+  removeCard: vi.fn(),
 }));
 
 describe('kanbanStateReducer', () => {
@@ -70,5 +76,21 @@ describe('kanbanStateReducer', () => {
     kanbanStateReducer(draft, action);
 
     expect(addCard).toHaveBeenCalledWith(draft, action.payload);
+  });
+
+  it('should call removeCard when action is REMOVE_CARD', () => {
+    const draft = generateRandomKanbanState();
+
+    const column = generateRandomKanbanColumn();
+    const cardId = column.cards[0].id;
+
+    const action: RemoveCardAction = {
+      type: 'REMOVE_CARD',
+      payload: { column, cardId },
+    };
+
+    kanbanStateReducer(draft, action);
+
+    expect(removeCard).toHaveBeenCalledWith(draft, action.payload);
   });
 });

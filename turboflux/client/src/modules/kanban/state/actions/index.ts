@@ -1,5 +1,6 @@
 import { AddCardPayload } from './add-card';
 import { AddColumnPayload } from './add-column';
+import { RemoveCardPayload } from './remove-card';
 import { RemoveColumnPayload } from './remove-column';
 
 export type CreateColumnAction = {
@@ -17,7 +18,13 @@ export type AddCardAction = {
   payload: AddCardPayload;
 };
 
+export type RemoveCardAction = {
+  type: 'REMOVE_CARD';
+  payload: RemoveCardPayload;
+};
+
 export type KanbanReducerAction =
   | CreateColumnAction
   | RemoveColumnAction
-  | AddCardAction;
+  | AddCardAction
+  | RemoveCardAction;
