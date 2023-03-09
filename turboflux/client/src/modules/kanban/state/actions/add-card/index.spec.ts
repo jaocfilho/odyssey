@@ -27,8 +27,10 @@ describe('addCard', () => {
 
     const nextState = addCard(state, payload);
 
-    const lastIndex = nextState.board.columns.length - 1;
-    const expectedCard = nextState.board.columns[lastIndex];
+    const updatedColumn = nextState.board.columns[0];
+
+    const lastIndex = updatedColumn.cards.length - 1;
+    const expectedCard = updatedColumn.cards[lastIndex];
 
     expect(expectedCard.id).toEqual(cardProps.id);
   });
@@ -40,10 +42,12 @@ describe('addCard', () => {
     const cardProps = generateRandomKanbanCardInput();
     const payload = { cardProps, column };
 
+    const initialLength = column.cards.length;
     const nextState = addCard(state, payload);
 
-    expect(nextState.board.columns.length).toEqual(
-      state.board.columns.length + 1
-    );
+    const updatedColumn = nextState.board.columns[0];
+    const updatedLength = updatedColumn.cards.length;
+
+    expect(initialLength + 1).toEqual(updatedLength);
   });
 });
