@@ -1,5 +1,6 @@
 import { AddCardPayload } from './add-card';
 import { AddColumnPayload } from './add-column';
+import { MoveColumnPayload } from './move-column';
 import { RemoveCardPayload } from './remove-card';
 import { RemoveColumnPayload } from './remove-column';
 
@@ -23,8 +24,14 @@ export type RemoveCardAction = {
   payload: RemoveCardPayload;
 };
 
+export type MoveColumnAction = {
+  type: 'MOVE_COLUMN';
+  payload: MoveColumnPayload;
+};
+
 export type KanbanReducerAction =
   | CreateColumnAction
   | RemoveColumnAction
   | AddCardAction
-  | RemoveCardAction;
+  | RemoveCardAction
+  | MoveColumnAction;
