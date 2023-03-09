@@ -1,11 +1,20 @@
 import { describe, it, expect, vi } from 'vitest';
 
 import { kanbanStateReducer } from '.';
-import { generateRandomKanbanColumnInput } from '../../entities/kanban-column';
-import { CreateColumnAction, RemoveColumnAction } from '../actions';
+import {
+  generateRandomKanbanColumn,
+  generateRandomKanbanColumnInput,
+} from '../../entities/kanban-column';
+import {
+  CreateColumnAction,
+  RemoveColumnAction,
+  AddCardAction,
+} from '../actions';
 import { generateRandomKanbanState } from '../factories';
 import { addColumn } from '../actions/add-column';
 import { removeColumn } from '../actions/remove-column';
+import { addCard } from '../actions/add-card';
+import { generateRandomKanbanCardInput } from '../../entities/kanban-card';
 
 vi.mock('../actions/add-column', () => ({
   addColumn: vi.fn(),
@@ -13,6 +22,10 @@ vi.mock('../actions/add-column', () => ({
 
 vi.mock('../actions/remove-column', () => ({
   removeColumn: vi.fn(),
+}));
+
+vi.mock('../actions/add-card', () => ({
+  addCard: vi.fn(),
 }));
 
 describe('kanbanStateReducer', () => {
@@ -41,5 +54,21 @@ describe('kanbanStateReducer', () => {
     kanbanStateReducer(draft, action);
 
     expect(removeColumn).toHaveBeenCalledWith(draft, action.payload);
+  });
+
+  it('should call addCard when action is ADD_CARD', () => {
+    const draft = generateRandomKanbanState();
+
+    const column = generateRandomKanbanColumn();
+    const cardProps = generateRandomKanbanCardInput();
+
+    const action: AddCardAction = {
+      type: 'ADD_CARD',
+      payload: { column, cardProps },
+    };
+
+    kanbanStateReducer(draft, action);
+
+    expect(addCard).toHaveBeenCalledWith(draft, action.payload);
   });
 });
