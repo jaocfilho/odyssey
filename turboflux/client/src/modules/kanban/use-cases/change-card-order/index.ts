@@ -1,15 +1,15 @@
 import { KanbanColumn, moveCard } from '../../entities/kanban-column';
 
-type MoveCardUseCaseParams = {
+type ChangeCardOrderUseCaseParams = {
   column: KanbanColumn;
   from: number;
   to: number;
 };
 
-export const moveCardUseCase = ({
+export const changeCardOrderUseCase = ({
   column,
   from,
   to,
-}: MoveCardUseCaseParams) => {
+}: ChangeCardOrderUseCaseParams) => {
   return moveCard({ column, from, to });
 };

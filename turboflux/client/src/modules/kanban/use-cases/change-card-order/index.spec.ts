@@ -1,19 +1,19 @@
 import { describe, assertType, it, expect } from 'vitest';
 
-import { moveCardUseCase } from '.';
+import { changeCardOrderUseCase } from '.';
 import {
   generateRandomKanbanColumn,
   KanbanColumn,
 } from '../../entities/kanban-column';
 
-describe('moveCardUseCase', () => {
+describe('changeCardOrderUseCase', () => {
   it('should move a card from one index to another', () => {
     const column = generateRandomKanbanColumn({ cardsLength: 5 });
 
     const from = 1;
     const to = 3;
 
-    const updatedColumn = moveCardUseCase({ column, from, to });
+    const updatedColumn = changeCardOrderUseCase({ column, from, to });
 
     expect(updatedColumn.cards.length).toEqual(column.cards.length);
     expect(updatedColumn.cards[3]).toEqual(column.cards[1]);
@@ -25,7 +25,7 @@ describe('moveCardUseCase', () => {
     const from = 2;
     const to = 2;
 
-    const updatedColumn = moveCardUseCase({ column, from, to });
+    const updatedColumn = changeCardOrderUseCase({ column, from, to });
 
     expect(updatedColumn).toEqual(column);
   });
@@ -36,7 +36,7 @@ describe('moveCardUseCase', () => {
     const from = 2;
     const to = 2;
 
-    const updatedColumn = moveCardUseCase({ column, from, to });
+    const updatedColumn = changeCardOrderUseCase({ column, from, to });
 
     assertType<KanbanColumn>(updatedColumn);
   });
