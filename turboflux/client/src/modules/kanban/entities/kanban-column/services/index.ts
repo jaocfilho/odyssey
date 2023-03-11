@@ -64,17 +64,17 @@ export const removeCardById = ({
   return columnToUpdate;
 };
 
-type MoveCardParams = {
+type ChangeCardOrderParams = {
   column: KanbanColumn;
   from: number;
   to: number;
 };
 
-export const moveCard = ({
+export const changeCardOrder = ({
   column,
   from,
   to,
-}: MoveCardParams): KanbanColumn => {
+}: ChangeCardOrderParams): KanbanColumn => {
   const columnToUpdate = column;
 
   const updatedCards = moveItem(columnToUpdate.cards, from, to);

@@ -10,14 +10,14 @@ import {
   RemoveColumnAction,
   AddCardAction,
   RemoveCardAction,
-  MoveColumnAction,
+  ChangeColumnOrderAction,
 } from '../actions';
 import { generateRandomKanbanState } from '../factories';
 import { addColumn } from '../actions/add-column';
 import { removeColumn } from '../actions/remove-column';
 import { addCard } from '../actions/add-card';
 import { removeCard } from '../actions/remove-card';
-import { moveColumn } from '../actions/move-column';
+import { changeColumnOrder } from '../actions/change-column-order';
 import { generateRandomKanbanCardInput } from '../../entities/kanban-card';
 
 vi.mock('../actions/add-column', () => ({
@@ -36,8 +36,8 @@ vi.mock('../actions/remove-card', () => ({
   removeCard: vi.fn(),
 }));
 
-vi.mock('../actions/move-column', () => ({
-  moveColumn: vi.fn(),
+vi.mock('../actions/change-column-order', () => ({
+  changeColumnOrder: vi.fn(),
 }));
 
 describe('kanbanStateReducer', () => {
@@ -100,16 +100,16 @@ describe('kanbanStateReducer', () => {
     expect(removeCard).toHaveBeenCalledWith(draft, action.payload);
   });
 
-  it('should call moveColumn when action is MOVE_COLUMN', () => {
+  it('should call moveColumn when action is CHANGE_COLUMN_ORDER', () => {
     const draft = generateRandomKanbanState();
 
-    const action: MoveColumnAction = {
-      type: 'MOVE_COLUMN',
+    const action: ChangeColumnOrderAction = {
+      type: 'CHANGE_COLUMN_ORDER',
       payload: { from: 0, to: 1 },
     };
 
     kanbanStateReducer(draft, action);
 
-    expect(moveColumn).toHaveBeenCalledWith(draft, action.payload);
+    expect(changeColumnOrder).toHaveBeenCalledWith(draft, action.payload);
   });
 });

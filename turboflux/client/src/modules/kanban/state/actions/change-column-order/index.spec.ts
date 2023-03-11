@@ -1,10 +1,10 @@
 import { describe, it, assertType, expect } from 'vitest';
 
-import { moveColumn } from '.';
+import { changeColumnOrder } from '.';
 import { generateRandomKanbanState } from '../../factories';
 import { KanbanState } from '../../reducer';
 
-describe('moveColumn', () => {
+describe('changeColumnOrder', () => {
   it('should return a kanban state', () => {
     const state = generateRandomKanbanState();
 
@@ -12,7 +12,7 @@ describe('moveColumn', () => {
     const to = state.board.columns.length - 1;
     const payload = { from, to };
 
-    const nextState = moveColumn(state, payload);
+    const nextState = changeColumnOrder(state, payload);
 
     assertType<KanbanState>(nextState);
   });
@@ -25,7 +25,7 @@ describe('moveColumn', () => {
     const payload = { from, to };
 
     const targetedColumn = state.board.columns[from];
-    const nextState = moveColumn(state, payload);
+    const nextState = changeColumnOrder(state, payload);
     const expected = nextState.board.columns[to];
 
     expect(targetedColumn).toEqual(expected);

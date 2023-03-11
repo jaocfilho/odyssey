@@ -1,15 +1,15 @@
 import { KanbanBoard, moveColumn } from '../../entities/kanban-board';
 
-type MoveColumnUseCaseParams = {
+type ChangeColumnOrderUseCaseParams = {
   board: KanbanBoard;
   from: number;
   to: number;
 };
 
-export const moveColumnUseCase = ({
+export const changeColumnOrderUseCase = ({
   board,
   from,
   to,
-}: MoveColumnUseCaseParams): KanbanBoard => {
+}: ChangeColumnOrderUseCaseParams): KanbanBoard => {
   return moveColumn({ board, from, to });
 };

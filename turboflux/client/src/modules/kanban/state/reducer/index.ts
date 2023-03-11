@@ -3,7 +3,7 @@ import { InvalidKanbanReducerActionError } from '../../errors';
 import { KanbanReducerAction } from '../actions';
 import { addCard } from '../actions/add-card';
 import { addColumn } from '../actions/add-column';
-import { moveColumn } from '../actions/move-column';
+import { changeColumnOrder } from '../actions/change-column-order';
 import { removeCard } from '../actions/remove-card';
 import { removeColumn } from '../actions/remove-column';
 
@@ -36,9 +36,9 @@ export const kanbanStateReducer = (
       removeCard(draft, removeCardPayload);
       break;
 
-    case 'MOVE_COLUMN':
-      const moveColumnPayload = action.payload;
-      moveColumn(draft, moveColumnPayload);
+    case 'CHANGE_COLUMN_ORDER':
+      const changeColumnOrderPayload = action.payload;
+      changeColumnOrder(draft, changeColumnOrderPayload);
       break;
 
     default:

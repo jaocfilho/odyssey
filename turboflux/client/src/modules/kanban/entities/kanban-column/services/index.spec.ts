@@ -11,7 +11,7 @@ import {
   addCard,
   createKanbanColumn,
   getColumnById,
-  moveCard,
+  changeCardOrder,
   removeCardById,
   updateKanbanColumn,
 } from '.';
@@ -116,14 +116,14 @@ describe('removeCardById', () => {
   });
 });
 
-describe('moveCard', () => {
+describe('changeCardOrder', () => {
   it('should move a card from one index to another', () => {
     const column = generateRandomKanbanColumn({ cardsLength: 5 });
 
     const from = 1;
     const to = 3;
 
-    const updatedColumn = moveCard({ column, from, to });
+    const updatedColumn = changeCardOrder({ column, from, to });
 
     expect(updatedColumn.cards.length).toEqual(column.cards.length);
     expect(updatedColumn.cards[3]).toEqual(column.cards[1]);
@@ -135,7 +135,7 @@ describe('moveCard', () => {
     const from = 2;
     const to = 2;
 
-    const updatedColumn = moveCard({ column, from, to });
+    const updatedColumn = changeCardOrder({ column, from, to });
 
     expect(updatedColumn).toEqual(column);
   });

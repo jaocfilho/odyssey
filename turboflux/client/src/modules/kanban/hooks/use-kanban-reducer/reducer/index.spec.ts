@@ -79,7 +79,7 @@ describe('reducer', () => {
     expect(isIncluded).toBeUndefined();
   });
 
-  it('should move a column from the board when the action is MOVE_COLUMN', () => {
+  it('should move a column from the board when the action is CHANGE_COLUMN_ORDER', () => {
     const draft = generateRandomKanbanState();
 
     const from = 0;
@@ -88,7 +88,7 @@ describe('reducer', () => {
 
     const targetedColumn = draft.board.columns[from];
     const nextState = reducer(draft, {
-      type: 'MOVE_COLUMN',
+      type: 'CHANGE_COLUMN_ORDER',
       payload,
     });
 

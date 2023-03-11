@@ -1,13 +1,13 @@
 import { describe, assertType, it, expect } from 'vitest';
 
-import { moveColumnUseCase } from '.';
+import { changeColumnOrderUseCase } from '.';
 import {
   generateRandomKanbanBoard,
   KanbanBoard,
 } from '../../entities/kanban-board';
 import { generateRandomKanbanColumnArray } from '../../entities/kanban-column';
 
-describe('moveColumnUseCase', () => {
+describe('changeColumnOrderUseCase', () => {
   it('should move a column from one index to another', () => {
     const columns = generateRandomKanbanColumnArray({ columns: 5 });
     const board = generateRandomKanbanBoard({ columns });
@@ -15,7 +15,7 @@ describe('moveColumnUseCase', () => {
     const from = 1;
     const to = 3;
 
-    const updatedBoard = moveColumnUseCase({
+    const updatedBoard = changeColumnOrderUseCase({
       board,
       from,
       to,
@@ -32,7 +32,7 @@ describe('moveColumnUseCase', () => {
     const from = 2;
     const to = 2;
 
-    const updatedBoard = moveColumnUseCase({
+    const updatedBoard = changeColumnOrderUseCase({
       board,
       from,
       to,
@@ -48,7 +48,7 @@ describe('moveColumnUseCase', () => {
     const from = 1;
     const to = 3;
 
-    const updatedBoard = moveColumnUseCase({
+    const updatedBoard = changeColumnOrderUseCase({
       board,
       from,
       to,
