@@ -7,10 +7,7 @@ export type RemoveCardPayload = {
   column: KanbanColumn;
 };
 
-export const removeCard = (
-  state: KanbanState,
-  payload: RemoveCardPayload
-): KanbanState => {
+export const removeCard = (state: KanbanState, payload: RemoveCardPayload) => {
   const { cardId, column } = payload;
   const { id: columnId, ...newColumnProps } = removeCardById({
     cardId,
@@ -23,5 +20,5 @@ export const removeCard = (
     newColumnProps,
   });
 
-  return { ...state, board: updatedBoard };
+  state.board = updatedBoard;
 };

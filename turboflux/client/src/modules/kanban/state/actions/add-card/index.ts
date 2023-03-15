@@ -11,10 +11,7 @@ export type AddCardPayload = {
   cardProps: KanbanCardInput;
 };
 
-export const addCard = (
-  state: KanbanState,
-  payload: AddCardPayload
-): KanbanState => {
+export const addCard = (state: KanbanState, payload: AddCardPayload) => {
   const { column, cardProps } = payload;
   const { id: columnId, ...newColumnProps } = addCardToColumnUseCase({
     column,
@@ -27,5 +24,5 @@ export const addCard = (
     newColumnProps,
   });
 
-  return { ...state, board: updatedBoard };
+  state.board = updatedBoard;
 };

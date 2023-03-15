@@ -6,13 +6,13 @@ export type RemoveColumnPayload = {
 };
 
 export const removeColumn = (
-  draft: KanbanState,
+  state: KanbanState,
   payload: RemoveColumnPayload
-): KanbanState => {
-  const board = removeColumnFromBoardUseCase({
-    board: draft.board,
+) => {
+  const updatedBoard = removeColumnFromBoardUseCase({
+    board: state.board,
     columnId: payload.columnId,
   });
 
-  return { ...draft, board };
+  state.board = updatedBoard;
 };
