@@ -7,7 +7,10 @@ export type RemoveCardPayload = {
   column: KanbanColumn;
 };
 
-export const removeCard = (state: KanbanState, payload: RemoveCardPayload) => {
+export const removeCard = (
+  state: KanbanState,
+  payload: RemoveCardPayload
+): KanbanState => {
   const { cardId, column } = payload;
   const { id: columnId, ...newColumnProps } = removeCardById({
     cardId,

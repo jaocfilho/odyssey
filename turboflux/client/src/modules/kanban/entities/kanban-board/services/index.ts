@@ -57,8 +57,6 @@ export const moveColumn = ({
   from,
   to,
 }: MoveColumnParams): KanbanBoard => {
-  const boardToUpdate = board;
-
-  const updatedColumns = moveItem(boardToUpdate.columns, from, to);
-  return { ...boardToUpdate, columns: updatedColumns };
+  const updatedColumns = moveItem(board.columns, from, to);
+  return { ...board, columns: updatedColumns };
 };

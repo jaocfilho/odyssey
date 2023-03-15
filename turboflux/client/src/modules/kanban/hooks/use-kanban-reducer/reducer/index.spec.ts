@@ -4,6 +4,7 @@ import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column
 import { generateRandomKanbanState } from '../../../state';
 import { reducer } from '.';
 import { generateRandomKanbanCardInput } from '../../../entities/kanban-card';
+import { generateRandomKanbanBoard } from '../../../entities/kanban-board';
 
 describe('reducer', () => {
   it('should add a column to the board when action is ADD_COLUMN', () => {
@@ -80,16 +81,16 @@ describe('reducer', () => {
   });
 
   it('should move a column from the board when the action is CHANGE_COLUMN_ORDER', () => {
-    const draft = generateRandomKanbanState();
+    const board = generateRandomKanbanBoard({ columnsLength: 4 });
+    const draft = generateRandomKanbanState({ board });
 
     const from = 0;
     const to = draft.board.columns.length - 1;
-    const payload = { from, to };
 
     const targetedColumn = draft.board.columns[from];
     const nextState = reducer(draft, {
       type: 'CHANGE_COLUMN_ORDER',
-      payload,
+      payload: { from, to },
     });
 
     const expected = nextState.board.columns[to];
