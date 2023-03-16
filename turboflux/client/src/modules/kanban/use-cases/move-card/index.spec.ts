@@ -23,7 +23,7 @@ describe('moveCardUseCase', () => {
     assertObjectProperties(properties, updatedColumns);
   });
 
-  it('should move a card from a column to another', () => {
+  it('should move a card from one column to another', () => {
     const originColumn = generateRandomKanbanColumn();
     const targetColumn = generateRandomKanbanColumn();
     const cardId = originColumn.cards[0].id;
