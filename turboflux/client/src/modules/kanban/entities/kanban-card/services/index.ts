@@ -1,4 +1,9 @@
-import { KanbanCard, KanbanCardInput, kanbanCardSchema } from '../entity';
+import {
+  KanbanCard,
+  KanbanCardInput,
+  KanbanCards,
+  kanbanCardSchema,
+} from '../entity';
 
 type CreateKanbanCardParams = {
   cardProps: KanbanCardInput;
@@ -21,4 +26,30 @@ export const updateKanbanCard = ({
   newCardProps,
 }: UpdateKanbanCardParams): KanbanCard => {
   return { ...card, ...newCardProps };
+};
+
+type GetCardByIdParams = {
+  cardId: string;
+  cards: KanbanCards;
+};
+
+type GetCardByIdReturn =
+  | {
+      card: KanbanCard;
+      index: number;
+    }
+  | undefined;
+
+export const getCardById = ({
+  cardId,
+  cards,
+}: GetCardByIdParams): GetCardByIdReturn => {
+  const index = cards.findIndex((c) => c.id === cardId);
+
+  if (index !== -1) {
+    const card = cards[index];
+    return { card, index };
+  }
+
+  return undefined;
 };
