@@ -1,16 +1,17 @@
 import { getColumnUseCase, moveCardUseCase } from '../../../use-cases';
 import { KanbanState } from '../../reducer';
 
-export type MoveCardPayload = {
+export interface MoveCardPayload {
   cardId: string;
   targetIndex: number;
   originColumnId: string;
   targetColumnId: string;
-};
+}
 
-export const moveCard = (state: KanbanState, payload: MoveCardPayload) => {
-  const { cardId, originColumnId, targetColumnId, targetIndex } = payload;
-
+export const moveCard = (
+  state: KanbanState,
+  { cardId, originColumnId, targetColumnId, targetIndex }: MoveCardPayload
+) => {
   const origin = getColumnUseCase({
     board: state.board,
     columnId: originColumnId,
@@ -21,11 +22,9 @@ export const moveCard = (state: KanbanState, payload: MoveCardPayload) => {
     columnId: targetColumnId,
   });
 
-  const originIsUndefined = origin === undefined;
-  const targetIsUndefined = target === undefined;
-  const willNotUpdate = originIsUndefined || targetIsUndefined;
-
-  if (willNotUpdate) return;
+  if (!origin || !target) {
+    return;
+  }
 
   const { column: originColumn, index: originColumnIndex } = origin;
   const { column: targetColumn, index: targetColumnIndex } = target;
