@@ -6,4 +6,5 @@ export * from './get-column';
 export * from './move-card';
 export * from './remove-card-from-column';
 export * from './remove-column-from-board';
+export * from './update-card-from-column';
 export * from './update-column-from-board';
