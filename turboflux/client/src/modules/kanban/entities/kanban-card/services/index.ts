@@ -15,7 +15,7 @@ export const createKanbanCard = ({ cardProps }: CreateKanbanCardParams) => {
   return kanbanCard;
 };
 
-type NewCardProps = Omit<Partial<KanbanCard>, 'id'>;
+export type NewCardProps = Omit<Partial<KanbanCard>, 'id'>;
 type UpdateKanbanCardParams = {
   card: KanbanCard;
   newCardProps: NewCardProps;
