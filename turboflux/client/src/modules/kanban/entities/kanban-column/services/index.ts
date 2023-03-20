@@ -19,7 +19,7 @@ export const createKanbanColumn = ({
   return kanbanColumn;
 };
 
-type NewColumnProps = Omit<Partial<KanbanColumn>, 'id'>;
+export type NewColumnProps = Omit<Partial<KanbanColumn>, 'id'>;
 type UpdateKanbanColumnParams = {
   column: KanbanColumn;
   newColumnProps: NewColumnProps;
