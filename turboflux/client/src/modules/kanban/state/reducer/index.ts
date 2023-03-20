@@ -3,9 +3,13 @@ import { InvalidKanbanReducerActionError } from '../../errors';
 import { KanbanReducerAction } from '../actions';
 import { addCard } from '../actions/add-card';
 import { addColumn } from '../actions/add-column';
+import { changeCardOrder } from '../actions/change-card-order';
 import { changeColumnOrder } from '../actions/change-column-order';
+import { moveCard } from '../actions/move-card';
 import { removeCard } from '../actions/remove-card';
 import { removeColumn } from '../actions/remove-column';
+import { updateCard } from '../actions/update-card';
+import { updateColumn } from '../actions/update-column';
 
 export type KanbanState = {
   board: KanbanBoard;
@@ -39,6 +43,26 @@ export const kanbanStateReducer = (
     case 'CHANGE_COLUMN_ORDER':
       const changeColumnOrderPayload = action.payload;
       changeColumnOrder(draft, changeColumnOrderPayload);
+      break;
+
+    case 'CHANGE_CARD_ORDER':
+      const changeCardOrderPayload = action.payload;
+      changeCardOrder(draft, changeCardOrderPayload);
+      break;
+
+    case 'MOVE_CARD':
+      const moveCardPayload = action.payload;
+      moveCard(draft, moveCardPayload);
+      break;
+
+    case 'UPDATE_CARD':
+      const updateCardPayload = action.payload;
+      updateCard(draft, updateCardPayload);
+      break;
+
+    case 'UPDATE_COLUMN':
+      const updateColumnPayload = action.payload;
+      updateColumn(draft, updateColumnPayload);
       break;
 
     default:

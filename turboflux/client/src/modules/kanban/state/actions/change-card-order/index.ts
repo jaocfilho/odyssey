@@ -1,8 +1,7 @@
 import { changeCardOrderUseCase, getColumnUseCase } from '../../../use-cases';
 import { KanbanState } from '../../reducer';
-import { updateColumn } from '../update-column';
 
-type ChangeCardOrderPayload = {
+export type ChangeCardOrderPayload = {
   columnId: string;
   from: number;
   to: number;
