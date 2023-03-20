@@ -8,9 +8,8 @@ export type ChangeColumnOrderPayload = {
 
 export const changeColumnOrder = (
   state: KanbanState,
-  payload: ChangeColumnOrderPayload
+  { from, to }: ChangeColumnOrderPayload
 ) => {
-  const { from, to } = payload;
   const updatedBoard = changeColumnOrderUseCase({
     board: state.board,
     from,

@@ -10,6 +10,6 @@ export const changeCardOrderUseCase = ({
   column,
   from,
   to,
-}: ChangeCardOrderUseCaseParams) => {
+}: ChangeCardOrderUseCaseParams): KanbanColumn => {
   return changeCardOrder({ column, from, to });
 };
