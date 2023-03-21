@@ -1,12 +1,16 @@
 import { describe, it, expect } from 'vitest';
 
-import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column';
+import {
+  generateRandomKanbanColumn,
+  generateRandomKanbanColumnInput,
+} from '../../../entities/kanban-column';
 import { generateRandomKanbanState } from '../../../state';
 import { reducer } from '.';
 import {
   generateRandomKanbanCard,
   generateRandomKanbanCardInput,
 } from '../../../entities/kanban-card';
+import { generateRandomKanbanBoard } from '../../../entities/kanban-board';
 
 describe('reducer', () => {
   it('should add a column to the board when action is ADD_COLUMN', () => {
@@ -120,7 +124,8 @@ describe('reducer', () => {
   });
 
   it('should move a card from one column to another when the action is MOVE_CARD', () => {
-    const draft = generateRandomKanbanState();
+    const board = generateRandomKanbanBoard({ columnsLength: 5 });
+    const draft = generateRandomKanbanState({ board });
 
     const originColumn = draft.board.columns[0];
     const originColumnId = originColumn.id;
@@ -137,10 +142,9 @@ describe('reducer', () => {
       payload: { cardId, originColumnId, targetColumnId, targetIndex },
     });
 
-    const updatedOrigin = nextState.board.columns[0];
     const updatedTarget = nextState.board.columns[lastIndex];
 
-    const expected = updatedOrigin.cards[0].id;
+    const expected = originColumn.cards[0].id;
     expect(expected).toEqual(updatedTarget.cards[0].id);
   });
 
@@ -158,5 +162,19 @@ describe('reducer', () => {
 
     const updatedCard = nextState.board.columns[0].cards[0];
     expect(updatedCard.title).toBe(newCardProps.title);
+  });
+
+  it('should update a column from the board when the action is UPDATE_COLUMN', () => {
+    const draft = generateRandomKanbanState();
+    const columnId = draft.board.columns[0].id;
+    const { id, ...newColumnProps } = generateRandomKanbanColumn();
+
+    const nextState = reducer(draft, {
+      type: 'UPDATE_COLUMN',
+      payload: { columnId, newColumnProps },
+    });
+
+    const updatedColumn = nextState.board.columns[0];
+    expect(updatedColumn.title).toBe(newColumnProps.title);
   });
 });
