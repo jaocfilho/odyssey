@@ -99,11 +99,12 @@ describe('kanbanStateReducer', () => {
     const draft = generateRandomKanbanState();
 
     const column = generateRandomKanbanColumn();
+    const columnId = column.id;
     const cardProps = generateRandomKanbanCardInput();
 
     const action: AddCardAction = {
       type: 'ADD_CARD',
-      payload: { column, cardProps },
+      payload: { columnId, cardProps },
     };
 
     kanbanStateReducer(draft, action);

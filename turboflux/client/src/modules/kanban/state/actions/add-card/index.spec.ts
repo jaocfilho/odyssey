@@ -9,8 +9,9 @@ describe('addCard', () => {
     const state = generateRandomKanbanState();
 
     const column = state.board.columns[0];
+    const columnId = column.id;
     const cardProps = generateRandomKanbanCardInput();
-    const payload = { cardProps, column };
+    const payload = { cardProps, columnId };
 
     addCard(state, payload);
 
@@ -26,8 +27,9 @@ describe('addCard', () => {
     const state = generateRandomKanbanState();
 
     const column = state.board.columns[0];
+    const columnId = column.id;
     const cardProps = generateRandomKanbanCardInput();
-    const payload = { cardProps, column };
+    const payload = { cardProps, columnId };
 
     const initialLength = column.cards.length;
     addCard(state, payload);

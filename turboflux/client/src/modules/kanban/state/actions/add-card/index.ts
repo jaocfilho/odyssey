@@ -1,19 +1,26 @@
 import { KanbanCardInput } from '../../../entities/kanban-card';
-import { KanbanColumn } from '../../../entities/kanban-column';
 import {
   addCardToColumnUseCase,
+  getColumnUseCase,
   updateColumnFromBoardUseCase,
 } from '../../../use-cases';
 import { KanbanState } from '../../reducer';
 
 export type AddCardPayload = {
-  column: KanbanColumn;
+  columnId: string;
   cardProps: KanbanCardInput;
 };
 
-export const addCard = (state: KanbanState, payload: AddCardPayload) => {
-  const { column, cardProps } = payload;
-  const { id: columnId, ...newColumnProps } = addCardToColumnUseCase({
+export const addCard = (
+  state: KanbanState,
+  { columnId, cardProps }: AddCardPayload
+) => {
+  const query = getColumnUseCase({ board: state.board, columnId });
+
+  if (!query) return;
+
+  const { column } = query;
+  const { id, ...newColumnProps } = addCardToColumnUseCase({
     column,
     cardProps,
   });

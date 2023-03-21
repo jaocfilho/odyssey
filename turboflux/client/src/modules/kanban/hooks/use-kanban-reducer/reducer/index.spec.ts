@@ -51,8 +51,9 @@ describe('reducer', () => {
     const draft = generateRandomKanbanState();
 
     const column = draft.board.columns[0];
+    const columnId = column.id;
     const cardProps = generateRandomKanbanCardInput();
-    const payload = { cardProps, column };
+    const payload = { cardProps, columnId };
 
     const nextState = reducer(draft, {
       type: 'ADD_CARD',
