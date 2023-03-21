@@ -143,7 +143,7 @@ describe('kanbanStateReducer', () => {
   it('should call changeCardOrder when action is CHANGE_CARD_ORDER', () => {
     const draft = generateRandomKanbanState();
 
-    const column = generateRandomKanbanColumn();
+    const column = draft.board.columns[0];
     const columnId = column.id;
 
     const action: ChangeCardOrderAction = {

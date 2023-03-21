@@ -3,7 +3,10 @@ import { describe, it, expect } from 'vitest';
 import { generateRandomKanbanColumnInput } from '../../../entities/kanban-column';
 import { generateRandomKanbanState } from '../../../state';
 import { reducer } from '.';
-import { generateRandomKanbanCardInput } from '../../../entities/kanban-card';
+import {
+  generateRandomKanbanCard,
+  generateRandomKanbanCardInput,
+} from '../../../entities/kanban-card';
 
 describe('reducer', () => {
   it('should add a column to the board when action is ADD_COLUMN', () => {
@@ -95,5 +98,65 @@ describe('reducer', () => {
     const expected = nextState.board.columns[to];
 
     expect(targetedColumn).toEqual(expected);
+  });
+
+  it('should move a card from one index to another on a column when the action is CHANGE_CARD_ORDER', () => {
+    const draft = generateRandomKanbanState();
+
+    const column = draft.board.columns[0];
+    const columnId = column.id;
+
+    const from = 0;
+    const to = column.cards.length - 1;
+
+    const nextState = reducer(draft, {
+      type: 'CHANGE_CARD_ORDER',
+      payload: { columnId, from, to },
+    });
+
+    const updatedColumn = nextState.board.columns[0];
+
+    expect(column.cards[from]).toEqual(updatedColumn.cards[to]);
+  });
+
+  it('should move a card from one column to another when the action is MOVE_CARD', () => {
+    const draft = generateRandomKanbanState();
+
+    const originColumn = draft.board.columns[0];
+    const originColumnId = originColumn.id;
+
+    const lastIndex = draft.board.columns.length - 1;
+    const targetColumn = draft.board.columns[lastIndex];
+    const targetColumnId = targetColumn.id;
+
+    const cardId = originColumn.cards[0].id;
+    const targetIndex = 0;
+
+    const nextState = reducer(draft, {
+      type: 'MOVE_CARD',
+      payload: { cardId, originColumnId, targetColumnId, targetIndex },
+    });
+
+    const updatedOrigin = nextState.board.columns[0];
+    const updatedTarget = nextState.board.columns[lastIndex];
+
+    const expected = updatedOrigin.cards[0].id;
+    expect(expected).toEqual(updatedTarget.cards[0].id);
+  });
+
+  it('should update a card when the action is UPDATE_CARD', () => {
+    const draft = generateRandomKanbanState();
+
+    const columnId = draft.board.columns[0].id;
+    const cardId = draft.board.columns[0].cards[0].id;
+    const { id, ...newCardProps } = generateRandomKanbanCard();
+
+    const nextState = reducer(draft, {
+      type: 'UPDATE_CARD',
+      payload: { cardId, columnId, newCardProps },
+    });
+
+    const updatedCard = nextState.board.columns[0].cards[0];
+    expect(updatedCard.title).toBe(newCardProps.title);
   });
 });
