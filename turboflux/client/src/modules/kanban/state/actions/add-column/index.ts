@@ -6,10 +6,13 @@ export type AddColumnPayload = {
   columnProps: KanbanColumnInput;
 };
 
-export const addColumn = (state: KanbanState, payload: AddColumnPayload) => {
+export const addColumn = (
+  state: KanbanState,
+  { columnProps }: AddColumnPayload
+) => {
   const updatedBoard = addColumnToBoardUseCase({
     board: state.board,
-    columnProps: payload.columnProps,
+    columnProps: columnProps,
   });
 
   state.board = updatedBoard;

@@ -7,11 +7,11 @@ export type RemoveColumnPayload = {
 
 export const removeColumn = (
   state: KanbanState,
-  payload: RemoveColumnPayload
+  { columnId }: RemoveColumnPayload
 ) => {
   const updatedBoard = removeColumnFromBoardUseCase({
     board: state.board,
-    columnId: payload.columnId,
+    columnId: columnId,
   });
 
   state.board = updatedBoard;
