@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { beforeEach, vi, describe, it } from 'vitest';
+import { beforeEach, vi, describe, it, afterEach, expect } from 'vitest';
 
 import { signOut } from 'next-auth/react';
 
@@ -16,6 +16,10 @@ describe('LogoutItem', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     render(<LogoutItem />, { wrapper: DropdownMenuOpenWrapper });
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should render', () => {

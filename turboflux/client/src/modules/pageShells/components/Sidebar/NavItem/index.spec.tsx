@@ -10,6 +10,10 @@ vi.mock('../NavIcon', () => ({
 }));
 
 describe('NavItem', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('should render the item name', () => {
     render(
       <NavItem

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { describe, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useTheme } from 'next-themes';
 
@@ -11,7 +11,7 @@ describe('useThemeBase', () => {
   let theme = '';
   const setTheme = vi.fn();
 
-  const { result, rerender } = renderHook(
+  const { result, rerender, unmount } = renderHook(
     (props: UseThemeBaseProps) => useThemeBase(props),
     {
       initialProps: {
@@ -24,6 +24,11 @@ describe('useThemeBase', () => {
   beforeEach(() => {
     theme = '';
     vi.restoreAllMocks();
+    rerender();
+  });
+
+  afterEach(() => {
+    unmount();
   });
 
   it('should return the correct object', () => {

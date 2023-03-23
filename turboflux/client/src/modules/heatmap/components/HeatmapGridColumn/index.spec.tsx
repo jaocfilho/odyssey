@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 
-import { beforeEach, describe, expect, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi, afterEach } from 'vitest';
 
 import { Cell } from '../Cell';
 import { HeatmapGridColumn } from '.';
@@ -13,6 +13,10 @@ vi.mock('../Cell', () => ({
 describe('HeatmapGridColumn', () => {
   beforeEach(() => {
     vi.resetAllMocks();
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should render', () => {

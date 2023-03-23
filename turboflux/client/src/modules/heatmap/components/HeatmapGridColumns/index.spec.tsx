@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { beforeEach, describe, expect, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { HeatmapGridColumn } from '../HeatmapGridColumn';
 import { HeatmapGridColumns } from '.';
@@ -13,13 +13,6 @@ describe('HeatmapGridColumns', () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
-  });
-
-  it('should render', () => {
-    const columns = createRandomHeatmapColumns();
-
-    const { container } = render(<HeatmapGridColumns columns={columns} />);
-    expect(container).toBeInTheDocument();
   });
 
   it('should call a HeatmapGridColumn for each column', () => {

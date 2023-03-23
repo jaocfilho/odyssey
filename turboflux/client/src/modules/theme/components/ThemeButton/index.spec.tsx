@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { beforeEach, vi, describe, it } from 'vitest';
+import { beforeEach, vi, describe, it, expect, afterEach } from 'vitest';
 
 import { useTheme } from '../../hooks/useTheme';
 import { ThemeButton } from '.';
@@ -20,6 +20,10 @@ describe('ThemeButton', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     render(<ThemeButton />);
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should render', () => {

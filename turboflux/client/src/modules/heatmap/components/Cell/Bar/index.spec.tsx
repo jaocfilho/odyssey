@@ -1,11 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, afterEach } from 'vitest';
 
 import { Bar } from '.';
 import { createRandomHeatmapCell } from '../../../entities';
 
 describe('Bar', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('should render corectly if type is ending', () => {
     const { color, type } = createRandomHeatmapCell({ type: 'ending' });
 
