@@ -8,6 +8,9 @@ import {
   kanbanInitialState,
   RemoveCardPayload,
   RemoveColumnPayload,
+  UpdateCardPayload,
+  UpdateColumnPayload,
+  MoveCardPayload,
 } from '../../state';
 import { reducer } from './reducer';
 
@@ -56,5 +59,51 @@ export const useKanbanReducer = () => {
     [dispatch]
   );
 
-  return { kanban, dispatch };
+  const updateCard = useCallback(
+    ({ cardId, columnId, newCardProps }: UpdateCardPayload) => {
+      dispatch({
+        type: 'UPDATE_CARD',
+        payload: { cardId, columnId, newCardProps },
+      });
+    },
+    [dispatch]
+  );
+
+  const updateColumn = useCallback(
+    ({ columnId, newColumnProps }: UpdateColumnPayload) => {
+      dispatch({
+        type: 'UPDATE_COLUMN',
+        payload: { columnId, newColumnProps },
+      });
+    },
+    [dispatch]
+  );
+
+  const moveCard = useCallback(
+    ({
+      cardId,
+      originColumnId,
+      targetColumnId,
+      targetIndex,
+    }: MoveCardPayload) => {
+      dispatch({
+        type: 'MOVE_CARD',
+        payload: { cardId, originColumnId, targetColumnId, targetIndex },
+      });
+    },
+    [dispatch]
+  );
+
+  return {
+    kanban,
+    addCard,
+    addColumn,
+    removeCard,
+    removeColumn,
+    updateCard,
+    updateColumn,
+    changeCardOrder,
+    changeColumnOrder,
+    moveCard,
+  };
 };
