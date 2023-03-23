@@ -46,7 +46,7 @@
     "eslint-config-custom": "workspace:*",
     "fast-check": "^3.7.0",
     "tsconfig": "workspace:*",
-    "typescript": "4.9.5",
+    "typescript": "5.0.2",
     "vitest": "^0.25.0"
   }
 }
