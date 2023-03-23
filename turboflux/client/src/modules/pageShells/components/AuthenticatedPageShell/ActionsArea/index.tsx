@@ -1,13 +1,13 @@
-import { Flex } from 'milky-ui';
+'use client';
 
 import { ThemeButton } from '../../../../theme';
 import { UserAvatarMenu } from '../UserAvatarMenu';
 
 export const ActionsArea = () => {
   return (
-    <Flex justifyContent="space-between" gap={4}>
-      <ThemeButton size="large" />
+    <div className="justify-between gap-4">
+      {/* <ThemeButton size="large" /> */}
       <UserAvatarMenu />
-    </Flex>
+    </div>
   );
 };

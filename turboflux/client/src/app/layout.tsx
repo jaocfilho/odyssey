@@ -17,8 +17,11 @@ const inter = Inter({
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
+    <html
+      lang="en"
+      className={`${inter.variable} bg-slate-50 dark:bg-slate-900 h-full`}
+    >
+      <body className="h-full">
         <RootProviders>{children}</RootProviders>
       </body>
     </html>

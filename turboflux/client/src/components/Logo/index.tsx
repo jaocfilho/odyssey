@@ -1,13 +1,11 @@
 import Image from 'next/image';
 
-import { Box } from 'milky-ui';
-
 import logo from '../../../public/logo.svg';
 
 export const Logo = () => {
   return (
-    <Box cursorPointer css={{ '&:hover': { opacity: 0.8 } }}>
+    <div className="cursor-pointer hover:opacity-80">
       <Image src={logo} height={32} alt="Logo" />
-    </Box>
+    </div>
   );
 };
