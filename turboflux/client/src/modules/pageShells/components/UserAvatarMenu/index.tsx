@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { DropdownMenu, DropdownMenuContent } from 'milky-ui';
 
-import { UserAvatar } from '../../../../users';
+import { UserAvatar } from '../../../users';
 import { LogoutItem } from './LogoutItem';
 
 type BaseUserAvatarMenuProps = {

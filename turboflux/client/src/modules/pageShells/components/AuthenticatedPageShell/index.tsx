@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import { PageHeader } from './PageHeader';
-
 type AuthenticatedPageShellProps = {
   children: ReactNode;
 };

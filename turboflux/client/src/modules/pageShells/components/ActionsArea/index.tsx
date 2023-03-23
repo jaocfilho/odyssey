@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeButton } from '../../../../theme';
+import { ThemeButton } from '../../../theme';
 import { UserAvatarMenu } from '../UserAvatarMenu';
 
 export const ActionsArea = () => {

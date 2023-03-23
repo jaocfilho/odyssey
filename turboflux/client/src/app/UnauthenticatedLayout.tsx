@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
 
-import { UnauthenticatedPageshell } from '../modules/pageShells';
-
 type UnauthenticatedLayoutProps = {
   children: ReactNode;
 };
@@ -9,5 +7,5 @@ type UnauthenticatedLayoutProps = {
 export default function UnauthenticatedLayout({
   children,
 }: UnauthenticatedLayoutProps) {
-  return <UnauthenticatedPageshell>{children}</UnauthenticatedPageshell>;
+  return <div>{children}</div>;
 }
