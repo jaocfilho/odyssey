@@ -6,7 +6,8 @@
 			"extensions": [
 				"esbenp.prettier-vscode",
 				"aaron-bond.better-comments",
-				"cschleiden.vscode-github-actions"
+				"cschleiden.vscode-github-actions",
+				"bradlc.vscode-tailwindcss"
 			]
 		}
 	},

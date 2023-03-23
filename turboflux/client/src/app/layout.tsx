@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import './globals.css';
+
 import { Roboto_Flex } from 'next/font/google';
 
 import RootProviders from './providers';

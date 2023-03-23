@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import { Flex } from 'milky-ui';
-
 import { PageHeader } from './PageHeader';
 
 type AuthenticatedPageShellProps = {
@@ -12,9 +10,9 @@ export const AuthenticatedPageShell = ({
   children,
 }: AuthenticatedPageShellProps) => {
   return (
-    <Flex direction="column" fullHeight>
-      <PageHeader />
+    <div className="flex flex-col h-screen bg-slate-900">
+      {/* <PageHeader /> */}
       {children}
-    </Flex>
+    </div>
   );
 };
