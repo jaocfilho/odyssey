@@ -32,7 +32,6 @@
     "tailwind-config": "workspace:*",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
-    "@babel/core": "^7.0.0",
     "@faker-js/faker": "^7.6.0",
     "fast-check": "^3.7.0",
     "vitest": "^0.25.0",
