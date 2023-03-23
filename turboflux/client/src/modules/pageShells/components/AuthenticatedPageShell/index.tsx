@@ -9,10 +9,5 @@ type AuthenticatedPageShellProps = {
 export const AuthenticatedPageShell = ({
   children,
 }: AuthenticatedPageShellProps) => {
-  return (
-    <div>
-      <PageHeader />
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 };
