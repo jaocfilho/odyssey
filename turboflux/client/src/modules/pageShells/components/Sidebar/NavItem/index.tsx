@@ -11,8 +11,8 @@ type NavItemProps = {
 export const NavItem = ({ name, href, Icon, current }: NavItemProps) => {
   const styles = classNames(
     current
-      ? 'bg-slate-700 text-white'
-      : 'text-gray-400 hover:text-white hover:bg-slate-700',
+      ? 'bg-gray-700 text-white'
+      : 'text-gray-400 hover:text-white hover:bg-gray-700',
     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
   );
 

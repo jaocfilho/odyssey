@@ -65,12 +65,12 @@ export const Sidebar = () => {
                     href={team.href}
                     className={classNames(
                       team.current
-                        ? 'bg-slate-700 text-white'
-                        : 'text-gray-400 hover:text-white hover:bg-slate-700',
+                        ? 'bg-gray-700 text-white'
+                        : 'text-gray-400 hover:text-white hover:bg-gray-700',
                       'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                     )}
                   >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-700 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 text-[0.625rem] font-medium text-gray-400 group-hover:text-white group-hover:border-white">
                       {team.initial}
                     </span>
                     <span className="truncate">{team.name}</span>
@@ -83,10 +83,10 @@ export const Sidebar = () => {
           <li className="-mx-6 mt-auto">
             <a
               href="#"
-              className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-slate-700"
+              className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-700"
             >
               <img
-                className="h-8 w-8 rounded-full bg-slate-700"
+                className="h-8 w-8 rounded-full bg-gray-700"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt=""
               />
