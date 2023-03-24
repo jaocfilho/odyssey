@@ -9,9 +9,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/modules/*": ["modules/*"]
-    }
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/modules/*": [
+        "modules/*"
+      ]
+    },
+    "strictNullChecks": true
   },
   "exclude": [
     "node_modules"
