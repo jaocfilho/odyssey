@@ -39,7 +39,7 @@ describe('NavItem', () => {
       />
     );
 
-    expect(screen.getByRole('link')).toHaveClass('text-gray-400');
+    expect(screen.getByRole('link')).toHaveClass('text-zinc-400');
   });
 
   it('should have a white text if it is not the current item', () => {

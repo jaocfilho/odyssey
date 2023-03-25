@@ -19,7 +19,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} bg-slate-50 dark:bg-gray-800 h-full`}
+      className={`${inter.variable} bg-zinc-50 dark:bg-zinc-900 h-full`}
     >
       <body className="h-full">
         <RootProviders>{children}</RootProviders>
