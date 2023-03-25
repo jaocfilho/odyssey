@@ -1,5 +1,3 @@
-import { Flex, Text } from 'milky-ui';
-
 import { KanbanCards } from '../KanbanCards';
 
 type KanbanColumnProps = {
@@ -11,10 +9,10 @@ export const KanbanColumn = ({ title }: KanbanColumnProps) => {
   const cards = [{ title: cardTitle }];
 
   return (
-    <Flex direction="column" gap={4}>
-      <Text>{title}</Text>
+    <div className="flex flex-col gap-1">
+      <p>{title}</p>
 
       <KanbanCards cards={cards} />
-    </Flex>
+    </div>
   );
 };

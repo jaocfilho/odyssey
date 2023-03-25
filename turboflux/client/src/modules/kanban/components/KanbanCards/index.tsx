@@ -1,5 +1,3 @@
-import { Flex } from 'milky-ui';
-
 import { KanbanCard, KanbanCardProps } from '../KanbanCard';
 
 export type KanbanCardsProps = {
@@ -7,13 +5,11 @@ export type KanbanCardsProps = {
 };
 
 export const KanbanCards = ({ cards }: KanbanCardsProps) => {
-  // TODO change list keys
-
   return (
-    <Flex direction="column" gap={4}>
-      {cards.map((cardProps, index) => (
-        <KanbanCard key={index} {...cardProps} />
+    <div className="flex flex-col gap-1">
+      {cards.map(({ title }) => (
+        <KanbanCard key={title} title={title} />
       ))}
-    </Flex>
+    </div>
   );
 };
