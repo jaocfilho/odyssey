@@ -19,6 +19,7 @@
     "@satellite/tests": "workspace:*",
     "immer": "^9.0.19",
     "milky-ui": "workspace:*",
+    "tailwind-ui": "workspace:*",
     "next": "13.2.1",
     "next-auth": "^4.18.7",
     "next-themes": "^0.2.1",

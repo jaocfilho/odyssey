@@ -1,7 +1,8 @@
 'use client';
 
-import { Button } from '@/components/Buttons';
 import { useState } from 'react';
+
+import { Button } from 'tailwind-ui';
 
 export const NewCardForm = () => {
   const [title, setTitle] = useState('');
