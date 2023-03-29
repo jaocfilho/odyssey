@@ -1,6 +1,6 @@
 import { PlusIcon } from '@heroicons/react/20/solid';
 
-import React, { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 type PlusButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
