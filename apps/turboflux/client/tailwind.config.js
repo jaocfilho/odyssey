@@ -9,6 +9,6 @@ module.exports = {
     fontFamily: {
       sans: ['var(--font-inter)'],
     },
-    plugins: [require('@tailwindcss/forms')],
   },
+  plugins: [require('@tailwindcss/forms')],
 };
