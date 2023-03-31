@@ -1,3 +1,4 @@
 packages:
+  - "apps/aihub/*"
   - "apps/turboflux/*"
   - "packages/*"
