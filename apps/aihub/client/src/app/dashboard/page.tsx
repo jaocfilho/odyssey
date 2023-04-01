@@ -1,3 +1,9 @@
+import { NewModelForm } from '@/modules/models/components/NewModelForm';
+
 export default function Dashboard() {
-  return <div>hello world</div>;
+  return (
+    <div>
+      <NewModelForm />
+    </div>
+  );
 }
