@@ -1,4 +1,4 @@
-import { classNames } from 'tailwind-ui';
+import { classNames } from '@/modules/theme/utils';
 import { NavIcon, TIcon } from '../NavIcon';
 
 type NavItemProps = {

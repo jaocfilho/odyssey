@@ -23,6 +23,7 @@
     "postcss": "^8.4.21",
     "tailwind-config": "workspace:*",
     "tailwindcss": "^3.2.7",
+    "@tailwindcss/forms": "^0.5.3",
     "tsconfig": "workspace:*",
     "eslint": "8.37.0",
     "eslint-config-custom": "workspace:*",
