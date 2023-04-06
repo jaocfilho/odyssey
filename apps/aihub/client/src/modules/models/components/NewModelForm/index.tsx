@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { Form } from '@/modules/forms/components';
+import { Select } from '@/components/Select';
 
 const options = [
   { value: 'funny', label: 'Funny' },
@@ -35,6 +36,8 @@ export const NewModelForm = () => {
           <Form.Input name="name" placeholder="French translator" type="text" />
           <Form.ErrorMessage name="name" />
         </Form.Field>
+
+        <Select label="Add a vibe" options={options} />
 
         <Form.Field>
           <Form.Label htmlFor="context">Add context</Form.Label>
