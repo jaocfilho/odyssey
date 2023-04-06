@@ -9,6 +9,7 @@ import {
 
 import { Field } from '../Field';
 import { Input } from '../Input';
+import { TextArea } from '../TextArea';
 import { Label } from '../Label';
 import { ErrorMessage } from '../ErrorMessage';
 
@@ -34,6 +35,7 @@ export const Form = {
   Root: FormRoot,
   Field,
   Input,
+  TextArea,
   Label,
   ErrorMessage,
 };
