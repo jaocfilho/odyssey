@@ -11,7 +11,5 @@ export const useNewModelForm = () => {
     resolver: zodResolver(schema),
   });
 
-  console.log(formState);
-
   return { register, handleSubmit };
 };
