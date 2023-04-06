@@ -16,6 +16,12 @@ const options = [
 
 const newModelFormSchema = z.object({
   name: z.string(),
+  vibe: z
+    .object({
+      value: z.string(),
+      label: z.string(),
+    })
+    .default(options[0]),
   context: z.string(),
 });
 
@@ -37,7 +43,11 @@ export const NewModelForm = () => {
           <Form.ErrorMessage name="name" />
         </Form.Field>
 
-        <Select label="Add a vibe" options={options} />
+        <Select
+          label="Add a vibe"
+          options={options}
+          {...methods.register('vibe')}
+        />
 
         <Form.Field>
           <Form.Label htmlFor="context">Add context</Form.Label>
