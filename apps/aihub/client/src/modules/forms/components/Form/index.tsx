@@ -12,6 +12,7 @@ import { Input } from '../Input';
 import { TextArea } from '../TextArea';
 import { Label } from '../Label';
 import { ErrorMessage } from '../ErrorMessage';
+import { Select } from '../Select';
 
 type FormProps<TFieldValues extends FieldValues> =
   FormProviderProps<TFieldValues> & {
@@ -38,4 +39,5 @@ export const Form = {
   TextArea,
   Label,
   ErrorMessage,
+  Select,
 };

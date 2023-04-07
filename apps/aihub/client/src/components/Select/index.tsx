@@ -5,6 +5,7 @@ import { Listbox } from '@headlessui/react';
 import { SelectOption } from './SelectOption';
 import { SelectTransition } from './SelectTransition';
 import { SelectButton } from './SelectButton';
+import { useState } from 'react';
 
 type SelectItem = {
   value: any;
@@ -14,14 +15,25 @@ type SelectItem = {
 type SelectProps<T> = {
   options: T[];
   label: string;
+  onChange?: (option: T) => void;
 };
 
 export function Select<T extends SelectItem>({
   options,
   label,
+  onChange,
 }: SelectProps<T>) {
+  const [selected, setSelected] = useState(options[0]);
+
+  const handleChange = (option: T) => {
+    setSelected(option);
+    if (typeof onChange === 'function') {
+      onChange(option);
+    }
+  };
+
   return (
-    <Listbox defaultValue={options[0]}>
+    <Listbox value={selected} onChange={handleChange}>
       {({ open }) => (
         <>
           <Listbox.Label className="block text-sm font-medium leading-6">
