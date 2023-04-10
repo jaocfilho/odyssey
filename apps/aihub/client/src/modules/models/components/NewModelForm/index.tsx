@@ -20,7 +20,8 @@ const newModelFormSchema = z.object({
       value: z.string(),
       label: z.string(),
     })
-    .default(options[0]),
+    .default(options[0])
+    .transform((vibe) => vibe.value),
   context: z.string(),
 });
 

@@ -6,8 +6,8 @@ type SidebarContainerProps = {
 
 export const SidebarContainer = ({ children }: SidebarContainerProps) => {
   return (
-    <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-      <div className="flex grow flex-col gap-y-5 overflow-y-auto px-6 border-r dark:border-slate-700">
+    <div className="min-h-full">
+      <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:bg-gray-100 lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:pb-4 lg:pt-5 lg:dark:border-white/10 lg:dark:bg-zinc-900">
         {children}
       </div>
     </div>
