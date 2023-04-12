@@ -12,7 +12,7 @@ type SelectOptionProps<T> = {
 
 const containerStyles = (active: boolean) =>
   classNames(
-    active ? 'bg-pink-600 text-white' : 'text-slate-400',
+    active ? 'bg-emerald-600 text-white' : 'text-slate-400',
     'relative cursor-default select-none py-2 pl-3 pr-9'
   );
 

@@ -2,6 +2,10 @@ import { CheckIcon } from '@heroicons/react/20/solid';
 
 import { classNames } from '@/modules/theme/utils';
 
+const activeStyles = 'text-white';
+
+const inactiveStyles = 'text-emerald-600 dark:text-emerald-500';
+
 type SelectedIconProps = {
   selected: boolean;
   active: boolean;
@@ -15,7 +19,7 @@ export function SelectedIcon({ selected, active }: SelectedIconProps) {
   return (
     <span
       className={classNames(
-        active ? 'text-white' : 'text-pink-600',
+        active ? activeStyles : inactiveStyles,
         'absolute inset-y-0 right-0 flex items-center pr-4'
       )}
     >
