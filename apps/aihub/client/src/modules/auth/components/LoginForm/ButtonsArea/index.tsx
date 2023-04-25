@@ -1,10 +1,10 @@
 'use client';
 
 import { GithubButton } from '@/components/Buttons/GithubButton';
-import { useClientSignIn } from '@/modules/auth/hooks/use-client-signin';
+import { useClientSignInWithGithub } from '@/modules/auth/hooks/use-client-signin-with-github';
 
 export function ButtonsArea() {
-  const { clientSignIn } = useClientSignIn();
+  const { clientSignIn } = useClientSignInWithGithub();
 
   return (
     <div className="mt-6 grid grid-cols-2 gap-4">

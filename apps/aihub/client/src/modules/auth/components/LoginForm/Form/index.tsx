@@ -1,25 +1,11 @@
 'use client';
 
-import { z } from 'zod';
-
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/modules/forms/components';
 import { RememberMe } from '../RememberMe';
-
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import { useLoginForm } from '@/modules/auth/hooks/use-login-form';
 
 export function LoginFormComponent() {
-  const methods = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-  });
-
-  const login = (data: LoginFormData) => {};
+  const { login, methods } = useLoginForm();
 
   return (
     <Form.Root onSubmit={login} {...methods}>
