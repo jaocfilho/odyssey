@@ -18,8 +18,7 @@ export function Button() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      console.log(data);
+      const { data } = await supabase.auth.getSession();
       return data;
     };
 
