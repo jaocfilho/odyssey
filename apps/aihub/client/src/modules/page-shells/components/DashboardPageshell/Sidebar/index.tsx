@@ -1,4 +1,4 @@
-import { HomeIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 
 import { SidebarContainer } from './Container';
 import { NavItem } from './NavItem';
@@ -25,6 +25,15 @@ export const Sidebar = () => {
             />
           ))}
         </NavContainer>
+
+        <div className="mt-auto">
+          <NavItem
+            name="Settings"
+            href="#"
+            Icon={Cog6ToothIcon}
+            current={false}
+          />
+        </div>
       </div>
     </SidebarContainer>
   );
