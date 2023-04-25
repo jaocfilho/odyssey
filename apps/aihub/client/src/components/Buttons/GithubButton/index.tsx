@@ -1,5 +1,5 @@
 type GithubButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export function GithubButton({ onClick }: GithubButtonProps) {
