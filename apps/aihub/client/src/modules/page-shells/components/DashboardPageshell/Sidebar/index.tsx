@@ -1,9 +1,10 @@
-import { HomeIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 import { SidebarContainer } from './Container';
 import { NavItem } from './NavItem';
 import { LogoArea } from './LogoArea';
 import { NavContainer } from './NavContainer';
+import { SettingsButton } from './SettingsButton';
 
 export const Sidebar = () => {
   const navigation = [
@@ -27,12 +28,7 @@ export const Sidebar = () => {
         </NavContainer>
 
         <div className="mt-auto">
-          <NavItem
-            name="Settings"
-            href="#"
-            Icon={Cog6ToothIcon}
-            current={false}
-          />
+          <SettingsButton />
         </div>
       </div>
     </SidebarContainer>
