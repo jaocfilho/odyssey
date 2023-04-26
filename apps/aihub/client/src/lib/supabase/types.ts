@@ -1,3 +1,5 @@
+import type { SupabaseClient } from '@supabase/supabase-js';
+
 export type Json =
   | string
   | number
@@ -47,3 +49,5 @@ export interface Database {
     };
   };
 }
+
+export type Supabase = SupabaseClient<Database>;

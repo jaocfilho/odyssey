@@ -1,11 +1,8 @@
-import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Database } from '@/lib/supabase/types';
+import type { Supabase } from '@/lib/supabase/types';
 
 import { supabase as supabaseLib } from '@/lib/supabase';
 
-export async function signInWithGithub(
-  supabase: SupabaseClient<Database> = supabaseLib
-) {
+export async function signInWithGithub(supabase: Supabase = supabaseLib) {
   return await supabase.auth.signInWithOAuth({
     provider: 'github',
   });
@@ -18,7 +15,7 @@ type SignInWithEmailParams = {
 
 export async function signInWithEmail(
   { email, password }: SignInWithEmailParams,
-  supabase: SupabaseClient<Database> = supabaseLib
+  supabase: Supabase = supabaseLib
 ) {
   return await supabase.auth.signInWithPassword({
     email,
@@ -26,8 +23,6 @@ export async function signInWithEmail(
   });
 }
 
-export async function signOut(
-  supabase: SupabaseClient<Database> = supabaseLib
-) {
+export async function signOut(supabase: Supabase = supabaseLib) {
   return await supabase.auth.signOut();
 }
