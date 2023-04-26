@@ -7,7 +7,14 @@ import type { Database } from '@/lib/supabase/types';
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareSupabaseClient<Database>({ req, res });
-  await supabase.auth.getSession();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session?.user.id) {
+    return res;
+  }
 
   return res;
 }
