@@ -8,32 +8,34 @@ export type Json =
   | { [key: string]: Json }
   | Json[];
 
+export interface Models {
+  Row: {
+    context: string | null;
+    created_at: string | null;
+    id: string;
+    name: string | null;
+    vibe: string | null;
+  };
+  Insert: {
+    context?: string | null;
+    created_at?: string | null;
+    id?: string;
+    name?: string | null;
+    vibe?: string | null;
+  };
+  Update: {
+    context?: string | null;
+    created_at?: string | null;
+    id?: string;
+    name?: string | null;
+    vibe?: string | null;
+  };
+}
+
 export interface Database {
   public: {
     Tables: {
-      models: {
-        Row: {
-          context: string | null;
-          created_at: string | null;
-          id: string;
-          name: string | null;
-          vibe: string | null;
-        };
-        Insert: {
-          context?: string | null;
-          created_at?: string | null;
-          id?: string;
-          name?: string | null;
-          vibe?: string | null;
-        };
-        Update: {
-          context?: string | null;
-          created_at?: string | null;
-          id?: string;
-          name?: string | null;
-          vibe?: string | null;
-        };
-      };
+      models: Models;
     };
     Views: {
       [_ in never]: never;
