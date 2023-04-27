@@ -15,6 +15,7 @@ import { ErrorMessage } from '../ErrorMessage';
 import { Select } from '../Select';
 
 export type { InputProps } from '../Input';
+export type { TextAreaProps } from '../TextArea';
 
 type FormProps<TFieldValues extends FieldValues> =
   FormProviderProps<TFieldValues> & {

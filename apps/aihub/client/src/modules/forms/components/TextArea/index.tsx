@@ -4,7 +4,7 @@ import { TextareaHTMLAttributes } from 'react';
 
 import { useFormContext } from 'react-hook-form';
 
-type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   name: string;
 };
 
