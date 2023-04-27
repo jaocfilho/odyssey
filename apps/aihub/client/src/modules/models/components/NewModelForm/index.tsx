@@ -2,51 +2,25 @@
 
 import Link from 'next/link';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-
-import { z } from 'zod';
-
 import { Form } from '@/modules/forms/components';
-
-const options = [
-  { value: 'funny', label: 'Funny' },
-  { value: 'professional', label: 'Professional' },
-  { value: 'silly', label: 'Silly' },
-];
-
-const newModelFormSchema = z.object({
-  name: z.string(),
-  vibe: z
-    .object({
-      value: z.string(),
-      label: z.string(),
-    })
-    .default(options[0])
-    .transform((vibe) => vibe.value),
-  context: z.string(),
-});
-
-type NewModelFormData = z.infer<typeof newModelFormSchema>;
+import { useNewModelForm } from '../../hooks/use-new-model-form';
+import { TextInput } from '@/modules/forms/components/TextInput';
 
 export const NewModelForm = () => {
-  const methods = useForm<NewModelFormData>({
-    resolver: zodResolver(newModelFormSchema),
-  });
-
-  const createModel = (data: NewModelFormData) => console.log(data);
+  const { createModel, methods, vibeOptions } = useNewModelForm();
 
   return (
     <Form.Root onSubmit={createModel} {...methods}>
       <div className="flex flex-col gap-4">
-        <Form.Field>
-          <Form.Label htmlFor="name">Name</Form.Label>
-          <Form.Input name="name" placeholder="French translator" type="text" />
-          <Form.ErrorMessage name="name" />
-        </Form.Field>
+        <TextInput
+          label="Name"
+          name="name"
+          placeholder="French translator"
+          type="text"
+        />
 
         <Form.Field>
-          <Form.Select label="Add a vibe" name="vibe" options={options} />
+          <Form.Select label="Add a vibe" name="vibe" options={vibeOptions} />
         </Form.Field>
 
         <Form.Field>
@@ -60,7 +34,7 @@ export const NewModelForm = () => {
         </Form.Field>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <Link href="/dashboard">
+          <Link href="/dashboard/models">
             <button type="button" className="text-sm font-semibold leading-6">
               Cancel
             </button>

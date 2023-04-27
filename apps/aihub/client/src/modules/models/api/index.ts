@@ -8,12 +8,15 @@ export async function findAllModels(supabase: Supabase = supabaseLib) {
 
 type CreateModelParams = Models['Insert'];
 
-export async function createModel(supabase: Supabase = supabaseLib) {
+export async function createModel(
+  { name, context, vibe }: CreateModelParams,
+  supabase: Supabase = supabaseLib
+) {
   return await supabase.from('models').insert([
     {
-      name: 'Biology assistant',
-      context: 'Lorem Ipsum',
-      vibe: 'Professional',
+      name,
+      context,
+      vibe,
     },
   ]);
 }

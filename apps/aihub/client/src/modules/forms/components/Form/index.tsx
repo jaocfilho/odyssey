@@ -14,6 +14,8 @@ import { Label } from '../Label';
 import { ErrorMessage } from '../ErrorMessage';
 import { Select } from '../Select';
 
+export type { InputProps } from '../Input';
+
 type FormProps<TFieldValues extends FieldValues> =
   FormProviderProps<TFieldValues> & {
     onSubmit: SubmitHandler<TFieldValues>;
