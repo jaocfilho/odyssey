@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useClientSignInWithEmail } from '../use-client-signin-with-email';
+import { useSignInWithEmail } from '../use-signin-with-email';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
 const loginSchema = z.object({
@@ -20,7 +20,7 @@ export function useLoginForm() {
     resolver: zodResolver(loginSchema),
   });
 
-  const { clientSignInWithEmail } = useClientSignInWithEmail();
+  const { clientSignInWithEmail } = useSignInWithEmail();
 
   const login = async (formData: LoginFormData) => {
     const { email, password } = formData;

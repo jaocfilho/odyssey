@@ -6,7 +6,7 @@ type ClientSignInWithEmailParams = {
   password: string;
 };
 
-export function useClientSignInWithEmail() {
+export function useSignInWithEmail() {
   const { supabase } = useSupabase();
 
   const clientSignInWithEmail = async ({

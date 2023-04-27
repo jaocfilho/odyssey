@@ -5,10 +5,10 @@ import { Menu } from '@headlessui/react';
 import { Button } from './Button';
 import { Transition } from './Transition';
 import { MenuItem } from './MenuItem';
-import { useClientSignOut } from '@/modules/auth/hooks/use-client-signout';
+import { useSignOut } from '@/modules/auth/hooks/use-signout';
 
 export function SettingsButton() {
-  const { clientSignOut } = useClientSignOut();
+  const { clientSignOut } = useSignOut();
   return (
     <Menu as="div" className="relative inline-block">
       <div>
