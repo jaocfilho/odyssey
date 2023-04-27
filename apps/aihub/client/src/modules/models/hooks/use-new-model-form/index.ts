@@ -33,7 +33,6 @@ export const useNewModelForm = () => {
 
   const createModel = async ({ name, context, vibe }: NewModelFormData) => {
     const { data } = await insertModel({ name, context, vibe });
-    console.log(data);
   };
 
   return { createModel, methods, vibeOptions };

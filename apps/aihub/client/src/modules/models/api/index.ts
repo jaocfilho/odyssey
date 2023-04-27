@@ -2,7 +2,7 @@ import type { Models, Supabase } from '@/lib/supabase/types';
 
 import { supabase as supabaseLib } from '@/lib/supabase';
 
-export async function findAllModels(supabase: Supabase = supabaseLib) {
+export async function selectAllModels(supabase: Supabase = supabaseLib) {
   return await supabase.from('models').select('*');
 }
 
