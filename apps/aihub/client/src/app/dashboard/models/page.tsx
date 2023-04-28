@@ -1,17 +1,10 @@
 'use client';
 
-import { useSelectAllModels } from '@/modules/models/hooks/use-select-all-models';
-import { useEffect } from 'react';
+import { useAllModelsQuery } from '@/modules/models/hooks/use-all-models-query';
 
 export default function Models() {
-  const { selectAllModels } = useSelectAllModels();
+  const modelsQuery = useAllModelsQuery();
 
-  useEffect(() => {
-    (async () => {
-      const { data } = await selectAllModels();
-      console.log(data);
-    })();
-  }, []);
-
+  console.log(modelsQuery.data);
   return <div></div>;
 }
