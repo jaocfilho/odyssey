@@ -1,4 +1,5 @@
 import { Body } from './Body';
+import { TableContainer } from './Container';
 import { Header } from './Header';
 
 const models = [
@@ -24,13 +25,9 @@ const models = [
 
 export function ModelsTable() {
   return (
-    <div className="flow-root">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y dark:divide-zinc-50/10">
-          <Header />
-          <Body rows={models} />
-        </table>
-      </div>
-    </div>
+    <TableContainer>
+      <Header />
+      <Body rows={models} />
+    </TableContainer>
   );
 }
