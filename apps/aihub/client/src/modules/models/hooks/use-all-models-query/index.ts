@@ -6,5 +6,10 @@ export function useAllModelsQuery() {
   const { selectAllModels } = useSelectAllModels();
 
   const queryKey = modelsQueryKeys.base;
-  return useQuery({ queryKey, queryFn: selectAllModels });
+  const queryFn = async () => {
+    const { data } = await selectAllModels();
+    return data;
+  };
+
+  return useQuery({ queryKey, queryFn });
 }
