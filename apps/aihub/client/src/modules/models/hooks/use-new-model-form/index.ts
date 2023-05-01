@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useInsertModel } from '../use-insert-model';
+
+import { useCreateModelMutation } from '../use-create-model-mutation';
 
 const vibeOptions = [
   { value: 'funny', label: 'Funny' },
@@ -25,14 +26,14 @@ const newModelFormSchema = z.object({
 type NewModelFormData = z.infer<typeof newModelFormSchema>;
 
 export const useNewModelForm = () => {
-  const { insertModel } = useInsertModel();
+  const mutation = useCreateModelMutation();
 
   const methods = useForm<NewModelFormData>({
     resolver: zodResolver(newModelFormSchema),
   });
 
-  const createModel = async ({ name, context, vibe }: NewModelFormData) => {
-    const { data } = await insertModel({ name, context, vibe });
+  const createModel = ({ name, context, vibe }: NewModelFormData) => {
+    mutation.mutate({ name, context, vibe });
   };
 
   return { createModel, methods, vibeOptions };
