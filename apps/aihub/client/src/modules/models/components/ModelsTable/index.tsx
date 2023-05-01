@@ -1,49 +1,22 @@
-import { useState } from 'react';
+'use client';
 
 import { Body } from './Body';
 import { TableContainer } from './Container';
 import { Header } from './Header';
+import { type Model } from '@/lib/supabase/types';
+import { useSelectedModels } from './use-selected-models';
 
-const models = [
-  {
-    id: '123',
-    name: 'French Translator',
-    vibe: 'Funny',
-    context: 'You are a helpful assistant...',
-    created_at: null,
-  },
-  {
-    id: '1234',
-    name: 'French Translator',
-    vibe: 'Funny',
-    context: 'You are a helpful assistant...',
-    created_at: null,
-  },
-  {
-    id: '12345',
-    name: 'French Translator',
-    vibe: 'Funny',
-    context: 'You are a helpful assistant...',
-    created_at: null,
-  },
-];
+type ModelsTableProps = {
+  models: Model[];
+};
 
-export function ModelsTable() {
-  const [selectedModels, setSelectedModels] = useState<string[]>([]);
-
-  const checkRow = (modelId: string) => {
-    setSelectedModels((value) => [...value, modelId]);
-  };
-
-  const uncheckRow = (modelId: string) => {
-    setSelectedModels((value) => value.filter((model) => model !== modelId));
-  };
-
-  const rowIsChecked = (modelId: string) => selectedModels.includes(modelId);
+export function ModelsTable({ models }: ModelsTableProps) {
+  const { checkAllRows, checkRow, rowIsChecked, uncheckAllRows, uncheckRow } =
+    useSelectedModels({ models });
 
   return (
     <TableContainer>
-      <Header />
+      <Header checkAllRows={checkAllRows} uncheckAllRows={uncheckAllRows} />
       <Body
         rows={models}
         checkRow={checkRow}
