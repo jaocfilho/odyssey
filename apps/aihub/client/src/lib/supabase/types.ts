@@ -53,3 +53,5 @@ export interface Database {
 }
 
 export type Supabase = SupabaseClient<Database>;
+
+export type Model = Database['public']['Tables']['models']['Row'];

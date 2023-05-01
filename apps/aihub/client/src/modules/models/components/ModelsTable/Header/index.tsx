@@ -1,7 +1,7 @@
 import { Checkbox } from '../Checkbox';
 import { HeaderSection } from '../HeaderSection';
 
-const sections = ['Name', 'Vibe', 'Context'];
+const sections = ['Name', 'Vibe', 'Context', 'Created at'];
 
 export function Header() {
   return (
