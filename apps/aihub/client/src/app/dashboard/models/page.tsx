@@ -1,6 +1,5 @@
-'use client';
-
 import { ModelsTable } from '@/modules/models/components/ModelsTable';
+import { RedirectToCreateModel } from '@/modules/models/components/RedirectToCreateModel';
 import { useAllModelsQuery } from '@/modules/models/hooks/use-all-models-query';
 
 const models = [
@@ -30,5 +29,12 @@ const models = [
 export default function Models() {
   // const modelsQuery = useAllModelsQuery();
 
-  return <ModelsTable models={models} />;
+  return (
+    <div className="flex flex-col m-4 gap-4">
+      <div className="flex flex-row-reverse">
+        <RedirectToCreateModel />
+      </div>
+      <ModelsTable models={models} />
+    </div>
+  );
 }
