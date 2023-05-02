@@ -1,10 +1,19 @@
 import { useRouter } from 'next/navigation';
 
+import { modelsUrls } from '../../helpers';
+
 export function useNavigation() {
   const router = useRouter();
 
-  const redirectToDashboard = () => router.push('/dashboard/models');
-  const redirectToModels = () => router.push('/dashboard/models');
+  const redirectToDashboard = () => {
+    const url = modelsUrls.base;
+    router.push(url);
+  };
+
+  const redirectToModels = () => {
+    const url = modelsUrls.base;
+    router.push(url);
+  };
 
   return { redirectToDashboard, redirectToModels };
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { classNames } from '@/modules/theme/utils';
+import { modelsUrls } from '@/modules/navigation/helpers';
 
 const commonStyles =
   'whitespace-nowrap py-2 px-4 text-right text-sm font-medium leading-6';
@@ -12,9 +13,11 @@ type RedirectToDetailsCellProps = {
 };
 
 export function RedirectToDetailsCell({ id }: RedirectToDetailsCellProps) {
+  const url = modelsUrls.details.overview(id);
+
   return (
     <td className={styles}>
-      <Link href={`/dashboard/models/${id}`}>View</Link>
+      <Link href={url}>View</Link>
     </td>
   );
 }
