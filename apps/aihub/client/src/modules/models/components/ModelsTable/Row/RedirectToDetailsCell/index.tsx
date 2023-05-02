@@ -1,7 +1,5 @@
-import Link from 'next/link';
-
 import { classNames } from '@/modules/theme/utils';
-import { modelsUrls } from '@/modules/navigation/helpers';
+import { ModelDetailsOverviewLink } from '@/modules/navigation/components/ModelDetailsOverviewLink';
 
 const commonStyles =
   'whitespace-nowrap py-2 px-4 text-right text-sm font-medium leading-6';
@@ -13,11 +11,9 @@ type RedirectToDetailsCellProps = {
 };
 
 export function RedirectToDetailsCell({ id }: RedirectToDetailsCellProps) {
-  const url = modelsUrls.details.overview(id);
-
   return (
     <td className={styles}>
-      <Link href={url}>View</Link>
+      <ModelDetailsOverviewLink id={id}>View</ModelDetailsOverviewLink>
     </td>
   );
 }
