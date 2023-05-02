@@ -3,7 +3,7 @@ import { type ChangeEvent } from 'react';
 import { Checkbox } from '../Checkbox';
 import { HeaderSection } from '../HeaderSection';
 
-const sections = ['Name', 'Vibe', 'Context', 'Created at'];
+const sections = ['Name', 'Vibe', 'Context', 'Created', ''];
 
 type HeaderProps = {
   checkAllRows: () => void;

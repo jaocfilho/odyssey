@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useCreateModelMutation } from '../use-create-model-mutation';
+import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
 const vibeOptions = [
   { value: 'funny', label: 'Funny' },
@@ -27,13 +28,21 @@ type NewModelFormData = z.infer<typeof newModelFormSchema>;
 
 export const useNewModelForm = () => {
   const mutation = useCreateModelMutation();
+  const { redirectToModels } = useNavigation();
 
   const methods = useForm<NewModelFormData>({
     resolver: zodResolver(newModelFormSchema),
   });
 
   const createModel = ({ name, context, vibe }: NewModelFormData) => {
-    mutation.mutate({ name, context, vibe });
+    mutation.mutate(
+      { name, context, vibe },
+      {
+        onSuccess: () => {
+          redirectToModels();
+        },
+      }
+    );
   };
 
   return { createModel, methods, vibeOptions };
