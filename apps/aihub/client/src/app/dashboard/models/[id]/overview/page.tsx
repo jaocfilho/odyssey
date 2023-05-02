@@ -1,3 +1,3 @@
 export default function ModelDetailsOverview() {
-  return <div>oi</div>;
+  return <div>overview</div>;
 }

@@ -1,15 +1,15 @@
-import Link from 'next/link';
+'use client';
+
+import { usePathname } from 'next/navigation';
 
 type NavItemProps = {
   name: string;
   href: string;
-  current: boolean;
 };
 
-export function NavItem({ name, href, current }: NavItemProps) {
-  return (
-    <li className={current ? 'dark:text-emerald-400' : ''}>
-      <Link href={href}>{name}</Link>
-    </li>
-  );
+export function NavItem({ name, href }: NavItemProps) {
+  const pathname = usePathname();
+  const current = pathname.split('/').includes(href);
+
+  return <li className={current ? 'dark:text-emerald-400' : ''}>{name}</li>;
 }

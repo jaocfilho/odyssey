@@ -1,12 +1,19 @@
+import { ModelDetailsOverviewLink } from '@/modules/navigation/components/ModelDetailsOverviewLink';
 import { Container } from './Container';
 import { NavItem } from './NavItem';
+import { ModelDetailsPromptLink } from '@/modules/navigation/components/ModelDetailsPromptLink';
 
 const secondaryNavigation = [
-  { name: 'Overview', href: '#', current: true },
-  { name: 'Activity', href: '#', current: false },
-  { name: 'Settings', href: '#', current: false },
-  { name: 'Collaborators', href: '#', current: false },
-  { name: 'Notifications', href: '#', current: false },
+  {
+    name: 'Overview',
+    href: 'overview',
+    Link: ModelDetailsOverviewLink,
+  },
+  {
+    name: 'Prompt',
+    href: 'prompt',
+    Link: ModelDetailsPromptLink,
+  },
 ];
 
 type DetailsNavigationProps = {
@@ -16,8 +23,10 @@ type DetailsNavigationProps = {
 export function DetailsNavigation({ id }: DetailsNavigationProps) {
   return (
     <Container>
-      {secondaryNavigation.map(({ name, href, current }) => (
-        <NavItem key={name} name={name} href={href} current={current} />
+      {secondaryNavigation.map(({ name, href, Link }) => (
+        <Link key={name} id={id}>
+          <NavItem name={name} href={href} />
+        </Link>
       ))}
     </Container>
   );
