@@ -1,3 +1,5 @@
+import { DetailsOverview } from '@/modules/models/components/DetailsOverview';
+
 export default function ModelDetailsOverview() {
-  return <div>overview</div>;
+  return <DetailsOverview />;
 }
