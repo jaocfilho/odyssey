@@ -26,6 +26,7 @@ importers:
       eslint: 8.37.0
       eslint-config-custom: workspace:*
       eslint-config-next: ^13.4.1
+      eventsource-parser: ^1.0.0
       msw: ^1.2.1
       next: 13.4.1
       postcss: ^8.4.21
@@ -45,6 +46,7 @@ importers:
       '@supabase/supabase-js': 2.20.0
       '@tanstack/react-query': 4.29.5_biqbaboplfbrettd7655fr4n2y
       eslint-config-next: 13.4.1_vwh6htx42aidho2qgfca5u5rwm
+      eventsource-parser: 1.0.0
       next: 13.4.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -3871,6 +3873,11 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
     dev: true
+
+  /eventsource-parser/1.0.0:
+    resolution: {integrity: sha512-9jgfSCa3dmEme2ES3mPByGXfgZ87VbP97tng1G2nWwWx6bV2nYxm2AWCrbQjXToSe+yYlqaZNtxffR9IeQr95g==}
+    engines: {node: '>=14.18'}
+    dev: false
 
   /expect/29.3.0:
     resolution: {integrity: sha512-bms139btnQNZh4uxCPmzbWz46YOjtEpYIZ847OfY9GCeSBEfzedHWH0CkdR20Sy+XBs8/FI2lFJPZiuH0NGv+w==}
