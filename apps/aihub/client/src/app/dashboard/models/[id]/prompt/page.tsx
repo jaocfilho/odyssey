@@ -7,7 +7,7 @@ async function testStream() {
     'http://localhost:3000/api/openai/chat/completion'
   );
 
-  for await (const chunk of response.body) {
+  for await (const chunk of response.body as any) {
     // Do something with each chunk
     // Here we just accumulate the size of the response.
     console.log(decoder.decode(chunk));
