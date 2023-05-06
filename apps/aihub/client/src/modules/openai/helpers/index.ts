@@ -69,16 +69,7 @@ function chatCompletionParser(
   return parser;
 }
 
-export async function openaiReadableStream(payload: OpenAIStreamPayload) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY ?? ''}`,
-    },
-    method: 'POST',
-    body: JSON.stringify(payload),
-  });
-
+export async function openaiReadableStream(response: Response) {
   const stream = new ReadableStream({
     start: async (controller) => {
       const decoder = new TextDecoder();

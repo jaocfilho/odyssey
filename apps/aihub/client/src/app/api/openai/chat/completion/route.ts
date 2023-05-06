@@ -1,3 +1,4 @@
+import { chatCompletions } from '@/modules/openai/api';
 import {
   OpenAIStreamPayload,
   openaiReadableStream,
@@ -17,7 +18,8 @@ const payload: OpenAIStreamPayload = {
 };
 
 export async function GET() {
-  const stream = await openaiReadableStream(payload);
+  const response = await chatCompletions(payload);
+  const stream = await openaiReadableStream(response);
 
   return new Response(stream);
 }
