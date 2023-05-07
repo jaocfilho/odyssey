@@ -4,7 +4,7 @@ async function testStream() {
   const decoder = new TextDecoder();
 
   const response = await fetch(
-    'http://localhost:3000/api/openai/chat/completion'
+    'http://localhost:3000/api/openai/chat/completions'
   );
 
   for await (const chunk of response.body as any) {

@@ -1,3 +1,5 @@
+import { openaiReadableStream } from '../helpers';
+
 export type ChatGPTAgent = 'user' | 'system';
 
 export interface ChatGPTMessage {
@@ -26,7 +28,7 @@ function getHeaders() {
   };
 }
 
-export async function chatCompletions(payload: OpenAIStreamPayload) {
+export async function fetchChatCompletions(payload: OpenAIStreamPayload) {
   const headers = getHeaders();
   const url = `${OPENAI_BASE_URL}/chat/completions`;
 
@@ -37,4 +39,11 @@ export async function chatCompletions(payload: OpenAIStreamPayload) {
   });
 
   return response;
+}
+
+export async function chatCompletions(payload: OpenAIStreamPayload) {
+  const response = await fetchChatCompletions(payload);
+  const stream = await openaiReadableStream(response);
+
+  return stream;
 }

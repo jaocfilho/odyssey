@@ -1,9 +1,5 @@
 import { chatCompletions } from '@/modules/openai/api';
-import {
-  OpenAIStreamPayload,
-  openaiReadableStream,
-} from '@/modules/openai/helpers';
-import { NextRequest, NextResponse } from 'next/server';
+import { type OpenAIStreamPayload } from '@/modules/openai/helpers';
 
 const payload: OpenAIStreamPayload = {
   model: 'gpt-3.5-turbo',
@@ -18,8 +14,7 @@ const payload: OpenAIStreamPayload = {
 };
 
 export async function GET() {
-  const response = await chatCompletions(payload);
-  const stream = await openaiReadableStream(response);
+  const stream = await chatCompletions(payload);
 
   return new Response(stream);
 }
