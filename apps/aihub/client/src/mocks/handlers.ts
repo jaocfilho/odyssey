@@ -1,3 +1,3 @@
-import { modelsHandlers } from '@/modules/models/mocks';
+import { appsHandlers } from '@/modules/apps/mocks';
 
-export const handlers = [...modelsHandlers];
+export const handlers = [...appsHandlers];

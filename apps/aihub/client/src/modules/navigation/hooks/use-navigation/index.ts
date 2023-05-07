@@ -1,19 +1,19 @@
 import { useRouter } from 'next/navigation';
 
-import { modelsUrls } from '../../helpers';
+import { appsUrls } from '../../helpers';
 
 export function useNavigation() {
   const router = useRouter();
 
   const redirectToDashboard = () => {
-    const url = modelsUrls.base;
+    const url = appsUrls.base;
     router.push(url);
   };
 
-  const redirectToModels = () => {
-    const url = modelsUrls.base;
+  const redirectToApps = () => {
+    const url = appsUrls.base;
     router.push(url);
   };
 
-  return { redirectToDashboard, redirectToModels };
+  return { redirectToDashboard, redirectToApps };
 }

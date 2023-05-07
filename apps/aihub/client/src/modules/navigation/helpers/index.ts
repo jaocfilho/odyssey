@@ -1,11 +1,10 @@
-export const modelsUrls = {
-  base: '/dashboard/models' as const,
+export const appsUrls = {
+  base: '/dashboard/apps' as const,
   details: {
-    base: (id: string) => `${modelsUrls.base}/${id}` as const,
+    base: (id: string) => `${appsUrls.base}/${id}` as const,
 
-    overview: (id: string) =>
-      `${modelsUrls.details.base(id)}/overview` as const,
+    overview: (id: string) => `${appsUrls.details.base(id)}/overview` as const,
 
-    prompt: (id: string) => `${modelsUrls.details.base(id)}/prompt` as const,
+    prompt: (id: string) => `${appsUrls.details.base(id)}/prompt` as const,
   },
 };
