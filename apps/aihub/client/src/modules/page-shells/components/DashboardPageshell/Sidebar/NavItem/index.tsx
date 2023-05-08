@@ -1,22 +1,21 @@
 import { classNames } from '@/modules/theme/utils';
 import { NavIcon, TIcon } from '../NavIcon';
 
-const currentItemStyles =
-  'bg-gray-200 text-gray-900 dark:bg-zinc-800 dark:text-white';
+const currentItemStyles = 'dark:bg-zinc-800 dark:text-zinc-400';
 
-const itemStyles = 'text-zinc-400 dark:hover:bg-zinc-800 hover:text-zinc-900';
+const itemStyles =
+  'dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-400';
 
 const commonStyles =
-  'group flex items-center rounded-md px-2 py-2 text-sm font-medium';
+  'flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium';
 
 type NavItemProps = {
-  name: string;
   href: string;
   Icon: TIcon;
   current: boolean;
 };
 
-export const NavItem = ({ name, href, Icon, current }: NavItemProps) => {
+export const NavItem = ({ href, Icon, current }: NavItemProps) => {
   const styles = classNames(
     current ? currentItemStyles : itemStyles,
     commonStyles
@@ -29,7 +28,6 @@ export const NavItem = ({ name, href, Icon, current }: NavItemProps) => {
       aria-current={current ? 'page' : undefined}
     >
       <NavIcon Icon={Icon} />
-      {name}
     </a>
   );
 };

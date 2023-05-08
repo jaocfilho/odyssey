@@ -8,28 +8,23 @@ import { SettingsButton } from './SettingsButton';
 
 export const Sidebar = () => {
   const navigation = [
-    { name: 'Home', href: '#', Icon: HomeIcon, current: true },
+    { href: '#', Icon: HomeIcon, current: true },
+    { href: '#', Icon: HomeIcon, current: false },
   ];
 
   return (
     <SidebarContainer>
       <LogoArea />
-      <div className="mt-5 flex h-0 flex-1 flex-col overflow-y-auto pt-1">
+      <div className="mt-2 flex h-0 flex-1 flex-col overflow-y-auto">
         <NavContainer>
-          {navigation.map(({ name, href, Icon, current }) => (
-            <NavItem
-              key={name}
-              name={name}
-              href={href}
-              Icon={Icon}
-              current={current}
-            />
+          {navigation.map(({ href, Icon, current }) => (
+            <NavItem key={href} href={href} Icon={Icon} current={current} />
           ))}
         </NavContainer>
 
-        <div className="mt-auto">
+        {/* <div className="mt-auto">
           <SettingsButton />
-        </div>
+        </div> */}
       </div>
     </SidebarContainer>
   );

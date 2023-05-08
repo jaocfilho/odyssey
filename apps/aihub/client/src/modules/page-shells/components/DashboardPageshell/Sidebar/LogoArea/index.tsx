@@ -2,14 +2,13 @@ import Image from 'next/image';
 
 export function LogoArea() {
   return (
-    <div className="flex flex-shrink-0 items-center px-6">
-      <div className="h-8 w-auto">
+    <div className="block">
+      <div className="mx-auto h-8 w-6">
         {/* <Image
           fill
           src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500"
           alt="Logo"
         /> */}
-        Logo
       </div>
     </div>
   );

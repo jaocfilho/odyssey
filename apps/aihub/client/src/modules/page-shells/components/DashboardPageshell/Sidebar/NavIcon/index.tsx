@@ -6,5 +6,5 @@ type NavIconProps = {
 };
 
 export const NavIcon = ({ Icon }: NavIconProps) => {
-  return <Icon className="mr-3 h-6 w-6 flex-shrink-0" aria-hidden="true" />;
+  return <Icon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />;
 };
