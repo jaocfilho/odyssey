@@ -14,6 +14,7 @@ export interface Database {
           context: string | null;
           created_at: string | null;
           id: string;
+          model: string;
           name: string | null;
           vibe: string | null;
         };
@@ -21,6 +22,7 @@ export interface Database {
           context?: string | null;
           created_at?: string | null;
           id?: string;
+          model?: string;
           name?: string | null;
           vibe?: string | null;
         };
@@ -28,6 +30,7 @@ export interface Database {
           context?: string | null;
           created_at?: string | null;
           id?: string;
+          model?: string;
           name?: string | null;
           vibe?: string | null;
         };
