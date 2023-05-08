@@ -1,14 +1,13 @@
-import { chatCompletions } from '@/modules/openai/api/chat-completion';
+import { NextResponse, NextRequest } from 'next/server';
 
-const payload = {
-  model: 'gpt-3.5-turbo',
-  vibe: 'funny',
-  context: 'You are a helpfull assistant',
-  prompt: 'Say hello world',
-};
+import {
+  chatCompletions,
+  type ChatCompletionsParams,
+} from '@/modules/openai/api/chat-completion';
 
-export async function GET() {
-  const stream = await chatCompletions(payload);
+export async function POST(request: NextRequest) {
+  const data: ChatCompletionsParams = await request.json();
+  const stream = await chatCompletions(data);
 
   return new Response(stream);
 }

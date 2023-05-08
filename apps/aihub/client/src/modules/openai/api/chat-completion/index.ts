@@ -121,7 +121,7 @@ function handleMessages({
   return [contextMessage, vibeMessage, promptMessage];
 }
 
-type ChatCompletionsParams = {
+export type ChatCompletionsParams = {
   model: string;
   vibe: string;
   context: string;
