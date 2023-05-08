@@ -1,22 +1,17 @@
 import { ReactNode } from 'react';
 
-import { DetailsNavigation } from '@/modules/apps/components/DetailsNavigation';
+import { DetailsLayout } from '@/modules/apps/components/DetailsLayout';
 
-type ModelDetailsLayoutProps = {
+type AppDetailsLayoutProps = {
   children: ReactNode;
   params: { id: string };
 };
 
-export default function ModelDetailsLayout({
+export default function AppDetailsLayout({
   children,
   params,
-}: ModelDetailsLayoutProps) {
+}: AppDetailsLayoutProps) {
   const { id } = params;
 
-  return (
-    <div>
-      <DetailsNavigation id={id} />
-      {children}
-    </div>
-  );
+  return <DetailsLayout id={id}>{children}</DetailsLayout>;
 }
