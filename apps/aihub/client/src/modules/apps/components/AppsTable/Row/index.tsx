@@ -1,7 +1,7 @@
 import { type ChangeEvent } from 'react';
 
 import { Checkbox } from '../Checkbox';
-import { type Model } from '@/lib/supabase/types';
+import { type AppsTableRow } from '@/lib/supabase/types';
 import { classNames } from '@/modules/theme/utils';
 import { RedirectToDetailsCell } from './RedirectToDetailsCell';
 
@@ -10,7 +10,7 @@ const darkStyles =
   'dark:text-zinc-200 dark:divide-zinc-50/10 dark:hover:bg-zinc-900';
 const styles = classNames(commonStyles, darkStyles);
 
-export type RowProps = Model & {
+export type RowProps = AppsTableRow & {
   checkRow: (model: string) => void;
   uncheckRow: (modelId: string) => void;
   rowIsChecked: (modelId: string) => boolean;

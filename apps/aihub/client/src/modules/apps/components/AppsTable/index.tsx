@@ -3,11 +3,11 @@
 import { Body } from './Body';
 import { TableContainer } from './Container';
 import { Header } from './Header';
-import { type Model } from '@/lib/supabase/types';
+import { type AppsTableRow } from '@/lib/supabase/types';
 import { useSelectedApps } from './use-selected-apps';
 
 type AppsTableProps = {
-  apps: Model[];
+  apps: AppsTableRow[];
 };
 
 export function AppsTable({ apps }: AppsTableProps) {

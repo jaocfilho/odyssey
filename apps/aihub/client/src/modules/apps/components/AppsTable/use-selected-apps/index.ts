@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { type Model } from '@/lib/supabase/types';
+import { type AppsTableRow } from '@/lib/supabase/types';
 
 type UseSelectedAppsProps = {
-  apps: Model[];
+  apps: AppsTableRow[];
 };
 
 export function useSelectedApps({ apps }: UseSelectedAppsProps) {

@@ -1,8 +1,8 @@
-import { Model } from '@/lib/supabase/types';
+import { type AppsTableRow } from '@/lib/supabase/types';
 import { Row } from '../Row';
 
 type BodyProps = {
-  rows: Model[];
+  rows: AppsTableRow[];
   checkRow: (model: string) => void;
   uncheckRow: (modelId: string) => void;
   rowIsChecked: (modelId: string) => boolean;
