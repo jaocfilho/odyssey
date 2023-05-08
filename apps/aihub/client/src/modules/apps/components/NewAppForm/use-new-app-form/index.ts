@@ -3,24 +3,16 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useCreateAppMutation } from '../use-create-app-mutation';
+import { useCreateAppMutation } from '../../../hooks/use-create-app-mutation';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
-
-const vibeOptions = [
-  { value: 'funny', label: 'Funny' },
-  { value: 'professional', label: 'Professional' },
-  { value: 'silly', label: 'Silly' },
-];
+import { model } from '../Model';
+import { vibe } from '../Vibe';
+import { name } from '../Name';
 
 const newAppFormSchema = z.object({
-  name: z.string(),
-  vibe: z
-    .object({
-      value: z.string(),
-      label: z.string(),
-    })
-    .default(vibeOptions[0])
-    .transform((vibe) => vibe.value),
+  name,
+  model,
+  vibe,
   context: z.string(),
 });
 
@@ -34,9 +26,11 @@ export const useNewAppForm = () => {
     resolver: zodResolver(newAppFormSchema),
   });
 
-  const createApp = ({ name, context, vibe }: NewAppFormData) => {
+  const watchModel = () => methods.watch('model');
+
+  const createApp = ({ name, model, context, vibe }: NewAppFormData) => {
     mutation.mutate(
-      { name, context, vibe },
+      { name, model, context, vibe },
       {
         onSuccess: () => {
           redirectToApps();
@@ -45,5 +39,5 @@ export const useNewAppForm = () => {
     );
   };
 
-  return { createApp, methods, vibeOptions };
+  return { createApp, methods, watchModel };
 };

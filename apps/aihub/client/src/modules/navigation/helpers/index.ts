@@ -1,5 +1,6 @@
 export const appsUrls = {
   base: '/dashboard/apps' as const,
+
   details: {
     base: (id: string) => `${appsUrls.base}/${id}` as const,
 
@@ -7,4 +8,6 @@ export const appsUrls = {
 
     prompt: (id: string) => `${appsUrls.details.base(id)}/prompt` as const,
   },
+
+  create: () => `${appsUrls.base}/create-app` as const,
 };

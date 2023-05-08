@@ -1,11 +1,10 @@
-import Link from 'next/link';
-
 import { Button } from '@/components/Buttons/Button';
+import { CreateAppLink } from '@/modules/navigation/components/CreateAppLink';
 
 export function RedirectToCreateApp() {
   return (
-    <Link href="/dashboard/create-app">
+    <CreateAppLink>
       <Button>Create</Button>
-    </Link>
+    </CreateAppLink>
   );
 }
