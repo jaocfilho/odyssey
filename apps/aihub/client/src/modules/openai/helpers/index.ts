@@ -4,25 +4,6 @@ import {
   ReconnectInterval,
 } from 'eventsource-parser';
 
-export type ChatGPTAgent = 'user' | 'system';
-
-export interface ChatGPTMessage {
-  role: ChatGPTAgent;
-  content: string;
-}
-
-export interface OpenAIStreamPayload {
-  model: string;
-  messages: ChatGPTMessage[];
-  temperature: number;
-  top_p: number;
-  frequency_penalty: number;
-  presence_penalty: number;
-  max_tokens: number;
-  stream: boolean;
-  n: number;
-}
-
 function eventSourceParserCallback(
   event: ParsedEvent | ReconnectInterval,
   controller: ReadableStreamDefaultController<any>
@@ -69,7 +50,7 @@ function chatCompletionParser(
   return parser;
 }
 
-export async function openaiReadableStream(response: Response) {
+export async function chatCompletionsStream(response: Response) {
   const stream = new ReadableStream({
     start: async (controller) => {
       const decoder = new TextDecoder();
