@@ -1,17 +1,25 @@
 import { ReactNode } from 'react';
 
-import { DetailsLayout } from '@/modules/apps/components/DetailsLayout';
+import { serverSelectAppById } from '@/modules/apps/api/server';
+import { DetailsNavigation } from '@/modules/apps/components/DetailsNavigation';
 
 type AppDetailsLayoutProps = {
   children: ReactNode;
   params: { id: string };
 };
 
-export default function AppDetailsLayout({
+export default async function AppDetailsLayout({
   children,
   params,
 }: AppDetailsLayoutProps) {
   const { id } = params;
 
-  return <DetailsLayout id={id}>{children}</DetailsLayout>;
+  await serverSelectAppById({ id });
+
+  return (
+    <div>
+      <DetailsNavigation id={id} />
+      {children}
+    </div>
+  );
 }

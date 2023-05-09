@@ -2,7 +2,7 @@
 
 import { AppsTable } from '@/modules/apps/components/AppsTable';
 import { RedirectToCreateApp } from '@/modules/apps/components/RedirectToCreateApp';
-import { useAllAppsQuery } from '@/modules/apps/hooks/use-all-apps-query';
+import { useSelectAllApps } from '@/modules/apps/hooks/use-select-all-apps';
 
 const models = [
   {
@@ -29,7 +29,7 @@ const models = [
 ];
 
 export default function Apps() {
-  const appsQuery = useAllAppsQuery();
+  const appsQuery = useSelectAllApps();
 
   return (
     <div className="flex flex-col m-4 gap-4">

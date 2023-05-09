@@ -2,7 +2,7 @@ import type { AppsTableInsert, Supabase } from '@/lib/supabase/types';
 
 import { supabase as supabaseLib } from '@/lib/supabase';
 
-export async function selectAllApps(supabase: Supabase = supabaseLib) {
+export async function baseSelectAllApps(supabase: Supabase = supabaseLib) {
   return await supabase.from('apps').select('*');
 }
 

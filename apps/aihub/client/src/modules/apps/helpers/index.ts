@@ -2,7 +2,7 @@ import { queryClient } from '@/lib/react-query/client';
 import { appsQueryKeys } from '../query-keys';
 
 export function invalidateAllAppsQuery() {
-  const queryKey = appsQueryKeys.base;
+  const queryKey = appsQueryKeys.all();
 
   queryClient.invalidateQueries({ queryKey });
 }

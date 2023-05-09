@@ -1,10 +1,10 @@
 'use client';
 
-import { useAllAppsQuery } from '@/modules/apps/hooks/use-all-apps-query';
+import { useSelectAllApps } from '@/modules/apps/hooks/use-select-all-apps';
 import { AppsList } from '../AppsList';
 
 export function AppsListWithData() {
-  const appsQuery = useAllAppsQuery();
+  const appsQuery = useSelectAllApps();
 
   return <AppsList apps={appsQuery.data!} />;
 }

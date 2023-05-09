@@ -14,6 +14,6 @@ async function testStream() {
   }
 }
 
-export default function ModelDetailsPrompt() {
+export default function AppDetailsPrompt() {
   return <button onClick={() => testStream()}>prompt</button>;
 }
