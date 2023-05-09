@@ -29,14 +29,14 @@ const models = [
 ];
 
 export default function Apps() {
-  const modelsQuery = useAllAppsQuery();
+  const appsQuery = useAllAppsQuery();
 
   return (
     <div className="flex flex-col m-4 gap-4">
       <div className="flex flex-row-reverse">
         <RedirectToCreateApp />
       </div>
-      {modelsQuery.data ? <AppsTable apps={modelsQuery.data} /> : null}
+      {appsQuery.data ? <AppsTable apps={appsQuery.data} /> : null}
     </div>
   );
 }
