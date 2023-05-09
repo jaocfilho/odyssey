@@ -1,15 +1,17 @@
 import { HomeIcon } from '@heroicons/react/24/outline';
+import { Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { Squares2X2Icon } from '@heroicons/react/24/outline';
 
 import { SidebarContainer } from './Container';
 import { NavItem } from './NavItem';
 import { LogoArea } from './LogoArea';
 import { NavContainer } from './NavContainer';
-import { SettingsButton } from './SettingsButton';
 
 export const Sidebar = () => {
   const navigation = [
     { href: '#', Icon: HomeIcon, current: true },
-    { href: '#', Icon: HomeIcon, current: false },
+    { href: '#', Icon: Squares2X2Icon, current: false },
+    { href: '#', Icon: Cog6ToothIcon, current: false },
   ];
 
   return (
@@ -21,10 +23,6 @@ export const Sidebar = () => {
             <NavItem key={href} href={href} Icon={Icon} current={current} />
           ))}
         </NavContainer>
-
-        {/* <div className="mt-auto">
-          <SettingsButton />
-        </div> */}
       </div>
     </SidebarContainer>
   );

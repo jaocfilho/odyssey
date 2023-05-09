@@ -6,3 +6,10 @@ export function invalidateAllAppsQuery() {
 
   queryClient.invalidateQueries({ queryKey });
 }
+
+export function isAppsPath(pathname: string) {
+  const splitedPathname = pathname.split('/');
+  const path = splitedPathname[2];
+
+  return path === 'apps';
+}
