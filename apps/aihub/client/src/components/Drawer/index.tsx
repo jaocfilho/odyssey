@@ -7,8 +7,8 @@ import { type ComponentDrawerFooterProps } from './ComponentDrawerFooter';
 import { type ComponentDrawerHeaderProps } from './ComponentDrawerHeader';
 import { type ComponentDrawerTriggerProps } from './ComponentDrawerTrigger';
 
-type DrawerProps = ComponentDrawerHeaderProps &
-  Pick<ComponentDrawerFooterProps, 'successButton'> &
+export type DrawerProps = ComponentDrawerHeaderProps &
+  Pick<ComponentDrawerFooterProps, 'actionButton'> &
   Pick<ComponentDrawerTriggerProps, 'trigger'> & {
     children: ReactNode;
     onCancel?: () => void;
@@ -20,7 +20,7 @@ export function Drawer({
   trigger,
   onCancel,
   children,
-  successButton,
+  actionButton,
 }: DrawerProps) {
   const [open, setOpen] = useState(false);
 
@@ -42,7 +42,7 @@ export function Drawer({
           <ComponentDrawer.Header title={title} subTitle={subTitle} />
           <ComponentDrawer.Content>{children}</ComponentDrawer.Content>
           <ComponentDrawer.Footer
-            successButton={successButton}
+            actionButton={actionButton}
             onClose={handleClose}
           />
         </ComponentDrawer.Panel>
