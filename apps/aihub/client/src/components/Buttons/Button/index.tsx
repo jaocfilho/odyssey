@@ -1,17 +1,39 @@
 import { type ButtonHTMLAttributes } from 'react';
 
 import { classNames } from '@/modules/theme/utils';
+import {
+  type ColorSchemeVariants,
+  type SizeVariants,
+  buttonCommonStyles,
+  sizeVariantsStyles,
+  colorSchemeVariantsStyles,
+} from './styles';
 
-const commonStyles =
-  'rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
-const darkStyles =
-  'dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:focus-visible:outline-emerald-500';
+type GetStylesParams = {
+  size: SizeVariants;
+  colorScheme: ColorSchemeVariants;
+};
 
-const styles = classNames(commonStyles, darkStyles);
+function getStyles({ size, colorScheme }: GetStylesParams) {
+  const sizeStyles = sizeVariantsStyles[size];
+  const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+  return classNames(buttonCommonStyles, sizeStyles, colorSchemeStyles);
+}
 
-export function Button({ className, ...rest }: ButtonProps) {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  size?: SizeVariants;
+  colorScheme?: ColorSchemeVariants;
+};
+
+export function Button({
+  className,
+  size = 'md',
+  colorScheme = 'emerald',
+  ...rest
+}: ButtonProps) {
+  const styles = getStyles({ size, colorScheme });
+
   return (
     <button
       type="button"
