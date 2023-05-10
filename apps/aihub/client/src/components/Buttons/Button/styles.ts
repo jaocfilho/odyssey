@@ -18,7 +18,7 @@ export const colorSchemeVariantsStyles = {
   indigo:
     'dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500 bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600',
 
-  gray: 'dark:bg-white/10 dark:text-white dark:hover:bg-white/20 bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50',
+  gray: 'dark:bg-zinc-50/10 dark:text-white dark:hover:bg-zinc-50/20 dark:focus-visible:outline-emerald-500 bg-white text-gray-900  hover:bg-gray-50',
 };
 
 export type ColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
