@@ -9,15 +9,14 @@ export async function baseSelectAllApps(supabase: Supabase = supabaseLib) {
 export type InsertAppParams = AppsTableInsert;
 
 export async function insertApp(
-  { name, model, context, vibe }: InsertAppParams,
+  { name, model, description }: InsertAppParams,
   supabase: Supabase = supabaseLib
 ) {
   return await supabase.from('apps').insert([
     {
       name,
       model,
-      context,
-      vibe,
+      description,
     },
   ]);
 }

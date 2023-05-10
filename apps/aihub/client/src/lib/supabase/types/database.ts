@@ -11,28 +11,28 @@ export interface Database {
     Tables: {
       apps: {
         Row: {
-          context: string | null;
-          created_at: string | null;
+          created_at: string;
+          description: string | null;
           id: string;
           model: string;
-          name: string | null;
-          vibe: string | null;
+          name: string;
+          updated_at: string;
         };
         Insert: {
-          context?: string | null;
-          created_at?: string | null;
+          created_at?: string;
+          description?: string | null;
           id?: string;
           model?: string;
-          name?: string | null;
-          vibe?: string | null;
+          name: string;
+          updated_at?: string;
         };
         Update: {
-          context?: string | null;
-          created_at?: string | null;
+          created_at?: string;
+          description?: string | null;
           id?: string;
           model?: string;
-          name?: string | null;
-          vibe?: string | null;
+          name?: string;
+          updated_at?: string;
         };
       };
     };

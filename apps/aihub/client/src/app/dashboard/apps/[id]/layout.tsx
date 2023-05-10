@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { serverSelectAppById } from '@/modules/apps/api/server';
 import { DetailsNavigation } from '@/modules/apps/components/DetailsNavigation';
+import { DetailsHeader } from '@/modules/apps/components/DetailsHeader';
 
 type AppDetailsLayoutProps = {
   children: ReactNode;
@@ -14,11 +15,12 @@ export default async function AppDetailsLayout({
 }: AppDetailsLayoutProps) {
   const { id } = params;
 
-  await serverSelectAppById({ id });
+  const { data } = await serverSelectAppById({ id });
 
   return (
     <div>
       <DetailsNavigation id={id} />
+      <DetailsHeader name={data?.name!} />
       {children}
     </div>
   );

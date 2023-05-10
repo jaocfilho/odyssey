@@ -11,13 +11,12 @@ type BodyProps = {
 export function Body({ rows, checkRow, uncheckRow, rowIsChecked }: BodyProps) {
   return (
     <tbody className="divide-y divide-gray-200 bg-white dark:divide-zinc-50/10 dark:bg-zinc-950">
-      {rows.map(({ id, name, vibe, context, created_at }) => (
+      {rows.map(({ id, name, description, created_at }) => (
         <Row
           key={id}
           id={id}
           name={name}
-          vibe={vibe}
-          context={context}
+          description={description}
           created_at={created_at}
           checkRow={checkRow}
           uncheckRow={uncheckRow}

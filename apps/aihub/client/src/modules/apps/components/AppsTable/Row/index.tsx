@@ -10,7 +10,10 @@ const darkStyles =
   'dark:text-zinc-200 dark:divide-zinc-50/10 dark:hover:bg-zinc-900';
 const styles = classNames(commonStyles, darkStyles);
 
-export type RowProps = AppsTableRow & {
+export type RowProps = Pick<
+  AppsTableRow,
+  'id' | 'name' | 'description' | 'created_at'
+> & {
   checkRow: (model: string) => void;
   uncheckRow: (modelId: string) => void;
   rowIsChecked: (modelId: string) => boolean;
@@ -19,14 +22,13 @@ export type RowProps = AppsTableRow & {
 export function Row({
   id,
   name,
-  vibe,
-  context,
+  description,
   created_at,
   checkRow,
   uncheckRow,
   rowIsChecked,
 }: RowProps) {
-  const sameStylesCells = [name, vibe, context, created_at];
+  const sameStylesCells = [name, description, created_at];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.target.checked ? checkRow(id) : uncheckRow(id);

@@ -6,14 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useCreateAppMutation } from '../../../hooks/use-create-app-mutation';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { model } from '../Model';
-import { vibe } from '../Vibe';
 import { name } from '../Name';
 
 const newAppFormSchema = z.object({
   name,
   model,
-  vibe,
-  context: z.string(),
+  description: z.string(),
 });
 
 type NewAppFormData = z.infer<typeof newAppFormSchema>;
@@ -28,9 +26,9 @@ export const useNewAppForm = () => {
 
   const watchModel = () => methods.watch('model');
 
-  const createApp = ({ name, model, context, vibe }: NewAppFormData) => {
+  const createApp = ({ name, model, description }: NewAppFormData) => {
     mutation.mutate(
-      { name, model, context, vibe },
+      { name, model, description },
       {
         onSuccess: () => {
           redirectToApps();
