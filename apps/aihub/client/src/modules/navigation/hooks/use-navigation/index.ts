@@ -15,5 +15,10 @@ export function useNavigation() {
     router.push(url);
   };
 
-  return { redirectToDashboard, redirectToApps };
+  const redirectToAppDetailsOverview = (id: string) => {
+    const url = appsUrls.details.overview(id);
+    router.push(url);
+  };
+
+  return { redirectToDashboard, redirectToApps, redirectToAppDetailsOverview };
 }

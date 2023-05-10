@@ -7,7 +7,7 @@ import { type CreateAppFormData, createAppFormSchema } from '../Inputs/schema';
 
 export const useCreateAppForm = () => {
   const mutation = useCreateAppMutation();
-  const { redirectToApps } = useNavigation();
+  const { redirectToAppDetailsOverview } = useNavigation();
 
   const methods = useForm<CreateAppFormData>({
     resolver: zodResolver(createAppFormSchema),
@@ -19,8 +19,9 @@ export const useCreateAppForm = () => {
     mutation.mutate(
       { name, model, description },
       {
-        onSuccess: () => {
-          redirectToApps();
+        onSuccess: ({ data }) => {
+          const { id } = data!;
+          redirectToAppDetailsOverview(id);
         },
       }
     );
