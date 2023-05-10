@@ -1,32 +1,21 @@
-import { z } from 'zod';
-
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useCreateAppMutation } from '../../../hooks/use-create-app-mutation';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
-import { model } from '../Model';
-import { name } from '../Name';
+import { type CreateAppFormData, createAppFormSchema } from '../Inputs/schema';
 
-const newAppFormSchema = z.object({
-  name,
-  model,
-  description: z.string(),
-});
-
-type NewAppFormData = z.infer<typeof newAppFormSchema>;
-
-export const useNewAppForm = () => {
+export const useCreateAppForm = () => {
   const mutation = useCreateAppMutation();
   const { redirectToApps } = useNavigation();
 
-  const methods = useForm<NewAppFormData>({
-    resolver: zodResolver(newAppFormSchema),
+  const methods = useForm<CreateAppFormData>({
+    resolver: zodResolver(createAppFormSchema),
   });
 
   const watchModel = () => methods.watch('model');
 
-  const createApp = ({ name, model, description }: NewAppFormData) => {
+  const createApp = ({ name, model, description }: CreateAppFormData) => {
     mutation.mutate(
       { name, model, description },
       {

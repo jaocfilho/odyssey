@@ -7,7 +7,7 @@ type TextAreaInputProps = TextAreaProps & {
 export function TextAreaInput({ label, name, ...rest }: TextAreaInputProps) {
   return (
     <Form.Field>
-      {!!label ? <Form.Label htmlFor={name}>Name</Form.Label> : null}
+      {!!label ? <Form.Label htmlFor={name}>{label}</Form.Label> : null}
       <Form.TextArea name={name} {...rest} />
       <Form.ErrorMessage name={name} />
     </Form.Field>

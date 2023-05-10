@@ -6,7 +6,12 @@ type ActionButtonProps = {
 
 export function ActionButton({ closeDrawer }: ActionButtonProps) {
   return (
-    <Button onClick={closeDrawer} type="submit" colorScheme="emerald">
+    <Button
+      form="createAppForm"
+      onClick={closeDrawer}
+      type="submit"
+      colorScheme="emerald"
+    >
       Save
     </Button>
   );

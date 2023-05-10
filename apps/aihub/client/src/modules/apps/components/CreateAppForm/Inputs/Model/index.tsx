@@ -12,7 +12,7 @@ export const model = z
   .default(options[0])
   .transform((model) => model.value);
 
-export function Model() {
+export function ModelInput() {
   return (
     <Form.Field>
       <Form.Select label="Select a model" name="model" options={options} />

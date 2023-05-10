@@ -6,7 +6,7 @@ export const name = z
   .string()
   .min(3, 'Name must contain at least 3 character(s)');
 
-export function Name() {
+export function NameInput() {
   return (
     <TextInput
       label="Name"

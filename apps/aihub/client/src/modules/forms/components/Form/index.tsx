@@ -1,5 +1,7 @@
 'use client';
 
+import { HTMLAttributes } from 'react';
+
 import {
   FieldValues,
   FormProvider,
@@ -17,20 +19,26 @@ import { Select } from '../Select';
 export type { InputProps } from '../Input';
 export type { TextAreaProps } from '../TextArea';
 
+type FormElementProps = Pick<HTMLAttributes<HTMLFormElement>, 'id'>;
+
 type FormProps<TFieldValues extends FieldValues> =
-  FormProviderProps<TFieldValues> & {
-    onSubmit: SubmitHandler<TFieldValues>;
-  };
+  FormProviderProps<TFieldValues> &
+    FormElementProps & {
+      onSubmit: SubmitHandler<TFieldValues>;
+    };
 
 function FormRoot<TFieldValues extends FieldValues>({
   children,
   onSubmit,
   handleSubmit,
+  id,
   ...rest
 }: FormProps<TFieldValues>) {
   return (
     <FormProvider handleSubmit={handleSubmit} {...rest}>
-      <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
+      <form id={id} onSubmit={handleSubmit(onSubmit)}>
+        {children}
+      </form>
     </FormProvider>
   );
 }
