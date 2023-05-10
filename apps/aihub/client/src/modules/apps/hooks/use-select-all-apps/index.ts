@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { useSupabase } from '@/lib/supabase/Provider';
-import { baseSelectAllApps } from '../../api';
+import { baseSelectAllApps } from '../../api/base';
 import { appsQueryKeys } from '../../query-keys';
 
 function useBaseSelectAllApps() {

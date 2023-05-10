@@ -1,4 +1,8 @@
-import type { AppsTableRow, Supabase } from '@/lib/supabase/types';
+import type {
+  AppsTableRow,
+  AppsTableInsert,
+  Supabase,
+} from '@/lib/supabase/types';
 
 export type BaseSelectAppByIdParams = Pick<AppsTableRow, 'id'>;
 
@@ -21,3 +25,22 @@ export async function baseSelectAppById(
 
 type BaseSelectAppByIdReturn = Awaited<ReturnType<typeof baseSelectAppById>>;
 export type SelectAppByIdReturnData = BaseSelectAppByIdReturn['data'];
+
+export async function baseSelectAllApps(supabase: Supabase) {
+  return await supabase.from('apps').select('*');
+}
+
+export type BaseInsertAppParams = AppsTableInsert;
+
+export async function baseInsertApp(
+  { name, model, description }: BaseInsertAppParams,
+  supabase: Supabase
+) {
+  return await supabase.from('apps').insert([
+    {
+      name,
+      model,
+      description,
+    },
+  ]);
+}

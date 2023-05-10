@@ -1,10 +1,14 @@
 import { useSupabase } from '@/lib/supabase/Provider';
-import { insertApp as baseInsertApp, type InsertAppParams } from '../../api';
+import { baseInsertApp, type BaseInsertAppParams } from '../../api/base';
 
 export function useInsertApp() {
   const { supabase } = useSupabase();
 
-  const insertApp = async ({ name, model, description }: InsertAppParams) => {
+  const insertApp = async ({
+    name,
+    model,
+    description,
+  }: BaseInsertAppParams) => {
     return await baseInsertApp({ name, model, description }, supabase);
   };
 
