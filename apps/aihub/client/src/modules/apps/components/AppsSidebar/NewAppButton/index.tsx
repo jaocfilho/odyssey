@@ -7,9 +7,13 @@ export function NewAppButton() {
   return (
     <Drawer
       title="Create a new app"
-      onCancel={() => console.log('peido')}
       trigger={(openDrawer) => (
         <Button onClick={openDrawer}>Create new app</Button>
+      )}
+      successButton={(closeDrawer) => (
+        <Button onClick={closeDrawer} type="submit" colorScheme="emerald">
+          Save
+        </Button>
       )}
     >
       <p>derp</p>

@@ -1,22 +1,26 @@
 'use client';
 
+import { type ReactNode } from 'react';
+
 import { Button } from '@/components/Buttons/Button';
 
+type CloseDrawer = () => void;
+
 export type ComponentDrawerFooterProps = {
-  onCancel?: () => void;
+  onClose: () => void;
+  successButton: (closeDrawer: CloseDrawer) => ReactNode;
 };
 
 export function ComponentDrawerFooter({
-  onCancel,
+  onClose,
+  successButton,
 }: ComponentDrawerFooterProps) {
   return (
     <div className="flex flex-shrink-0 gap-4 justify-end px-4 py-4 border-t dark:border-zinc-50/10">
-      <Button colorScheme="gray" onClick={onCancel}>
+      <Button colorScheme="gray" onClick={onClose}>
         Cancel
       </Button>
-      <Button type="submit" colorScheme="emerald">
-        Save
-      </Button>
+      {successButton(onClose)}
     </div>
   );
 }
