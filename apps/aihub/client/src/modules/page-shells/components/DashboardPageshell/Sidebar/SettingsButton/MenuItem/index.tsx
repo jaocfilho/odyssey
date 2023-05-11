@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const commonStyles = 'block px-4 py-2 text-sm cursor-pointer';
 const activeStyles = 'dark:text-zinc-200 dark:bg-zinc-800';

@@ -1,4 +1,4 @@
-import { Button } from '@/components/Buttons/Button';
+import { Button } from 'tailwind-ui';
 import { CreateAppLink } from '@/modules/navigation/components/CreateAppLink';
 
 export function RedirectToCreateApp() {

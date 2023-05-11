@@ -2,29 +2,21 @@ import { type ButtonHTMLAttributes } from 'react';
 
 import { classNames } from '../../utils';
 import {
-  type ColorSchemeVariants,
-  type SizeVariants,
+  type ButtonStylesProps,
   buttonCommonStyles,
   sizeVariantsStyles,
   colorSchemeVariantsStyles,
 } from './styles';
 
-type GetStylesParams = {
-  size: SizeVariants;
-  colorScheme: ColorSchemeVariants;
-};
-
-function getStyles({ size, colorScheme }: GetStylesParams) {
+function getStyles({ size, colorScheme }: Required<ButtonStylesProps>) {
   const sizeStyles = sizeVariantsStyles[size];
   const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
 
   return classNames(buttonCommonStyles, sizeStyles, colorSchemeStyles);
 }
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  size?: SizeVariants;
-  colorScheme?: ColorSchemeVariants;
-};
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  ButtonStylesProps;
 
 export function Button({
   className,

@@ -9,7 +9,7 @@ export const sizeVariantsStyles = {
   xl: 'rounded-md px-3.5 py-2.5 text-sm',
 };
 
-export type SizeVariants = keyof typeof sizeVariantsStyles;
+type ButtonSizeVariants = keyof typeof sizeVariantsStyles;
 
 export const colorSchemeVariantsStyles = {
   emerald:
@@ -21,4 +21,9 @@ export const colorSchemeVariantsStyles = {
   gray: 'dark:bg-zinc-50/10 dark:text-white dark:hover:bg-zinc-50/20 dark:focus-visible:outline-emerald-500 bg-white text-gray-900  hover:bg-gray-50',
 };
 
-export type ColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
+type ButtonColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
+
+export type ButtonStylesProps = {
+  size?: ButtonSizeVariants;
+  colorScheme?: ButtonColorSchemeVariants;
+};

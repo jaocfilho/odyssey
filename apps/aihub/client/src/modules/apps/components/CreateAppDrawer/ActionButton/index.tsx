@@ -1,4 +1,4 @@
-import { Button } from '@/components/Buttons/Button';
+import { Button } from 'tailwind-ui';
 
 type ActionButtonProps = {
   closeDrawer: () => void;

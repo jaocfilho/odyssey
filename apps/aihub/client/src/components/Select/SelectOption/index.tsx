@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Listbox } from '@headlessui/react';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 import { SelectedIcon } from '../SelectedIcon';
 
 type SelectOptionProps<T> = {

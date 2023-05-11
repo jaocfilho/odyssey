@@ -1,6 +1,6 @@
 import { CheckIcon } from '@heroicons/react/20/solid';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const activeStyles = 'text-white';
 

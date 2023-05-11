@@ -1,4 +1,4 @@
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 import { AppDetailsOverviewLink } from '@/modules/navigation/components/AppDetailsOverviewLink';
 
 const commonStyles =

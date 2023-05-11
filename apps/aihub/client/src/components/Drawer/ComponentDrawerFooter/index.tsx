@@ -2,7 +2,7 @@
 
 import { type ReactNode } from 'react';
 
-import { Button } from '@/components/Buttons/Button';
+import { Button } from 'tailwind-ui';
 
 type CloseDrawer = () => void;
 

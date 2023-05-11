@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const commonStyles = 'border-t py-6 px-4 sm:px-6 lg:px-8';
 const darkStyles = 'dark:border-zinc-50/10';

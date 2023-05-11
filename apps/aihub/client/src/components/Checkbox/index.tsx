@@ -1,6 +1,6 @@
 import { type InputHTMLAttributes } from 'react';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const commonStyles = 'cursor-pointer bg-inherit h-4 w-4 rounded';
 const darkStyles =
@@ -11,7 +11,6 @@ const styles = classNames(commonStyles, darkStyles);
 export type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>;
 
 export function Checkbox({ className, ...rest }: CheckboxProps) {
-  classNames;
   return (
     <input
       type="checkbox"

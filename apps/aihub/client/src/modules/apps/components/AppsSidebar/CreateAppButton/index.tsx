@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/Buttons/Button';
+import { Button } from 'tailwind-ui';
 import { CreateAppDrawer } from '../../CreateAppDrawer';
 
 export function CreateAppButton() {

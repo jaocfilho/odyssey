@@ -1,4 +1,4 @@
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 import { NavIcon, TIcon } from '../NavIcon';
 
 const currentItemStyles = 'dark:bg-zinc-800 dark:text-zinc-400';

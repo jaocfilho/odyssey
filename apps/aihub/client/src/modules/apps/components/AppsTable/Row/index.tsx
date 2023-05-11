@@ -2,7 +2,7 @@ import { type ChangeEvent } from 'react';
 
 import { Checkbox } from '../Checkbox';
 import { type AppsTableRow } from '@/lib/supabase/types';
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 import { RedirectToDetailsCell } from './RedirectToDetailsCell';
 
 const commonStyles = 'divide-x';

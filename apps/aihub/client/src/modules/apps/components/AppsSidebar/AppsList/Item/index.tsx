@@ -2,7 +2,7 @@
 
 import { useIsCurrentApp } from '@/modules/apps/hooks/use-is-current-app';
 import { AppDetailsOverviewLink } from '@/modules/navigation/components/AppDetailsOverviewLink';
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const commonStyles =
   'group flex gap-x-3 rounded-md p-1 pl-3 text-sm font-semibold';

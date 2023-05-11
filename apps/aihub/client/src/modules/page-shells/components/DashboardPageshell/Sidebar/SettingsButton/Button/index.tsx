@@ -2,7 +2,7 @@ import { Menu } from '@headlessui/react';
 
 import { UserIcon } from '@heroicons/react/24/outline';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 
 const darkStyles =
   'dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white';
