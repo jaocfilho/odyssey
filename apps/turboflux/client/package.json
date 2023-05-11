@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.16",
     "@orbital/dayjs": "workspace:*",
     "@orbital/github": "workspace:*",
-    "@satellite/react-hooks": "workspace:*",
+    "@odyssey/react-hooks": "workspace:*",
     "@satellite/tests": "workspace:*",
     "immer": "^9.0.19",
     "milky-ui": "workspace:*",

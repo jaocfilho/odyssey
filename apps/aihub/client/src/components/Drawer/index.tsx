@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
+import { useBooleanState } from '@odyssey/react-hooks';
 import { ComponentDrawer } from './ComponentDrawer';
 import { type ComponentDrawerFooterProps } from './ComponentDrawerFooter';
 import { type ComponentDrawerHeaderProps } from './ComponentDrawerHeader';
@@ -22,19 +23,17 @@ export function Drawer({
   children,
   actionButton,
 }: DrawerProps) {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(true);
+  const [open, setClose, setOpen] = useBooleanState();
   const handleClose = () => {
     if (!!onCancel) {
       onCancel();
     }
-    setOpen(false);
+    setClose();
   };
 
   return (
     <>
-      <ComponentDrawer.Trigger openDrawer={handleOpen} trigger={trigger} />
+      <ComponentDrawer.Trigger openDrawer={setOpen} trigger={trigger} />
 
       <ComponentDrawer.Container open={open} onClose={handleClose}>
         <ComponentDrawer.Overlay />

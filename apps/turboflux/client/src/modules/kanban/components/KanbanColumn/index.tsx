@@ -1,6 +1,6 @@
 'use client';
 
-import { useBooleanState } from '@satellite/react-hooks';
+import { useBooleanState } from '@odyssey/react-hooks';
 import { AddCardButton } from '../AddCardButton';
 import { KanbanCards } from '../KanbanCards';
 import { NewCard } from '../NewCard';
