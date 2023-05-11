@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@odyssey/react-hooks'],
+  transpilePackages: ['@odyssey/react-hooks', 'tailwind-ui'],
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [

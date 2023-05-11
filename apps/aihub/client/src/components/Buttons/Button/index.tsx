@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes } from 'react';
 
-import { classNames } from '@/modules/theme/utils';
+import { classNames } from 'tailwind-ui';
 import {
   type ColorSchemeVariants,
   type SizeVariants,

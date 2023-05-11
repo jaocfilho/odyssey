@@ -41,6 +41,7 @@ importers:
       react-dom: 18.2.0
       react-hook-form: ^7.43.9
       tailwind-config: workspace:*
+      tailwind-ui: workspace:*
       tailwindcss: ^3.3.1
       tsconfig: workspace:*
       typescript: 5.0.3
@@ -60,6 +61,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-hook-form: 7.43.9_react@18.2.0
+      tailwind-ui: link:../../../packages/tailwind-ui
       zod: 3.20.6
     devDependencies:
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.3.1
@@ -431,33 +433,33 @@ importers:
     specifiers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
-      '@types/react': ^18.0.28
+      '@types/react': 18.0.31
       '@types/react-dom': ^18.0.11
       autoprefixer: ^10.4.14
-      eslint: 7.32.0
+      eslint: 8.37.0
       eslint-config-custom: workspace:*
       postcss: ^8.4.21
       react: ^18.2.0
       react-dom: ^18.2.0
       tailwind-config: workspace:*
-      tailwindcss: ^3.2.7
+      tailwindcss: ^3.3.1
       tsconfig: workspace:*
-      typescript: 5.0.2
+      typescript: 5.0.3
     devDependencies:
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.16_react@18.2.0
       '@types/react': 18.0.31
       '@types/react-dom': 18.0.11
       autoprefixer: 10.4.14_postcss@8.4.21
-      eslint: 7.32.0
+      eslint: 8.37.0
       eslint-config-custom: link:../eslint-config-custom
       postcss: 8.4.21
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tailwind-config: link:../tailwind-config
-      tailwindcss: 3.2.7_postcss@8.4.21
+      tailwindcss: 3.3.1_postcss@8.4.21
       tsconfig: link:../tsconfig
-      typescript: 5.0.2
+      typescript: 5.0.3
 
   packages/tsconfig:
     specifiers: {}
@@ -6381,12 +6383,6 @@ packages:
   /typescript/4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript/5.0.2:
-    resolution: {integrity: sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==}
-    engines: {node: '>=12.20'}
     hasBin: true
     dev: true
 
