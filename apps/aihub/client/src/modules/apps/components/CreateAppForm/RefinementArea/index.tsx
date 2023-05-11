@@ -7,7 +7,7 @@ export function RefinementArea() {
     <Disclosure>
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex w-full justify-between rounded-lg dark:bg-zinc-900 mt-2 px-4 py-2 text-left text-sm font-medium dark:text-zinc-200 dark:hover:bg-zinc-800 focus:outline-none focus-visible:ring dark:focus-visible:ring-emerald-500 focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex w-full justify-between rounded-lg dark:bg-zinc-800 mt-2 px-4 py-2 text-left text-sm font-medium dark:text-zinc-200 dark:hover:bg-opacity-70 transition-opacity focus:outline-none focus-visible:ring dark:focus-visible:ring-emerald-500 focus-visible:ring-opacity-75">
             <span>Refine</span>
             <ChevronUpIcon
               className={`${

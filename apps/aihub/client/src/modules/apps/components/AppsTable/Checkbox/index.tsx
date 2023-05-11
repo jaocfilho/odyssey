@@ -1,10 +1,10 @@
 import {
-  Checkbox as BaseCheckbox,
-  CheckboxProps as BaseCheckboxProps,
-} from '@/components/Checkbox';
+  Checkbox as TUICheckbox,
+  CheckboxProps as TUICheckboxProps,
+} from 'tailwind-ui';
 
-type CheckboxProps = BaseCheckboxProps;
+type CheckboxProps = TUICheckboxProps;
 
 export function Checkbox(props: CheckboxProps) {
-  return <BaseCheckbox className="absolute left-4 top-1/2 -mt-2" {...props} />;
+  return <TUICheckbox className="absolute left-4 top-1/2 -mt-2" {...props} />;
 }
