@@ -35,6 +35,35 @@ export interface Database {
           updated_at?: string;
         };
       };
+      gpt3_5_refinement: {
+        Row: {
+          app: string;
+          context: string[] | null;
+          created_at: string | null;
+          id: string;
+          temperature: number | null;
+          updated_at: string | null;
+          vibe: string | null;
+        };
+        Insert: {
+          app: string;
+          context?: string[] | null;
+          created_at?: string | null;
+          id?: string;
+          temperature?: number | null;
+          updated_at?: string | null;
+          vibe?: string | null;
+        };
+        Update: {
+          app?: string;
+          context?: string[] | null;
+          created_at?: string | null;
+          id?: string;
+          temperature?: number | null;
+          updated_at?: string | null;
+          vibe?: string | null;
+        };
+      };
     };
     Views: {
       [_ in never]: never;
