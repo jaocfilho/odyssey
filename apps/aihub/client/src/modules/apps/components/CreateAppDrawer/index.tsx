@@ -13,11 +13,11 @@ type CreateAppDrawerProps = Pick<DrawerProps, 'triggerComponent'>;
 export function CreateAppDrawer({ triggerComponent }: CreateAppDrawerProps) {
   const {
     methods: gpt35RefinementFormMethods,
-    customMethods: { submitGpt35RefinementForm },
+    customMethods: { submitForm: submitGpt35RefinementForm },
   } = useGpt35RefinementForm({ onSubmit: console.log });
   const {
     methods: createAppFormMethods,
-    customMethods: { submitCreateAppForm },
+    customMethods: { submitForm: submitCreateAppForm },
   } = useCreateAppForm({ onSubmit: console.log });
 
   const triggerRefinementForm = async () => {

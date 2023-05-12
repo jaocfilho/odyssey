@@ -1,10 +1,10 @@
-import { useForm, UseFormReturn, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { UseFormReturn, SubmitHandler } from 'react-hook-form';
 
 import {
   gpt35RefinementSchema,
   type Gpt35RefinementFormData,
 } from '../Inputs/schema';
+import { useCustomForm } from '@/modules/forms/hooks/use-custom-form';
 
 type UseGpt35RefinementFormProps = {
   onSubmit: SubmitHandler<Gpt35RefinementFormData>;
@@ -16,25 +16,10 @@ export type UseGpt35RefinementFormMethods =
 export function useGpt35RefinementForm({
   onSubmit,
 }: UseGpt35RefinementFormProps) {
-  const methods = useForm<Gpt35RefinementFormData>({
-    resolver: zodResolver(gpt35RefinementSchema),
+  const { methods, customMethods } = useCustomForm({
+    schema: gpt35RefinementSchema,
+    onSubmit,
   });
-
-  const submit = methods.handleSubmit(onSubmit);
-
-  const resetOnSuccessSubmit = () => {
-    const { reset, formState } = methods;
-    if (formState.isSubmitSuccessful) {
-      reset();
-    }
-  };
-
-  const submitGpt35RefinementForm = () => {
-    submit();
-    resetOnSuccessSubmit();
-  };
-
-  const customMethods = { submitGpt35RefinementForm };
 
   return { methods, customMethods };
 }
