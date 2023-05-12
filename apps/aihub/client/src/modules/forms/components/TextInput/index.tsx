@@ -7,7 +7,7 @@ type TextInputProps = InputProps & {
 export function TextInput({ label, name, ...rest }: TextInputProps) {
   return (
     <Form.Field>
-      {!!label ? <Form.Label htmlFor={name}>Name</Form.Label> : null}
+      {!!label ? <Form.Label htmlFor={name}>{label}</Form.Label> : null}
       <Form.Input name={name} {...rest} />
       <Form.ErrorMessage name={name} />
     </Form.Field>

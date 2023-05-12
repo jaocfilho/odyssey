@@ -1,19 +1,48 @@
 'use client';
 
 import { Drawer, type DrawerProps } from '@/components/Drawer';
-import { Content } from './Content';
 import { ActionButton } from './ActionButton';
+import {
+  Gpt35RefinementForm,
+  useGpt35RefinementForm,
+} from '@/modules/refinement/components/Gpt35RefinementForm';
+import { CreateAppForm, useCreateAppForm } from '../CreateAppForm';
 
-type CreateAppDrawerProps = Pick<DrawerProps, 'trigger'>;
+type CreateAppDrawerProps = Pick<DrawerProps, 'triggerComponent'>;
 
-export function CreateAppDrawer({ trigger }: CreateAppDrawerProps) {
+export function CreateAppDrawer({ triggerComponent }: CreateAppDrawerProps) {
+  const {
+    methods: gpt35RefinementFormMethods,
+    customMethods: { submitGpt35RefinementForm },
+  } = useGpt35RefinementForm({ onSubmit: console.log });
+  const {
+    methods: createAppFormMethods,
+    customMethods: { submitCreateAppForm },
+  } = useCreateAppForm({ onSubmit: console.log });
+
+  const triggerRefinementForm = async () => {
+    submitGpt35RefinementForm();
+
+    submitCreateAppForm();
+
+    return true;
+  };
+
   return (
     <Drawer
       title="Create a new app"
-      trigger={trigger}
-      actionButton={(closeDrawer) => <ActionButton closeDrawer={closeDrawer} />}
+      triggerComponent={triggerComponent}
+      actionButton={(closeDrawer) => (
+        <ActionButton
+          triggerRefinementForm={triggerRefinementForm}
+          closeDrawer={closeDrawer}
+        />
+      )}
     >
-      <Content />
+      <div className="flex flex-col gap-4">
+        <CreateAppForm methods={createAppFormMethods} />
+        <Gpt35RefinementForm methods={gpt35RefinementFormMethods} />
+      </div>
     </Drawer>
   );
 }

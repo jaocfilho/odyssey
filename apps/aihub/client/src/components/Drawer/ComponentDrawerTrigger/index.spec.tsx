@@ -15,11 +15,11 @@ describe('ComponentDrawerTrigger', () => {
     cleanup();
   });
 
-  it('should render the trigger', () => {
+  it('should render the triggerComponent', () => {
     render(
       <ComponentDrawerTrigger
         openDrawer={openDrawerFn}
-        trigger={(openDrawer) => (
+        triggerComponent={(openDrawer) => (
           <button onClick={openDrawer}>anyButton</button>
         )}
       />
@@ -32,7 +32,7 @@ describe('ComponentDrawerTrigger', () => {
     render(
       <ComponentDrawerTrigger
         openDrawer={openDrawerFn}
-        trigger={(openDrawer) => (
+        triggerComponent={(openDrawer) => (
           <button onClick={openDrawer}>anyButton</button>
         )}
       />

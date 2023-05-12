@@ -1,21 +1,19 @@
-'use client';
-
 import { ReactNode } from 'react';
 
 import { Form } from '@/modules/forms/components';
-import { useCreateAppForm } from '../use-create-app-form';
+import { UseCreateAppFormMethods } from '../use-create-app-form';
 
 type CreateAppFormComponentRootProps = {
   children: ReactNode;
+  methods: UseCreateAppFormMethods;
 };
 
 export function CreateAppFormComponentRoot({
   children,
+  methods,
 }: CreateAppFormComponentRootProps) {
-  const { createApp, methods } = useCreateAppForm();
-
   return (
-    <Form.Root id="createAppForm" onSubmit={createApp} {...methods}>
+    <Form.Root id="createAppForm" {...methods}>
       {children}
     </Form.Root>
   );

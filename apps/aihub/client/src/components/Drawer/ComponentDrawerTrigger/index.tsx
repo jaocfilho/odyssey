@@ -6,12 +6,12 @@ type OpenDrawer = () => void;
 
 export type ComponentDrawerTriggerProps = {
   openDrawer: OpenDrawer;
-  trigger: (openDrawer: OpenDrawer) => ReactNode;
+  triggerComponent: (openDrawer: OpenDrawer) => ReactNode;
 };
 
 export function ComponentDrawerTrigger({
   openDrawer,
-  trigger,
+  triggerComponent,
 }: ComponentDrawerTriggerProps) {
-  return <>{trigger(openDrawer)}</>;
+  return <>{triggerComponent(openDrawer)}</>;
 }

@@ -1,15 +1,20 @@
-import { RefinementArea } from './RefinementArea';
-import { CreateAppFormComponentRoot } from './CreateAppFormComponentRoot';
 import { Inputs } from './Inputs';
+import { UseCreateAppFormMethods } from './use-create-app-form';
+import { CreateAppFormComponentRoot } from './CreateAppFormComponentRoot';
 
-export function CreateAppForm() {
+export { useCreateAppForm } from './use-create-app-form';
+
+type CreateAppFormProps = {
+  methods: UseCreateAppFormMethods;
+};
+
+export function CreateAppForm({ methods }: CreateAppFormProps) {
   return (
-    <CreateAppFormComponentRoot>
+    <CreateAppFormComponentRoot methods={methods}>
       <div className="flex flex-col gap-4">
         <Inputs.Name />
         <Inputs.Model />
         <Inputs.Description />
-        <RefinementArea />
       </div>
     </CreateAppFormComponentRoot>
   );
