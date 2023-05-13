@@ -2,21 +2,20 @@ import { Button } from 'tailwind-ui';
 
 type ActionButtonProps = {
   closeDrawer: () => void;
-  triggerRefinementForm: () => Promise<boolean>;
+  submitForms: () => void;
+  createAppIsSubmited: boolean;
+  refinementIsSubmited: boolean;
 };
 
 export function ActionButton({
   closeDrawer,
-  triggerRefinementForm,
+  submitForms,
+  createAppIsSubmited,
+  refinementIsSubmited,
 }: ActionButtonProps) {
-  const handleClick = async () => {
-    await triggerRefinementForm();
+  if (createAppIsSubmited && refinementIsSubmited) {
     closeDrawer();
-  };
+  }
 
-  return (
-    <Button form="createAppForm" onClick={handleClick}>
-      Save
-    </Button>
-  );
+  return <Button onClick={submitForms}>Save</Button>;
 }

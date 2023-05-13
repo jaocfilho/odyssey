@@ -12,21 +12,21 @@ export type DrawerProps = ComponentDrawerHeaderProps &
   Pick<ComponentDrawerFooterProps, 'actionButton'> &
   Pick<ComponentDrawerTriggerProps, 'triggerComponent'> & {
     children: ReactNode;
-    onCancel?: () => void;
+    onClose?: () => void;
   };
 
 export function Drawer({
   title,
   subTitle,
   triggerComponent,
-  onCancel,
+  onClose,
   children,
   actionButton,
 }: DrawerProps) {
   const [open, setClose, setOpen] = useBooleanState();
   const handleClose = () => {
-    if (!!onCancel) {
-      onCancel();
+    if (!!onClose) {
+      onClose();
     }
     setClose();
   };

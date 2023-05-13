@@ -9,7 +9,9 @@ export function useCustomMethods<FormValues extends FieldValues>({
   methods,
   onSubmit,
 }: UseCustomMethodsProps<FormValues>) {
-  const submit = methods.handleSubmit(onSubmit);
+  const submit = methods.handleSubmit((data) => {
+    onSubmit(data);
+  });
 
   const submitForm = () => {
     submit();

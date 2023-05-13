@@ -14,7 +14,7 @@ export type UseCustomFormOnSubmit<Schema extends z.ZodTypeAny> = SubmitHandler<
   z.infer<Schema>
 >;
 
-type UseCustomFormProps<Schema extends z.ZodTypeAny> = Omit<
+export type UseCustomFormProps<Schema extends z.ZodTypeAny> = Omit<
   UseFormProps,
   'resolver'
 > & {
@@ -36,11 +36,10 @@ export function useCustomForm<Schema extends z.ZodTypeAny>({
     ...rest,
   }) as UseFormReturn<z.infer<typeof schema>>;
 
-  const { customMethods } = useCustomMethods<Schema>({ methods, onSubmit });
-
-  if (methods.formState.isSubmitSuccessful) {
-    methods.reset();
-  }
+  const { customMethods } = useCustomMethods<Schema>({
+    methods,
+    onSubmit,
+  });
 
   return { methods, customMethods };
 }

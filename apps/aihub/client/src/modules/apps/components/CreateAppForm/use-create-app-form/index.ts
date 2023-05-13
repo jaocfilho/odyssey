@@ -2,12 +2,13 @@ import { createAppFormSchema } from '../Inputs/schema';
 import {
   useCustomForm,
   type UseCustomFormMethods,
-  type UseCustomFormOnSubmit,
+  type UseCustomFormProps,
 } from '@/modules/forms/hooks/use-custom-form';
 
-type UseCreateAppFormProps = {
-  onSubmit: UseCustomFormOnSubmit<typeof createAppFormSchema>;
-};
+type UseCreateAppFormProps = Pick<
+  UseCustomFormProps<typeof createAppFormSchema>,
+  'onSubmit'
+>;
 
 export type UseCreateAppFormMethods = UseCustomFormMethods<
   typeof createAppFormSchema

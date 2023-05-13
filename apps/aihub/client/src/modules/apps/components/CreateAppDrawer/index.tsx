@@ -2,46 +2,46 @@
 
 import { Drawer, type DrawerProps } from '@/components/Drawer';
 import { ActionButton } from './ActionButton';
-import {
-  Gpt35RefinementForm,
-  useGpt35RefinementForm,
-} from '@/modules/refinement/components/Gpt35RefinementForm';
-import { CreateAppForm, useCreateAppForm } from '../CreateAppForm';
+import { Gpt35RefinementForm } from '@/modules/refinement/components/Gpt35RefinementForm';
+import { CreateAppForm } from '../CreateAppForm';
+import { useDrawerForms } from './use-drawer-forms';
+import { RefinementSection } from './RefinementSection';
 
 type CreateAppDrawerProps = Pick<DrawerProps, 'triggerComponent'>;
 
 export function CreateAppDrawer({ triggerComponent }: CreateAppDrawerProps) {
   const {
-    methods: gpt35RefinementFormMethods,
-    customMethods: { submitForm: submitGpt35RefinementForm },
-  } = useGpt35RefinementForm({ onSubmit: console.log });
-  const {
-    methods: createAppFormMethods,
-    customMethods: { submitForm: submitCreateAppForm },
-  } = useCreateAppForm({ onSubmit: console.log });
-
-  const triggerRefinementForm = async () => {
-    submitGpt35RefinementForm();
-
-    submitCreateAppForm();
-
-    return true;
-  };
+    createAppFormMethods,
+    gpt35RefinementFormMethods,
+    submitForms,
+    resetForms,
+  } = useDrawerForms();
 
   return (
     <Drawer
       title="Create a new app"
       triggerComponent={triggerComponent}
+      onClose={resetForms}
       actionButton={(closeDrawer) => (
         <ActionButton
-          triggerRefinementForm={triggerRefinementForm}
+          submitForms={submitForms}
           closeDrawer={closeDrawer}
+          createAppIsSubmited={
+            createAppFormMethods.formState.isSubmitSuccessful
+          }
+          refinementIsSubmited={
+            gpt35RefinementFormMethods.formState.isSubmitSuccessful
+          }
         />
       )}
     >
-      <div className="flex flex-col gap-4">
-        <CreateAppForm methods={createAppFormMethods} />
-        <Gpt35RefinementForm methods={gpt35RefinementFormMethods} />
+      <div className="flex flex-col">
+        <div className="border-b dark:border-zinc-50/10 pb-12">
+          <CreateAppForm methods={createAppFormMethods} />
+        </div>
+        <RefinementSection>
+          <Gpt35RefinementForm methods={gpt35RefinementFormMethods} />
+        </RefinementSection>
       </div>
     </Drawer>
   );
