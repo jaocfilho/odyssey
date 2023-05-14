@@ -31,7 +31,7 @@ export function useDrawerForms() {
   const {
     methods: createAppFormMethods,
     customMethods: { submitForm: submitCreateAppForm },
-  } = useCreateAppForm({ onSubmit: console.log });
+  } = useCreateAppForm({ handleSuccess: console.log });
 
   const {
     methods: gpt35RefinementFormMethods,

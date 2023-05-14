@@ -12,7 +12,7 @@ export function AppsList({ apps }: AppsListProps) {
   return (
     <Container>
       {apps
-        ? apps.map(({ name, id }) => <Item key={id} name={name!} id={id} />)
+        ? apps.map(({ name, id }) => <Item key={id} name={name} id={id} />)
         : null}
     </Container>
   );

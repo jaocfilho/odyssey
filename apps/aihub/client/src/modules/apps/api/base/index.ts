@@ -36,7 +36,7 @@ export async function baseInsertApp(
   { name, model, description }: BaseInsertAppParams,
   supabase: Supabase
 ) {
-  const { data, ...rest } = await supabase
+  const response = await supabase
     .from('apps')
     .insert([
       {
@@ -45,12 +45,11 @@ export async function baseInsertApp(
         description,
       },
     ])
-    .select();
+    .select()
+    .limit(1)
+    .single();
 
-  if (data) {
-    const app = data[0];
-    return { data: app, ...rest };
-  }
-
-  return { data, ...rest };
+  return response;
 }
+
+export type InsertAppReturn = Awaited<ReturnType<typeof baseInsertApp>>;

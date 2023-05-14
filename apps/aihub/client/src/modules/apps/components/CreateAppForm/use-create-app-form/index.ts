@@ -1,23 +1,50 @@
-import { createAppFormSchema } from '../Inputs/schema';
+import { useCreateAppMutation } from '@/modules/apps/hooks/use-create-app-mutation';
+import { createAppFormSchema, type CreateAppFormData } from '../Inputs/schema';
 import {
   useCustomForm,
   type UseCustomFormMethods,
   type UseCustomFormProps,
 } from '@/modules/forms/hooks/use-custom-form';
+import { InsertAppReturn } from '@/modules/apps/api/base';
 
-type UseCreateAppFormProps = Pick<
+type UseBaseCreateAppFormProps = Pick<
   UseCustomFormProps<typeof createAppFormSchema>,
   'onSubmit'
 >;
+
+function useBaseCreateAppForm({ onSubmit }: UseBaseCreateAppFormProps) {
+  const { methods, customMethods } = useCustomForm({
+    schema: createAppFormSchema,
+    onSubmit,
+  });
+
+  return { methods, customMethods };
+}
 
 export type UseCreateAppFormMethods = UseCustomFormMethods<
   typeof createAppFormSchema
 >;
 
-export function useCreateAppForm({ onSubmit }: UseCreateAppFormProps) {
-  const { methods, customMethods } = useCustomForm({
-    schema: createAppFormSchema,
-    onSubmit,
+type UseCreateAppFormOptions = {
+  handleSuccess: (data: InsertAppReturn) => void;
+};
+
+export function useCreateAppForm({ handleSuccess }: UseCreateAppFormOptions) {
+  const mutation = useCreateAppMutation();
+
+  const createApp = ({ name, model, description }: CreateAppFormData) => {
+    mutation.mutate(
+      { name, model, description },
+      {
+        onSuccess: (data, variables) => {
+          handleSuccess(data);
+        },
+      }
+    );
+  };
+
+  const { methods, customMethods } = useBaseCreateAppForm({
+    onSubmit: createApp,
   });
 
   return { methods, customMethods };
