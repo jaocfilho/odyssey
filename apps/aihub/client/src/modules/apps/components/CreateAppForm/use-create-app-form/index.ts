@@ -3,23 +3,8 @@ import { createAppFormSchema, type CreateAppFormData } from '../Inputs/schema';
 import {
   useCustomForm,
   type UseCustomFormMethods,
-  type UseCustomFormProps,
 } from '@/modules/forms/hooks/use-custom-form';
 import { InsertAppReturn } from '@/modules/apps/api/base';
-
-type UseBaseCreateAppFormProps = Pick<
-  UseCustomFormProps<typeof createAppFormSchema>,
-  'onSubmit'
->;
-
-function useBaseCreateAppForm({ onSubmit }: UseBaseCreateAppFormProps) {
-  const { methods, customMethods } = useCustomForm({
-    schema: createAppFormSchema,
-    onSubmit,
-  });
-
-  return { methods, customMethods };
-}
 
 export type UseCreateAppFormMethods = UseCustomFormMethods<
   typeof createAppFormSchema
@@ -43,7 +28,8 @@ export function useCreateAppForm({ handleSuccess }: UseCreateAppFormOptions) {
     );
   };
 
-  const { methods, customMethods } = useBaseCreateAppForm({
+  const { methods, customMethods } = useCustomForm({
+    schema: createAppFormSchema,
     onSubmit: createApp,
   });
 
