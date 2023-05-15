@@ -69,7 +69,17 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      refine_gpt35_app_on_creation: {
+        Args: {
+          p_app_name: string;
+          p_app_model: string;
+          p_app_description?: string;
+          p_gpt_context?: string[];
+          p_gpt_temperature?: number;
+          p_gpt_vibe?: string;
+        };
+        Returns: undefined;
+      };
     };
     Enums: {
       [_ in never]: never;
