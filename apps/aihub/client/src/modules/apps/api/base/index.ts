@@ -10,17 +10,14 @@ export async function baseSelectAppById(
   { id }: BaseSelectAppByIdParams,
   supabase: Supabase
 ) {
-  const { data, ...rest } = await supabase
+  const response = await supabase
     .from('apps')
     .select('*')
-    .eq('id', id);
+    .eq('id', id)
+    .limit(1)
+    .single();
 
-  if (data) {
-    const app = data[0];
-    return { data: app, ...rest };
-  }
-
-  return { data, ...rest };
+  return response;
 }
 
 type BaseSelectAppByIdReturn = Awaited<ReturnType<typeof baseSelectAppById>>;
@@ -30,7 +27,10 @@ export async function baseSelectAllApps(supabase: Supabase) {
   return await supabase.from('apps').select('*');
 }
 
-export type BaseInsertAppParams = AppsTableInsert;
+export type BaseInsertAppParams = Pick<
+  AppsTableInsert,
+  'name' | 'model' | 'description'
+>;
 
 export async function baseInsertApp(
   { name, model, description }: BaseInsertAppParams,

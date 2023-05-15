@@ -36,7 +36,7 @@ export function useCreateAppForm({ handleSuccess }: UseCreateAppFormOptions) {
     mutation.mutate(
       { name, model, description },
       {
-        onSuccess: (data, variables) => {
+        onSuccess: (data) => {
           handleSuccess(data);
         },
       }
