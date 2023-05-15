@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { assertObjectProperties } from '@satellite/tests';
+import { assertObjectProperties } from '@odyssey/tests';
 import { colorsArray, spaceScales, Color } from '@milky-ui/tokens';
 
 import {

@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useTheme } from 'next-themes';
 
-import { assertObjectProperties } from '@satellite/tests';
+import { assertObjectProperties } from '@odyssey/tests';
 import { useTheme as useThemeTest, useThemeBase, UseThemeBaseProps } from '.';
 
 describe('useThemeBase', () => {

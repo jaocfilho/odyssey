@@ -2,7 +2,7 @@ import { describe, it, afterEach, beforeEach, expect } from 'vitest';
 
 import { renderHook } from '@testing-library/react-hooks';
 
-import { assertObjectProperties } from '@satellite/tests';
+import { assertObjectProperties } from '@odyssey/tests';
 import { useKanbanReducer } from '.';
 
 describe('useKanbanReducer', () => {

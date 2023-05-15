@@ -1,4 +1,4 @@
-import { assertObjectProperties } from '@satellite/tests';
+import { assertObjectProperties } from '@odyssey/tests';
 import { describe, expect, it } from 'vitest';
 
 import { moveCardUseCase } from '.';

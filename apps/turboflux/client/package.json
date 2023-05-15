@@ -16,7 +16,7 @@
     "@orbital/dayjs": "workspace:*",
     "@orbital/github": "workspace:*",
     "@odyssey/react-hooks": "workspace:*",
-    "@satellite/tests": "workspace:*",
+    "@odyssey/tests": "workspace:*",
     "immer": "^9.0.19",
     "milky-ui": "workspace:*",
     "next": "13.2.1",
