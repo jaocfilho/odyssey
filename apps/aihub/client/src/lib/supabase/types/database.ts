@@ -35,7 +35,7 @@ export interface Database {
           updated_at?: string;
         };
       };
-      gpt3_5_refinement: {
+      gpt35_refinements: {
         Row: {
           app: string;
           context: string[] | null;
@@ -69,6 +69,12 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
+      get_gpt35_app_with_refinement: {
+        Args: {
+          p_app_id: string;
+        };
+        Returns: Json;
+      };
       refine_gpt35_app_on_creation: {
         Args: {
           p_app_name: string;
