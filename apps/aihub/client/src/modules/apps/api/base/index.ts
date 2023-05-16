@@ -58,35 +58,27 @@ export async function baseInsertApp(
 
 export type InsertAppReturn = Awaited<ReturnType<typeof baseInsertApp>>;
 
-type RefineGpt35OnAppCreationArgs =
+export type BaseRefineGpt35OnAppCreationParams =
   DatabaseFunctions['refine_gpt35_app_on_creation']['Args'];
-type BaseRefineGpt35OnAppCreationParams = {
-  model: RefineGpt35OnAppCreationArgs['p_app_model'];
-  name: RefineGpt35OnAppCreationArgs['p_app_name'];
-  description: RefineGpt35OnAppCreationArgs['p_app_description'];
-  context: RefineGpt35OnAppCreationArgs['p_gpt_context'];
-  temperature: RefineGpt35OnAppCreationArgs['p_gpt_temperature'];
-  vibe: RefineGpt35OnAppCreationArgs['p_gpt_vibe'];
-};
 
 export async function baseRefineGpt35OnAppCreation(
   {
-    model,
-    name,
-    description,
-    context,
-    temperature,
-    vibe,
+    p_app_model,
+    p_app_name,
+    p_app_description,
+    p_gpt_context,
+    p_gpt_temperature,
+    p_gpt_vibe,
   }: BaseRefineGpt35OnAppCreationParams,
   supabase: Supabase
 ) {
   return await supabase.rpc('refine_gpt35_app_on_creation', {
-    p_app_model: model,
-    p_app_name: name,
-    p_app_description: description,
-    p_gpt_context: context,
-    p_gpt_temperature: temperature,
-    p_gpt_vibe: vibe,
+    p_app_model,
+    p_app_name,
+    p_app_description,
+    p_gpt_context,
+    p_gpt_temperature,
+    p_gpt_vibe,
   });
 }
 

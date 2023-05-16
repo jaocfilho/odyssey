@@ -1,5 +1,6 @@
 import { useGpt35RefinementForm } from '@/modules/refinement/components/Gpt35RefinementForm';
 import { useCreateAppForm } from '../../CreateAppForm';
+import { useHandleMutation } from '../use-handle-mutation';
 
 type UseBaseDrawerFormsProps = {
   submitCreateAppForm: () => void;
@@ -28,15 +29,18 @@ export function useBaseDrawerForms({
 }
 
 export function useDrawerForms() {
+  const { addRefinementToParams, addAppToParams, handleMutation } =
+    useHandleMutation();
+
   const {
     methods: createAppFormMethods,
     customMethods: { submitForm: submitCreateAppForm },
-  } = useCreateAppForm({ handleSuccess: console.log });
+  } = useCreateAppForm({ onSubmit: addAppToParams });
 
   const {
     methods: gpt35RefinementFormMethods,
     customMethods: { submitForm: submitGpt35RefinementForm },
-  } = useGpt35RefinementForm({ onSubmit: console.log });
+  } = useGpt35RefinementForm({ onSubmit: addRefinementToParams });
 
   const { submitForms, resetForms } = useBaseDrawerForms({
     resetCreateAppForm: createAppFormMethods.reset,
@@ -44,6 +48,14 @@ export function useDrawerForms() {
     submitCreateAppForm: submitCreateAppForm,
     submitGpt35RefinementForm: submitGpt35RefinementForm,
   });
+
+  const canMutate =
+    createAppFormMethods.formState.isSubmitSuccessful &&
+    gpt35RefinementFormMethods.formState.isSubmitSuccessful;
+
+  if (canMutate) {
+    handleMutation();
+  }
 
   return {
     gpt35RefinementFormMethods,
