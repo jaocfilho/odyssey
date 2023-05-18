@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import { appsUrls } from '../../helpers';
+import { appsUrls } from '../../urls';
 
 export function useNavigation() {
   const router = useRouter();

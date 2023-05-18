@@ -1,5 +1,6 @@
 import { AppDetailsOverviewLink } from '@/modules/navigation/components/AppDetailsOverviewLink';
 import { AppDetailsPromptLink } from '@/modules/navigation/components/AppDetailsPromptLink';
+import { AppDetailsRefinementLink } from '@/modules/navigation/components/AppDetailsRefinementLink';
 
 export const appDetailsNavigation = [
   {
@@ -8,9 +9,9 @@ export const appDetailsNavigation = [
     Link: AppDetailsOverviewLink,
   },
   {
-    name: 'Refine',
-    href: 'refine',
-    Link: AppDetailsOverviewLink,
+    name: 'Refinement',
+    href: 'refinement',
+    Link: AppDetailsRefinementLink,
   },
   {
     name: 'Prompt',

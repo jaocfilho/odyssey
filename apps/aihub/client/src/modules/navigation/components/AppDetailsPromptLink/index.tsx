@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { appsUrls } from '@/modules/navigation/helpers';
+import { appsUrls } from '@/modules/navigation/urls';
 
 type AppDetailsPromptLinkProps = {
   children: ReactNode;

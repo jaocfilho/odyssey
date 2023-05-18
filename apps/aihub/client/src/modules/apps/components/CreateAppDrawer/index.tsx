@@ -2,7 +2,7 @@
 
 import { Drawer, type DrawerProps } from '@/components/Drawer';
 import { ActionButton } from './ActionButton';
-import { Gpt35RefinementForm } from '@/modules/refinement/components/Gpt35RefinementForm';
+import { Gpt35RefinementForm } from '../Gpt35RefinementForm';
 import { CreateAppForm } from '../CreateAppForm';
 import { useDrawerForms } from './use-drawer-forms';
 import { RefinementSection } from './RefinementSection';

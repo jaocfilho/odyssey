@@ -5,7 +5,7 @@ import {
   type RefineGpt35OnAppCreationParams,
 } from '@/modules/apps/hooks/use-refine-gpt35-app-on-creation';
 import { CreateAppFormData } from '../../CreateAppForm/Inputs/schema';
-import { Gpt35RefinementFormData } from '@/modules/refinement/components/Gpt35RefinementForm/Inputs/schema';
+import { Gpt35RefinementFormData } from '../../Gpt35RefinementForm/Inputs/schema';
 
 type UseBaseHandleMutationProps = {
   onMutate: (mutationParams: RefineGpt35OnAppCreationParams) => void;

@@ -1,9 +1,10 @@
+import { useMutation } from '@tanstack/react-query';
+
 import { useSupabase } from '@/lib/supabase/Provider';
 import {
   baseRefineGpt35OnAppCreation,
   type BaseRefineGpt35OnAppCreationParams,
 } from '../../api/base';
-import { useMutation } from '@tanstack/react-query';
 import { invalidateAllAppsQuery } from '../../helpers';
 
 export type RefineGpt35OnAppCreationParams = BaseRefineGpt35OnAppCreationParams;

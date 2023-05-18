@@ -7,6 +7,9 @@ export const appsUrls = {
     overview: (id: string) => `${appsUrls.details.base(id)}/overview` as const,
 
     prompt: (id: string) => `${appsUrls.details.base(id)}/prompt` as const,
+
+    refinement: (id: string) =>
+      `${appsUrls.details.base(id)}/refinement` as const,
   },
 
   create: () => `${appsUrls.base}/create-app` as const,

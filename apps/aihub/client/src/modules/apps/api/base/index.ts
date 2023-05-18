@@ -96,3 +96,19 @@ export async function baseGetAppById(
     p_app_id: id,
   })) as PostgrestSingleResponse<App>;
 }
+
+export type BaseSelectGpt35AppRefinementParams = {
+  appId: string;
+};
+
+export async function baseSelectGpt35AppRefinement(
+  { appId }: BaseSelectGpt35AppRefinementParams,
+  supabase: Supabase
+) {
+  return await supabase
+    .from('gpt35_refinements')
+    .select('*')
+    .eq('app', appId)
+    .limit(1)
+    .single();
+}
