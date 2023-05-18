@@ -12,7 +12,7 @@ export const DashboardPageshell = ({
   children,
 }: AuthenticatedPageShellProps) => {
   return (
-    <>
+    <div>
       <Sidebar />
       <MainContainer>
         <div className="border-b px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 dark:border-zinc-50/10">
@@ -23,6 +23,6 @@ export const DashboardPageshell = ({
 
         <div>{children}</div>
       </MainContainer>
-    </>
+    </div>
   );
 };

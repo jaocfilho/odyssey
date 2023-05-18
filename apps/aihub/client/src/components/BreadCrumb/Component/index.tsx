@@ -1,8 +1,8 @@
 const pages = [
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Project Nero', href: '#', current: false },
-  { name: 'Project Nero', href: '#', current: false },
-  { name: 'Project Nero', href: '#', current: true },
+  { name: 'Projects', current: false },
+  { name: 'Project Nero', current: false },
+  { name: 'Project Nero', current: false },
+  { name: 'Project Nero', current: true },
 ];
 
 export function BreadCrumbComponent() {
@@ -20,13 +20,12 @@ export function BreadCrumbComponent() {
               >
                 <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
               </svg>
-              <a
-                href={page.href}
-                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+              <p
+                className="ml-4 text-sm font-medium dark:text-zinc-500 dark:hover:text-zinc-400 leading-6"
                 aria-current={page.current ? 'page' : undefined}
               >
                 {page.name}
-              </a>
+              </p>
             </div>
           </li>
         ))}
