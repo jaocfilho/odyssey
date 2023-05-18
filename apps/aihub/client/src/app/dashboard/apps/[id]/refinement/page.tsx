@@ -1,15 +1,16 @@
 import { serverSelectGpt35AppRefinement } from '@/modules/apps/api/server';
+import { DetailsRefinement } from '@/modules/apps/components/DetailsRefinement';
 
 type AppDetailsRefinementProps = {
   params: { id: string };
 };
 
-export default async function AppDetailsRefinement({
+export default async function AppDetailsRefinementPage({
   params,
 }: AppDetailsRefinementProps) {
   const { id } = params;
 
-  const response = await serverSelectGpt35AppRefinement({ appId: id });
+  const { data } = await serverSelectGpt35AppRefinement({ appId: id });
 
-  return <div>refinement page</div>;
+  return <DetailsRefinement appRefinement={data!} />;
 }

@@ -1,5 +1,5 @@
-import { useGpt35RefinementForm } from '@/modules/refinement/components/Gpt35RefinementForm';
 import { useCreateAppForm } from '../../CreateAppForm';
+import { useGpt35RefinementForm } from '../../Gpt35RefinementForm';
 import { useHandleMutation } from '../use-handle-mutation';
 
 type UseBaseDrawerFormsProps = {
