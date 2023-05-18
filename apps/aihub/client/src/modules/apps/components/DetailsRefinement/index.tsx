@@ -1,21 +1,18 @@
-import { Gpt35RefinementRow } from '@/lib/supabase/types';
 import { Header } from './Header';
 import { RefinementListItem } from './RefinementListItem';
 
-type DetailsRefinementProps = {
-  appRefinement: Gpt35RefinementRow;
-};
-
-export function DetailsRefinement({ appRefinement }: DetailsRefinementProps) {
+export function DetailsRefinement() {
   const refinement = [
     { field: 'Domain', value: 'technology' },
     { field: 'Target audience', value: 'software engineers' },
+    { field: 'Topic', value: 'react applications' },
+    { field: 'Level of detail', value: 'summarized' },
     { field: 'Style', value: 'professional' },
     { field: 'Tone', value: 'optimistic' },
-    { field: 'Level of detail', value: 'summarized' },
-    { field: 'Length', value: 'medium' },
     { field: 'Language complexity', value: 'sophisticated' },
     { field: 'Slang/Informality', value: 'casual' },
+    { field: 'Length', value: 'medium' },
+    { field: 'Temperature', value: '0.8' },
   ];
 
   return (

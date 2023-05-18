@@ -10,7 +10,7 @@ export default async function AppDetailsRefinementPage({
 }: AppDetailsRefinementProps) {
   const { id } = params;
 
-  const { data } = await serverSelectGpt35AppRefinement({ appId: id });
+  // const { data } = await serverSelectGpt35AppRefinement({ appId: id });
 
-  return <DetailsRefinement appRefinement={data!} />;
+  return <DetailsRefinement />;
 }
