@@ -1,6 +1,7 @@
-// mostra lista com os diferentes fields de refinement de um app
-// recebe o objeto da página, que faz a call server side
-
+import {
+  DescriptionList,
+  DescriptionListHeader,
+} from '@/components/DescriptionList';
 import { Gpt35RefinementRow } from '@/lib/supabase/types';
 
 type DetailsRefinementProps = {
@@ -8,5 +9,18 @@ type DetailsRefinementProps = {
 };
 
 export function DetailsRefinement({ appRefinement }: DetailsRefinementProps) {
-  return <div>{appRefinement.app}</div>;
+  const descriptionFields = ['vibe', 'temperature'] as const;
+
+  const descriptionItems = descriptionFields.flatMap((field) => {
+    const value = appRefinement[field];
+    if (!!value) return { term: field, details: value };
+    return [];
+  });
+
+  return (
+    <div className="px-4 lg:px-8 sm:px-6">
+      <DescriptionListHeader header="Refinement" />
+      <DescriptionList items={descriptionItems} />
+    </div>
+  );
 }
