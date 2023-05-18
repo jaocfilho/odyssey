@@ -8,8 +8,8 @@ export default function AppDetailsRefinementLayout({
   children,
 }: AppDetailsRefinementLayoutProps) {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">{children}</div>
+    <div className="mx-8">
+      <div className="pt-10">{children}</div>
     </div>
   );
 }

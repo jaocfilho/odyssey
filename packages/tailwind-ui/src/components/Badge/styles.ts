@@ -1,7 +1,7 @@
 import { classNames } from '../../utils';
 
 const badgeCommonStyles =
-  'inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset';
+  'inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset';
 
 const solidVariantColorSchemesStyles = {
   pink: 'bg-pink-50 text-pink-700 ring-pink-700/10 dark:bg-pink-400/10 dark:text-pink-400 dark:ring-pink-400/20',
@@ -15,7 +15,12 @@ const dottedVariantColorSchemesStyles = {
 
 type BadgeDottedVariantColors = keyof typeof dottedVariantColorSchemesStyles;
 
-type BadgeVariants = 'solid' | 'dotted';
+const variantsMap = {
+  solid: solidVariantColorSchemesStyles,
+  dotted: dottedVariantColorSchemesStyles,
+};
+
+type BadgeVariants = keyof typeof variantsMap;
 type BadgeColorSchemeVariants =
   | BadgeDottedVariantColors
   | BadgeSolidVariantColors;
@@ -29,20 +34,8 @@ export function getStyles({
   variant,
   colorScheme,
 }: Required<BadgeStylesProps>) {
-  let colorSchemeStyles = '';
-
-  switch (variant) {
-    case 'solid':
-      colorSchemeStyles = solidVariantColorSchemesStyles[colorScheme];
-      break;
-
-    case 'dotted':
-      colorSchemeStyles = dottedVariantColorSchemesStyles[colorScheme];
-      break;
-
-    default:
-      break;
-  }
+  const variantStyles = variantsMap[variant];
+  const colorSchemeStyles = variantStyles[colorScheme];
 
   return classNames(badgeCommonStyles, colorSchemeStyles);
 }

@@ -20,7 +20,7 @@ export default async function AppDetailsLayout({
   return (
     <div>
       <DetailsNavigation id={id} />
-      <DetailsHeader name={data?.name!} />
+      <DetailsHeader name={data?.name!} model={data?.model!} />
       {children}
     </div>
   );

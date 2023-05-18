@@ -1,26 +1,33 @@
-import {
-  DescriptionList,
-  DescriptionListHeader,
-} from '@/components/DescriptionList';
 import { Gpt35RefinementRow } from '@/lib/supabase/types';
+import { Header } from './Header';
+import { RefinementListItem } from './RefinementListItem';
 
 type DetailsRefinementProps = {
   appRefinement: Gpt35RefinementRow;
 };
 
 export function DetailsRefinement({ appRefinement }: DetailsRefinementProps) {
-  const descriptionFields = ['vibe', 'temperature'] as const;
-
-  const descriptionItems = descriptionFields.flatMap((field) => {
-    const value = appRefinement[field];
-    if (!!value) return { term: field, details: value };
-    return [];
-  });
+  const refinement = [
+    { field: 'Domain', value: 'technology' },
+    { field: 'Target audience', value: 'software engineers' },
+    { field: 'Style', value: 'professional' },
+    { field: 'Tone', value: 'optimistic' },
+    { field: 'Level of detail', value: 'summarized' },
+    { field: 'Length', value: 'medium' },
+    { field: 'Language complexity', value: 'sophisticated' },
+    { field: 'Slang/Informality', value: 'casual' },
+  ];
 
   return (
-    <div className="px-4 lg:px-8 sm:px-6">
-      <DescriptionListHeader header="Refinement" />
-      <DescriptionList items={descriptionItems} />
+    <div>
+      <Header />
+      <div className="mt-6">
+        <dl className="grid grid-cols-1 sm:grid-cols-2">
+          {refinement.map(({ field, value }) => (
+            <RefinementListItem key={field} field={field} value={value} />
+          ))}
+        </dl>
+      </div>
     </div>
   );
 }

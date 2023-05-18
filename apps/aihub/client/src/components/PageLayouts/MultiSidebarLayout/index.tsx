@@ -21,7 +21,7 @@ export function MultiSidebarLayout({
         <SecondarySidebar header={header}>
           {secondarySidebarContent}
         </SecondarySidebar>
-        <div className="flex flex-col pl-64">
+        <div className="flex flex-col h-full w-full pl-64">
           <Topbar />
           {children}
         </div>
