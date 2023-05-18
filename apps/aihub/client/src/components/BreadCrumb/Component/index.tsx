@@ -1,8 +1,6 @@
 const pages = [
-  { name: 'Projects', current: false },
-  { name: 'Project Nero', current: false },
-  { name: 'Project Nero', current: false },
-  { name: 'Project Nero', current: true },
+  { name: "jaocfilho's Org", current: false },
+  { name: 'SpellFlux', current: true },
 ];
 
 export function BreadCrumbComponent() {
@@ -13,7 +11,7 @@ export function BreadCrumbComponent() {
           <li key={page.name}>
             <div className="flex items-center">
               <svg
-                className="h-5 w-5 flex-shrink-0 text-gray-300"
+                className="h-5 w-5 flex-shrink-0 dark:text-zinc-600"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -21,7 +19,7 @@ export function BreadCrumbComponent() {
                 <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
               </svg>
               <p
-                className="ml-4 text-sm font-medium dark:text-zinc-500 dark:hover:text-zinc-400 leading-6"
+                className="ml-4 text-sm font-medium cursor-pointer dark:text-zinc-500 dark:hover:text-zinc-400 leading-6"
                 aria-current={page.current ? 'page' : undefined}
               >
                 {page.name}
