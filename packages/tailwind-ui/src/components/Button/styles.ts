@@ -1,7 +1,9 @@
-export const buttonCommonStyles =
+import { classNames } from '../../utils';
+
+const buttonCommonStyles =
   'font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
 
-export const sizeVariantsStyles = {
+const sizeVariantsStyles = {
   xs: 'rounded px-2 py-1 text-xs',
   sm: 'rounded px-2 py-1 text-sm',
   md: 'rounded-md px-2.5 py-1.5 text-sm',
@@ -11,7 +13,7 @@ export const sizeVariantsStyles = {
 
 type ButtonSizeVariants = keyof typeof sizeVariantsStyles;
 
-export const colorSchemeVariantsStyles = {
+const colorSchemeVariantsStyles = {
   emerald:
     'dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:focus-visible:outline-emerald-500 bg-emerald-600 hover:bg-emerald-500 focus-visible:outline-emerald-600',
 
@@ -27,3 +29,10 @@ export type ButtonStylesProps = {
   size?: ButtonSizeVariants;
   colorScheme?: ButtonColorSchemeVariants;
 };
+
+export function getStyles({ size, colorScheme }: Required<ButtonStylesProps>) {
+  const sizeStyles = sizeVariantsStyles[size];
+  const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
+
+  return classNames(buttonCommonStyles, sizeStyles, colorSchemeStyles);
+}

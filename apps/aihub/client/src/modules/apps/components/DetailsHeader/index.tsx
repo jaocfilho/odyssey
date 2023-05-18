@@ -1,3 +1,5 @@
+import { Badge } from 'tailwind-ui';
+
 type DetailsHeaderProps = {
   name: string;
 };
@@ -13,6 +15,9 @@ export function DetailsHeader({ name }: DetailsHeaderProps) {
           {name}
         </h1>
       </div>
+      <Badge variant="solid" colorScheme="pink">
+        GPT 3.5-turbo
+      </Badge>
     </header>
   );
 }

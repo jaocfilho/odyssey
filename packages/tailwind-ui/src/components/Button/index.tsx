@@ -1,19 +1,7 @@
 import { type ButtonHTMLAttributes } from 'react';
 
 import { classNames } from '../../utils';
-import {
-  type ButtonStylesProps,
-  buttonCommonStyles,
-  sizeVariantsStyles,
-  colorSchemeVariantsStyles,
-} from './styles';
-
-function getStyles({ size, colorScheme }: Required<ButtonStylesProps>) {
-  const sizeStyles = sizeVariantsStyles[size];
-  const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
-
-  return classNames(buttonCommonStyles, sizeStyles, colorSchemeStyles);
-}
+import { type ButtonStylesProps, getStyles } from './styles';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonStylesProps;
