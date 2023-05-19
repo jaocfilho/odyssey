@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { TextAreaInput } from '@/modules/forms/components/TextAreaInput';
+import { TextAreaInput } from '@/modules/forms/components/Inputs';
 
 export const description = z.string().optional();
 

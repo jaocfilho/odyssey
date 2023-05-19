@@ -14,17 +14,13 @@ type SelectItem = {
   label: string | number;
 };
 
-type SelectProps<T> = {
-  options: T[];
+export type SelectProps = {
+  options: SelectItem[];
   name: string;
   label: string;
 };
 
-export function Select<T extends SelectItem>({
-  options,
-  name,
-  label,
-}: SelectProps<T>) {
+export function Select({ options, name, label }: SelectProps) {
   const [selected, setSelected] = useState(options[0]);
 
   const { control } = useFormContext();

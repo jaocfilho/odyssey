@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { TextInput } from '@/modules/forms/components/Inputs/TextInput';
+import { TextInput } from '@/modules/forms/components/Inputs';
 
 export const temperature = z
   .string()

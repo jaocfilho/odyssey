@@ -1,4 +1,4 @@
-import { Form, type TextAreaProps } from '../Form';
+import { Form, type TextAreaProps } from '../../Form';
 
 type TextAreaInputProps = TextAreaProps & {
   label?: string;

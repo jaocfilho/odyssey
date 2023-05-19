@@ -17,6 +17,7 @@ import { ErrorMessage } from './ErrorMessage';
 import { Select } from './Select';
 
 export type { InputProps } from './Input';
+export type { SelectProps } from './Select';
 export type { TextAreaProps } from './TextArea';
 
 type FormElementProps = Pick<HTMLAttributes<HTMLFormElement>, 'id'>;

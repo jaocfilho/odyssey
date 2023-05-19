@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { Form } from '@/modules/forms/components';
+import { SelectInput } from '@/modules/forms/components/Inputs';
 
 const options = [
   { value: 'funny', label: 'Funny' },
@@ -17,9 +17,5 @@ export const style = z
   .transform((style) => style.value);
 
 export function Style() {
-  return (
-    <Form.Field>
-      <Form.Select label="Style" name="style" options={options} />
-    </Form.Field>
-  );
+  return <SelectInput label="Style" name="style" options={options} />;
 }
