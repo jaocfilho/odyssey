@@ -1,7 +1,7 @@
-import { Vibe } from './Vibe';
+import { Style } from './Style';
 import { Temperature } from './Temperature';
 
 export const Inputs = {
-  Vibe,
+  Style,
   Temperature,
 };

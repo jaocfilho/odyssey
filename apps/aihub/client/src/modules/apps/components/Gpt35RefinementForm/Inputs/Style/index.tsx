@@ -8,18 +8,18 @@ const options = [
   { value: 'silly', label: 'Silly' },
 ];
 
-export const vibe = z
+export const style = z
   .object({
     value: z.string(),
     label: z.string(),
   })
   .default(options[0])
-  .transform((vibe) => vibe.value);
+  .transform((style) => style.value);
 
-export function Vibe() {
+export function Style() {
   return (
     <Form.Field>
-      <Form.Select label="Add a vibe" name="vibe" options={options} />
+      <Form.Select label="Style" name="style" options={options} />
     </Form.Field>
   );
 }

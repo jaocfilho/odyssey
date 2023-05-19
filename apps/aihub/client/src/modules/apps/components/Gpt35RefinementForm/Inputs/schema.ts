@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-import { vibe } from './Vibe';
+import { style } from './Style';
 import { temperature } from './Temperature';
 
 export const gpt35RefinementSchema = z.object({
-  vibe,
+  style,
   temperature,
 });
 

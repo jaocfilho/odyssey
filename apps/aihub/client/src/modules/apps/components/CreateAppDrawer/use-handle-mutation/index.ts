@@ -19,13 +19,13 @@ export function useBaseHandleMutation({
 
   const addRefinementToParams = ({
     temperature,
-    vibe,
+    style,
   }: Gpt35RefinementFormData) => {
     setMutationParams((oldValue) => {
       return {
         ...oldValue!,
         p_gpt_temperature: temperature,
-        p_gpt_vibe: vibe,
+        p_gpt_style: style,
       };
     });
   };
