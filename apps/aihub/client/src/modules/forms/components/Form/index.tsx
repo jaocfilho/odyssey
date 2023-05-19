@@ -13,7 +13,7 @@ import { Field } from '../Field';
 import { Input } from '../Input';
 import { TextArea } from '../TextArea';
 import { Label } from '../Label';
-import { ErrorMessage } from '../ErrorMessage';
+import { ErrorMessage } from './ErrorMessage';
 import { Select } from '../Select';
 
 export type { InputProps } from '../Input';

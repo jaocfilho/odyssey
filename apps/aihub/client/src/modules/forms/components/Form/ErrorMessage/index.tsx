@@ -2,7 +2,7 @@
 
 import { HTMLAttributes } from 'react';
 
-import { useFieldError } from '../../hooks/use-field-error';
+import { useFieldError } from '@/modules/forms/hooks/use-field-error';
 
 type ErrorMessageProps = HTMLAttributes<HTMLParagraphElement> & {
   name: string;

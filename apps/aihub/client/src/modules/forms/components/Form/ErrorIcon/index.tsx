@@ -1,8 +1,7 @@
 'use client';
 
+import { useFieldError } from '@/modules/forms/hooks/use-field-error';
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
-
-import { useFieldError } from '../../hooks/use-field-error';
 
 type ErrorIconProps = {
   name: string;

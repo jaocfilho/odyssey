@@ -1,16 +1,16 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { useFieldError } from '../../hooks/use-field-error';
-import { ErrorMessage } from '.';
+import { useFieldError } from '@/modules/forms/hooks/use-field-error';
+import { ErrorIcon } from '.';
 
-vi.mock('../../hooks/use-field-error', () => ({
+vi.mock('@/modules/forms/hooks/use-field-error', () => ({
   useFieldError: vi.fn(() => ({
     error: { message: 'Test error message' },
   })),
 }));
 
-describe('ErrorMessage', () => {
+describe('ErrorIcon', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
   });
@@ -20,17 +20,16 @@ describe('ErrorMessage', () => {
   });
 
   it('should render the error message when there is an error', () => {
-    render(<ErrorMessage name="test" />);
-    const errorMessage = screen.getByText('Test error message');
-    expect(errorMessage).toBeInTheDocument();
+    const { container } = render(<ErrorIcon name="test" />);
+    expect(container.firstChild).not.toBeNull();
   });
 
   it('should not render anything when there is no error', () => {
     // @ts-ignore
     vi.mocked(useFieldError).mockReturnValue({ error: undefined });
 
-    render(<ErrorMessage name="test" />);
-    const { container } = render(<ErrorMessage name="test" />);
+    render(<ErrorIcon name="test" />);
+    const { container } = render(<ErrorIcon name="test" />);
     expect(container.firstChild).toBeNull();
   });
 });
