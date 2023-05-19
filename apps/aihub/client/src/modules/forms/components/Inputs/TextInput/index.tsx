@@ -1,4 +1,4 @@
-import { Form, type InputProps } from '../Form';
+import { Form, type InputProps } from '../../Form';
 
 type TextInputProps = InputProps & {
   label?: string;

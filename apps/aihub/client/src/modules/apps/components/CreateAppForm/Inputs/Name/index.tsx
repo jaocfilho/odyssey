@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { TextInput } from '@/modules/forms/components/TextInput';
+import { TextInput } from '@/modules/forms/components/Inputs/TextInput';
 
 export const name = z
   .string()
