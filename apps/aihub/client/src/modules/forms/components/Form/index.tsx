@@ -9,15 +9,15 @@ import {
   SubmitHandler,
 } from 'react-hook-form';
 
-import { Field } from '../Field';
-import { Input } from '../Input';
-import { TextArea } from '../TextArea';
-import { Label } from '../Label';
+import { Field } from './Field';
+import { Input } from './Input';
+import { TextArea } from './TextArea';
+import { Label } from './Label';
 import { ErrorMessage } from './ErrorMessage';
-import { Select } from '../Select';
+import { Select } from './Select';
 
-export type { InputProps } from '../Input';
-export type { TextAreaProps } from '../TextArea';
+export type { InputProps } from './Input';
+export type { TextAreaProps } from './TextArea';
 
 type FormElementProps = Pick<HTMLAttributes<HTMLFormElement>, 'id'>;
 

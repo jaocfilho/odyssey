@@ -4,7 +4,7 @@ import { InputHTMLAttributes } from 'react';
 
 import { useFormContext } from 'react-hook-form';
 
-import { ErrorIcon } from '../Form/ErrorIcon';
+import { ErrorIcon } from '../ErrorIcon';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
