@@ -68,7 +68,15 @@ export async function baseRefineGpt35OnAppCreation(
     p_app_description,
     p_gpt_context,
     p_gpt_temperature,
-    p_gpt_vibe,
+    p_gpt_style,
+    p_gpt_answer_size,
+    p_gpt_domain,
+    p_gpt_informality,
+    p_gpt_language_complexity,
+    p_gpt_level_of_detail,
+    p_gpt_target_audience,
+    p_gpt_tone,
+    p_gpt_topic,
   }: BaseRefineGpt35OnAppCreationParams,
   supabase: Supabase
 ) {
@@ -78,7 +86,15 @@ export async function baseRefineGpt35OnAppCreation(
     p_app_description,
     p_gpt_context,
     p_gpt_temperature,
-    p_gpt_vibe,
+    p_gpt_style,
+    p_gpt_answer_size,
+    p_gpt_domain,
+    p_gpt_informality,
+    p_gpt_language_complexity,
+    p_gpt_level_of_detail,
+    p_gpt_target_audience,
+    p_gpt_tone,
+    p_gpt_topic,
   });
 }
 
