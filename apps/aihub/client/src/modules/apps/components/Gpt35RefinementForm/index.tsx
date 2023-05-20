@@ -14,6 +14,7 @@ export function Gpt35RefinementForm({ methods }: Gpt35RefinementFormProps) {
       <div className="flex flex-col gap-4">
         <Inputs.Style />
         <Inputs.Temperature />
+        <Inputs.Domain />
       </div>
     </Form.Root>
   );

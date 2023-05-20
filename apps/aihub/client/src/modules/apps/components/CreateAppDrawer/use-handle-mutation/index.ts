@@ -7,6 +7,31 @@ import {
 import { CreateAppFormData } from '../../CreateAppForm/Inputs/schema';
 import { Gpt35RefinementFormData } from '../../Gpt35RefinementForm/Inputs/schema';
 
+type RefinementParams = Omit<
+  RefineGpt35OnAppCreationParams,
+  'p_app_name' | 'p_app_model' | 'p_app_description'
+>;
+
+type Gpt35RefinementFormDataKeys = keyof Gpt35RefinementFormData;
+
+export function formatFormData(
+  refinementFormData: Gpt35RefinementFormData
+): RefinementParams {
+  const refinementParams: RefinementParams = {};
+  const keys = Object.keys(refinementFormData) as Gpt35RefinementFormDataKeys[];
+
+  keys.map((key) => {
+    const formattedKey = `p_gpt_${key}` as const;
+    const value = refinementFormData[
+      key
+    ] as RefinementParams[typeof formattedKey];
+
+    Object.defineProperty(refinementParams, formattedKey, { value });
+  });
+
+  return refinementParams;
+}
+
 type UseBaseHandleMutationProps = {
   onMutate: (mutationParams: RefineGpt35OnAppCreationParams) => void;
 };
@@ -17,15 +42,15 @@ export function useBaseHandleMutation({
   const [mutationParams, setMutationParams] =
     useState<RefineGpt35OnAppCreationParams | null>(null);
 
-  const addRefinementToParams = ({
-    temperature,
-    style,
-  }: Gpt35RefinementFormData) => {
+  const addRefinementToParams = (
+    refinementFormData: Gpt35RefinementFormData
+  ) => {
+    const formatedParams = formatFormData(refinementFormData);
+
     setMutationParams((oldValue) => {
       return {
         ...oldValue!,
-        p_gpt_temperature: temperature,
-        p_gpt_style: style,
+        ...formatedParams,
       };
     });
   };

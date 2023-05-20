@@ -2,7 +2,27 @@ import { renderHook } from '@testing-library/react-hooks';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { assertObjectProperties } from '@odyssey/tests';
-import { useBaseHandleMutation } from '.';
+import { formatFormData, useBaseHandleMutation } from '.';
+
+describe('formatFormData', () => {
+  it('should format keys with prefix and return the formatted object', () => {
+    const refinementFormData = {
+      style: 'value1',
+      domain: 'value2',
+      temperature: 1,
+    };
+
+    const expectedRefinementParams = {
+      p_gpt_style: 'value1',
+      p_gpt_domain: 'value2',
+      p_gpt_temperature: 1,
+    };
+
+    const result = formatFormData(refinementFormData);
+
+    expect(result).toMatchObject(expectedRefinementParams);
+  });
+});
 
 describe('useBaseHandleMutation', () => {
   const onMutate = vi.fn();
@@ -52,12 +72,13 @@ describe('useBaseHandleMutation', () => {
   it('should update the correct fields on addRefinementToParams call', () => {
     result.current.addRefinementToParams({
       temperature: 1,
-      vibe: 'anyVibe',
+      style: 'anyStyle',
+      domain: 'anyDomain',
     });
 
     waitFor(() => {
       expect(result.current.mutationParams?.p_gpt_temperature).toEqual(1);
-      expect(result.current.mutationParams?.p_gpt_vibe).toEqual('anyVibe');
+      expect(result.current.mutationParams?.p_gpt_style).toEqual('anyStyle');
     });
   });
 
@@ -70,7 +91,8 @@ describe('useBaseHandleMutation', () => {
 
     result.current.addRefinementToParams({
       temperature: 1,
-      vibe: 'anyVibe',
+      style: 'anyStyle',
+      domain: 'anyDomain',
     });
 
     waitFor(() => {
@@ -80,7 +102,7 @@ describe('useBaseHandleMutation', () => {
         'anyDescription'
       );
       expect(result.current.mutationParams?.p_gpt_temperature).toEqual(1);
-      expect(result.current.mutationParams?.p_gpt_vibe).toEqual('anyVibe');
+      expect(result.current.mutationParams?.p_gpt_style).toEqual('anyStyle');
     });
   });
 
