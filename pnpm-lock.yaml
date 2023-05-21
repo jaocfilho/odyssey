@@ -15,6 +15,7 @@ importers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
       '@hookform/resolvers': ^3.0.0
+      '@odyssey/objects': workspace:*
       '@odyssey/react-hooks': workspace:*
       '@odyssey/tests': workspace:*
       '@supabase/auth-helpers-nextjs': ^0.6.1
@@ -52,6 +53,7 @@ importers:
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.16_react@18.2.0
       '@hookform/resolvers': 3.0.0_react-hook-form@7.43.9
+      '@odyssey/objects': link:../../../packages/objects
       '@odyssey/react-hooks': link:../../../packages/react-hooks
       '@supabase/auth-helpers-nextjs': 0.6.1_ghb6skat2wscrlzdhxa36qq744
       '@supabase/supabase-js': 2.20.0

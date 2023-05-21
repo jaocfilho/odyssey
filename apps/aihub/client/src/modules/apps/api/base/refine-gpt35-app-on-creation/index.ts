@@ -1,3 +1,4 @@
+import { addPrefixToKeys, extractKeysFromObject } from '@odyssey/objects';
 import { type DatabaseFunctions, type Supabase } from '@/lib/supabase/types';
 
 type RefineGpt35OnAppCreationArgs =
@@ -14,39 +15,48 @@ export type BaseRefineGpt35OnAppCreationParams = {
     : K]: RefineGpt35OnAppCreationArgs[K];
 };
 
+export function addAppPrefix(obj: BaseRefineGpt35OnAppCreationParams) {
+  const keysToPrefix = extractKeysFromObject(obj, [
+    'name',
+    'model',
+    'description',
+  ]);
+
+  return addPrefixToKeys('p_app_', keysToPrefix);
+}
+
+export function addGptPrefix(obj: BaseRefineGpt35OnAppCreationParams) {
+  const keysToPrefix = extractKeysFromObject(obj, [
+    'context',
+    'temperature',
+    'style',
+    'domain',
+    'target_audience',
+    'topic',
+    'level_of_detail',
+    'tone',
+    'language_complexity',
+    'informality',
+    'answer_size',
+  ]);
+
+  return addPrefixToKeys('p_gpt_', keysToPrefix);
+}
+
+export function addPrefix(
+  obj: BaseRefineGpt35OnAppCreationParams
+): RefineGpt35OnAppCreationArgs {
+  const appParams = addAppPrefix(obj);
+  const gptParams = addGptPrefix(obj);
+
+  return { ...appParams, ...gptParams } as RefineGpt35OnAppCreationArgs;
+}
+
 export async function baseRefineGpt35OnAppCreation(
-  {
-    p_app_model,
-    p_app_name,
-    p_app_description,
-    p_gpt_context,
-    p_gpt_temperature,
-    p_gpt_style,
-    p_gpt_answer_size,
-    p_gpt_domain,
-    p_gpt_informality,
-    p_gpt_language_complexity,
-    p_gpt_level_of_detail,
-    p_gpt_target_audience,
-    p_gpt_tone,
-    p_gpt_topic,
-  }: BaseRefineGpt35OnAppCreationParams,
+  params: BaseRefineGpt35OnAppCreationParams,
   supabase: Supabase
 ) {
-  return await supabase.rpc('refine_gpt35_app_on_creation', {
-    p_app_model,
-    p_app_name,
-    p_app_description,
-    p_gpt_context,
-    p_gpt_temperature,
-    p_gpt_style,
-    p_gpt_answer_size,
-    p_gpt_domain,
-    p_gpt_informality,
-    p_gpt_language_complexity,
-    p_gpt_level_of_detail,
-    p_gpt_target_audience,
-    p_gpt_tone,
-    p_gpt_topic,
-  });
+  const formatedParams = addPrefix(params);
+
+  return await supabase.rpc('refine_gpt35_app_on_creation', formatedParams);
 }
