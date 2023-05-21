@@ -26,7 +26,9 @@ export function formatFormData(
       key
     ] as RefinementParams[typeof formattedKey];
 
-    Object.defineProperty(refinementParams, formattedKey, { value });
+    if (value) {
+      Object.defineProperty(refinementParams, formattedKey, { value });
+    }
   });
 
   return refinementParams;

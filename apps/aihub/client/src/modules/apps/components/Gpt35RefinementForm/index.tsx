@@ -12,9 +12,10 @@ export function Gpt35RefinementForm({ methods }: Gpt35RefinementFormProps) {
   return (
     <Form.Root id="gpt3.5RefinementForm" {...methods}>
       <div className="flex flex-col gap-4">
+        <Inputs.Domain />
+        <Inputs.TargetAudience />
         <Inputs.Style />
         <Inputs.Temperature />
-        <Inputs.Domain />
       </div>
     </Form.Root>
   );
