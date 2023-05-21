@@ -8,6 +8,11 @@ import type {
 } from '@/lib/supabase/types';
 import { App } from '../../entities';
 
+export {
+  baseRefineGpt35OnAppCreation,
+  type BaseRefineGpt35OnAppCreationParams,
+} from './refine-gpt35-app-on-creation';
+
 export type BaseSelectAppByIdParams = Pick<AppsTableRow, 'id'>;
 
 export async function baseSelectAppById(
@@ -57,46 +62,6 @@ export async function baseInsertApp(
 }
 
 export type InsertAppReturn = Awaited<ReturnType<typeof baseInsertApp>>;
-
-export type BaseRefineGpt35OnAppCreationParams =
-  DatabaseFunctions['refine_gpt35_app_on_creation']['Args'];
-
-export async function baseRefineGpt35OnAppCreation(
-  {
-    p_app_model,
-    p_app_name,
-    p_app_description,
-    p_gpt_context,
-    p_gpt_temperature,
-    p_gpt_style,
-    p_gpt_answer_size,
-    p_gpt_domain,
-    p_gpt_informality,
-    p_gpt_language_complexity,
-    p_gpt_level_of_detail,
-    p_gpt_target_audience,
-    p_gpt_tone,
-    p_gpt_topic,
-  }: BaseRefineGpt35OnAppCreationParams,
-  supabase: Supabase
-) {
-  return await supabase.rpc('refine_gpt35_app_on_creation', {
-    p_app_model,
-    p_app_name,
-    p_app_description,
-    p_gpt_context,
-    p_gpt_temperature,
-    p_gpt_style,
-    p_gpt_answer_size,
-    p_gpt_domain,
-    p_gpt_informality,
-    p_gpt_language_complexity,
-    p_gpt_level_of_detail,
-    p_gpt_target_audience,
-    p_gpt_tone,
-    p_gpt_topic,
-  });
-}
 
 type GetGpt35AppWithRefinement =
   DatabaseFunctions['get_gpt35_app_with_refinement']['Args'];
