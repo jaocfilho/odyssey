@@ -19,6 +19,9 @@ export function Gpt35RefinementForm({ methods }: Gpt35RefinementFormProps) {
         <Inputs.Topic />
         <Inputs.LevelOfDetail />
         <Inputs.Tone />
+        <Inputs.LanguageComplexity />
+        <Inputs.Informality />
+        <Inputs.AnswerSize />
       </div>
     </Form.Root>
   );

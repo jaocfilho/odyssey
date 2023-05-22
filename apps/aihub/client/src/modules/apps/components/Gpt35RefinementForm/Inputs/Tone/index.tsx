@@ -12,7 +12,6 @@ const toneOptions = [
   { value: 'serious', label: 'Serious' },
   { value: 'optimistic', label: 'Optimistic' },
   { value: 'neutral', label: 'Neutral' },
-  { value: 'custom', label: 'Custom Tone' },
 ];
 
 export const tone = z
