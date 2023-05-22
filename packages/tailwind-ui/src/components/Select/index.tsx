@@ -3,7 +3,6 @@
 import { Listbox } from '@headlessui/react';
 
 import { type SelectItem } from './SelectOption';
-import { SelectTransition } from './SelectTransition';
 import { SelectButton } from './SelectButton';
 import { useSelected } from './use-selected';
 import { SelectOptions } from './SelectOptions';
@@ -28,9 +27,7 @@ export function Select({ options, label, placeholder, onChange }: SelectProps) {
           <div className="relative mt-2">
             <SelectButton selectedItem={selected} placeholder={placeholder} />
 
-            <SelectTransition open={open}>
-              <SelectOptions options={options} />
-            </SelectTransition>
+            <SelectOptions open={open} options={options} />
           </div>
         </>
       )}
