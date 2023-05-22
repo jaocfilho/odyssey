@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-
 import { Listbox } from '@headlessui/react';
 
 import { SelectOption } from './SelectOption';
 import { SelectTransition } from './SelectTransition';
 import { SelectButton } from './SelectButton';
+import { useSelected } from './use-selected';
 
 export type SelectItem = {
   value: any;
@@ -21,14 +20,7 @@ export type SelectProps = {
 };
 
 export function Select({ options, label, placeholder, onChange }: SelectProps) {
-  const [selected, setSelected] = useState<SelectItem>();
-
-  const handleChange = (option: SelectItem) => {
-    setSelected(option);
-    if (typeof onChange === 'function') {
-      onChange(option);
-    }
-  };
+  const { selected, handleChange } = useSelected({ onChange });
 
   return (
     <Listbox value={selected} onChange={handleChange}>
