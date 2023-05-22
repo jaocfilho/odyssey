@@ -1,7 +1,7 @@
 import { Listbox } from '@headlessui/react';
 
 import { UpDownIcon } from '../UpDownIcon';
-import { SelectItem } from '..';
+import { SelectItem } from '../SelectOption';
 
 type SelectButtonProps = {
   selectedItem?: SelectItem;

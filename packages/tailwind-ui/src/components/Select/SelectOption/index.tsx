@@ -1,13 +1,11 @@
-import { ReactNode } from 'react';
-
 import { Listbox } from '@headlessui/react';
 
 import { SelectedIcon } from '../SelectedIcon';
 import { classNames } from '../../../utils';
 
-type SelectOptionProps<T> = {
-  children: ReactNode;
-  value: T;
+export type SelectItem = {
+  value: any;
+  label: string | number;
 };
 
 const containerStyles = (active: boolean) =>
@@ -16,20 +14,44 @@ const containerStyles = (active: boolean) =>
     'relative cursor-default select-none py-2 pl-3 pr-9'
   );
 
-const textStyles = (selected: boolean) =>
-  classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate');
+type BaseSelectOptionProps = {
+  selectedItem: SelectItem;
+  active: boolean;
+  isSelected: boolean;
+};
 
-export function SelectOption<T>({ children, value }: SelectOptionProps<T>) {
+const textStyles = (isSelected: boolean) =>
+  classNames(isSelected ? 'font-semibold' : 'font-normal', 'block truncate');
+
+export function BaseSelectOption({
+  selectedItem,
+  active,
+  isSelected,
+}: BaseSelectOptionProps) {
+  return (
+    <>
+      <span className={textStyles(isSelected)}>{selectedItem.label}</span>
+      <SelectedIcon active={active} selected={isSelected} />
+    </>
+  );
+}
+
+type SelectOptionProps = {
+  selectedItem: SelectItem;
+};
+
+export function SelectOption({ selectedItem }: SelectOptionProps) {
   return (
     <Listbox.Option
-      value={value}
+      value={selectedItem}
       className={({ active }) => containerStyles(active)}
     >
       {({ selected, active }) => (
-        <>
-          <span className={textStyles(selected)}>{children}</span>
-          <SelectedIcon active={active} selected={selected} />
-        </>
+        <BaseSelectOption
+          active={active}
+          isSelected={selected}
+          selectedItem={selectedItem}
+        />
       )}
     </Listbox.Option>
   );

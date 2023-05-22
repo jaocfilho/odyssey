@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { SelectItem } from '..';
+import { SelectItem } from '../SelectOption';
 
 type UseSelectedProps = {
   onChange?: (option: SelectItem) => void;

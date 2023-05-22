@@ -2,15 +2,11 @@
 
 import { Listbox } from '@headlessui/react';
 
-import { SelectOption } from './SelectOption';
+import { SelectOption, type SelectItem } from './SelectOption';
 import { SelectTransition } from './SelectTransition';
 import { SelectButton } from './SelectButton';
 import { useSelected } from './use-selected';
-
-export type SelectItem = {
-  value: any;
-  label: string | number;
-};
+import { SelectOptions } from './SelectOptions';
 
 export type SelectProps = {
   options: SelectItem[];
@@ -33,13 +29,7 @@ export function Select({ options, label, placeholder, onChange }: SelectProps) {
             <SelectButton selectedItem={selected} placeholder={placeholder} />
 
             <SelectTransition open={open}>
-              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-slate-800">
-                {options.map((option) => (
-                  <SelectOption key={option.value} value={option}>
-                    {option.label}
-                  </SelectOption>
-                ))}
-              </Listbox.Options>
+              <SelectOptions options={options} />
             </SelectTransition>
           </div>
         </>
