@@ -2,7 +2,7 @@
 
 import { Listbox } from '@headlessui/react';
 
-import { SelectOption, type SelectItem } from './SelectOption';
+import { type SelectItem } from './SelectOption';
 import { SelectTransition } from './SelectTransition';
 import { SelectButton } from './SelectButton';
 import { useSelected } from './use-selected';
