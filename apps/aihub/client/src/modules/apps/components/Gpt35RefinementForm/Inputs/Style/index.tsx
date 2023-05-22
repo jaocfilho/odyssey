@@ -13,9 +13,18 @@ export const style = z
     value: z.string(),
     label: z.string(),
   })
-  .default(styleOptions[0])
-  .transform((style) => style.value);
+  .optional()
+  .transform((style) => {
+    if (style) return style.value;
+  });
 
 export function Style() {
-  return <SelectInput label="Style" name="style" options={styleOptions} />;
+  return (
+    <SelectInput
+      label="Style"
+      name="style"
+      placeholder="Select a style"
+      options={styleOptions}
+    />
+  );
 }

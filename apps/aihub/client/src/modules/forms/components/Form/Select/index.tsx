@@ -5,18 +5,13 @@ import { Controller, useFormContext } from 'react-hook-form';
 import {
   Select as TuiSelect,
   SelectProps as TuiSelectProps,
-  SelectItem as TuiSelectItem,
 } from 'tailwind-ui';
 
-export type SelectProps<T> = Omit<TuiSelectProps<T>, 'onChange'> & {
+export type SelectProps = Omit<TuiSelectProps, 'onChange'> & {
   name: string;
 };
 
-export function Select<T extends TuiSelectItem>({
-  options,
-  name,
-  label,
-}: SelectProps<T>) {
+export function Select({ options, name, label, placeholder }: SelectProps) {
   const { control } = useFormContext();
 
   return (
@@ -24,7 +19,12 @@ export function Select<T extends TuiSelectItem>({
       name={name}
       control={control}
       render={({ field: { onChange } }) => (
-        <TuiSelect label={label} options={options} onChange={onChange} />
+        <TuiSelect
+          label={label}
+          options={options}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
       )}
     />
   );

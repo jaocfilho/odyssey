@@ -13,20 +13,17 @@ export type SelectItem = {
   label: string | number;
 };
 
-export type SelectProps<T> = {
-  options: T[];
+export type SelectProps = {
+  options: SelectItem[];
   label: string;
-  onChange?: (option: T) => void;
+  placeholder?: string;
+  onChange?: (option: SelectItem) => void;
 };
 
-export function Select<T extends SelectItem>({
-  options,
-  label,
-  onChange,
-}: SelectProps<T>) {
-  const [selected, setSelected] = useState<T>();
+export function Select({ options, label, placeholder, onChange }: SelectProps) {
+  const [selected, setSelected] = useState<SelectItem>();
 
-  const handleChange = (option: T) => {
+  const handleChange = (option: SelectItem) => {
     setSelected(option);
     if (typeof onChange === 'function') {
       onChange(option);
@@ -41,7 +38,7 @@ export function Select<T extends SelectItem>({
             {label}
           </Listbox.Label>
           <div className="relative mt-2">
-            <SelectButton selectedItem={selected} />
+            <SelectButton selectedItem={selected} placeholder={placeholder} />
 
             <SelectTransition open={open}>
               <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-slate-800">
