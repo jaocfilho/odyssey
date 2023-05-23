@@ -17,6 +17,8 @@ type UseBooleanStateReturn = [
  * to false and a function to change it to true.
  *
  * @param initialState defaults to false.
+ * @param onFalse callback used when the state chances to false.
+ * @param onTrue callback used when the state chances to true.
  *
  * @returns `[state, handleFalse, handleTrue]`
  */
