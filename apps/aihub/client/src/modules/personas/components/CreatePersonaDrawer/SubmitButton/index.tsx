@@ -2,11 +2,19 @@ import { Button } from 'tailwind-ui';
 
 type SubmitButton = {
   closeDrawer: () => void;
+  isSubmitSuccessful: boolean;
 };
 
-export function SubmitButton({ closeDrawer }: SubmitButton) {
+export function SubmitButton({
+  closeDrawer,
+  isSubmitSuccessful,
+}: SubmitButton) {
+  if (isSubmitSuccessful) {
+    closeDrawer();
+  }
+
   return (
-    <Button onClick={closeDrawer} type="submit" form="createPersonaForm">
+    <Button type="submit" form="createPersonaForm">
       Save
     </Button>
   );

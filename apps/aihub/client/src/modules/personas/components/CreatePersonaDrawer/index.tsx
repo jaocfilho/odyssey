@@ -1,5 +1,5 @@
 import { Drawer, type DrawerProps } from 'tailwind-ui';
-import { PersonaForm, usePersonaForm } from '../PersonaForm';
+import { PersonaForm } from '../PersonaForm';
 import { useCreatePersonaForm } from './use-create-persona-form';
 import { SubmitButton } from './SubmitButton';
 
@@ -15,7 +15,12 @@ export function CreatePersonaDrawer({
       title="Create a new app"
       triggerComponent={triggerComponent}
       onClose={() => methods.reset()}
-      actionButton={(closeDrawer) => <SubmitButton closeDrawer={closeDrawer} />}
+      actionButton={(closeDrawer) => (
+        <SubmitButton
+          closeDrawer={closeDrawer}
+          isSubmitSuccessful={methods.formState.isSubmitSuccessful}
+        />
+      )}
     >
       <PersonaForm id="createPersonaForm" methods={methods} />
     </Drawer>
