@@ -2,15 +2,17 @@ import { Form } from '@/modules/forms/components';
 import { Inputs } from './Inputs';
 import { type UsePersonaFormMethods } from './use-persona-form';
 
+export { type PersonaFormData } from './Inputs/schema';
 export { usePersonaForm } from './use-persona-form';
 
 type PersonaFormProps = {
+  id: string;
   methods: UsePersonaFormMethods;
 };
 
-export function PersonaForm({ methods }: PersonaFormProps) {
+export function PersonaForm({ id, methods }: PersonaFormProps) {
   return (
-    <Form.Root id="personaForm" {...methods}>
+    <Form.Root id={id} {...methods}>
       <div className="flex flex-col gap-4">
         <Inputs.Domain />
         <Inputs.TargetAudience />

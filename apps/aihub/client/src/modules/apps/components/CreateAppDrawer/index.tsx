@@ -1,6 +1,6 @@
 'use client';
 
-import { Drawer, type DrawerProps } from '@/components/Drawer';
+import { Drawer, type DrawerProps } from 'tailwind-ui';
 import { ActionButton } from './ActionButton';
 import { Gpt35RefinementForm } from '../Gpt35RefinementForm';
 import { CreateAppForm } from '../CreateAppForm';
