@@ -35,10 +35,9 @@ export interface Database {
           updated_at?: string;
         };
       };
-      gpt35_refinements: {
+      personas: {
         Row: {
           answer_size: string | null;
-          app: string;
           context: string[] | null;
           created_at: string | null;
           domain: string | null;
@@ -55,7 +54,6 @@ export interface Database {
         };
         Insert: {
           answer_size?: string | null;
-          app: string;
           context?: string[] | null;
           created_at?: string | null;
           domain?: string | null;
@@ -72,7 +70,6 @@ export interface Database {
         };
         Update: {
           answer_size?: string | null;
-          app?: string;
           context?: string[] | null;
           created_at?: string | null;
           domain?: string | null;

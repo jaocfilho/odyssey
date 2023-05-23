@@ -12,4 +12,8 @@ type Gpt35RefinementsTable = Database['public']['Tables']['gpt35_refinements'];
 export type Gpt35RefinementRow = Gpt35RefinementsTable['Row'];
 export type Gpt35RefinementInsert = Gpt35RefinementsTable['Insert'];
 
+type PersonasTable = Database['public']['Tables']['personas'];
+export type PersonasRow = PersonasTable['Row'];
+export type PersonasInsert = PersonasTable['Insert'];
+
 export type DatabaseFunctions = Database['public']['Functions'];
