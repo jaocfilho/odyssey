@@ -427,6 +427,7 @@ importers:
     specifiers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
+      '@odyssey/react-hooks': workspace:*
       '@odyssey/tests': workspace:*
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
@@ -450,6 +451,7 @@ importers:
     devDependencies:
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.16_react@18.2.0
+      '@odyssey/react-hooks': link:../react-hooks
       '@odyssey/tests': link:../tests
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
