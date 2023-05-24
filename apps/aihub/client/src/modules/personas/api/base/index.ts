@@ -40,3 +40,7 @@ export async function baseInsertPersona(
     .limit(1)
     .single();
 }
+
+export async function baseSelectAllPersonas(supabase: Supabase) {
+  return await supabase.from('personas').select('*');
+}
