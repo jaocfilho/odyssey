@@ -1,19 +1,16 @@
-import { Container } from './Container';
-import { NavItem } from './NavItem';
-import { appDetailsNavigation } from './config';
+import { urlPaths } from '@/modules/navigation/urls';
+import { HeaderNavigation } from '@/components/HeaderNavigation';
 
 type DetailsNavigationProps = {
   id: string;
 };
 
 export function DetailsNavigation({ id }: DetailsNavigationProps) {
-  return (
-    <Container>
-      {appDetailsNavigation.map(({ name, href, Link }) => (
-        <Link key={name} id={id}>
-          <NavItem name={name} href={href} />
-        </Link>
-      ))}
-    </Container>
-  );
+  const appDetailsNavigation = [
+    { href: urlPaths.apps.details.overview(id), name: 'Overview' },
+    { href: urlPaths.apps.details.refinement(id), name: 'Refinement' },
+    { href: urlPaths.apps.details.prompt(id), name: 'Prompt' },
+  ];
+
+  return <HeaderNavigation headerNavigationItems={appDetailsNavigation} />;
 }
