@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { AppsSidebar } from '@/modules/apps/components/AppsSidebar';
 import { MultiSidebarLayout } from '@/components/PageLayouts/MultiSidebarLayout';
+import { PersonasSidebar } from '@/modules/personas/components/PersonasSidebar';
 
 type PersonasLayoutProps = {
   children: ReactNode;
@@ -11,7 +11,7 @@ export default function PersonasLayout({ children }: PersonasLayoutProps) {
   return (
     <MultiSidebarLayout
       header="Personas"
-      secondarySidebarContent={<AppsSidebar />}
+      secondarySidebarContent={<PersonasSidebar />}
     >
       {children}
     </MultiSidebarLayout>
