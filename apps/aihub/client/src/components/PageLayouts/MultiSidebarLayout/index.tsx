@@ -1,6 +1,5 @@
 import { type ReactNode } from 'react';
 
-import { BaseLayout } from '../BaseLayout';
 import { SecondarySidebar } from '@/components/SecondarySidebar';
 import { Topbar } from '@/components/Topbar';
 
@@ -16,7 +15,7 @@ export function MultiSidebarLayout({
   secondarySidebarContent,
 }: MultiSidebarLayoutProps) {
   return (
-    <BaseLayout>
+    <div>
       <div className="flex relative h-full">
         <SecondarySidebar header={header}>
           {secondarySidebarContent}
@@ -26,6 +25,6 @@ export function MultiSidebarLayout({
           {children}
         </div>
       </div>
-    </BaseLayout>
+    </div>
   );
 }
