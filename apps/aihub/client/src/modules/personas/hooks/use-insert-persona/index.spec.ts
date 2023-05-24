@@ -34,7 +34,7 @@ describe('useBaseInsertPersona', () => {
   });
 
   it('should call baseInsertPersona on insertPersona call', async () => {
-    await result.current.insertPersona({});
+    await result.current.insertPersona({ name: 'anyName' });
 
     expect(baseInsertPersona).toHaveBeenCalled();
   });

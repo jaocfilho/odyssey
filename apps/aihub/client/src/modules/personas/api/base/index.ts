@@ -7,6 +7,8 @@ export type BaseInsertPersonaParams = Omit<
 
 export async function baseInsertPersona(
   {
+    name,
+    description,
     answer_size,
     context,
     domain,
@@ -24,6 +26,8 @@ export async function baseInsertPersona(
   return await supabase
     .from('personas')
     .insert({
+      name,
+      description,
       answer_size,
       context,
       domain,

@@ -1,3 +1,5 @@
+import { personasUrls } from '@/modules/personas/urls';
+
 export const appsUrls = {
   base: '/dashboard/apps' as const,
 
@@ -13,4 +15,9 @@ export const appsUrls = {
   },
 
   create: () => `${appsUrls.base}/create-app` as const,
+};
+
+export const urlPaths = {
+  apps: appsUrls,
+  personas: personasUrls,
 };
