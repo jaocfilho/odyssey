@@ -10,6 +10,7 @@ export function PersonaDetailsNavigation({
 }: PersonaDetailsNavigationProps) {
   const personasDetailsNavigation = [
     { href: urlPaths.personas.details.overview(id), name: 'Overview' },
+    { href: urlPaths.personas.details.settings(id), name: 'Settings' },
   ];
 
   return <HeaderNavigation headerNavigationItems={personasDetailsNavigation} />;

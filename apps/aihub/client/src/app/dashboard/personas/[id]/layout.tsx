@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { PersonaDetailsNavigation } from '@/modules/personas/components/PersonaDetailsNavigation';
 import { serverSelectPersonaById } from '@/modules/personas/api/server';
+import { PersonaDetailsHeader } from '@/modules/personas/components/PersonaDetailsHeader';
 
 type PersonaDetailsLayoutProps = {
   children: ReactNode;
@@ -19,6 +20,7 @@ export default async function PersonaDetailsLayout({
   return (
     <div>
       <PersonaDetailsNavigation id={id} />
+      <PersonaDetailsHeader name={data?.name!} />
       {children}
     </div>
   );

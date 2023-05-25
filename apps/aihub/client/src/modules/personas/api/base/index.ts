@@ -74,3 +74,10 @@ export async function baseSelectPersonaById(
 
   return response;
 }
+
+type BaseSelectPersonaByIdReturn = Awaited<
+  ReturnType<typeof baseSelectPersonaById>
+>;
+export type BaseSelectPersonaByIdReturnData = NonNullable<
+  BaseSelectPersonaByIdReturn['data']
+>;

@@ -8,6 +8,9 @@ export const personasUrls = {
 
     overview: (id: string) =>
       `${personasUrls.details.base(id)}/overview` as const,
+
+    settings: (id: string) =>
+      `${personasUrls.details.base(id)}/settings` as const,
   },
 };
 
