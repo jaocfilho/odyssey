@@ -25,7 +25,7 @@ type FormElementProps = Pick<HTMLAttributes<HTMLFormElement>, 'id'>;
 type FormProps<TFieldValues extends FieldValues> =
   FormProviderProps<TFieldValues> &
     FormElementProps & {
-      onSubmit?: SubmitHandler<TFieldValues>;
+      onSubmit: SubmitHandler<TFieldValues>;
     };
 
 function FormRoot<TFieldValues extends FieldValues>({
@@ -35,16 +35,9 @@ function FormRoot<TFieldValues extends FieldValues>({
   id,
   ...rest
 }: FormProps<TFieldValues>) {
-  const submit = () => {
-    if (!!onSubmit) {
-      return handleSubmit(onSubmit);
-    }
-    return undefined;
-  };
-
   return (
     <FormProvider handleSubmit={handleSubmit} {...rest}>
-      <form id={id} onSubmit={submit()}>
+      <form id={id} onSubmit={handleSubmit(onSubmit!)}>
         {children}
       </form>
     </FormProvider>

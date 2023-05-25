@@ -4,11 +4,11 @@ import { useInsertPersona } from '../../../hooks/use-insert-persona';
 export function useCreatePersonaForm() {
   const mutation = useInsertPersona();
 
-  const handleMutation = (data: PersonaFormData) => {
+  const onSubmit = (data: PersonaFormData) => {
     mutation.mutate(data);
   };
 
-  const { methods } = usePersonaForm({ onSubmit: handleMutation });
+  const { methods } = usePersonaForm({ onSubmit });
 
-  return { methods };
+  return { methods, onSubmit };
 }

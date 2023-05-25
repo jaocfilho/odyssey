@@ -4,6 +4,8 @@ type PersonasCountProps = {
 
 export function PersonasCount({ personasCount }: PersonasCountProps) {
   return (
-    <p className="leading-6 dark:text-zinc-400">Personas ({personasCount})</p>
+    <p className="pl-3 text-sm font-semibold leading-6 dark:text-zinc-500">
+      Personas ({personasCount})
+    </p>
   );
 }

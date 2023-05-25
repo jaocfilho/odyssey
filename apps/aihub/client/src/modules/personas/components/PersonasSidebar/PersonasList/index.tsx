@@ -10,7 +10,7 @@ type BasePersonasListProps = {
 };
 
 function BasePersonasList({ personas }: BasePersonasListProps) {
-  const personasCount = personas.length;
+  const personasCount = personas?.length;
 
   return (
     <div className="flex flex-col gap-2">
