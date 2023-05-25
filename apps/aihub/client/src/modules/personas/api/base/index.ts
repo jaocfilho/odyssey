@@ -1,4 +1,8 @@
-import type { PersonasInsert, Supabase } from '@/lib/supabase/types';
+import type {
+  PersonasInsert,
+  PersonasRow,
+  Supabase,
+} from '@/lib/supabase/types';
 
 export type BaseInsertPersonaParams = Omit<
   PersonasInsert,
@@ -47,4 +51,20 @@ export async function baseInsertPersona(
 
 export async function baseSelectAllPersonas(supabase: Supabase) {
   return await supabase.from('personas').select('*');
+}
+
+export type BaseSelectPersonaByIdParams = Pick<PersonasRow, 'id'>;
+
+export async function baseSelectPersonaById(
+  { id }: BaseSelectPersonaByIdParams,
+  supabase: Supabase
+) {
+  const response = await supabase
+    .from('personas')
+    .select('*')
+    .eq('id', id)
+    .limit(1)
+    .single();
+
+  return response;
 }
