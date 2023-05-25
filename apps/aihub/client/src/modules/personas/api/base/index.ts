@@ -53,6 +53,12 @@ export async function baseSelectAllPersonas(supabase: Supabase) {
   return await supabase.from('personas').select('*');
 }
 
+type BaseSelectAllPersonasReturn = Awaited<
+  ReturnType<typeof baseSelectAllPersonas>
+>;
+export type BaseSelectAllPersonasReturnData =
+  BaseSelectAllPersonasReturn['data'];
+
 export type BaseSelectPersonaByIdParams = Pick<PersonasRow, 'id'>;
 
 export async function baseSelectPersonaById(

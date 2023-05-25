@@ -7,7 +7,9 @@ type PersonasLayoutProps = {
   children: ReactNode;
 };
 
-export default function PersonasLayout({ children }: PersonasLayoutProps) {
+export default async function PersonasLayout({
+  children,
+}: PersonasLayoutProps) {
   return (
     <MultiSidebarLayout
       header="Personas"

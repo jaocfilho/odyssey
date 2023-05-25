@@ -1,7 +1,7 @@
 import { PersonasRow } from '@/lib/supabase/types';
 import { PersonasListItem } from '../PersonasListItem';
-import { serverSelectAllPersonas } from '@/modules/personas/api/server';
 import { PersonasCount } from '../PersonasCount';
+import { serverSelectAllPersonas } from '@/modules/personas/api/server';
 
 type Persona = Pick<PersonasRow, 'id' | 'name'>;
 

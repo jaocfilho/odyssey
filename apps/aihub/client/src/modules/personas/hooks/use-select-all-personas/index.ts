@@ -1,7 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { useSupabase } from '@/lib/supabase/Provider';
-import { baseSelectAllPersonas } from '../../api/base';
+import {
+  baseSelectAllPersonas,
+  type BaseSelectAllPersonasReturnData,
+} from '../../api/base';
 import { personasQueryKeys } from '../../query-keys';
 
 export function useBaseSelectAllPersonas() {
@@ -14,7 +17,11 @@ export function useBaseSelectAllPersonas() {
   return { selectAllPersonas };
 }
 
-export function useSelectAllPersonas() {
+type UseSelectAllPersonasProps = {
+  initialData?: BaseSelectAllPersonasReturnData;
+};
+
+export function useSelectAllPersonas(options?: UseSelectAllPersonasProps) {
   const { selectAllPersonas } = useBaseSelectAllPersonas();
 
   const queryKey = personasQueryKeys.all();
@@ -23,5 +30,5 @@ export function useSelectAllPersonas() {
     return data;
   };
 
-  return useQuery({ queryKey, queryFn });
+  return useQuery({ queryKey, queryFn, initialData: options?.initialData });
 }
