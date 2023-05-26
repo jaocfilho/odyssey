@@ -1,4 +1,7 @@
-import { SystemMessagePromptTemplate } from 'langchain/prompts';
+import {
+  ChatPromptTemplate,
+  SystemMessagePromptTemplate,
+} from 'langchain/prompts';
 
 const domainPrompt = SystemMessagePromptTemplate.fromTemplate(
   'Provide a response from the {domain} domain.'
@@ -48,13 +51,45 @@ export const personaPrompts = {
   topic: topicPrompt,
 };
 
-type PersonaPrompts = keyof typeof personaPrompts;
+type PersonaPromptsOptionsKeys = keyof typeof personaPrompts;
 
-export function getPersonaPrompts(personaOptions: PersonaPrompts[]) {
-  const prompts = personaOptions.map((option) => {
+export function getPersonaPromptsTemplates(
+  personaOptionsKeys: PersonaPromptsOptionsKeys[]
+) {
+  const prompts = personaOptionsKeys.map((option) => {
     const prompt = personaPrompts[option];
     return prompt;
   });
 
   return prompts;
+}
+
+type PersonaPromptsMessages = Partial<
+  Record<PersonaPromptsOptionsKeys, string>
+>;
+
+export function getPersonaPromptsTemplatesFromObject(
+  personaOptions: PersonaPromptsMessages
+) {
+  const personaOptionsKeys = Object.keys(
+    personaOptions
+  ) as PersonaPromptsOptionsKeys[];
+
+  const promptsTemplates = getPersonaPromptsTemplates(personaOptionsKeys);
+
+  return promptsTemplates;
+}
+
+export async function getPersonaPromptsMessages(
+  personaOptions: PersonaPromptsMessages
+) {
+  const promptsTemplates = getPersonaPromptsTemplatesFromObject(personaOptions);
+
+  const prompt = ChatPromptTemplate.fromPromptMessages(promptsTemplates);
+
+  const formatedPrompt = await prompt.formatPromptValue(personaOptions);
+
+  const messages = formatedPrompt.toChatMessages();
+
+  return messages;
 }

@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import { assertObjectProperties } from '@odyssey/tests';
-import { getPersonaPrompts, personaPrompts } from '.';
+import {
+  getPersonaPromptsMessages,
+  getPersonaPromptsTemplates,
+  getPersonaPromptsTemplatesFromObject,
+  personaPrompts,
+} from '.';
 
 describe('personaPrompts', () => {
   it('should has the correct properties', () => {
@@ -103,14 +108,46 @@ describe('personaPrompts', () => {
   });
 });
 
-describe('getPersonaPrompts', () => {
+describe('getPersonaPromptsTemplates', () => {
   it('should return an array of prompts', () => {
-    const [answerSizePrompt, domainPrompt] = getPersonaPrompts([
+    const [answerSizePrompt, domainPrompt] = getPersonaPromptsTemplates([
       'answer_size',
       'domain',
     ]);
 
     expect(answerSizePrompt).toBe(personaPrompts.answer_size);
     expect(domainPrompt).toBe(personaPrompts.domain);
+  });
+});
+
+describe('getPersonaPromptsTemplatesFromObject', () => {
+  it('should return an array of prompts matching the keys from the object', () => {
+    const promptsTemplates = getPersonaPromptsTemplatesFromObject({
+      answer_size: 'short',
+      domain: 'technology',
+    });
+
+    expect(promptsTemplates).toContain(personaPrompts.answer_size);
+    expect(promptsTemplates).toContain(personaPrompts.domain);
+  });
+
+  it('should return an array of the correct size', () => {
+    const promptsTemplates = getPersonaPromptsTemplatesFromObject({
+      answer_size: 'short',
+      domain: 'technology',
+    });
+
+    expect(promptsTemplates).toHaveLength(2);
+  });
+});
+
+describe('getPersonaPromptsMessages', () => {
+  it('should return an array of the correct size', async () => {
+    const messages = await getPersonaPromptsMessages({
+      answer_size: 'short',
+      domain: 'technology',
+    });
+
+    expect(messages).toHaveLength(2);
   });
 });
