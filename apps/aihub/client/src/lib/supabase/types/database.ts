@@ -35,6 +35,26 @@ export interface Database {
           updated_at?: string;
         };
       };
+      chatbots: {
+        Row: {
+          created_at: string | null;
+          id: string;
+          name: string;
+          updated_at: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          id?: string;
+          name: string;
+          updated_at?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          id?: string;
+          name?: string;
+          updated_at?: string | null;
+        };
+      };
       personas: {
         Row: {
           answer_size: string | null;

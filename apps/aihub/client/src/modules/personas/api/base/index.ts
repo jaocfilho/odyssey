@@ -1,3 +1,4 @@
+import { baseSelectById } from '@/lib/supabase/api';
 import type {
   PersonasInsert,
   PersonasRow,
@@ -65,14 +66,7 @@ export async function baseSelectPersonaById(
   { id }: BaseSelectPersonaByIdParams,
   supabase: Supabase
 ) {
-  const response = await supabase
-    .from('personas')
-    .select('*')
-    .eq('id', id)
-    .limit(1)
-    .single();
-
-  return response;
+  return await baseSelectById({ id, table: 'personas' }, supabase);
 }
 
 type BaseSelectPersonaByIdReturn = Awaited<
