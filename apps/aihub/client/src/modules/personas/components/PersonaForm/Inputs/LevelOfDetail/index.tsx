@@ -7,7 +7,7 @@ const levelOfDetailOptions = [
   { value: 'balanced', label: 'Balanced' },
   { value: 'exploratory', label: 'Exploratory' },
   { value: 'comprehensive', label: 'Comprehensive' },
-  { value: 'stepByStep', label: 'Step-by-Step' },
+  { value: 'step-by-step', label: 'Step-by-Step' },
   { value: 'examplesIllustrations', label: 'Examples and Illustrations' },
   { value: 'definitionsConcepts', label: 'Definitions and Concepts' },
   { value: 'referencesCitations', label: 'References and Citations' },
