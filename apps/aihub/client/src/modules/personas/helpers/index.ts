@@ -2,6 +2,7 @@ import {
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
 } from 'langchain/prompts';
+import { SystemChatMessage } from 'langchain/schema';
 
 const domainPrompt = SystemMessagePromptTemplate.fromTemplate(
   'Provide a response from the {domain} domain.'
@@ -53,7 +54,7 @@ export const personaPrompts = {
 
 type PersonaPromptsOptionsKeys = keyof typeof personaPrompts;
 
-export function getPersonaPromptsTemplates(
+export function createPersonaPromptsTemplates(
   personaOptionsKeys: PersonaPromptsOptionsKeys[]
 ) {
   const prompts = personaOptionsKeys.map((option) => {
@@ -68,22 +69,23 @@ type PersonaPromptsMessages = Partial<
   Record<PersonaPromptsOptionsKeys, string>
 >;
 
-export function getPersonaPromptsTemplatesFromObject(
+export function createPersonaPromptsTemplatesFromObject(
   personaOptions: PersonaPromptsMessages
 ) {
   const personaOptionsKeys = Object.keys(
     personaOptions
   ) as PersonaPromptsOptionsKeys[];
 
-  const promptsTemplates = getPersonaPromptsTemplates(personaOptionsKeys);
+  const promptsTemplates = createPersonaPromptsTemplates(personaOptionsKeys);
 
   return promptsTemplates;
 }
 
-export async function getPersonaPromptsMessages(
+export async function createPersonaPromptsMessages(
   personaOptions: PersonaPromptsMessages
 ) {
-  const promptsTemplates = getPersonaPromptsTemplatesFromObject(personaOptions);
+  const promptsTemplates =
+    createPersonaPromptsTemplatesFromObject(personaOptions);
 
   const prompt = ChatPromptTemplate.fromPromptMessages(promptsTemplates);
 
@@ -92,4 +94,16 @@ export async function getPersonaPromptsMessages(
   const messages = formatedPrompt.toChatMessages();
 
   return messages;
+}
+
+export async function createPersonaChatMessages(
+  personaOptions: PersonaPromptsMessages
+) {
+  const initialMessage = new SystemChatMessage(
+    'You are a chatbot and you will receive structions to fine tune your answer.'
+  );
+
+  const messages = await createPersonaPromptsMessages(personaOptions);
+
+  return [initialMessage, ...messages];
 }

@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 
 import { assertObjectProperties } from '@odyssey/tests';
 import {
-  getPersonaPromptsMessages,
-  getPersonaPromptsTemplates,
-  getPersonaPromptsTemplatesFromObject,
+  createPersonaChatMessages,
+  createPersonaPromptsMessages,
+  createPersonaPromptsTemplates,
+  createPersonaPromptsTemplatesFromObject,
   personaPrompts,
 } from '.';
 
@@ -108,9 +109,9 @@ describe('personaPrompts', () => {
   });
 });
 
-describe('getPersonaPromptsTemplates', () => {
+describe('createPersonaPromptsTemplates', () => {
   it('should return an array of prompts', () => {
-    const [answerSizePrompt, domainPrompt] = getPersonaPromptsTemplates([
+    const [answerSizePrompt, domainPrompt] = createPersonaPromptsTemplates([
       'answer_size',
       'domain',
     ]);
@@ -120,9 +121,9 @@ describe('getPersonaPromptsTemplates', () => {
   });
 });
 
-describe('getPersonaPromptsTemplatesFromObject', () => {
+describe('createPersonaPromptsTemplatesFromObject', () => {
   it('should return an array of prompts matching the keys from the object', () => {
-    const promptsTemplates = getPersonaPromptsTemplatesFromObject({
+    const promptsTemplates = createPersonaPromptsTemplatesFromObject({
       answer_size: 'short',
       domain: 'technology',
     });
@@ -132,7 +133,7 @@ describe('getPersonaPromptsTemplatesFromObject', () => {
   });
 
   it('should return an array of the correct size', () => {
-    const promptsTemplates = getPersonaPromptsTemplatesFromObject({
+    const promptsTemplates = createPersonaPromptsTemplatesFromObject({
       answer_size: 'short',
       domain: 'technology',
     });
@@ -141,13 +142,36 @@ describe('getPersonaPromptsTemplatesFromObject', () => {
   });
 });
 
-describe('getPersonaPromptsMessages', () => {
+describe('createPersonaPromptsMessages', () => {
   it('should return an array of the correct size', async () => {
-    const messages = await getPersonaPromptsMessages({
+    const messages = await createPersonaPromptsMessages({
       answer_size: 'short',
       domain: 'technology',
     });
 
     expect(messages).toHaveLength(2);
+  });
+});
+
+describe('createPersonaChatMessages', () => {
+  it('should return an array of the correct size', async () => {
+    const messages = await createPersonaChatMessages({
+      answer_size: 'short',
+      domain: 'technology',
+    });
+
+    expect(messages).toHaveLength(3);
+  });
+
+  it('should have the correct first message', async () => {
+    const messages = await createPersonaChatMessages({
+      answer_size: 'short',
+      domain: 'technology',
+    });
+
+    const firstMessage = messages[0];
+    expect(firstMessage.text).toEqual(
+      'You are a chatbot and you will receive structions to fine tune your answer.'
+    );
   });
 });
