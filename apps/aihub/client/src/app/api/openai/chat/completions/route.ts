@@ -1,12 +1,20 @@
 import { NextResponse, NextRequest } from 'next/server';
 
-import { type ChatCompletionsParams } from '@/modules/openai/api/chat-completion';
-import { chatAgent } from '@/modules/openai/api/langchain';
+import { type BaseChatMessage } from 'langchain/schema';
 
-export async function POST(request: NextRequest) {
-  const data: ChatCompletionsParams = await request.json();
+import { chatCompletion } from '@/modules/openai/api';
 
-  await chatAgent(data.prompt);
+type ChatCompletionApiBodyParams = {
+  text: string;
+};
 
-  return new Response('Ok');
+type ChatCompletionApiResponse = NextResponse<BaseChatMessage>;
+
+export async function POST(
+  request: NextRequest
+): Promise<ChatCompletionApiResponse> {
+  const { text }: ChatCompletionApiBodyParams = await request.json();
+  const response = await chatCompletion({ text });
+
+  return NextResponse.json(response);
 }
