@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
+
+import { SimpleLayout } from '@/components/PageLayouts/SimpleLayout';
 
 type ChatbotsLayoutProps = {
   children: ReactNode;
@@ -7,5 +9,5 @@ type ChatbotsLayoutProps = {
 export default async function ChatbotsLayout({
   children,
 }: ChatbotsLayoutProps) {
-  return <>{children}</>;
+  return <SimpleLayout>{children}</SimpleLayout>;
 }
