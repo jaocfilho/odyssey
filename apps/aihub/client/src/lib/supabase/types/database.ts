@@ -55,6 +55,41 @@ export interface Database {
           updated_at?: string | null;
         };
       };
+      chatbots_settings: {
+        Row: {
+          chatbot: string;
+          created_at: string;
+          description: string | null;
+          domain: string | null;
+          id: number;
+          target_audience: string | null;
+          temperature: number | null;
+          topic: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          chatbot: string;
+          created_at?: string;
+          description?: string | null;
+          domain?: string | null;
+          id?: number;
+          target_audience?: string | null;
+          temperature?: number | null;
+          topic?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          chatbot?: string;
+          created_at?: string;
+          description?: string | null;
+          domain?: string | null;
+          id?: number;
+          target_audience?: string | null;
+          temperature?: number | null;
+          topic?: string | null;
+          updated_at?: string;
+        };
+      };
       personas: {
         Row: {
           answer_size: string | null;
