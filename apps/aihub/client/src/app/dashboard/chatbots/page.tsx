@@ -1,3 +1,9 @@
+import { ChatbotsList } from '@/modules/chatbots/components/ChatbotsList';
+
 export default function ChatbotsPage() {
-  return <div className="m-4">Chatbots page</div>;
+  return (
+    <main className="lg:pr-96">
+      <ChatbotsList />
+    </main>
+  );
 }
