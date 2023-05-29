@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { SimpleLayout } from '@/components/PageLayouts/SimpleLayout';
+import { MultiSidebarLayout } from '@/components/PageLayouts/MultiSidebarLayout';
 
 type ChatbotsLayoutProps = {
   children: ReactNode;
@@ -9,5 +9,9 @@ type ChatbotsLayoutProps = {
 export default async function ChatbotsLayout({
   children,
 }: ChatbotsLayoutProps) {
-  return <SimpleLayout>{children}</SimpleLayout>;
+  return (
+    <MultiSidebarLayout header="Chatbots" secondarySidebarContent={<div></div>}>
+      {children}
+    </MultiSidebarLayout>
+  );
 }

@@ -19,7 +19,6 @@
     "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/supabase-js": "^2.20.0",
     "@tanstack/react-query": "^4.29.5",
-    "eslint-config-next": "^13.4.1",
     "eventsource-parser": "^1.0.0",
     "langchain": "^0.0.83",
     "next": "13.4.4",
@@ -32,6 +31,7 @@
   },
   "devDependencies": {
     "@odyssey/tests": "workspace:*",
+    "eslint-config-next": "^13.4.1",
     "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
