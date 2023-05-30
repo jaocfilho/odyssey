@@ -7,12 +7,7 @@ type ChatCompletionParams = {
 };
 
 export async function chatCompletion({ text }: ChatCompletionParams) {
-  // const messages = await createPersonaChatMessages({
-  //   domain: 'technology',
-  //   topic: 'software programming',
-  //   answer_size: 'short',
-  // });
-  const messages: HumanChatMessage[] = [];
+  const messages = await createPersonaChatMessages({});
 
   const chat = new ChatOpenAI();
   const response = await chat.call([...messages, new HumanChatMessage(text)]);
