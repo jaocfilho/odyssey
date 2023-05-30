@@ -11,17 +11,21 @@ export async function baseSelectChatbotById(
   return await baseSelectById({ id, table: 'chatbots' }, supabase);
 }
 
-export type BaseGetChatbotSettingsParams =
-  DatabaseFunctions['get_chatbot_settings']['Args'];
+type GetChatbotSettingsArgs = DatabaseFunctions['get_chatbot_settings']['Args'];
 
-type ModifiedGetChatbotSettingsParams = RemovePrefix<
-  BaseGetChatbotSettingsParams,
+export type BaseGetChatbotSettingsParams = RemovePrefix<
+  GetChatbotSettingsArgs,
   'p_'
 >;
 
 export async function baseGetChatbotSettings(
-  { id }: BaseSelectChatbotByIdParams,
+  { apikey, chatbot_id }: BaseGetChatbotSettingsParams,
   supabase: Supabase
 ) {
-  return await baseSelectById({ id, table: 'chatbots' }, supabase);
+  return await supabase
+    .rpc('get_chatbot_settings', {
+      p_apikey: apikey,
+      p_chatbot_id: chatbot_id,
+    })
+    .single();
 }
