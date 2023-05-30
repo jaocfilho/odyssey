@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@odyssey/tests": "workspace:*",
+    "@odyssey/type-utils": "workspace:*",
     "eslint-config-next": "^13.4.1",
     "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
