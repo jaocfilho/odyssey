@@ -174,4 +174,10 @@ describe('createPersonaChatMessages', () => {
       'You are a chatbot and you will receive structions to fine tune your answer.'
     );
   });
+
+  it('should return an empty array if no options are passed', async () => {
+    const messages = await createPersonaChatMessages({});
+
+    expect(messages).toHaveLength(0);
+  });
 });

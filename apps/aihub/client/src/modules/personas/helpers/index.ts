@@ -99,11 +99,13 @@ export async function createPersonaPromptsMessages(
 export async function createPersonaChatMessages(
   personaOptions: PersonaPromptsMessages
 ) {
+  const messages = await createPersonaPromptsMessages(personaOptions);
+  const messagesIsEmpty = messages.length === 0;
+  if (messagesIsEmpty) return [];
+
   const initialMessage = new SystemChatMessage(
     'You are a chatbot and you will receive structions to fine tune your answer.'
   );
-
-  const messages = await createPersonaPromptsMessages(personaOptions);
 
   return [initialMessage, ...messages];
 }

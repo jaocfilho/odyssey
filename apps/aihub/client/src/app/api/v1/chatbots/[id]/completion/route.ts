@@ -1,9 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 
-import {
-  routeHandlerGetChatbotSettings,
-  routeHandlerSelectChatbotById,
-} from '@/modules/chatbots/api/route-handlers';
+import { routeHandlerGetChatbotSettings } from '@/modules/chatbots/api/route-handlers';
 import { chatCompletion } from '@/modules/openai/api';
 import { noApiKeyFoundResponse } from '@/modules/api-keys/helpers';
 
@@ -26,13 +23,13 @@ export async function POST(
 
   const { id } = params;
 
-  const response = await routeHandlerGetChatbotSettings({
+  const chatbotSettings = await routeHandlerGetChatbotSettings({
     apikey,
     chatbot_id: id,
   });
 
-  // const { text }: ChatbotCompletionApiBodyParams = await request.json();
-  // const response = await chatCompletion({ text });
+  const { text }: ChatbotCompletionApiBodyParams = await request.json();
+  const response = await chatCompletion({ text });
 
   return NextResponse.json(response);
 }
