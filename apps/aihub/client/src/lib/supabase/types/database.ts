@@ -9,6 +9,26 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      api_keys: {
+        Row: {
+          created_at: string;
+          id: string;
+          key: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          key: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          key?: string;
+          updated_at?: string;
+        };
+      };
       apps: {
         Row: {
           created_at: string;
@@ -151,30 +171,21 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      get_gpt35_app_with_refinement: {
+      get_chatbot_settings: {
         Args: {
-          p_app_id: string;
+          p_apikey: string;
+          p_chatbot_id: string;
         };
-        Returns: Json;
+        Returns: {
+          v_domain: string;
+          v_target_audience: string;
+        }[];
       };
-      refine_gpt35_app_on_creation: {
+      is_allowed_apikey: {
         Args: {
-          p_app_name: string;
-          p_app_model: string;
-          p_app_description?: string;
-          p_gpt_context?: string[];
-          p_gpt_temperature?: number;
-          p_gpt_style?: string;
-          p_gpt_domain?: string;
-          p_gpt_target_audience?: string;
-          p_gpt_topic?: string;
-          p_gpt_level_of_detail?: string;
-          p_gpt_tone?: string;
-          p_gpt_language_complexity?: string;
-          p_gpt_informality?: string;
-          p_gpt_answer_size?: string;
+          apikey: string;
         };
-        Returns: undefined;
+        Returns: boolean;
       };
     };
     Enums: {
