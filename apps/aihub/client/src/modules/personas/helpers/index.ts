@@ -65,7 +65,7 @@ export function createPersonaPromptsTemplates(
   return prompts;
 }
 
-type PersonaPromptsMessages = Partial<
+export type PersonaPromptsMessages = Partial<
   Record<PersonaPromptsOptionsKeys, string>
 >;
 

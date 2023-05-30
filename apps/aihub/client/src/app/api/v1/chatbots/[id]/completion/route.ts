@@ -29,7 +29,13 @@ export async function POST(
   });
 
   const { text }: ChatbotCompletionApiBodyParams = await request.json();
-  const response = await chatCompletion({ text });
+  const response = await chatCompletion({
+    text,
+    persona: {
+      domain: chatbotSettings.data?.v_domain,
+      target_audience: chatbotSettings.data?.v_target_audience,
+    },
+  });
 
   return NextResponse.json(response);
 }
