@@ -2,6 +2,8 @@ import { Form } from '@/modules/forms/components';
 import { inputs } from './inputs';
 import { type ChatbotFormData } from './inputs/schema';
 import { type UseChatbotFormMethods } from './use-chatbot-form';
+export { useChatbotForm } from './use-chatbot-form';
+export { type ChatbotFormData } from './inputs/schema';
 
 type ChatbotFormProps = {
   id: string;
