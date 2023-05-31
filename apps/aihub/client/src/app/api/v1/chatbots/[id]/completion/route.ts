@@ -28,12 +28,23 @@ export async function POST(
     chatbot_id: id,
   });
 
-  const { text }: ChatbotCompletionApiBodyParams = await request.json();
+  if (chatbotConfig.status === 200) {
+    const { text }: ChatbotCompletionApiBodyParams = await request.json();
 
-  const response = await chatCompletion({
-    text,
-    config: chatbotConfig.data!,
-  });
+    const response = await chatCompletion({
+      text,
+      config: chatbotConfig.data!,
+    });
 
-  return NextResponse.json(response);
+    return NextResponse.json(response);
+  }
+
+  return new NextResponse(
+    JSON.stringify({
+      message: 'No chatbot found in request',
+    }),
+    {
+      status: 400,
+    }
+  );
 }
