@@ -79,88 +79,70 @@ export interface Database {
         Row: {
           chatbot: string;
           created_at: string;
-          description: string | null;
-          domain: string | null;
           id: number;
-          target_audience: string | null;
+          model: Database['public']['Enums']['model_type'];
           temperature: number | null;
-          topic: string | null;
           updated_at: string;
         };
         Insert: {
           chatbot: string;
           created_at?: string;
-          description?: string | null;
-          domain?: string | null;
           id?: number;
-          target_audience?: string | null;
+          model?: Database['public']['Enums']['model_type'];
           temperature?: number | null;
-          topic?: string | null;
           updated_at?: string;
         };
         Update: {
           chatbot?: string;
           created_at?: string;
-          description?: string | null;
-          domain?: string | null;
           id?: number;
-          target_audience?: string | null;
+          model?: Database['public']['Enums']['model_type'];
           temperature?: number | null;
-          topic?: string | null;
           updated_at?: string;
         };
       };
       personas: {
         Row: {
           answer_size: string | null;
-          context: string[] | null;
+          chatbot: string;
           created_at: string | null;
-          description: string | null;
           domain: string | null;
           id: string;
           informality: string | null;
           language_complexity: string | null;
           level_of_detail: string | null;
-          name: string;
           style: string | null;
           target_audience: string | null;
-          temperature: number | null;
           tone: string | null;
           topic: string | null;
           updated_at: string | null;
         };
         Insert: {
           answer_size?: string | null;
-          context?: string[] | null;
+          chatbot: string;
           created_at?: string | null;
-          description?: string | null;
           domain?: string | null;
           id?: string;
           informality?: string | null;
           language_complexity?: string | null;
           level_of_detail?: string | null;
-          name: string;
           style?: string | null;
           target_audience?: string | null;
-          temperature?: number | null;
           tone?: string | null;
           topic?: string | null;
           updated_at?: string | null;
         };
         Update: {
           answer_size?: string | null;
-          context?: string[] | null;
+          chatbot?: string;
           created_at?: string | null;
-          description?: string | null;
           domain?: string | null;
           id?: string;
           informality?: string | null;
           language_complexity?: string | null;
           level_of_detail?: string | null;
-          name?: string;
           style?: string | null;
           target_audience?: string | null;
-          temperature?: number | null;
           tone?: string | null;
           topic?: string | null;
           updated_at?: string | null;
@@ -171,14 +153,29 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      get_chatbot_settings: {
+      get_chatbot_config: {
         Args: {
           p_apikey: string;
           p_chatbot_id: string;
         };
+        Returns: Json;
+      };
+      get_chatbot_config_query: {
+        Args: {
+          p_chatbot_id: string;
+        };
         Returns: {
-          v_domain: string;
-          v_target_audience: string;
+          model: Database['public']['Enums']['model_type'];
+          temperature: number;
+          domain: string;
+          target_audience: string;
+          style: string;
+          topic: string;
+          level_of_detail: string;
+          tone: string;
+          language_complexity: string;
+          informality: string;
+          answer_size: string;
         }[];
       };
       is_allowed_apikey: {
@@ -189,7 +186,7 @@ export interface Database {
       };
     };
     Enums: {
-      [_ in never]: never;
+      model_type: 'gpt-3.5-turbo' | 'gpt-4';
     };
     CompositeTypes: {
       [_ in never]: never;

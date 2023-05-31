@@ -1,3 +1,4 @@
+import { NullableRecord } from '@odyssey/type-utils';
 import {
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
@@ -65,18 +66,31 @@ export function createPersonaPromptsTemplates(
   return prompts;
 }
 
-export type PersonaPromptsMessages = Partial<
+export type PersonaPromptsMessages = NullableRecord<
   Record<PersonaPromptsOptionsKeys, string>
 >;
 
-export function createPersonaPromptsTemplatesFromObject(
+export function cleanPersonaOptionsKeys(
   personaOptions: PersonaPromptsMessages
 ) {
   const personaOptionsKeys = Object.keys(
     personaOptions
   ) as PersonaPromptsOptionsKeys[];
 
-  const promptsTemplates = createPersonaPromptsTemplates(personaOptionsKeys);
+  const cleanedKeys = personaOptionsKeys.filter((key) => {
+    const value = personaOptions[key];
+    if (!!value) return key;
+  });
+
+  return cleanedKeys;
+}
+
+export function createPersonaPromptsTemplatesFromObject(
+  personaOptions: PersonaPromptsMessages
+) {
+  const cleanedKeys = cleanPersonaOptionsKeys(personaOptions);
+
+  const promptsTemplates = createPersonaPromptsTemplates(cleanedKeys);
 
   return promptsTemplates;
 }

@@ -2,8 +2,9 @@ import { createRouteHandlerSupabase } from '@/lib/supabase/route-handler';
 import {
   type BaseSelectChatbotByIdParams,
   baseSelectChatbotById,
-  type BaseGetChatbotSettingsParams,
-  baseGetChatbotSettings,
+  type BaseGetChatbotConfigParams,
+  type BaseGetChatbotConfigReturnData,
+  baseGetChatbotConfig,
 } from '../base';
 
 type RouteHandlerSelectChatbotByIdParams = BaseSelectChatbotByIdParams;
@@ -16,13 +17,15 @@ export async function routeHandlerSelectChatbotById({
   return await baseSelectChatbotById({ id }, supabase);
 }
 
-type RouteHandlerGetChatbotSettingsParams = BaseGetChatbotSettingsParams;
+type RouteHandlerGetChatbotConfigParams = BaseGetChatbotConfigParams;
+export type RouteHandlerGetChatbotConfigReturnData =
+  BaseGetChatbotConfigReturnData;
 
-export async function routeHandlerGetChatbotSettings({
+export async function routeHandlerGetChatbotConfig({
   apikey,
   chatbot_id,
-}: RouteHandlerGetChatbotSettingsParams) {
+}: RouteHandlerGetChatbotConfigParams) {
   const supabase = createRouteHandlerSupabase();
 
-  return await baseGetChatbotSettings({ apikey, chatbot_id }, supabase);
+  return await baseGetChatbotConfig({ apikey, chatbot_id }, supabase);
 }

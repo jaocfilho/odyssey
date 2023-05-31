@@ -1,6 +1,11 @@
 import { RemovePrefix } from '@odyssey/type-utils';
 import { baseSelectById, type BaseSelectByIdParams } from '@/lib/supabase/api';
-import { Supabase, DatabaseFunctions } from '@/lib/supabase/types';
+import {
+  Supabase,
+  DatabaseFunctions,
+  ChatbotsSettingsRow,
+  PersonasRow,
+} from '@/lib/supabase/types';
 
 export type BaseSelectChatbotByIdParams = Pick<BaseSelectByIdParams, 'id'>;
 
@@ -11,21 +16,37 @@ export async function baseSelectChatbotById(
   return await baseSelectById({ id, table: 'chatbots' }, supabase);
 }
 
-type GetChatbotSettingsArgs = DatabaseFunctions['get_chatbot_settings']['Args'];
+type GetChatbotConfigArgs = DatabaseFunctions['get_chatbot_config']['Args'];
 
-export type BaseGetChatbotSettingsParams = RemovePrefix<
-  GetChatbotSettingsArgs,
+export type BaseGetChatbotConfigParams = RemovePrefix<
+  GetChatbotConfigArgs,
   'p_'
 >;
 
-export async function baseGetChatbotSettings(
-  { apikey, chatbot_id }: BaseGetChatbotSettingsParams,
+export type BaseGetChatbotConfigReturnData = {
+  settings: Pick<ChatbotsSettingsRow, 'model' | 'temperature'>;
+  persona: Pick<
+    PersonasRow,
+    | 'answer_size'
+    | 'domain'
+    | 'informality'
+    | 'language_complexity'
+    | 'level_of_detail'
+    | 'style'
+    | 'target_audience'
+    | 'tone'
+    | 'topic'
+  >;
+};
+
+export async function baseGetChatbotConfig(
+  { apikey, chatbot_id }: BaseGetChatbotConfigParams,
   supabase: Supabase
 ) {
   return await supabase
-    .rpc('get_chatbot_settings', {
+    .rpc('get_chatbot_config', {
       p_apikey: apikey,
       p_chatbot_id: chatbot_id,
     })
-    .single();
+    .returns<BaseGetChatbotConfigReturnData>();
 }

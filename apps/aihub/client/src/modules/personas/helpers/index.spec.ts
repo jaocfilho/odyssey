@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { assertObjectProperties } from '@odyssey/tests';
 import {
+  cleanPersonaOptionsKeys,
   createPersonaChatMessages,
   createPersonaPromptsMessages,
   createPersonaPromptsTemplates,
@@ -121,11 +122,52 @@ describe('createPersonaPromptsTemplates', () => {
   });
 });
 
+describe('cleanPersonaOptionsKeys', () => {
+  it('should return an array of keys with the same length as the number of clean keys', () => {
+    const cleanedKeys = cleanPersonaOptionsKeys({
+      answer_size: 'any',
+      domain: 'any',
+      informality: 'any',
+      language_complexity: 'any',
+      level_of_detail: 'any',
+      style: 'any',
+      target_audience: 'any',
+      tone: 'any',
+      topic: 'any',
+    });
+
+    expect(cleanedKeys).toHaveLength(9);
+  });
+
+  it('should remove dirty keys from the resulting array', () => {
+    const cleanedKeys = cleanPersonaOptionsKeys({
+      answer_size: 'any',
+      domain: null,
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
+    });
+
+    expect(cleanedKeys).toHaveLength(1);
+  });
+});
+
 describe('createPersonaPromptsTemplatesFromObject', () => {
   it('should return an array of prompts matching the keys from the object', () => {
     const promptsTemplates = createPersonaPromptsTemplatesFromObject({
       answer_size: 'short',
       domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
     });
 
     expect(promptsTemplates).toContain(personaPrompts.answer_size);
@@ -136,9 +178,38 @@ describe('createPersonaPromptsTemplatesFromObject', () => {
     const promptsTemplates = createPersonaPromptsTemplatesFromObject({
       answer_size: 'short',
       domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
     });
 
     expect(promptsTemplates).toHaveLength(2);
+  });
+
+  it('should not match the key if it is null', () => {
+    const promptsTemplates = createPersonaPromptsTemplatesFromObject({
+      answer_size: 'short',
+      domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
+    });
+
+    expect(promptsTemplates).not.toContain(personaPrompts.informality);
+    expect(promptsTemplates).not.toContain(personaPrompts.language_complexity);
+    expect(promptsTemplates).not.toContain(personaPrompts.level_of_detail);
+    expect(promptsTemplates).not.toContain(personaPrompts.style);
+    expect(promptsTemplates).not.toContain(personaPrompts.target_audience);
+    expect(promptsTemplates).not.toContain(personaPrompts.tone);
+    expect(promptsTemplates).not.toContain(personaPrompts.topic);
   });
 });
 
@@ -147,6 +218,13 @@ describe('createPersonaPromptsMessages', () => {
     const messages = await createPersonaPromptsMessages({
       answer_size: 'short',
       domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
     });
 
     expect(messages).toHaveLength(2);
@@ -158,6 +236,13 @@ describe('createPersonaChatMessages', () => {
     const messages = await createPersonaChatMessages({
       answer_size: 'short',
       domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
     });
 
     expect(messages).toHaveLength(3);
@@ -167,17 +252,18 @@ describe('createPersonaChatMessages', () => {
     const messages = await createPersonaChatMessages({
       answer_size: 'short',
       domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
     });
 
     const firstMessage = messages[0];
     expect(firstMessage.text).toEqual(
       'You are a chatbot and you will receive structions to fine tune your answer.'
     );
-  });
-
-  it('should return an empty array if no options are passed', async () => {
-    const messages = await createPersonaChatMessages({});
-
-    expect(messages).toHaveLength(0);
   });
 });

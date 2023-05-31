@@ -1,3 +1,4 @@
+import { RouteHandlerGetChatbotConfigReturnData } from '@/modules/chatbots/api/route-handlers';
 import {
   PersonaPromptsMessages,
   createPersonaChatMessages,
@@ -7,13 +8,12 @@ import { HumanChatMessage } from 'langchain/schema';
 
 type ChatCompletionParams = {
   text: string;
-  persona?: PersonaPromptsMessages;
+  config: RouteHandlerGetChatbotConfigReturnData;
 };
 
-export async function chatCompletion({
-  text,
-  persona = {},
-}: ChatCompletionParams) {
+export async function chatCompletion({ text, config }: ChatCompletionParams) {
+  const { persona, settings } = config;
+
   const messages = await createPersonaChatMessages(persona);
 
   const chat = new ChatOpenAI();

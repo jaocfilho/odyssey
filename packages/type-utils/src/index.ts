@@ -19,3 +19,11 @@
 export type RemovePrefix<T, Prefix extends string> = {
   [K in keyof T as K extends `${Prefix}${infer R}` ? R : K]: T[K];
 };
+
+/**
+ * Represents an object type where each key of the original type `T`
+ * can have a value of type `T[keyof T]` or `null`.
+ *
+ * @template T - The original type
+ */
+export type NullableRecord<T> = Record<keyof T, T[keyof T] | null>;
