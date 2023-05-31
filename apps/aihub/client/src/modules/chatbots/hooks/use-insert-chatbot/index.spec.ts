@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useBaseInsertPersona } from '.';
+import { useBaseInsertChatbot } from '.';
 import { useSupabase } from '@/lib/supabase/Provider';
-import { baseInsertPersona } from '../../api/base';
+import { baseInsertChatbot } from '../../api/base';
 import { assertObjectProperties } from '@odyssey/tests';
 
 vi.mock('@/lib/supabase/Provider', () => ({
@@ -11,12 +11,12 @@ vi.mock('@/lib/supabase/Provider', () => ({
 }));
 
 vi.mock('../../api/base', () => ({
-  baseInsertPersona: vi.fn(),
+  baseInsertChatbot: vi.fn(),
 }));
 
-describe('useBaseInsertPersona', () => {
+describe('useBaseInsertChatbot', () => {
   const { result, unmount, rerender } = renderHook(() =>
-    useBaseInsertPersona()
+    useBaseInsertChatbot()
   );
 
   beforeEach(() => {
@@ -28,14 +28,14 @@ describe('useBaseInsertPersona', () => {
   });
 
   it('should return the correct object', () => {
-    const expectedProperties = ['insertPersona'];
+    const expectedProperties = ['insertChatbot'];
 
     assertObjectProperties(expectedProperties, result.current);
   });
 
-  it('should call baseInsertPersona on insertPersona call', async () => {
-    await result.current.insertPersona({ chatbot: '' });
+  it('should call baseInsertChatbot on insertChatbot call', async () => {
+    await result.current.insertChatbot({ name: 'anyName' });
 
-    expect(baseInsertPersona).toHaveBeenCalled();
+    expect(baseInsertChatbot).toHaveBeenCalled();
   });
 });

@@ -19,12 +19,10 @@ export async function baseSelectById(
   return response;
 }
 
-export type BaseInsertParams<Table extends DatabaseTables> = {
-  params: TableInsert<Table>;
-};
+export type BaseInsertParams<Table extends DatabaseTables> = TableInsert<Table>;
 
 export async function baseInsert<Table extends DatabaseTables>(
-  { params }: BaseInsertParams<Table>,
+  params: BaseInsertParams<Table>,
   table: DatabaseTables,
   supabase: Supabase
 ) {

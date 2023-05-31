@@ -56,11 +56,11 @@ export async function baseGetChatbotConfig(
     .returns<BaseGetChatbotConfigReturnData>();
 }
 
-type BaseInsertChatbotParams = BaseInsertParams<'chatbots'>;
+export type BaseInsertChatbotParams = BaseInsertParams<'chatbots'>;
 
 export async function baseInsertChatbot(
-  { params }: BaseInsertChatbotParams,
+  params: BaseInsertChatbotParams,
   supabase: Supabase
 ) {
-  return await baseInsert({ params }, 'chatbots', supabase);
+  return await baseInsert(params, 'chatbots', supabase);
 }
