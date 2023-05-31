@@ -1,4 +1,4 @@
-import { DatabaseTables, Supabase } from '../types';
+import { DatabaseTables, Supabase, TableInsert } from '../types';
 
 export type BaseSelectByIdParams = {
   table: DatabaseTables;
@@ -17,4 +17,16 @@ export async function baseSelectById(
     .single();
 
   return response;
+}
+
+export type BaseInsertParams<Table extends DatabaseTables> = {
+  params: TableInsert<Table>;
+};
+
+export async function baseInsert<Table extends DatabaseTables>(
+  { params }: BaseInsertParams<Table>,
+  table: DatabaseTables,
+  supabase: Supabase
+) {
+  return await supabase.from(table).insert(params).select().limit(1).single();
 }

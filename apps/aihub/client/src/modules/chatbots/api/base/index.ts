@@ -1,5 +1,10 @@
 import { RemovePrefix } from '@odyssey/type-utils';
-import { baseSelectById, type BaseSelectByIdParams } from '@/lib/supabase/api';
+import {
+  baseInsert,
+  type BaseInsertParams,
+  baseSelectById,
+  type BaseSelectByIdParams,
+} from '@/lib/supabase/api';
 import {
   Supabase,
   DatabaseFunctions,
@@ -49,4 +54,13 @@ export async function baseGetChatbotConfig(
       p_chatbot_id: chatbot_id,
     })
     .returns<BaseGetChatbotConfigReturnData>();
+}
+
+type BaseInsertChatbotParams = BaseInsertParams<'chatbots'>;
+
+export async function baseInsertChatbot(
+  { params }: BaseInsertChatbotParams,
+  supabase: Supabase
+) {
+  return await baseInsert({ params }, 'chatbots', supabase);
 }

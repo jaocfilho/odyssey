@@ -11,40 +11,12 @@ export type BaseInsertPersonaParams = Omit<
 >;
 
 export async function baseInsertPersona(
-  {
-    name,
-    description,
-    answer_size,
-    context,
-    domain,
-    informality,
-    language_complexity,
-    level_of_detail,
-    style,
-    target_audience,
-    temperature,
-    tone,
-    topic,
-  }: BaseInsertPersonaParams,
+  params: BaseInsertPersonaParams,
   supabase: Supabase
 ) {
   return await supabase
     .from('personas')
-    .insert({
-      name,
-      description,
-      answer_size,
-      context,
-      domain,
-      informality,
-      language_complexity,
-      level_of_detail,
-      style,
-      target_audience,
-      temperature,
-      tone,
-      topic,
-    })
+    .insert(params)
     .select()
     .limit(1)
     .single();
