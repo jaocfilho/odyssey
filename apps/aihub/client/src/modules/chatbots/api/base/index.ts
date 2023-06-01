@@ -4,6 +4,7 @@ import {
   type BaseInsertParams,
   baseSelectById,
   type BaseSelectByIdParams,
+  baseSelectAll,
 } from '@/lib/supabase/api';
 import {
   Supabase,
@@ -63,4 +64,8 @@ export async function baseInsertChatbot(
   supabase: Supabase
 ) {
   return await baseInsert(params, 'chatbots', supabase);
+}
+
+export async function baseSelectAllChatbots(supabase: Supabase) {
+  return await baseSelectAll('chatbots', supabase);
 }
