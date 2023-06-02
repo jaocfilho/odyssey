@@ -39,3 +39,6 @@ pnpm-store
 
 .vscode
 vscode
+
+.branches
+.temp
