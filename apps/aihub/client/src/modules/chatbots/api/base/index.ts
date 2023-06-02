@@ -69,3 +69,9 @@ export async function baseInsertChatbot(
 export async function baseSelectAllChatbots(supabase: Supabase) {
   return await baseSelectAll('chatbots', supabase);
 }
+
+type BaseSelectAllChatbotsReturn = Awaited<
+  ReturnType<typeof baseSelectAllChatbots>
+>;
+export type BaseSelectAllChatbotsReturnData =
+  BaseSelectAllChatbotsReturn['data'];
