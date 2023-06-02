@@ -13,7 +13,12 @@
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/implementors/features.
-	// "features": {},
+	"features": {
+		"docker-in-docker": {
+			"version": "latest",
+			"moby": true
+		}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
