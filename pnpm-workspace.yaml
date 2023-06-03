@@ -1,5 +1,4 @@
 packages:
-  - "apps/aihub/*"
   - "apps/intellisync/*"
   - "apps/turboflux/*"
   - "packages/*"

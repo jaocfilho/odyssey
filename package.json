@@ -14,7 +14,7 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "turboflux": "pnpm --filter @turboflux/client",
-    "aihub": "pnpm --filter @aihub/client",
+    "intell-client": "pnpm --filter @intellisync/client",
     "intell-server": "pnpm --filter @intellisync/server",
     "milkyui": "pnpm --filter @milky-ui/core"
   },
