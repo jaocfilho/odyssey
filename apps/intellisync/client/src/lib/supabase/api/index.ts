@@ -1,12 +1,12 @@
 import { DatabaseTables, Supabase, TableInsert } from '../types';
 
 export type BaseSelectByIdParams = {
-  table: DatabaseTables;
   id: string;
 };
 
 export async function baseSelectById(
-  { table, id }: BaseSelectByIdParams,
+  { id }: BaseSelectByIdParams,
+  table: DatabaseTables,
   supabase: Supabase
 ) {
   const response = await supabase

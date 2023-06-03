@@ -38,7 +38,7 @@ export async function baseSelectPersonaById(
   { id }: BaseSelectPersonaByIdParams,
   supabase: Supabase
 ) {
-  return await baseSelectById({ id, table: 'personas' }, supabase);
+  return await baseSelectById({ id }, 'personas', supabase);
 }
 
 type BaseSelectPersonaByIdReturn = Awaited<

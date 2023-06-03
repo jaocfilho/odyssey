@@ -7,6 +7,8 @@ export type Supabase = SupabaseClient<Database>;
 export type DatabaseTables = keyof Database['public']['Tables'];
 export type TableInsert<Table extends DatabaseTables> =
   Database['public']['Tables'][Table]['Insert'];
+export type TableRow<Table extends DatabaseTables> =
+  Database['public']['Tables'][Table]['Row'];
 
 type AppsTable = Database['public']['Tables']['apps'];
 export type AppsTableRow = AppsTable['Row'];

@@ -60,18 +60,21 @@ export interface Database {
           created_at: string | null;
           id: string;
           name: string;
+          organization_id: string;
           updated_at: string | null;
         };
         Insert: {
           created_at?: string | null;
           id?: string;
           name: string;
+          organization_id: string;
           updated_at?: string | null;
         };
         Update: {
           created_at?: string | null;
           id?: string;
           name?: string;
+          organization_id?: string;
           updated_at?: string | null;
         };
       };
@@ -98,6 +101,52 @@ export interface Database {
           id?: number;
           model?: Database['public']['Enums']['model_type'];
           temperature?: number | null;
+          updated_at?: string;
+        };
+      };
+      organization_members: {
+        Row: {
+          created_at: string | null;
+          id: number;
+          organization_id: string | null;
+          profile_id: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          id?: number;
+          organization_id?: string | null;
+          profile_id?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          id?: number;
+          organization_id?: string | null;
+          profile_id?: string | null;
+        };
+      };
+      organizations: {
+        Row: {
+          created_at: string;
+          created_by: string | null;
+          id: string;
+          name: string;
+          owner: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          created_by?: string | null;
+          id?: string;
+          name?: string;
+          owner: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          created_by?: string | null;
+          id?: string;
+          name?: string;
+          owner?: string;
           updated_at?: string;
         };
       };
@@ -146,6 +195,26 @@ export interface Database {
           tone?: string | null;
           topic?: string | null;
           updated_at?: string | null;
+        };
+      };
+      profiles: {
+        Row: {
+          created_at: string;
+          id: string;
+          last_used_organization: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          id: string;
+          last_used_organization?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          last_used_organization?: string | null;
+          updated_at?: string;
         };
       };
     };

@@ -19,7 +19,7 @@ export async function baseSelectChatbotById(
   { id }: BaseSelectChatbotByIdParams,
   supabase: Supabase
 ) {
-  return await baseSelectById({ id, table: 'chatbots' }, supabase);
+  return await baseSelectById({ id }, 'chatbots', supabase);
 }
 
 type GetChatbotConfigArgs = DatabaseFunctions['get_chatbot_config']['Args'];
