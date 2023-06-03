@@ -17,3 +17,7 @@ export function useBaseSelectOrganizationById() {
 
   return { selectOrganizationById };
 }
+
+export function useSelectOrganizationById() {
+  const { selectOrganizationById } = useBaseSelectOrganizationById();
+}
