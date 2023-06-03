@@ -4,9 +4,9 @@ export type BaseSelectByIdParams = {
   id: string;
 };
 
-export async function baseSelectById(
+export async function baseSelectById<T extends DatabaseTables>(
   { id }: BaseSelectByIdParams,
-  table: DatabaseTables,
+  table: T,
   supabase: Supabase
 ) {
   const response = await supabase
