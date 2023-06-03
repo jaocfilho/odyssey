@@ -11,3 +11,7 @@ export async function baseSelectOrganizationById(
 ) {
   return await baseSelectById({ id }, 'organizations', supabase);
 }
+
+export type BaseSelectOrganizationByIdReturnData = Awaited<
+  ReturnType<typeof baseSelectOrganizationById>
+>['data'];
