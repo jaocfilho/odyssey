@@ -10,7 +10,7 @@
   "dependencies": {
     "@satellite/functions": "workspace:*",
     "@satellite/numbers": "workspace:*",
-    "@satellite/arrays": "workspace:*"
+    "@odyssey/arrays": "workspace:*"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

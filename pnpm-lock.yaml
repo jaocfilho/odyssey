@@ -281,6 +281,24 @@ importers:
         specifier: ^0.25.0
         version: 0.25.0(jsdom@20.0.2)
 
+  packages/arrays:
+    devDependencies:
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      tsup:
+        specifier: ^6.7.0
+        version: 6.7.0(postcss@8.4.21)(typescript@5.0.3)
+      typescript:
+        specifier: 4.9.5
+        version: 4.9.5
+
   packages/eslint-config-custom:
     dependencies:
       eslint:
@@ -535,9 +553,9 @@ importers:
 
   packages/satellite:
     dependencies:
-      '@satellite/arrays':
+      '@odyssey/arrays':
         specifier: workspace:*
-        version: link:../satellite-arrays
+        version: link:../arrays
       '@satellite/functions':
         specifier: workspace:*
         version: link:../satellite-functions

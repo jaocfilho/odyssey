@@ -11,8 +11,6 @@ type ChatbotsSidebarProps = {
 export function ChatbotsSidebar({ initialData }: ChatbotsSidebarProps) {
   const chatbotsQuery = useSelectAllChatbots({ initialData });
 
-  console.log('chatbots client data', chatbotsQuery.data);
-
   return (
     <div className="flex flex-col p-4 gap-4">
       <CreateChatbotButton />
