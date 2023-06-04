@@ -3,7 +3,6 @@ import {
   baseInsert,
   type BaseInsertParams,
   baseSelectById,
-  type BaseSelectByIdParams,
   baseSelectAll,
 } from '@/lib/supabase/api';
 import {
@@ -13,7 +12,9 @@ import {
   PersonasRow,
 } from '@/lib/supabase/types';
 
-export type BaseSelectChatbotByIdParams = Pick<BaseSelectByIdParams, 'id'>;
+export type BaseSelectChatbotByIdParams = {
+  id: string;
+};
 
 export async function baseSelectChatbotById(
   { id }: BaseSelectChatbotByIdParams,
@@ -73,8 +74,6 @@ export async function baseSelectAllChatbots(supabase: Supabase) {
   return await baseSelectAll('chatbots', supabase);
 }
 
-type BaseSelectAllChatbotsReturn = Awaited<
+export type BaseSelectAllChatbotsReturnData = Awaited<
   ReturnType<typeof baseSelectAllChatbots>
->;
-export type BaseSelectAllChatbotsReturnData =
-  BaseSelectAllChatbotsReturn['data'];
+>['data'];
