@@ -17,4 +17,9 @@ describe('organizationsQueryKeys', () => {
     const queryKey = organizationsQueryKeys.organization('any');
     expect(queryKey).toEqual(['organizations', 'any']);
   });
+
+  it('should return the current organization key', () => {
+    const queryKey = organizationsQueryKeys.current();
+    expect(queryKey).toEqual(['organizations', 'current']);
+  });
 });

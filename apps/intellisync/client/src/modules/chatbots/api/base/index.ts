@@ -57,7 +57,10 @@ export async function baseGetChatbotConfig(
     .returns<BaseGetChatbotConfigReturnData>();
 }
 
-export type BaseInsertChatbotParams = BaseInsertParams<'chatbots'>;
+export type BaseInsertChatbotParams = Omit<
+  BaseInsertParams<'chatbots'>,
+  'created_at' | 'id' | 'updated_at'
+>;
 
 export async function baseInsertChatbot(
   params: BaseInsertChatbotParams,

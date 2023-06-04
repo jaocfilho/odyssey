@@ -1,5 +1,6 @@
 'use client';
 
+import { setCurrentOrganization } from '@/modules/organizations/helpers';
 import {
   useSelectOrganizationById,
   type UseSelectOrganizationByIdOptions,
@@ -32,6 +33,8 @@ export function ClientComponent({
     { id: organizationId },
     { initialData }
   );
+
+  setCurrentOrganization(initialData);
 
   return <BaseComponent name={organizationQuery.data!.name} />;
 }

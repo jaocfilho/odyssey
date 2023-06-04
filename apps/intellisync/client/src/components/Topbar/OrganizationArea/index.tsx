@@ -4,11 +4,11 @@ import { Organization } from '../Organization';
 
 async function getLastUsedOrganization() {
   const supabase = createServerSupabase();
-  const { data } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getSession();
   // user cannot be null here
-  const { id } = data.user!;
+  const { user } = data.session!;
 
-  const { data: profile } = await serverSelectProfileById({ id });
+  const { data: profile } = await serverSelectProfileById({ id: user.id });
   const { last_used_organization } = profile!;
 
   return { last_used_organization };
