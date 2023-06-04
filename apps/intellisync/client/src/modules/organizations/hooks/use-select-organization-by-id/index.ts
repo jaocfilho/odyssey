@@ -22,7 +22,7 @@ export function useBaseSelectOrganizationById() {
 
 type UseSelectOrganizationByIdParams = BaseSelectOrganizationByIdParams;
 
-type UseSelectOrganizationByIdOptions = {
+export type UseSelectOrganizationByIdOptions = {
   initialData?: BaseSelectOrganizationByIdReturnData;
 };
 

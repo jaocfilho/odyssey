@@ -1,31 +1,14 @@
 import { serverSelectOrganizationById } from '@/modules/organizations/api/server';
-
-type BaseOrganizationProps = {
-  name: string;
-};
-
-export function BaseOrganization({ name }: BaseOrganizationProps) {
-  return (
-    <p className="ml-4 text-sm font-medium cursor-pointer dark:text-zinc-500 dark:hover:text-zinc-400 leading-6">
-      {name}
-    </p>
-  );
-}
+import { ClientComponent } from './ClientComponent';
 
 type OrganizationProps = {
-  lastUsedOrganization: string;
+  organizationId: string;
 };
 
-export async function Organization({
-  lastUsedOrganization,
-}: OrganizationProps) {
+export async function Organization({ organizationId }: OrganizationProps) {
   const { data } = await serverSelectOrganizationById({
-    id: lastUsedOrganization,
+    id: organizationId,
   });
 
-  return (
-    <div className="flex items-center space-x-4">
-      <BaseOrganization name={data!.name} />
-    </div>
-  );
+  return <ClientComponent organizationId={organizationId} initialData={data} />;
 }
