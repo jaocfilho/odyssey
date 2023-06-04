@@ -1,0 +1,30 @@
+// Vitest Snapshot v1
+
+exports[`ChatbotsListLoading component > should render without crashing 1`] = `
+<div>
+  <div
+    class="flex flex-col animate-pulse space-y-1"
+  >
+    <div
+      class="h-2 dark:bg-zinc-800 rounded"
+      role="skeleton"
+    />
+    <div
+      class="h-2 dark:bg-zinc-800 rounded"
+      role="skeleton"
+    />
+    <div
+      class="h-2 dark:bg-zinc-800 rounded"
+      role="skeleton"
+    />
+    <div
+      class="h-2 dark:bg-zinc-800 rounded"
+      role="skeleton"
+    />
+    <div
+      class="h-2 dark:bg-zinc-800 rounded"
+      role="skeleton"
+    />
+  </div>
+</div>
+`;

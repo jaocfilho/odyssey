@@ -26,6 +26,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.0.0
         version: 3.0.0(react-hook-form@7.43.9)
+      '@odyssey/arrays':
+        specifier: workspace:*
+        version: link:../../../packages/arrays
       '@odyssey/objects':
         specifier: workspace:*
         version: link:../../../packages/objects
@@ -562,21 +565,6 @@ importers:
       '@satellite/numbers':
         specifier: workspace:*
         version: link:../satellite-numbers
-    devDependencies:
-      eslint:
-        specifier: ^7.32.0
-        version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
-      typescript:
-        specifier: 4.9.5
-        version: 4.9.5
-
-  packages/satellite-arrays:
     devDependencies:
       eslint:
         specifier: ^7.32.0
