@@ -29,6 +29,9 @@ export async function baseInsert<Table extends DatabaseTables>(
   return await supabase.from(table).insert(params).select().limit(1).single();
 }
 
-export async function baseSelectAll(table: DatabaseTables, supabase: Supabase) {
+export async function baseSelectAll<Table extends DatabaseTables>(
+  table: Table,
+  supabase: Supabase
+) {
   return await supabase.from(table).select('*');
 }
