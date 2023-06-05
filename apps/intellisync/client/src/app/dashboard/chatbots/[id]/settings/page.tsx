@@ -1,3 +1,5 @@
+import { ChatbotSettings } from '@/modules/chatbots/components/ChatbotSettings';
+
 export default function ChatbotDetailsSettingsPage() {
-  return <div>chatbot settings page</div>;
+  return <ChatbotSettings />;
 }
