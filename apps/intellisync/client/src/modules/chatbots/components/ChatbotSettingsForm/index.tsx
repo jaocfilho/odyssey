@@ -10,13 +10,13 @@ type ChatbotSettingsFormProps = {
   methods: UseChatbotSettingsFormMethods;
 };
 
-export async function ChatbotSettingsForm({
+export function ChatbotSettingsForm({
   methods,
   onSubmit,
 }: ChatbotSettingsFormProps) {
   return (
     <Form.Root id="chatbotSettingsForm" onSubmit={onSubmit} {...methods}>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         <inputs.Model />
         <inputs.Temperature />
       </div>
