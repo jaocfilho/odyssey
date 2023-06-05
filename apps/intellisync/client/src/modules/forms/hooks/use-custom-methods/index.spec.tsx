@@ -4,6 +4,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'react-hook-form';
 
 import { useCustomMethods } from '.';
+import { assertObjectProperties } from '@odyssey/tests';
 
 describe('useCustomMethods', () => {
   const onSubmit = vi.fn();
@@ -13,13 +14,14 @@ describe('useCustomMethods', () => {
     vi.restoreAllMocks();
   });
 
-  it('returns customMethods object', () => {
+  it('should return the correct object', () => {
     const { result } = renderHook(() => {
       const methods = useForm();
       return useCustomMethods({ methods, onSubmit });
     });
 
-    expect(result.current.customMethods).toBeDefined();
+    const properties = ['submitForm', 'resetToDefaultValues'];
+    assertObjectProperties(properties, result.current.customMethods);
   });
 
   it('calls the onSubmit callback when submitForm is called', async () => {
@@ -31,5 +33,23 @@ describe('useCustomMethods', () => {
     await result.current.customMethods.submitForm();
 
     expect(onSubmit).toHaveBeenCalledWith(initialValues);
+  });
+
+  it('calls the reset callback when resetToDefaultValues is called', () => {
+    const handleSubmitMock = vi.fn();
+    const resetMock = vi.fn();
+
+    const methods = { reset: resetMock, handleSubmit: handleSubmitMock };
+
+    const { result } = renderHook(() => {
+      return useCustomMethods({
+        // @ts-ignore
+        methods,
+        defaultValues: initialValues,
+      });
+    });
+
+    result.current.customMethods.resetToDefaultValues();
+    expect(resetMock).toHaveBeenCalledWith(initialValues);
   });
 });

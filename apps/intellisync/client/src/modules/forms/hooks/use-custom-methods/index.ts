@@ -1,14 +1,21 @@
-import { FieldValues, SubmitHandler, UseFormReturn } from 'react-hook-form';
+import { type SubmitHandler, type UseFormReturn } from 'react-hook-form';
 
-type UseCustomMethodsProps<FormValues extends FieldValues> = {
-  methods: UseFormReturn<FormValues>;
-  onSubmit: SubmitHandler<FormValues>;
+import { z } from 'zod';
+import { UseCustomFormProps } from '../use-custom-form';
+
+type UseCustomMethodsProps<Schema extends z.ZodTypeAny> = Pick<
+  UseCustomFormProps<Schema>,
+  'defaultValues'
+> & {
+  methods: UseFormReturn<z.infer<Schema>>;
+  onSubmit: SubmitHandler<z.infer<Schema>>;
 };
 
-export function useCustomMethods<FormValues extends FieldValues>({
+export function useCustomMethods<Schema extends z.ZodTypeAny>({
   methods,
   onSubmit,
-}: UseCustomMethodsProps<FormValues>) {
+  defaultValues,
+}: UseCustomMethodsProps<Schema>) {
   const submit = methods.handleSubmit((data) => {
     onSubmit(data);
   });
@@ -17,7 +24,11 @@ export function useCustomMethods<FormValues extends FieldValues>({
     submit();
   };
 
-  const customMethods = { submitForm };
+  const resetToDefaultValues = () => {
+    methods.reset(defaultValues);
+  };
+
+  const customMethods = { submitForm, resetToDefaultValues };
 
   return { customMethods };
 }

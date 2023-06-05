@@ -26,8 +26,7 @@ export function GeneralSettingsSection() {
     methods.reset(defaultValues);
   };
 
-  console.log(methods.watch());
-
+  console.log(methods.formState.isDirty);
   return (
     <SectionContainer>
       <SectionInfo
