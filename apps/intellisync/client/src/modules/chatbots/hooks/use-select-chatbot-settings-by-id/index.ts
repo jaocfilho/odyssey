@@ -4,7 +4,7 @@ import { useSupabase } from '@/lib/supabase/Provider';
 import {
   baseSelectChatbotSettingsById,
   type BaseSelectChatbotSettingsByIdParams,
-  type BaseSelectChatbotSettingsByIdReturnData,
+  type SelectChatbotSettingsByIdReturnData,
 } from '../../api/base';
 import { chatbotsQueryKeys } from '../../query-keys';
 
@@ -23,7 +23,7 @@ export function useBaseSelectChatbotSettingsById() {
 type UseSelectChatbotSettingsByIdParams = BaseSelectChatbotSettingsByIdParams;
 
 type UseSelectChatbotSettingsByIdOptions = {
-  initialData?: BaseSelectChatbotSettingsByIdReturnData;
+  initialData?: SelectChatbotSettingsByIdReturnData;
 };
 
 export function useSelectChatbotSettingsById(

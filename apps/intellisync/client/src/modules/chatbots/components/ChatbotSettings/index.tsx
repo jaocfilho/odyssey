@@ -2,8 +2,15 @@ import { Button } from 'tailwind-ui';
 import { SectionContainer } from './SectionContainer';
 import { SectionInfo } from './SectionInfo';
 import { GeneralSettingsSection } from './GeneralSettingsSection';
+import { SelectChatbotSettingsByIdReturnData } from '../../api/base';
 
-export function ChatbotSettings() {
+type ChatbotSettingsProps = {
+  initialData: SelectChatbotSettingsByIdReturnData;
+};
+
+export function ChatbotSettings({ initialData }: ChatbotSettingsProps) {
+  console.log(initialData);
+
   return (
     <div className="divide-y dark:divide-zinc-50/10">
       <GeneralSettingsSection />

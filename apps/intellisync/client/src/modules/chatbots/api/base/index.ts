@@ -89,6 +89,6 @@ export async function baseSelectChatbotSettingsById(
   return await baseSelectById({ id }, 'chatbots_settings', supabase);
 }
 
-export type BaseSelectChatbotSettingsByIdReturnData = Awaited<
+export type SelectChatbotSettingsByIdReturnData = Awaited<
   ReturnType<typeof baseSelectChatbotSettingsById>
 >['data'];
