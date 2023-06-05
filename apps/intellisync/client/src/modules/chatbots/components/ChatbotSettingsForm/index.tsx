@@ -16,10 +16,10 @@ export function ChatbotSettingsForm({
 }: ChatbotSettingsFormProps) {
   return (
     <Form.Root id="chatbotSettingsForm" onSubmit={onSubmit} {...methods}>
-      <div className="flex flex-col gap-8">
+      <Form.Flex>
         <inputs.Model />
         <inputs.Temperature />
-      </div>
+      </Form.Flex>
     </Form.Root>
   );
 }

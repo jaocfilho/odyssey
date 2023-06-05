@@ -15,6 +15,7 @@ import { TextArea } from './TextArea';
 import { Label } from './Label';
 import { ErrorMessage } from './ErrorMessage';
 import { Select } from './Select';
+import { Flex } from './Flex';
 
 export type { InputProps } from './Input';
 export type { SelectProps } from './Select';
@@ -52,4 +53,5 @@ export const Form = {
   Label,
   ErrorMessage,
   Select,
+  Flex,
 };
