@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from 'tailwind-ui';
 import {
   ChatbotSettingsForm,
   useChatbotSettingsForm,
@@ -8,11 +9,24 @@ import { ChatbotSettingsFormSubmitButton } from '../../ChatbotSettingsForm/Submi
 import { SectionContainer } from '../SectionContainer';
 import { SectionContent } from '../SectionContent';
 import { SectionInfo } from '../SectionInfo';
+import { ButtonsArea } from './ButtonsArea';
 
 export function GeneralSettingsSection() {
+  const defaultValues = {
+    model: 'gpt-3.5-turbo',
+    temperature: 1,
+  };
+
   const { methods } = useChatbotSettingsForm({
     onSubmit: () => {},
+    defaultValues,
   });
+
+  const cancelUpdate = () => {
+    methods.reset(defaultValues);
+  };
+
+  console.log(methods.watch());
 
   return (
     <SectionContainer>
@@ -27,9 +41,7 @@ export function GeneralSettingsSection() {
             methods={methods}
           />
         </div>
-        <div className="mt-8 flex">
-          <ChatbotSettingsFormSubmitButton />
-        </div>
+        <ButtonsArea cancelUpdate={cancelUpdate} />
       </SectionContent>
     </SectionContainer>
   );
