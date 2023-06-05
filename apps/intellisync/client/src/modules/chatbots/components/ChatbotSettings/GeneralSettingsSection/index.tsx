@@ -4,13 +4,14 @@ import {
   ChatbotSettingsForm,
   useChatbotSettingsForm,
 } from '../../ChatbotSettingsForm';
+import { ChatbotSettingsFormSubmitButton } from '../../ChatbotSettingsForm/SubmitButton';
 import { SectionContainer } from '../SectionContainer';
 import { SectionContent } from '../SectionContent';
 import { SectionInfo } from '../SectionInfo';
 
 export function GeneralSettingsSection() {
   const { methods } = useChatbotSettingsForm({
-    onSubmit: (data) => console.log(data),
+    onSubmit: () => {},
   });
 
   return (
@@ -21,7 +22,13 @@ export function GeneralSettingsSection() {
       />
       <SectionContent>
         <div className="sm:max-w-xl">
-          <ChatbotSettingsForm onSubmit={console.log} methods={methods} />
+          <ChatbotSettingsForm
+            onSubmit={(data) => console.log(data)}
+            methods={methods}
+          />
+        </div>
+        <div className="mt-8 flex">
+          <ChatbotSettingsFormSubmitButton />
         </div>
       </SectionContent>
     </SectionContainer>
