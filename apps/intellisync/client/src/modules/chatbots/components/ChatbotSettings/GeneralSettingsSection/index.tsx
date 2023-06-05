@@ -5,7 +5,6 @@ import {
   ChatbotSettingsForm,
   useChatbotSettingsForm,
 } from '../../ChatbotSettingsForm';
-import { ChatbotSettingsFormSubmitButton } from '../../ChatbotSettingsForm/SubmitButton';
 import { SectionContainer } from '../SectionContainer';
 import { SectionContent } from '../SectionContent';
 import { SectionInfo } from '../SectionInfo';
@@ -17,16 +16,11 @@ export function GeneralSettingsSection() {
     temperature: 1,
   };
 
-  const { methods } = useChatbotSettingsForm({
+  const { methods, customMethods } = useChatbotSettingsForm({
     onSubmit: () => {},
     defaultValues,
   });
 
-  const cancelUpdate = () => {
-    methods.reset(defaultValues);
-  };
-
-  console.log(methods.formState.isDirty);
   return (
     <SectionContainer>
       <SectionInfo
@@ -40,7 +34,7 @@ export function GeneralSettingsSection() {
             methods={methods}
           />
         </div>
-        <ButtonsArea cancelUpdate={cancelUpdate} />
+        <ButtonsArea onCancel={customMethods.resetToDefaultValues} />
       </SectionContent>
     </SectionContainer>
   );

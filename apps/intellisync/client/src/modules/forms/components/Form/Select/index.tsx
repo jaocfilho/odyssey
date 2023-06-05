@@ -12,7 +12,7 @@ import {
   SelectProps as TuiSelectProps,
 } from 'tailwind-ui';
 
-type BaseSelectProps = Omit<TuiSelectProps, 'onChange'> & {
+type BaseSelectProps = Omit<TuiSelectProps, 'onChange' | 'value'> & {
   name: string;
   control: Control<FieldValues, any>;
 };
@@ -28,8 +28,9 @@ export function BaseSelect({
     <Controller
       name={name}
       control={control}
-      render={({ field: { onChange } }) => (
+      render={({ field: { onChange, value } }) => (
         <TuiSelect
+          value={value}
           label={label}
           options={options}
           onChange={onChange}

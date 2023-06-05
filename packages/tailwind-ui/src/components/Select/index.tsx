@@ -4,18 +4,29 @@ import { Listbox } from '@headlessui/react';
 
 import { type SelectItem } from './SelectOption';
 import { SelectButton } from './SelectButton';
-import { useSelected } from './use-selected';
 import { SelectOptions } from './SelectOptions';
 
 export type SelectProps = {
+  value: any;
   options: SelectItem[];
   label: string;
+  onChange: (option: any) => void;
   placeholder?: string;
-  onChange?: (option: SelectItem) => void;
 };
 
-export function Select({ options, label, placeholder, onChange }: SelectProps) {
-  const { selected, handleChange } = useSelected({ onChange });
+export function Select({
+  value,
+  options,
+  label,
+  placeholder,
+  onChange,
+}: SelectProps) {
+  const selected = options.find((option) => option.value === value);
+
+  const handleChange = (option: SelectItem) => {
+    if (option.value === selected?.value) return;
+    onChange(option.value);
+  };
 
   return (
     <Listbox value={selected} onChange={handleChange}>

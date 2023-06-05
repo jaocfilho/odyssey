@@ -8,7 +8,7 @@ import {
 import { ButtonsArea } from '.';
 
 describe('ButtonsArea', () => {
-  const cancelUpdate = vi.fn();
+  const onCancel = vi.fn();
 
   beforeEach(() => {
     vi.restoreAllMocks();
@@ -19,27 +19,27 @@ describe('ButtonsArea', () => {
   });
 
   it('should render two buttons', () => {
-    render(<ButtonsArea cancelUpdate={cancelUpdate} />);
+    render(<ButtonsArea onCancel={onCancel} />);
 
     const buttons = screen.getAllByRole('button');
     expect(buttons).toHaveLength(2);
   });
 
   it('should render the cancel button', () => {
-    render(<ButtonsArea cancelUpdate={cancelUpdate} />);
+    render(<ButtonsArea onCancel={onCancel} />);
 
     assertButtonIsInTheDocument('Cancel');
   });
 
   it('should render the save button', () => {
-    render(<ButtonsArea cancelUpdate={cancelUpdate} />);
+    render(<ButtonsArea onCancel={onCancel} />);
 
     assertButtonIsInTheDocument('Save');
   });
 
-  it('should call cancelUpdate when the cancel button is clicked', () => {
-    render(<ButtonsArea cancelUpdate={cancelUpdate} />);
+  it('should call onCancel when the cancel button is clicked', () => {
+    render(<ButtonsArea onCancel={onCancel} />);
 
-    assertFunctionIsCalledOnButtonClick('Cancel', cancelUpdate);
+    assertFunctionIsCalledOnButtonClick('Cancel', onCancel);
   });
 });
