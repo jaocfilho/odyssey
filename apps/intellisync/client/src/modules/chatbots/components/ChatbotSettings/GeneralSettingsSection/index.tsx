@@ -11,14 +11,12 @@ import { SectionInfo } from '../SectionInfo';
 import { ButtonsArea } from './ButtonsArea';
 
 export function GeneralSettingsSection() {
-  const defaultValues = {
-    model: 'gpt-3.5-turbo',
-    temperature: 1,
-  };
-
   const { methods, customMethods } = useChatbotSettingsForm({
     onSubmit: () => {},
-    defaultValues,
+    defaultValues: {
+      model: 'gpt-3.5-turbo',
+      temperature: 1,
+    },
   });
 
   return (

@@ -10,6 +10,8 @@ export type TableInsert<Table extends DatabaseTables> =
 export type TableRow<Table extends DatabaseTables> =
   Database['public']['Tables'][Table]['Row'];
 
+export type DatabaseEnums = Database['public']['Enums'];
+
 type AppsTable = Database['public']['Tables']['apps'];
 export type AppsTableRow = AppsTable['Row'];
 export type AppsTableInsert = AppsTable['Insert'];

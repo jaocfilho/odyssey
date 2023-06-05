@@ -1,16 +1,19 @@
 import { z } from 'zod';
 
 import { SelectInput } from '@/modules/forms/components/Inputs';
+import { ModelTypes } from '@/modules/chatbots/entities';
 
-const modelOptions = [{ value: 'gpt-3.5-turbo', label: 'GPT 3.5 turbo' }];
+type ModelOption = {
+  value: ModelTypes;
+  label: string;
+};
 
-export const model = z
-  .object({
-    value: z.string(),
-    label: z.string(),
-  })
-  .required()
-  .transform((model) => model.value);
+const modelOptions: ModelOption[] = [
+  { value: 'gpt-3.5-turbo', label: 'GPT 3.5 turbo' },
+  { value: 'gpt-4', label: 'GPT 4' },
+];
+
+export const model = z.string();
 
 export function Model() {
   return (
