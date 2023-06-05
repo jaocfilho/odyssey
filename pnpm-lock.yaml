@@ -40,7 +40,7 @@ importers:
         version: 0.6.1(@supabase/supabase-js@2.20.0)
       '@supabase/supabase-js':
         specifier: ^2.20.0
-        version: 2.20.0
+        version: 2.20.0(encoding@0.1.13)
       '@tanstack/react-query':
         specifier: ^4.29.5
         version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
@@ -49,7 +49,7 @@ importers:
         version: 1.0.0
       langchain:
         specifier: ^0.0.83
-        version: 0.0.83(@supabase/supabase-js@2.20.0)
+        version: 0.0.83(@supabase/supabase-js@2.20.0)(encoding@0.1.13)
       next:
         specifier: 13.4.4
         version: 13.4.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
@@ -111,6 +111,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.21)
+      encoding:
+        specifier: ^0.1.13
+        version: 0.1.13
       eslint:
         specifier: 8.37.0
         version: 8.37.0
@@ -122,13 +125,10 @@ importers:
         version: 13.4.1(eslint@8.37.0)(typescript@5.0.4)
       msw:
         specifier: ^1.2.1
-        version: 1.2.1(typescript@5.0.4)
+        version: 1.2.1(encoding@0.1.13)(typescript@5.0.4)
       postcss:
         specifier: ^8.4.21
         version: 8.4.21
-      tailwind-config:
-        specifier: workspace:*
-        version: link:../../../packages/tailwind-config
       tailwindcss:
         specifier: ^3.3.1
         version: 3.3.1(postcss@8.4.21)
@@ -629,6 +629,9 @@ importers:
       '@odyssey/tests':
         specifier: workspace:*
         version: link:../tests
+      '@tailwindcss/forms':
+        specifier: ^0.5.3
+        version: 0.5.3(tailwindcss@3.3.1)
       '@testing-library/jest-dom':
         specifier: ^5.16.5
         version: 5.16.5
@@ -671,9 +674,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      tailwind-config:
-        specifier: workspace:*
-        version: link:../tailwind-config
       tailwindcss:
         specifier: ^3.3.1
         version: 3.3.1(postcss@8.4.21)
@@ -768,11 +768,11 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
 
-  /@anthropic-ai/sdk@0.4.3:
+  /@anthropic-ai/sdk@0.4.3(encoding@0.1.13):
     resolution: {integrity: sha512-SZrlXvjUUYT9rPmSzlTtmVk1OjVNpkCzILRluhiYwNcxXfQyvPJDi0CI6PyymygcgtqEF5EVqhKmC/PtPsNEIw==}
     dependencies:
       '@fortaine/fetch-event-source': 3.0.6
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -1993,7 +1993,7 @@ packages:
       '@octokit/request-error': 3.0.3
       '@octokit/types': 9.0.0
       is-plain-object: 5.0.0
-      node-fetch: 2.6.9
+      node-fetch: 2.6.9(encoding@0.1.13)
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
@@ -2421,7 +2421,7 @@ packages:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
       '@supabase/auth-helpers-shared': 0.3.4(@supabase/supabase-js@2.20.0)
-      '@supabase/supabase-js': 2.20.0
+      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
     dev: false
 
   /@supabase/auth-helpers-shared@0.3.4(@supabase/supabase-js@2.20.0):
@@ -2429,30 +2429,30 @@ packages:
     peerDependencies:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
-      '@supabase/supabase-js': 2.20.0
+      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
       jose: 4.14.1
     dev: false
 
-  /@supabase/functions-js@2.1.1:
+  /@supabase/functions-js@2.1.1(encoding@0.1.13):
     resolution: {integrity: sha512-bIR1Puae6W+1/MzPfYBWOG/SCWGo4B5CB7c0ZZksvliNEAzhxNBJ0UFKYINcGdGtxG8ZC+1xr3utWpNZNwnoRw==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/gotrue-js@2.22.3:
+  /@supabase/gotrue-js@2.22.3(encoding@0.1.13):
     resolution: {integrity: sha512-GBu+YT7jaWgmmVRNPZnT2YmO7TjscjoBVMzMDnr2yPL6C2ImzRmOKIbHnGliDeI5EaEsPPljWoYR4xB+WJb98w==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/postgrest-js@1.5.0:
+  /@supabase/postgrest-js@1.5.0(encoding@0.1.13):
     resolution: {integrity: sha512-YaU1HBE43Ba+FGmnXuvK+xYeHylkDKd04PYeKDUCoE2bUHoxSDqnjHbOwmLjnusGZi3X1MrFeUH1Wwb4bHYyIg==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2467,23 +2467,23 @@ packages:
       - supports-color
     dev: false
 
-  /@supabase/storage-js@2.5.1:
+  /@supabase/storage-js@2.5.1(encoding@0.1.13):
     resolution: {integrity: sha512-nkR0fQA9ScAtIKA3vNoPEqbZv1k5B5HVRYEvRWdlP6mUpFphM9TwPL2jZ/ztNGMTG5xT6SrHr+H7Ykz8qzbhjw==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/supabase-js@2.20.0:
+  /@supabase/supabase-js@2.20.0(encoding@0.1.13):
     resolution: {integrity: sha512-6sNX4WEaVBbmOS1K2U3PcpAhp0FcjVo1FRSEoj4N+NZ6DIokX+yut8IBhF176pg5kFCdFIL2wyNhf3SltREmWw==}
     dependencies:
-      '@supabase/functions-js': 2.1.1
-      '@supabase/gotrue-js': 2.22.3
-      '@supabase/postgrest-js': 1.5.0
+      '@supabase/functions-js': 2.1.1(encoding@0.1.13)
+      '@supabase/gotrue-js': 2.22.3(encoding@0.1.13)
+      '@supabase/postgrest-js': 1.5.0(encoding@0.1.13)
       '@supabase/realtime-js': 2.7.2
-      '@supabase/storage-js': 2.5.1
-      cross-fetch: 3.1.5
+      '@supabase/storage-js': 2.5.1(encoding@0.1.13)
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -3449,10 +3449,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /cross-fetch@3.1.5:
+  /cross-fetch@3.1.5(encoding@0.1.13):
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -3688,6 +3688,11 @@ packages:
 
   /emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
+
+  /encoding@0.1.13:
+    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    dependencies:
+      iconv-lite: 0.6.3
 
   /enhanced-resolve@5.12.0:
     resolution: {integrity: sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==}
@@ -4917,7 +4922,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-    dev: true
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -5395,7 +5399,7 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /langchain@0.0.83(@supabase/supabase-js@2.20.0):
+  /langchain@0.0.83(@supabase/supabase-js@2.20.0)(encoding@0.1.13):
     resolution: {integrity: sha512-XS5H7g2/JRIi70D3UjfYpYlnkl5Q0lnsU9wT3fHexPazopUr4yvfg8ocHi+IyAQUOKSoEuyQQxxgaPsh2iyyxg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -5521,8 +5525,8 @@ packages:
       weaviate-ts-client:
         optional: true
     dependencies:
-      '@anthropic-ai/sdk': 0.4.3
-      '@supabase/supabase-js': 2.20.0
+      '@anthropic-ai/sdk': 0.4.3(encoding@0.1.13)
+      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
       ansi-styles: 5.2.0
       binary-extensions: 2.2.0
       expr-eval: 2.0.2
@@ -5763,7 +5767,7 @@ packages:
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  /msw@1.2.1(typescript@5.0.4):
+  /msw@1.2.1(encoding@0.1.13)(typescript@5.0.4):
     resolution: {integrity: sha512-bF7qWJQSmKn6bwGYVPXOxhexTCGD5oJSZg8yt8IBClxvo3Dx/1W0zqE1nX9BSWmzRsCKWfeGWcB/vpqV6aclpw==}
     engines: {node: '>=14'}
     hasBin: true
@@ -5787,7 +5791,7 @@ packages:
       inquirer: 8.2.5
       is-node-process: 1.2.0
       js-levenshtein: 1.1.6
-      node-fetch: 2.6.9
+      node-fetch: 2.6.9(encoding@0.1.13)
       outvariant: 1.4.0
       path-to-regexp: 6.2.1
       strict-event-emitter: 0.4.6
@@ -5955,7 +5959,7 @@ packages:
     engines: {node: '>=10.5.0'}
     dev: true
 
-  /node-fetch@2.6.7:
+  /node-fetch@2.6.7(encoding@0.1.13):
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
@@ -5964,10 +5968,11 @@ packages:
       encoding:
         optional: true
     dependencies:
+      encoding: 0.1.13
       whatwg-url: 5.0.0
     dev: false
 
-  /node-fetch@2.6.9:
+  /node-fetch@2.6.9(encoding@0.1.13):
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
@@ -5976,6 +5981,7 @@ packages:
       encoding:
         optional: true
     dependencies:
+      encoding: 0.1.13
       whatwg-url: 5.0.0
 
   /node-fetch@3.3.1:
@@ -6789,7 +6795,6 @@ packages:
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-    dev: true
 
   /saxes@6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}

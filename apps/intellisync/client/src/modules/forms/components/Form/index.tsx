@@ -37,7 +37,7 @@ function FormRoot<TFieldValues extends FieldValues>({
 }: FormProps<TFieldValues>) {
   return (
     <FormProvider handleSubmit={handleSubmit} {...rest}>
-      <form id={id} onSubmit={handleSubmit(onSubmit!)}>
+      <form id={id} onSubmit={handleSubmit(onSubmit)}>
         {children}
       </form>
     </FormProvider>

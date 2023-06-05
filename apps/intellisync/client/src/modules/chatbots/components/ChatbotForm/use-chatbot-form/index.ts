@@ -1,13 +1,15 @@
-import { UseFormReturn, SubmitHandler } from 'react-hook-form';
-
-import { useCustomForm } from '@/modules/forms/hooks/use-custom-form';
-import { type ChatbotFormData, chatbotSchema } from '../inputs/schema';
+import {
+  useCustomForm,
+  type UseCustomFormMethods,
+  type UseCustomFormOnSubmit,
+} from '@/modules/forms/hooks/use-custom-form';
+import { chatbotSchema } from '../inputs/schema';
 
 type UseChatbotFormProps = {
-  onSubmit: SubmitHandler<ChatbotFormData>;
+  onSubmit: UseCustomFormOnSubmit<typeof chatbotSchema>;
 };
 
-export type UseChatbotFormMethods = UseFormReturn<ChatbotFormData>;
+export type UseChatbotFormMethods = UseCustomFormMethods<typeof chatbotSchema>;
 
 export function useChatbotForm({ onSubmit }: UseChatbotFormProps) {
   const { methods, customMethods } = useCustomForm({
