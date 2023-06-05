@@ -21,11 +21,7 @@ export function GeneralSettingsSection() {
       />
       <SectionContent>
         <div className="sm:max-w-xl">
-          <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="col-span-full">
-              <ChatbotSettingsForm onSubmit={console.log} methods={methods} />
-            </div>
-          </div>
+          <ChatbotSettingsForm onSubmit={console.log} methods={methods} />
         </div>
       </SectionContent>
     </SectionContainer>
