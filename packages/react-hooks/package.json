@@ -5,9 +5,7 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.ts*",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "lint": "eslint *.ts*"
   },
   "devDependencies": {
     "@odyssey/tests": "workspace:*",
