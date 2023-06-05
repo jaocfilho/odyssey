@@ -33,12 +33,7 @@ export function ChatbotSettings() {
           </div>
 
           <div className="mt-8 flex">
-            <button
-              type="submit"
-              className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
-              Log out other sessions
-            </button>
+            <Button colorScheme="emerald">Log out other sessions</Button>
           </div>
         </form>
       </SectionContainer>
