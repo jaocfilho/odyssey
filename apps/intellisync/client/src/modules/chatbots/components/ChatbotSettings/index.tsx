@@ -1,3 +1,4 @@
+import { Button } from 'tailwind-ui';
 import { SectionContainer } from './SectionContainer';
 import { SectionInfo } from './SectionInfo';
 
@@ -49,12 +50,7 @@ export function ChatbotSettings() {
         />
 
         <form className="flex items-start md:col-span-2">
-          <button
-            type="submit"
-            className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
-          >
-            Yes, delete my chatbot
-          </button>
+          <Button colorScheme="red">Yes, delete my chatbot</Button>
         </form>
       </SectionContainer>
     </div>
