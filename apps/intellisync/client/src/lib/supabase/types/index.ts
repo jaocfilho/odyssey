@@ -7,8 +7,12 @@ export type Supabase = SupabaseClient<Database>;
 export type DatabaseTables = keyof Database['public']['Tables'];
 export type TableInsert<Table extends DatabaseTables> =
   Database['public']['Tables'][Table]['Insert'];
+
 export type TableRow<Table extends DatabaseTables> =
   Database['public']['Tables'][Table]['Row'];
+
+export type TableUpdate<Table extends DatabaseTables> =
+  Database['public']['Tables'][Table]['Update'];
 
 export type DatabaseEnums = Database['public']['Enums'];
 
@@ -21,7 +25,6 @@ export type ChatbotsRow = ChatbotsTable['Row'];
 export type ChatbotsInsert = ChatbotsTable['Insert'];
 
 type ChatbotsSettingsTable = Database['public']['Tables']['chatbots_settings'];
-export type ChatbotsSettingsRow = ChatbotsSettingsTable['Row'];
 export type ChatbotsSettingsInsert = ChatbotsSettingsTable['Insert'];
 
 type Gpt35RefinementsTable = Database['public']['Tables']['gpt35_refinements'];

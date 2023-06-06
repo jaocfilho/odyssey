@@ -5,12 +5,11 @@ import {
   baseSelectById,
   baseSelectAll,
 } from '@/lib/supabase/api';
+import { Supabase, DatabaseFunctions, PersonasRow } from '@/lib/supabase/types';
 import {
-  Supabase,
-  DatabaseFunctions,
-  ChatbotsSettingsRow,
-  PersonasRow,
-} from '@/lib/supabase/types';
+  ChatbotsSettingsUpdate,
+  type ChatbotsSettingsRow,
+} from '../../entities';
 
 export type BaseSelectChatbotByIdParams = {
   id: string;
@@ -97,3 +96,21 @@ export async function baseSelectChatbotSettingsById(
 export type SelectChatbotSettingsByIdReturnData = Awaited<
   ReturnType<typeof baseSelectChatbotSettingsById>
 >['data'];
+
+export type BaseUpdateChatbotSettingsByIdParams = {
+  id: string;
+  settings: ChatbotsSettingsUpdate;
+};
+
+export async function baseUpdateChatbotSettingsById(
+  { id, settings }: BaseUpdateChatbotSettingsByIdParams,
+  supabase: Supabase
+) {
+  return await supabase
+    .from('chatbots_settings')
+    .update(settings)
+    .eq('id', id)
+    .select()
+    .limit(1)
+    .single();
+}
