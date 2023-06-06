@@ -46,12 +46,6 @@ export function GeneralSettingsSection({
           <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
         </div>
         <ButtonsArea onCancel={customMethods.resetToDefaultValues} />
-        {/* <Modal
-          title="Deactivate"
-          message="Are you sure you want to deactivate your account? All of your data will be permanently removed from our servers forever. This action cannot be undone."
-          confirmButton="Deactivate"
-
-        /> */}
       </SectionContent>
     </SectionContainer>
   );
