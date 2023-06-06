@@ -8,7 +8,7 @@ type UseCustomMethodsProps<Schema extends z.ZodTypeAny> = Pick<
   'defaultValues'
 > & {
   methods: UseFormReturn<z.infer<Schema>>;
-  onSubmit: SubmitHandler<z.infer<Schema>>;
+  onSubmit?: SubmitHandler<z.infer<Schema>>;
 };
 
 export function useCustomMethods<Schema extends z.ZodTypeAny>({
@@ -17,7 +17,7 @@ export function useCustomMethods<Schema extends z.ZodTypeAny>({
   defaultValues,
 }: UseCustomMethodsProps<Schema>) {
   const submit = methods.handleSubmit((data) => {
-    onSubmit(data);
+    if (!!onSubmit) onSubmit(data);
   });
 
   const submitForm = () => {

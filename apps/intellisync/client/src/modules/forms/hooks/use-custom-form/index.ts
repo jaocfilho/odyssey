@@ -19,7 +19,7 @@ export type UseCustomFormProps<Schema extends z.ZodTypeAny> = Omit<
   'resolver'
 > & {
   schema: Schema;
-  onSubmit: UseCustomFormOnSubmit<Schema>;
+  onSubmit?: UseCustomFormOnSubmit<Schema>;
 };
 
 /**

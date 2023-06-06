@@ -11,6 +11,7 @@ import { SectionInfo } from '../SectionInfo';
 import { ButtonsArea } from './ButtonsArea';
 import { SelectChatbotSettingsByIdReturnData } from '@/modules/chatbots/api/base';
 import { useUpdateChatbotSettingsById } from '@/modules/chatbots/hooks/use-update-chatbot-settings-by-id';
+import { ChatbotSettingsFormData } from '../../ChatbotSettingsForm/use-chatbot-settings-form';
 
 type GeneralSettingsSectionProps = {
   id: string;
@@ -25,10 +26,11 @@ export function GeneralSettingsSection({
 
   const mutation = useUpdateChatbotSettingsById();
 
+  const handleSubmit = (settings: ChatbotSettingsFormData) => {
+    mutation.mutate({ id, settings });
+  };
+
   const { methods, customMethods } = useChatbotSettingsForm({
-    onSubmit: (data) => {
-      mutation.mutate({ id, settings: data });
-    },
     defaultValues: {
       model: chatbotQuery.data!.model,
       temperature: chatbotQuery.data!.temperature,
@@ -43,12 +45,7 @@ export function GeneralSettingsSection({
       />
       <SectionContent>
         <div className="sm:max-w-xl">
-          <ChatbotSettingsForm
-            onSubmit={(data) => {
-              mutation.mutate({ id, settings: data });
-            }}
-            methods={methods}
-          />
+          <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
         </div>
         <ButtonsArea onCancel={customMethods.resetToDefaultValues} />
       </SectionContent>

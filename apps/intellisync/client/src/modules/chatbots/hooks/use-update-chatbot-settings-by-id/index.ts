@@ -30,6 +30,8 @@ export const handleMutation = async ({
   id,
   settings,
 }: BaseUpdateChatbotSettingsByIdParams) => {
+  // Cancel any outgoing refetches
+  // so they don't overwrite our optimistic update
   await cancelChatbotSettingsQuery(id);
 
   const previousSettings = getChatbotSettingsQuery(id);
