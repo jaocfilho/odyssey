@@ -109,8 +109,7 @@ export async function baseUpdateChatbotSettingsById(
   return await supabase
     .from('chatbots_settings')
     .update(settings)
-    .eq('id', id)
+    .eq('chatbot', id)
     .select()
-    .limit(1)
     .single();
 }

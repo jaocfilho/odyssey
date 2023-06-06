@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { SelectInput } from '@/modules/forms/components/Inputs';
-import { ModelTypes } from '@/modules/chatbots/entities';
+import { ModelTypes, modelTypes } from '@/modules/chatbots/entities';
 
 type ModelOption = {
   value: ModelTypes;
@@ -13,7 +13,7 @@ const modelOptions: ModelOption[] = [
   { value: 'gpt-4', label: 'GPT 4' },
 ];
 
-export const model = z.string();
+export const model = z.enum(modelTypes).optional();
 
 export function Model() {
   return (
