@@ -86,7 +86,12 @@ export async function baseSelectChatbotSettingsById(
   { id }: BaseSelectChatbotSettingsByIdParams,
   supabase: Supabase
 ) {
-  return await baseSelectById({ id }, 'chatbots_settings', supabase);
+  return await supabase
+    .from('chatbots_settings')
+    .select('*')
+    .eq('chatbot', id)
+    .limit(1)
+    .single();
 }
 
 export type SelectChatbotSettingsByIdReturnData = Awaited<

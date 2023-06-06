@@ -12,5 +12,5 @@ export default async function ChatbotDetailsSettingsPage({
 
   const { data } = await serverSelectChatbotSettingsById({ id });
 
-  return <ChatbotSettings initialData={data} />;
+  return <ChatbotSettings id={id} initialData={data!} />;
 }

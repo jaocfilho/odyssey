@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from 'tailwind-ui';
+import { useSelectChatbotSettingsById } from '@/modules/chatbots/hooks/use-select-chatbot-settings-by-id';
 import {
   ChatbotSettingsForm,
   useChatbotSettingsForm,
@@ -9,14 +9,27 @@ import { SectionContainer } from '../SectionContainer';
 import { SectionContent } from '../SectionContent';
 import { SectionInfo } from '../SectionInfo';
 import { ButtonsArea } from './ButtonsArea';
+import { SelectChatbotSettingsByIdReturnData } from '@/modules/chatbots/api/base';
 
-export function GeneralSettingsSection() {
+type GeneralSettingsSectionProps = {
+  id: string;
+  initialData: NonNullable<SelectChatbotSettingsByIdReturnData>;
+};
+
+export function GeneralSettingsSection({
+  id,
+  initialData,
+}: GeneralSettingsSectionProps) {
+  const chatbotQuery = useSelectChatbotSettingsById({ id }, { initialData });
+
+  const defaultValues = {
+    model: chatbotQuery.data!.model,
+    temperature: chatbotQuery.data!.temperature,
+  };
+
   const { methods, customMethods } = useChatbotSettingsForm({
     onSubmit: () => {},
-    defaultValues: {
-      model: 'gpt-3.5-turbo',
-      temperature: 1,
-    },
+    defaultValues,
   });
 
   return (

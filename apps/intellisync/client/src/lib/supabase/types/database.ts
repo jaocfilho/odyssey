@@ -84,7 +84,7 @@ export interface Database {
           created_at: string;
           id: number;
           model: Database['public']['Enums']['model_type'];
-          temperature: number | null;
+          temperature: number;
           updated_at: string;
         };
         Insert: {
@@ -92,7 +92,7 @@ export interface Database {
           created_at?: string;
           id?: number;
           model?: Database['public']['Enums']['model_type'];
-          temperature?: number | null;
+          temperature?: number;
           updated_at?: string;
         };
         Update: {
@@ -100,7 +100,7 @@ export interface Database {
           created_at?: string;
           id?: number;
           model?: Database['public']['Enums']['model_type'];
-          temperature?: number | null;
+          temperature?: number;
           updated_at?: string;
         };
       };

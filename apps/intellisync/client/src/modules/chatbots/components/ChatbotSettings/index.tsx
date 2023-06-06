@@ -5,15 +5,14 @@ import { GeneralSettingsSection } from './GeneralSettingsSection';
 import { SelectChatbotSettingsByIdReturnData } from '../../api/base';
 
 type ChatbotSettingsProps = {
-  initialData: SelectChatbotSettingsByIdReturnData;
+  id: string;
+  initialData: NonNullable<SelectChatbotSettingsByIdReturnData>;
 };
 
-export function ChatbotSettings({ initialData }: ChatbotSettingsProps) {
-  console.log(initialData);
-
+export function ChatbotSettings({ id, initialData }: ChatbotSettingsProps) {
   return (
     <div className="divide-y dark:divide-zinc-50/10">
-      <GeneralSettingsSection />
+      <GeneralSettingsSection id={id} initialData={initialData} />
 
       <SectionContainer>
         <SectionInfo
