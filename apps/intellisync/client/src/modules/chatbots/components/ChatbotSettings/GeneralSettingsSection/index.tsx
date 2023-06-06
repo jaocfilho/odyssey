@@ -39,10 +39,7 @@ export function GeneralSettingsSection({
 
   return (
     <SectionContainer>
-      <SectionInfo
-        title="General settings"
-        description="Use a permanent address where you can receive mail."
-      />
+      <SectionInfo title="General settings" />
       <SectionContent>
         <div className="sm:max-w-xl">
           <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />

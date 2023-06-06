@@ -21,4 +21,11 @@ describe('SectionInfo', () => {
     const element = screen.getByText('Description');
     expect(element).toBeInTheDocument();
   });
+
+  it('should render without description', () => {
+    render(<SectionInfo title="Title" />);
+
+    const element = screen.getByText('Title');
+    expect(element).toBeInTheDocument();
+  });
 });
