@@ -5,7 +5,9 @@
   "main": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "octokit": "^2.0.14",
