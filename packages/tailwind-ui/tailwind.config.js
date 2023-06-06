@@ -1,4 +1,6 @@
 // tailwind config is required for editor support
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,9 +8,12 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['var(--font-inter)'],
+    },
     extend: {
-      fontFamily: {
-        sans: ['var(--font-inter)'],
+      colors: {
+        grayScheme: colors.zinc,
       },
     },
   },

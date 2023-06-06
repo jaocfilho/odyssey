@@ -5,4 +5,5 @@ export * from './components/Button';
 export * from './components/Checkbox';
 export * from './components/Dot';
 export * from './components/Drawer';
+export * from './components/Modal';
 export * from './components/Select';
