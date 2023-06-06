@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@odyssey/tests": "workspace:*",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
@@ -22,6 +22,6 @@
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
     "typescript": "4.9.5",
-    "vitest": "^0.25.0"
+    "vitest": "^0.31.4"
   }
 }
