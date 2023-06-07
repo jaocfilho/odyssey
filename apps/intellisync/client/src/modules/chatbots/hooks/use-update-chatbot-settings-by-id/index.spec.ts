@@ -108,8 +108,7 @@ describe('handleError', () => {
       context: { previousSettings: { model: 'gpt-4' } },
     };
 
-    // @ts-ignore
-    handleError(params);
+    handleError(params as any);
     expect(setChatbotSettingsQuery).toHaveBeenCalledWith(
       params.id,
       params.context?.previousSettings

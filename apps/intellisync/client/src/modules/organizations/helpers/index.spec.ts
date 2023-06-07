@@ -17,8 +17,7 @@ beforeEach(() => {
 describe('setCurrentOrganization', () => {
   it('should pass the correct params to setQueryData', () => {
     const initialData = {};
-    // @ts-ignore
-    setCurrentOrganization(initialData);
+    setCurrentOrganization(initialData as any);
 
     expect(queryClient.setQueryData).toHaveBeenCalledWith(
       ['organizations', 'current'],

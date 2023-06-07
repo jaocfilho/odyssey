@@ -1,14 +1,15 @@
 import { RemovePrefix } from '@odyssey/type-utils';
 import {
   baseInsert,
-  type BaseInsertParams,
   baseSelectById,
   baseSelectAll,
+  baseDeleteById,
 } from '@/lib/supabase/api';
 import { Supabase, DatabaseFunctions, PersonasRow } from '@/lib/supabase/types';
 import {
   ChatbotsSettingsUpdate,
   type ChatbotsSettingsRow,
+  ChatbotInsert,
 } from '../../entities';
 
 export type BaseSelectChatbotByIdParams = {
@@ -20,6 +21,29 @@ export async function baseSelectChatbotById(
   supabase: Supabase
 ) {
   return await baseSelectById({ id }, 'chatbots', supabase);
+}
+
+export type BaseInsertChatbotParams = Omit<
+  ChatbotInsert,
+  'created_at' | 'id' | 'updated_at'
+>;
+
+export async function baseInsertChatbot(
+  params: BaseInsertChatbotParams,
+  supabase: Supabase
+) {
+  return await baseInsert(params, 'chatbots', supabase);
+}
+
+type BaseDeleteChatbotByIdParams = {
+  id: string;
+};
+
+export async function baseDeleteChatbotById(
+  { id }: BaseDeleteChatbotByIdParams,
+  supabase: Supabase
+) {
+  return await baseDeleteById({ id }, 'chatbots', supabase);
 }
 
 type GetChatbotConfigArgs = DatabaseFunctions['get_chatbot_config']['Args'];
@@ -55,18 +79,6 @@ export async function baseGetChatbotConfig(
       p_chatbot_id: chatbot_id,
     })
     .returns<BaseGetChatbotConfigReturnData>();
-}
-
-export type BaseInsertChatbotParams = Omit<
-  BaseInsertParams<'chatbots'>,
-  'created_at' | 'id' | 'updated_at'
->;
-
-export async function baseInsertChatbot(
-  params: BaseInsertChatbotParams,
-  supabase: Supabase
-) {
-  return await baseInsert(params, 'chatbots', supabase);
 }
 
 export async function baseSelectAllChatbots(supabase: Supabase) {

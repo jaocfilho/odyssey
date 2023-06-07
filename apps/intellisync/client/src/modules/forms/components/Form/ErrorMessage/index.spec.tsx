@@ -26,7 +26,6 @@ describe('ErrorMessage', () => {
   });
 
   it('should not render anything when there is no error', () => {
-    // @ts-ignore
     vi.mocked(useFieldError).mockReturnValue({ error: undefined });
 
     render(<ErrorMessage name="test" />);

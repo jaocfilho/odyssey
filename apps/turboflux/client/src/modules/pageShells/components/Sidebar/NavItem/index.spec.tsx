@@ -34,8 +34,7 @@ describe('NavItem', () => {
         name="item name"
         current={false}
         href="#"
-        // @ts-ignore
-        Icon={vi.fn(() => null)}
+        Icon={vi.fn(() => null) as any}
       />
     );
 

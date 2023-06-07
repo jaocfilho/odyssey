@@ -19,7 +19,7 @@ export async function baseSelectById<T extends DatabaseTables>(
   return response;
 }
 
-export type BaseInsertParams<Table extends DatabaseTables> = TableInsert<Table>;
+type BaseInsertParams<Table extends DatabaseTables> = TableInsert<Table>;
 
 export async function baseInsert<Table extends DatabaseTables>(
   params: BaseInsertParams<Table>,
@@ -34,4 +34,16 @@ export async function baseSelectAll<Table extends DatabaseTables>(
   supabase: Supabase
 ) {
   return await supabase.from(table).select('*');
+}
+
+export type BaseDeleteByIdParams = {
+  id: string;
+};
+
+export async function baseDeleteById<Table extends DatabaseTables>(
+  { id }: BaseDeleteByIdParams,
+  table: Table,
+  supabase: Supabase
+) {
+  return await supabase.from(table).delete().eq('id', id);
 }
