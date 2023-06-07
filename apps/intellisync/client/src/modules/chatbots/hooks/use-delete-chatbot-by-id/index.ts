@@ -6,6 +6,7 @@ import {
   type BaseDeleteChatbotByIdParams,
 } from '../../api/base';
 import { invalidateAllChatbotsQuery } from '../../query-keys';
+import { removeChatbotFromQueryClient } from '../../helpers';
 
 export function useBaseDeleteChatbotById() {
   const { supabase } = useSupabase();
@@ -21,11 +22,16 @@ export function handleSettled() {
   invalidateAllChatbotsQuery();
 }
 
+export function handleSuccess(id: string) {
+  removeChatbotFromQueryClient(id);
+}
+
 export function useDeleteChatbotById() {
   const { deleteChatbotById } = useBaseDeleteChatbotById();
 
   return useMutation({
     mutationFn: deleteChatbotById,
+    onSuccess: (_, { id }) => handleSuccess(id),
     onSettled: () => handleSettled(),
   });
 }

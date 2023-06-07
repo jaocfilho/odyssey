@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import SupabaseProvider from '@/lib/supabase/Provider';
+import { SupabaseProvider } from '@/lib/supabase/Provider';
 import { ReactQueryProvider } from '@/lib/react-query/Provider';
 
 type RootProvidersProps = {

@@ -1,6 +1,18 @@
 import { queryClient } from '@/lib/react-query/client';
 import { chatbotsQueryKeys } from '../query-keys';
-import { ChatbotsSettingsRow, ChatbotsSettingsUpdate } from '../entities';
+import {
+  type ChatbotsSettingsRow,
+  type ChatbotsSettingsUpdate,
+  type ChatbotRow,
+} from '../entities';
+
+export function removeChatbotFromQueryClient(id: string) {
+  const queryKey = chatbotsQueryKeys.all();
+  return queryClient.setQueryData<ChatbotRow[]>(queryKey, (old) => {
+    if (old === undefined) return old;
+    return old.filter((chatbot) => chatbot.id !== id);
+  });
+}
 
 export function setChatbotSettingsQuery(
   id: string,

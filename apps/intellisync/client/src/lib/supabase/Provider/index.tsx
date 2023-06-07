@@ -17,7 +17,7 @@ type SupabaseProviderProps = {
   children: React.ReactNode;
 };
 
-export default function SupabaseProvider({ children }: SupabaseProviderProps) {
+export function SupabaseProvider({ children }: SupabaseProviderProps) {
   const [supabase] = useState(() => createBrowserSupabaseClient());
   const router = useRouter();
 

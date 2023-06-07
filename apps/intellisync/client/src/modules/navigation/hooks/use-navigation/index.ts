@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import { appsUrls } from '../../urls';
+import { appsUrls, urlPaths } from '../../urls';
 
 export function useNavigation() {
   const router = useRouter();
@@ -20,5 +20,15 @@ export function useNavigation() {
     router.push(url);
   };
 
-  return { redirectToDashboard, redirectToApps, redirectToAppDetailsOverview };
+  const redirectToChatbots = () => {
+    const url = urlPaths.chatbots.base;
+    router.push(url);
+  };
+
+  return {
+    redirectToChatbots,
+    redirectToDashboard,
+    redirectToApps,
+    redirectToAppDetailsOverview,
+  };
 }

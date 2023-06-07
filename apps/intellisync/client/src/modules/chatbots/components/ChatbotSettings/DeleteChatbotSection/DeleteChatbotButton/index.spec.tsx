@@ -4,11 +4,11 @@ import userEvent from '@testing-library/user-event';
 
 import { DeleteChatbotButton } from '.';
 import { assertButtonIsInTheDocument } from '@odyssey/tests';
-import { useDeleteChatbotById } from '@/modules/chatbots/hooks/use-delete-chatbot-by-id';
+import { useDeleteMutation } from './useDeleteMutation';
 
-vi.mock('@/modules/chatbots/hooks/use-delete-chatbot-by-id', () => ({
-  useDeleteChatbotById: vi.fn(() => ({
-    mutate: vi.fn(),
+vi.mock('./useDeleteMutation', () => ({
+  useDeleteMutation: vi.fn(() => ({
+    deleteChatbot: vi.fn(),
   })),
 }));
 
@@ -63,15 +63,15 @@ describe('DeleteChatbotButton', () => {
     expect(element).not.toBeInTheDocument();
   });
 
-  it('should call the delete mutation on confirm', async () => {
-    const mutate = vi.fn();
-    vi.mocked(useDeleteChatbotById).mockReturnValue({ mutate } as any);
+  it('should call deleteChatbot on confirm', async () => {
+    const deleteChatbot = vi.fn();
+    vi.mocked(useDeleteMutation).mockReturnValue({ deleteChatbot } as any);
 
     render(<DeleteChatbotButton id="any" />);
 
     await userEvent.click(screen.getByText('Delete my chatbot'));
     await userEvent.click(screen.getByText('Delete'));
 
-    expect(mutate).toHaveBeenCalledWith({ id: 'any' });
+    expect(deleteChatbot).toHaveBeenCalled();
   });
 });

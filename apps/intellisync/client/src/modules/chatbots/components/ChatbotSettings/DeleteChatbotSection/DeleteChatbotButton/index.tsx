@@ -2,7 +2,7 @@
 
 import { useBooleanState } from '@odyssey/react-hooks';
 import { Button, Modal } from 'tailwind-ui';
-import { useDeleteChatbotById } from '@/modules/chatbots/hooks/use-delete-chatbot-by-id';
+import { useDeleteMutation } from './useDeleteMutation';
 
 type DeleteChatbotButtonProps = {
   id: string;
@@ -11,10 +11,7 @@ type DeleteChatbotButtonProps = {
 export function DeleteChatbotButton({ id }: DeleteChatbotButtonProps) {
   const [open, handleClose, handleOpen] = useBooleanState();
 
-  const deleteMutation = useDeleteChatbotById();
-  const deleteChatbot = () => {
-    deleteMutation.mutate({ id });
-  };
+  const { deleteChatbot } = useDeleteMutation(id);
 
   return (
     <>

@@ -2,7 +2,11 @@ import { SectionContainer } from '../SectionContainer';
 import { SectionInfo } from '../SectionInfo';
 import { DeleteChatbotButton } from './DeleteChatbotButton';
 
-export function DeleteChatbotSection() {
+type DeleteChatbotSectionProps = {
+  id: string;
+};
+
+export function DeleteChatbotSection({ id }: DeleteChatbotSectionProps) {
   return (
     <SectionContainer>
       <SectionInfo
@@ -11,7 +15,7 @@ export function DeleteChatbotSection() {
       />
 
       <div className="flex items-start md:col-span-2">
-        <DeleteChatbotButton />
+        <DeleteChatbotButton id={id} />
       </div>
     </SectionContainer>
   );
