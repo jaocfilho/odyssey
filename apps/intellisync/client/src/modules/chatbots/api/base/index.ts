@@ -35,7 +35,7 @@ export async function baseInsertChatbot(
   return await baseInsert(params, 'chatbots', supabase);
 }
 
-type BaseDeleteChatbotByIdParams = {
+export type BaseDeleteChatbotByIdParams = {
   id: string;
 };
 

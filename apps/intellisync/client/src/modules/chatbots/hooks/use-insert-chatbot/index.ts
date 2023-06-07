@@ -17,13 +17,15 @@ export function useBaseInsertChatbot() {
   return { insertChatbot };
 }
 
+export function handleSettled() {
+  invalidateAllChatbotsQuery();
+}
+
 export function useInsertChatbot() {
   const { insertChatbot } = useBaseInsertChatbot();
 
   return useMutation({
     mutationFn: insertChatbot,
-    onSuccess: () => {
-      invalidateAllChatbotsQuery();
-    },
+    onSettled: () => handleSettled(),
   });
 }
