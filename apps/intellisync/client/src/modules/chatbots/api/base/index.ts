@@ -1,6 +1,5 @@
 import { RemovePrefix } from '@odyssey/type-utils';
 import {
-  baseInsert,
   baseSelectById,
   baseSelectAll,
   baseDeleteById,
@@ -32,7 +31,12 @@ export async function baseInsertChatbot(
   params: BaseInsertChatbotParams,
   supabase: Supabase
 ) {
-  return await baseInsert(params, 'chatbots', supabase);
+  return await supabase
+    .from('chatbots')
+    .insert(params)
+    .select()
+    .limit(1)
+    .single();
 }
 
 export type BaseDeleteChatbotByIdParams = {

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { baseSelectAll, baseDeleteById, baseInsert } from '@/lib/supabase/api';
+import { baseSelectAll, baseDeleteById } from '@/lib/supabase/api';
 import {
   baseDeleteChatbotById,
   baseInsertChatbot,
@@ -9,7 +9,6 @@ import {
 
 vi.mock('@/lib/supabase/api', () => ({
   baseSelectAll: vi.fn(),
-  baseInsert: vi.fn(),
   baseDeleteById: vi.fn(),
 }));
 
@@ -18,14 +17,6 @@ describe('baseSelectAllChatbots', () => {
     await baseSelectAllChatbots({} as any);
 
     expect(baseSelectAll).toHaveBeenCalledWith('chatbots', {});
-  });
-});
-
-describe('baseInsertChatbot', () => {
-  it('should pass the correct table to baseInsert', async () => {
-    await baseInsertChatbot({ name: 'any' } as any, {} as any);
-
-    expect(baseInsert).toHaveBeenCalledWith({ name: 'any' }, 'chatbots', {});
   });
 });
 

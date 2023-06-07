@@ -19,16 +19,6 @@ export async function baseSelectById<T extends DatabaseTables>(
   return response;
 }
 
-type BaseInsertParams<Table extends DatabaseTables> = TableInsert<Table>;
-
-export async function baseInsert<Table extends DatabaseTables>(
-  params: BaseInsertParams<Table>,
-  table: DatabaseTables,
-  supabase: Supabase
-) {
-  return await supabase.from(table).insert(params).select().limit(1).single();
-}
-
 export async function baseSelectAll<Table extends DatabaseTables>(
   table: Table,
   supabase: Supabase

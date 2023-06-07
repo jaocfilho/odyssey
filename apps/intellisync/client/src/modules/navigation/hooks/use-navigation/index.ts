@@ -25,8 +25,14 @@ export function useNavigation() {
     router.push(url);
   };
 
+  const redirectToChatbotOverview = (id: string) => {
+    const url = urlPaths.chatbots.details.overview(id);
+    router.push(url);
+  };
+
   return {
     redirectToChatbots,
+    redirectToChatbotOverview,
     redirectToDashboard,
     redirectToApps,
     redirectToAppDetailsOverview,

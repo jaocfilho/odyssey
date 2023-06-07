@@ -6,6 +6,7 @@ import {
   type BaseInsertChatbotParams,
 } from '../../api/base';
 import { invalidateAllChatbotsQuery } from '../../query-keys';
+import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
 export function useBaseInsertChatbot() {
   const { supabase } = useSupabase();
@@ -23,9 +24,13 @@ export function handleSettled() {
 
 export function useInsertChatbot() {
   const { insertChatbot } = useBaseInsertChatbot();
+  const { redirectToChatbotOverview } = useNavigation();
 
   return useMutation({
     mutationFn: insertChatbot,
+    onSuccess({ data }) {
+      redirectToChatbotOverview(data!.id);
+    },
     onSettled: () => handleSettled(),
   });
 }
