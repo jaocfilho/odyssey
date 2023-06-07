@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import { useDeleteChatbotById } from '@/modules/chatbots/hooks/use-delete-chatbot-by-id';
-import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { useDeleteMutation } from '.';
 import { renderHook } from '@testing-library/react';
 import { assertObjectProperties } from '@odyssey/tests';
@@ -9,12 +8,6 @@ import { assertObjectProperties } from '@odyssey/tests';
 vi.mock('@/modules/chatbots/hooks/use-delete-chatbot-by-id', () => ({
   useDeleteChatbotById: vi.fn(() => ({
     mutate: vi.fn(),
-  })),
-}));
-
-vi.mock('@/modules/navigation/hooks/use-navigation', () => ({
-  useNavigation: vi.fn(() => ({
-    redirectToChatbots: vi.fn(),
   })),
 }));
 
@@ -38,9 +31,6 @@ describe('useDeleteMutation', () => {
     rerender();
 
     result.current.deleteChatbot();
-    expect(mutate).toHaveBeenCalledWith(
-      { id: 'anyId' },
-      { onSuccess: expect.any(Function) }
-    );
+    expect(mutate).toHaveBeenCalledWith({ id: 'anyId' });
   });
 });

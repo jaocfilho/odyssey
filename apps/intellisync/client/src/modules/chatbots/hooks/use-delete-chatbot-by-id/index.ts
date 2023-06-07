@@ -7,6 +7,7 @@ import {
 } from '../../api/base';
 import { invalidateAllChatbotsQuery } from '../../query-keys';
 import { removeChatbotFromQueryClient } from '../../helpers';
+import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
 export function useBaseDeleteChatbotById() {
   const { supabase } = useSupabase();
@@ -28,10 +29,14 @@ export function handleSuccess(id: string) {
 
 export function useDeleteChatbotById() {
   const { deleteChatbotById } = useBaseDeleteChatbotById();
+  const { redirectToChatbots } = useNavigation();
 
   return useMutation({
     mutationFn: deleteChatbotById,
-    onSuccess: (_, { id }) => handleSuccess(id),
+    onSuccess: (_, { id }) => {
+      redirectToChatbots();
+      handleSuccess(id);
+    },
     onSettled: () => handleSettled(),
   });
 }
