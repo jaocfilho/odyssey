@@ -9,7 +9,7 @@ export function ButtonsArea({ onCancel }: ButtonsAreaProps) {
   return (
     <div className="mt-8 flex">
       <div className="flex gap-4">
-        <Button colorScheme="gray" onClick={onCancel}>
+        <Button colorScheme="gray" onClick={onCancel} disabled>
           Cancel
         </Button>
         <ChatbotSettingsFormSubmitButton />
