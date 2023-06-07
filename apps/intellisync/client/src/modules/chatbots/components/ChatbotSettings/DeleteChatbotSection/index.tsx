@@ -15,11 +15,11 @@ export function DeleteChatbotSection() {
         description="This action is not reversible. All information related to this chatbot will be deleted permanently."
       />
 
-      <form className="flex items-start md:col-span-2">
+      <div className="flex items-start md:col-span-2">
         <Button colorScheme="red" onClick={handleOpen}>
           Yes, delete my chatbot
         </Button>
-      </form>
+      </div>
 
       <Modal
         open={open}
