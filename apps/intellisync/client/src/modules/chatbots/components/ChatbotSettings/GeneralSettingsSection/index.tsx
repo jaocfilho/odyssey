@@ -12,7 +12,6 @@ import { ButtonsArea } from './ButtonsArea';
 import { SelectChatbotSettingsByIdReturnData } from '@/modules/chatbots/api/base';
 import { useUpdateChatbotSettingsById } from '@/modules/chatbots/hooks/use-update-chatbot-settings-by-id';
 import { ChatbotSettingsFormData } from '../../ChatbotSettingsForm/use-chatbot-settings-form';
-import { Modal } from 'tailwind-ui';
 
 type GeneralSettingsSectionProps = {
   id: string;
@@ -27,16 +26,18 @@ export function GeneralSettingsSection({
 
   const mutation = useUpdateChatbotSettingsById();
 
-  const handleSubmit = (settings: ChatbotSettingsFormData) => {
-    mutation.mutate({ id, settings });
-  };
-
   const { methods, customMethods } = useChatbotSettingsForm({
     defaultValues: {
       model: chatbotQuery.data!.model,
       temperature: chatbotQuery.data!.temperature,
     },
   });
+
+  const handleSubmit = (settings: ChatbotSettingsFormData) => {
+    mutation.mutate({ id, settings });
+  };
+
+  const isDirty = methods.formState.isDirty;
 
   return (
     <SectionContainer>
@@ -45,7 +46,10 @@ export function GeneralSettingsSection({
         <div className="sm:max-w-xl">
           <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
         </div>
-        <ButtonsArea onCancel={customMethods.resetToDefaultValues} />
+        <ButtonsArea
+          onCancel={customMethods.resetToDefaultValues}
+          disabled={!isDirty}
+        />
       </SectionContent>
     </SectionContainer>
   );

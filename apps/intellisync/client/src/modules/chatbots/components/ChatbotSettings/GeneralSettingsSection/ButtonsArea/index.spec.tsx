@@ -42,4 +42,13 @@ describe('ButtonsArea', () => {
 
     assertFunctionIsCalledOnButtonClick('Cancel', onCancel);
   });
+
+  it('should disable both buttons if disabled is true', () => {
+    render(<ButtonsArea onCancel={onCancel} disabled />);
+
+    const buttons = screen.getAllByRole('button');
+    buttons.forEach((button) => {
+      expect(button).toBeDisabled();
+    });
+  });
 });

@@ -3,16 +3,17 @@ import { ChatbotSettingsFormSubmitButton } from '../../../ChatbotSettingsForm/Su
 
 type ButtonsAreaProps = {
   onCancel: () => void;
+  disabled?: boolean;
 };
 
-export function ButtonsArea({ onCancel }: ButtonsAreaProps) {
+export function ButtonsArea({ onCancel, disabled }: ButtonsAreaProps) {
   return (
     <div className="mt-8 flex">
       <div className="flex gap-4">
-        <Button colorScheme="gray" onClick={onCancel} disabled>
+        <Button colorScheme="gray" onClick={onCancel} disabled={disabled}>
           Cancel
         </Button>
-        <ChatbotSettingsFormSubmitButton />
+        <ChatbotSettingsFormSubmitButton disabled={disabled} />
       </div>
     </div>
   );

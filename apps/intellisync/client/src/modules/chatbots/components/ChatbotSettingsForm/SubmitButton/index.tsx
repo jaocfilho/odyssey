@@ -1,8 +1,14 @@
 import { Button } from 'tailwind-ui';
 
-export function ChatbotSettingsFormSubmitButton() {
+type ChatbotSettingsFormSubmitButtonProps = {
+  disabled?: boolean;
+};
+
+export function ChatbotSettingsFormSubmitButton({
+  disabled,
+}: ChatbotSettingsFormSubmitButtonProps) {
   return (
-    <Button form="chatbotSettingsForm" type="submit" disabled>
+    <Button form="chatbotSettingsForm" type="submit" disabled={disabled}>
       Save
     </Button>
   );
