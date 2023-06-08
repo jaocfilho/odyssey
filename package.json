@@ -16,6 +16,7 @@
     "turboflux": "pnpm --filter @turboflux/client",
     "intell-client": "pnpm --filter @intellisync/client",
     "intell-server": "pnpm --filter @intellisync/server",
+    "workshop": "pnpm --filter workshop",
     "ui": "pnpm --filter tailwind-ui"
   },
   "devDependencies": {
