@@ -1,3 +1,5 @@
+import { Textarea } from 'tailwind-ui';
+
 const activity = [
   {
     id: 1,
@@ -27,20 +29,15 @@ export function PersonaContext() {
                 <div className="h-1.5 w-1.5 rounded-full dark:bg-grayScheme-700 ring-1 dark:ring-grayScheme-900" />
               </div>
               <div className="relative flex-auto">
-                <div className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
-                  <label htmlFor="comment" className="sr-only">
-                    Add context
-                  </label>
-                  <textarea
-                    rows={2}
-                    name="comment"
-                    id="comment"
-                    className="block w-full resize-none border-0 bg-transparent py-1.5 dark:text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="Add context..."
-                    defaultValue={''}
-                    value="This is just a test comment"
-                  />
-                </div>
+                <Textarea
+                  colorScheme="emerald"
+                  className="resize-none"
+                  rows={2}
+                  name="comment"
+                  id="comment"
+                  placeholder="Add context..."
+                  defaultValue={'This is a context message'}
+                />
               </div>
             </>
           </li>
