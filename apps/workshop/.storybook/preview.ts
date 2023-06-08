@@ -1,15 +1,35 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react';
+import { withThemeByDataAttribute } from '@storybook/addon-styling';
 
-import '../src/globals.css'
+import '../src/globals.css';
+
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'dark',
+    attributeName: 'data-mode',
+  }),
+];
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    backgrounds: {
+      values: [
+        { name: 'zinc900', value: '#18181b' },
+        { name: 'zinc950', value: '#09090b' },
+        { name: 'slate900', value: '#0f172a' },
+        { name: 'slate950', value: '#020617' },
+      ],
     },
   },
 };

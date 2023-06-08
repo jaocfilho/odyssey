@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button as ButtonComponent } from 'tailwind-ui';
 
 const meta: Meta<typeof ButtonComponent> = {
-  title: 'Button',
+  title: 'Components/Button',
   component: ButtonComponent,
   args: {
     children: 'Button',
