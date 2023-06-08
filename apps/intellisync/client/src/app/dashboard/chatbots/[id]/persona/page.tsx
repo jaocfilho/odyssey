@@ -1,3 +1,5 @@
+import { ChatbotPersona } from '@/modules/chatbots/components/ChatbotPersona';
+
 export default function ChatbotDetailsPersonaPage() {
-  return <div>chatbot persona page</div>;
+  return <ChatbotPersona />;
 }
