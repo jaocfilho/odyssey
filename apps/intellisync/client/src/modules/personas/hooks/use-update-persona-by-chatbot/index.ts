@@ -11,10 +11,10 @@ export function useBaseUpdatePersonaByChatbot() {
   const { supabase } = useSupabase();
 
   const updatePersonaByChatbot = async ({
-    chatbot,
+    chatbot_id,
     params,
   }: BaseUpdatePersonaByChatbotParams) => {
-    return await baseUpdatePersonaByChatbot({ chatbot, params }, supabase);
+    return await baseUpdatePersonaByChatbot({ chatbot_id, params }, supabase);
   };
 
   return { updatePersonaByChatbot };
@@ -41,8 +41,8 @@ export function useUpdatePersonaByChatbot() {
   return useMutation({
     mutationFn: updatePersonaByChatbot,
 
-    onSettled(_, __, { chatbot }) {
-      invalidateChatbotPersonaQuery(chatbot);
+    onSettled(_, __, { chatbot_id }) {
+      invalidateChatbotPersonaQuery(chatbot_id);
     },
   });
 }

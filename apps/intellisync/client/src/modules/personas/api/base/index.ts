@@ -2,29 +2,29 @@ import type { Supabase } from '@/lib/supabase/types';
 import { PersonasUpdate } from '../../entities';
 
 export type BaseSelectPersonaByChatbotParams = {
-  chatbot: string;
+  chatbot_id: string;
 };
 
 export async function baseSelectPersonaByChatbot(
-  { chatbot }: BaseSelectPersonaByChatbotParams,
+  { chatbot_id }: BaseSelectPersonaByChatbotParams,
   supabase: Supabase
 ) {
-  return await supabase.from('personas').select('*').eq('chatbot', chatbot);
+  return await supabase.from('personas').select('*').eq('chatbot_id', chatbot_id);
 }
 
 export type BaseUpdatePersonaByChatbotParams = {
-  chatbot: string;
+  chatbot_id: string;
   params: PersonasUpdate;
 };
 
 export async function baseUpdatePersonaByChatbot(
-  { chatbot, params }: BaseUpdatePersonaByChatbotParams,
+  { chatbot_id, params }: BaseUpdatePersonaByChatbotParams,
   supabase: Supabase
 ) {
   return await supabase
     .from('personas')
     .update(params)
-    .eq('chatbot', chatbot)
+    .eq('chatbot_id', chatbot_id)
     .select()
     .single();
 }
