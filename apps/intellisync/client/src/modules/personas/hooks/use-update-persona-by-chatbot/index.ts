@@ -6,6 +6,7 @@ import {
   type BaseUpdatePersonaByChatbotParams,
 } from '../../api/base';
 import { invalidateChatbotPersonaQuery } from '@/modules/chatbots/query-keys';
+import { cancelChatbotPersonaQuery, getChatbotPersonaQuery, setChatbotPersonaQuery } from '../../helpers';
 
 export function useBaseUpdatePersonaByChatbot() {
   const { supabase } = useSupabase();
@@ -20,26 +21,27 @@ export function useBaseUpdatePersonaByChatbot() {
   return { updatePersonaByChatbot };
 }
 
-// export const handleMutation = async ({
-//   chatbot,
-//   params,
-// }: BaseUpdatePersonaByChatbotParams) => {
-//   // Cancel any outgoing refetches
-//   // so they don't overwrite our optimistic update
-//   await cancelChatbotSettingsQuery(id);
+export const handleMutation = async ({
+  chatbot_id,
+  params,
+}: BaseUpdatePersonaByChatbotParams) => {
+  // Cancel any outgoing refetches
+  // so they don't overwrite our optimistic update
+  await cancelChatbotPersonaQuery(chatbot_id);
 
-//   const previousSettings = getChatbotSettingsQuery(id);
+  const previousPersona = getChatbotPersonaQuery(chatbot_id);
 
-//   setChatbotSettingsQuery(id, settings);
+  setChatbotPersonaQuery(chatbot_id, params);
 
-//   return { previousSettings };
-// };
+  return { previousPersona };
+};
 
 export function useUpdatePersonaByChatbot() {
   const { updatePersonaByChatbot } = useBaseUpdatePersonaByChatbot();
 
   return useMutation({
     mutationFn: updatePersonaByChatbot,
+    onMutate: handleMutation,
 
     onSettled(_, __, { chatbot_id }) {
       invalidateChatbotPersonaQuery(chatbot_id);

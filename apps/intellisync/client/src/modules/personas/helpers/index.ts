@@ -1,9 +1,15 @@
-import { NullableRecord } from '@odyssey/type-utils';
 import {
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
 } from 'langchain/prompts';
 import { SystemChatMessage } from 'langchain/schema';
+
+import { queryClient } from '@/lib/react-query/client';
+import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
+import { NullableRecord } from '@odyssey/type-utils';
+import { PersonasRow, PersonasUpdate } from '../entities';
+
+// prompt helpers will be moved to a future completions module
 
 const domainPrompt = SystemMessagePromptTemplate.fromTemplate(
   'Provide a response from the {domain} domain.'
@@ -122,4 +128,26 @@ export async function createPersonaChatMessages(
   );
 
   return [initialMessage, ...messages];
+}
+
+export async function cancelChatbotPersonaQuery(chatbot_id: string) {
+  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
+  return await queryClient.cancelQueries(queryKey);
+}
+
+export function getChatbotPersonaQuery(chatbot_id: string) {
+  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
+  return queryClient.getQueryData<PersonasRow>(queryKey);
+}
+
+export function setChatbotPersonaQuery(
+  chatbot_id: string,
+  data: PersonasUpdate
+) {
+  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
+  return queryClient.setQueryData<PersonasRow>(queryKey, (old) => {
+    if (!!old) {
+      return { ...old, ...data };
+    }
+  });
 }

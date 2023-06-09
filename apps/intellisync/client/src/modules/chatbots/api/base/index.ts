@@ -4,12 +4,13 @@ import {
   baseSelectAll,
   baseDeleteById,
 } from '@/lib/supabase/api';
-import { Supabase, DatabaseFunctions, PersonasRow } from '@/lib/supabase/types';
+import { Supabase, DatabaseFunctions } from '@/lib/supabase/types';
 import {
   ChatbotsSettingsUpdate,
   type ChatbotsSettingsRow,
   ChatbotInsert,
 } from '../../entities';
+import { PersonasRow } from '@/modules/personas/entities';
 
 export type BaseSelectChatbotByIdParams = {
   id: string;
