@@ -6,7 +6,12 @@ import {
   type BaseUpdatePersonaByChatbotParams,
 } from '../../api/base';
 import { invalidateChatbotPersonaQuery } from '@/modules/chatbots/query-keys';
-import { cancelChatbotPersonaQuery, getChatbotPersonaQuery, setChatbotPersonaQuery } from '../../helpers';
+import {
+  cancelChatbotPersonaQuery,
+  getChatbotPersonaQuery,
+  setChatbotPersonaQuery
+} from '../../helpers';
+import { PersonasRow } from '../../entities';
 
 export function useBaseUpdatePersonaByChatbot() {
   const { supabase } = useSupabase();
@@ -36,12 +41,27 @@ export const handleMutation = async ({
   return { previousPersona };
 };
 
+type HandleErrorParams = {
+  chatbot_id: string;
+  context?: { previousPersona?: PersonasRow };
+};
+
+export function handleError({ chatbot_id, context }: HandleErrorParams) {
+  if (context?.previousPersona) {
+    setChatbotPersonaQuery(chatbot_id, context?.previousPersona);
+  }
+}
+
 export function useUpdatePersonaByChatbot() {
   const { updatePersonaByChatbot } = useBaseUpdatePersonaByChatbot();
 
   return useMutation({
     mutationFn: updatePersonaByChatbot,
     onMutate: handleMutation,
+
+    onError: (_, { chatbot_id }, context) => {
+      handleError({ context, chatbot_id });
+    },
 
     onSettled(_, __, { chatbot_id }) {
       invalidateChatbotPersonaQuery(chatbot_id);
