@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormRow > should render without crashing 1`] = `
+<div>
+  <li
+    class="relative flex gap-x-4"
+  >
+    <div
+      class="-bottom-6 absolute left-0 top-0 flex w-6 justify-center"
+    >
+      <div
+        class="w-px dark:bg-grayScheme-50/10"
+      />
+    </div>
+    children
+  </li>
+</div>
+`;

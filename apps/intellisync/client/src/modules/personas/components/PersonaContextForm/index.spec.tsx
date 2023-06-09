@@ -39,7 +39,7 @@ describe('PersonaContextForm', () => {
     const addRowButton = screen.getByRole('addRow');
     await userEvent.click(addRowButton);
 
-    const element = screen.getByRole('removeRow');
+    const element = screen.getByTestId('removeRowButton');
     expect(element).toBeInTheDocument();
   });
 
@@ -49,7 +49,7 @@ describe('PersonaContextForm', () => {
     const addRowButton = screen.getByRole('addRow');
     await userEvent.click(addRowButton);
 
-    const removeRowButton = screen.getByRole('removeRow');
+    const removeRowButton = screen.getByTestId('removeRowButton');
     await userEvent.click(removeRowButton);
 
     const textareas = screen.getAllByRole('textbox');

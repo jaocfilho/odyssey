@@ -3,11 +3,13 @@
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { PlusCircleIcon, MinusCircleIcon } from '@heroicons/react/24/outline';
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
 
 import { Button, Textarea } from 'tailwind-ui';
 import { z } from 'zod';
 import { RemoveRowButton } from './RemoveRowButton';
+import { AddRowButton } from './AddRowButton';
+import { FormRow } from './FormRow';
 
 const schema = z.object({
   context: z
@@ -47,10 +49,7 @@ export function PersonaContextForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <ul role="list" className="mt-6 space-y-6">
         {fields.map((field, index) => (
-          <li key={field.id} className="relative flex gap-x-4">
-            <div className="-bottom-6 absolute left-0 top-0 flex w-6 justify-center">
-              <div className="w-px dark:bg-grayScheme-50/10" />
-            </div>
+          <FormRow key={field.id}>
             <>
               <RemoveRowButton removeRow={() => removeRow(index)} />
               <Textarea
@@ -59,20 +58,14 @@ export function PersonaContextForm() {
                 {...register(`context.${index}.value`)}
               />
             </>
-          </li>
+          </FormRow>
         ))}
         <li className="relative flex gap-x-4">
           <div className="h-6 absolute left-0 top-0 flex w-6 justify-center">
             <div className="w-px dark:bg-grayScheme-50/10" />
           </div>
           <div className="flex justify-between items-center w-full">
-            <div className="relative flex h-6 w-6 flex-none items-center justify-center dark:bg-grayScheme-950">
-              <PlusCircleIcon
-                onClick={addRow}
-                role="addRow"
-                className="h-6 w-6 dark:text-grayScheme-400 hover:dark:text-grayScheme-200 cursor-pointer"
-              />
-            </div>
+            <AddRowButton addRow={addRow} />
             <div className="flex gap-4">
               <Button
                 disabled={!formState.isDirty}

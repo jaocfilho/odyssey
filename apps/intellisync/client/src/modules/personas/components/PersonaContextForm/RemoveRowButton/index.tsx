@@ -9,6 +9,7 @@ export function RemoveRowButton({ removeRow }: RemoveRowButtonProps) {
     <div
       role="button"
       onClick={removeRow}
+      data-testid="removeRowButton"
       className="relative flex h-6 w-6 flex-none items-center justify-center dark:bg-grayScheme-950"
     >
       <MinusCircleIcon className="h-6 w-6 dark:text-grayScheme-400 hover:dark:text-red-500 cursor-pointer" />

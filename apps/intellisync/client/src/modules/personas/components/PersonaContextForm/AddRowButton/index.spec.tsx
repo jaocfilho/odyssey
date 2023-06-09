@@ -2,28 +2,28 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
-import { RemoveRowButton } from '.';
+import { AddRowButton } from '.';
 
-describe('RemoveRowButton', () => {
-  const removeRow = vi.fn();
+describe('AddRowButton', () => {
+  const addRow = vi.fn();
 
   afterEach(() => {
     cleanup();
   });
 
   it('should render a button', () => {
-    render(<RemoveRowButton removeRow={removeRow} />);
+    render(<AddRowButton addRow={addRow} />);
 
     const element = screen.getByRole('button');
     expect(element).toBeInTheDocument();
   });
 
-  it('should call removeRow when clicked', async () => {
-    render(<RemoveRowButton removeRow={removeRow} />);
+  it('should call addRow when clicked', async () => {
+    render(<AddRowButton addRow={addRow} />);
 
     const element = screen.getByRole('button');
     await userEvent.click(element);
 
-    expect(removeRow).toHaveBeenCalled();
+    expect(addRow).toHaveBeenCalled();
   });
 });
