@@ -1,5 +1,4 @@
 import { chatbotsUrls } from '@/modules/chatbots/urls';
-import { personasUrls } from '@/modules/personas/urls';
 
 export const appsUrls = {
   base: '/dashboard/apps' as const,
@@ -21,5 +20,4 @@ export const appsUrls = {
 export const urlPaths = {
   apps: appsUrls,
   chatbots: chatbotsUrls,
-  personas: personasUrls,
 };

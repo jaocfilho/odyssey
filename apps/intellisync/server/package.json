@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "supabase": "exec supabase",
+    "create-migration": "supabase db diff --file",
     "preview": "vite preview"
   },
   "devDependencies": {
