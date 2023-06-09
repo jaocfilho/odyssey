@@ -28,6 +28,7 @@ export interface Database {
           key?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       apps: {
         Row: {
@@ -54,6 +55,7 @@ export interface Database {
           name?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       chatbots: {
         Row: {
@@ -77,6 +79,14 @@ export interface Database {
           organization_id?: string;
           updated_at?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'chatbots_organization_id_fkey';
+            columns: ['organization_id'];
+            referencedRelation: 'organizations';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       chatbots_settings: {
         Row: {
@@ -103,6 +113,14 @@ export interface Database {
           temperature?: number;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'chatbots_settings_chatbot_fkey';
+            columns: ['chatbot'];
+            referencedRelation: 'chatbots';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       organization_members: {
         Row: {
@@ -123,6 +141,20 @@ export interface Database {
           organization_id?: string | null;
           profile_id?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'organization_members_organization_id_fkey';
+            columns: ['organization_id'];
+            referencedRelation: 'organizations';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'organization_members_profile_id_fkey';
+            columns: ['profile_id'];
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       organizations: {
         Row: {
@@ -149,11 +181,26 @@ export interface Database {
           owner?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'organizations_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'organizations_owner_fkey';
+            columns: ['owner'];
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       personas: {
         Row: {
           answer_size: string | null;
-          chatbot: string;
+          chatbot_id: string;
+          context: string[];
           created_at: string | null;
           domain: string | null;
           id: string;
@@ -168,7 +215,8 @@ export interface Database {
         };
         Insert: {
           answer_size?: string | null;
-          chatbot: string;
+          chatbot_id: string;
+          context?: string[];
           created_at?: string | null;
           domain?: string | null;
           id?: string;
@@ -183,7 +231,8 @@ export interface Database {
         };
         Update: {
           answer_size?: string | null;
-          chatbot?: string;
+          chatbot_id?: string;
+          context?: string[];
           created_at?: string | null;
           domain?: string | null;
           id?: string;
@@ -196,6 +245,14 @@ export interface Database {
           topic?: string | null;
           updated_at?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'personas_chatbot_id_fkey';
+            columns: ['chatbot_id'];
+            referencedRelation: 'chatbots';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       profiles: {
         Row: {
@@ -216,6 +273,14 @@ export interface Database {
           last_used_organization?: string | null;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: 'profiles_last_used_organization_fkey';
+            columns: ['last_used_organization'];
+            referencedRelation: 'organizations';
+            referencedColumns: ['id'];
+          }
+        ];
       };
     };
     Views: {
