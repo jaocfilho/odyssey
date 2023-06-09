@@ -12,7 +12,7 @@
   "devDependencies": {
     "@odyssey/tests": "workspace:*",
     "@odyssey/type-utils": "workspace:*",
-    "eslint": "8.37.0",
+    "eslint": "8.42.0",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "^5.1.3",

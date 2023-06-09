@@ -13,7 +13,7 @@
     "dayjs": "^1.11.7"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
+    "eslint": "8.42.0",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "^5.1.3",
