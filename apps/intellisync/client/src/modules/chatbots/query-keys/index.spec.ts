@@ -4,6 +4,7 @@ import {
   chatbotsQueryKeys,
   invalidateAllChatbotsQuery,
   invalidateChatbotSettingsQuery,
+  invalidateChatbotPersonaQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -32,6 +33,11 @@ describe('chatbotsQueryKeys', () => {
     const settingsKey = chatbotsQueryKeys.settings('id');
     expect(settingsKey).toEqual(['chatbots', 'id', 'settings']);
   });
+
+  it('should return the persona key', () => {
+    const personaKey = chatbotsQueryKeys.persona('id');
+    expect(personaKey).toEqual(['chatbots', 'id', 'persona']);
+  });
 });
 
 describe('invalidateAllChatbotsQuery', () => {
@@ -49,6 +55,16 @@ describe('invalidateChatbotSettingsQuery', () => {
     const queryKey = chatbotsQueryKeys.settings('id');
 
     invalidateChatbotSettingsQuery('id');
+
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
+  });
+});
+
+describe('invalidateChatbotPersonaQuery', () => {
+  it('should invalidate the chatbot persona query', () => {
+    const queryKey = chatbotsQueryKeys.persona('id');
+
+    invalidateChatbotPersonaQuery('id');
 
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
   });

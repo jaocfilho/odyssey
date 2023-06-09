@@ -14,7 +14,7 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export function useLoginForm() {
-  const { redirectToDashboard } = useNavigation();
+  const { redirectToChatbots } = useNavigation();
 
   const methods = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -30,7 +30,7 @@ export function useLoginForm() {
     } = await clientSignInWithEmail({ email, password });
 
     if (session?.user.id) {
-      redirectToDashboard();
+      redirectToChatbots();
     }
   };
 
