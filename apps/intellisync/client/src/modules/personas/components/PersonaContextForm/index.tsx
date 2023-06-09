@@ -10,6 +10,8 @@ import { z } from 'zod';
 import { RemoveRowButton } from './RemoveRowButton';
 import { AddRowButton } from './AddRowButton';
 import { FormRow } from './FormRow';
+import { LastRow } from './LastRow';
+import { rest } from 'msw';
 
 const schema = z.object({
   context: z
@@ -60,26 +62,11 @@ export function PersonaContextForm() {
             </>
           </FormRow>
         ))}
-        <li className="relative flex gap-x-4">
-          <div className="h-6 absolute left-0 top-0 flex w-6 justify-center">
-            <div className="w-px dark:bg-grayScheme-50/10" />
-          </div>
-          <div className="flex justify-between items-center w-full">
-            <AddRowButton addRow={addRow} />
-            <div className="flex gap-4">
-              <Button
-                disabled={!formState.isDirty}
-                colorScheme="gray"
-                onClick={() => reset()}
-              >
-                Cancel
-              </Button>
-              <Button type="submit" disabled={!formState.isDirty}>
-                Save
-              </Button>
-            </div>
-          </div>
-        </li>
+        <LastRow
+          addRow={addRow}
+          reset={() => reset()}
+          disabled={!formState.isDirty}
+        />
       </ul>
     </form>
   );

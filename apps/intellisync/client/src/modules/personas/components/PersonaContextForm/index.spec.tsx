@@ -16,41 +16,44 @@ describe('PersonaContextForm', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('should render an element with the role addRow', () => {
+  it('should render an add row button', () => {
     render(<PersonaContextForm />);
 
-    const element = screen.getByRole('addRow');
+    const element = screen.getByTestId('addRowButton');
     expect(element).toBeInTheDocument();
   });
 
   it('should display another textarea when addRow button is clicked', async () => {
     render(<PersonaContextForm />);
 
-    const element = screen.getByRole('addRow');
-    await userEvent.click(element);
+    const button = screen.getByTestId('addRowButton');
+    await userEvent.click(button);
 
     const textareas = screen.getAllByRole('textbox');
     expect(textareas).toHaveLength(2);
   });
 
-  it('should render an element with the role removeRow if there are more than one textareas', async () => {
+  it('should render a remove row button for each textarea', async () => {
     render(<PersonaContextForm />);
 
-    const addRowButton = screen.getByRole('addRow');
+    const addRowButton = screen.getByTestId('addRowButton');
     await userEvent.click(addRowButton);
 
-    const element = screen.getByTestId('removeRowButton');
-    expect(element).toBeInTheDocument();
+    const removeRowButtons = screen.getAllByTestId('removeRowButton');
+
+    const textAreas = screen.getAllByRole('textbox');
+
+    expect(removeRowButtons).toHaveLength(textAreas.length);
   });
 
   it('should remove a textarea when removeRow button is clicked', async () => {
     render(<PersonaContextForm />);
 
-    const addRowButton = screen.getByRole('addRow');
+    const addRowButton = screen.getByTestId('addRowButton');
     await userEvent.click(addRowButton);
 
-    const removeRowButton = screen.getByTestId('removeRowButton');
-    await userEvent.click(removeRowButton);
+    const removeRowButtons = screen.getAllByTestId('removeRowButton');
+    await userEvent.click(removeRowButtons[0]);
 
     const textareas = screen.getAllByRole('textbox');
     expect(textareas).toHaveLength(1);
