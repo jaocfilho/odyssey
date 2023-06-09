@@ -1,4 +1,8 @@
-import { TextareaHTMLAttributes } from 'react';
+import {
+  type TextareaHTMLAttributes,
+  type ForwardedRef,
+  forwardRef,
+} from 'react';
 
 import { getStyles, type TextareaStylesProps } from './styles';
 import { classNames } from '../../utils';
@@ -6,12 +10,19 @@ import { classNames } from '../../utils';
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
   TextareaStylesProps;
 
-export function Textarea({
-  className,
-  colorScheme = 'indigo',
-  ...rest
-}: TextAreaProps) {
+function BaseTextarea(
+  { className, colorScheme = 'indigo', ...rest }: TextAreaProps,
+  ref: ForwardedRef<HTMLTextAreaElement>
+) {
   const styles = getStyles({ colorScheme });
 
-  return <textarea className={classNames(styles, className ?? '')} {...rest} />;
+  return (
+    <textarea
+      className={classNames(styles, className ?? '')}
+      {...rest}
+      ref={ref}
+    />
+  );
 }
+
+export const Textarea = forwardRef(BaseTextarea);

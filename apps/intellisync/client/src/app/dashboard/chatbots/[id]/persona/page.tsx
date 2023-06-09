@@ -1,4 +1,4 @@
-import { ChatbotPersona } from '@/modules/chatbots/components/ChatbotPersona';
+import { ChatbotPersona } from '@/modules/personas/components/ChatbotPersona';
 
 export default function ChatbotDetailsPersonaPage() {
   return <ChatbotPersona />;

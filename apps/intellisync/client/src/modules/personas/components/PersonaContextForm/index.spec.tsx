@@ -1,8 +1,14 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
-import userEvent from "@testing-library/user-event";
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
+
+import { PersonaContextForm } from '.';
 
 describe('PersonaContextForm', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('should display a textarea on initial render', () => {
     render(<PersonaContextForm />);
 
@@ -32,7 +38,7 @@ describe('PersonaContextForm', () => {
 
     const addRowButton = screen.getByRole('addRow');
     await userEvent.click(addRowButton);
-  
+
     const element = screen.getByRole('removeRow');
     expect(element).toBeInTheDocument();
   });
@@ -84,5 +90,5 @@ describe('PersonaContextForm', () => {
     await userEvent.click(cancelButton);
 
     expect(textarea).toHaveValue('');
-  })
-})
+  });
+});

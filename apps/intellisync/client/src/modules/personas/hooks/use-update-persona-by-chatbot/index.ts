@@ -9,7 +9,7 @@ import { invalidateChatbotPersonaQuery } from '@/modules/chatbots/query-keys';
 import {
   cancelChatbotPersonaQuery,
   getChatbotPersonaQuery,
-  setChatbotPersonaQuery
+  setChatbotPersonaQuery,
 } from '../../helpers';
 import { PersonasRow } from '../../entities';
 

@@ -1,3 +1,4 @@
+import { PersonaContextForm } from '../PersonaContextForm';
 import { PersonaContext } from './PersonaContext';
 
 export function ChatbotPersona() {
@@ -51,7 +52,7 @@ export function ChatbotPersona() {
           </div>
 
           <div className="lg:col-start-3">
-            <PersonaContext />
+            <PersonaContextForm />
           </div>
         </div>
       </div>
