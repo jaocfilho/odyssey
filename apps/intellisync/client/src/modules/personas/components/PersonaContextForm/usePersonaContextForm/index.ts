@@ -3,23 +3,25 @@ import { z } from 'zod';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { PersonasRow } from '@/modules/personas/entities';
+
 const schema = z.object({
-  context: z
-    .array(
-      z.object({
-        value: z.string(),
-      })
-    )
-    .transform((context) => context.map((item) => item.value)),
+  context: z.array(
+    z.object({
+      value: z.string(),
+    })
+  ),
 });
 
-export type PersonaContextFormInputs = z.input<typeof schema>;
+export type PersonaContextFormData = z.infer<typeof schema>;
 
 type UsePersonaContextFormProps = {
-  defaultValues?: PersonaContextFormInputs;
+  onSubmit: (data: PersonasRow['context']) => void;
+  defaultValues?: PersonaContextFormData;
 };
 
 export function usePersonaContextForm({
+  onSubmit,
   defaultValues,
 }: UsePersonaContextFormProps) {
   const { control, register, handleSubmit, formState, reset } = useForm({
@@ -46,12 +48,17 @@ export function usePersonaContextForm({
 
   const resetForm = () => reset();
 
+  const submit = handleSubmit((data) => {
+    const context = data.context.map((item) => item.value);
+    onSubmit(context);
+  });
+
   return {
     addRow,
     removeRow,
     register,
     fields,
-    handleSubmit,
+    submit,
     formState,
     resetForm,
   };

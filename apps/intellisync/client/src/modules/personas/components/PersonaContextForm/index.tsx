@@ -1,37 +1,29 @@
 'use client';
 
-import { SubmitHandler } from 'react-hook-form';
-
 import { Textarea } from 'tailwind-ui';
 import { RemoveRowButton } from './RemoveRowButton';
 import { FormRow } from './FormRow';
 import { LastRow } from './LastRow';
 import {
-  type PersonaContextFormInputs,
+  type PersonaContextFormData,
   usePersonaContextForm,
 } from './usePersonaContextForm';
+import { type PersonasRow } from '../../entities';
 
 type PersonaContextFormProps = {
-  onSubmit: SubmitHandler<PersonaContextFormInputs>;
-  defaultValues?: PersonaContextFormInputs;
+  onSubmit: (context: PersonasRow['context']) => void;
+  defaultValues?: PersonaContextFormData;
 };
 
 export function PersonaContextForm({
   onSubmit,
   defaultValues,
 }: PersonaContextFormProps) {
-  const {
-    addRow,
-    fields,
-    formState,
-    register,
-    removeRow,
-    handleSubmit,
-    resetForm,
-  } = usePersonaContextForm({ defaultValues });
+  const { addRow, fields, formState, register, removeRow, submit, resetForm } =
+    usePersonaContextForm({ defaultValues, onSubmit });
 
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+    <form onSubmit={submit}>
       <ul role="list" className="mt-6 space-y-6">
         {fields.map((field, index) => (
           <FormRow key={field.id}>

@@ -1,18 +1,23 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { usePersonaContextForm } from '.';
 import { assertObjectProperties } from '@odyssey/tests';
 
 describe('usePersonaContextForm', () => {
+  const onSubmit = vi.fn();
+
   const { result, unmount, rerender } = renderHook(
     (props) => usePersonaContextForm(props),
     {
-      initialProps: {},
+      initialProps: {
+        onSubmit,
+      },
     }
   );
 
   beforeEach(() => {
+    vi.restoreAllMocks();
     rerender();
   });
 
@@ -26,7 +31,7 @@ describe('usePersonaContextForm', () => {
       'removeRow',
       'register',
       'fields',
-      'handleSubmit',
+      'submit',
       'formState',
       'resetForm',
     ];
@@ -66,6 +71,7 @@ describe('usePersonaContextForm', () => {
         defaultValues: {
           context: [{ value: 'test' }],
         },
+        onSubmit,
       })
     );
 
@@ -73,17 +79,17 @@ describe('usePersonaContextForm', () => {
     expect(result.current.fields[0].value).toBe('test');
   });
 
-  it('should submit an array of strings', () => {
+  it('should pass an array of strings to onSubmit when submit is called', async () => {
     const { result } = renderHook(() =>
       usePersonaContextForm({
         defaultValues: {
           context: [{ value: 'test' }],
         },
+        onSubmit,
       })
     );
 
-    result.current.handleSubmit((data) => {
-      expect(data.context).toEqual(['test']);
-    })();
+    await result.current.submit();
+    expect(onSubmit).toHaveBeenCalledWith(['test']);
   });
 });

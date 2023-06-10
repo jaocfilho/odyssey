@@ -1,6 +1,4 @@
-'use client';
-
-import { PersonaContextForm } from '../PersonaContextForm';
+import { ContextArea } from './ContextArea';
 
 export function ChatbotPersona() {
   return (
@@ -52,9 +50,7 @@ export function ChatbotPersona() {
             </dl>
           </div>
 
-          <div className="lg:col-start-3">
-            <PersonaContextForm onSubmit={console.log} />
-          </div>
+          <ContextArea />
         </div>
       </div>
     </main>

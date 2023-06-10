@@ -145,8 +145,6 @@ describe('PersonaContextForm', () => {
     const saveButton = screen.getByRole('button', { name: 'Save' });
     await userEvent.click(saveButton);
 
-    expect(onSubmit).toHaveBeenCalledWith({
-      context: ['test'],
-    });
+    expect(onSubmit).toHaveBeenCalledWith(['test']);
   });
 });
