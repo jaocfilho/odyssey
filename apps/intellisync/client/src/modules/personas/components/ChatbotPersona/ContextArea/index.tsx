@@ -3,6 +3,17 @@
 import { useUpdatePersonaByChatbot } from '@/modules/personas/hooks/use-update-persona-by-chatbot';
 import { PersonaContextForm } from '../../PersonaContextForm';
 import { type PersonasRow } from '@/modules/personas/entities';
+import { type PersonaContextFormData } from '../../PersonaContextForm/usePersonaContextForm';
+
+export function formatContextToFormValues(
+  context: PersonasRow['context']
+): PersonaContextFormData {
+  const formValues = context.map((item) => ({
+    value: item,
+  }));
+
+  return { context: formValues };
+}
 
 type ContextAreaProps = {
   chatbot_id: PersonasRow['chatbot_id'];
@@ -19,9 +30,14 @@ export function ContextArea({ chatbot_id, context }: ContextAreaProps) {
     });
   };
 
+  const initialValues = formatContextToFormValues(context);
+
   return (
     <div className="lg:col-start-3">
-      <PersonaContextForm onSubmit={handleSubmit} />
+      <PersonaContextForm
+        defaultValues={initialValues}
+        onSubmit={handleSubmit}
+      />
     </div>
   );
 }
