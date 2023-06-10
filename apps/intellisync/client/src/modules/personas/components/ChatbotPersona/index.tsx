@@ -1,6 +1,12 @@
+import { PersonasRow } from '../../entities';
 import { ContextArea } from './ContextArea';
 
-export function ChatbotPersona() {
+type ChatbotPersonaProps = {
+  persona: PersonasRow;
+};
+
+export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
+  console.log(persona);
   return (
     <main>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">

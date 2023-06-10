@@ -9,7 +9,12 @@ export async function baseSelectPersonaByChatbot(
   { chatbot_id }: BaseSelectPersonaByChatbotParams,
   supabase: Supabase
 ) {
-  return await supabase.from('personas').select('*').eq('chatbot_id', chatbot_id);
+  return await supabase
+    .from('personas')
+    .select('*')
+    .eq('chatbot_id', chatbot_id)
+    .limit(1)
+    .single();
 }
 
 export type BaseUpdatePersonaByChatbotParams = {
