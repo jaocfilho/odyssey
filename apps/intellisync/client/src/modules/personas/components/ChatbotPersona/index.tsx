@@ -1,4 +1,7 @@
+'use client';
+
 import { PersonasRow } from '../../entities';
+import { useSelectPersonaByChatbot } from '../../hooks/use-select-persona-by-chatbot';
 import { ContextArea } from './ContextArea';
 
 type ChatbotPersonaProps = {
@@ -6,6 +9,11 @@ type ChatbotPersonaProps = {
 };
 
 export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
+  const personaQuery = useSelectPersonaByChatbot(
+    { chatbot_id: persona.chatbot_id },
+    { initialData: persona }
+  );
+
   return (
     <main>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -57,7 +65,7 @@ export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
 
           <ContextArea
             chatbot_id={persona.chatbot_id}
-            context={persona.context}
+            context={personaQuery.data!.context}
           />
         </div>
       </div>
