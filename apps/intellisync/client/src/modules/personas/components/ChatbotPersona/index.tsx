@@ -1,5 +1,6 @@
+'use client';
+
 import { PersonaContextForm } from '../PersonaContextForm';
-import { PersonaContext } from './PersonaContext';
 
 export function ChatbotPersona() {
   return (
@@ -52,7 +53,7 @@ export function ChatbotPersona() {
           </div>
 
           <div className="lg:col-start-3">
-            <PersonaContextForm />
+            <PersonaContextForm onSubmit={console.log} />
           </div>
         </div>
       </div>

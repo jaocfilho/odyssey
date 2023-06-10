@@ -26,4 +26,11 @@ describe('RemoveRowButton', () => {
 
     expect(removeRow).toHaveBeenCalled();
   });
+
+  it('should not render a button if is first row', () => {
+    render(<RemoveRowButton removeRow={removeRow} isFirstRow />);
+
+    const element = screen.queryByRole('button');
+    expect(element).not.toBeInTheDocument();
+  });
 });

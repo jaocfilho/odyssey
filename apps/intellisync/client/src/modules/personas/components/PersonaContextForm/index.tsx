@@ -1,59 +1,45 @@
 'use client';
 
-import { useFieldArray, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { SubmitHandler } from 'react-hook-form';
 
-import { PlusCircleIcon } from '@heroicons/react/24/outline';
-
-import { Button, Textarea } from 'tailwind-ui';
-import { z } from 'zod';
+import { Textarea } from 'tailwind-ui';
 import { RemoveRowButton } from './RemoveRowButton';
-import { AddRowButton } from './AddRowButton';
 import { FormRow } from './FormRow';
 import { LastRow } from './LastRow';
-import { rest } from 'msw';
+import {
+  type PersonaContextFormInputs,
+  usePersonaContextForm,
+} from './usePersonaContextForm';
 
-const schema = z.object({
-  context: z
-    .array(
-      z.object({
-        value: z.string(),
-      })
-    )
-    .transform((context) => context.map((item) => item.value)),
-});
+type PersonaContextFormProps = {
+  onSubmit: SubmitHandler<PersonaContextFormInputs>;
+  defaultValues?: PersonaContextFormInputs;
+};
 
-export function PersonaContextForm() {
-  const { control, register, formState, reset, handleSubmit } = useForm({
-    defaultValues: {
-      context: [{ value: '' }],
-    },
-    resolver: zodResolver(schema),
-  });
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'context',
-  });
-
-  const addRow = () => {
-    append({ value: '' });
-  };
-
-  const removeRow = (index: number) => {
-    remove(index);
-  };
-
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+export function PersonaContextForm({
+  onSubmit,
+  defaultValues,
+}: PersonaContextFormProps) {
+  const {
+    addRow,
+    fields,
+    formState,
+    register,
+    removeRow,
+    handleSubmit,
+    resetForm,
+  } = usePersonaContextForm({ defaultValues });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit((data) => onSubmit(data))}>
       <ul role="list" className="mt-6 space-y-6">
         {fields.map((field, index) => (
           <FormRow key={field.id}>
             <>
-              <RemoveRowButton removeRow={() => removeRow(index)} />
+              <RemoveRowButton
+                isFirstRow={index === 0}
+                removeRow={() => removeRow(index)}
+              />
               <Textarea
                 colorScheme="emerald"
                 className="resize-none"
@@ -64,7 +50,7 @@ export function PersonaContextForm() {
         ))}
         <LastRow
           addRow={addRow}
-          reset={() => reset()}
+          reset={resetForm}
           disabled={!formState.isDirty}
         />
       </ul>
