@@ -6,7 +6,6 @@ type ChatbotPersonaProps = {
 };
 
 export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
-  console.log(persona);
   return (
     <main>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -56,7 +55,10 @@ export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
             </dl>
           </div>
 
-          <ContextArea />
+          <ContextArea
+            chatbot_id={persona.chatbot_id}
+            context={persona.context}
+          />
         </div>
       </div>
     </main>

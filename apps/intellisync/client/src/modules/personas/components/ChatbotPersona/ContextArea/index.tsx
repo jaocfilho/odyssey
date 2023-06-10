@@ -4,12 +4,19 @@ import { useUpdatePersonaByChatbot } from '@/modules/personas/hooks/use-update-p
 import { PersonaContextForm } from '../../PersonaContextForm';
 import { type PersonasRow } from '@/modules/personas/entities';
 
-export function ContextArea() {
+type ContextAreaProps = {
+  chatbot_id: PersonasRow['chatbot_id'];
+  context: PersonasRow['context'];
+};
+
+export function ContextArea({ chatbot_id, context }: ContextAreaProps) {
   const updateMutation = useUpdatePersonaByChatbot();
 
   const handleSubmit = (data: PersonasRow['context']) => {
-    // updateMutation.mutate();
-    console.log(data);
+    updateMutation.mutate({
+      chatbot_id,
+      params: { context: data },
+    });
   };
 
   return (

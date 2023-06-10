@@ -30,6 +30,5 @@ export async function baseUpdatePersonaByChatbot(
     .from('personas')
     .update(params)
     .eq('chatbot_id', chatbot_id)
-    .select()
-    .single();
+    .select();
 }
