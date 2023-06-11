@@ -1,10 +1,8 @@
 'use client';
 
 import { ChatbotSettingsForm } from '../../ChatbotSettingsForm';
-import { SectionContainer } from '../SectionContainer';
-import { SectionContent } from '../SectionContent';
-import { SectionInfo } from '../SectionInfo';
 import { ButtonsArea } from './ButtonsArea';
+import { SectionList } from '@/components/SectionList';
 import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
 import { useGeneralSettingsSection } from './use-general-settings-section';
 
@@ -21,14 +19,14 @@ export function GeneralSettingsSection({
     useGeneralSettingsSection({ id, initialData });
 
   return (
-    <SectionContainer>
-      <SectionInfo title="General settings" />
-      <SectionContent>
+    <SectionList.Container>
+      <SectionList.Info title="General settings" />
+      <SectionList.Content>
         <div className="sm:max-w-xl">
           <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
         </div>
         <ButtonsArea onCancel={handleCancel} disabled={buttonsAreDisabled} />
-      </SectionContent>
-    </SectionContainer>
+      </SectionList.Content>
+    </SectionList.Container>
   );
 }
