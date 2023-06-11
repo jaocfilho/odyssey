@@ -147,4 +147,45 @@ describe('PersonaContextForm', () => {
 
     expect(onSubmit).toHaveBeenCalledWith(['test']);
   });
+
+  it('should disable the save button after the form is submitted', async () => {
+    render(<PersonaContextForm onSubmit={onSubmit} />);
+
+    const textarea = screen.getByRole('textbox');
+    await userEvent.type(textarea, 'test');
+
+    const saveButton = screen.getByRole('button', { name: 'Save' });
+    expect(saveButton).toBeEnabled();
+
+    await userEvent.click(saveButton);
+
+    expect(saveButton).toBeDisabled();
+  });
+
+  it('should disable the cancel button after the form is submitted', async () => {
+    render(<PersonaContextForm onSubmit={onSubmit} />);
+
+    const textarea = screen.getByRole('textbox');
+    await userEvent.type(textarea, 'test');
+
+    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
+    expect(cancelButton).toBeEnabled();
+
+    const saveButton = screen.getByRole('button', { name: 'Save' });
+    await userEvent.click(saveButton);
+
+    expect(cancelButton).toBeDisabled();
+  });
+
+  it('should keep the same values after form is submitted', async () => {
+    render(<PersonaContextForm onSubmit={onSubmit} />);
+
+    const textarea = screen.getByRole('textbox');
+    await userEvent.type(textarea, 'test');
+
+    const saveButton = screen.getByRole('button', { name: 'Save' });
+    await userEvent.click(saveButton);
+
+    expect(textarea).toHaveValue('test');
+  });
 });
