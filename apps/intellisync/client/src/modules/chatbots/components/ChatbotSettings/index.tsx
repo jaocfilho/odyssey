@@ -1,10 +1,10 @@
 import { GeneralSettingsSection } from './GeneralSettingsSection';
-import { SelectChatbotSettingsByIdReturnData } from '../../api/base';
 import { DeleteChatbotSection } from './DeleteChatbotSection';
+import { ChatbotsSettingsRow } from '../../entities';
 
 type ChatbotSettingsProps = {
   id: string;
-  initialData: NonNullable<SelectChatbotSettingsByIdReturnData>;
+  initialData: ChatbotsSettingsRow;
 };
 
 export function ChatbotSettings({ id, initialData }: ChatbotSettingsProps) {
