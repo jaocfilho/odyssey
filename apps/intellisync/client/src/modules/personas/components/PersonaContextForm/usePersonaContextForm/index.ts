@@ -24,14 +24,13 @@ export function usePersonaContextForm({
   onSubmit,
   defaultValues,
 }: UsePersonaContextFormProps) {
-  const { control, register, handleSubmit, formState, reset } = useForm({
-    defaultValues: defaultValues ?? {
-      context: [{ value: '' }],
-    },
-
-    // TODO - fix zodResolver type
-    resolver: zodResolver(schema),
-  });
+  const { control, register, handleSubmit, formState, reset, getValues } =
+    useForm({
+      defaultValues: defaultValues ?? {
+        context: [{ value: '' }],
+      },
+      resolver: zodResolver(schema),
+    });
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -52,6 +51,8 @@ export function usePersonaContextForm({
     const context = data.context.map((item) => item.value);
     onSubmit(context);
   });
+
+  formState.isSubmitSuccessful && reset(getValues());
 
   return {
     addRow,

@@ -24,8 +24,8 @@ importers:
         specifier: ^2.0.16
         version: 2.0.16(react@18.2.0)
       '@hookform/resolvers':
-        specifier: ^3.0.0
-        version: 3.0.0(react-hook-form@7.43.9)
+        specifier: ^3.1.0
+        version: 3.1.0(react-hook-form@7.44.3)
       '@odyssey/arrays':
         specifier: workspace:*
         version: link:../../../packages/arrays
@@ -63,14 +63,14 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.43.9
-        version: 7.43.9(react@18.2.0)
+        specifier: ^7.44.3
+        version: 7.44.3(react@18.2.0)
       tailwind-ui:
         specifier: workspace:*
         version: link:../../../packages/tailwind-ui
       zod:
-        specifier: ^3.20.6
-        version: 3.20.6
+        specifier: ^3.21.4
+        version: 3.21.4
     devDependencies:
       '@odyssey/tests':
         specifier: workspace:*
@@ -3524,12 +3524,12 @@ packages:
     dependencies:
       react: 18.2.0
 
-  /@hookform/resolvers@3.0.0(react-hook-form@7.43.9):
-    resolution: {integrity: sha512-SQPefakODpyq25b/phHXDKCdRrEfPcCXV7B4nAa139wE1DxufYbbNAjeo0T04ZXBokRxZ+wD8iA1kkVMa3QwjQ==}
+  /@hookform/resolvers@3.1.0(react-hook-form@7.44.3):
+    resolution: {integrity: sha512-z0A8K+Nxq+f83Whm/ajlwE6VtQlp/yPHZnXw7XWVPIGm1Vx0QV8KThU3BpbBRfAZ7/dYqCKKBNnQh85BkmBKkA==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
-      react-hook-form: 7.43.9(react@18.2.0)
+      react-hook-form: 7.44.3(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -11332,8 +11332,8 @@ packages:
       react: 18.2.0
     dev: true
 
-  /react-hook-form@7.43.9(react@18.2.0):
-    resolution: {integrity: sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==}
+  /react-hook-form@7.44.3(react@18.2.0):
+    resolution: {integrity: sha512-/tHId6p2ViAka1wECMw8FEPn/oz/w226zehHrJyQ1oIzCBNMIJCaj6ZkQcv+MjDxYh9MWR7RQic7Qqwe4a5nkw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18

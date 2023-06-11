@@ -33,7 +33,6 @@ export function useCustomForm<Schema extends z.ZodTypeAny>({
   ...rest
 }: UseCustomFormProps<Schema>) {
   const methods = useForm({
-    // TODO - fix zodResolver type
     resolver: zodResolver(schema),
     defaultValues,
     ...rest,
