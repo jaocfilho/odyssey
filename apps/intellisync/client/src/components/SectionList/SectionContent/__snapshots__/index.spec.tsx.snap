@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SectionContent > should render without crashing 1`] = `
+<div>
+  <div
+    class="md:col-span-2"
+  >
+    children
+  </div>
+</div>
+`;

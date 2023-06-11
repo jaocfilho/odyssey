@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SectionListComponent > should render without crashing 1`] = `
+<div>
+  <div
+    class="divide-y dark:divide-zinc-50/10"
+  >
+    children
+  </div>
+</div>
+`;
