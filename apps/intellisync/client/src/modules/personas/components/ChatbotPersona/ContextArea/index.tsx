@@ -33,7 +33,7 @@ export function ContextArea({ chatbot_id, context }: ContextAreaProps) {
   const initialValues = formatContextToFormValues(context);
 
   return (
-    <div className="lg:col-start-3">
+    <div className="lg:col-start-3 py-16">
       <h2 className="text-base font-semibold leading-7 dark:text-white">
         Context
       </h2>
