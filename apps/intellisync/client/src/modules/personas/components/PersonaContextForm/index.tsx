@@ -33,6 +33,7 @@ export function PersonaContextForm({
                 removeRow={() => removeRow(index)}
               />
               <Textarea
+                rows={3}
                 colorScheme="emerald"
                 className="resize-none"
                 {...register(`context.${index}.value`)}

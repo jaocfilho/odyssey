@@ -34,6 +34,9 @@ export function ContextArea({ chatbot_id, context }: ContextAreaProps) {
 
   return (
     <div className="lg:col-start-3">
+      <h2 className="text-base font-semibold leading-7 dark:text-white">
+        Context
+      </h2>
       <PersonaContextForm
         defaultValues={initialValues}
         onSubmit={handleSubmit}
