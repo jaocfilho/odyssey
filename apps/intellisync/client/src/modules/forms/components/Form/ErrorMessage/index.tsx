@@ -16,7 +16,12 @@ export function ErrorMessage({ name, ...rest }: ErrorMessageProps) {
   }
 
   return (
-    <p className="text-sm text-red-500" id={`${name}-error`} {...rest}>
+    <p
+      className="text-sm text-red-500"
+      id={`${name}-error`}
+      {...rest}
+      role="alert"
+    >
       {error.message?.toString()}
     </p>
   );

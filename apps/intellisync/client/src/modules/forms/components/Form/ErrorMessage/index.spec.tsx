@@ -25,6 +25,12 @@ describe('ErrorMessage', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
+  it('should render the error with the alert role', () => {
+    render(<ErrorMessage name="test" />);
+    const errorMessage = screen.getByRole('alert');
+    expect(errorMessage).toBeInTheDocument();
+  });
+
   it('should not render anything when there is no error', () => {
     vi.mocked(useFieldError).mockReturnValue({ error: undefined });
 
