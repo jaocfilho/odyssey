@@ -63,4 +63,11 @@ describe('Input', () => {
     const element = screen.getByRole('textbox');
     expect(element).toHaveClass('focus:ring-red-600');
   });
+
+  it('should set the ring color to red even if a colorScheme is passed', () => {
+    render(<Input colorScheme="emerald" error />);
+
+    const element = screen.getByRole('textbox');
+    expect(element).toHaveClass('focus:ring-red-600');
+  });
 });

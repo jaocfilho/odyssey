@@ -6,9 +6,9 @@ import userEvent from '@testing-library/user-event';
 import { useForm } from 'react-hook-form';
 
 import { Form } from '../../Form';
-import { TextInput } from '.';
+import { Input } from '.';
 
-describe('TextInput', () => {
+describe('Input', () => {
   const label = 'Test input';
   const name = 'testField';
 
@@ -24,7 +24,7 @@ describe('TextInput', () => {
     const methods = result.current;
     render(
       <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
+        <Input label={label} name={name} />
       </Form.Root>
     );
 
@@ -44,26 +44,12 @@ describe('TextInput', () => {
     const methods = result.current;
     render(
       <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
+        <Input label={label} name={name} />
       </Form.Root>
     );
 
     const element = screen.getByLabelText('Test input');
     expect(element).toHaveValue('test');
-  });
-
-  it('should render a text input with a placeholder', () => {
-    const { result } = renderHook(() => useForm());
-
-    const methods = result.current;
-    render(
-      <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} placeholder="Test placeholder" />
-      </Form.Root>
-    );
-
-    const element = screen.getByLabelText('Test input');
-    expect(element).toHaveAttribute('placeholder', 'Test placeholder');
   });
 
   it('should correctly register the field', async () => {
@@ -72,7 +58,7 @@ describe('TextInput', () => {
     const methods = result.current;
     render(
       <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
+        <Input label={label} name={name} />
       </Form.Root>
     );
 
@@ -83,67 +69,13 @@ describe('TextInput', () => {
     expect(value).toBe('test');
   });
 
-  it('should render a text input with an error', async () => {
-    const { result } = renderHook(() => useForm());
-
-    const methods = result.current;
-
-    render(
-      <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
-      </Form.Root>
-    );
-
-    methods.setError(name, {
-      type: 'test',
-      message: 'test error message',
-    });
-
-    const element = await screen.findByRole('alert');
-    expect(element).toBeInTheDocument();
-  });
-
-  it('should render a text input with a custom error message', async () => {
-    const { result } = renderHook(() => useForm());
-
-    const methods = result.current;
-
-    render(
-      <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
-      </Form.Root>
-    );
-
-    methods.setError(name, {
-      type: 'test',
-      message: 'test error message',
-    });
-
-    const element = await screen.findByText('test error message');
-    expect(element).toBeInTheDocument();
-  });
-
-  it('should render without label', () => {
-    const { result } = renderHook(() => useForm());
-
-    const methods = result.current;
-    render(
-      <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput name={name} />
-      </Form.Root>
-    );
-
-    const element = screen.getByRole('textbox');
-    expect(element).toBeInTheDocument();
-  });
-
   it('should reset the field', async () => {
     const { result } = renderHook(() => useForm());
 
     const methods = result.current;
     render(
       <Form.Root id="testForm" onSubmit={onSubmit} {...methods}>
-        <TextInput label={label} name={name} />
+        <Input label={label} name={name} />
       </Form.Root>
     );
 
@@ -158,8 +90,6 @@ describe('TextInput', () => {
   });
 
   it('should only render if the select is inside the form root', () => {
-    expect(() =>
-      render(<TextInput label={label} name={name} />)
-    ).toThrowError();
+    expect(() => render(<Input label={label} name={name} />)).toThrowError();
   });
 });

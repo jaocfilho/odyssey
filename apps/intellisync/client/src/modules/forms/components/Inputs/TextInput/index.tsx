@@ -1,15 +1,11 @@
 import { Form, type InputProps } from '../../Form';
 
-type TextInputProps = InputProps & {
-  label?: string;
-};
+type TextInputProps = InputProps;
 
-export function TextInput({ label, name, ...rest }: TextInputProps) {
+export function TextInput(props: TextInputProps) {
   return (
     <Form.Field>
-      {!!label ? <Form.Label htmlFor={name}>{label}</Form.Label> : null}
-      <Form.Input name={name} {...rest} />
-      <Form.ErrorMessage name={name} />
+      <Form.Input {...props} />
     </Form.Field>
   );
 }

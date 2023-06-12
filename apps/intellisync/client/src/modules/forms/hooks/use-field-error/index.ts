@@ -1,4 +1,4 @@
-import { useFormContext, get } from 'react-hook-form';
+import { useFormContext, get, FieldErrors, FieldValues } from 'react-hook-form';
 
 type UseFieldErrorProps = {
   name: string;
@@ -6,7 +6,7 @@ type UseFieldErrorProps = {
 
 export const useFieldError = ({ name }: UseFieldErrorProps) => {
   const { formState } = useFormContext();
-  const error = get(formState.errors, name);
+  const error = get(formState.errors, name) as FieldErrors<FieldValues>;
 
   return { error };
 };
