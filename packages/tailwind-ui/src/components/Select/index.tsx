@@ -7,7 +7,7 @@ import { SelectButton } from './SelectButton';
 import { SelectOptions } from './SelectOptions';
 
 export type SelectProps = {
-  value: any;
+  value?: any;
   options: SelectItem[];
   label: string;
   onChange: (option: any) => void;

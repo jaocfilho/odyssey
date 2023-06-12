@@ -106,4 +106,18 @@ describe('Select', () => {
 
     expect(handleChange).not.toHaveBeenCalled();
   });
+
+  it('should render if no value is passed', () => {
+    render(
+      <Select
+        options={options}
+        label="Label"
+        placeholder="Placeholder"
+        onChange={handleChange}
+      />
+    );
+
+    const element = screen.getByText('Placeholder');
+    expect(element).toBeInTheDocument();
+  });
 });
