@@ -135,4 +135,10 @@ describe('SelectInput', () => {
 
     expect(element).toBeInTheDocument();
   });
+
+  it('should only render if the select is inside the form root', () => {
+    expect(() =>
+      render(<SelectInput label={label} name={name} options={options} />)
+    ).toThrowError();
+  });
 });
