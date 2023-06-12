@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Textarea as TextareaComponent } from 'tailwind-ui';
 
 const meta: Meta<typeof TextareaComponent> = {
-  title: 'Components/Textarea',
+  title: 'Components/Forms/Textarea',
   component: TextareaComponent,
   args: {},
 };

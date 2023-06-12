@@ -11,7 +11,7 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
   TextareaStylesProps;
 
 function BaseTextarea(
-  { className, colorScheme = 'indigo', ...rest }: TextAreaProps,
+  { className, colorScheme = 'emerald', ...rest }: TextAreaProps,
   ref: ForwardedRef<HTMLTextAreaElement>
 ) {
   const styles = getStyles({ colorScheme });
