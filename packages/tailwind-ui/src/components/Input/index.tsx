@@ -28,10 +28,12 @@ function BaseInput(
 ) {
   const styles = getStyles({ colorScheme });
 
+  const hasLabel = !!label;
+
   return (
     <div>
-      {!!label ? <Label htmlFor={name}>{label}</Label> : null}
-      <div className={!!label ? 'mt-2' : undefined}>
+      {hasLabel ? <Label htmlFor={name}>{label}</Label> : null}
+      <div className={hasLabel ? 'mt-2' : undefined}>
         <input
           type="text"
           className={classNames(styles, className ?? '')}
