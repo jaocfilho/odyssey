@@ -1,7 +1,5 @@
 'use client';
 
-import { useFieldError } from '@/modules/forms/hooks/use-field-error';
-
 import { useFormContext } from 'react-hook-form';
 
 import {
@@ -14,8 +12,8 @@ export type InputProps = TuiInputProps & {
 };
 
 export function Input(props: InputProps) {
-  const { register } = useFormContext();
-  const { error } = useFieldError({ name: props.name });
+  const { register, getFieldState } = useFormContext();
+  const { error } = getFieldState(props.name);
 
   const helperText = error?.message?.toString();
 
