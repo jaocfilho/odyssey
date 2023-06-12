@@ -25,7 +25,7 @@ export const toneOptions = [
   { value: 'neutral', label: 'Neutral' },
 ];
 
-export const tone = z.enum(toneTypes).nullable();
+export const tone = z.enum(toneTypes).optional();
 
 export function Tone() {
   return (

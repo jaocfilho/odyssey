@@ -1,14 +1,14 @@
-'use client';
-
-import { useTargetAudienceForm } from '../../TargetAudienceForm/use-target-audience-form';
+import { PersonasRow } from '@/modules/personas/entities';
 import { TargetAudienceSection } from './TargetAudienceSection';
 
-export function TraitsArea() {
-  const { methods } = useTargetAudienceForm({});
+type TraitsAreaProps = {
+  chatbot_id: PersonasRow['chatbot_id'];
+};
 
+export function TraitsArea({ chatbot_id }: TraitsAreaProps) {
   return (
     <div className="-mx-4 px-4 sm:mx-0 sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2">
-      <TargetAudienceSection target_audience={null} />
+      <TargetAudienceSection chatbot_id={chatbot_id} target_audience={null} />
     </div>
   );
 }

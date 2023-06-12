@@ -1,13 +1,13 @@
 import { Form } from '@/modules/forms/components';
-import {
-  type TargetAudienceFormData,
-  type UseTargetAudienceFormMethods,
-} from './use-target-audience-form';
 import { personaInputs } from '../Inputs';
+import {
+  UpdatePersonaFormData,
+  type UseUpdatePersonaFormMethods,
+} from '../../hooks/use-update-persona-form';
 
 type TargetAudienceFormProps = {
-  onSubmit: (data: TargetAudienceFormData) => void;
-  methods: UseTargetAudienceFormMethods;
+  onSubmit: (data: UpdatePersonaFormData) => void;
+  methods: UseUpdatePersonaFormMethods;
 };
 
 export function TargetAudienceForm({

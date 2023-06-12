@@ -18,7 +18,7 @@ export function ChatbotPersona({ persona }: ChatbotPersonaProps) {
 
   return (
     <Container>
-      <TraitsArea />
+      <TraitsArea chatbot_id={persona.chatbot_id} />
       <ContextArea
         chatbot_id={persona.chatbot_id}
         context={personaQuery.data!.context}

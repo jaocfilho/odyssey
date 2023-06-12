@@ -4,18 +4,20 @@ import { PersonasRow } from '@/modules/personas/entities';
 import { TargetAudienceForm } from '../../../TargetAudienceForm';
 import { useTargetAudienceForm } from '../../../TargetAudienceForm/use-target-audience-form';
 import { SectionList } from '@/components/SectionList';
+import { useUpdatePersonaForm } from '@/modules/personas/hooks/use-update-persona-form';
 
 type TargetAudienceSectionProps = {
+  chatbot_id: PersonasRow['chatbot_id'];
   target_audience: PersonasRow['target_audience'];
 };
 
 export function TargetAudienceSection({
+  chatbot_id,
   target_audience,
 }: TargetAudienceSectionProps) {
-  const { methods } = useTargetAudienceForm({
-    defaultValues: {
-      target_audience,
-    },
+  const { methods } = useUpdatePersonaForm({
+    chatbot_id,
+    defaultValues: {},
   });
 
   return (

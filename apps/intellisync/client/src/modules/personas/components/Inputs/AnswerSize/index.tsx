@@ -9,7 +9,7 @@ export const answerSizeOptions = [
   { value: 'long', label: 'Long' },
 ];
 
-export const answer_size = z.enum(answerSizeTypes).nullable();
+export const answer_size = z.enum(answerSizeTypes).optional();
 
 export function AnswerSize() {
   return (
