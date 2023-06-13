@@ -19,3 +19,15 @@ export const personaInputs = {
   Tone,
   Topic,
 };
+
+export const personaInputsMap = {
+  answer_size: AnswerSize,
+  domain: Domain,
+  informality: Informality,
+  language_complexity: LanguageComplexity,
+  level_of_detail: LevelOfDetail,
+  style: Style,
+  target_audience: TargetAudience,
+  tone: Tone,
+  topic: Topic,
+};

@@ -1,32 +1,43 @@
 import { PersonasRow } from '@/modules/personas/entities';
-import { TargetAudienceSection } from './TargetAudienceSection';
 import { SectionList } from '@/components/SectionList';
-import { CommunicationStyleSection } from './CommunicationStyleSection';
-import { WrittingStyleSection } from './WrittingStyleSection';
+import { TraitsAreaSection } from './TraitsAreaSection';
+import { PersonaUpdateFormField } from '@/modules/personas/hooks/use-persona-update-form';
 
 type TraitsAreaProps = {
-  chatbot_id: PersonasRow['chatbot_id'];
   persona: PersonasRow;
 };
 
-export function TraitsArea({ chatbot_id, persona }: TraitsAreaProps) {
+const sections = [
+  {
+    title: 'Target Audience',
+    fields: ['target_audience'],
+    formId: 'target-audience-form',
+  },
+  {
+    title: 'Communication Style',
+    fields: ['informality', 'tone'],
+    formId: 'communication-style-form',
+  },
+  {
+    title: 'Writting Style',
+    fields: ['language_complexity', 'style'],
+    formId: 'writting-style-form',
+  },
+];
+
+export function TraitsArea({ persona }: TraitsAreaProps) {
   return (
     <div className="-mx-4 px-4 sm:mx-0 sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2">
       <SectionList.Root>
-        <TargetAudienceSection
-          chatbot_id={chatbot_id}
-          target_audience={persona.target_audience}
-        />
-        <CommunicationStyleSection
-          chatbot_id={chatbot_id}
-          informality={persona.informality}
-          tone={persona.tone}
-        />
-        <WrittingStyleSection
-          chatbot_id={chatbot_id}
-          language_complexity={persona.language_complexity}
-          style={persona.style}
-        />
+        {sections.map(({ fields, formId, title }) => (
+          <TraitsAreaSection
+            key={title}
+            title={title}
+            formId={formId}
+            fields={fields as PersonaUpdateFormField[]}
+            persona={persona}
+          />
+        ))}
       </SectionList.Root>
     </div>
   );

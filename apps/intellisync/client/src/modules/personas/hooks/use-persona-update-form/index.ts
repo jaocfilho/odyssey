@@ -34,6 +34,8 @@ export type UsePersonaUpdateFormMethods = UseCustomFormMethods<
 
 export type PersonaUpdateFormData = z.infer<typeof personaUpdateSchema>;
 
+export type PersonaUpdateFormField = keyof PersonaUpdateFormData;
+
 type UseUpdatePersonaFormProps = {
   chatbot_id: PersonasRow['chatbot_id'];
   defaultValues: PersonaUpdateFormData;
