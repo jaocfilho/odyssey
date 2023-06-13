@@ -1,6 +1,6 @@
 'use client';
 
-import { Squares2X2Icon } from '@heroicons/react/24/outline';
+import { Cog6ToothIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 
 import { ChatbotsLink } from '@/modules/navigation/components/ChatbotsLink';
 import { NavItem } from '../NavItem';
@@ -14,4 +14,8 @@ export function ChatbotsPageNavItem() {
       <NavItem Icon={Squares2X2Icon} current={current} />
     </ChatbotsLink>
   );
+}
+
+export function SettingsPageNavItem() {
+  return <NavItem Icon={Cog6ToothIcon} current={false} />;
 }
