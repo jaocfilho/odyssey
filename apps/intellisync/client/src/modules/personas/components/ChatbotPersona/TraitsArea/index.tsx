@@ -6,7 +6,7 @@ type TraitsAreaProps = {
   persona: PersonasRow;
 };
 
-const sections: Section[] = [
+export const traitsAreaSections: Section[] = [
   {
     title: 'Target Audience',
     fields: ['target_audience'],
@@ -43,7 +43,7 @@ export function TraitsArea({ persona }: TraitsAreaProps) {
   return (
     <div className="-mx-4 px-4 sm:mx-0 sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2">
       <SectionList.Root>
-        {sections.map((section) => (
+        {traitsAreaSections.map((section) => (
           <TraitsAreaSection
             key={section.title}
             section={section}
