@@ -25,8 +25,7 @@ describe('ErrorIcon', () => {
   });
 
   it('should not render anything when there is no error', () => {
-    // @ts-ignore
-    vi.mocked(useFieldError).mockReturnValue({ error: undefined });
+    vi.mocked(useFieldError).mockReturnValue({ error: undefined } as any);
 
     render(<ErrorIcon name="test" />);
     const { container } = render(<ErrorIcon name="test" />);

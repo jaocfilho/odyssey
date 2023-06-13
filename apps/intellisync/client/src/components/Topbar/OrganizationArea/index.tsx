@@ -20,7 +20,6 @@ export async function OrganizationArea() {
   return (
     <div className="flex">
       <div className="flex items-center space-x-4">
-        {/* @ts-expect-error Async Server Component */}
         <Organization organizationId={last_used_organization!} />
       </div>
     </div>
