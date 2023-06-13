@@ -37,10 +37,10 @@ describe('ButtonsArea', () => {
     assertButtonIsInTheDocument('Save');
   });
 
-  it('should call onCancel when the cancel button is clicked', () => {
+  it('should call onCancel when the cancel button is clicked', async () => {
     render(<ButtonsArea onCancel={onCancel} />);
 
-    assertFunctionIsCalledOnButtonClick('Cancel', onCancel);
+    await assertFunctionIsCalledOnButtonClick('Cancel', onCancel);
   });
 
   it('should disable both buttons if disabled is true', () => {
