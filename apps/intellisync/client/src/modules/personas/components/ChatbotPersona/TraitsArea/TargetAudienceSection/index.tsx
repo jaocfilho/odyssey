@@ -1,4 +1,4 @@
-import { PersonasRow } from '@/modules/personas/entities';
+import { type PersonasRow } from '@/modules/personas/entities';
 import { TargetAudienceForm } from '../../../TargetAudienceForm';
 import { SectionList } from '@/components/SectionList';
 
@@ -12,18 +12,13 @@ export function TargetAudienceSection({
   target_audience,
 }: TargetAudienceSectionProps) {
   return (
-    <SectionList.Root>
-      <SectionList.Container>
-        <SectionList.Info title="Target audience" />
-        <SectionList.Content>
-          <div className="sm:max-w-xl">
-            <TargetAudienceForm
-              chatbot_id={chatbot_id}
-              defaultValues={{ target_audience }}
-            />
-          </div>
-        </SectionList.Content>
-      </SectionList.Container>
-    </SectionList.Root>
+    <SectionList.Section title="Target audience">
+      <div className="sm:max-w-xl">
+        <TargetAudienceForm
+          chatbot_id={chatbot_id}
+          defaultValues={{ target_audience }}
+        />
+      </div>
+    </SectionList.Section>
   );
 }

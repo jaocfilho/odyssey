@@ -7,7 +7,7 @@ import {
 } from '@/modules/personas/hooks/use-persona-update-form';
 import { ButtonsArea } from './ButtonsArea';
 
-type PersonaUpdateFormProps = {
+export type PersonaUpdateFormProps = {
   chatbot_id: string;
   formId: string;
   defaultValues: PersonaUpdateFormData;

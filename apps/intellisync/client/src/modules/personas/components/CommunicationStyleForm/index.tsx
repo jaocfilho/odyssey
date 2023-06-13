@@ -4,22 +4,23 @@ import {
   type PersonaUpdateFormProps,
 } from '../PersonaUpdateForm';
 
-type TargetAudienceFormProps = Pick<
+type CommunicationStyleFormProps = Pick<
   PersonaUpdateFormProps,
   'chatbot_id' | 'defaultValues'
 >;
 
-export function TargetAudienceForm({
+export function CommunicationStyleForm({
   chatbot_id,
   defaultValues,
-}: TargetAudienceFormProps) {
+}: CommunicationStyleFormProps) {
   return (
     <PersonaUpdateForm
-      formId="targetAudienceForm"
+      formId="communicationStyleForm"
       chatbot_id={chatbot_id}
       defaultValues={defaultValues}
     >
-      <personaInputs.TargetAudience />
+      <personaInputs.Tone />
+      <personaInputs.Informality />
     </PersonaUpdateForm>
   );
 }
