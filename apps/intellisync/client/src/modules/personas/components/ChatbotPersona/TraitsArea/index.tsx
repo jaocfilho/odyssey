@@ -2,6 +2,7 @@ import { PersonasRow } from '@/modules/personas/entities';
 import { TargetAudienceSection } from './TargetAudienceSection';
 import { SectionList } from '@/components/SectionList';
 import { CommunicationStyleSection } from './CommunicationStyleSection';
+import { WrittingStyleSection } from './WrittingStyleSection';
 
 type TraitsAreaProps = {
   chatbot_id: PersonasRow['chatbot_id'];
@@ -20,6 +21,11 @@ export function TraitsArea({ chatbot_id, persona }: TraitsAreaProps) {
           chatbot_id={chatbot_id}
           informality={persona.informality}
           tone={persona.tone}
+        />
+        <WrittingStyleSection
+          chatbot_id={chatbot_id}
+          language_complexity={persona.language_complexity}
+          style={persona.style}
         />
       </SectionList.Root>
     </div>

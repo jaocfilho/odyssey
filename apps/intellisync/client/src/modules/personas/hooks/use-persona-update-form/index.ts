@@ -8,6 +8,7 @@ import { answer_size } from '../../components/Inputs/AnswerSize';
 import { domain } from '../../components/Inputs/Domain';
 import { language_complexity } from '../../components/Inputs/LanguageComplexity';
 import { level_of_detail } from '../../components/Inputs/LevelOfDetail';
+import { style } from '../../components/Inputs/Style';
 import { target_audience } from '../../components/Inputs/TargetAudience';
 import { tone } from '../../components/Inputs/Tone';
 import { topic } from '../../components/Inputs/Topic';
@@ -20,6 +21,7 @@ const personaUpdateSchema = z.object({
   domain,
   language_complexity,
   level_of_detail,
+  style,
   target_audience,
   tone,
   topic,
