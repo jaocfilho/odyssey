@@ -5,6 +5,7 @@ import { Cog6ToothIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 import { ChatbotsLink } from '@/modules/navigation/components/ChatbotsLink';
 import { NavItem } from '../NavItem';
 import { useIsChatbotsPath } from '@/modules/chatbots/hooks/use-is-chatbots-path';
+import { SettingsLink } from '@/modules/navigation/components/SettingsLink';
 
 export function ChatbotsPageNavItem() {
   const current = useIsChatbotsPath();
@@ -17,5 +18,9 @@ export function ChatbotsPageNavItem() {
 }
 
 export function SettingsPageNavItem() {
-  return <NavItem Icon={Cog6ToothIcon} current={false} />;
+  return (
+    <SettingsLink>
+      <NavItem Icon={Cog6ToothIcon} current={false} />
+    </SettingsLink>
+  );
 }

@@ -9,18 +9,16 @@ async function getLastUsedOrganization() {
   const { user } = data.session!;
 
   const { data: profile } = await serverSelectProfileById({ id: user.id });
-  const { last_used_organization } = profile!;
-
-  return { last_used_organization };
+  return { profile };
 }
 
 export async function OrganizationArea() {
-  const { last_used_organization } = await getLastUsedOrganization();
+  const { profile } = await getLastUsedOrganization();
 
   return (
     <div className="flex">
       <div className="flex items-center space-x-4">
-        <Organization organizationId={last_used_organization!} />
+        <Organization organizationId={profile!.last_used_organization!} />
       </div>
     </div>
   );

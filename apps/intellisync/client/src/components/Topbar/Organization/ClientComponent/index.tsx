@@ -34,7 +34,7 @@ export function ClientComponent({
     { initialData }
   );
 
-  setCurrentOrganization(initialData);
+  setCurrentOrganization(organizationQuery.data!);
 
   return <BaseComponent name={organizationQuery.data!.name} />;
 }
