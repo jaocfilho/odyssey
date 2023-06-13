@@ -15,7 +15,7 @@ import { informality } from '../../components/Inputs/Informality';
 import { useUpdatePersonaByChatbot } from '../use-update-persona-by-chatbot';
 import { type PersonasRow } from '../../entities';
 
-const updatePersonaSchema = z.object({
+const personaUpdateSchema = z.object({
   answer_size,
   domain,
   language_complexity,
@@ -26,24 +26,24 @@ const updatePersonaSchema = z.object({
   informality,
 });
 
-export type UseUpdatePersonaFormMethods = UseCustomFormMethods<
-  typeof updatePersonaSchema
+export type UsePersonaUpdateFormMethods = UseCustomFormMethods<
+  typeof personaUpdateSchema
 >;
 
-export type UpdatePersonaFormData = z.infer<typeof updatePersonaSchema>;
+export type PersonaUpdateFormData = z.infer<typeof personaUpdateSchema>;
 
 type UseUpdatePersonaFormProps = {
   chatbot_id: PersonasRow['chatbot_id'];
-  defaultValues: UpdatePersonaFormData;
+  defaultValues: PersonaUpdateFormData;
 };
 
-export function useUpdatePersonaForm({
+export function usePersonaUpdateForm({
   chatbot_id,
   defaultValues,
 }: UseUpdatePersonaFormProps) {
   const updateMutation = useUpdatePersonaByChatbot();
 
-  const handleSubmit = (data: UpdatePersonaFormData) => {
+  const handleSubmit = (data: PersonaUpdateFormData) => {
     updateMutation.mutate({
       chatbot_id,
       params: data,
@@ -51,7 +51,7 @@ export function useUpdatePersonaForm({
   };
 
   const { methods } = useCustomForm({
-    schema: updatePersonaSchema,
+    schema: personaUpdateSchema,
     defaultValues,
   });
 

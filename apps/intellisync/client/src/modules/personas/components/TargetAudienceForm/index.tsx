@@ -1,24 +1,23 @@
-import { Form } from '@/modules/forms/components';
 import { personaInputs } from '../Inputs';
-import {
-  UpdatePersonaFormData,
-  type UseUpdatePersonaFormMethods,
-} from '../../hooks/use-update-persona-form';
+import { type PersonaUpdateFormData } from '../../hooks/use-persona-update-form';
+import { PersonaUpdateForm } from '../PersonaUpdateForm';
 
 type TargetAudienceFormProps = {
-  onSubmit: (data: UpdatePersonaFormData) => void;
-  methods: UseUpdatePersonaFormMethods;
+  chatbot_id: string;
+  defaultValues: PersonaUpdateFormData;
 };
 
 export function TargetAudienceForm({
-  methods,
-  onSubmit,
+  chatbot_id,
+  defaultValues,
 }: TargetAudienceFormProps) {
   return (
-    <Form.Root id="targetAudienceForm" onSubmit={onSubmit} {...methods}>
-      <Form.Flex>
-        <personaInputs.TargetAudience />
-      </Form.Flex>
-    </Form.Root>
+    <PersonaUpdateForm
+      formId="targetAudienceForm"
+      chatbot_id={chatbot_id}
+      defaultValues={defaultValues}
+    >
+      <personaInputs.TargetAudience />
+    </PersonaUpdateForm>
   );
 }

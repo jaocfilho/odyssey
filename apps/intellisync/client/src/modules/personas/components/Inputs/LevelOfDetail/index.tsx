@@ -25,7 +25,7 @@ export const levelOfDetailOptions = [
   { value: 'expertLevel', label: 'Expert-Level' },
 ];
 
-export const level_of_detail = z.enum(levelOfDetailTypes).optional();
+export const level_of_detail = z.enum(levelOfDetailTypes).optional().nullable();
 
 export function LevelOfDetail() {
   return (

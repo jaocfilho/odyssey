@@ -17,7 +17,7 @@ export const informalityOptions = [
   { value: 'slang', label: 'Slang' },
 ];
 
-export const informality = z.enum(informalityTypes).optional();
+export const informality = z.enum(informalityTypes).optional().nullable();
 
 export function Informality() {
   return (

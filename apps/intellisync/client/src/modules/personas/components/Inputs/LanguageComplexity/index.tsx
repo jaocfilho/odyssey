@@ -21,7 +21,10 @@ export const languageComplexityOptions = [
   { value: 'slang', label: 'Slang' },
 ];
 
-export const language_complexity = z.enum(languageComplexityTypes).optional();
+export const language_complexity = z
+  .enum(languageComplexityTypes)
+  .optional()
+  .nullable();
 
 export function LanguageComplexity() {
   return (
