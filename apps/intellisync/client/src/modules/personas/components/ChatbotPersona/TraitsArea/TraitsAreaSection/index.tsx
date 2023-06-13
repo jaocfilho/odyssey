@@ -8,30 +8,32 @@ import { PersonasRow } from '@/modules/personas/entities';
 import { extractKeysFromObject } from '@odyssey/objects';
 import { PersonaUpdateFormInput } from '../../../PersonaUpdateFormInput';
 
-type TraitsAreaSectionProps = {
+export type Section = {
   title: string;
   formId: string;
   fields: PersonaUpdateFormField[];
+};
+
+type TraitsAreaSectionProps = {
   persona: PersonasRow;
+  section: Section;
 };
 
 export function TraitsAreaSection({
-  title,
-  formId,
-  fields,
+  section,
   persona,
 }: TraitsAreaSectionProps) {
-  const defaultValues = extractKeysFromObject(persona, fields);
+  const defaultValues = extractKeysFromObject(persona, section.fields);
 
   return (
-    <SectionList.Section title={title}>
+    <SectionList.Section title={section.title}>
       <div className="sm:max-w-xl">
         <PersonaUpdateForm
-          formId={formId}
+          formId={section.formId}
           chatbot_id={persona.chatbot_id}
           defaultValues={defaultValues as PersonaUpdateFormData}
         >
-          {fields.map((field) => (
+          {section.fields.map((field) => (
             <PersonaUpdateFormInput key={field} field={field} />
           ))}
         </PersonaUpdateForm>
