@@ -1,5 +1,3 @@
-'use client';
-
 import { PersonasRow } from '@/modules/personas/entities';
 import { TargetAudienceForm } from '../../../TargetAudienceForm';
 import { SectionList } from '@/components/SectionList';

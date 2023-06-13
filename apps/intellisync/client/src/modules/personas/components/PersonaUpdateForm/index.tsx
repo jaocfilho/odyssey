@@ -5,6 +5,7 @@ import {
   type PersonaUpdateFormData,
   usePersonaUpdateForm,
 } from '@/modules/personas/hooks/use-persona-update-form';
+import { ButtonsArea } from './ButtonsArea';
 
 type PersonaUpdateFormProps = {
   chatbot_id: string;
@@ -19,14 +20,20 @@ export function PersonaUpdateForm({
   defaultValues,
   children,
 }: PersonaUpdateFormProps) {
-  const { methods, handleSubmit } = usePersonaUpdateForm({
-    chatbot_id,
-    defaultValues,
-  });
+  const { methods, handleSubmit, buttonsAreDisabled, resetForm } =
+    usePersonaUpdateForm({
+      chatbot_id,
+      defaultValues,
+    });
 
   return (
     <Form.Root id={formId} onSubmit={handleSubmit} {...methods}>
       <Form.Flex>{children}</Form.Flex>
+      <ButtonsArea
+        reset={resetForm}
+        formId={formId}
+        disabled={buttonsAreDisabled}
+      />
     </Form.Root>
   );
 }

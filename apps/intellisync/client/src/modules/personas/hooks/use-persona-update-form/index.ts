@@ -55,8 +55,16 @@ export function usePersonaUpdateForm({
     defaultValues,
   });
 
+  const resetForm = () => methods.reset();
+
+  methods.formState.isSubmitSuccessful && methods.reset(methods.getValues());
+
+  const buttonsAreDisabled = !methods.formState.isDirty;
+
   return {
     methods,
     handleSubmit,
+    resetForm,
+    buttonsAreDisabled,
   };
 }
