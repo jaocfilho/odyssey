@@ -3,7 +3,7 @@
 exports[`SecondarySidebarSection > should not have border if it is the last section 1`] = `
 <div>
   <div
-    class="flex w-full items-center px-4 h-12"
+    class="flex flex-col gap-4 py-4 px-2"
   >
     SecondarySidebarSection
   </div>
@@ -13,7 +13,7 @@ exports[`SecondarySidebarSection > should not have border if it is the last sect
 exports[`SecondarySidebarSection > should render without crashing 1`] = `
 <div>
   <div
-    class="flex w-full items-center px-4 h-12 border-b dark:border-zinc-50/10"
+    class="flex flex-col gap-4 py-4 px-2 border-b dark:border-zinc-50/10"
   >
     SecondarySidebarSection
   </div>

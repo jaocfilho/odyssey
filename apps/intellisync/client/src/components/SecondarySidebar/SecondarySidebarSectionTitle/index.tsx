@@ -8,7 +8,7 @@ export function SecondarySidebarSectionTitle({
   children,
 }: SecondarySidebarSectionTitleProps) {
   return (
-    <p className="text-sm font-medium leading-6 text-grayScheme-500">
+    <p className="text-sm font-medium leading-6 text-grayScheme-500 pl-3">
       {children}
     </p>
   );

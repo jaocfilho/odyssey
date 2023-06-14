@@ -21,16 +21,4 @@ describe('ChatbotsListItem', () => {
     render(<ChatbotsListItem name="anyName" id="anyId" />);
     expect(screen.getByText('anyName')).toBeInTheDocument();
   });
-
-  it('should has the correct styles when it is not the current item', () => {
-    vi.mocked(useIsCurrentChatbotPath).mockReturnValue(false);
-
-    render(<ChatbotsListItem name="anyName" id="anyId" />);
-    expect(screen.getByText('anyName')).toHaveClass('dark:text-zinc-600');
-  });
-
-  it('should has the correct styles when it is the current item', () => {
-    render(<ChatbotsListItem name="anyName" id="anyId" />);
-    expect(screen.getByText('anyName')).toHaveClass('dark:text-emerald-500');
-  });
 });

@@ -1,7 +1,8 @@
 import { type ReactNode } from 'react';
+
 import { classNames } from 'tailwind-ui';
 
-const commontStyles = 'flex w-full items-center px-4 h-12';
+const commontStyles = 'flex flex-col gap-4 py-4 px-2';
 const borderStyles = 'border-b dark:border-zinc-50/10';
 
 type SecondarySidebarSectionProps = {
