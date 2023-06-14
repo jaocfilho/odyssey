@@ -1,14 +1,14 @@
 import { SecondarySidebarItem } from '@/components/SecondarySidebar/SecondarySidebarItem';
 import { SecondarySidebarSection } from '@/components/SecondarySidebar/SecondarySidebarSection';
 import { SecondarySidebarSectionTitle } from '@/components/SecondarySidebar/SecondarySidebarSectionTitle';
-import { OrganizationSettingsSection } from './OrganizationSettingsSection';
-import { BillingSection } from './BillingSection';
 
-export function SettingsSidebar() {
+export function OrganizationSettingsSection() {
   return (
-    <>
-      <OrganizationSettingsSection />
-      <BillingSection />
-    </>
+    <SecondarySidebarSection>
+      <SecondarySidebarSectionTitle>
+        Organization settings
+      </SecondarySidebarSectionTitle>
+      <SecondarySidebarItem>API</SecondarySidebarItem>
+    </SecondarySidebarSection>
   );
 }
