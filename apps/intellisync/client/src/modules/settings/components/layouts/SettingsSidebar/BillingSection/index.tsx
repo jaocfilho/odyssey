@@ -5,7 +5,7 @@ import { SecondarySidebarSectionTitle } from '@/components/SecondarySidebar/Seco
 
 export function BillingSection() {
   return (
-    <SecondarySidebarSection>
+    <SecondarySidebarSection isLastSection>
       <SecondarySidebarSectionTitle>Billing</SecondarySidebarSectionTitle>
       <SecondarySidebarList>
         <SecondarySidebarItem>Subscription</SecondarySidebarItem>

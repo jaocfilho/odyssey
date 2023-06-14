@@ -1,3 +1,5 @@
+import { SettingsPage as SettingsPageComponent } from '@/modules/settings/components/pages/SettingsPage';
+
 export default function SettingsPage() {
-  return <div className="m-4">Settings page</div>;
+  return <SettingsPageComponent />;
 }

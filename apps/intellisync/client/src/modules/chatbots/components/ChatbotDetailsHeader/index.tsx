@@ -10,7 +10,7 @@ export function ChatbotDetailsHeader({ name }: ChatbotDetailsHeaderProps) {
       <div>
         <div className="flex items-center gap-x-3">
           <Dot color="green" />
-          <h1 className="font-semibold dark:text-zinc-200 text-base leading-7">
+          <h1 className="font-semibold text-grayScheme-900 dark:text-grayScheme-200 text-base leading-7">
             {name}
           </h1>
         </div>
