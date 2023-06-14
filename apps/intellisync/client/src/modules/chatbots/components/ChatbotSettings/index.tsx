@@ -1,6 +1,7 @@
 import { GeneralSettingsSection } from './GeneralSettingsSection';
 import { DeleteChatbotSection } from './DeleteChatbotSection';
 import { ChatbotsSettingsRow } from '../../entities';
+import { SectionList } from '@/components/SectionList';
 
 type ChatbotSettingsProps = {
   id: string;
@@ -9,9 +10,9 @@ type ChatbotSettingsProps = {
 
 export function ChatbotSettings({ id, initialData }: ChatbotSettingsProps) {
   return (
-    <div className="divide-y dark:divide-zinc-50/10">
+    <SectionList.Root>
       <GeneralSettingsSection id={id} initialData={initialData} />
       <DeleteChatbotSection id={id} />
-    </div>
+    </SectionList.Root>
   );
 }

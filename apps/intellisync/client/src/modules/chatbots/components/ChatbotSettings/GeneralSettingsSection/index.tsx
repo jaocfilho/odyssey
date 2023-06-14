@@ -19,14 +19,11 @@ export function GeneralSettingsSection({
     useGeneralSettingsSection({ id, initialData });
 
   return (
-    <SectionList.Container>
-      <SectionList.Info title="General settings" />
-      <SectionList.Content>
-        <div className="sm:max-w-xl">
-          <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
-        </div>
-        <ButtonsArea onCancel={handleCancel} disabled={buttonsAreDisabled} />
-      </SectionList.Content>
-    </SectionList.Container>
+    <SectionList.Section title="General settings">
+      <div className="sm:max-w-xl">
+        <ChatbotSettingsForm onSubmit={handleSubmit} methods={methods} />
+      </div>
+      <ButtonsArea onCancel={handleCancel} disabled={buttonsAreDisabled} />
+    </SectionList.Section>
   );
 }

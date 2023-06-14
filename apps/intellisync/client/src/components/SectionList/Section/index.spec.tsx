@@ -13,6 +13,15 @@ describe('Section', () => {
     expect(screen.getByText('Section title')).toBeInTheDocument();
   });
 
+  it('should render the description', () => {
+    render(
+      <Section title="Section title" description="Section description">
+        section
+      </Section>
+    );
+    expect(screen.getByText('Section description')).toBeInTheDocument();
+  });
+
   it('should render the children', () => {
     render(<Section title="Section title">section</Section>);
     expect(screen.getByText('section')).toBeInTheDocument();

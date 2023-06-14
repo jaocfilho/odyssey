@@ -5,5 +5,9 @@ type SectionListComponentProps = {
 };
 
 export function SectionListComponent({ children }: SectionListComponentProps) {
-  return <div className="divide-y dark:divide-zinc-50/10">{children}</div>;
+  return (
+    <div className="divide-y divide-grayScheme-200 dark:divide-grayScheme-50/10">
+      {children}
+    </div>
+  );
 }
