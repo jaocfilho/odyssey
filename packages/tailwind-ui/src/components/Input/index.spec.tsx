@@ -70,4 +70,18 @@ describe('Input', () => {
     const element = screen.getByRole('textbox');
     expect(element).toHaveClass('focus:ring-red-600');
   });
+
+  it('should render a copy icon if hasCopyButton is true', () => {
+    render(<Input hasCopyButton />);
+
+    const element = screen.getByTestId('copy-icon');
+    expect(element).toBeInTheDocument();
+  });
+
+  it('should not render a copy icon if hasCopyButton is false', () => {
+    render(<Input />);
+
+    const element = screen.queryByTestId('copy-icon');
+    expect(element).not.toBeInTheDocument();
+  });
 });

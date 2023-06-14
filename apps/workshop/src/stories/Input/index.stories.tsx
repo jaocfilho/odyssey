@@ -20,6 +20,7 @@ const meta: Meta<typeof InputComponent> = {
     error: false,
     helperText: 'Helper text',
     disabled: false,
+    hasCopyButton: false,
   },
 };
 

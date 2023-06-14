@@ -5,7 +5,10 @@ import {
   forwardRef,
 } from 'react';
 
-import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
+import {
+  ExclamationCircleIcon,
+  ClipboardDocumentIcon,
+} from '@heroicons/react/20/solid';
 
 import { getStyles, type InputStylesProps } from './styles';
 import { classNames } from '../../utils';
@@ -33,12 +36,29 @@ function ErrorIcon() {
   );
 }
 
-type ErrorMessageProps = {
+function CopyIcon() {
+  return (
+    <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+      <div
+        className="cursor-pointer inline-flex items-center space-x-1 rounded border border-grayScheme-200 dark:border-grayScheme-600 px-2 font-sans text-xs text-grayScheme-600 dark:text-grayScheme-200 dark:hover:border-grayScheme-500"
+        data-testid="copy-icon"
+      >
+        <ClipboardDocumentIcon
+          className="h-5 w-5 text-grayScheme-400 dark:text-grayScheme-600"
+          aria-hidden="true"
+        />
+        <p>copy</p>
+      </div>
+    </div>
+  );
+}
+
+type HelperTextProps = {
   message: string;
   error?: boolean;
 };
 
-function HelperText({ message, error }: ErrorMessageProps) {
+function HelperText({ message, error }: HelperTextProps) {
   const styles = 'mt-2 text-sm';
 
   const commontStyles = 'text-grayScheme-500 dark:text-grayScheme-400';
@@ -58,6 +78,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
     label?: string;
     error?: boolean;
     helperText?: string;
+    hasCopyButton?: boolean;
   };
 
 function BaseInput(
@@ -68,6 +89,7 @@ function BaseInput(
     name,
     error,
     helperText,
+    hasCopyButton,
     ...rest
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
@@ -90,6 +112,7 @@ function BaseInput(
           ref={ref}
         />
         {error ? <ErrorIcon /> : null}
+        {hasCopyButton ? <CopyIcon /> : null}
       </div>
       {hasHelperText ? <HelperText message={helperText} error={error} /> : null}
     </div>
