@@ -19,6 +19,7 @@ const meta: Meta<typeof InputComponent> = {
     placeholder: 'Placeholder',
     error: false,
     helperText: 'Helper text',
+    disabled: false,
   },
 };
 
