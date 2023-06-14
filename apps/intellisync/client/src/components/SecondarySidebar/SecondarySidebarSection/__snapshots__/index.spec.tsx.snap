@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SecondarySidebarSection > should render without crashing 1`] = `
+<div>
+  <div
+    class="flex w-full items-center px-4 h-12 border-b dark:border-zinc-50/10"
+  >
+    SecondarySidebarSection
+  </div>
+</div>
+`;
