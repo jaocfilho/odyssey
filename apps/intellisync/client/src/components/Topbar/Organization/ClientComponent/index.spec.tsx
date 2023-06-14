@@ -45,7 +45,11 @@ describe('ClientComponent', () => {
   it('should call setCurrentOrganization on render', () => {
     render(<ClientComponent organizationId="1" initialData={initialData} />);
 
-    expect(setCurrentOrganization).toHaveBeenCalledWith(initialData);
+    const organizationQuery = useSelectOrganizationById(
+      { id: '1' },
+      { initialData }
+    );
+    expect(setCurrentOrganization).toHaveBeenCalledWith(organizationQuery.data);
   });
 
   it('should render the organization name', () => {
