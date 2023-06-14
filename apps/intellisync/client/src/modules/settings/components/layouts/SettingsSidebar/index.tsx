@@ -3,10 +3,15 @@ import { SecondarySidebarSectionTitle } from '@/components/SecondarySidebar/Seco
 
 export function SettingsSidebar() {
   return (
-    <SecondarySidebarSection>
-      <SecondarySidebarSectionTitle>
-        Organization settings
-      </SecondarySidebarSectionTitle>
-    </SecondarySidebarSection>
+    <>
+      <SecondarySidebarSection>
+        <SecondarySidebarSectionTitle>
+          Organization settings
+        </SecondarySidebarSectionTitle>
+      </SecondarySidebarSection>
+      <SecondarySidebarSection isLastSection>
+        <SecondarySidebarSectionTitle>Billing</SecondarySidebarSectionTitle>
+      </SecondarySidebarSection>
+    </>
   );
 }

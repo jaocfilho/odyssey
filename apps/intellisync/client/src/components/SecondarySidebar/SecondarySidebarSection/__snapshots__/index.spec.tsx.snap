@@ -1,5 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`SecondarySidebarSection > should not have border if it is the last section 1`] = `
+<div>
+  <div
+    class="flex w-full items-center px-4 h-12"
+  >
+    SecondarySidebarSection
+  </div>
+</div>
+`;
+
 exports[`SecondarySidebarSection > should render without crashing 1`] = `
 <div>
   <div
