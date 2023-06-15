@@ -104,14 +104,15 @@ function BaseInput(
     helperText,
     hasCopyButton,
     onChange,
+    value,
     ...rest
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
-  const [value, setValue] = useState('');
+  const [innerValue, setInnerValue] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    setInnerValue(event.target.value);
     !!onChange && onChange(event);
   };
 
@@ -130,12 +131,12 @@ function BaseInput(
           id={name}
           {...rest}
           onChange={handleChange}
-          value={value}
+          value={value ?? innerValue}
           name={name}
           ref={ref}
         />
         {error ? <ErrorIcon /> : null}
-        {hasCopyButton ? <CopyIcon value={value} /> : null}
+        {hasCopyButton ? <CopyIcon value={innerValue} /> : null}
       </div>
       {hasHelperText ? <HelperText message={helperText} error={error} /> : null}
     </div>

@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
@@ -125,5 +125,26 @@ describe('Input', () => {
     await userEvent.click(button);
 
     expect(writeText).toHaveBeenCalledWith('test');
+  });
+
+  it('should accept a value', () => {
+    render(<Input value="test" />);
+
+    const element = screen.getByRole('textbox');
+    expect(element).toHaveValue('test');
+  });
+
+  it('should be controllable', async () => {
+    let value = '';
+
+    render(<Input value={value} />);
+
+    const input = screen.getByRole('textbox');
+    await userEvent.type(input, 'test');
+
+    expect(input).toHaveValue('');
+
+    value = 'test';
+    waitFor(() => expect(input).toHaveValue('test'));
   });
 });
