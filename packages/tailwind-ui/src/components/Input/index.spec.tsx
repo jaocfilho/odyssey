@@ -5,6 +5,14 @@ import userEvent from '@testing-library/user-event';
 import { Input } from '.';
 
 describe('Input', () => {
+  const writeText = vi.fn();
+
+  Object.assign(navigator, {
+    clipboard: {
+      writeText,
+    },
+  });
+
   beforeEach(() => {
     vi.restoreAllMocks();
   });
@@ -108,14 +116,6 @@ describe('Input', () => {
   });
 
   it('should copy the input value to the clipboard when the copy icon is clicked', async () => {
-    const writeText = vi.fn();
-
-    Object.assign(navigator, {
-      clipboard: {
-        writeText,
-      },
-    });
-
     render(<Input hasCopyButton />);
 
     const textbox = screen.getByRole('textbox');
@@ -146,5 +146,15 @@ describe('Input', () => {
 
     value = 'test';
     waitFor(() => expect(input).toHaveValue('test'));
+  });
+
+  it('should copy the value if the input is controlled', async () => {
+    const value = 'test';
+    render(<Input value={value} hasCopyButton />);
+
+    const button = screen.getByTestId('copy-icon');
+    await userEvent.click(button);
+
+    expect(writeText).toHaveBeenCalledWith(value);
   });
 });

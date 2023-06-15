@@ -1,5 +1,11 @@
 import { Input } from 'tailwind-ui';
 
-export function ApikeyInput() {
-  return <Input label="API key" name="apiKey" disabled hasCopyButton />;
+type ApikeyInputProps = {
+  value: string;
+};
+
+export function ApikeyInput({ value }: ApikeyInputProps) {
+  return (
+    <Input label="API key" value={value} name="apiKey" disabled hasCopyButton />
+  );
 }

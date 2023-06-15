@@ -121,6 +121,8 @@ function BaseInput(
   const hasLabel = !!label;
   const hasHelperText = !!helperText;
 
+  const inputValue = value ?? innerValue;
+
   return (
     <div>
       {hasLabel ? <Label htmlFor={name}>{label}</Label> : null}
@@ -131,12 +133,12 @@ function BaseInput(
           id={name}
           {...rest}
           onChange={handleChange}
-          value={value ?? innerValue}
+          value={inputValue}
           name={name}
           ref={ref}
         />
         {error ? <ErrorIcon /> : null}
-        {hasCopyButton ? <CopyIcon value={innerValue} /> : null}
+        {hasCopyButton ? <CopyIcon value={inputValue as string} /> : null}
       </div>
       {hasHelperText ? <HelperText message={helperText} error={error} /> : null}
     </div>
