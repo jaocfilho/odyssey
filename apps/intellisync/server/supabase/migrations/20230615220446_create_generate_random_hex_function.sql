@@ -1,9 +1,8 @@
 set check_function_bodies = off;
 
 CREATE OR REPLACE FUNCTION public.generate_random_hex(length integer)
- RETURNS text
+ RETURNS varchar
  LANGUAGE plpgsql
- security definer set search_path = public
 AS $function$
 DECLARE
   random_bytes BYTEA;
@@ -16,5 +15,3 @@ BEGIN
 END;
 $function$
 ;
-
-
