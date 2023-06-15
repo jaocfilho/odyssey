@@ -1,9 +1,14 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 import { Input } from '.';
 
 describe('Input', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+  });
+
   afterEach(() => {
     cleanup();
   });
@@ -20,6 +25,23 @@ describe('Input', () => {
 
     const element = screen.getByText('Label');
     expect(element).toBeInTheDocument();
+  });
+
+  it('should write the value passed to the input', async () => {
+    render(<Input />);
+
+    const element = screen.getByRole('textbox');
+    await userEvent.type(element, 'test');
+    expect(element).toHaveValue('test');
+  });
+
+  it('should call onChange when the input value changes', async () => {
+    const onChange = vi.fn();
+    render(<Input onChange={onChange} />);
+
+    const element = screen.getByRole('textbox');
+    await userEvent.type(element, 'test');
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('should assign a name to the input if name is passed', () => {
@@ -83,5 +105,25 @@ describe('Input', () => {
 
     const element = screen.queryByTestId('copy-icon');
     expect(element).not.toBeInTheDocument();
+  });
+
+  it('should copy the input value to the clipboard when the copy icon is clicked', async () => {
+    const writeText = vi.fn();
+
+    Object.assign(navigator, {
+      clipboard: {
+        writeText,
+      },
+    });
+
+    render(<Input hasCopyButton />);
+
+    const textbox = screen.getByRole('textbox');
+    await userEvent.type(textbox, 'test');
+
+    const button = screen.getByTestId('copy-icon');
+    await userEvent.click(button);
+
+    expect(writeText).toHaveBeenCalledWith('test');
   });
 });

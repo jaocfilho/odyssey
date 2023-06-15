@@ -1,8 +1,12 @@
+'use client';
+
 import {
   type InputHTMLAttributes,
   type LabelHTMLAttributes,
   type ForwardedRef,
   forwardRef,
+  useState,
+  ChangeEvent,
 } from 'react';
 
 import {
@@ -36,10 +40,19 @@ function ErrorIcon() {
   );
 }
 
-function CopyIcon() {
+type CopyIconProps = {
+  value: string;
+};
+
+function CopyIcon({ value }: CopyIconProps) {
+  const handleClick = () => {
+    navigator.clipboard.writeText(value);
+  };
+
   return (
     <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
       <div
+        onClick={handleClick}
         className="cursor-pointer inline-flex items-center space-x-1 rounded border border-grayScheme-200 dark:border-grayScheme-600 px-2 font-sans text-xs text-grayScheme-600 dark:text-grayScheme-200 dark:hover:border-grayScheme-500"
         data-testid="copy-icon"
       >
@@ -90,10 +103,18 @@ function BaseInput(
     error,
     helperText,
     hasCopyButton,
+    onChange,
     ...rest
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+    !!onChange && onChange(event);
+  };
+
   const styles = getStyles({ colorScheme: error ? 'error' : colorScheme });
 
   const hasLabel = !!label;
@@ -108,11 +129,13 @@ function BaseInput(
           className={classNames(styles, className ?? '')}
           id={name}
           {...rest}
+          onChange={handleChange}
+          value={value}
           name={name}
           ref={ref}
         />
         {error ? <ErrorIcon /> : null}
-        {hasCopyButton ? <CopyIcon /> : null}
+        {hasCopyButton ? <CopyIcon value={value} /> : null}
       </div>
       {hasHelperText ? <HelperText message={helperText} error={error} /> : null}
     </div>
