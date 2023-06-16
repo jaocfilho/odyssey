@@ -2,6 +2,7 @@ const settingsPathname = 'settings';
 
 export const settingsUrls = {
   base: `/dashboard/${settingsPathname}` as const,
+  api: () => `${settingsUrls.base}/api` as const,
 };
 
 export function isSettingsPath(pathname: string) {
