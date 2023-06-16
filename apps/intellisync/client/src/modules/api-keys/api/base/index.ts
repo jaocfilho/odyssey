@@ -1,6 +1,6 @@
 import { Supabase } from '@/lib/supabase/types';
 
-type BaseSelectApikeyByOrganizationIdParams = {
+export type BaseSelectApikeyByOrganizationIdParams = {
   organization_id: string;
 };
 

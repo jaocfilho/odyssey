@@ -1,4 +1,14 @@
+import { serverSelectApikeyByOrganizationId } from '@/modules/api-keys/api/server';
+import { getLastUsedOrganization } from '@/modules/organizations/helpers';
 import { Input } from 'tailwind-ui';
+
+async function getApikey() {
+  const { lastUsedOrganization } = await getLastUsedOrganization();
+
+  return await serverSelectApikeyByOrganizationId({
+    organization_id: lastUsedOrganization,
+  });
+}
 
 type ApikeyInputProps = {
   value: string;
