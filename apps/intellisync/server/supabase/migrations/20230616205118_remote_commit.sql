@@ -1,4 +1,3 @@
-alter table "public"."api_keys" alter column "key_value" set default generate_random_hex();
 
 CREATE UNIQUE INDEX api_keys_key_value_key ON public.api_keys USING btree (key_value);
 
@@ -22,6 +21,8 @@ BEGIN
 END;
 $function$
 ;
+
+alter table "public"."api_keys" alter column "key_value" set default generate_random_hex();
 
 CREATE OR REPLACE FUNCTION public.handle_new_organization()
  RETURNS trigger
