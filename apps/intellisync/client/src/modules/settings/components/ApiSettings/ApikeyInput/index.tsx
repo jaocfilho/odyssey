@@ -1,5 +1,5 @@
 import { serverSelectApikeyByOrganizationId } from '@/modules/api-keys/api/server';
-import { getLastUsedOrganization } from '@/modules/organizations/helpers';
+import { getLastUsedOrganization } from '@/modules/organizations/helpers/server';
 import { Input } from 'tailwind-ui';
 
 async function getApikey() {
@@ -10,12 +10,16 @@ async function getApikey() {
   });
 }
 
-type ApikeyInputProps = {
-  value: string;
-};
+export async function ApikeyInput() {
+  const { data } = await getApikey();
 
-export function ApikeyInput({ value }: ApikeyInputProps) {
   return (
-    <Input label="API key" value={value} name="apiKey" disabled hasCopyButton />
+    <Input
+      label="API key"
+      value={data?.key_value}
+      name="apiKey"
+      disabled
+      hasCopyButton
+    />
   );
 }

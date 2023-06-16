@@ -1,5 +1,5 @@
 import { Organization } from '../Organization';
-import { getLastUsedOrganization } from '@/modules/organizations/helpers';
+import { getLastUsedOrganization } from '@/modules/organizations/helpers/server';
 
 export async function OrganizationArea() {
   const { lastUsedOrganization } = await getLastUsedOrganization();
