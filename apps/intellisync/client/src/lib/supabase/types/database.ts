@@ -13,22 +13,32 @@ export interface Database {
         Row: {
           created_at: string;
           id: string;
-          key: string;
+          key_value: string;
+          organization_id: string;
           updated_at: string;
         };
         Insert: {
           created_at?: string;
           id?: string;
-          key: string;
+          key_value?: string;
+          organization_id: string;
           updated_at?: string;
         };
         Update: {
           created_at?: string;
           id?: string;
-          key?: string;
+          key_value?: string;
+          organization_id?: string;
           updated_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'api_keys_organization_id_fkey';
+            columns: ['organization_id'];
+            referencedRelation: 'organizations';
+            referencedColumns: ['id'];
+          }
+        ];
       };
       apps: {
         Row: {
@@ -287,6 +297,10 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
+      generate_random_hex: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
       get_chatbot_config: {
         Args: {
           p_apikey: string;
