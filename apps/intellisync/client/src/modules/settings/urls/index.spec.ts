@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { isSettingsPath, settingsUrls } from '.';
+import { isSettingsApiPath, isSettingsPath, settingsUrls } from '.';
 
 describe('isSettingsPath', () => {
   it('should return true if pathname is settings', () => {
@@ -16,9 +16,28 @@ describe('isSettingsPath', () => {
   });
 });
 
+describe('isSettingsApiPath', () => {
+  it('should return true if pathname is settings api', () => {
+    const pathname = '/dashboard/settings/api';
+    const result = isSettingsApiPath(pathname);
+    expect(result).toBe(true);
+  });
+
+  it('should return false if pathname is not settings api', () => {
+    const pathname = '/dashboard/settings';
+    const result = isSettingsApiPath(pathname);
+    expect(result).toBe(false);
+  });
+});
+
 describe('settingsUrls', () => {
   it('should return base url', () => {
     const result = settingsUrls.base;
     expect(result).toBe('/dashboard/settings');
+  });
+
+  it('should return api url', () => {
+    const result = settingsUrls.api();
+    expect(result).toBe('/dashboard/settings/api');
   });
 });

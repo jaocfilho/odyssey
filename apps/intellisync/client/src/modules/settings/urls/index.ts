@@ -11,3 +11,9 @@ export function isSettingsPath(pathname: string) {
   const path = splitedPathname[2];
   return path === settingsPathname;
 }
+
+export function isSettingsApiPath(pathname: string) {
+  const url = settingsUrls.api();
+
+  return pathname === url;
+}
