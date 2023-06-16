@@ -2,6 +2,7 @@ import { SecondarySidebarItem } from '@/components/SecondarySidebar/SecondarySid
 import { SecondarySidebarList } from '@/components/SecondarySidebar/SecondarySidebarList';
 import { SecondarySidebarSection } from '@/components/SecondarySidebar/SecondarySidebarSection';
 import { SecondarySidebarSectionTitle } from '@/components/SecondarySidebar/SecondarySidebarSectionTitle';
+import { ApiSidebarItem } from './ApiSidebarItem';
 
 export function OrganizationSettingsSection() {
   return (
@@ -10,7 +11,7 @@ export function OrganizationSettingsSection() {
         Organization settings
       </SecondarySidebarSectionTitle>
       <SecondarySidebarList>
-        <SecondarySidebarItem>API</SecondarySidebarItem>
+        <ApiSidebarItem />
       </SecondarySidebarList>
     </SecondarySidebarSection>
   );
