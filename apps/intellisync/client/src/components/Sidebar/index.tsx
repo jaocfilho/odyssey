@@ -1,3 +1,4 @@
+import { AccountItem } from './AccountItem';
 import { SidebarContainer } from './Container';
 import { LogoArea } from './LogoArea';
 import { NavContainer } from './NavContainer';
@@ -8,10 +9,13 @@ export const Sidebar = () => {
     <SidebarContainer>
       <LogoArea />
       <div className="mt-2 flex h-0 flex-1 flex-col overflow-y-auto">
-        <NavContainer>
-          <ChatbotsPageNavItem />
-          <SettingsPageNavItem />
-        </NavContainer>
+        <div className="flex flex-col h-full justify-between">
+          <NavContainer>
+            <ChatbotsPageNavItem />
+            <SettingsPageNavItem />
+          </NavContainer>
+          <AccountItem />
+        </div>
       </div>
     </SidebarContainer>
   );
