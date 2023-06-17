@@ -36,11 +36,11 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/react-hooks
       '@supabase/auth-helpers-nextjs':
-        specifier: ^0.6.1
-        version: 0.6.1(@supabase/supabase-js@2.20.0)
+        specifier: ^0.7.2
+        version: 0.7.2(@supabase/supabase-js@2.25.0)
       '@supabase/supabase-js':
-        specifier: ^2.20.0
-        version: 2.20.0(encoding@0.1.13)
+        specifier: ^2.25.0
+        version: 2.25.0(encoding@0.1.13)
       '@tanstack/react-query':
         specifier: ^4.29.5
         version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
@@ -49,7 +49,7 @@ importers:
         version: 1.0.0
       langchain:
         specifier: ^0.0.83
-        version: 0.0.83(@supabase/supabase-js@2.20.0)(encoding@0.1.13)
+        version: 0.0.83(@supabase/supabase-js@2.25.0)(encoding@0.1.13)
       next:
         specifier: 13.4.4
         version: 13.4.4(@babel/core@7.22.1)(react-dom@18.2.0)(react@18.2.0)
@@ -65,6 +65,9 @@ importers:
       react-hook-form:
         specifier: ^7.44.3
         version: 7.44.3(react@18.2.0)
+      stripe:
+        specifier: ^12.9.0
+        version: 12.9.0
       tailwind-ui:
         specifier: workspace:*
         version: link:../../../packages/tailwind-ui
@@ -155,7 +158,7 @@ importers:
         version: 5.1.3
       vite:
         specifier: ^4.3.9
-        version: 4.3.9(@types/node@17.0.45)
+        version: 4.3.9(less@4.1.3)
 
   apps/turboflux/client:
     dependencies:
@@ -844,7 +847,7 @@ importers:
         version: 5.1.3
       vite:
         specifier: ^4.3.9
-        version: 4.3.9(@types/node@17.0.45)
+        version: 4.3.9(less@4.1.3)
 
 packages:
 
@@ -5565,22 +5568,23 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-  /@supabase/auth-helpers-nextjs@0.6.1(@supabase/supabase-js@2.20.0):
-    resolution: {integrity: sha512-ffDAR4pW2Cosj/CuuGRAhzOFfHtqzdgax7zqRGGyq334gxxPplsmJFGaLPRJ3Z/4mTSIJHyFd6LYdHMN0a+5Bw==}
+  /@supabase/auth-helpers-nextjs@0.7.2(@supabase/supabase-js@2.25.0):
+    resolution: {integrity: sha512-n5IyGBYJV/WiR5Rgw4CUaiJYiOv9yW2of4ZP4EyzKt2O6/6rztt7PcGE4AoK2vERw+fb5F2QtJBdt6J5eOYCCw==}
     peerDependencies:
-      '@supabase/supabase-js': ^2.0.4
+      '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/auth-helpers-shared': 0.3.4(@supabase/supabase-js@2.20.0)
-      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
+      '@supabase/auth-helpers-shared': 0.4.1(@supabase/supabase-js@2.25.0)
+      '@supabase/supabase-js': 2.25.0(encoding@0.1.13)
+      set-cookie-parser: 2.6.0
     dev: false
 
-  /@supabase/auth-helpers-shared@0.3.4(@supabase/supabase-js@2.20.0):
-    resolution: {integrity: sha512-8I3D0SPHHexkFTSfPg0nZgJSVazWoB3tZDpT6IjRv6w89vDMUzO99Lit4H9anVLF4teW8c/nJJxawDNbDlgbgg==}
+  /@supabase/auth-helpers-shared@0.4.1(@supabase/supabase-js@2.25.0):
+    resolution: {integrity: sha512-IEDX9JzWkIjQiLUaP4Qy5YDiG0jFQatWfS+jw8cCQs6QfbNdEPd2Y3qonwGHnM90CZom9SvjuylBv2pFVAL7Lw==}
     peerDependencies:
-      '@supabase/supabase-js': ^2.0.4
+      '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
-      jose: 4.14.1
+      '@supabase/supabase-js': 2.25.0(encoding@0.1.13)
+      jose: 4.14.4
     dev: false
 
   /@supabase/functions-js@2.1.1(encoding@0.1.13):
@@ -5591,24 +5595,24 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/gotrue-js@2.22.3(encoding@0.1.13):
-    resolution: {integrity: sha512-GBu+YT7jaWgmmVRNPZnT2YmO7TjscjoBVMzMDnr2yPL6C2ImzRmOKIbHnGliDeI5EaEsPPljWoYR4xB+WJb98w==}
+  /@supabase/gotrue-js@2.30.0(encoding@0.1.13):
+    resolution: {integrity: sha512-t2Wygp/vCpyR5A/TlTSKT60cZD4h4nfErqkYu4KBkztCiWkuKhpWxGgd8fp4uPXYnCqpwWfj2LgPHenly/5Sxg==}
     dependencies:
       cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/postgrest-js@1.5.0(encoding@0.1.13):
-    resolution: {integrity: sha512-YaU1HBE43Ba+FGmnXuvK+xYeHylkDKd04PYeKDUCoE2bUHoxSDqnjHbOwmLjnusGZi3X1MrFeUH1Wwb4bHYyIg==}
+  /@supabase/postgrest-js@1.7.1(encoding@0.1.13):
+    resolution: {integrity: sha512-xPRYLaZrkLbXNlzmHW6Wtf9hmcBLjjI5xUz2zj8oE2hgXGaYoZBBkpN9bmW9i17Z1f6Ujxa942AqK439XOA36A==}
     dependencies:
       cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/realtime-js@2.7.2:
-    resolution: {integrity: sha512-Fi6xAl5PUkqnjl3wo4rdcQIbMG3+yTRX1aUZe/yfvTG84RMvmCXJ1yN6MmafVLeZpU1xkaz5Vx4L0tnHcLiy6w==}
+  /@supabase/realtime-js@2.7.3:
+    resolution: {integrity: sha512-c7TzL81sx2kqyxsxcDduJcHL9KJdCOoKimGP6lQSqiZKX42ATlBZpWbyy9KFGFBjAP4nyopMf5JhPi2ZH9jyNw==}
     dependencies:
       '@types/phoenix': 1.5.6
       '@types/websocket': 1.0.5
@@ -5625,13 +5629,13 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/supabase-js@2.20.0(encoding@0.1.13):
-    resolution: {integrity: sha512-6sNX4WEaVBbmOS1K2U3PcpAhp0FcjVo1FRSEoj4N+NZ6DIokX+yut8IBhF176pg5kFCdFIL2wyNhf3SltREmWw==}
+  /@supabase/supabase-js@2.25.0(encoding@0.1.13):
+    resolution: {integrity: sha512-AEh0suSrjfpQCOhY7hLsgX6gr8XEUWshVkTq9IODiHTnAR6NHiEQ865LTeWu8gqCDf2XH1n20JcSmovIe3Xixw==}
     dependencies:
       '@supabase/functions-js': 2.1.1(encoding@0.1.13)
-      '@supabase/gotrue-js': 2.22.3(encoding@0.1.13)
-      '@supabase/postgrest-js': 1.5.0(encoding@0.1.13)
-      '@supabase/realtime-js': 2.7.2
+      '@supabase/gotrue-js': 2.30.0(encoding@0.1.13)
+      '@supabase/postgrest-js': 1.7.1(encoding@0.1.13)
+      '@supabase/realtime-js': 2.7.3
       '@supabase/storage-js': 2.5.1(encoding@0.1.13)
       cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
@@ -5666,7 +5670,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.3.1(postcss@8.4.24)
+      tailwindcss: 3.3.1(postcss@8.4.21)
     dev: true
 
   /@tanstack/query-core@4.29.5:
@@ -6297,7 +6301,7 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.22.1)
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.22.1)
       react-refresh: 0.14.0
-      vite: 4.3.9(less@4.1.3)
+      vite: 4.3.9(@types/node@17.0.45)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9757,8 +9761,8 @@ packages:
     resolution: {integrity: sha512-njj0VL2TsIxCtgzhO+9RRobBvws4oYyCM8TpvoUQwl/MbIM3NFJRR9+e6x0sS5xXaP1t6OCBkaBME98OV9zU5A==}
     dev: false
 
-  /jose@4.14.1:
-    resolution: {integrity: sha512-SgjXLpP7jhQkUNKL6RpowoR/IF4QKE+WjLDMpNnh2vmhiFs67NftrNpvFtgbwpvRdtueFliahYYWz9E+XZZQlg==}
+  /jose@4.14.4:
+    resolution: {integrity: sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==}
     dev: false
 
   /joycon@3.1.1:
@@ -9990,7 +9994,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /langchain@0.0.83(@supabase/supabase-js@2.20.0)(encoding@0.1.13):
+  /langchain@0.0.83(@supabase/supabase-js@2.25.0)(encoding@0.1.13):
     resolution: {integrity: sha512-XS5H7g2/JRIi70D3UjfYpYlnkl5Q0lnsU9wT3fHexPazopUr4yvfg8ocHi+IyAQUOKSoEuyQQxxgaPsh2iyyxg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -10117,7 +10121,7 @@ packages:
         optional: true
     dependencies:
       '@anthropic-ai/sdk': 0.4.3(encoding@0.1.13)
-      '@supabase/supabase-js': 2.20.0(encoding@0.1.13)
+      '@supabase/supabase-js': 2.25.0(encoding@0.1.13)
       ansi-styles: 5.2.0
       binary-extensions: 2.2.0
       expr-eval: 2.0.2
@@ -11678,7 +11682,6 @@ packages:
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.4
-    dev: true
 
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -12301,7 +12304,6 @@ packages:
 
   /set-cookie-parser@2.6.0:
     resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
-    dev: true
 
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
@@ -12574,6 +12576,14 @@ packages:
     dependencies:
       acorn: 8.8.2
     dev: true
+
+  /stripe@12.9.0:
+    resolution: {integrity: sha512-stYtrWetRYUsEbsUVyJaPG9Sppt0ds2szBqXsuDG6KZPPuUmCccbpceLrhoOBwNl1RziEfNB7oG9wg1n2eW+EQ==}
+    engines: {node: '>=12.*'}
+    dependencies:
+      '@types/node': 17.0.45
+      qs: 6.11.2
+    dev: false
 
   /style-loader@3.3.3(webpack@5.86.0):
     resolution: {integrity: sha512-53BiGLXAcll9maCYtZi2RCQZKa8NQQai5C4horqKyRmHj9H7QmcUyucrH+4KW/gBQbXM2AsB0axoEcFZPlfPcw==}
