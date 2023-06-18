@@ -32,7 +32,10 @@ export type ButtonStylesProps = {
   colorScheme?: ButtonColorSchemeVariants;
 };
 
-export function getStyles({ size, colorScheme }: Required<ButtonStylesProps>) {
+export function getButtonStyles({
+  size = 'md',
+  colorScheme = 'emerald',
+}: ButtonStylesProps) {
   const sizeStyles = sizeVariantsStyles[size];
   const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
 
