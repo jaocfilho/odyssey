@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Dropdown as DropdownComponent } from 'tailwind-ui';
+import { Menu as MenuComponent } from 'tailwind-ui';
 
-const meta: Meta<typeof DropdownComponent> = {
-  title: 'Components/Overlay/Dropdown',
-  component: DropdownComponent,
+const meta: Meta<typeof MenuComponent> = {
+  title: 'Components/Overlay/Menu',
+  component: MenuComponent,
   args: {
     button: 'Button',
   },
@@ -12,12 +12,17 @@ const meta: Meta<typeof DropdownComponent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof DropdownComponent>;
+type Story = StoryObj<typeof MenuComponent>;
+
+export const Primary: Story = {
+  name: 'Primary',
+  render: (args) => <MenuComponent {...args} />,
+};
 
 export const WithHeader: Story = {
   name: 'With header',
   render: (args) => (
-    <DropdownComponent
+    <MenuComponent
       buttonProps={{ colorScheme: 'gray' }}
       {...args}
       header={

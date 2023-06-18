@@ -1,37 +1,37 @@
 import { type ReactNode } from 'react';
 
-import { Menu } from '@headlessui/react';
+import { Menu as HuiMenu } from '@headlessui/react';
 
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { classNames } from '../../utils';
 import { Transition } from './Transition';
-import { DropdownButton, type DropdownButtonProps } from './DropdownButton';
+import { MenuButton, type MenuButtonProps } from './MenuButton';
 
 type DropdownProps = {
   placement?: 'left' | 'right';
   button: ReactNode;
   header?: ReactNode;
-  buttonProps?: DropdownButtonProps;
+  buttonProps?: MenuButtonProps;
 };
 
-export function Dropdown({
+export function Menu({
   placement,
   header,
   button,
   buttonProps,
 }: DropdownProps) {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <HuiMenu as="div" className="relative inline-block text-left">
       <div>
-        <DropdownButton {...buttonProps}>{button}</DropdownButton>
+        <MenuButton {...buttonProps}>{button}</MenuButton>
       </div>
 
       <Transition>
-        <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <HuiMenu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           {header}
           <div className="py-1">
-            <Menu.Item>
+            <HuiMenu.Item>
               {({ active }) => (
                 <a
                   href="#"
@@ -43,8 +43,8 @@ export function Dropdown({
                   Account settings
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </HuiMenu.Item>
+            <HuiMenu.Item>
               {({ active }) => (
                 <a
                   href="#"
@@ -56,8 +56,8 @@ export function Dropdown({
                   Support
                 </a>
               )}
-            </Menu.Item>
-            <Menu.Item>
+            </HuiMenu.Item>
+            <HuiMenu.Item>
               {({ active }) => (
                 <a
                   href="#"
@@ -69,11 +69,11 @@ export function Dropdown({
                   License
                 </a>
               )}
-            </Menu.Item>
+            </HuiMenu.Item>
           </div>
           <div className="py-1">
             <form method="POST" action="#">
-              <Menu.Item>
+              <HuiMenu.Item>
                 {({ active }) => (
                   <button
                     type="submit"
@@ -85,11 +85,11 @@ export function Dropdown({
                     Sign out
                   </button>
                 )}
-              </Menu.Item>
+              </HuiMenu.Item>
             </form>
           </div>
-        </Menu.Items>
+        </HuiMenu.Items>
       </Transition>
-    </Menu>
+    </HuiMenu>
   );
 }

@@ -1,16 +1,16 @@
-import { Menu, MenuButtonProps } from '@headlessui/react';
+import { Menu, MenuButtonProps as HuiMenuButtonProps } from '@headlessui/react';
 
 import { type ButtonStylesProps, getButtonStyles } from '../../Button/styles';
 import { classNames } from '../../../utils';
 
-export type DropdownButtonProps = MenuButtonProps<'button'> & ButtonStylesProps;
+export type MenuButtonProps = HuiMenuButtonProps<'button'> & ButtonStylesProps;
 
-export function DropdownButton({
+export function MenuButton({
   colorScheme,
   size,
   className,
   ...rest
-}: DropdownButtonProps) {
+}: MenuButtonProps) {
   const variantsStyles = getButtonStyles({ size, colorScheme });
   const styles = classNames(variantsStyles, (className as string) ?? '');
 
