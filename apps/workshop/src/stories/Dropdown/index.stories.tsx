@@ -51,12 +51,12 @@ export const WithHeader: Story = {
     <MenuComponent
       {...args}
       header={
-        <div className="px-4 py-3">
+        <>
           <p className="text-sm dark:text-grayScheme-400">Signed in as</p>
           <p className="truncate text-sm font-medium text-gray-900 dark:text-grayScheme-200">
             tom@example.com
           </p>
-        </div>
+        </>
       }
     >
       <div className="py-1">
