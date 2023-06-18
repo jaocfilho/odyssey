@@ -1,33 +1,35 @@
+import { type ReactNode } from 'react';
+
 import { Menu } from '@headlessui/react';
 
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { classNames } from '../../utils';
 import { Transition } from './Transition';
-import { DropdownButton } from './DropdownButton';
+import { DropdownButton, type DropdownButtonProps } from './DropdownButton';
 
 type DropdownProps = {
   placement?: 'left' | 'right';
+  button: ReactNode;
+  header?: ReactNode;
+  buttonProps?: DropdownButtonProps;
 };
 
-export function Dropdown({ placement }: DropdownProps) {
+export function Dropdown({
+  placement,
+  header,
+  button,
+  buttonProps,
+}: DropdownProps) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <DropdownButton colorScheme="gray" className="inline-flex w-full">
-          Options
-          <ChevronDownIcon className="-mr-1 h-5 w-5" aria-hidden="true" />
-        </DropdownButton>
+        <DropdownButton {...buttonProps}>{button}</DropdownButton>
       </div>
 
       <Transition>
         <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-4 py-3">
-            <p className="text-sm">Signed in as</p>
-            <p className="truncate text-sm font-medium text-gray-900">
-              tom@example.com
-            </p>
-          </div>
+          {header}
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
