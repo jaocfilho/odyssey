@@ -2,12 +2,9 @@ import { type ReactNode } from 'react';
 
 import { Menu as HuiMenu } from '@headlessui/react';
 
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
-
-import { classNames } from '../../utils';
-import { Transition } from './Transition';
-import { MenuButton, type MenuButtonProps } from './MenuButton';
-import { MenuItem } from './MenuItem';
+import { Transition } from '../Transition';
+import { MenuButton, type MenuButtonProps } from '../MenuButton';
+import { MenuItem } from '../MenuItem';
 
 type DropdownProps = {
   placement?: 'left' | 'right';
