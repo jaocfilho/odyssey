@@ -23,6 +23,6 @@ export async function signInWithEmail(
   });
 }
 
-export async function signOut(supabase: Supabase = supabaseLib) {
+export async function baseSignOut(supabase: Supabase = supabaseLib) {
   return await supabase.auth.signOut();
 }

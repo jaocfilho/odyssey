@@ -1,5 +1,6 @@
-import { Menu, MenuItem } from 'tailwind-ui';
+import { Menu } from 'tailwind-ui';
 import { MenuHeader } from './MenuHeader';
+import { SignOutButton } from './SignOutButton';
 
 export function AccountItem() {
   return (
@@ -9,7 +10,7 @@ export function AccountItem() {
       button="admin@email.com"
     >
       <div className="py-1">
-        <MenuItem>Sign out</MenuItem>
+        <SignOutButton />
       </div>
     </Menu>
   );
