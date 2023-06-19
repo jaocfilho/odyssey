@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from 'tailwind-ui';
 import { CreateChatbotDrawer } from '../CreateChatbotDrawer';
+import { BrandButton } from '@/components/Buttons/Button';
 
 type BaseCreateChatbotButtonProps = {
   openDrawer: () => void;
@@ -10,7 +10,7 @@ type BaseCreateChatbotButtonProps = {
 export function BaseCreateChatbotButton({
   openDrawer,
 }: BaseCreateChatbotButtonProps) {
-  return <Button onClick={openDrawer}>Create a new chatbot</Button>;
+  return <BrandButton onClick={openDrawer}>Create a new chatbot</BrandButton>;
 }
 
 export function CreateChatbotButton() {
