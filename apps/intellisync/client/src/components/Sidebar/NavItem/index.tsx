@@ -1,10 +1,10 @@
 import { classNames } from 'tailwind-ui';
 import { NavIcon, TIcon } from '../NavIcon';
 
-const currentItemStyles = 'dark:bg-zinc-800 dark:text-zinc-400';
+const currentItemStyles = 'dark:bg-grayScheme-800 dark:text-white';
 
 const notCurrentStyles =
-  'dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-400';
+  'dark:text-grayScheme-400 dark:hover:bg-grayScheme-800 dark:hover:text-white';
 
 const commonStyles =
   'flex items-center justify-center rounded-md px-2 py-2 text-sm font-medium';
