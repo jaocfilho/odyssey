@@ -9,7 +9,7 @@ export function Container({ children }: ContainerProps) {
     <nav className="flex overflow-x-auto border-b dark:border-white/5 py-4">
       <ul
         role="list"
-        className="flex min-w-full flex-none gap-x-6 px-4 text-sm font-semibold leading-6 dark:text-zinc-500 sm:px-6 lg:px-8"
+        className="flex min-w-full flex-none gap-x-6 px-4 text-sm font-semibold leading-6 dark:text-grayScheme-400 sm:px-6 lg:px-8"
       >
         {children}
       </ul>

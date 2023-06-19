@@ -3,6 +3,8 @@
 import { useState } from 'react';
 
 import { Textarea } from 'tailwind-ui';
+import { SystemMessage } from './SystemMessage';
+import { UserMessage } from './UserMessage';
 
 type ChatMessage = {
   id: number;
@@ -28,16 +30,18 @@ export function Chat({}: ChatProps) {
   ]);
 
   return (
-    <div className="p-4">
+    <div className="max-w-6xl mx-auto p-4">
       <div className="flex flex-col gap-4">
-        {chat.map(({ message, author, id }) => (
-          <div key={id} className="px-4 py-2 rounded-sm dark:bg-grayScheme-900">
-            <p>{message}</p>
-          </div>
-        ))}
+        {chat.map(({ message, author, id }) =>
+          author === 'system' ? (
+            <SystemMessage key={id} message={message} />
+          ) : (
+            <UserMessage key={id} message={message} />
+          )
+        )}
       </div>
       <div className="mt-8">
-        <Textarea rows={4} />
+        <Textarea colorScheme="indigo" rows={4} />
       </div>
     </div>
   );
