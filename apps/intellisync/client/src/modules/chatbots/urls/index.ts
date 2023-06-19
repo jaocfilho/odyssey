@@ -7,6 +7,7 @@ export const chatbotsUrls = {
     base: (id: string) => `${chatbotsUrls.base}/${id}` as const,
     overview: (id: string) =>
       `${chatbotsUrls.details.base(id)}/overview` as const,
+    chat: (id: string) => `${chatbotsUrls.details.base(id)}/chat` as const,
     persona: (id: string) =>
       `${chatbotsUrls.details.base(id)}/persona` as const,
     settings: (id: string) =>

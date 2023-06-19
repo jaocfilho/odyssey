@@ -34,6 +34,10 @@ describe('chatbotsUrls', () => {
       '/dashboard/chatbots/id/data-source'
     );
   });
+
+  it('should returh the correct chat url', () => {
+    expect(chatbotsUrls.details.chat('id')).toBe('/dashboard/chatbots/id/chat');
+  });
 });
 
 describe('isChatbotsPath', () => {
