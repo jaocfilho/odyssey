@@ -29,6 +29,13 @@ export function Chat({}: ChatProps) {
     { id: 3, author: 'user', message: 'this is an example of a chat message' },
   ]);
 
+  const addUserMessage = (message: string) => {
+    setChat((prevChat) => [
+      ...prevChat,
+      { id: prevChat.length + 1, author: 'user', message },
+    ]);
+  };
+
   return (
     <div className="max-w-6xl mx-auto p-4">
       <div className="flex flex-col gap-4">
@@ -41,7 +48,7 @@ export function Chat({}: ChatProps) {
         )}
       </div>
       <div className="mt-8">
-        <NewMessageForm />
+        <NewMessageForm onSubmit={({ message }) => addUserMessage(message)} />
       </div>
     </div>
   );
