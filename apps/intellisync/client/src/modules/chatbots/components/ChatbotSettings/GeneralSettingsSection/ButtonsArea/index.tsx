@@ -1,5 +1,5 @@
-import { Button } from 'tailwind-ui';
 import { ChatbotSettingsFormSubmitButton } from '../../../ChatbotSettingsForm/SubmitButton';
+import { CancelButton } from '@/components/Buttons/CancelButton';
 
 type ButtonsAreaProps = {
   onCancel: () => void;
@@ -10,9 +10,9 @@ export function ButtonsArea({ onCancel, disabled }: ButtonsAreaProps) {
   return (
     <div className="mt-8 flex">
       <div className="flex gap-4">
-        <Button colorScheme="gray" onClick={onCancel} disabled={disabled}>
+        <CancelButton colorScheme="gray" onClick={onCancel} disabled={disabled}>
           Cancel
-        </Button>
+        </CancelButton>
         <ChatbotSettingsFormSubmitButton disabled={disabled} />
       </div>
     </div>
