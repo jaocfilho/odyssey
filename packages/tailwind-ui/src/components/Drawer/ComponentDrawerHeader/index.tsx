@@ -14,7 +14,7 @@ export function ComponentDrawerHeader({
   const hasSubtitle = !!subTitle;
 
   return (
-    <div className="px-4 py-6 border-b dark:border-zinc-50/10 sm:px-6">
+    <div className="px-4 py-6 border-b dark:border-white/5 sm:px-6">
       <Dialog.Title className="text-base font-semibold leading-6 dark:text-zinc-200">
         {title}
       </Dialog.Title>

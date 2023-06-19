@@ -16,7 +16,7 @@ export function ComponentDrawerFooter({
   actionButton,
 }: ComponentDrawerFooterProps) {
   return (
-    <div className="flex flex-shrink-0 gap-4 justify-end px-4 py-4 border-t dark:border-zinc-50/10">
+    <div className="flex flex-shrink-0 gap-4 justify-end px-4 py-4 border-t dark:border-white/5">
       <Button colorScheme="gray" onClick={onClose}>
         Cancel
       </Button>
