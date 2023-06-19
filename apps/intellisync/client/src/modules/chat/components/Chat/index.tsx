@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import { Textarea } from 'tailwind-ui';
 import { SystemMessage } from './SystemMessage';
 import { UserMessage } from './UserMessage';
+import { NewMessageForm } from './NewMessageForm';
 
 type ChatMessage = {
   id: number;
@@ -41,7 +41,7 @@ export function Chat({}: ChatProps) {
         )}
       </div>
       <div className="mt-8">
-        <Textarea colorScheme="indigo" rows={4} />
+        <NewMessageForm />
       </div>
     </div>
   );
