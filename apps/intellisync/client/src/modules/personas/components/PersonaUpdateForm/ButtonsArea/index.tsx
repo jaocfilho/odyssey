@@ -1,4 +1,5 @@
-import { Button } from 'tailwind-ui';
+import { BrandButton } from '@/components/Buttons/BrandButton';
+import { CancelButton } from '@/components/Buttons/CancelButton';
 
 type ButtonsAreaProps = {
   formId: string;
@@ -10,17 +11,12 @@ export function ButtonsArea({ formId, reset, disabled }: ButtonsAreaProps) {
   return (
     <div className="mt-8 flex">
       <div className="flex gap-4">
-        <Button disabled={disabled} colorScheme="gray" onClick={reset}>
+        <CancelButton disabled={disabled} onClick={reset}>
           Cancel
-        </Button>
-        <Button
-          disabled={disabled}
-          colorScheme="indigo"
-          type="submit"
-          form={formId}
-        >
+        </CancelButton>
+        <BrandButton disabled={disabled} type="submit" form={formId}>
           Save
-        </Button>
+        </BrandButton>
       </div>
     </div>
   );

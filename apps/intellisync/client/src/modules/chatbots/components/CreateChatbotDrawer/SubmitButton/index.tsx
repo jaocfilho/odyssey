@@ -1,4 +1,4 @@
-import { Button } from 'tailwind-ui';
+import { BrandButton } from '@/components/Buttons/BrandButton';
 
 type SubmitButton = {
   closeDrawer: () => void;
@@ -14,8 +14,8 @@ export function SubmitButton({
   }
 
   return (
-    <Button type="submit" form="createChatbotForm">
+    <BrandButton type="submit" form="createChatbotForm">
       Save
-    </Button>
+    </BrandButton>
   );
 }

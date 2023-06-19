@@ -6,5 +6,5 @@ import {
 type BrandButtonProps = TuiButtonProps;
 
 export function BrandButton(props: BrandButtonProps) {
-  return <TuiButton colorScheme="indigo" {...props} />;
+  return <TuiButton {...props} colorScheme="indigo" />;
 }

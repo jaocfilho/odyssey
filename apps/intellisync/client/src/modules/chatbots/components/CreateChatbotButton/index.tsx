@@ -1,7 +1,7 @@
 'use client';
 
 import { CreateChatbotDrawer } from '../CreateChatbotDrawer';
-import { BrandButton } from '@/components/Buttons/Button';
+import { BrandButton } from '@/components/Buttons/BrandButton';
 
 type BaseCreateChatbotButtonProps = {
   openDrawer: () => void;

@@ -1,5 +1,6 @@
-import { Button } from 'tailwind-ui';
 import { AddRowButton } from '../AddRowButton';
+import { BrandButton } from '@/components/Buttons/BrandButton';
+import { CancelButton } from '@/components/Buttons/CancelButton';
 
 type LastRowProps = {
   addRow: () => void;
@@ -16,12 +17,12 @@ export function LastRow({ addRow, disabled, reset }: LastRowProps) {
       <div className="flex justify-between items-center w-full">
         <AddRowButton addRow={addRow} />
         <div className="flex gap-4">
-          <Button disabled={disabled} colorScheme="gray" onClick={reset}>
+          <CancelButton disabled={disabled} onClick={reset}>
             Cancel
-          </Button>
-          <Button type="submit" disabled={disabled}>
+          </CancelButton>
+          <BrandButton type="submit" disabled={disabled}>
             Save
-          </Button>
+          </BrandButton>
         </div>
       </div>
     </li>
