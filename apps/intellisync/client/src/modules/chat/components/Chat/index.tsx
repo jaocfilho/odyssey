@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { SystemMessage } from './SystemMessage';
 import { UserMessage } from './UserMessage';
 import { NewMessageForm } from './NewMessageForm';
+import { useChat } from '../../hooks/use-chat';
 
 type ChatMessage = {
   id: number;
@@ -15,26 +16,7 @@ type ChatMessage = {
 type ChatProps = {};
 
 export function Chat({}: ChatProps) {
-  const [chat, setChat] = useState<ChatMessage[]>([
-    {
-      id: 1,
-      author: 'system',
-      message: 'this is a prototype of a chat component',
-    },
-    {
-      id: 2,
-      author: 'system',
-      message: 'it will be used in the chatbot details page',
-    },
-    { id: 3, author: 'user', message: 'this is an example of a chat message' },
-  ]);
-
-  const addUserMessage = (message: string) => {
-    setChat((prevChat) => [
-      ...prevChat,
-      { id: prevChat.length + 1, author: 'user', message },
-    ]);
-  };
+  const { chat, addUserMessage } = useChat();
 
   return (
     <div className="max-w-6xl mx-auto p-4">
