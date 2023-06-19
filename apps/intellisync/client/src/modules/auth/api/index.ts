@@ -26,3 +26,9 @@ export async function signInWithEmail(
 export async function baseSignOut(supabase: Supabase = supabaseLib) {
   return await supabase.auth.signOut();
 }
+
+export async function baseGetSessionUser(supabase: Supabase) {
+  const { data } = await supabase.auth.getSession();
+
+  return data.session?.user;
+}
