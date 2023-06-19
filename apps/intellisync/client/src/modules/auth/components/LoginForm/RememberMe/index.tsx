@@ -6,7 +6,7 @@ export function RememberMe() {
           id="remember-me"
           name="remember-me"
           type="checkbox"
-          className="h-4 w-4 rounded dark:border-white/10 text-indigo-600 focus:ring-indigo-600"
+          className="h-4 w-4 rounded dark:border-white/5 text-indigo-600 focus:ring-indigo-600"
         />
         <label
           htmlFor="remember-me"

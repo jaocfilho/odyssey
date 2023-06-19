@@ -10,7 +10,7 @@ type SecondarySidebarProps = {
 export function SecondarySidebar({ children, header }: SecondarySidebarProps) {
   return (
     <div
-      className="flex flex-col fixed inset-y-0 w-64 border-r dark:border-zinc-50/10 dark:bg-zinc-950"
+      className="flex flex-col fixed inset-y-0 w-64 border-r dark:border-white/5 dark:bg-grayScheme-950"
       aria-label="Secondary sidebar"
       role="secondarysidebar"
     >
