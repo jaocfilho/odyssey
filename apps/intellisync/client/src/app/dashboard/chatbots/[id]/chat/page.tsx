@@ -1,3 +1,5 @@
+import { Chat } from '@/modules/chat/components/Chat';
+
 export default function ChatbotDetailsChatPage() {
-  return <div>chatbot chat page</div>;
+  return <Chat />;
 }
