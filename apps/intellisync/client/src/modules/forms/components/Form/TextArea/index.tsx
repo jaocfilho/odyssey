@@ -16,7 +16,7 @@ export function TextArea(props: TextAreaProps) {
   return (
     <TuiTextarea
       id={props.name}
-      colorScheme="emerald"
+      colorScheme="indigo"
       {...register(props.name)}
       {...props}
     />

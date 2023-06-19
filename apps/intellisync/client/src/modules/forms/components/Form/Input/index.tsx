@@ -21,7 +21,7 @@ export function Input(props: InputProps) {
     <div className="relative">
       <TuiInput
         id={props.name}
-        colorScheme="emerald"
+        colorScheme="indigo"
         {...register(props.name)}
         {...props}
         error={!!error}

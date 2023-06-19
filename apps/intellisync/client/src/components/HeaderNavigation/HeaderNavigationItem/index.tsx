@@ -17,7 +17,7 @@ export function HeaderNavigationItem({
 
   return (
     <Link href={href}>
-      <li className={current ? 'dark:text-emerald-400' : ''}>{name}</li>
+      <li className={current ? 'dark:text-brand-400' : ''}>{name}</li>
     </Link>
   );
 }

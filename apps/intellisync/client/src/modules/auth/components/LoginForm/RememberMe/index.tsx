@@ -6,7 +6,7 @@ export function RememberMe() {
           id="remember-me"
           name="remember-me"
           type="checkbox"
-          className="h-4 w-4 rounded dark:border-white/10 text-emerald-600 focus:ring-emerald-600"
+          className="h-4 w-4 rounded dark:border-white/10 text-indigo-600 focus:ring-indigo-600"
         />
         <label
           htmlFor="remember-me"
@@ -19,7 +19,7 @@ export function RememberMe() {
       <div className="text-sm leading-6">
         <a
           href="#"
-          className="font-semibold text-emerald-600 hover:text-emerald-500"
+          className="font-semibold text-indigo-600 hover:text-indigo-500"
         >
           Forgot password?
         </a>

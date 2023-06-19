@@ -34,7 +34,7 @@ export function PersonaContextForm({
               />
               <Textarea
                 rows={3}
-                colorScheme="emerald"
+                colorScheme="indigo"
                 className="resize-none"
                 {...register(`context.${index}.value`)}
               />

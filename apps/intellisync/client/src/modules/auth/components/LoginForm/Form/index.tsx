@@ -3,6 +3,7 @@
 import { Form } from '@/modules/forms/components';
 import { RememberMe } from '../RememberMe';
 import { useLoginForm } from '@/modules/auth/hooks/use-login-form';
+import { Button } from 'tailwind-ui';
 
 export function LoginFormComponent() {
   const { login, methods } = useLoginForm();
@@ -27,12 +28,9 @@ export function LoginFormComponent() {
         <RememberMe />
 
         <div>
-          <button
-            type="submit"
-            className="w-full rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
-          >
+          <Button type="submit" colorScheme="indigo">
             Sign in
-          </button>
+          </Button>
         </div>
       </div>
     </Form.Root>

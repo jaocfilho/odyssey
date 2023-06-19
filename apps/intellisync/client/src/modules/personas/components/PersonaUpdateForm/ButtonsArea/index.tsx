@@ -15,7 +15,7 @@ export function ButtonsArea({ formId, reset, disabled }: ButtonsAreaProps) {
         </Button>
         <Button
           disabled={disabled}
-          colorScheme="emerald"
+          colorScheme="indigo"
           type="submit"
           form={formId}
         >
