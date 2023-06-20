@@ -17,7 +17,7 @@ export function Chat({}: ChatProps) {
   });
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="relative max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
       <div className="flex flex-col gap-4">
         {chat.map(({ message, author, id }) =>
           author === 'system' ? (
@@ -27,7 +27,7 @@ export function Chat({}: ChatProps) {
           )
         )}
       </div>
-      <div className="mt-8">
+      <div className="my-8">
         <NewMessageForm onSubmit={addUserMessage} />
       </div>
     </div>

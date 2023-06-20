@@ -15,7 +15,7 @@ export function MultiSidebarLayout({
   secondarySidebarContent,
 }: MultiSidebarLayoutProps) {
   return (
-    <div>
+    <div className="h-full">
       <div className="flex relative h-full">
         <SecondarySidebar header={header}>
           {secondarySidebarContent}

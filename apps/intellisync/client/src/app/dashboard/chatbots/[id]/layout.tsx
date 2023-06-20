@@ -18,7 +18,7 @@ export default async function ChatbotDetailsLayout({
   const { data } = await serverSelectChatbotById({ id });
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <ChatbotDetailsNavigation id={id} />
       <ChatbotDetailsHeader name={data!.name} />
       {children}

@@ -16,8 +16,8 @@ const inter = Inter({
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
-      <body className="bg-white antialiased dark:bg-grayScheme-900 text-grayScheme-700 dark:text-white">
+    <html lang="en" className={`${inter.variable} h-full`}>
+      <body className="bg-white antialiased dark:bg-grayScheme-900 text-grayScheme-700 dark:text-white h-full">
         <RootProviders>{children}</RootProviders>
       </body>
     </html>
