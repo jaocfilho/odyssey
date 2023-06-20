@@ -6,36 +6,37 @@ type ChatMessage = {
   message: string;
 };
 
-export function useChat() {
-  const [chat, setChat] = useState<ChatMessage[]>([
-    {
-      id: 1,
-      author: 'system',
-      message: 'this is a prototype of a chat component',
-    },
-    {
-      id: 2,
-      author: 'system',
-      message: 'it will be used in the chatbot details page',
-    },
-    { id: 3, author: 'user', message: 'this is an example of a chat message' },
-  ]);
+type AddSystemMessageParams = {
+  message: string;
+};
 
-  const addSystemMessage = (message: string) => {
+type AddUserMessageParams = {
+  message: string;
+};
+
+type UseChatProps = {
+  initialState?: ChatMessage[];
+  onAddUserMessage: (message: string) => void;
+};
+
+export function useChat({ onAddUserMessage, initialState = [] }: UseChatProps) {
+  const [chat, setChat] = useState<ChatMessage[]>(initialState);
+
+  const addSystemMessage = ({ message }: AddSystemMessageParams) => {
     setChat((prevChat) => [
       ...prevChat,
       { id: prevChat.length + 1, author: 'system', message },
     ]);
   };
 
-  const addUserMessage = (message: string) => {
+  const addUserMessage = ({ message }: AddUserMessageParams) => {
     setChat((prevChat) => [
       ...prevChat,
       { id: prevChat.length + 1, author: 'user', message },
     ]);
 
-    addSystemMessage('this is a system message');
+    onAddUserMessage(message);
   };
 
-  return { chat, addUserMessage };
+  return { chat, addUserMessage, addSystemMessage };
 }

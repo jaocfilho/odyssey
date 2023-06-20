@@ -1,22 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-
 import { SystemMessage } from './SystemMessage';
 import { UserMessage } from './UserMessage';
 import { NewMessageForm } from './NewMessageForm';
 import { useChat } from '../../hooks/use-chat';
 
-type ChatMessage = {
-  id: number;
-  author: 'system' | 'user';
-  message: string;
-};
-
 type ChatProps = {};
 
 export function Chat({}: ChatProps) {
-  const { chat, addUserMessage } = useChat();
+  const { chat, addUserMessage } = useChat({
+    onAddUserMessage: console.log,
+  });
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -30,7 +24,7 @@ export function Chat({}: ChatProps) {
         )}
       </div>
       <div className="mt-8">
-        <NewMessageForm onSubmit={({ message }) => addUserMessage(message)} />
+        <NewMessageForm onSubmit={addUserMessage} />
       </div>
     </div>
   );
