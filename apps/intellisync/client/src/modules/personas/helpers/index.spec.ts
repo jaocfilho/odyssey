@@ -11,6 +11,7 @@ import {
   getChatbotPersonaQuery,
   personaPromptMessages,
   setChatbotPersonaQuery,
+  formatBaseMessages,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -322,5 +323,34 @@ describe('setChatbotPersonaQuery', () => {
     const [queryKey] = vi.mocked(queryClient.setQueryData).mock.calls[0];
 
     expect(queryKey).toEqual(['chatbots', 'any', 'persona']);
+  });
+});
+
+describe('formatBaseMessages', async () => {
+  const baseMessages = await createPersonaChatMessages({
+    answer_size: 'short',
+    domain: 'technology',
+    informality: null,
+    language_complexity: null,
+    level_of_detail: null,
+    style: null,
+    target_audience: null,
+    tone: null,
+    topic: null,
+  });
+
+  it('should return an array of the correct size', () => {
+    const messages = formatBaseMessages(baseMessages);
+
+    expect(messages).toHaveLength(3);
+  });
+
+  it('should format the messages correctly', () => {
+    const messages = formatBaseMessages(baseMessages);
+
+    const properties = ['role', 'content', 'id'];
+    messages.forEach((message) => {
+      assertObjectProperties(properties, message);
+    });
   });
 });

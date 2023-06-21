@@ -4,10 +4,30 @@ import { useChat } from 'ai/react';
 
 import { NewMessageForm } from './NewMessageForm';
 import { ChatMessages } from './ChatMessages';
+import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
+import { PersonasRow } from '@/modules/personas/entities';
+import { useChatConfig } from './use-chat-config';
+import { Message } from 'ai';
 
-type ChatProps = {};
+type ChatProps = {
+  chatbotId: string;
+  initialSettings: ChatbotsSettingsRow;
+  initialPersona: PersonasRow;
+  initialMessages: Message[];
+};
 
-export function Chat({}: ChatProps) {
+export function Chat({
+  chatbotId,
+  initialPersona,
+  initialSettings,
+  initialMessages,
+}: ChatProps) {
+  useChatConfig({
+    chatbotId,
+    initialPersona,
+    initialSettings,
+  });
+
   const { messages, append } = useChat();
 
   return (

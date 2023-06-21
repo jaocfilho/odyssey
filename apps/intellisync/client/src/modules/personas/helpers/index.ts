@@ -2,11 +2,12 @@ import {
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
 } from 'langchain/prompts';
-import { SystemChatMessage } from 'langchain/schema';
+import { BaseChatMessage, SystemChatMessage } from 'langchain/schema';
+
+import { type Message } from 'ai';
 
 import { queryClient } from '@/lib/react-query/client';
 import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
-import { NullableRecord } from '@odyssey/type-utils';
 import { PersonaOptions, PersonasRow, PersonasUpdate } from '../entities';
 
 // prompt helpers will be moved to a future completions module
@@ -77,7 +78,7 @@ export function createPersonaPromptsTemplates(
   return prompts;
 }
 
-export function cleanPersonaOptionsKeys(personaOptions: PersonaPromptMessages) {
+export function cleanPersonaOptionsKeys(personaOptions: PersonaOptions) {
   const personaOptionsKeys = Object.keys(
     personaOptions
   ) as PersonaPromptsOptionsKeys[];
@@ -91,7 +92,7 @@ export function cleanPersonaOptionsKeys(personaOptions: PersonaPromptMessages) {
 }
 
 export function createPersonaPromptsTemplatesFromObject(
-  personaOptions: PersonaPromptMessages
+  personaOptions: PersonaOptions
 ) {
   const cleanedKeys = cleanPersonaOptionsKeys(personaOptions);
 
@@ -101,7 +102,7 @@ export function createPersonaPromptsTemplatesFromObject(
 }
 
 export async function createPersonaPromptMessages(
-  personaOptions: PersonaPromptMessages
+  personaOptions: PersonaOptions
 ) {
   const promptsTemplates =
     createPersonaPromptsTemplatesFromObject(personaOptions);
@@ -115,9 +116,7 @@ export async function createPersonaPromptMessages(
   return messages;
 }
 
-export async function createPersonaChatMessages(
-  persona: PersonaPromptMessages
-) {
+export async function createPersonaChatMessages(persona: PersonaOptions) {
   const messages = await createPersonaPromptMessages(persona);
   const messagesIsEmpty = messages.length === 0;
   if (messagesIsEmpty) return [];
@@ -127,6 +126,17 @@ export async function createPersonaChatMessages(
   );
 
   return [initialMessage, ...messages];
+}
+
+export function formatBaseMessages(baseMessages: BaseChatMessage[]): Message[] {
+  return baseMessages.map((baseMessage, index) => {
+    const { data, type } = baseMessage.toJSON();
+    return {
+      role: type,
+      content: data.content,
+      id: index.toString(),
+    } as Message;
+  });
 }
 
 export async function cancelChatbotPersonaQuery(chatbot_id: string) {
