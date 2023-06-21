@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AssistantMessage > should render without crashing 1`] = `
+<div>
+  <div
+    class="self-start px-4 py-2 lg:mr-24 rounded-md dark:bg-white/10"
+  >
+    <p>
+      message
+    </p>
+  </div>
+</div>
+`;
