@@ -22,13 +22,16 @@ export function Chat({
   initialSettings,
   initialMessages,
 }: ChatProps) {
-  useChatConfig({
+  const { initialMessagesQuery } = useChatConfig({
     chatbotId,
     initialPersona,
     initialSettings,
+    initialMessages,
   });
 
-  const { messages, append } = useChat();
+  const { messages, append } = useChat({
+    initialMessages: initialMessagesQuery.data,
+  });
 
   return (
     <div className="max-w-6xl flex flex-col h-full justify-between mx-auto p-4">

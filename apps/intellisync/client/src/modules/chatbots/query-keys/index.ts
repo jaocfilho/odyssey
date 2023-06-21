@@ -7,6 +7,8 @@ export const chatbotsQueryKeys = {
   settings: (id: string) =>
     [...chatbotsQueryKeys.base, id, 'settings'] as const,
   persona: (id: string) => [...chatbotsQueryKeys.base, id, 'persona'] as const,
+  initialMessages: (id: string) =>
+    [...chatbotsQueryKeys.base, id, 'initialMessages'] as const,
 };
 
 export function invalidateAllChatbotsQuery() {
