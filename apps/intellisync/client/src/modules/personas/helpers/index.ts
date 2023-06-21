@@ -7,7 +7,7 @@ import { SystemChatMessage } from 'langchain/schema';
 import { queryClient } from '@/lib/react-query/client';
 import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
 import { NullableRecord } from '@odyssey/type-utils';
-import { PersonasRow, PersonasUpdate } from '../entities';
+import { PersonaOptions, PersonasRow, PersonasUpdate } from '../entities';
 
 // prompt helpers will be moved to a future completions module
 
@@ -47,7 +47,12 @@ const targetAudiencePrompt = SystemMessagePromptTemplate.fromTemplate(
   'Craft a response tailored to the {target_audience} target audience.'
 );
 
-export const personaPrompts = {
+export type PersonaPromptMessages = Record<
+  keyof PersonaOptions,
+  SystemMessagePromptTemplate
+>;
+
+export const personaPromptMessages: PersonaPromptMessages = {
   answer_size: answerSizePrompt,
   domain: domainPrompt,
   informality: informalityPrompt,
@@ -59,26 +64,20 @@ export const personaPrompts = {
   topic: topicPrompt,
 };
 
-type PersonaPromptsOptionsKeys = keyof typeof personaPrompts;
+type PersonaPromptsOptionsKeys = keyof typeof personaPromptMessages;
 
 export function createPersonaPromptsTemplates(
   personaOptionsKeys: PersonaPromptsOptionsKeys[]
 ) {
   const prompts = personaOptionsKeys.map((option) => {
-    const prompt = personaPrompts[option];
+    const prompt = personaPromptMessages[option];
     return prompt;
   });
 
   return prompts;
 }
 
-export type PersonaPromptsMessages = NullableRecord<
-  Record<PersonaPromptsOptionsKeys, string>
->;
-
-export function cleanPersonaOptionsKeys(
-  personaOptions: PersonaPromptsMessages
-) {
+export function cleanPersonaOptionsKeys(personaOptions: PersonaPromptMessages) {
   const personaOptionsKeys = Object.keys(
     personaOptions
   ) as PersonaPromptsOptionsKeys[];
@@ -92,7 +91,7 @@ export function cleanPersonaOptionsKeys(
 }
 
 export function createPersonaPromptsTemplatesFromObject(
-  personaOptions: PersonaPromptsMessages
+  personaOptions: PersonaPromptMessages
 ) {
   const cleanedKeys = cleanPersonaOptionsKeys(personaOptions);
 
@@ -102,7 +101,7 @@ export function createPersonaPromptsTemplatesFromObject(
 }
 
 export async function createPersonaPromptsMessages(
-  personaOptions: PersonaPromptsMessages
+  personaOptions: PersonaPromptMessages
 ) {
   const promptsTemplates =
     createPersonaPromptsTemplatesFromObject(personaOptions);
@@ -117,9 +116,9 @@ export async function createPersonaPromptsMessages(
 }
 
 export async function createPersonaChatMessages(
-  personaOptions: PersonaPromptsMessages
+  persona: PersonaPromptMessages
 ) {
-  const messages = await createPersonaPromptsMessages(personaOptions);
+  const messages = await createPersonaPromptsMessages(persona);
   const messagesIsEmpty = messages.length === 0;
   if (messagesIsEmpty) return [];
 

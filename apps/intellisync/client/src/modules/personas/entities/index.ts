@@ -7,3 +7,8 @@ export type PersonasUpdate = Omit<
   BasePersonasUpdate,
   'updated_at' | 'created_at'
 >;
+
+export type PersonaOptions = Omit<
+  PersonasRow,
+  'id' | 'created_at' | 'updated_at' | 'chatbot_id' | 'context'
+>;

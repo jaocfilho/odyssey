@@ -9,7 +9,7 @@ import {
   createPersonaPromptsTemplates,
   createPersonaPromptsTemplatesFromObject,
   getChatbotPersonaQuery,
-  personaPrompts,
+  personaPromptMessages,
   setChatbotPersonaQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
@@ -39,11 +39,11 @@ describe('personaPrompts', () => {
       'tone',
       'topic',
     ];
-    assertObjectProperties(properties, personaPrompts);
+    assertObjectProperties(properties, personaPromptMessages);
   });
 
   it('should return the correct answer_size prompt', async () => {
-    const response = await personaPrompts.answer_size.format({
+    const response = await personaPromptMessages.answer_size.format({
       answer_size: 'short',
     });
     const expected = 'Write a short response.';
@@ -52,7 +52,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct domain prompt', async () => {
-    const response = await personaPrompts.domain.format({
+    const response = await personaPromptMessages.domain.format({
       domain: 'technology',
     });
     const expected = 'Provide a response from the technology domain.';
@@ -61,7 +61,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct informality prompt', async () => {
-    const response = await personaPrompts.informality.format({
+    const response = await personaPromptMessages.informality.format({
       informality: 'formal',
     });
     const expected = 'Craft a formal response.';
@@ -70,7 +70,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct language_complexity prompt', async () => {
-    const response = await personaPrompts.language_complexity.format({
+    const response = await personaPromptMessages.language_complexity.format({
       language_complexity: 'simple',
     });
     const expected = 'Compose a simple response.';
@@ -79,7 +79,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct level_of_detail prompt', async () => {
-    const response = await personaPrompts.level_of_detail.format({
+    const response = await personaPromptMessages.level_of_detail.format({
       level_of_detail: 'summarized',
     });
     const expected = 'Provide a summarized response.';
@@ -88,7 +88,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct style prompt', async () => {
-    const response = await personaPrompts.style.format({
+    const response = await personaPromptMessages.style.format({
       style: 'professional',
     });
     const expected = 'Write a response in professional style.';
@@ -97,7 +97,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct target_audience prompt', async () => {
-    const response = await personaPrompts.target_audience.format({
+    const response = await personaPromptMessages.target_audience.format({
       target_audience: 'software engineers',
     });
     const expected =
@@ -107,7 +107,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct tone prompt', async () => {
-    const response = await personaPrompts.tone.format({
+    const response = await personaPromptMessages.tone.format({
       tone: 'casual',
     });
     const expected = 'Write a response with a casual tone.';
@@ -116,7 +116,7 @@ describe('personaPrompts', () => {
   });
 
   it('should return the correct topic prompt', async () => {
-    const response = await personaPrompts.topic.format({
+    const response = await personaPromptMessages.topic.format({
       topic: 'software development',
     });
     const expected =
@@ -133,8 +133,8 @@ describe('createPersonaPromptsTemplates', () => {
       'domain',
     ]);
 
-    expect(answerSizePrompt).toBe(personaPrompts.answer_size);
-    expect(domainPrompt).toBe(personaPrompts.domain);
+    expect(answerSizePrompt).toBe(personaPromptMessages.answer_size);
+    expect(domainPrompt).toBe(personaPromptMessages.domain);
   });
 });
 
@@ -186,8 +186,8 @@ describe('createPersonaPromptsTemplatesFromObject', () => {
       topic: null,
     });
 
-    expect(promptsTemplates).toContain(personaPrompts.answer_size);
-    expect(promptsTemplates).toContain(personaPrompts.domain);
+    expect(promptsTemplates).toContain(personaPromptMessages.answer_size);
+    expect(promptsTemplates).toContain(personaPromptMessages.domain);
   });
 
   it('should return an array of the correct size', () => {
@@ -219,13 +219,19 @@ describe('createPersonaPromptsTemplatesFromObject', () => {
       topic: null,
     });
 
-    expect(promptsTemplates).not.toContain(personaPrompts.informality);
-    expect(promptsTemplates).not.toContain(personaPrompts.language_complexity);
-    expect(promptsTemplates).not.toContain(personaPrompts.level_of_detail);
-    expect(promptsTemplates).not.toContain(personaPrompts.style);
-    expect(promptsTemplates).not.toContain(personaPrompts.target_audience);
-    expect(promptsTemplates).not.toContain(personaPrompts.tone);
-    expect(promptsTemplates).not.toContain(personaPrompts.topic);
+    expect(promptsTemplates).not.toContain(personaPromptMessages.informality);
+    expect(promptsTemplates).not.toContain(
+      personaPromptMessages.language_complexity
+    );
+    expect(promptsTemplates).not.toContain(
+      personaPromptMessages.level_of_detail
+    );
+    expect(promptsTemplates).not.toContain(personaPromptMessages.style);
+    expect(promptsTemplates).not.toContain(
+      personaPromptMessages.target_audience
+    );
+    expect(promptsTemplates).not.toContain(personaPromptMessages.tone);
+    expect(promptsTemplates).not.toContain(personaPromptMessages.topic);
   });
 });
 

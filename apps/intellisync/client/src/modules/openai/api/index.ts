@@ -1,10 +1,19 @@
-import { RouteHandlerGetChatbotConfigReturnData } from '@/modules/chatbots/api/route-handlers';
-import {
-  PersonaPromptsMessages,
-  createPersonaChatMessages,
-} from '@/modules/personas/helpers';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { HumanChatMessage } from 'langchain/schema';
+
+import { RouteHandlerGetChatbotConfigReturnData } from '@/modules/chatbots/api/route-handlers';
+import { ModelTypes } from '@/modules/chatbots/entities';
+import {
+  PersonaPromptMessages,
+  createPersonaChatMessages,
+} from '@/modules/personas/helpers';
+
+type ChatSettings = {
+  model: ModelTypes;
+  temperature: number;
+};
+
+type ChatPersona = PersonaPromptMessages;
 
 type ChatCompletionParams = {
   text: string;

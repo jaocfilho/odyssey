@@ -13,7 +13,10 @@ type ChatProps = {};
 export function Chat({}: ChatProps) {
   const { chat, addUserMessage } = useChat({
     onAddUserMessage: console.log,
-    initialState: [{ id: 1, author: 'system', message: derp }],
+    initialState: [
+      { id: 1, author: 'user', message: 'I need help on a test' },
+      { id: 2, author: 'system', message: derp },
+    ],
   });
 
   return (
