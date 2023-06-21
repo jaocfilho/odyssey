@@ -1,11 +1,13 @@
-import { Chat } from '@/modules/chat/components/Chat';
+import { ChatPage } from '@/modules/chat/components/pages/ChatPage';
 
-export default function ChatbotDetailsChatPage() {
-  return (
-    <div className="relative flex flex-col h-full">
-      <div className="absolute inset-0">
-        <Chat />
-      </div>
-    </div>
-  );
+type ChatbotDetailsChatPageProps = {
+  params: { id: string };
+};
+
+export default function ChatbotDetailsChatPage({
+  params,
+}: ChatbotDetailsChatPageProps) {
+  const { id } = params;
+
+  return <ChatPage chatbotId={id} />;
 }
