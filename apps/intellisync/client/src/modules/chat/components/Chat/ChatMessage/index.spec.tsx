@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { type Message } from 'ai';
 
@@ -16,6 +16,10 @@ vi.mock('../AssistantMessage', () => ({
 }));
 
 describe('ChatMessage', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('should render AssistantMessage if role is assistant', () => {
     const message: Message = {
       id: 'any',
@@ -28,6 +32,18 @@ describe('ChatMessage', () => {
     expect(AssistantMessage).toHaveBeenCalled();
   });
 
+  it('should not render AssistantMessage if role is not assistant', () => {
+    const message: Message = {
+      id: 'any',
+      role: 'user',
+      content: 'any content',
+    };
+
+    render(<ChatMessage message={message} />);
+
+    expect(AssistantMessage).not.toHaveBeenCalled();
+  });
+
   it('should render UserMessage if role is user', () => {
     const message: Message = {
       id: 'any',
@@ -38,5 +54,17 @@ describe('ChatMessage', () => {
     render(<ChatMessage message={message} />);
 
     expect(UserMessage).toHaveBeenCalled();
+  });
+
+  it('should not render UserMessage if role is not user', () => {
+    const message: Message = {
+      id: 'any',
+      role: 'assistant',
+      content: 'any content',
+    };
+
+    render(<ChatMessage message={message} />);
+
+    expect(UserMessage).not.toHaveBeenCalled();
   });
 });
