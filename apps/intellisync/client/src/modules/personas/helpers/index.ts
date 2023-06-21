@@ -64,7 +64,7 @@ export const personaPromptMessages: PersonaPromptMessages = {
   topic: topicPrompt,
 };
 
-type PersonaPromptsOptionsKeys = keyof typeof personaPromptMessages;
+type PersonaPromptsOptionsKeys = keyof PersonaOptions;
 
 export function createPersonaPromptsTemplates(
   personaOptionsKeys: PersonaPromptsOptionsKeys[]
@@ -100,7 +100,7 @@ export function createPersonaPromptsTemplatesFromObject(
   return promptsTemplates;
 }
 
-export async function createPersonaPromptsMessages(
+export async function createPersonaPromptMessages(
   personaOptions: PersonaPromptMessages
 ) {
   const promptsTemplates =
@@ -118,7 +118,7 @@ export async function createPersonaPromptsMessages(
 export async function createPersonaChatMessages(
   persona: PersonaPromptMessages
 ) {
-  const messages = await createPersonaPromptsMessages(persona);
+  const messages = await createPersonaPromptMessages(persona);
   const messagesIsEmpty = messages.length === 0;
   if (messagesIsEmpty) return [];
 

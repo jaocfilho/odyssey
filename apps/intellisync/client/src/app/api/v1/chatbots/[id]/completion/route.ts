@@ -31,9 +31,11 @@ export async function POST(
   if (chatbotConfig.status === 200) {
     const { text }: ChatbotCompletionApiBodyParams = await request.json();
 
+    const { settings } = chatbotConfig.data!;
+
     const response = await chatCompletion({
       text,
-      config: chatbotConfig.data!,
+      settings,
     });
 
     return NextResponse.json(response);

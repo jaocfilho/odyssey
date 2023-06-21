@@ -5,7 +5,7 @@ import {
   cancelChatbotPersonaQuery,
   cleanPersonaOptionsKeys,
   createPersonaChatMessages,
-  createPersonaPromptsMessages,
+  createPersonaPromptMessages,
   createPersonaPromptsTemplates,
   createPersonaPromptsTemplatesFromObject,
   getChatbotPersonaQuery,
@@ -235,9 +235,9 @@ describe('createPersonaPromptsTemplatesFromObject', () => {
   });
 });
 
-describe('createPersonaPromptsMessages', () => {
+describe('createPersonaPromptMessages', () => {
   it('should return an array of the correct size', async () => {
-    const messages = await createPersonaPromptsMessages({
+    const messages = await createPersonaPromptMessages({
       answer_size: 'short',
       domain: 'technology',
       informality: null,
