@@ -17,8 +17,8 @@ export function Chat({}: ChatProps) {
   });
 
   return (
-    <div className="relative max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
-      <div className="flex flex-col gap-4">
+    <div className="max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
+      <div className="flex flex-col gap-4 overflow-y-auto px-4">
         {chat.map(({ message, author, id }) =>
           author === 'system' ? (
             <SystemMessage key={id} message={message} />
@@ -27,7 +27,7 @@ export function Chat({}: ChatProps) {
           )
         )}
       </div>
-      <div className="my-8">
+      <div className="my-8 px-4">
         <NewMessageForm onSubmit={addUserMessage} />
       </div>
     </div>
