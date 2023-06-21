@@ -27,12 +27,12 @@ describe('NewMessageForm', () => {
     render(<NewMessageForm onSubmit={onSubmit} />);
 
     const element = screen.getByRole('textbox');
-    const message = 'Hello World';
+    const content = 'Hello World';
 
-    await userEvent.type(element, message);
+    await userEvent.type(element, content);
     await userEvent.type(element, '{enter}');
 
-    expect(onSubmit).toHaveBeenCalledWith({ message });
+    expect(onSubmit).toHaveBeenCalledWith({ content, role: 'user' });
   });
 
   it('should not call onSubmit when the form is submitted with an empty message', async () => {

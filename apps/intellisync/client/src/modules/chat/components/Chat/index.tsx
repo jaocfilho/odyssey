@@ -2,9 +2,8 @@
 
 import { useChat } from 'ai/react';
 
-import { SystemMessage } from './SystemMessage';
-import { UserMessage } from './UserMessage';
 import { NewMessageForm } from './NewMessageForm';
+import { ChatMessage } from './ChatMessage';
 
 type ChatProps = {};
 
@@ -14,11 +13,9 @@ export function Chat({}: ChatProps) {
   return (
     <div className="max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
       <div className="flex flex-col gap-4 overflow-y-auto px-4">
-        {messages.map(({ content, role, id }) =>
-          role === 'assistant' ? (
-            <SystemMessage key={id} message={content} />
-          ) : (
-            <UserMessage key={id} message={content} />
+        {messages.map((message) =>
+          message.role === 'system' ? null : (
+            <ChatMessage key={message.id} message={message} />
           )
         )}
       </div>
