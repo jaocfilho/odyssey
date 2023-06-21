@@ -14,12 +14,15 @@ type AddUserMessageParams = {
   message: string;
 };
 
-type UseChatProps = {
+type UseChatStateProps = {
   initialState?: ChatMessage[];
   onAddUserMessage: (message: string) => void;
 };
 
-export function useChat({ onAddUserMessage, initialState = [] }: UseChatProps) {
+export function useChatState({
+  onAddUserMessage,
+  initialState = [],
+}: UseChatStateProps) {
   const [chat, setChat] = useState<ChatMessage[]>(initialState);
 
   const addSystemMessage = ({ message }: AddSystemMessageParams) => {

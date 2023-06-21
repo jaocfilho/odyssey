@@ -1,14 +1,14 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { useChat } from '.';
+import { useChatState } from '.';
 import { assertObjectProperties } from '@odyssey/tests';
 
-describe('useChat', () => {
+describe('useChatState', () => {
   const onAddUserMessage = vi.fn();
 
   const { result, rerender, unmount } = renderHook(() =>
-    useChat({ onAddUserMessage })
+    useChatState({ onAddUserMessage })
   );
 
   beforeEach(() => {
@@ -59,7 +59,7 @@ describe('useChat', () => {
 
   it('should add an initial state', () => {
     const { result } = renderHook(() =>
-      useChat({
+      useChatState({
         onAddUserMessage,
         initialState: [{ id: 1, author: 'system', message: 'hello' }],
       })
