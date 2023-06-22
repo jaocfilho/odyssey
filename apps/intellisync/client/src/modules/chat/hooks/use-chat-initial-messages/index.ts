@@ -4,20 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
 import { PersonasRow } from '@/modules/personas/entities';
-import {
-  createPersonaPromptMessages,
-  formatSystemMessages,
-} from '@/modules/personas/helpers';
-
-async function getInitialMessages(persona: PersonasRow) {
-  const { id, chatbot_id, context, created_at, updated_at, ...personaOptions } =
-    persona;
-  const baseMessages = await createPersonaPromptMessages(personaOptions);
-
-  const initialMessages = formatSystemMessages(baseMessages);
-
-  return { initialMessages };
-}
+import { getPersonaInitialMessages } from '@/modules/personas/helpers';
 
 type UseChatInitialMessagesProps = {
   persona: PersonasRow;
@@ -33,7 +20,7 @@ export function useChatInitialMessages(
 ) {
   const queryKey = chatbotsQueryKeys.initialMessages(persona.chatbot_id);
   const queryFn = async () => {
-    const { initialMessages } = await getInitialMessages(persona);
+    const initialMessages = await getPersonaInitialMessages(persona);
     return initialMessages;
   };
 

@@ -6,9 +6,8 @@ import { SystemChatMessage } from 'langchain/schema';
 
 import { type Message } from 'ai';
 
-import { queryClient } from '@/lib/react-query/client';
-import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
-import { PersonaOptions, PersonasRow, PersonasUpdate } from '../entities';
+import { PersonaOptions, PersonasRow } from '../entities';
+import { setChatbotInitialMessagesQuery } from '../api/helpers';
 
 // prompt helpers will be moved to a future completions module
 
@@ -152,4 +151,9 @@ export async function getPersonaInitialMessages(persona: PersonasRow) {
   return messages;
 }
 
-// export function updatePersonaInitialMessages() {}
+export async function updatePersonaInitialMessages(persona: PersonasRow) {
+  const { chatbot_id } = persona;
+  const messages = await getPersonaInitialMessages(persona);
+
+  return setChatbotInitialMessagesQuery(chatbot_id, messages);
+}

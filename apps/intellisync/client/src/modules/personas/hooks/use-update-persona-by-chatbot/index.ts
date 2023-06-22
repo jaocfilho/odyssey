@@ -12,6 +12,7 @@ import {
   setChatbotPersonaQuery,
 } from '../../api/helpers';
 import { PersonasRow } from '../../entities';
+import { updatePersonaInitialMessages } from '../../helpers';
 
 export function useBaseUpdatePersonaByChatbot() {
   const { supabase } = useSupabase();
@@ -65,6 +66,11 @@ export function useUpdatePersonaByChatbot() {
 
     onSettled(_, __, { chatbot_id }) {
       invalidateChatbotPersonaQuery(chatbot_id);
+    },
+
+    onSuccess({ data }) {
+      const persona = data![0];
+      updatePersonaInitialMessages(persona);
     },
   });
 }
