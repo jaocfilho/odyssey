@@ -1,24 +1,24 @@
 import { type Message } from 'ai';
 
-import { type ChatbotsSettingsRow } from '@/modules/chatbots/entities';
-import { useSelectChatbotSettingsById } from '@/modules/chatbots/hooks/use-select-chatbot-settings-by-id';
-import { type PersonasRow } from '@/modules/personas/entities';
 import { useSelectPersonaByChatbot } from '@/modules/personas/hooks/use-select-persona-by-chatbot';
+import { useSelectChatbotSettingsById } from '../use-select-chatbot-settings-by-id';
 import { useChatInitialMessages } from '@/modules/chat/hooks/use-chat-initial-messages';
+import { type PersonasRow } from '@/modules/personas/entities';
+import { type ChatbotsSettingsRow } from '../../entities';
 
-type UseChatConfigProps = {
+type UseChatbotProps = {
   chatbotId: string;
-  initialSettings: ChatbotsSettingsRow;
-  initialPersona: PersonasRow;
-  initialMessages: Message[];
+  initialSettings?: ChatbotsSettingsRow;
+  initialPersona?: PersonasRow;
+  initialMessages?: Message[];
 };
 
-export function useChatConfig({
+export function useChatbot({
   chatbotId,
+  initialMessages,
   initialPersona,
   initialSettings,
-  initialMessages,
-}: UseChatConfigProps) {
+}: UseChatbotProps) {
   const settingsQuery = useSelectChatbotSettingsById(
     { id: chatbotId },
     {

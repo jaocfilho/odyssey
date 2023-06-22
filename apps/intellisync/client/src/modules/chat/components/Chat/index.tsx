@@ -7,7 +7,7 @@ import { NewMessageForm } from './NewMessageForm';
 import { ChatMessages } from './ChatMessages';
 import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
 import { PersonasRow } from '@/modules/personas/entities';
-import { useChatConfig } from './use-chat-config';
+import { useChatbot } from '@/modules/chatbots/hooks/use-chatbot';
 
 type ChatProps = {
   chatbotId: string;
@@ -22,7 +22,7 @@ export function Chat({
   initialSettings,
   initialMessages,
 }: ChatProps) {
-  const { initialMessagesQuery } = useChatConfig({
+  const { initialMessagesQuery } = useChatbot({
     chatbotId,
     initialPersona,
     initialSettings,
