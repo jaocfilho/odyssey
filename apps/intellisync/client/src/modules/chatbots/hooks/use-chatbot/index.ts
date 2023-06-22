@@ -2,15 +2,15 @@ import { type Message } from 'ai';
 
 import { useSelectPersonaByChatbot } from '@/modules/personas/hooks/use-select-persona-by-chatbot';
 import { useSelectChatbotSettingsById } from '../use-select-chatbot-settings-by-id';
-import { useChatInitialMessages } from '@/modules/chat/hooks/use-chat-initial-messages';
+import { useChatInitialMessages } from '@/modules/personas/hooks/use-chat-initial-messages';
 import { type PersonasRow } from '@/modules/personas/entities';
 import { type ChatbotsSettingsRow } from '../../entities';
 
 type UseChatbotProps = {
   chatbotId: string;
-  initialSettings?: ChatbotsSettingsRow;
-  initialPersona?: PersonasRow;
-  initialMessages?: Message[];
+  initialSettings: ChatbotsSettingsRow;
+  initialPersona: PersonasRow;
+  initialMessages: Message[];
 };
 
 export function useChatbot({
