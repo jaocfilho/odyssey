@@ -26,6 +26,11 @@ export function setChatbotPersonaQuery(
   });
 }
 
+export function getChatbotInitialMessagesQuery(chatbot_id: string) {
+  const queryKey = chatbotsQueryKeys.initialMessages(chatbot_id);
+  return queryClient.getQueryData<Message[]>(queryKey);
+}
+
 export function setChatbotInitialMessagesQuery(
   chatbot_id: string,
   data: Message[]

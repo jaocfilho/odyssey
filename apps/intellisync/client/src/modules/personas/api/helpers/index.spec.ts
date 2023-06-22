@@ -1,11 +1,11 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
-import { assertObjectProperties } from '@odyssey/tests';
 import {
   cancelChatbotPersonaQuery,
   getChatbotPersonaQuery,
   setChatbotPersonaQuery,
   setChatbotInitialMessagesQuery,
+  getChatbotInitialMessagesQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -64,5 +64,17 @@ describe('setChatbotInitialMessagesQuery', () => {
     const [queryKey] = vi.mocked(queryClient.setQueryData).mock.calls[0];
 
     expect(queryKey).toEqual(['chatbots', 'any', 'initialMessages']);
+  });
+});
+
+describe('getChatbotInitialMessagesQuery', () => {
+  it('should pass the correct params to getQueryData', () => {
+    getChatbotInitialMessagesQuery('any');
+
+    expect(queryClient.getQueryData).toHaveBeenCalledWith([
+      'chatbots',
+      'any',
+      'initialMessages',
+    ]);
   });
 });
