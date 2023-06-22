@@ -64,11 +64,11 @@ export function useUpdatePersonaByChatbot() {
       handleError({ context, chatbot_id });
     },
 
-    onSettled(_, __, { chatbot_id }) {
+    onSettled: (_, __, { chatbot_id }) => {
       invalidateChatbotPersonaQuery(chatbot_id);
     },
 
-    onSuccess({ data }) {
+    onSuccess: ({ data }) => {
       const persona = data![0];
       updatePersonaInitialMessages(persona);
     },
