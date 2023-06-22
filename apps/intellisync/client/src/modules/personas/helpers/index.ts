@@ -162,8 +162,10 @@ export async function getPersonaInitialMessages(persona: PersonasRow) {
   const { id, chatbot_id, context, created_at, updated_at, ...personaOptions } =
     persona;
 
-  const baseMessages = await createPersonaChatMessages(personaOptions);
+  const personaMessages = await createPersonaChatMessages(personaOptions);
+  const contextMessages = createContextChatMessages(context);
 
+  const baseMessages = [...personaMessages, ...contextMessages];
   const messages = formatSystemMessages(baseMessages);
 
   return messages;
