@@ -32,7 +32,7 @@ export function useChatConfig({
   );
 
   const initialMessagesQuery = useChatInitialMessages(
-    { persona: initialPersona },
+    { persona: personaQuery.data! },
     { initialData: initialMessages }
   );
 
