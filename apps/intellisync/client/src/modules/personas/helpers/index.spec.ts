@@ -12,6 +12,7 @@ import {
   personaPromptMessages,
   setChatbotPersonaQuery,
   formatSystemMessages,
+  setChatbotInitialMessagesQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -323,6 +324,17 @@ describe('setChatbotPersonaQuery', () => {
     const [queryKey] = vi.mocked(queryClient.setQueryData).mock.calls[0];
 
     expect(queryKey).toEqual(['chatbots', 'any', 'persona']);
+  });
+});
+
+describe('setChatbotInitialMessagesQuery', () => {
+  it('should pass the correct params to setQueryData', () => {
+    const data = [] as any;
+    setChatbotInitialMessagesQuery('any', data);
+
+    const [queryKey] = vi.mocked(queryClient.setQueryData).mock.calls[0];
+
+    expect(queryKey).toEqual(['chatbots', 'any', 'initialMessages']);
   });
 });
 

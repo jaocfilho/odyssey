@@ -162,3 +162,24 @@ export function setChatbotPersonaQuery(
     }
   });
 }
+
+export async function getPersonaInitialMessages(persona: PersonasRow) {
+  const { id, chatbot_id, context, created_at, updated_at, ...personaOptions } =
+    persona;
+
+  const baseMessages = await createPersonaChatMessages(personaOptions);
+
+  const messages = formatSystemMessages(baseMessages);
+
+  return messages;
+}
+
+export function setChatbotInitialMessagesQuery(
+  chatbot_id: string,
+  data: Message[]
+) {
+  const queryKey = chatbotsQueryKeys.initialMessages(chatbot_id);
+  return queryClient.setQueryData<Message[]>(queryKey, data);
+}
+
+// export function updatePersonaInitialMessages() {}
