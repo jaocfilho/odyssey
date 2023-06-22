@@ -10,7 +10,7 @@ import {
   cancelChatbotPersonaQuery,
   getChatbotPersonaQuery,
   setChatbotPersonaQuery,
-} from '../../helpers';
+} from '../../api/helpers';
 import { PersonasRow } from '../../entities';
 
 export function useBaseUpdatePersonaByChatbot() {

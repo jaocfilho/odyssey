@@ -2,7 +2,7 @@ import {
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
 } from 'langchain/prompts';
-import { BaseChatMessage, SystemChatMessage } from 'langchain/schema';
+import { SystemChatMessage } from 'langchain/schema';
 
 import { type Message } from 'ai';
 
@@ -141,28 +141,6 @@ export function formatSystemMessages(
   });
 }
 
-export async function cancelChatbotPersonaQuery(chatbot_id: string) {
-  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
-  return await queryClient.cancelQueries(queryKey);
-}
-
-export function getChatbotPersonaQuery(chatbot_id: string) {
-  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
-  return queryClient.getQueryData<PersonasRow>(queryKey);
-}
-
-export function setChatbotPersonaQuery(
-  chatbot_id: string,
-  data: PersonasUpdate
-) {
-  const queryKey = chatbotsQueryKeys.persona(chatbot_id);
-  return queryClient.setQueryData<PersonasRow>(queryKey, (old) => {
-    if (!!old) {
-      return { ...old, ...data };
-    }
-  });
-}
-
 export async function getPersonaInitialMessages(persona: PersonasRow) {
   const { id, chatbot_id, context, created_at, updated_at, ...personaOptions } =
     persona;
@@ -172,14 +150,6 @@ export async function getPersonaInitialMessages(persona: PersonasRow) {
   const messages = formatSystemMessages(baseMessages);
 
   return messages;
-}
-
-export function setChatbotInitialMessagesQuery(
-  chatbot_id: string,
-  data: Message[]
-) {
-  const queryKey = chatbotsQueryKeys.initialMessages(chatbot_id);
-  return queryClient.setQueryData<Message[]>(queryKey, data);
 }
 
 // export function updatePersonaInitialMessages() {}

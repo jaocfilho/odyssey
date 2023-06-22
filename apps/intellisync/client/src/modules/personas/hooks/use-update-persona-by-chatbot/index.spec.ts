@@ -1,18 +1,13 @@
 import { afterEach, expect, describe, it, vi, beforeEach } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useSupabase } from '@/lib/supabase/Provider';
 import { assertObjectProperties } from '@odyssey/tests';
-import {
-  useBaseUpdatePersonaByChatbot,
-  handleMutation,
-  handleError,
-} from '.';
+import { useBaseUpdatePersonaByChatbot, handleMutation, handleError } from '.';
 import {
   cancelChatbotPersonaQuery,
   getChatbotPersonaQuery,
-  setChatbotPersonaQuery
-} from '../../helpers';
+  setChatbotPersonaQuery,
+} from '../../api/helpers';
 import { baseUpdatePersonaByChatbot } from '../../api/base';
 
 vi.mock('@/lib/supabase/Provider', () => ({
@@ -23,7 +18,7 @@ vi.mock('../../api/base', () => ({
   baseUpdatePersonaByChatbot: vi.fn(),
 }));
 
-vi.mock('../../helpers', () => ({
+vi.mock('../../api/helpers', () => ({
   cancelChatbotPersonaQuery: vi.fn(),
   getChatbotPersonaQuery: vi.fn(),
   setChatbotPersonaQuery: vi.fn(),
