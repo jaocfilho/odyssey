@@ -10,6 +10,7 @@ import {
   personaPromptMessages,
   formatSystemMessages,
 } from '.';
+import { FINAL_MESSAGE, INITIAL_MESSAGE } from '../constants';
 
 describe('personaPrompts', () => {
   it('should has the correct properties', () => {
@@ -252,7 +253,7 @@ describe('createPersonaChatMessages', () => {
       topic: null,
     });
 
-    expect(messages).toHaveLength(3);
+    expect(messages).toHaveLength(4);
   });
 
   it('should have the correct first message', async () => {
@@ -269,9 +270,24 @@ describe('createPersonaChatMessages', () => {
     });
 
     const firstMessage = messages[0];
-    expect(firstMessage.text).toEqual(
-      'You are a chatbot and you will receive structions to fine tune your answer.'
-    );
+    expect(firstMessage.text).toEqual(INITIAL_MESSAGE);
+  });
+
+  it('should have the correct last message', async () => {
+    const messages = await createPersonaChatMessages({
+      answer_size: 'short',
+      domain: 'technology',
+      informality: null,
+      language_complexity: null,
+      level_of_detail: null,
+      style: null,
+      target_audience: null,
+      tone: null,
+      topic: null,
+    });
+
+    const lastMessage = messages[messages.length - 1];
+    expect(lastMessage.text).toEqual(FINAL_MESSAGE);
   });
 });
 
@@ -291,7 +307,7 @@ describe('formatSystemMessages', async () => {
   it('should return an array of the correct size', () => {
     const messages = formatSystemMessages(systemMessages);
 
-    expect(messages).toHaveLength(3);
+    expect(messages).toHaveLength(4);
   });
 
   it('should format the messages correctly', () => {
@@ -315,8 +331,13 @@ describe('formatSystemMessages', async () => {
     const messages = formatSystemMessages(systemMessages);
 
     const firstMessage = messages[0];
-    expect(firstMessage.content).toEqual(
-      'You are a chatbot and you will receive structions to fine tune your answer.'
-    );
+    expect(firstMessage.content).toEqual(INITIAL_MESSAGE);
+  });
+
+  it('should have the correct last message', () => {
+    const messages = formatSystemMessages(systemMessages);
+
+    const lastMessage = messages[messages.length - 1];
+    expect(lastMessage.content).toEqual(FINAL_MESSAGE);
   });
 });

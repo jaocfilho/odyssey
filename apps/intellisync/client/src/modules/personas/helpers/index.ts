@@ -8,6 +8,7 @@ import { type Message } from 'ai';
 
 import { PersonaOptions, PersonasRow } from '../entities';
 import { setChatbotInitialMessagesQuery } from '../api/helpers';
+import { FINAL_MESSAGE, INITIAL_MESSAGE } from '../constants';
 
 // prompt helpers will be moved to a future completions module
 
@@ -120,11 +121,10 @@ export async function createPersonaChatMessages(persona: PersonaOptions) {
   const messagesIsEmpty = messages.length === 0;
   if (messagesIsEmpty) return [];
 
-  const initialMessage = new SystemChatMessage(
-    'You are a chatbot and you will receive structions to fine tune your answer.'
-  );
+  const initialMessage = new SystemChatMessage(INITIAL_MESSAGE);
+  const finalMessage = new SystemChatMessage(FINAL_MESSAGE);
 
-  return [initialMessage, ...messages];
+  return [initialMessage, ...messages, finalMessage];
 }
 
 export function formatSystemMessages(
