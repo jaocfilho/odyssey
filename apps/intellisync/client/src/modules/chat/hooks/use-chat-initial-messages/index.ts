@@ -6,7 +6,7 @@ import { chatbotsQueryKeys } from '@/modules/chatbots/query-keys';
 import { PersonasRow } from '@/modules/personas/entities';
 import {
   createPersonaPromptMessages,
-  formatBaseMessages,
+  formatSystemMessages,
 } from '@/modules/personas/helpers';
 
 async function getInitialMessages(persona: PersonasRow) {
@@ -14,7 +14,7 @@ async function getInitialMessages(persona: PersonasRow) {
     persona;
   const baseMessages = await createPersonaPromptMessages(personaOptions);
 
-  const initialMessages = formatBaseMessages(baseMessages);
+  const initialMessages = formatSystemMessages(baseMessages);
 
   return { initialMessages };
 }

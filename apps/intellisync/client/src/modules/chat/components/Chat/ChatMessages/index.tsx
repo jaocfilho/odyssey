@@ -1,4 +1,5 @@
 import { type Message } from 'ai';
+
 import { ChatMessage } from '../ChatMessage';
 
 type ChatMessagesProps = {

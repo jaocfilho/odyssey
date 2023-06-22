@@ -111,7 +111,7 @@ export async function createPersonaPromptMessages(
 
   const formatedPrompt = await prompt.formatPromptValue(personaOptions);
 
-  const messages = formatedPrompt.toChatMessages();
+  const messages: SystemChatMessage[] = formatedPrompt.toChatMessages();
 
   return messages;
 }
@@ -128,9 +128,11 @@ export async function createPersonaChatMessages(persona: PersonaOptions) {
   return [initialMessage, ...messages];
 }
 
-export function formatBaseMessages(baseMessages: BaseChatMessage[]): Message[] {
-  return baseMessages.map((baseMessage, index) => {
-    const { data, type } = baseMessage.toJSON();
+export function formatSystemMessages(
+  systemMessages: SystemChatMessage[]
+): Message[] {
+  return systemMessages.map((systemMessage, index) => {
+    const { data, type } = systemMessage.toJSON();
     return {
       role: type,
       content: data.content,

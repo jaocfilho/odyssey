@@ -11,7 +11,7 @@ import {
   getChatbotPersonaQuery,
   personaPromptMessages,
   setChatbotPersonaQuery,
-  formatBaseMessages,
+  formatSystemMessages,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -326,8 +326,8 @@ describe('setChatbotPersonaQuery', () => {
   });
 });
 
-describe('formatBaseMessages', async () => {
-  const baseMessages = await createPersonaChatMessages({
+describe('formatSystemMessages', async () => {
+  const systemMessages = await createPersonaChatMessages({
     answer_size: 'short',
     domain: 'technology',
     informality: null,
@@ -340,17 +340,34 @@ describe('formatBaseMessages', async () => {
   });
 
   it('should return an array of the correct size', () => {
-    const messages = formatBaseMessages(baseMessages);
+    const messages = formatSystemMessages(systemMessages);
 
     expect(messages).toHaveLength(3);
   });
 
   it('should format the messages correctly', () => {
-    const messages = formatBaseMessages(baseMessages);
+    const messages = formatSystemMessages(systemMessages);
 
     const properties = ['role', 'content', 'id'];
     messages.forEach((message) => {
       assertObjectProperties(properties, message);
     });
+  });
+
+  it('should return an array of system messages', () => {
+    const messages = formatSystemMessages(systemMessages);
+
+    messages.forEach((message) => {
+      expect(message.role).toEqual('system');
+    });
+  });
+
+  it('should have the correct first message', () => {
+    const messages = formatSystemMessages(systemMessages);
+
+    const firstMessage = messages[0];
+    expect(firstMessage.content).toEqual(
+      'You are a chatbot and you will receive structions to fine tune your answer.'
+    );
   });
 });

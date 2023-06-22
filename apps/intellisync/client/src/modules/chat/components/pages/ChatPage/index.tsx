@@ -2,17 +2,17 @@ import { serverSelectChatbotSettingsById } from '@/modules/chatbots/api/server';
 import { Chat } from '../../Chat';
 import { serverSelectPersonaByChatbot } from '@/modules/personas/api/server';
 import {
-  createPersonaPromptMessages,
-  formatBaseMessages,
+  createPersonaChatMessages,
+  formatSystemMessages,
 } from '@/modules/personas/helpers';
 import { PersonasRow } from '@/modules/personas/entities';
 
 async function getMessages(persona: PersonasRow) {
   const { id, chatbot_id, context, created_at, updated_at, ...personaOptions } =
     persona;
-  const baseMessages = await createPersonaPromptMessages(personaOptions);
+  const baseMessages = await createPersonaChatMessages(personaOptions);
 
-  const messages = formatBaseMessages(baseMessages);
+  const messages = formatSystemMessages(baseMessages);
 
   return messages;
 }

@@ -1,13 +1,13 @@
 'use client';
 
 import { useChat } from 'ai/react';
+import { type Message } from 'ai';
 
 import { NewMessageForm } from './NewMessageForm';
 import { ChatMessages } from './ChatMessages';
 import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
 import { PersonasRow } from '@/modules/personas/entities';
 import { useChatConfig } from './use-chat-config';
-import { Message } from 'ai';
 
 type ChatProps = {
   chatbotId: string;
