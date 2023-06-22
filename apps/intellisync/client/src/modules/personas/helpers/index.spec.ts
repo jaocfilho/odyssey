@@ -9,8 +9,13 @@ import {
   createPersonaPromptsTemplatesFromObject,
   personaPromptMessages,
   formatSystemMessages,
+  createContextChatMessages,
 } from '.';
-import { FINAL_MESSAGE, INITIAL_MESSAGE } from '../constants';
+import {
+  FINAL_MESSAGE,
+  INITIAL_CONTEXT_MESSAGE,
+  INITIAL_MESSAGE,
+} from '../constants';
 
 describe('personaPrompts', () => {
   it('should has the correct properties', () => {
@@ -288,6 +293,35 @@ describe('createPersonaChatMessages', () => {
 
     const lastMessage = messages[messages.length - 1];
     expect(lastMessage.text).toEqual(FINAL_MESSAGE);
+  });
+});
+
+describe('createContextChatMessages', () => {
+  it('should return empty if the context is empty', () => {
+    const messages = createContextChatMessages([]);
+    expect(messages).toHaveLength(0);
+  });
+
+  it('should return an array of the correct size', () => {
+    const messages = createContextChatMessages(['any']);
+
+    expect(messages).toHaveLength(2);
+  });
+
+  it('should have the correct first message', () => {
+    const messages = createContextChatMessages(['any']);
+
+    const firstMessage = messages[0];
+    expect(firstMessage.text).toEqual(INITIAL_CONTEXT_MESSAGE);
+  });
+
+  it('should have the correct prefix', () => {
+    const messages = createContextChatMessages(['any']);
+
+    const message = messages[1];
+    const expected = message.text.startsWith('CONTEXT: ');
+
+    expect(expected).toBe(true);
   });
 });
 

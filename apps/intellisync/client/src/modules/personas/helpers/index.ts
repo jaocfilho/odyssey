@@ -8,7 +8,11 @@ import { type Message } from 'ai';
 
 import { PersonaOptions, PersonasRow } from '../entities';
 import { setChatbotInitialMessagesQuery } from '../api/helpers';
-import { FINAL_MESSAGE, INITIAL_MESSAGE } from '../constants';
+import {
+  FINAL_MESSAGE,
+  INITIAL_CONTEXT_MESSAGE,
+  INITIAL_MESSAGE,
+} from '../constants';
 
 // prompt helpers will be moved to a future completions module
 
@@ -114,6 +118,20 @@ export async function createPersonaPromptMessages(
   const messages: SystemChatMessage[] = formatedPrompt.toChatMessages();
 
   return messages;
+}
+
+export function createContextChatMessages(context: string[]) {
+  if (context.length === 0) return [];
+
+  const contextMessages = context.map((contextMessage) => {
+    const content = `CONTEXT: ${contextMessage}`;
+    const systemMessage = new SystemChatMessage(content);
+    return systemMessage;
+  });
+
+  const initialMessage = new SystemChatMessage(INITIAL_CONTEXT_MESSAGE);
+
+  return [initialMessage, ...contextMessages];
 }
 
 export async function createPersonaChatMessages(persona: PersonaOptions) {
