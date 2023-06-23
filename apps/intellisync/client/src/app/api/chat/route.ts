@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
   const llm = new ChatOpenAI({
     streaming: true,
-    callbackManager: CallbackManager.fromHandlers(handlers),
+    callbacks: CallbackManager.fromHandlers(handlers),
   });
 
   llm
