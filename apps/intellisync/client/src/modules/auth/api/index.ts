@@ -1,8 +1,6 @@
 import type { Supabase } from '@/lib/supabase/types';
 
-import { supabase as supabaseLib } from '@/lib/supabase';
-
-export async function signInWithGithub(supabase: Supabase = supabaseLib) {
+export async function signInWithGithub(supabase: Supabase) {
   return await supabase.auth.signInWithOAuth({
     provider: 'github',
   });
@@ -15,7 +13,7 @@ type SignInWithEmailParams = {
 
 export async function signInWithEmail(
   { email, password }: SignInWithEmailParams,
-  supabase: Supabase = supabaseLib
+  supabase: Supabase
 ) {
   return await supabase.auth.signInWithPassword({
     email,
@@ -23,7 +21,7 @@ export async function signInWithEmail(
   });
 }
 
-export async function baseSignOut(supabase: Supabase = supabaseLib) {
+export async function baseSignOut(supabase: Supabase) {
   return await supabase.auth.signOut();
 }
 
