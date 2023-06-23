@@ -6,8 +6,8 @@ import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export async function GET(req: Request) {
   const vectorStore = await SupabaseVectorStore.fromTexts(
-    ['This is a test document'],
-    [{ id: 4 }],
+    ['Hello world', 'Bye bye', "What's this?"],
+    [{ id: 2 }, { id: 1 }, { id: 3 }],
     new OpenAIEmbeddings(),
     {
       client: supabaseAdmin,

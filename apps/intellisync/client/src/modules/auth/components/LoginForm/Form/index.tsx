@@ -28,7 +28,7 @@ export function LoginFormComponent() {
         <RememberMe />
 
         <div>
-          <Button type="submit" colorScheme="indigo">
+          <Button type="submit" colorScheme="indigo" className="w-full">
             Sign in
           </Button>
         </div>
