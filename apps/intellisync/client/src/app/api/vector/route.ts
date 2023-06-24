@@ -1,13 +1,21 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
-export async function GET(req: Request) {
-  const vectorStore = await SupabaseVectorStore.fromTexts(
-    ['Hello world', 'Bye bye', "What's this?"],
-    [{ id: 2 }, { id: 1 }, { id: 3 }],
+export async function POST(request: NextRequest) {
+  const formData = await request.formData();
+  const file = formData.get('file') as Blob;
+
+  const loader = new PDFLoader(file);
+
+  const docs = await loader.load();
+
+  const vectorStore = await SupabaseVectorStore.fromDocuments(
+    docs,
     new OpenAIEmbeddings(),
     {
       client: supabaseAdmin,
@@ -16,9 +24,7 @@ export async function GET(req: Request) {
     }
   );
 
-  const resultOne = await vectorStore.similaritySearch('Hello world', 1);
-
-  console.log(resultOne);
+  const result = await vectorStore.similaritySearch('Hello world', 1);
 
   return new NextResponse(
     JSON.stringify({
