@@ -1,3 +1,3 @@
 export const documentsApiUrls = {
-  upload: '/api/upload' as const,
+  upload: 'api/upload' as const,
 };

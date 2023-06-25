@@ -29,7 +29,7 @@ type StoreVectorsFromDocumentsParams = {
 //   );
 // }
 
-export function appendFilesToFormData(files: FileList) {
+export function createFormDataFromFiles(files: FileList) {
   const formData = new FormData();
 
   for (let i = 0; i < files.length; i++) {
