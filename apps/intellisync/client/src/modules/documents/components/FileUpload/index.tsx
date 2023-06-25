@@ -1,10 +1,10 @@
 type FileUploadProps = {
-  onFileUpload: (file: File) => void;
+  onFileUpload: (file: FileList) => void;
 };
 
 export function FileUpload({ onFileUpload }: FileUploadProps) {
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    const file = event.target.files;
 
     if (file) {
       onFileUpload(file);
@@ -23,6 +23,7 @@ export function FileUpload({ onFileUpload }: FileUploadProps) {
         type="file"
         className="sr-only"
         onChange={handleFileUpload}
+        multiple
       />
     </label>
   );

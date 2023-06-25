@@ -3,11 +3,14 @@
 import { FileUpload } from '@/modules/documents/components/FileUpload';
 
 export default function ChatbotDetailsDataSourcePage() {
-  const handleFileUpload = async (file: File) => {
+  const handleFileUpload = async (files: FileList) => {
     const formData = new FormData();
-    formData.append('file', file);
 
-    await fetch('http://localhost:3000/api/vector', {
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i]);
+    }
+
+    await fetch('http://localhost:3000/api/upload', {
       method: 'POST',
       body: formData,
     });
