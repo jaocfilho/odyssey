@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { loadPdf } from '@/modules/documents/helpers';
+import { loadPdf } from '@/modules/documents/helpers/server';
 import { storeVectorsFromDocuments } from '@/modules/documents/api/server';
 
 export async function POST(request: NextRequest) {

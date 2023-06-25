@@ -1,19 +1,12 @@
 'use client';
 
 import { FileUpload } from '@/modules/documents/components/FileUpload';
+import { useUploadFiles } from '@/modules/documents/hooks/use-upload-files';
 
 export default function ChatbotDetailsDataSourcePage() {
+  const { uploadFiles } = useUploadFiles();
   const handleFileUpload = async (files: FileList) => {
-    const formData = new FormData();
-
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i]);
-    }
-
-    await fetch('http://localhost:3000/api/upload', {
-      method: 'POST',
-      body: formData,
-    });
+    await uploadFiles(files);
   };
 
   return (
