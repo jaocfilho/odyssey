@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import {
-  loadPdf,
-  storeVectorsFromDocuments,
-} from '@/modules/documents/helpers';
+import { loadPdf } from '@/modules/documents/helpers';
+import { storeVectorsFromDocuments } from '@/modules/documents/api/server';
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
