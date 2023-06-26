@@ -9,10 +9,12 @@ vi.mock('@/lib/supabase/admin', () => ({
 describe('handleFile', () => {
   const loadPdf = vi.fn();
   const loadDocx = vi.fn();
+  const loadText = vi.fn();
 
   const fileHandlersMap = {
     pdf: loadPdf,
     docx: loadDocx,
+    txt: loadText,
   };
 
   beforeEach(() => {
@@ -31,5 +33,12 @@ describe('handleFile', () => {
     await handleFile(file, fileHandlersMap);
 
     expect(loadDocx).toHaveBeenCalledWith(file);
+  });
+
+  it('should call loadText if file is a txt', async () => {
+    const file = new File([], 'test.txt');
+    await handleFile(file, fileHandlersMap);
+
+    expect(loadText).toHaveBeenCalledWith(file);
   });
 });
