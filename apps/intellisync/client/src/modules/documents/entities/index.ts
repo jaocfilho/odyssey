@@ -1,1 +1,1 @@
-export type FileExtensions = 'pdf';
+export type FileExtensions = 'pdf' | 'docx';
