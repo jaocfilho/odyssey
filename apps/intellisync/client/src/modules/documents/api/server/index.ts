@@ -1,22 +1,18 @@
-import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
-import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-import { Document } from 'langchain/dist/document';
-import { supabaseAdmin } from '@/lib/supabase/admin';
+import { loadPdf, storeVectorsFromDocuments } from '../../helpers/server';
 
 type StoreVectorsFromDocumentsParams = {
-  documents: Document[];
+  files: FormDataEntryValue[];
 };
 
-export async function storeVectorsFromDocuments({
-  documents,
+export async function storeVectorsFromFiles({
+  files,
 }: StoreVectorsFromDocumentsParams) {
-  return await SupabaseVectorStore.fromDocuments(
-    documents,
-    new OpenAIEmbeddings(),
-    {
-      client: supabaseAdmin,
-      tableName: 'documents',
-      queryName: 'match_documents',
-    }
+  const docsPromises = await Promise.all(
+    Array.from(files).map(async (file) => {
+      return await loadPdf(file as Blob);
+    })
   );
+
+  const documents = docsPromises.flat();
+  await storeVectorsFromDocuments({ documents });
 }
