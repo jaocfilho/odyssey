@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { createFormDataFromFiles, getFileExtension } from '.';
+import {
+  createFormDataFromFiles,
+  getFileExtension,
+  injectChatbotIdOnDocuments,
+} from '.';
+import { Document } from 'langchain/document';
 
 describe('createFormDataFromFiles', () => {
   const files = [
@@ -62,5 +67,39 @@ describe('getFileExtension', () => {
     const file = new File(['any'], 'file');
 
     expect(getFileExtension(file)).toEqual(null);
+  });
+});
+
+describe('injectChatbotIdOnDocuments', () => {
+  it('should inject chatbotId on documents', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+
+    updatedDocuments.forEach((document) => {
+      expect(document.metadata.chatbotId).toEqual('chatbotId');
+    });
+  });
+
+  it('should not mutate documents', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+
+    expect(updatedDocuments).not.toBe(documents);
+  });
+
+  it('should have the same length', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+
+    expect(updatedDocuments).toHaveLength(documents.length);
   });
 });

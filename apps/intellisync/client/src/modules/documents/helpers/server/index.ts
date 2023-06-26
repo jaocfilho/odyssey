@@ -19,15 +19,14 @@ type StoreVectorsFromDocumentsParams = {
 export async function storeVectorsFromDocuments({
   documents,
 }: StoreVectorsFromDocumentsParams) {
-  return await SupabaseVectorStore.fromDocuments(
-    documents,
-    new OpenAIEmbeddings(),
-    {
-      client: supabaseAdmin,
-      tableName: 'documents',
-      queryName: 'match_documents',
-    }
-  );
+  const vectorStore = new SupabaseVectorStore(new OpenAIEmbeddings(), {
+    client: supabaseAdmin,
+    tableName: 'documents',
+    queryName: 'match_documents',
+  });
+  await vectorStore.addDocuments(documents);
+
+  return vectorStore;
 }
 
 async function loadFile<T extends BaseDocumentLoader>(

@@ -1,3 +1,4 @@
+import { Document } from 'langchain/document';
 import { FileExtensions } from '../../entities';
 
 export function createFormDataFromFiles(files: FileList) {
@@ -20,4 +21,14 @@ export function getFileExtension(file: File): FileExtensions | null {
   if (nullExtension) return null;
 
   return extension.toLowerCase() as FileExtensions;
+}
+
+export function injectChatbotIdOnDocuments(
+  documents: Document[],
+  chatbotId: string
+) {
+  return documents.map((document) => {
+    document.metadata.chatbotId = chatbotId;
+    return document;
+  });
 }
