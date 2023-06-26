@@ -46,6 +46,6 @@ export async function handleFile(file: Blob) {
       return await loadPdf(file);
 
     default:
-      break;
+      throw new Error('File extension not supported');
   }
 }
