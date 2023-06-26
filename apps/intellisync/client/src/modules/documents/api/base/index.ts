@@ -1,4 +1,4 @@
-import { createFormDataFromFiles } from '../../helpers';
+import { createFormDataFromFiles } from '../../helpers/base';
 import { documentsApiUrls } from '../../urls';
 
 export async function uploadFiles(files: FileList) {

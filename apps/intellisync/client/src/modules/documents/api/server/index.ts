@@ -1,4 +1,4 @@
-import { loadPdf, storeVectorsFromDocuments } from '../../helpers/server';
+import { handleFile, storeVectorsFromDocuments } from '../../helpers/server';
 
 type StoreVectorsFromDocumentsParams = {
   files: FormDataEntryValue[];
@@ -9,7 +9,7 @@ export async function storeVectorsFromFiles({
 }: StoreVectorsFromDocumentsParams) {
   const docsPromises = await Promise.all(
     Array.from(files).map(async (file) => {
-      return await loadPdf(file as Blob);
+      return await handleFile(file as Blob);
     })
   );
 
