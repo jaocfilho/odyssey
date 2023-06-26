@@ -3,6 +3,7 @@ import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { DocxLoader } from 'langchain/document_loaders/fs/docx';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
 import { JSONLoader } from 'langchain/document_loaders/fs/json';
+import { CSVLoader } from 'langchain/document_loaders/fs/csv';
 import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { Document } from 'langchain/dist/document';
@@ -54,11 +55,16 @@ export async function loadJson(file: Blob) {
   return await loadFile(file, JSONLoader);
 }
 
+export async function loadCsv(file: Blob) {
+  return await loadFile(file, CSVLoader);
+}
+
 const fileHandlersMap = {
   pdf: loadPdf,
   docx: loadDocx,
   txt: loadText,
   json: loadJson,
+  csv: loadCsv,
 };
 
 type FileHandlersMap = typeof fileHandlersMap;
@@ -85,6 +91,10 @@ export async function handleFile(
     case 'json':
       const jsonHandler = fileHandlers.json;
       return await jsonHandler(file);
+
+    case 'csv':
+      const csvHandler = fileHandlers.csv;
+      return await csvHandler(file);
 
     default:
       throw new UnsuportedFileExtensionError();

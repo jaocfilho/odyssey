@@ -11,12 +11,14 @@ describe('handleFile', () => {
   const loadDocx = vi.fn();
   const loadText = vi.fn();
   const loadJson = vi.fn();
+  const loadCsv = vi.fn();
 
   const fileHandlersMap = {
     pdf: loadPdf,
     docx: loadDocx,
     txt: loadText,
     json: loadJson,
+    csv: loadCsv,
   };
 
   beforeEach(() => {
@@ -49,5 +51,12 @@ describe('handleFile', () => {
     await handleFile(file, fileHandlersMap);
 
     expect(loadJson).toHaveBeenCalledWith(file);
+  });
+
+  it('should call loadCsv if file is a csv', async () => {
+    const file = new File([], 'test.csv');
+    await handleFile(file, fileHandlersMap);
+
+    expect(loadCsv).toHaveBeenCalledWith(file);
   });
 });

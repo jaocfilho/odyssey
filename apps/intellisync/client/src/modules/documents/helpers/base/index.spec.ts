@@ -46,14 +46,20 @@ describe('getFileExtension', () => {
     expect(getFileExtension(file)).toEqual('json');
   });
 
-  it('should return null if file extension is not found', () => {
-    const file = new File(['any'], 'file');
+  it('should return the correct file extension if file is csv', () => {
+    const file = new File(['any'], 'file.csv');
 
-    expect(getFileExtension(file)).toEqual(null);
+    expect(getFileExtension(file)).toEqual('csv');
   });
 
-  it('should return null if file extension is empty', () => {
-    const file = new File(['any'], 'file.');
+  it('should return the correct file extension if file is epub', () => {
+    const file = new File(['any'], 'file.epub');
+
+    expect(getFileExtension(file)).toEqual('epub');
+  });
+
+  it('should return null if file extension is not found', () => {
+    const file = new File(['any'], 'file');
 
     expect(getFileExtension(file)).toEqual(null);
   });

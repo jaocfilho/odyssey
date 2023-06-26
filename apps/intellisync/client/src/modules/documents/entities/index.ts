@@ -1,1 +1,1 @@
-export type FileExtensions = 'pdf' | 'docx' | 'txt' | 'json';
+export type FileExtensions = 'pdf' | 'docx' | 'txt' | 'json' | 'csv';
