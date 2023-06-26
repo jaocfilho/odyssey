@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const files = formData.getAll('files');
 
-  await storeVectorsFromFiles({ files });
+  await storeVectorsFromFiles({ files, chatbotId: 'any' });
 
   return NextResponse.json({ success: true });
 }

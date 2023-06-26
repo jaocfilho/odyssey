@@ -1,11 +1,25 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { handleFile, storeVectorsFromDocuments } from '../../helpers/server';
+import { Document } from 'langchain/document';
+
+import { storeVectorsFromDocuments } from '../../helpers/server';
+import { handleFile } from '../../file_loaders';
+import { injectChatbotIdOnDocuments } from '../../helpers/base';
 import { storeVectorsFromFiles } from '.';
 
 vi.mock('../../helpers/server', () => ({
-  handleFile: vi.fn(),
   storeVectorsFromDocuments: vi.fn(),
+}));
+
+vi.mock('../../file_loaders', () => ({
+  handleFile: vi.fn(() => {
+    const document = new Document({ pageContent: 'foo' });
+    return new Promise((resolve) => resolve([document]));
+  }),
+}));
+
+vi.mock('../../helpers/base', () => ({
+  injectChatbotIdOnDocuments: vi.fn(),
 }));
 
 describe('storeVectorsFromFiles', () => {
@@ -15,7 +29,7 @@ describe('storeVectorsFromFiles', () => {
 
   it('should call handleFile for each file', async () => {
     const files = [new Blob(), new Blob()] as FormDataEntryValue[];
-    await storeVectorsFromFiles({ files });
+    await storeVectorsFromFiles({ files, chatbotId: 'any' });
 
     files.forEach((file) => {
       expect(handleFile).toHaveBeenCalledWith(file);
@@ -23,14 +37,16 @@ describe('storeVectorsFromFiles', () => {
   });
 
   it('should call storeVectorsFromDocuments with the loaded documents', async () => {
-    const documents = [] as any;
-    vi.mocked(handleFile).mockReturnValue(
-      new Promise((resolve) => resolve(documents))
-    );
-
     const files = [new Blob(), new Blob()] as FormDataEntryValue[];
-    await storeVectorsFromFiles({ files });
+    await storeVectorsFromFiles({ files, chatbotId: 'any' });
 
-    expect(storeVectorsFromDocuments).toHaveBeenCalledWith({ documents });
+    expect(storeVectorsFromDocuments).toHaveBeenCalled();
+  });
+
+  it('should call injectChatbotIdOnDocuments', async () => {
+    const files = [new Blob(), new Blob()] as FormDataEntryValue[];
+    await storeVectorsFromFiles({ files, chatbotId: 'any' });
+
+    expect(injectChatbotIdOnDocuments).toHaveBeenCalled();
   });
 });

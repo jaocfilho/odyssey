@@ -2,10 +2,6 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { handleFile } from '.';
 
-vi.mock('@/lib/supabase/admin', () => ({
-  supabaseAdmin: {},
-}));
-
 describe('handleFile', () => {
   const loadPdf = vi.fn();
   const loadDocx = vi.fn();
