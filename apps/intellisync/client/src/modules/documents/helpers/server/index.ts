@@ -3,6 +3,7 @@ import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { Document } from 'langchain/dist/document';
+
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
 type StoreVectorsFromDocumentsParams = {
