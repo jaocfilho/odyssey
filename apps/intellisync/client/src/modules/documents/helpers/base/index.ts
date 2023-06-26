@@ -1,3 +1,5 @@
+import { FileExtensions } from '../../entities';
+
 export function createFormDataFromFiles(files: FileList) {
   const formData = new FormData();
 
@@ -8,4 +10,14 @@ export function createFormDataFromFiles(files: FileList) {
   }
 
   return formData;
+}
+
+export function getFileExtension(file: File): FileExtensions | null {
+  const fileName = file.name;
+  const extension = fileName.slice(((fileName.lastIndexOf('.') - 1) >>> 0) + 2);
+
+  const nullExtension = extension === '';
+  if (nullExtension) return null;
+
+  return extension.toLowerCase() as FileExtensions;
 }

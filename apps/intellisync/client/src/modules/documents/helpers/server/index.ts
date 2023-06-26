@@ -5,6 +5,7 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { Document } from 'langchain/dist/document';
 
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { getFileExtension } from '../base';
 
 type StoreVectorsFromDocumentsParams = {
   documents: Document[];
@@ -35,14 +36,6 @@ async function loadFile<T extends BaseDocumentLoader>(
 
 export async function loadPdf(file: Blob) {
   return await loadFile(file, PDFLoader);
-}
-
-type FileExtensions = 'pdf';
-
-function getFileExtension(file: File): FileExtensions | undefined {
-  const fileName = file.name;
-  const extension = fileName.slice(((fileName.lastIndexOf('.') - 1) >>> 0) + 2);
-  return extension.toLowerCase() as FileExtensions;
 }
 
 export async function handleFile(file: Blob) {
