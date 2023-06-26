@@ -7,6 +7,7 @@ import { Document } from 'langchain/dist/document';
 
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { getFileExtension } from '../base';
+import { UnsuportedFileExtensionError } from '../../errors';
 
 type StoreVectorsFromDocumentsParams = {
   documents: Document[];
@@ -43,17 +44,29 @@ export async function loadDocx(file: Blob) {
   return await loadFile(file, DocxLoader);
 }
 
-export async function handleFile(file: Blob) {
+const fileHandlersMap = {
+  pdf: loadPdf,
+  docx: loadDocx,
+};
+
+type FileHandlersMap = typeof fileHandlersMap;
+
+export async function handleFile(
+  file: Blob,
+  fileHandlers: FileHandlersMap = fileHandlersMap
+) {
   const extension = getFileExtension(file as File);
 
   switch (extension) {
     case 'pdf':
-      return await loadPdf(file);
+      const pdfHandler = fileHandlers.pdf;
+      return await pdfHandler(file);
 
     case 'docx':
-      return await loadDocx(file);
+      const docxHandler = fileHandlers.docx;
+      return await docxHandler(file);
 
     default:
-      throw new Error('File extension not supported');
+      throw new UnsuportedFileExtensionError();
   }
 }
