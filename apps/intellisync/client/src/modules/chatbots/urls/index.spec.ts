@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { chatbotsUrls, isChatbotsPath } from '.';
+import { chatbotsEndpoints, chatbotsUrls, isChatbotsPath } from '.';
 
 describe('chatbotsUrls', () => {
   it('should return correct base url', () => {
@@ -37,6 +37,16 @@ describe('chatbotsUrls', () => {
 
   it('should returh the correct chat url', () => {
     expect(chatbotsUrls.details.chat('id')).toBe('/dashboard/chatbots/id/chat');
+  });
+});
+
+describe('chatbotsEndpoints', () => {
+  it('should return correct base url', () => {
+    expect(chatbotsEndpoints.base).toBe('api/chatbots');
+  });
+
+  it('should return correct upload url', () => {
+    expect(chatbotsEndpoints.upload('id')).toBe('api/chatbots/id/upload');
   });
 });
 
