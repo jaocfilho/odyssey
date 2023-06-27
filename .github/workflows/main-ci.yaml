@@ -12,7 +12,7 @@ jobs:
     name: Odyssey main CI
 
     steps:
-      - uses: ./.github/workflows/install-pnpm.yml
+      - uses: ./.github/workflows/install-pnpm.yaml
 
       - name: Run tests
         run: pnpm test
