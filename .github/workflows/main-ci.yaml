@@ -12,6 +12,8 @@ jobs:
     name: Odyssey main CI
 
     steps:
+      - uses: actions/checkout@v3
+
       - uses: ./.github/workflows/install-pnpm.yaml
 
       - name: Run tests
@@ -26,7 +28,9 @@ jobs:
     name: Check intellisync types
 
     steps:
-      - uses: ./.github/workflows/install-pnpm.yml
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/install-pnpm.yaml
 
       - uses: supabase/setup-cli@v1
 
