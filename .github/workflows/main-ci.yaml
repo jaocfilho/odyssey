@@ -6,53 +6,14 @@ on:
       - 'main'
 
 jobs:
-  install_pnpm:
-    runs-on: ubuntu-latest
-
-    name: Install pnpm
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: false
-        
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install turborepo
-        run: pnpm install turbo --global
-
-      - name: Install dependencies
-        run: pnpm install
-
   odyssey_main_ci:
     runs-on: ubuntu-latest
 
     name: Odyssey main CI
-    needs: [install_pnpm]
 
     steps:
+      - uses: ./.github/workflows/install-pnpm.yml
+
       - name: Run tests
         run: pnpm test
         env:
@@ -63,9 +24,10 @@ jobs:
     runs-on: ubuntu-latest
 
     name: Check intellisync types
-    needs: [install_pnpm]
 
     steps:
+      - uses: ./.github/workflows/install-pnpm.yml
+
       - uses: supabase/setup-cli@v1
 
       - name: Start Supabase local development setup
