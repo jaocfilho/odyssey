@@ -47,7 +47,7 @@ const fileHandlersMap = {
 
 type FileHandlersMap = typeof fileHandlersMap;
 
-export async function handleFile(
+export async function handleFileLoad(
   file: Blob,
   fileHandlers: FileHandlersMap = fileHandlersMap
 ) {
