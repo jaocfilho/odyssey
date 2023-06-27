@@ -50,10 +50,9 @@ jobs:
     runs-on: ubuntu-latest
 
     name: Odyssey main CI
+    needs: [install_pnpm]
 
     steps:
-      - uses: install_pnpm
-
       - name: Run tests
         run: pnpm test
         env:
@@ -62,10 +61,11 @@ jobs:
 
   check_intellisync_types:
     runs-on: ubuntu-latest
-    
-    steps:
-      - uses: install_pnpm
 
+    name: Check intellisync types
+    needs: [install_pnpm]
+
+    steps:
       - uses: supabase/setup-cli@v1
 
       - name: Start Supabase local development setup
