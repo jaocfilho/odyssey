@@ -6,8 +6,6 @@ on:
 runs:
   using: "composite"
 
-  name: Install pnpm
-
   steps:
     - uses: actions/checkout@v3
 
