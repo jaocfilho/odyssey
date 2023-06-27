@@ -123,6 +123,40 @@ export interface Database {
           }
         ]
       }
+      chatbots_files_sources: {
+        Row: {
+          characters: number | null
+          chatbot_id: string | null
+          created_at: string | null
+          id: string
+          name: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          characters?: number | null
+          chatbot_id?: string | null
+          created_at?: string | null
+          id?: string
+          name?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          characters?: number | null
+          chatbot_id?: string | null
+          created_at?: string | null
+          id?: string
+          name?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chatbots_files_sources_chatbot_id_fkey"
+            columns: ["chatbot_id"]
+            referencedRelation: "chatbots"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       chatbots_settings: {
         Row: {
           chatbot: string
