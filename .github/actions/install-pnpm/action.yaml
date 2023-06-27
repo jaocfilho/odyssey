@@ -5,6 +5,7 @@ on:
 
 runs:
   using: "composite"
+  shell: bash
 
   steps:
     - uses: actions/checkout@v3
