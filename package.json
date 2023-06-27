@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
+    "dotenv-cli": "latest",
     "prettier": "^2.8.8"
   },
   "engines": {

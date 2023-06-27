@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "supabase": "exec supabase",
     "create-migration": "supabase db diff --file",
+    "generate-types": "supabase gen types typescript --local > ../client/src/lib/supabase/types/database.ts",
     "preview": "vite preview"
   },
   "devDependencies": {
