@@ -24,12 +24,24 @@ export function getFileExtension(file: File): FileExtensions | null {
   return extension.toLowerCase() as FileExtensions;
 }
 
-export function injectChatbotIdOnDocuments(
-  documents: Document[],
-  chatbotId: string
-) {
+type InjectEssentialMetadaOnDocumentsParams = {
+  documents: Document[];
+  chatbotId: string;
+  fileName: string;
+};
+
+export function injectEssentialMetadaOnDocuments({
+  documents,
+  chatbotId,
+  fileName,
+}: InjectEssentialMetadaOnDocumentsParams) {
+  const essential = {
+    chatbotId,
+    fileName,
+  };
+
   return documents.map((document) => {
-    document.metadata.chatbotId = chatbotId;
+    document.metadata.essential = essential;
     return document;
   });
 }

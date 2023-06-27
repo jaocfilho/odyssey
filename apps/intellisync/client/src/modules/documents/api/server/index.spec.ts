@@ -2,14 +2,10 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Document } from 'langchain/document';
 
-import { storeVectorsFromDocuments } from '../../helpers/server';
 import { handleFile } from '../../file_loaders';
-import { injectChatbotIdOnDocuments } from '../../helpers/base';
+import { injectEssentialMetadaOnDocuments } from '../../helpers/base';
+import { getSupabaseVectorStore } from '../../vector_stores';
 import { storeVectorsFromFiles } from '.';
-
-vi.mock('../../helpers/server', () => ({
-  storeVectorsFromDocuments: vi.fn(),
-}));
 
 vi.mock('../../file_loaders', () => ({
   handleFile: vi.fn(() => {
@@ -19,7 +15,13 @@ vi.mock('../../file_loaders', () => ({
 }));
 
 vi.mock('../../helpers/base', () => ({
-  injectChatbotIdOnDocuments: vi.fn(),
+  injectEssentialMetadaOnDocuments: vi.fn(() => []),
+}));
+
+vi.mock('../../vector_stores', () => ({
+  getSupabaseVectorStore: vi.fn(() => ({
+    addDocuments: vi.fn(),
+  })),
 }));
 
 describe('storeVectorsFromFiles', () => {
@@ -36,17 +38,17 @@ describe('storeVectorsFromFiles', () => {
     });
   });
 
-  it('should call storeVectorsFromDocuments with the loaded documents', async () => {
+  it('should call injectEssentialMetadaOnDocuments', async () => {
     const files = [new Blob(), new Blob()] as FormDataEntryValue[];
     await storeVectorsFromFiles({ files, chatbotId: 'any' });
 
-    expect(storeVectorsFromDocuments).toHaveBeenCalled();
+    expect(injectEssentialMetadaOnDocuments).toHaveBeenCalled();
   });
 
-  it('should call injectChatbotIdOnDocuments', async () => {
+  it('should call getSupabaseVectorStore', async () => {
     const files = [new Blob(), new Blob()] as FormDataEntryValue[];
     await storeVectorsFromFiles({ files, chatbotId: 'any' });
 
-    expect(injectChatbotIdOnDocuments).toHaveBeenCalled();
+    expect(getSupabaseVectorStore).toHaveBeenCalled();
   });
 });

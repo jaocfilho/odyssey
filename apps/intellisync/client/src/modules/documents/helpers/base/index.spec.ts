@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   createFormDataFromFiles,
   getFileExtension,
-  injectChatbotIdOnDocuments,
+  injectEssentialMetadaOnDocuments,
 } from '.';
 import { Document } from 'langchain/document';
 
@@ -70,16 +70,52 @@ describe('getFileExtension', () => {
   });
 });
 
-describe('injectChatbotIdOnDocuments', () => {
-  it('should inject chatbotId on documents', () => {
+describe('injectEssentialMetadaOnDocuments', () => {
+  it('should inject the essential metada on each document', () => {
     const foo = new Document({ pageContent: 'foo' });
     const bar = new Document({ pageContent: 'bar' });
 
     const documents = [foo, bar];
-    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
 
     updatedDocuments.forEach((document) => {
-      expect(document.metadata.chatbotId).toEqual('chatbotId');
+      expect(document.metadata).toHaveProperty('essential');
+    });
+  });
+
+  it('should have the correct chatbotId', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
+
+    updatedDocuments.forEach((document) => {
+      expect(document.metadata.essential.chatbotId).toEqual('chatbotId');
+    });
+  });
+
+  it('should have the correct fileName', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
+
+    updatedDocuments.forEach((document) => {
+      expect(document.metadata.essential.fileName).toEqual('fileName');
     });
   });
 
@@ -88,7 +124,11 @@ describe('injectChatbotIdOnDocuments', () => {
     const bar = new Document({ pageContent: 'bar' });
 
     const documents = [foo, bar];
-    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
 
     expect(updatedDocuments).not.toBe(documents);
   });
@@ -98,7 +138,11 @@ describe('injectChatbotIdOnDocuments', () => {
     const bar = new Document({ pageContent: 'bar' });
 
     const documents = [foo, bar];
-    const updatedDocuments = injectChatbotIdOnDocuments(documents, 'chatbotId');
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
 
     expect(updatedDocuments).toHaveLength(documents.length);
   });

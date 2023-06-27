@@ -1,6 +1,6 @@
 import { handleFile } from '../../file_loaders';
-import { injectChatbotIdOnDocuments } from '../../helpers/base';
-import { storeVectorsFromDocuments } from '../../helpers/server';
+import { injectEssentialMetadaOnDocuments } from '../../helpers/base';
+import { getSupabaseVectorStore } from '../../vector_stores';
 
 type StoreVectorsFromDocumentsParams = {
   files: FormDataEntryValue[];
@@ -12,12 +12,20 @@ export async function storeVectorsFromFiles({
   chatbotId,
 }: StoreVectorsFromDocumentsParams) {
   const docsPromises = await Promise.all(
-    Array.from(files).map(async (file) => {
-      return await handleFile(file as Blob);
+    Array.from(files as File[]).map(async (file) => {
+      const fileName = file.name;
+      const documents = await handleFile(file);
+      return injectEssentialMetadaOnDocuments({
+        documents,
+        chatbotId,
+        fileName,
+      });
     })
   );
 
   const docs = docsPromises.flat();
-  const documents = injectChatbotIdOnDocuments(docs, chatbotId);
-  await storeVectorsFromDocuments({ documents });
+  // const documents = injectChatbotIdOnDocuments(docs, chatbotId);
+
+  const vectorStore = getSupabaseVectorStore();
+  await vectorStore.addDocuments(docs);
 }
