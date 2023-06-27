@@ -1,24 +1,5 @@
-import { handleFileLoad } from '../../file_loaders';
-import { injectEssentialMetadaOnDocuments } from '../../helpers/base';
+import { createDocumentsFromFile } from '../../helpers/server/createDocumentsFromFile';
 import { getSupabaseVectorStore } from '../../vector_stores';
-
-type CreateDocumentsFromFileParams = {
-  file: File;
-  chatbotId: string;
-};
-
-export async function createDocumentsFromFile({
-  file,
-  chatbotId,
-}: CreateDocumentsFromFileParams) {
-  const fileName = file.name;
-  const documents = await handleFileLoad(file);
-  return injectEssentialMetadaOnDocuments({
-    documents,
-    chatbotId,
-    fileName,
-  });
-}
 
 type ResolveFilesParams = {
   files: FormDataEntryValue[];
