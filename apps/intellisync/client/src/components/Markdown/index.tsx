@@ -14,6 +14,8 @@ export function Markdown({ children }: MarkdownProps) {
             className="dark:bg-grayScheme-950 rounded-sm p-2 my-4"
           />
         ),
+
+        p: ({ node, ...props }) => <p {...props} className="my-4 leading-6" />,
       }}
     >
       {children}
