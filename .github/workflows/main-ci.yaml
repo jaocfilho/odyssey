@@ -35,7 +35,7 @@ jobs:
       - uses: supabase/setup-cli@v1
 
       - name: Start Supabase local development setup
-        run: pnpm run intell-server supabase start -x studio,edge-runtime,inbucket,realtime,migra
+        run: pnpm run intell-server supabase start -x studio,edge-runtime,inbucket,realtime,migra,pgadmin-schema-diff
 
       - name: Verify generated types are up-to-date
         run: |
