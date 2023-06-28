@@ -6,6 +6,7 @@ import {
   injectEssentialMetadaOnDocuments,
 } from '.';
 import { Document } from 'langchain/document';
+import { assertObjectProperties } from '@odyssey/tests';
 
 describe('createFormDataFromFiles', () => {
   const files = [
@@ -87,6 +88,24 @@ describe('injectEssentialMetadaOnDocuments', () => {
     });
   });
 
+  it('should have the correct essential properties', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
+
+    const properties = ['chatbotId', 'fileName', 'characters'];
+
+    updatedDocuments.forEach((document) => {
+      assertObjectProperties(properties, document.metadata.essential);
+    });
+  });
+
   it('should have the correct chatbotId', () => {
     const foo = new Document({ pageContent: 'foo' });
     const bar = new Document({ pageContent: 'bar' });
@@ -116,6 +135,24 @@ describe('injectEssentialMetadaOnDocuments', () => {
 
     updatedDocuments.forEach((document) => {
       expect(document.metadata.essential.fileName).toEqual('fileName');
+    });
+  });
+
+  it('should have the correct characters', () => {
+    const foo = new Document({ pageContent: 'foo' });
+    const bar = new Document({ pageContent: 'bar' });
+
+    const documents = [foo, bar];
+    const updatedDocuments = injectEssentialMetadaOnDocuments({
+      documents,
+      chatbotId: 'chatbotId',
+      fileName: 'fileName',
+    });
+
+    updatedDocuments.forEach((document) => {
+      expect(document.metadata.essential.characters).toEqual(
+        document.pageContent.length
+      );
     });
   });
 
