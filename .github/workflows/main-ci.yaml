@@ -1,4 +1,4 @@
-name: Main branch CI
+name: Monorepo tests
 
 on:
   push:
