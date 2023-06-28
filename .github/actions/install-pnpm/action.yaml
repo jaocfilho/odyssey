@@ -34,11 +34,3 @@ runs:
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
-
-    - name: Install turborepo
-      shell: bash
-      run: pnpm install turbo --global
-
-    - name: Install dependencies
-      shell: bash
-      run: pnpm install
