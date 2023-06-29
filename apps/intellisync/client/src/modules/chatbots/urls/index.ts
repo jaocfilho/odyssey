@@ -20,6 +20,7 @@ export const chatbotsUrls = {
 export const chatbotsEndpoints = {
   base: `api/${chatbotsPathname}` as const,
   upload: (id: string) => `${chatbotsEndpoints.base}/${id}/upload` as const,
+  chat: (id: string) => `${chatbotsEndpoints.base}/${id}/chat` as const,
 };
 
 export function isChatbotsPath(pathname: string) {

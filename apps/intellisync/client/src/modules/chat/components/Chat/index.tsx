@@ -8,6 +8,7 @@ import { ChatMessages } from './ChatMessages';
 import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
 import { PersonasRow } from '@/modules/personas/entities';
 import { useChatbot } from '@/modules/chatbots/hooks/use-chatbot';
+import { apiEndpoints } from '@/modules/requests/endpoints';
 
 type ChatProps = {
   chatbotId: string;
@@ -29,8 +30,10 @@ export function Chat({
     initialMessages,
   });
 
-  const { messages, append } = useChat({
+  const api = apiEndpoints.chatbots.chat(chatbotId);
+  const { messages, append, isLoading } = useChat({
     initialMessages: initialMessagesQuery.data,
+    api: `/${api}`,
   });
 
   return (

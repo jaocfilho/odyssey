@@ -48,6 +48,10 @@ describe('chatbotsEndpoints', () => {
   it('should return correct upload url', () => {
     expect(chatbotsEndpoints.upload('id')).toBe('api/chatbots/id/upload');
   });
+
+  it('should return correct chat url', () => {
+    expect(chatbotsEndpoints.chat('id')).toBe('api/chatbots/id/chat');
+  });
 });
 
 describe('isChatbotsPath', () => {
