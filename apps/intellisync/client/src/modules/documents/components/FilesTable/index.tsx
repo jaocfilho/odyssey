@@ -30,7 +30,7 @@ export function FilesTable({}: FilesTableProps) {
             <div className="sm:flex sm:items-center">
               <div className="sm:flex-auto">
                 <h1 className="text-base font-semibold leading-6 text-white">
-                  Users
+                  Data sources
                 </h1>
                 <p className="mt-2 text-sm text-gray-300">
                   A list of all the users in your account including their name,

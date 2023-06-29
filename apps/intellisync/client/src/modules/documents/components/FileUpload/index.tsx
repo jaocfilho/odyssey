@@ -1,8 +1,20 @@
+'use client';
+
+import { useRef } from 'react';
+
+import { Button } from 'tailwind-ui';
+
 type FileUploadProps = {
   onFileUpload: (file: FileList) => void;
 };
 
 export function FileUpload({ onFileUpload }: FileUploadProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  };
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;
 
@@ -12,11 +24,10 @@ export function FileUpload({ onFileUpload }: FileUploadProps) {
   };
 
   return (
-    <label
-      htmlFor="file-upload"
-      className="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500"
-    >
-      <span>Upload a file</span>
+    <span>
+      <Button colorScheme="indigo" onClick={handleClick}>
+        Upload file
+      </Button>
       <input
         id="file-upload"
         name="file-upload"
@@ -24,7 +35,8 @@ export function FileUpload({ onFileUpload }: FileUploadProps) {
         className="sr-only"
         onChange={handleFileUpload}
         multiple
+        ref={fileInputRef}
       />
-    </label>
+    </span>
   );
 }
