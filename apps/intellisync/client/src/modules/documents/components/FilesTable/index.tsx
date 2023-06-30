@@ -1,5 +1,5 @@
-import { Button } from 'tailwind-ui';
 import { FileUploadButton } from '../FileUploadButton';
+import { TableRow } from './TableRow';
 
 type FilesTableProps = {
   chatbotId: string;
@@ -76,24 +76,12 @@ export function FilesTable({ chatbotId }: FilesTableProps) {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-800">
-                      {people.map((person) => (
-                        <tr key={person.name}>
-                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                            {person.name}
-                          </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
-                            {person.characters}
-                          </td>
-                          <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                            <a
-                              href="#"
-                              className="text-indigo-400 hover:text-indigo-300"
-                            >
-                              Edit
-                              <span className="sr-only">, {person.name}</span>
-                            </a>
-                          </td>
-                        </tr>
+                      {people.map(({ name, characters }) => (
+                        <TableRow
+                          id={name}
+                          characters={characters}
+                          name={name}
+                        />
                       ))}
                     </tbody>
                   </table>
