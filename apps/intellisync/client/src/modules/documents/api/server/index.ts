@@ -2,8 +2,8 @@ import { createServerSupabase } from '@/lib/supabase/server';
 import { createDocumentsFromFile } from '../../helpers/server/createDocumentsFromFile';
 import { getSupabaseVectorStore } from '../../vector_stores';
 import {
-  selectAllFileSourcesByChatbotId,
-  type SelectFileSourcesByChatbotIdParams,
+  baseSelectAllFileSourcesByChatbotId,
+  type BaseSelectFileSourcesByChatbotIdParams,
 } from '../base';
 
 type ResolveFilesParams = {
@@ -36,8 +36,8 @@ export async function storeVectorsFromFiles({
 
 export async function serverSelectAllFileSourcesByChatbotId({
   chatbot_id,
-}: SelectFileSourcesByChatbotIdParams) {
+}: BaseSelectFileSourcesByChatbotIdParams) {
   const supabase = createServerSupabase();
 
-  return await selectAllFileSourcesByChatbotId({ chatbot_id }, supabase);
+  return await baseSelectAllFileSourcesByChatbotId({ chatbot_id }, supabase);
 }

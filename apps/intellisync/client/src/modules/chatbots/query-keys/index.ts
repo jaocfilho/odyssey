@@ -9,6 +9,8 @@ export const chatbotsQueryKeys = {
   persona: (id: string) => [...chatbotsQueryKeys.base, id, 'persona'] as const,
   initialMessages: (id: string) =>
     [...chatbotsQueryKeys.base, id, 'initialMessages'] as const,
+  fileSources: (id: string) =>
+    [...chatbotsQueryKeys.base, id, 'fileSources'] as const,
 };
 
 export function invalidateAllChatbotsQuery() {
@@ -25,6 +27,12 @@ export function invalidateChatbotSettingsQuery(id: string) {
 
 export function invalidateChatbotPersonaQuery(id: string) {
   const queryKey = chatbotsQueryKeys.persona(id);
+
+  queryClient.invalidateQueries({ queryKey });
+}
+
+export function invalidateChatbotFileSourcesQuery(id: string) {
+  const queryKey = chatbotsQueryKeys.fileSources(id);
 
   queryClient.invalidateQueries({ queryKey });
 }

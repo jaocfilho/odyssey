@@ -5,6 +5,7 @@ import {
   invalidateAllChatbotsQuery,
   invalidateChatbotSettingsQuery,
   invalidateChatbotPersonaQuery,
+  invalidateChatbotFileSourcesQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -38,6 +39,16 @@ describe('chatbotsQueryKeys', () => {
     const personaKey = chatbotsQueryKeys.persona('id');
     expect(personaKey).toEqual(['chatbots', 'id', 'persona']);
   });
+
+  it('should return the initial messages key', () => {
+    const initialMessagesKey = chatbotsQueryKeys.initialMessages('id');
+    expect(initialMessagesKey).toEqual(['chatbots', 'id', 'initialMessages']);
+  });
+
+  it('should return the file sources key', () => {
+    const fileSourcesKey = chatbotsQueryKeys.fileSources('id');
+    expect(fileSourcesKey).toEqual(['chatbots', 'id', 'fileSources']);
+  });
 });
 
 describe('invalidateAllChatbotsQuery', () => {
@@ -65,6 +76,16 @@ describe('invalidateChatbotPersonaQuery', () => {
     const queryKey = chatbotsQueryKeys.persona('id');
 
     invalidateChatbotPersonaQuery('id');
+
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
+  });
+});
+
+describe('invalidateChatbotFileSourcesQuery', () => {
+  it('should invalidate the chatbot file sources query', () => {
+    const queryKey = chatbotsQueryKeys.fileSources('id');
+
+    invalidateChatbotFileSourcesQuery('id');
 
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
   });

@@ -18,12 +18,12 @@ export async function uploadFiles({ chatbotId, files }: UploadFilesParams) {
   });
 }
 
-export type SelectFileSourcesByChatbotIdParams = {
+export type BaseSelectFileSourcesByChatbotIdParams = {
   chatbot_id: string;
 };
 
-export async function selectAllFileSourcesByChatbotId(
-  { chatbot_id }: SelectFileSourcesByChatbotIdParams,
+export async function baseSelectAllFileSourcesByChatbotId(
+  { chatbot_id }: BaseSelectFileSourcesByChatbotIdParams,
   supabase: Supabase
 ) {
   return await supabase
