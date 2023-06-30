@@ -125,30 +125,30 @@ export interface Database {
       }
       chatbots_files_sources: {
         Row: {
-          characters: number | null
+          characters: number
           chatbot_id: string
           created_at: string | null
           document_id: number
           id: string
-          name: string | null
+          name: string
           updated_at: string | null
         }
         Insert: {
-          characters?: number | null
+          characters?: number
           chatbot_id: string
           created_at?: string | null
           document_id: number
           id?: string
-          name?: string | null
+          name: string
           updated_at?: string | null
         }
         Update: {
-          characters?: number | null
+          characters?: number
           chatbot_id?: string
           created_at?: string | null
           document_id?: number
           id?: string
-          name?: string | null
+          name?: string
           updated_at?: string | null
         }
         Relationships: [
