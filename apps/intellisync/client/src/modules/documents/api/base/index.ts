@@ -1,5 +1,6 @@
 import { apiEndpoints } from '@/modules/requests/endpoints';
 import { createFormDataFromFiles } from '../../helpers/base';
+import { Supabase } from '@/lib/supabase/types';
 
 type UploadFilesParams = {
   files: FileList;
@@ -16,3 +17,12 @@ export async function uploadFiles({ chatbotId, files }: UploadFilesParams) {
     body: formData,
   });
 }
+
+export type SelectFileSourcesByChatbotIdParams = {
+  chatbot_id: string;
+};
+
+export async function selectFileSourcesByChatbotId(
+  { chatbot_id }: SelectFileSourcesByChatbotIdParams,
+  supabase: Supabase
+) {}

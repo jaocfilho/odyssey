@@ -126,24 +126,27 @@ export interface Database {
       chatbots_files_sources: {
         Row: {
           characters: number | null
-          chatbot_id: string | null
+          chatbot_id: string
           created_at: string | null
+          document_id: number
           id: string
           name: string | null
           updated_at: string | null
         }
         Insert: {
           characters?: number | null
-          chatbot_id?: string | null
+          chatbot_id: string
           created_at?: string | null
+          document_id: number
           id?: string
           name?: string | null
           updated_at?: string | null
         }
         Update: {
           characters?: number | null
-          chatbot_id?: string | null
+          chatbot_id?: string
           created_at?: string | null
+          document_id?: number
           id?: string
           name?: string | null
           updated_at?: string | null
@@ -153,6 +156,12 @@ export interface Database {
             foreignKeyName: "chatbots_files_sources_chatbot_id_fkey"
             columns: ["chatbot_id"]
             referencedRelation: "chatbots"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "chatbots_files_sources_document_id_fkey"
+            columns: ["document_id"]
+            referencedRelation: "documents"
             referencedColumns: ["id"]
           }
         ]
