@@ -1,5 +1,10 @@
+import { createServerSupabase } from '@/lib/supabase/server';
 import { createDocumentsFromFile } from '../../helpers/server/createDocumentsFromFile';
 import { getSupabaseVectorStore } from '../../vector_stores';
+import {
+  selectAllFileSourcesByChatbotId,
+  type SelectFileSourcesByChatbotIdParams,
+} from '../base';
 
 type ResolveFilesParams = {
   files: FormDataEntryValue[];
@@ -27,4 +32,12 @@ export async function storeVectorsFromFiles({
 
   const vectorStore = getSupabaseVectorStore();
   await vectorStore.addDocuments(documents);
+}
+
+export async function serverSelectAllFileSourcesByChatbotId({
+  chatbot_id,
+}: SelectFileSourcesByChatbotIdParams) {
+  const supabase = createServerSupabase();
+
+  return await selectAllFileSourcesByChatbotId({ chatbot_id }, supabase);
 }

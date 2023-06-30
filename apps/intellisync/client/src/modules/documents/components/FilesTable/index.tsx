@@ -1,3 +1,4 @@
+import { serverSelectAllFileSourcesByChatbotId } from '../../api/server';
 import { FileUploadButton } from '../FileUploadButton';
 import { TableRow } from './TableRow';
 
@@ -5,7 +6,7 @@ type FilesTableProps = {
   chatbotId: string;
 };
 
-export function FilesTable({ chatbotId }: FilesTableProps) {
+export async function FilesTable({ chatbotId }: FilesTableProps) {
   const people = [
     {
       name: 'resume_jose_augusto.pdf',
@@ -24,6 +25,10 @@ export function FilesTable({ chatbotId }: FilesTableProps) {
       characters: 879,
     },
   ];
+
+  const { data } = await serverSelectAllFileSourcesByChatbotId({
+    chatbot_id: chatbotId,
+  });
 
   return (
     <div className="bg-gray-900">
@@ -76,7 +81,7 @@ export function FilesTable({ chatbotId }: FilesTableProps) {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-800">
-                      {people.map(({ name, characters }) => (
+                      {data!.map(({ name, characters }) => (
                         <TableRow
                           id={name}
                           characters={characters}

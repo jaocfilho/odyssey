@@ -22,7 +22,12 @@ export type SelectFileSourcesByChatbotIdParams = {
   chatbot_id: string;
 };
 
-export async function selectFileSourcesByChatbotId(
+export async function selectAllFileSourcesByChatbotId(
   { chatbot_id }: SelectFileSourcesByChatbotIdParams,
   supabase: Supabase
-) {}
+) {
+  return await supabase
+    .from('chatbots_files_sources')
+    .select('*')
+    .eq('chatbot_id', chatbot_id);
+}
