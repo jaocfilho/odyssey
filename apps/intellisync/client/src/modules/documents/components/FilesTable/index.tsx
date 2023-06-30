@@ -1,8 +1,11 @@
 import { Button } from 'tailwind-ui';
+import { FileUploadButton } from '../FileUploadButton';
 
-type FilesTableProps = {};
+type FilesTableProps = {
+  chatbotId: string;
+};
 
-export function FilesTable({}: FilesTableProps) {
+export function FilesTable({ chatbotId }: FilesTableProps) {
   const people = [
     {
       name: 'resume_jose_augusto.pdf',
@@ -38,7 +41,7 @@ export function FilesTable({}: FilesTableProps) {
                 </p>
               </div>
               <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <Button colorScheme="indigo">Upload file</Button>
+                <FileUploadButton chatbotId={chatbotId} />
               </div>
             </div>
             <div className="mt-8 flow-root">

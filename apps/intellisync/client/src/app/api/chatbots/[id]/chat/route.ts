@@ -4,8 +4,9 @@ import { StreamingTextResponse, LangChainStream, Message } from 'ai';
 
 import { CallbackManager } from 'langchain/callbacks';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { AIChatMessage, HumanChatMessage } from 'langchain/schema';
+import { SystemChatMessage } from 'langchain/schema';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
+import { BufferMemory } from 'langchain/memory';
 
 import { getSupabaseVectorStore } from '@/modules/documents/vector_stores';
 
@@ -36,14 +37,9 @@ export async function POST(
   const questionLlm = new ChatOpenAI({});
   const vectorStore = getSupabaseVectorStore();
 
-  const chatHistory = ConversationalRetrievalQAChain.getChatHistoryString(
-    messages.map((m) => {
-      if (m.role == 'user') {
-        return new HumanChatMessage(m.content);
-      }
-
-      return new AIChatMessage(m.content);
-    })
+  const systemMessages = messages.filter((m) => m.role === 'system');
+  const systemPrefix = ConversationalRetrievalQAChain.getChatHistoryString(
+    systemMessages.map((m) => new SystemChatMessage(m.content))
   );
 
   const chain = ConversationalRetrievalQAChain.fromLLM(
@@ -55,6 +51,16 @@ export async function POST(
       questionGeneratorChainOptions: {
         llm: questionLlm,
       },
+      memory: new BufferMemory({
+        humanPrefix:
+          systemPrefix +
+          ' I want you to act as a document that I am having a conversation with. You will provide me with answers from the given info. If the answer is not included, search for an answer and return it. Never break character and always adapt your answers to the provided persona.',
+        memoryKey: 'chat_history',
+        inputKey: 'question',
+        returnMessages: true,
+      }),
+      returnSourceDocuments: false,
+      verbose: false,
     }
   );
 
@@ -63,7 +69,6 @@ export async function POST(
   chain
     .call({
       question,
-      chat_history: chatHistory,
     })
     .catch(console.error)
     .finally(() => {
