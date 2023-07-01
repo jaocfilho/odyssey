@@ -5,7 +5,7 @@ import {
   invalidateAllChatbotsQuery,
   invalidateChatbotSettingsQuery,
   invalidateChatbotPersonaQuery,
-  invalidateChatbotFileSourcesQuery,
+  invalidateChatbotFileSourceQuery,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
@@ -81,11 +81,11 @@ describe('invalidateChatbotPersonaQuery', () => {
   });
 });
 
-describe('invalidateChatbotFileSourcesQuery', () => {
+describe('invalidateChatbotFileSourceQuery', () => {
   it('should invalidate the chatbot file sources query', () => {
     const queryKey = chatbotsQueryKeys.fileSources('id');
 
-    invalidateChatbotFileSourcesQuery('id');
+    invalidateChatbotFileSourceQuery('id');
 
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
   });

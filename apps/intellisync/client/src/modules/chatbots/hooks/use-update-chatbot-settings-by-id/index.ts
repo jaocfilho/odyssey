@@ -63,8 +63,8 @@ export function useUpdateChatbotSettingsById() {
       handleError({ context, id });
     },
 
-    onSettled(_, __, { id }) {
-      invalidateChatbotSettingsQuery(id);
+    onSettled: async (_, __, { id }) => {
+      await invalidateChatbotSettingsQuery(id);
     },
   });
 }

@@ -19,20 +19,20 @@ export async function invalidateAllChatbotsQuery() {
   await queryClient.invalidateQueries({ queryKey });
 }
 
-export function invalidateChatbotSettingsQuery(id: string) {
+export async function invalidateChatbotSettingsQuery(id: string) {
   const queryKey = chatbotsQueryKeys.settings(id);
 
-  queryClient.invalidateQueries({ queryKey });
+  await queryClient.invalidateQueries({ queryKey });
 }
 
-export function invalidateChatbotPersonaQuery(id: string) {
+export async function invalidateChatbotPersonaQuery(id: string) {
   const queryKey = chatbotsQueryKeys.persona(id);
 
-  queryClient.invalidateQueries({ queryKey });
+  await queryClient.invalidateQueries({ queryKey });
 }
 
-export function invalidateChatbotFileSourcesQuery(id: string) {
+export async function invalidateChatbotFileSourceQuery(id: string) {
   const queryKey = chatbotsQueryKeys.fileSources(id);
 
-  queryClient.invalidateQueries({ queryKey });
+  await queryClient.invalidateQueries({ queryKey });
 }

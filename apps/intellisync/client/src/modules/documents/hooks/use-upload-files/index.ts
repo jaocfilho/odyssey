@@ -1,5 +1,5 @@
+import { invalidateChatbotFileSourceQuery } from '@/modules/chatbots/query-keys';
 import { baseUploadFiles, type BaseUploadFilesParams } from '../../api/base';
-import { invalidateChatbotFileSourceQuery } from '../../api/helpers';
 
 export function useUploadFiles() {
   const uploadFiles = async ({ chatbotId, files }: BaseUploadFilesParams) => {

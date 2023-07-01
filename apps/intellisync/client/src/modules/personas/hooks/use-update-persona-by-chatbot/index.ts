@@ -64,8 +64,8 @@ export function useUpdatePersonaByChatbot() {
       handleError({ context, chatbot_id });
     },
 
-    onSettled: (_, __, { chatbot_id }) => {
-      invalidateChatbotPersonaQuery(chatbot_id);
+    onSettled: async (_, __, { chatbot_id }) => {
+      await invalidateChatbotPersonaQuery(chatbot_id);
     },
 
     onSuccess: ({ data }) => {
