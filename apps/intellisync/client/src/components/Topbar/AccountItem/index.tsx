@@ -5,8 +5,6 @@ import { MenuHeader } from './MenuHeader';
 import { SignOutButton } from './SignOutButton';
 import { serverGetSessionUser } from '@/modules/auth/api/server';
 
-<UserIcon className="h-6 w-6" />;
-
 export async function AccountItem() {
   const user = await serverGetSessionUser();
 

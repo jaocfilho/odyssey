@@ -1,3 +1,5 @@
+import { SettingsCell } from '../SettingsCell';
+
 type TableRowProps = {
   id: string;
   name: string;
@@ -14,10 +16,7 @@ export function TableRow({ id, characters, name }: TableRowProps) {
         {characters}
       </td>
       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-        <a href="#" className="text-indigo-400 hover:text-indigo-300">
-          Edit
-          <span className="sr-only">, {id}</span>
-        </a>
+        <SettingsCell />
       </td>
     </tr>
   );
