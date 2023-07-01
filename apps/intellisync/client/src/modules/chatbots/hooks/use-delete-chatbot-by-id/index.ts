@@ -19,8 +19,8 @@ export function useBaseDeleteChatbotById() {
   return { deleteChatbotById };
 }
 
-export function handleSettled() {
-  invalidateAllChatbotsQuery();
+export async function handleSettled() {
+  await invalidateAllChatbotsQuery();
 }
 
 export function handleSuccess(id: string) {
@@ -37,6 +37,6 @@ export function useDeleteChatbotById() {
       redirectToChatbots();
       handleSuccess(id);
     },
-    onSettled: () => handleSettled(),
+    onSettled: async () => await handleSettled(),
   });
 }

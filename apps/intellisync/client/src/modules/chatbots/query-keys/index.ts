@@ -13,10 +13,10 @@ export const chatbotsQueryKeys = {
     [...chatbotsQueryKeys.base, id, 'fileSources'] as const,
 };
 
-export function invalidateAllChatbotsQuery() {
+export async function invalidateAllChatbotsQuery() {
   const queryKey = chatbotsQueryKeys.all();
 
-  queryClient.invalidateQueries({ queryKey });
+  await queryClient.invalidateQueries({ queryKey });
 }
 
 export function invalidateChatbotSettingsQuery(id: string) {

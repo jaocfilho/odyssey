@@ -18,8 +18,8 @@ export function useBaseInsertChatbot() {
   return { insertChatbot };
 }
 
-export function handleSettled() {
-  invalidateAllChatbotsQuery();
+export async function handleSettled() {
+  await invalidateAllChatbotsQuery();
 }
 
 export function useInsertChatbot() {
@@ -31,6 +31,6 @@ export function useInsertChatbot() {
     onSuccess({ data }) {
       redirectToChatbotOverview(data!.id);
     },
-    onSettled: () => handleSettled(),
+    onSettled: async () => await handleSettled(),
   });
 }
