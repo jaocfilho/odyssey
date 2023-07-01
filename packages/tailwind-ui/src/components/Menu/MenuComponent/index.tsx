@@ -30,7 +30,7 @@ export function Menu({
       </div>
 
       <Transition>
-        <HuiMenu.Items className="absolute right-0 z-100 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-grayScheme-50/10 dark:bg-grayScheme-900 rounded-md bg-white shadow-lg ring-1 ring-black dark:ring-grayScheme-50/10 ring-opacity-5 focus:outline-none">
+        <HuiMenu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-grayScheme-50/10 dark:bg-grayScheme-900 rounded-md bg-white shadow-lg ring-1 ring-black dark:ring-grayScheme-50/10 ring-opacity-5 focus:outline-none">
           {!!header ? <div className="px-4 py-3">{header}</div> : null}
           {children}
         </HuiMenu.Items>

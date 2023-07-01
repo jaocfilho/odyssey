@@ -1,6 +1,6 @@
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 
-import { Menu } from 'tailwind-ui';
+import { Menu, MenuItem } from 'tailwind-ui';
 
 type SettingsCellProps = {};
 
@@ -15,7 +15,9 @@ export function SettingsCell({}: SettingsCellProps) {
         />
       }
     >
-      <div className="py-1"></div>
+      <div className="py-1">
+        <MenuItem>Delete</MenuItem>
+      </div>
     </Menu>
   );
 }
