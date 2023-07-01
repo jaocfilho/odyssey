@@ -1,4 +1,4 @@
-import { TableRow } from '@/lib/supabase/types';
+import { type TableRow } from '@/lib/supabase/types';
 
 export type FileExtensions = 'pdf' | 'docx' | 'txt' | 'json' | 'csv';
 

@@ -1,6 +1,6 @@
 import { serverSelectAllFileSourcesByChatbotId } from '../../api/server';
 import { FilesTableSummary } from '../FilesTableSummary';
-import { TableRow } from './TableRow';
+import { TableRows } from './TableRows';
 
 type FilesTableProps = {
   chatbotId: string;
@@ -48,15 +48,7 @@ export async function FilesTable({ chatbotId }: FilesTableProps) {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-800">
-                      {data!.map(({ name, characters }) => (
-                        <TableRow
-                          id={name}
-                          characters={characters}
-                          name={name}
-                        />
-                      ))}
-                    </tbody>
+                    <TableRows chatbotId={chatbotId} files={data!} />
                   </table>
                 </div>
               </div>

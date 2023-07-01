@@ -19,7 +19,7 @@ export function TableRows({ chatbotId, files }: TableRowsProps) {
 
   return (
     <tbody className="divide-y divide-gray-800">
-      {filesQuery.data!.map(({ name, characters }) => (
+      {filesQuery.data?.map(({ name, characters }) => (
         <TableRow id={name} characters={characters} name={name} />
       ))}
     </tbody>
