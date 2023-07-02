@@ -1,4 +1,5 @@
 import { queryClient } from '@/lib/react-query/client';
+import { ChatbotsFilesSourcesRow } from '@/modules/documents/entities';
 
 export const chatbotsQueryKeys = {
   base: ['chatbots'] as const,
@@ -35,4 +36,19 @@ export async function invalidateChatbotFileSourceQuery(id: string) {
   const queryKey = chatbotsQueryKeys.fileSources(id);
 
   await queryClient.invalidateQueries({ queryKey });
+}
+
+export function getChatbotFileSourceQueryData(id: string) {
+  const queryKey = chatbotsQueryKeys.fileSources(id);
+
+  return queryClient.getQueryData<ChatbotsFilesSourcesRow[]>(queryKey);
+}
+
+export function setChatbotFileSourceQueryData(
+  id: string,
+  data: ChatbotsFilesSourcesRow[]
+) {
+  const queryKey = chatbotsQueryKeys.fileSources(id);
+
+  return queryClient.setQueryData<ChatbotsFilesSourcesRow[]>(queryKey, data);
 }

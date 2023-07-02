@@ -5,7 +5,11 @@ import {
   BaseDeleteChatbotFileSourceByIdParams,
   baseDeleteChatbotFileSourceById,
 } from '../../api/base';
-import { invalidateChatbotFileSourceQuery } from '@/modules/chatbots/query-keys';
+import {
+  getChatbotFileSourceQueryData,
+  invalidateChatbotFileSourceQuery,
+  setChatbotFileSourceQueryData,
+} from '@/modules/chatbots/query-keys';
 
 export function useBaseDeleteChatbotFileSourceById() {
   const { supabase } = useSupabase();
@@ -23,13 +27,33 @@ export async function handleSettled(id: string) {
   await invalidateChatbotFileSourceQuery(id);
 }
 
-export function useDeleteChatbotFileSourceById() {
+function handleSuccess(id: string) {
+  const previousData = getChatbotFileSourceQueryData(id);
+  console.log(previousData);
+  const data = previousData?.filter((item) => item.id !== id);
+  console.log(data);
+
+  if (data) {
+    setChatbotFileSourceQueryData(id, data);
+  }
+}
+
+type UseDeleteChatbotFileSourceByIdProps = {
+  chatbotId: string;
+};
+
+export function useDeleteChatbotFileSourceById({
+  chatbotId,
+}: UseDeleteChatbotFileSourceByIdProps) {
   const { deleteChatbotFileSourceById } = useBaseDeleteChatbotFileSourceById();
 
   return useMutation({
     mutationFn: deleteChatbotFileSourceById,
-    onSettled: async (_, __, { id }) => {
-      await handleSettled(id);
+    onSettled: async () => {
+      await handleSettled(chatbotId);
+    },
+    onSuccess() {
+      handleSuccess(chatbotId);
     },
   });
 }
