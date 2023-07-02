@@ -1,10 +1,11 @@
 name: Deploy intellisync migrations to production
 
 on:
-  workflow_run:
-    workflows: ["Monorepo tests"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 
 jobs:
   deploy:

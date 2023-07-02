@@ -1,9 +1,11 @@
 name: Monorepo tests
 
 on:
-  push:
+  pull_request:
     branches:
-      - 'main'
+      - 'development'
+  workflow_dispatch:
+
 
 jobs:
   odyssey_main_ci:
