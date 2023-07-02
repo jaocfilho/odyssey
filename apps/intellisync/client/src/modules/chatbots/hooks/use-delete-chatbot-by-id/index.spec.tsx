@@ -3,7 +3,6 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { assertObjectProperties } from '@odyssey/tests';
 import { handleSettled, useBaseDeleteChatbotById } from '.';
-import { useSupabase } from '@/lib/supabase/Provider';
 import { baseDeleteChatbotById } from '../../api/base';
 import { invalidateAllChatbotsQuery } from '../../query-keys';
 

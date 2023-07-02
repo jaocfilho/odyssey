@@ -27,11 +27,9 @@ export async function handleSettled(id: string) {
   await invalidateChatbotFileSourceQuery(id);
 }
 
-function handleSuccess(id: string) {
+export function handleSuccess(id: string) {
   const previousData = getChatbotFileSourceQueryData(id);
-  console.log(previousData);
   const data = previousData?.filter((item) => item.id !== id);
-  console.log(data);
 
   if (data) {
     setChatbotFileSourceQueryData(id, data);
