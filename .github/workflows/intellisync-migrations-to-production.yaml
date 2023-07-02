@@ -1,4 +1,4 @@
-name: Deploy intellisync migrations to staging
+name: Deploy intellisync migrations to production
 
 on:
   workflow_run:
@@ -12,8 +12,8 @@ jobs:
 
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      SUPABASE_DB_PASSWORD: ${{ secrets.STAGING_IS_DB_PASSWORD }}
-      STAGING_PROJECT_ID: ${{ secrets.STAGING_IS_PROJECT_ID }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_IS_DB_PASSWORD }}
+      PRODUCTION_PROJECT_ID: ${{ secrets.PRODUCTION_IS_PROJECT_ID }}
 
     steps:
       - uses: actions/checkout@v3
@@ -22,5 +22,5 @@ jobs:
 
       - run: |
           cd apps/intellisync/server/
-          supabase link --project-ref $STAGING_PROJECT_ID
+          supabase link --project-ref $PRODUCTION_PROJECT_ID
           supabase db push
