@@ -1,6 +1,7 @@
 import { apiEndpoints } from '@/modules/requests/endpoints';
 import { createFormDataFromFiles } from '../../helpers/base';
 import { Supabase } from '@/lib/supabase/types';
+import { baseDeleteById } from '@/lib/supabase/api';
 
 export type BaseUploadFilesParams = {
   files: FileList;
@@ -33,4 +34,15 @@ export async function baseSelectAllFileSourcesByChatbotId(
     .from('chatbots_files_sources')
     .select('*')
     .eq('chatbot_id', chatbot_id);
+}
+
+export type BaseDeleteChatbotFileSourceByIdParams = {
+  id: string;
+};
+
+export async function baseDeleteChatbotFileSourceById(
+  { id }: BaseDeleteChatbotFileSourceByIdParams,
+  supabase: Supabase
+) {
+  return await baseDeleteById({ id }, 'chatbots_files_sources', supabase);
 }
