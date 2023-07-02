@@ -6,12 +6,16 @@ import {
   invalidateChatbotSettingsQuery,
   invalidateChatbotPersonaQuery,
   invalidateChatbotFileSourceQuery,
+  getChatbotFileSourceQueryData,
+  setChatbotFileSourceQueryData,
 } from '.';
 import { queryClient } from '@/lib/react-query/client';
 
 vi.mock('@/lib/react-query/client', () => ({
   queryClient: {
     invalidateQueries: vi.fn(),
+    getQueryData: vi.fn(),
+    setQueryData: vi.fn(),
   },
 }));
 
@@ -88,5 +92,26 @@ describe('invalidateChatbotFileSourceQuery', () => {
     invalidateChatbotFileSourceQuery('id');
 
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey });
+  });
+});
+
+describe('getChatbotFileSourceQueryData', () => {
+  it('should get the chatbot file sources query data', () => {
+    const queryKey = chatbotsQueryKeys.fileSources('id');
+
+    getChatbotFileSourceQueryData('id');
+
+    expect(queryClient.getQueryData).toHaveBeenCalledWith(queryKey);
+  });
+});
+
+describe('setChatbotFileSourceQueryData', () => {
+  it('should set the chatbot file sources query data', () => {
+    const queryKey = chatbotsQueryKeys.fileSources('id');
+    const data = [{ id: '1', name: 'test' }];
+
+    setChatbotFileSourceQueryData('id', data as any);
+
+    expect(queryClient.setQueryData).toHaveBeenCalledWith(queryKey, data);
   });
 });
