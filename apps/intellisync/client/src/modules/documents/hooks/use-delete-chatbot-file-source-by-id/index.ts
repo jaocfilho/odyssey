@@ -19,14 +19,17 @@ export function useBaseDeleteChatbotFileSourceById() {
   return { deleteChatbotFileSourceById };
 }
 
-// export async function handleSettled(id: string) {
-//   await invalidateChatbotFileSourceQuery(id);
-// }
+export async function handleSettled(id: string) {
+  await invalidateChatbotFileSourceQuery(id);
+}
 
 export function useDeleteChatbotFileSourceById() {
   const { deleteChatbotFileSourceById } = useBaseDeleteChatbotFileSourceById();
 
   return useMutation({
     mutationFn: deleteChatbotFileSourceById,
+    onSettled: async (_, __, { id }) => {
+      await handleSettled(id);
+    },
   });
 }
