@@ -12,13 +12,13 @@ export async function FilesTable({ chatbotId }: FilesTableProps) {
   });
 
   return (
-    <div className="bg-gray-900">
-      <div className="mx-auto max-w-7xl">
-        <div className="bg-gray-900 py-10">
-          <div className="px-4 sm:px-6 lg:px-8">
+    <div className="h-full">
+      <div className="mx-auto max-w-7xl h-full">
+        <div className="bg-gray-900 py-10 h-full">
+          <div className="px-4 sm:px-6 lg:px-8 h-full">
             <FilesTableSummary chatbotId={chatbotId} />
-            <div className="mt-8 flow-root">
-              <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="mt-8 h-full">
+              <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 h-full">
                 <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                   <table className="min-w-full divide-y divide-gray-700">
                     <colgroup>

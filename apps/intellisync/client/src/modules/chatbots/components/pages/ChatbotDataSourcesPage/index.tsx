@@ -8,7 +8,7 @@ export function ChatbotDataSourcePage({
   chatbotId,
 }: ChatbotDataSourcesPageProps) {
   return (
-    <div className="m-4 flex flex-col gap-8">
+    <div className="m-4 flex flex-col gap-8 h-full">
       <FilesTable chatbotId={chatbotId} />
     </div>
   );
