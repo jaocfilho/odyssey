@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  odyssey_main_ci:
+  monorepo_tests:
     runs-on: ubuntu-latest
 
     name: Odyssey main CI
@@ -24,7 +24,7 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
-  check_intellisync_types:
+  build_intellisync:
     runs-on: ubuntu-latest
 
     name: Check intellisync types
@@ -47,3 +47,6 @@ jobs:
             git diff
             exit 1
           fi
+
+      - name: Build intellisync
+        run: pnpm run intell-client build
