@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { handleSettled, useBaseInsertChatbot } from '.';
-import { useSupabase } from '@/lib/supabase/Provider';
 import { baseInsertChatbot } from '../../api/base';
 import { assertObjectProperties } from '@odyssey/tests';
 import { invalidateAllChatbotsQuery } from '../../query-keys';
