@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 
 import type { Supabase } from '../types';
@@ -18,7 +18,7 @@ type SupabaseProviderProps = {
 };
 
 export function SupabaseProvider({ children }: SupabaseProviderProps) {
-  const [supabase] = useState(() => createBrowserSupabaseClient());
+  const [supabase] = useState(() => createClientComponentClient());
   const router = useRouter();
 
   useEffect(() => {
