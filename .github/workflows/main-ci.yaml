@@ -24,7 +24,7 @@ jobs:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
-  build_intellisync:
+  check_intellisync_types:
     runs-on: ubuntu-latest
 
     name: Check intellisync types
@@ -47,6 +47,3 @@ jobs:
             git diff
             exit 1
           fi
-
-      - name: Build intellisync
-        run: pnpm run intell-client build
