@@ -6,7 +6,8 @@ import {
   type BaseSelectOrganizationByIdParams,
   type BaseSelectOrganizationByIdReturnData,
 } from '../../api/base';
-import { organizationsQueryKeys } from '../../query-keys';
+import { currentOrganizationQueryKey } from '../../query-keys';
+import { useProfile } from '@/modules/profiles/hooks/use-profile';
 
 export function useBaseSelectOrganizationById() {
   const { supabase } = useSupabase();
@@ -20,20 +21,21 @@ export function useBaseSelectOrganizationById() {
   return { selectOrganizationById };
 }
 
-type UseSelectOrganizationByIdParams = BaseSelectOrganizationByIdParams;
-
 export type UseSelectOrganizationByIdOptions = {
   initialData?: BaseSelectOrganizationByIdReturnData;
 };
 
-export function useSelectOrganizationById(
-  { id }: UseSelectOrganizationByIdParams,
+export function useCurrentOrganization(
   options?: UseSelectOrganizationByIdOptions
 ) {
+  const profileQuery = useProfile();
+
   const { selectOrganizationById } = useBaseSelectOrganizationById();
 
-  const queryKey = organizationsQueryKeys.organization(id);
+  const queryKey = currentOrganizationQueryKey();
   const queryFn = async () => {
+    const id = profileQuery.data?.last_used_organization!;
+
     const { data } = await selectOrganizationById({ id });
     return data;
   };
