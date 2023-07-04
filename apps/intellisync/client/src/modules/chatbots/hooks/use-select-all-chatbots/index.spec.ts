@@ -33,7 +33,12 @@ describe('useBaseSelectAllChatbots', () => {
   });
 
   it('should callback baseSelectAllChatbots on selectAllChatbots call', () => {
-    result.current.selectAllChatbots();
-    expect(baseSelectAllChatbots).toHaveBeenCalled();
+    result.current.selectAllChatbots({ organizationId: 'any' });
+    expect(baseSelectAllChatbots).toHaveBeenCalledWith(
+      {
+        organizationId: 'any',
+      },
+      expect.any(Object)
+    );
   });
 });

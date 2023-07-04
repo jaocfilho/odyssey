@@ -14,10 +14,13 @@ vi.mock('@/lib/supabase/server', () => ({
 
 describe('serverSelectAllChatbots', () => {
   it('should pass the server supabase to baseSelectAllChatbots', async () => {
-    await serverSelectAllChatbots();
+    await serverSelectAllChatbots({ organizationId: 'any' });
 
-    const supabase = vi.mocked(createServerSupabase).mock.results[0].value;
+    const supabase = createServerSupabase();
 
-    expect(baseSelectAllChatbots).toHaveBeenCalledWith(supabase);
+    expect(baseSelectAllChatbots).toHaveBeenCalledWith(
+      { organizationId: 'any' },
+      supabase
+    );
   });
 });
