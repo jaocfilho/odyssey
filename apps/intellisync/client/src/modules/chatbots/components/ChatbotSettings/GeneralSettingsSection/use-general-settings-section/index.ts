@@ -19,8 +19,8 @@ export function useGeneralSettingsSection({
 
   const { methods, customMethods } = useChatbotSettingsForm({
     defaultValues: {
-      model: chatbotQuery.data!.model,
-      temperature: chatbotQuery.data!.temperature,
+      model: chatbotQuery.data?.model,
+      temperature: chatbotQuery.data?.temperature,
     },
   });
 
