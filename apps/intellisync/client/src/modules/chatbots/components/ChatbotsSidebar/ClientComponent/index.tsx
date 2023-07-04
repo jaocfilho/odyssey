@@ -2,7 +2,6 @@
 
 import { useSelectAllChatbots } from '@/modules/chatbots/hooks/use-select-all-chatbots';
 import { ChatbotsArea } from '../ChatbotsArea';
-import { ChatbotsListLoading } from '../ChatbotsListLoading';
 import { ReactNode } from 'react';
 
 type ClientComponentProps = {

@@ -38,6 +38,21 @@ describe('ClientComponent', () => {
     });
   });
 
+  it('should display the numbers of chatbots', () => {
+    const data = [
+      { id: '1', name: 'Chatbot 1' },
+      { id: '2', name: 'Chatbot 2' },
+    ];
+
+    vi.mocked(useSelectAllChatbots).mockReturnValue({
+      data,
+    } as any);
+
+    render(<ClientComponent loading={null} />);
+
+    expect(screen.getByText('Chatbots (2)')).toBeInTheDocument();
+  });
+
   it('should render a loading component if there is no data', () => {
     vi.mocked(useSelectAllChatbots).mockReturnValue({
       data: null,
