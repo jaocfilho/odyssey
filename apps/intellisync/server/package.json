@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "supabase": "^1.64.8",
+    "supabase": "^1.75.3",
     "typescript": "^5.1.3",
     "vite": "^4.3.9"
   }
