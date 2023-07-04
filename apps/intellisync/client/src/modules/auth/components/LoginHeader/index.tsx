@@ -1,4 +1,4 @@
-export function LoginWidgetHeader() {
+export function LoginHeader() {
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
       <img
