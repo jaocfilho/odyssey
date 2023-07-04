@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -65,33 +65,6 @@ export interface Database {
           }
         ]
       }
-      apps: {
-        Row: {
-          created_at: string
-          description: string | null
-          id: string
-          model: string
-          name: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          model?: string
-          name: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          model?: string
-          name?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       chatbots: {
         Row: {
           created_at: string | null
@@ -128,7 +101,7 @@ export interface Database {
           characters: number
           chatbot_id: string
           created_at: string | null
-          document_id: number
+          document_ids: number[]
           id: string
           name: string
           updated_at: string | null
@@ -137,7 +110,7 @@ export interface Database {
           characters?: number
           chatbot_id: string
           created_at?: string | null
-          document_id: number
+          document_ids: number[]
           id?: string
           name: string
           updated_at?: string | null
@@ -146,7 +119,7 @@ export interface Database {
           characters?: number
           chatbot_id?: string
           created_at?: string | null
-          document_id?: number
+          document_ids?: number[]
           id?: string
           name?: string
           updated_at?: string | null
@@ -156,12 +129,6 @@ export interface Database {
             foreignKeyName: "chatbots_files_sources_chatbot_id_fkey"
             columns: ["chatbot_id"]
             referencedRelation: "chatbots"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "chatbots_files_sources_document_id_fkey"
-            columns: ["document_id"]
-            referencedRelation: "documents"
             referencedColumns: ["id"]
           }
         ]
@@ -220,6 +187,40 @@ export interface Database {
           metadata?: Json | null
         }
         Relationships: []
+      }
+      organization_credits: {
+        Row: {
+          created_at: string | null
+          credit_amount: number | null
+          id: number
+          organization_id: string
+          remaining_credits: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          credit_amount?: number | null
+          id?: number
+          organization_id: string
+          remaining_credits?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          credit_amount?: number | null
+          id?: number
+          organization_id?: string
+          remaining_credits?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "organization_credits_organization_id_fkey"
+            columns: ["organization_id"]
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       organization_members: {
         Row: {
