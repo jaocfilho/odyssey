@@ -2,13 +2,13 @@ import { mapRange } from '@odyssey/arrays';
 
 export function ChatbotsListLoading() {
   return (
-    <div className="flex flex-col animate-pulse space-y-1">
+    <div className="animate-pulse flex flex-col p-4 gap-4">
       {mapRange(
         (i) => (
           <div
             key={i}
             role="skeleton"
-            className="h-2 dark:bg-zinc-800 rounded"
+            className="h-4 dark:bg-grayScheme-800 rounded"
           />
         ),
         5

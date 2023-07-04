@@ -3,26 +3,26 @@
 exports[`ChatbotsListLoading component > should render without crashing 1`] = `
 <div>
   <div
-    class="flex flex-col animate-pulse space-y-1"
+    class="animate-pulse flex flex-col p-4 gap-4"
   >
     <div
-      class="h-2 dark:bg-zinc-800 rounded"
+      class="h-4 dark:bg-grayScheme-800 rounded"
       role="skeleton"
     />
     <div
-      class="h-2 dark:bg-zinc-800 rounded"
+      class="h-4 dark:bg-grayScheme-800 rounded"
       role="skeleton"
     />
     <div
-      class="h-2 dark:bg-zinc-800 rounded"
+      class="h-4 dark:bg-grayScheme-800 rounded"
       role="skeleton"
     />
     <div
-      class="h-2 dark:bg-zinc-800 rounded"
+      class="h-4 dark:bg-grayScheme-800 rounded"
       role="skeleton"
     />
     <div
-      class="h-2 dark:bg-zinc-800 rounded"
+      class="h-4 dark:bg-grayScheme-800 rounded"
       role="skeleton"
     />
   </div>

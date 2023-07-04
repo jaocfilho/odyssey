@@ -1,12 +1,8 @@
+import { ChatbotRow } from '@/modules/chatbots/entities';
 import { ChatbotsListItem } from '../ChatbotsListItem';
 
-type Chatbot = {
-  id: string;
-  name: string;
-};
-
 type ChatbotsListProps = {
-  chatbots: Chatbot[];
+  chatbots: ChatbotRow[];
 };
 
 export function ChatbotsList({ chatbots }: ChatbotsListProps) {
