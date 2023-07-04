@@ -1,8 +1,17 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { assertButtonIsInTheDocument, clickButton } from '@odyssey/tests';
+import { useProfile } from '@/modules/profiles/hooks/use-profile';
 import { SubmitButton } from '.';
+
+vi.mock('@/modules/profiles/hooks/use-profile', () => ({
+  useProfile: vi.fn(() => ({
+    data: {
+      last_used_organization: 'any',
+    },
+  })),
+}));
 
 describe('SubmitButton', () => {
   const closeDrawer = vi.fn();
@@ -41,5 +50,27 @@ describe('SubmitButton', () => {
     render(<SubmitButton closeDrawer={closeDrawer} isSubmitSuccessful />);
 
     expect(closeDrawer).toHaveBeenCalled();
+  });
+
+  it('should not be disabled if organization is loaded', () => {
+    render(<SubmitButton closeDrawer={closeDrawer} isSubmitSuccessful />);
+
+    const button = screen.getByRole('button', { name: 'Save' });
+
+    expect(button).not.toBeDisabled();
+  });
+
+  it('should be disabled if organization is not loaded', () => {
+    vi.mocked(useProfile).mockReturnValueOnce({
+      data: {
+        last_used_organization: null,
+      },
+    } as any);
+
+    render(<SubmitButton closeDrawer={closeDrawer} isSubmitSuccessful />);
+
+    const button = screen.getByRole('button', { name: 'Save' });
+
+    expect(button).toBeDisabled();
   });
 });

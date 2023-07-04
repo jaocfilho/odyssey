@@ -4,7 +4,7 @@ import { BillingSection } from './BillingSection';
 export function SettingsSidebar() {
   return (
     <>
-      <OrganizationSettingsSection />
+      {/* <OrganizationSettingsSection /> */}
       <BillingSection />
     </>
   );
