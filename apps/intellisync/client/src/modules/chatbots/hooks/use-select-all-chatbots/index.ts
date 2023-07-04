@@ -4,7 +4,6 @@ import { useSupabase } from '@/lib/supabase/Provider';
 import {
   baseSelectAllChatbots,
   type BaseSelectAllChatbotsParams,
-  type BaseSelectAllChatbotsReturnData,
 } from '../../api/base';
 import { chatbotsQueryKeys } from '../../query-keys';
 import { useProfile } from '@/modules/profiles/hooks/use-profile';
@@ -21,11 +20,7 @@ export function useBaseSelectAllChatbots() {
   return { selectAllChatbots };
 }
 
-type UseSelectAllChatbotsOptions = {
-  initialData?: BaseSelectAllChatbotsReturnData;
-};
-
-export function useSelectAllChatbots(options?: UseSelectAllChatbotsOptions) {
+export function useSelectAllChatbots() {
   const { selectAllChatbots } = useBaseSelectAllChatbots();
   const profileQuery = useProfile();
 
@@ -41,5 +36,5 @@ export function useSelectAllChatbots(options?: UseSelectAllChatbotsOptions) {
     return data;
   };
 
-  return useQuery({ queryKey, queryFn, initialData: options?.initialData });
+  return useQuery({ queryKey, queryFn });
 }

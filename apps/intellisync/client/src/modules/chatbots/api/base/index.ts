@@ -96,10 +96,6 @@ export async function baseSelectAllChatbots(
     .eq('organization_id', organizationId);
 }
 
-export type BaseSelectAllChatbotsReturnData = Awaited<
-  ReturnType<typeof baseSelectAllChatbots>
->['data'];
-
 export type BaseSelectChatbotSettingsByIdParams = {
   id: string;
 };
