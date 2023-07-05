@@ -23,8 +23,8 @@ export function Hero() {
         opposite trade-off, and hope you don’t get audited.
       </p>
       <div className="mt-10 flex justify-center gap-x-6">
-        <Button>Get 6 months free</Button>
-        <Button>
+        <Button colorScheme="indigo">Get 6 months free</Button>
+        <Button colorScheme="indigo">
           <svg
             aria-hidden="true"
             className="h-3 w-3 flex-none fill-blue-600 group-active:fill-current"
