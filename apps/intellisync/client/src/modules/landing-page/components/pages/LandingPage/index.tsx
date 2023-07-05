@@ -1,3 +1,11 @@
+import { Hero } from '../../Hero';
+
 export function LandingPage() {
-  return null;
+  return (
+    <>
+      <div className="bg-white">
+        <Hero />
+      </div>
+    </>
+  );
 }
