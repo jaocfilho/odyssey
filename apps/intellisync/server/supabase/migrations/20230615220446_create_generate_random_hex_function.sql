@@ -8,7 +8,7 @@ DECLARE
   random_bytes BYTEA;
 BEGIN
   -- Generate random bytes
-  random_bytes := gen_random_bytes(length);
+  random_bytes := extensions.gen_random_bytes(length);
 
   -- Convert bytes to hex string
   RETURN encode(random_bytes, 'hex');
