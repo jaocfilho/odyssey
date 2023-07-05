@@ -9,10 +9,10 @@ export function ChatbotDetailsNavigation({
   id,
 }: ChatbotDetailsNavigationProps) {
   const chatbotsDetailsNavigation = [
-    { href: urlPaths.chatbots.details.overview(id), name: 'Overview' },
+    // { href: urlPaths.chatbots.details.overview(id), name: 'Overview' },
     { href: urlPaths.chatbots.details.dataSource(id), name: 'Data source' },
     { href: urlPaths.chatbots.details.chat(id), name: 'Chat' },
-    { href: urlPaths.chatbots.details.persona(id), name: 'Persona' },
+    // { href: urlPaths.chatbots.details.persona(id), name: 'Persona' },
     { href: urlPaths.chatbots.details.settings(id), name: 'Settings' },
   ];
 

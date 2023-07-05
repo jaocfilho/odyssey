@@ -6,6 +6,6 @@ export const organizationsQueryKeys = {
   current: () => [...organizationsQueryKeys.base, 'current'] as const,
 };
 
-export function currentQueryKey() {
+export function currentOrganizationQueryKey() {
   return organizationsQueryKeys.current();
 }

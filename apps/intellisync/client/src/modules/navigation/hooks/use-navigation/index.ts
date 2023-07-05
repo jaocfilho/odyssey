@@ -15,8 +15,14 @@ export function useNavigation() {
     router.push(url);
   };
 
+  const redirectToChatbotDataSource = (id: string) => {
+    const url = urlPaths.chatbots.details.dataSource(id);
+    router.push(url);
+  };
+
   return {
     redirectToChatbots,
     redirectToChatbotOverview,
+    redirectToChatbotDataSource,
   };
 }

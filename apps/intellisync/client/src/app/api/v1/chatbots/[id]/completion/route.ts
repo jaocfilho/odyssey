@@ -1,15 +1,10 @@
 import { NextResponse, NextRequest } from 'next/server';
 
 import { routeHandlerGetChatbotConfig } from '@/modules/chatbots/api/route-handlers';
-import { chatCompletion } from '@/modules/openai/api';
 import { noApiKeyFoundResponse } from '@/modules/api-keys/helpers';
 
 type ChatbotCompletionParams = {
   params: { id: string };
-};
-
-type ChatbotCompletionApiBodyParams = {
-  text: string;
 };
 
 export async function POST(
@@ -29,16 +24,7 @@ export async function POST(
   });
 
   if (chatbotConfig.status === 200) {
-    const { text }: ChatbotCompletionApiBodyParams = await request.json();
-
-    const { settings } = chatbotConfig.data!;
-
-    const response = await chatCompletion({
-      text,
-      settings,
-    });
-
-    return NextResponse.json(response);
+    return NextResponse.json('success');
   }
 
   return new NextResponse(

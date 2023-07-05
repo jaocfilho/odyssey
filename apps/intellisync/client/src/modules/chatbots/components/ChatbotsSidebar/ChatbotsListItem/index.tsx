@@ -1,6 +1,6 @@
 import { SecondarySidebarItem } from '@/components/SecondarySidebar/SecondarySidebarItem';
 import { useIsCurrentChatbotPath } from '@/modules/chatbots/hooks/use-is-current-chatbot-path';
-import { ChatbotsDetailsOverviewLink } from '@/modules/navigation/components/ChatbotsDetailsOverviewLink';
+import { ChatbotsDetailsDataSourceLink } from '@/modules/navigation/components/ChatbotsDetailsDataSourceLink';
 
 type ChatbotsListItemProps = {
   id: string;
@@ -12,9 +12,9 @@ export function ChatbotsListItem({ id, name }: ChatbotsListItemProps) {
 
   return (
     <li>
-      <ChatbotsDetailsOverviewLink id={id}>
+      <ChatbotsDetailsDataSourceLink id={id}>
         <SecondarySidebarItem current={current}>{name}</SecondarySidebarItem>
-      </ChatbotsDetailsOverviewLink>
+      </ChatbotsDetailsDataSourceLink>
     </li>
   );
 }

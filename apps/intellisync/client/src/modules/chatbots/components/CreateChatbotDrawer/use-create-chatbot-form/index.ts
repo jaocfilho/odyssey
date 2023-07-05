@@ -1,13 +1,15 @@
 import { useInsertChatbot } from '@/modules/chatbots/hooks/use-insert-chatbot';
 import { type ChatbotFormData, useChatbotForm } from '../../ChatbotForm';
-import { getCurrentOrganization } from '@/modules/organizations/helpers';
+import { useProfile } from '@/modules/profiles/hooks/use-profile';
 
 export function useCreateChatbotForm() {
   const mutation = useInsertChatbot();
-  const organization = getCurrentOrganization();
+  const profileQuery = useProfile();
 
   const onSubmit = (data: ChatbotFormData) => {
-    mutation.mutate({ ...data, organization_id: organization!.id });
+    const currentOrganizationId = profileQuery.data?.last_used_organization;
+
+    mutation.mutate({ ...data, organization_id: currentOrganizationId! });
   };
 
   const { methods } = useChatbotForm({ onSubmit });

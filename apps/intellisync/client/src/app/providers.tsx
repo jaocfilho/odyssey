@@ -9,8 +9,10 @@ type RootProvidersProps = {
 
 export default function RootProviders({ children }: RootProvidersProps) {
   return (
-    <SupabaseProvider>
-      <ReactQueryProvider>{children}</ReactQueryProvider>
-    </SupabaseProvider>
+    <ReactQueryProvider>
+      <SupabaseProvider>
+        <>{children}</>
+      </SupabaseProvider>
+    </ReactQueryProvider>
   );
 }

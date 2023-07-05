@@ -1,9 +1,5 @@
 import { RemovePrefix } from '@odyssey/type-utils';
-import {
-  baseSelectById,
-  baseSelectAll,
-  baseDeleteById,
-} from '@/lib/supabase/api';
+import { baseSelectById, baseDeleteById } from '@/lib/supabase/api';
 import { Supabase, DatabaseFunctions } from '@/lib/supabase/types';
 import {
   ChatbotsSettingsUpdate,
@@ -86,13 +82,19 @@ export async function baseGetChatbotConfig(
     .returns<BaseGetChatbotConfigReturnData>();
 }
 
-export async function baseSelectAllChatbots(supabase: Supabase) {
-  return await baseSelectAll('chatbots', supabase);
-}
+export type BaseSelectAllChatbotsParams = {
+  organizationId: string;
+};
 
-export type BaseSelectAllChatbotsReturnData = Awaited<
-  ReturnType<typeof baseSelectAllChatbots>
->['data'];
+export async function baseSelectAllChatbots(
+  { organizationId }: BaseSelectAllChatbotsParams,
+  supabase: Supabase
+) {
+  return await supabase
+    .from('chatbots')
+    .select('*')
+    .eq('organization_id', organizationId);
+}
 
 export type BaseSelectChatbotSettingsByIdParams = {
   id: string;

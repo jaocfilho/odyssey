@@ -20,7 +20,7 @@ export default async function ChatbotDetailsLayout({
   return (
     <div className="flex flex-col h-full">
       <ChatbotDetailsNavigation id={id} />
-      <ChatbotDetailsHeader name={data!.name} />
+      <ChatbotDetailsHeader name={data?.name} />
       {children}
     </div>
   );

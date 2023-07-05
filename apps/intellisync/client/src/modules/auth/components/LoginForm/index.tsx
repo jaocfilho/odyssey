@@ -9,10 +9,10 @@ export function LoginForm() {
     <LoginFormContainer>
       <LoginFormComponent />
 
-      <div>
+      {/* <div>
         <Separator />
         <ButtonsArea />
-      </div>
+      </div> */}
 
       <FreeTrial />
     </LoginFormContainer>

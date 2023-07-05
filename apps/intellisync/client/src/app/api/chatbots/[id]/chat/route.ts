@@ -4,7 +4,6 @@ import { StreamingTextResponse, LangChainStream, Message } from 'ai';
 
 import { CallbackManager } from 'langchain/callbacks';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { SystemChatMessage } from 'langchain/schema';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { BufferMemory } from 'langchain/memory';
 
@@ -37,11 +36,6 @@ export async function POST(
   const questionLlm = new ChatOpenAI({});
   const vectorStore = getSupabaseVectorStore();
 
-  const systemMessages = messages.filter((m) => m.role === 'system');
-  const systemPrefix = ConversationalRetrievalQAChain.getChatHistoryString(
-    systemMessages.map((m) => new SystemChatMessage(m.content))
-  );
-
   const chain = ConversationalRetrievalQAChain.fromLLM(
     llm,
     vectorStore.asRetriever(1, {
@@ -53,18 +47,14 @@ export async function POST(
       },
       memory: new BufferMemory({
         humanPrefix:
-          systemPrefix +
-          ' I want you to act as a document that I am having a conversation with. You will provide me with answers from the given info. If the answer is not included, search for an answer and return it. Never break character and always adapt your answers to the provided persona.',
+          'I want you to act as a document that I am having a conversation with. You will provide me with answers from the given info. If the answer is not included, search for an answer and return it. Never break character.',
         memoryKey: 'chat_history',
-        inputKey: 'question',
         returnMessages: true,
       }),
-      returnSourceDocuments: false,
-      verbose: false,
     }
   );
 
-  const question = messages[messages.length - 1].content;
+  const question = messages.at(-1)!.content;
 
   chain
     .call({

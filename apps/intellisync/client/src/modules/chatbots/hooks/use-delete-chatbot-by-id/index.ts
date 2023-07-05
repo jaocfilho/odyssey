@@ -33,8 +33,10 @@ export function useDeleteChatbotById() {
 
   return useMutation({
     mutationFn: deleteChatbotById,
-    onSuccess: (_, { id }) => {
+    onMutate: () => {
       redirectToChatbots();
+    },
+    onSuccess: (_, { id }) => {
       handleSuccess(id);
     },
     onSettled: async () => await handleSettled(),

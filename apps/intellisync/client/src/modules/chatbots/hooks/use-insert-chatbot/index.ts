@@ -24,12 +24,12 @@ export async function handleSettled() {
 
 export function useInsertChatbot() {
   const { insertChatbot } = useBaseInsertChatbot();
-  const { redirectToChatbotOverview } = useNavigation();
+  const { redirectToChatbotDataSource } = useNavigation();
 
   return useMutation({
     mutationFn: insertChatbot,
     onSuccess({ data }) {
-      redirectToChatbotOverview(data!.id);
+      redirectToChatbotDataSource(data!.id);
     },
     onSettled: async () => await handleSettled(),
   });
