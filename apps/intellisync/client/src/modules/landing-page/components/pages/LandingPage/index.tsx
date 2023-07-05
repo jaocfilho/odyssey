@@ -1,3 +1,4 @@
+import { Features } from '../../Features';
 import { Header } from '../../Header';
 import { Hero } from '../../Hero';
 
@@ -7,6 +8,7 @@ export function LandingPage() {
       <Header />
       <main>
         <Hero />
+        <Features />
       </main>
     </>
   );
