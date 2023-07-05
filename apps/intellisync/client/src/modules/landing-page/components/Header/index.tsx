@@ -1,13 +1,14 @@
 'use client';
 
+import { LoginLink } from '@/modules/navigation/components/LoginLink';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import { useBooleanState } from '@odyssey/react-hooks';
 
 const navigation = [
-  { name: 'Features', href: '#' },
-  { name: 'Features', href: '#' },
+  { name: 'Features', href: '#features' },
+  { name: 'Pricing', href: '#pricing' },
 ];
 
 export function Header() {
@@ -51,9 +52,9 @@ export function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+          <LoginLink className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </LoginLink>
         </div>
       </nav>
       <Dialog
