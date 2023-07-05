@@ -6,4 +6,8 @@ describe('authUrls', () => {
   it('should have the correct login url', () => {
     expect(authUrls.login).toBe('/login');
   });
+
+  it('should have the correct register url', () => {
+    expect(authUrls.register).toBe('/register');
+  });
 });
