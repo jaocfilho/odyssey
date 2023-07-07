@@ -2,6 +2,10 @@ export * from './utils';
 
 export * from './components/Badge';
 export * from './components/Button';
+export {
+  getButtonStyles,
+  type ButtonStylesProps,
+} from './components/Button/styles';
 export * from './components/Checkbox';
 export * from './components/Container';
 export * from './components/Dot';
