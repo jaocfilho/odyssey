@@ -1,4 +1,5 @@
 import { CTA } from '../../CTA';
+import { FAQ } from '../../FAQ';
 import { Features } from '../../Features';
 import { Footer } from '../../Footer';
 import { Header } from '../../Header';
@@ -13,6 +14,7 @@ export function LandingPage() {
         <Hero />
         <Features />
         <Pricing />
+        <FAQ />
         <CTA />
         <Footer />
       </main>
