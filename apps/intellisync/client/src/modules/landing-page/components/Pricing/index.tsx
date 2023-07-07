@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { RadioGroup } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
+
 import { classNames } from 'tailwind-ui';
 
 type PlanTypes = 'monthly' | 'annually';
@@ -99,10 +100,10 @@ const tiers: Tier[] = [
     href: '#',
     price: { monthly: '$14', annually: '$140' },
     features: [
-      '3 chatbots',
+      '5 chatbots',
       '1,000 message credits per month',
       '3,000,000 storage tokens per month',
-      'GPT 4',
+      'Upload multiple files',
       'API access',
     ],
     mostPopular: false,
@@ -113,26 +114,27 @@ const tiers: Tier[] = [
     href: '#',
     price: { monthly: '$49', annually: '$490' },
     features: [
-      '25 products',
-      'Up to 10,000 subscribers',
-      'Advanced analytics',
-      '24-hour support response time',
-      'Marketing automations',
+      '10 chatbots',
+      '4,000 message credits per month',
+      '10,000,000 storage tokens per month',
+      'GPT 4',
+      'Upload multiple files',
+      'API access',
     ],
     mostPopular: true,
   },
   {
-    name: 'Enterprise',
-    id: 'tier-enterprise',
+    name: 'Pro',
+    id: 'pro',
     href: '#',
-    price: { monthly: '$48', annually: '$576' },
+    price: { monthly: '$99', annually: '$999' },
     features: [
-      'Unlimited products',
-      'Unlimited subscribers',
-      'Advanced analytics',
-      '1-hour, dedicated support response time',
-      'Marketing automations',
-      'Custom reporting tools',
+      '50 chatbots',
+      '10,000 message credits per month',
+      '40,000,000 storage tokens per month',
+      'GPT 4',
+      'Upload multiple files',
+      'API access',
     ],
     mostPopular: false,
   },
@@ -149,12 +151,11 @@ export function Pricing() {
             Pricing
           </h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Pricing plans for teams of&nbsp;all&nbsp;sizes
+            Flexible plans for everyone
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-300">
-          Choose an affordable plan that’s packed with the best features for
-          engaging your audience, creating customer loyalty, and driving sales.
+          Get 2 months for free by subscribing yearly!
         </p>
         <div className="mt-16 flex justify-center">
           <RadioGroup

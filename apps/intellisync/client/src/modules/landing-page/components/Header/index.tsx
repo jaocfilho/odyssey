@@ -9,6 +9,7 @@ import { useBooleanState } from '@odyssey/react-hooks';
 const navigation = [
   { name: 'Features', href: '#features' },
   { name: 'Pricing', href: '#pricing' },
+  { name: 'FAQ', href: '#faq' },
 ];
 
 export function Header() {
