@@ -22,7 +22,7 @@ export function Hero() {
               Build AI chatbots powered by your data
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Create production-ready chatbots with your data. Deploy anywhere.
+              Create production-ready chatbots with your data. Use it anywhere.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button href="/register" colorScheme="indigo" size="xl">
