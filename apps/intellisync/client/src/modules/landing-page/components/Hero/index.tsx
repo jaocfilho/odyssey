@@ -1,4 +1,3 @@
-import { Button } from '@/components/Button';
 import { WaitlistForm } from '../WaitlistForm';
 
 export function Hero() {
@@ -26,7 +25,12 @@ export function Hero() {
               Create production-ready chatbots with your data. Use it anywhere.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <WaitlistForm />
+              <div className="py-6">
+                <p className="mx-auto mb-2 max-w-xl text-center text-lg leading-8 text-gray-300">
+                  Get notified when we’re launching.
+                </p>
+                <WaitlistForm />
+              </div>
             </div>
           </div>
           <img
