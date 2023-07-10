@@ -24,11 +24,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-              alt=""
-            />
+            <img className="h-12 w-auto" src="/LogoFull.svg" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -53,9 +49,9 @@ export function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <LoginLink className="text-sm font-semibold leading-6 text-white">
+          {/* <LoginLink className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
-          </LoginLink>
+          </LoginLink> */}
         </div>
       </nav>
       <Dialog
@@ -97,14 +93,14 @@ export function Header() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
+              {/* <div className="py-6">
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
                 >
                   Log in
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </Dialog.Panel>

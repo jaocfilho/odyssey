@@ -6,7 +6,7 @@ exports[`AssistantMessage > should render without crashing 1`] = `
     class="self-start px-4 py-2 lg:mr-24 rounded-md dark:bg-white/10"
   >
     <p
-      class="my-4 leading-6"
+      class="my-2 leading-6"
     >
       message
     </p>

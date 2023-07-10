@@ -6,6 +6,7 @@ import { RadioGroup } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
 
 import { classNames } from 'tailwind-ui';
+import { Button } from '@/components/Button';
 
 type PlanTypes = 'monthly' | 'annually';
 
@@ -63,18 +64,15 @@ function TierCard({ tier, frequency }: TierCardProps) {
           {frequency.priceSuffix}
         </span>
       </p>
-      <a
-        href={tier.href}
-        aria-describedby={tier.id}
-        className={classNames(
-          tier.mostPopular
-            ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500'
-            : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
-          'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
-        )}
+      <Button
+        className="mt-6 w-full"
+        size="xl"
+        colorScheme={tier.mostPopular ? 'indigo' : 'gray'}
+        disabled
       >
         Buy plan
-      </a>
+      </Button>
+
       <ul
         role="list"
         className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10"
@@ -127,7 +125,7 @@ const tiers: Tier[] = [
     name: 'Pro',
     id: 'pro',
     href: '#',
-    price: { monthly: '$99', annually: '$999' },
+    price: { monthly: '$99', annually: '$990' },
     features: [
       '50 chatbots',
       '10,000 message credits per month',
