@@ -1,7 +1,7 @@
 import { classNames } from '../../utils';
 
 const buttonCommonStyles =
-  'font-semibold text-white shadow-sm justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50';
+  'flex font-semibold text-white shadow-sm justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50';
 
 const sizeVariantsStyles = {
   xs: 'rounded px-2 py-1 text-xs',
