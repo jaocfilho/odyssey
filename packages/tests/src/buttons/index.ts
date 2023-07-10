@@ -7,13 +7,26 @@ export const clickButton = async (name: string) => {
   await userEvent.click(screen.getByRole('button', { name }));
 };
 
+type AssertButtonIsInTheDocumentOptions = {
+  disabled?: boolean;
+};
+
 /**
  * Asserts that a button with the specified name is in the document.
  *
  * @param name - The name of the button.
  */
-export const assertButtonIsInTheDocument = (name: string) => {
-  expect(screen.getByRole('button', { name })).toBeInTheDocument();
+export const assertButtonIsInTheDocument = (
+  name: string,
+  options?: AssertButtonIsInTheDocumentOptions
+) => {
+  const button = screen.getByRole('button', { name });
+
+  expect(button).toBeInTheDocument();
+
+  if (options?.disabled) {
+    expect(button).toBeDisabled();
+  }
 };
 
 /**
