@@ -34,7 +34,7 @@ export function Hero() {
             </div>
           </div>
           <img
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            src="/hero.png"
             alt="App screenshot"
             width={2432}
             height={1442}
