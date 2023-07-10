@@ -25,12 +25,22 @@ export function WaitlistForm() {
     await supabase.from('waitlist').insert(data);
   };
 
+  const isLoading = methods.formState.isSubmitting;
+  const isSubmitted = methods.formState.isSubmitSuccessful;
+
+  const button = isSubmitted ? 'Thank you!' : 'Notify me';
+
   return (
     <Form.Root id="registerForm" onSubmit={onSubmit} {...methods}>
       <div className="flex flex-col max-w-md gap-4 sm:flex-row">
         <TextInput placeholder="Enter your email" name="email" type="email" />
-        <Button colorScheme="indigo" type="submit">
-          Notify me
+        <Button
+          colorScheme="indigo"
+          type="submit"
+          loading={isLoading}
+          disabled={isSubmitted}
+        >
+          {button}
         </Button>
       </div>
     </Form.Root>
