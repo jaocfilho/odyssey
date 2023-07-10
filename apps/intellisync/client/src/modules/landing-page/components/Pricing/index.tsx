@@ -127,7 +127,7 @@ const tiers: Tier[] = [
     name: 'Pro',
     id: 'pro',
     href: '#',
-    price: { monthly: '$99', annually: '$999' },
+    price: { monthly: '$99', annually: '$990' },
     features: [
       '50 chatbots',
       '10,000 message credits per month',

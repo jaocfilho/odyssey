@@ -27,7 +27,7 @@ export function WaitlistForm() {
 
   return (
     <Form.Root id="registerForm" onSubmit={onSubmit} {...methods}>
-      <div className="flex max-w-md gap-x-4">
+      <div className="flex flex-col max-w-md gap-4 sm:flex-row">
         <TextInput placeholder="Enter your email" name="email" type="email" />
         <Button colorScheme="indigo" type="submit">
           Notify me
