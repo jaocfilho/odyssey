@@ -29,6 +29,8 @@ const preview: Preview = {
         { name: 'zinc950', value: '#09090b' },
         { name: 'slate900', value: '#0f172a' },
         { name: 'slate950', value: '#020617' },
+        { name: 'gray900', value: '#111827' },
+        { name: 'gray950', value: '#030712' },
       ],
     },
   },

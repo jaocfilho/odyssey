@@ -24,7 +24,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-14 w-auto" src="/LogoFull.svg" alt="" />
+            <img className="h-12 w-auto" src="/LogoFull.svg" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
