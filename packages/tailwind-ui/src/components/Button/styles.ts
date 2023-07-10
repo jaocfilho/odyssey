@@ -20,9 +20,14 @@ const colorSchemeVariantsStyles = {
   indigo:
     'dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500 bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600 disabled:dark:bg-indigo-700',
 
+  purple:
+    'dark:bg-purple-500 dark:hover:bg-purple-400 dark:focus-visible:outline-purple-500 bg-purple-600 hover:bg-purple-500 focus-visible:outline-purple-600 disabled:dark:bg-purple-700',
+
+  pink: 'dark:bg-pink-500 dark:hover:bg-pink-400 dark:focus-visible:outline-pink-500 bg-pink-600 hover:bg-pink-500 focus-visible:outline-pink-600 disabled:dark:bg-pink-700',
+
   red: 'dark:bg-red-500 dark:hover:bg-red-400 dark:focus-visible:outline-red-500 bg-red-600 hover:bg-red-500 focus-visible:outline-red-600 disabled:dark:bg-red-700',
 
-  gray: 'dark:bg-grayScheme-900 dark:hover:bg-grayScheme-800 dark:focus-visible:outline-emerald-500 dark:text-grayScheme-200 bg-grayScheme-600 hover:bg-grayScheme-500 focus-visible:outline-emerald-600 disabled:dark:bg-grayScheme-900',
+  gray: 'dark:bg-white/10 dark:hover:bg-white/20 dark:focus-visible:outline-white text-gray-900 dark:text-white bg-white hover:bg-gray-50 disabled:dark:bg-white/10',
 };
 
 type ButtonColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
