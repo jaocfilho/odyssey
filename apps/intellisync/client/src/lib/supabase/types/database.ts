@@ -385,17 +385,17 @@ export interface Database {
       waitlist: {
         Row: {
           created_at: string | null
-          email: string | null
+          email: string
           id: number
         }
         Insert: {
           created_at?: string | null
-          email?: string | null
+          email: string
           id?: number
         }
         Update: {
           created_at?: string | null
-          email?: string | null
+          email?: string
           id?: number
         }
         Relationships: []
