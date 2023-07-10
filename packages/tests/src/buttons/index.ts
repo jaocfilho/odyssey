@@ -15,6 +15,7 @@ type AssertButtonIsInTheDocumentOptions = {
  * Asserts that a button with the specified name is in the document.
  *
  * @param name - The name of the button.
+ * @param options - The options for the assertion.
  */
 export const assertButtonIsInTheDocument = (
   name: string,

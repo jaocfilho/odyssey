@@ -29,7 +29,7 @@ export function Button({
       {...rest}
       disabled={isDisabled}
     >
-      {loading ? <Spinner className="mr-3" /> : null}
+      {loading ? <Spinner className={children ? 'mr-3' : undefined} /> : null}
       {children}
     </button>
   );
