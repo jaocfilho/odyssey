@@ -98,7 +98,7 @@ const tiers: Tier[] = [
     href: '#',
     price: { monthly: '$14', annually: '$140' },
     features: [
-      '5 chatbots',
+      '10 chatbots',
       '1,000 message credits per month',
       '3,000,000 storage tokens per month',
       'Upload multiple files',
@@ -107,12 +107,12 @@ const tiers: Tier[] = [
     mostPopular: false,
   },
   {
-    name: 'Standart',
-    id: 'standart',
+    name: 'Standard',
+    id: 'standard',
     href: '#',
     price: { monthly: '$49', annually: '$490' },
     features: [
-      '10 chatbots',
+      '50 chatbots',
       '4,000 message credits per month',
       '10,000,000 storage tokens per month',
       'GPT 4',
@@ -127,7 +127,7 @@ const tiers: Tier[] = [
     href: '#',
     price: { monthly: '$99', annually: '$990' },
     features: [
-      '50 chatbots',
+      'Unlimited chatbots',
       '10,000 message credits per month',
       '40,000,000 storage tokens per month',
       'GPT 4',
