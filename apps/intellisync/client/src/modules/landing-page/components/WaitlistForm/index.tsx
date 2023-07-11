@@ -35,6 +35,8 @@ export function WaitlistForm() {
       <div className="flex flex-col max-w-md gap-4 sm:flex-row">
         <TextInput placeholder="Enter your email" name="email" type="email" />
         <Button
+          className="h-fit"
+          size="lg"
           colorScheme="indigo"
           type="submit"
           loading={isLoading}
