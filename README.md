@@ -59,3 +59,13 @@ To develop all apps and packages, run the following command:
 ```bash
 pnpm run dev
 ```
+
+### Testing
+
+To test all apps and packages, run the following command:
+
+```bash
+pnpm run test
+```
+
+Most packages and apps also have a `test:watch` script that you can run to watch for changes and run the tests automatically.
