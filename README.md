@@ -1,4 +1,4 @@
-# Odyssey
+# Welcome to my odyssey
 
 This is my personal monorepo built with [turborepo](https://turbo.build/repo). All my work is built here, so I can share and reuse code across all my projects.
 
@@ -25,11 +25,30 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/) and teste
 ### Apps in production
 - [IntellisyncAI](https://www.intellisyncai.com/)
 
+## Getting Started
+
+This repository is built on top of devcontainers. To get started, you need to have [Docker](https://www.docker.com/) installed on your machine.
+
+After that, inside vscode you can open the command palette and run `Remote-Containers: Reopen in Container`.
+
+All the necessary dependencies will be installed and you will be ready to go.
+
+### Repositories filters
+
+All the following command can be applied to specific subsets of packages. You can read more about it [here](https://pnpm.io/filtering).
+
+But the most common filters already have a shortcut:
+- `intell-client`: filter for `@intellisync/client`
+- `intell-server`: filter for `@intellisync/server`
+- `ui`: filter for `tailwind-ui`
+- `workshop`: filter for `workshop`
+- `turboflux`: filter for `@turboflux/client`
+
 ### Build
 
 To build all apps and packages, run the following command:
 
-```
+```bash
 pnpm run build
 ```
 
@@ -37,17 +56,6 @@ pnpm run build
 
 To develop all apps and packages, run the following command:
 
-```
+```bash
 pnpm run dev
 ```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
