@@ -8,10 +8,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
-export async function OPTIONS(request: NextRequest) {
-  return NextResponse.json({}, { headers: corsHeaders });
-}
-
 type Params = {
   params: { id: string };
 };
@@ -24,5 +20,5 @@ export async function POST(request: NextRequest, { params }: Params) {
 
   await storeVectorsFromFiles({ files, chatbotId: id });
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true }, { headers: corsHeaders });
 }
