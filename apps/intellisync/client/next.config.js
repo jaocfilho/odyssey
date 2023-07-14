@@ -12,7 +12,7 @@ const nextConfig = {
       {
         // matching all API routes
 
-        source: '/api/:path*',
+        source: 'app/api/:path*',
 
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
@@ -21,7 +21,7 @@ const nextConfig = {
 
           {
             key: 'Access-Control-Allow-Methods',
-            value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+            value: 'GET,OPTIONS,PATCH,DELETE,POST',
           },
 
           {
