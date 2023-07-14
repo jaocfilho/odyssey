@@ -24,6 +24,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
+      default: 'gray900',
       values: [
         { name: 'zinc900', value: '#18181b' },
         { name: 'zinc950', value: '#09090b' },

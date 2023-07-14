@@ -31,7 +31,7 @@ const meta: Meta<typeof DrawerComponent> = {
     },
   },
   args: {
-    title: 'Drawer title (optional)',
+    title: 'Drawer title',
     subTitle: 'Drawer subtitle (optional)',
     size: 'md',
     grayScheme: 'default',
