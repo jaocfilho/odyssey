@@ -5,6 +5,10 @@ import { Drawer as DrawerComponent, Button } from 'tailwind-ui';
 const meta: Meta<typeof DrawerComponent> = {
   title: 'Components/Overlay/Drawer',
   component: DrawerComponent,
+  args: {
+    title: 'Drawer title (optional)',
+    subTitle: 'Drawer subtitle (optional)',
+  },
 };
 
 export default meta;
