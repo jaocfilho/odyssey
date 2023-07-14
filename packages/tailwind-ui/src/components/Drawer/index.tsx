@@ -25,6 +25,7 @@ export function Drawer({
   children,
   actionButton,
   size,
+  grayScheme,
 }: DrawerProps) {
   const [open, handleClose, handleOpen] = useBooleanState({ onFalse: onClose });
 
@@ -37,7 +38,7 @@ export function Drawer({
 
       <ComponentDrawer.Container open={open} onClose={handleClose}>
         <ComponentDrawer.Overlay />
-        <ComponentDrawer.Panel size={size}>
+        <ComponentDrawer.Panel size={size} grayScheme={grayScheme}>
           <ComponentDrawer.Header title={title} subTitle={subTitle} />
           <ComponentDrawer.Content>{children}</ComponentDrawer.Content>
           <ComponentDrawer.Footer

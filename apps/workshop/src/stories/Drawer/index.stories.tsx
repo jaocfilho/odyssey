@@ -16,11 +16,25 @@ const meta: Meta<typeof DrawerComponent> = {
         options: ['xs', 'sm', 'md', 'lg', 'xl'] as DrawerProps['size'][],
       },
     },
+    grayScheme: {
+      control: {
+        type: 'select',
+        options: [
+          'default',
+          'gray',
+          'slate',
+          'stone',
+          'zinc',
+          'neutral',
+        ] as DrawerProps['grayScheme'][],
+      },
+    },
   },
   args: {
     title: 'Drawer title (optional)',
     subTitle: 'Drawer subtitle (optional)',
     size: 'md',
+    grayScheme: 'default',
   },
 };
 

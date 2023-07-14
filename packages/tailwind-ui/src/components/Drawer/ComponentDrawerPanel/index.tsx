@@ -3,7 +3,7 @@ import { Fragment, ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { classNames } from '../../../utils';
 
-const panelCommonStyles = 'pointer-events-auto w-screen';
+const panelCommonStyles = 'pointer-events-auto w-screen dark:bg-grayScheme-900';
 
 const sizeVariantsStyles = {
   xs: 'max-w-xs',
@@ -15,12 +15,31 @@ const sizeVariantsStyles = {
 
 type DrawerPanelSizeVariants = keyof typeof sizeVariantsStyles;
 
-export type DrawerPanelStylesProps = {
-  size?: DrawerPanelSizeVariants;
+const graySchemeVariantsStyles = {
+  default: 'bg-white dark:bg-grayScheme-900',
+  gray: 'bg-white dark:bg-gray-900',
+  slate: 'bg-white dark:bg-slate-900',
+  stone: 'bg-white dark:bg-stone-900',
+  zinc: 'bg-white dark:bg-zinc-900',
+  neutral: 'bg-white dark:bg-neutral-900',
 };
 
-function drawerPanelStyles({ size = 'md' }: DrawerPanelStylesProps) {
-  return classNames(panelCommonStyles, sizeVariantsStyles[size]);
+type DrawerPanelGraySchemeVariants = keyof typeof graySchemeVariantsStyles;
+
+export type DrawerPanelStylesProps = {
+  size?: DrawerPanelSizeVariants;
+  grayScheme?: DrawerPanelGraySchemeVariants;
+};
+
+function drawerPanelStyles({
+  size = 'md',
+  grayScheme = 'default',
+}: DrawerPanelStylesProps) {
+  return classNames(
+    panelCommonStyles,
+    sizeVariantsStyles[size],
+    graySchemeVariantsStyles[grayScheme]
+  );
 }
 
 type ComponentDrawerPanelProps = DrawerPanelStylesProps & {
@@ -30,8 +49,9 @@ type ComponentDrawerPanelProps = DrawerPanelStylesProps & {
 export function ComponentDrawerPanel({
   children,
   size,
+  grayScheme,
 }: ComponentDrawerPanelProps) {
-  const styles = drawerPanelStyles({ size });
+  const styles = drawerPanelStyles({ size, grayScheme });
 
   return (
     <div className="fixed inset-0 overflow-hidden">
@@ -47,7 +67,7 @@ export function ComponentDrawerPanel({
             leaveTo="translate-x-full"
           >
             <Dialog.Panel className={styles}>
-              <div className="flex h-full flex-col overflow-y-scroll dark:bg-grayScheme-900 shadow-xl">
+              <div className="flex h-full flex-col overflow-y-scroll shadow-xl">
                 {children}
               </div>
             </Dialog.Panel>
