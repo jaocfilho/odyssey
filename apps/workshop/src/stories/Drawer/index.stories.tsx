@@ -1,13 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Drawer as DrawerComponent, Button } from 'tailwind-ui';
+import {
+  Drawer as DrawerComponent,
+  Button,
+  type DrawerProps,
+} from 'tailwind-ui';
 
 const meta: Meta<typeof DrawerComponent> = {
   title: 'Components/Overlay/Drawer',
   component: DrawerComponent,
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['xs', 'sm', 'md', 'lg', 'xl'] as DrawerProps['size'][],
+      },
+    },
+  },
   args: {
     title: 'Drawer title (optional)',
     subTitle: 'Drawer subtitle (optional)',
+    size: 'md',
   },
 };
 

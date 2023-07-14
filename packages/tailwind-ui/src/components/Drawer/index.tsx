@@ -7,10 +7,12 @@ import { ComponentDrawer } from './ComponentDrawer';
 import { type ComponentDrawerFooterProps } from './ComponentDrawerFooter';
 import { type ComponentDrawerHeaderProps } from './ComponentDrawerHeader';
 import { type ComponentDrawerTriggerProps } from './ComponentDrawerTrigger';
+import { type DrawerPanelStylesProps } from './ComponentDrawerPanel';
 
 export type DrawerProps = ComponentDrawerHeaderProps &
   Pick<ComponentDrawerFooterProps, 'actionButton'> &
-  Pick<ComponentDrawerTriggerProps, 'triggerComponent'> & {
+  Pick<ComponentDrawerTriggerProps, 'triggerComponent'> &
+  DrawerPanelStylesProps & {
     children: ReactNode;
     onClose?: () => void;
   };
@@ -22,6 +24,7 @@ export function Drawer({
   onClose,
   children,
   actionButton,
+  size,
 }: DrawerProps) {
   const [open, handleClose, handleOpen] = useBooleanState({ onFalse: onClose });
 
@@ -34,7 +37,7 @@ export function Drawer({
 
       <ComponentDrawer.Container open={open} onClose={handleClose}>
         <ComponentDrawer.Overlay />
-        <ComponentDrawer.Panel>
+        <ComponentDrawer.Panel size={size}>
           <ComponentDrawer.Header title={title} subTitle={subTitle} />
           <ComponentDrawer.Content>{children}</ComponentDrawer.Content>
           <ComponentDrawer.Footer

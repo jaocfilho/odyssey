@@ -15,7 +15,7 @@ const sizeVariantsStyles = {
 
 type DrawerPanelSizeVariants = keyof typeof sizeVariantsStyles;
 
-type DrawerPanelStylesProps = {
+export type DrawerPanelStylesProps = {
   size?: DrawerPanelSizeVariants;
 };
 
@@ -23,12 +23,15 @@ function drawerPanelStyles({ size = 'md' }: DrawerPanelStylesProps) {
   return classNames(panelCommonStyles, sizeVariantsStyles[size]);
 }
 
-interface ComponentDrawerPanelProps {
+type ComponentDrawerPanelProps = DrawerPanelStylesProps & {
   children: ReactNode;
-}
+};
 
-export function ComponentDrawerPanel({ children }: ComponentDrawerPanelProps) {
-  const styles = drawerPanelStyles({});
+export function ComponentDrawerPanel({
+  children,
+  size,
+}: ComponentDrawerPanelProps) {
+  const styles = drawerPanelStyles({ size });
 
   return (
     <div className="fixed inset-0 overflow-hidden">
