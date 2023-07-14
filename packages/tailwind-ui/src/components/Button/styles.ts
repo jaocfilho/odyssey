@@ -14,6 +14,9 @@ const sizeVariantsStyles = {
 type ButtonSizeVariants = keyof typeof sizeVariantsStyles;
 
 const colorSchemeVariantsStyles = {
+  default:
+    'dark:bg-brand-500 dark:hover:bg-brand-400 dark:focus-visible:outline-brand-500 bg-brand-600 hover:bg-brand-500 focus-visible:outline-brand-600 disabled:dark:bg-brand-700',
+
   emerald:
     'dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:focus-visible:outline-emerald-500 bg-emerald-600 hover:bg-emerald-500 focus-visible:outline-emerald-600 disabled:dark:bg-emerald-700',
 
@@ -39,7 +42,7 @@ export type ButtonStylesProps = {
 
 export function getButtonStyles({
   size = 'md',
-  colorScheme = 'emerald',
+  colorScheme = 'default',
 }: ButtonStylesProps) {
   const sizeStyles = sizeVariantsStyles[size];
   const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
