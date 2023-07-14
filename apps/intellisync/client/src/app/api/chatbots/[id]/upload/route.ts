@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { storeVectorsFromFiles } from '@/modules/documents/api/server';
 
-export const corsHeaders = {
+const corsHeaders = {
   'Access-Control-Allow-Origin': 'https://www.intellisyncai.com',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
