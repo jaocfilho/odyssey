@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { Select as SelectComponent } from 'tailwind-ui';
 
@@ -23,5 +24,13 @@ export default meta;
 type Story = StoryObj<typeof SelectComponent>;
 
 export const Select: Story = {
-  render: (args) => <SelectComponent {...args} />,
+  render: (args) => {
+    const [value, setValue] = useState('');
+
+    const handleChange = (option: any) => {
+      setValue(option);
+    };
+
+    return <SelectComponent {...args} onChange={handleChange} value={value} />;
+  },
 };

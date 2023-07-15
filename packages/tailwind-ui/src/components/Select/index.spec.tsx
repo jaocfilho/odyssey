@@ -21,14 +21,16 @@ describe('Select', () => {
     cleanup();
   });
 
+  it('should render if no label is passed', () => {
+    render(<Select value="" options={options} onChange={handleChange} />);
+
+    const element = screen.getByRole('button');
+    expect(element).toBeInTheDocument();
+  });
+
   it('should display the label of the selected value', () => {
     render(
-      <Select
-        value="option-1"
-        options={options}
-        label="Label"
-        onChange={handleChange}
-      />
+      <Select value="option-1" options={options} onChange={handleChange} />
     );
 
     const element = screen.getByText('Option 1');
@@ -40,7 +42,6 @@ describe('Select', () => {
       <Select
         value=""
         options={options}
-        label="Label"
         placeholder="Placeholder"
         onChange={handleChange}
       />
@@ -51,15 +52,7 @@ describe('Select', () => {
   });
 
   it('should display the options when the button is clicked', async () => {
-    render(
-      <Select
-        value=""
-        options={options}
-        label="Label"
-        placeholder="Placeholder"
-        onChange={handleChange}
-      />
-    );
+    render(<Select value="" options={options} onChange={handleChange} />);
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
@@ -69,15 +62,7 @@ describe('Select', () => {
   });
 
   it('should call the onChange handler when an option is selected', async () => {
-    render(
-      <Select
-        value=""
-        options={options}
-        label="Label"
-        placeholder="Placeholder"
-        onChange={handleChange}
-      />
-    );
+    render(<Select value="" options={options} onChange={handleChange} />);
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
@@ -90,12 +75,7 @@ describe('Select', () => {
 
   it('should not call the onChange handler when the selected option is clicked', async () => {
     render(
-      <Select
-        value="option-1"
-        options={options}
-        label="Label"
-        onChange={handleChange}
-      />
+      <Select value="option-1" options={options} onChange={handleChange} />
     );
 
     const button = screen.getByRole('button');
@@ -107,17 +87,49 @@ describe('Select', () => {
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('should render if no value is passed', () => {
+  it('should not update the displayed value if the input is not controlled', async () => {
     render(
       <Select
+        value=""
         options={options}
-        label="Label"
         placeholder="Placeholder"
         onChange={handleChange}
       />
     );
 
+    const button = screen.getByRole('button');
+    await userEvent.click(button);
+
+    const option = screen.getByText('Option 1');
+    await userEvent.click(option);
+
     const element = screen.getByText('Placeholder');
     expect(element).toBeInTheDocument();
   });
+
+  // it('should update the displayed value if the input is controlled', async () => {
+  //   let value = '';
+
+  //   handleChange.mockImplementation((option: any) => {
+  //     value = option;
+  //   });
+
+  //   render(
+  //     <Select
+  //       value={value}
+  //       options={options}
+  //       placeholder="Placeholder"
+  //       onChange={handleChange}
+  //     />
+  //   );
+
+  //   const button = screen.getByRole('button');
+  //   await userEvent.click(button);
+
+  //   const option = screen.getByText('Option 1');
+  //   await userEvent.click(option);
+
+  //   const element = screen.getByText('Option 1');
+  //   expect(element).toBeInTheDocument();
+  // });
 });

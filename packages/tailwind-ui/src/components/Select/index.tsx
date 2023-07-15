@@ -8,10 +8,10 @@ import { SelectOptions } from './SelectOptions';
 import { SelectLabel } from './SelectLabel';
 
 export type SelectProps = {
-  value?: any;
   options: SelectItem[];
-  label: string;
   onChange: (option: any) => void;
+  value: any;
+  label?: string;
   placeholder?: string;
 };
 
