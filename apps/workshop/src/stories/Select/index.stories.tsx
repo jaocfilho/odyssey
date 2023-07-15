@@ -14,6 +14,7 @@ const meta: Meta<typeof SelectComponent> = {
   args: {
     options,
     placeholder: 'Placeholder',
+    label: 'Label',
   },
 };
 

@@ -5,6 +5,7 @@ import { Listbox } from '@headlessui/react';
 import { type SelectItem } from './SelectOption';
 import { SelectButton } from './SelectButton';
 import { SelectOptions } from './SelectOptions';
+import { SelectLabel } from './SelectLabel';
 
 export type SelectProps = {
   value?: any;
@@ -28,14 +29,14 @@ export function Select({
     onChange(option.value);
   };
 
+  const hasLabel = !!label;
+
   return (
     <Listbox value={selected} onChange={handleChange}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium leading-6">
-            {label}
-          </Listbox.Label>
-          <div className="relative mt-2">
+          {hasLabel ? <SelectLabel>{label}</SelectLabel> : null}
+          <div className="relative">
             <SelectButton selectedItem={selected} placeholder={placeholder} />
 
             <SelectOptions open={open} options={options} />
