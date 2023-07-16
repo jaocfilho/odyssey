@@ -12,10 +12,26 @@ const options = [
 const meta: Meta<typeof SelectComponent> = {
   title: 'Components/Forms/Select',
   component: SelectComponent,
+  argTypes: {
+    colorScheme: {
+      control: {
+        type: 'select',
+        options: ['emerald', 'indigo', 'error'],
+      },
+    },
+    grayScheme: {
+      control: {
+        type: 'select',
+        options: ['gray'],
+      },
+    },
+  },
   args: {
     options,
     placeholder: 'Placeholder',
     label: 'Label',
+    colorScheme: 'indigo',
+    grayScheme: 'gray',
   },
 };
 

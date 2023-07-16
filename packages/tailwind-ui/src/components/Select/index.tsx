@@ -3,11 +3,11 @@
 import { Listbox } from '@headlessui/react';
 
 import { type SelectItem } from './SelectOption';
-import { SelectButton } from './SelectButton';
+import { SelectButton, type SelectButtonStylesProps } from './SelectButton';
 import { SelectOptions } from './SelectOptions';
 import { SelectLabel } from './SelectLabel';
 
-export type SelectProps = {
+export type SelectProps = SelectButtonStylesProps & {
   options: SelectItem[];
   onChange: (option: any) => void;
   value: any;
@@ -21,6 +21,8 @@ export function Select({
   label,
   placeholder,
   onChange,
+  colorScheme,
+  grayScheme,
 }: SelectProps) {
   const selected = options.find((option) => option.value === value);
 
@@ -37,8 +39,12 @@ export function Select({
         <>
           {hasLabel ? <SelectLabel>{label}</SelectLabel> : null}
           <div className="relative">
-            <SelectButton selectedItem={selected} placeholder={placeholder} />
-
+            <SelectButton
+              selectedItem={selected}
+              placeholder={placeholder}
+              grayScheme={grayScheme}
+              colorScheme={colorScheme}
+            />
             <SelectOptions open={open} options={options} />
           </div>
         </>
