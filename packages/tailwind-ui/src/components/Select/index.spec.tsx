@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -107,29 +107,30 @@ describe('Select', () => {
     expect(element).toBeInTheDocument();
   });
 
-  // it('should update the displayed value if the input is controlled', async () => {
-  //   let value = '';
+  it('should update the displayed value if the input is controlled', async () => {
+    let value = '';
 
-  //   handleChange.mockImplementation((option: any) => {
-  //     value = option;
-  //   });
+    handleChange.mockImplementation((option: any) => {
+      value = option;
+    });
 
-  //   render(
-  //     <Select
-  //       value={value}
-  //       options={options}
-  //       placeholder="Placeholder"
-  //       onChange={handleChange}
-  //     />
-  //   );
+    render(
+      <Select
+        value={value}
+        options={options}
+        placeholder="Placeholder"
+        onChange={handleChange}
+      />
+    );
 
-  //   const button = screen.getByRole('button');
-  //   await userEvent.click(button);
+    const button = screen.getByRole('button');
+    await userEvent.click(button);
 
-  //   const option = screen.getByText('Option 1');
-  //   await userEvent.click(option);
+    const option = screen.getByRole('option', { name: 'Option 1' });
+    await userEvent.click(option);
 
-  //   const element = screen.getByText('Option 1');
-  //   expect(element).toBeInTheDocument();
-  // });
+    const element = screen.findByRole('button', { name: 'Option 1' });
+    waitFor(() => expect(element).toBeInTheDocument());
+    waitFor(() => expect(value).toBe('option-1'));
+  });
 });
