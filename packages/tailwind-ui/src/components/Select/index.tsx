@@ -3,11 +3,16 @@
 import { Listbox } from '@headlessui/react';
 
 import { type SelectItem } from './SelectOption';
-import { SelectButton, type SelectButtonStylesProps } from './SelectButton';
+import { SelectButton } from './SelectButton';
 import { SelectOptions } from './SelectOptions';
 import { SelectLabel } from './SelectLabel';
 
-export type SelectProps = SelectButtonStylesProps & {
+export type SelectStylesProps = {
+  colorScheme?: 'emerald' | 'indigo' | 'error';
+  grayScheme?: 'gray';
+};
+
+export type SelectProps = SelectStylesProps & {
   options: SelectItem[];
   onChange: (option: any) => void;
   value: any;
@@ -45,7 +50,11 @@ export function Select({
               grayScheme={grayScheme}
               colorScheme={colorScheme}
             />
-            <SelectOptions open={open} options={options} />
+            <SelectOptions
+              open={open}
+              options={options}
+              colorScheme={colorScheme}
+            />
           </div>
         </>
       )}
