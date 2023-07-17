@@ -5,7 +5,7 @@ import { SelectItem } from '../SelectOption';
 import { classNames } from '../../../utils';
 
 const selectButtonCommonStyles =
-  'relative w-full text-left cursor-default rounded-md border-0 py-1.5 pl-3 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6';
+  'relative w-full text-left cursor-default rounded-md border-0 py-1.5 pl-3 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6';
 
 const colorSchemeVariantsStyles = {
   indigo: 'focus:ring-indigo-600 dark:focus:ring-indigo-500',
@@ -17,7 +17,7 @@ const colorSchemeVariantsStyles = {
 type SelectButtonColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
 
 const graySchemeVariantsStyles = {
-  gray: 'bg-white dark:bg-white/5 text-gray-900 dark:text-white ring-gray-300 dark:ring-gray-50/10 dark:disabled:bg-gray-950 dark:disabled:text-gray-400 disabled:bg-gray-50 disabled:ring-gray-200 dark:disabled:ring-gray-50/10 disabled:text-gray-500 placeholder:text-gray-400 dark:placeholder:text-gray-600',
+  gray: 'bg-white dark:bg-white/5 text-gray-900 dark:text-white ring-gray-300 dark:ring-gray-50/10 dark:disabled:bg-gray-950 dark:disabled:text-gray-400 disabled:bg-gray-50 disabled:ring-gray-200 dark:disabled:ring-gray-50/10 disabled:text-gray-500 placeholder-shown::text-gray-400 dark:placeholder-shown::text-gray-600',
 };
 
 type SelectButtonGraySchemeVariants = keyof typeof graySchemeVariantsStyles;
@@ -57,7 +57,7 @@ export function SelectButton({
   const display = selectedItem ? selectedItem.label : placeholder;
 
   return (
-    <Listbox.Button className={styles} placeholder={placeholder}>
+    <Listbox.Button className={styles}>
       <span className="block truncate">{display}</span>
       <UpDownIcon />
     </Listbox.Button>

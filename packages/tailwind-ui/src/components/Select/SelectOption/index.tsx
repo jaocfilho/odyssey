@@ -8,11 +8,32 @@ export type SelectItem = {
   label: string | number;
 };
 
-const containerStyles = (active: boolean) =>
-  classNames(
-    active ? 'bg-emerald-600 text-white' : 'text-slate-400',
-    'relative cursor-default select-none py-2 pl-3 pr-9'
+const selectOptionCommonStyles =
+  'relative cursor-default select-none py-2 pl-3 pr-9';
+
+const colorSchemeVariantsStyles = {
+  emerald: 'bg-emerald-600 dark:bg-emerald-500 text-white',
+  indigo: 'bg-indigo-600 dark:bg-indigo-500 text-white',
+  error: 'bg-red-600 dark:bg-red-500 text-white',
+};
+
+type SelectOptionColorSchemeVariants = keyof typeof colorSchemeVariantsStyles;
+
+export type SelectOptionStylesProps = {
+  colorScheme?: SelectOptionColorSchemeVariants;
+};
+
+function selectOptionStyles(
+  active: boolean,
+  { colorScheme = 'indigo' }: SelectOptionStylesProps
+) {
+  const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
+
+  return classNames(
+    active ? colorSchemeStyles : 'text-gray-400',
+    selectOptionCommonStyles
   );
+}
 
 type BaseSelectOptionProps = {
   selectedItem: SelectItem;
@@ -44,7 +65,7 @@ export function SelectOption({ selectedItem }: SelectOptionProps) {
   return (
     <Listbox.Option
       value={selectedItem}
-      className={({ active }) => containerStyles(active)}
+      className={({ active }) => selectOptionStyles(active, {})}
     >
       {({ selected, active }) => (
         <BaseSelectOption
