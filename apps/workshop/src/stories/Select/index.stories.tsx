@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Select as SelectComponent } from 'tailwind-ui';
+import {
+  ColorSchemeVariants,
+  GraySchemeVariants,
+  Select as SelectComponent,
+} from 'tailwind-ui';
 
 const options = [
   { label: 'Option 1', value: 'option-1' },
@@ -16,13 +20,25 @@ const meta: Meta<typeof SelectComponent> = {
     colorScheme: {
       control: {
         type: 'select',
-        options: ['emerald', 'indigo', 'error'],
+        options: [
+          'emerald',
+          'indigo',
+          'error',
+          'default',
+        ] as ColorSchemeVariants[],
       },
     },
     grayScheme: {
       control: {
         type: 'select',
-        options: ['gray'],
+        options: [
+          'gray',
+          'neutral',
+          'zinc',
+          'default',
+          'slate',
+          'stone',
+        ] as GraySchemeVariants[],
       },
     },
   },

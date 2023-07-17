@@ -6,10 +6,11 @@ import { type SelectItem } from './SelectOption';
 import { SelectButton } from './SelectButton';
 import { SelectOptions } from './SelectOptions';
 import { SelectLabel } from './SelectLabel';
+import { ColorSchemeVariants, GraySchemeVariants } from '../../utils';
 
 export type SelectStylesProps = {
-  colorScheme?: 'emerald' | 'indigo' | 'error';
-  grayScheme?: 'gray';
+  colorScheme?: ColorSchemeVariants;
+  grayScheme?: GraySchemeVariants;
 };
 
 export type SelectProps = SelectStylesProps & {
@@ -54,6 +55,7 @@ export function Select({
               open={open}
               options={options}
               colorScheme={colorScheme}
+              grayScheme={grayScheme}
             />
           </div>
         </>
