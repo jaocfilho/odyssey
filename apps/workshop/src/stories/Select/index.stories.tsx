@@ -46,8 +46,8 @@ const meta: Meta<typeof SelectComponent> = {
     options,
     placeholder: 'Placeholder',
     label: 'Label',
-    colorScheme: 'indigo',
-    grayScheme: 'gray',
+    colorScheme: 'default',
+    grayScheme: 'default',
   },
 };
 

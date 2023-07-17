@@ -14,7 +14,7 @@ const styles: StyleConfig = {
     'relative w-full text-left cursor-default rounded-md border-0 py-1.5 pl-3 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6',
 
   colorSchemeVariantsStyles: {
-    default: 'focus:ring-indigo-600 dark:focus:ring-indigo-500',
+    default: 'focus:ring-brand-600 dark:focus:ring-brand-500',
     indigo: 'focus:ring-indigo-600 dark:focus:ring-indigo-500',
     emerald: 'focus:ring-emerald-600 dark:focus:ring-emerald-500',
     error:

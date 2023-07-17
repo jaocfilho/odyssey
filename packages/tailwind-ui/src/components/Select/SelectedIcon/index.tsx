@@ -11,7 +11,7 @@ const styles: StyleConfig = {
   commonStyles: 'absolute inset-y-0 right-0 flex items-center pr-4',
 
   colorSchemeVariantsStyles: {
-    default: 'text-indigo-600 dark:text-indigo-500',
+    default: 'text-brand-600 dark:text-brand-500',
     emerald: 'text-emerald-600 dark:text-emerald-500',
     indigo: 'text-indigo-600 dark:text-indigo-500',
     error: 'text-red-600 dark:text-red-500',

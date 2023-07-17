@@ -17,7 +17,7 @@ module.exports = {
     extend: {
       colors: {
         grayScheme: colors.gray,
-        brand: colors.purple,
+        brand: colors.indigo,
       },
     },
   },

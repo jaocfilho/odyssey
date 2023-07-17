@@ -13,19 +13,19 @@ export type SelectItem = {
   label: string | number;
 };
 
-type SelectOptionStylesProps = {
-  colorScheme?: ColorSchemeVariants;
-};
-
 const styles: StyleConfig = {
   commonStyles: 'relative cursor-default select-none py-2 pl-3 pr-9',
 
   colorSchemeVariantsStyles: {
-    default: 'bg-indigo-600 dark:bg-indigo-500 text-white',
+    default: 'bg-brand-600 dark:bg-brand-500 text-white',
     emerald: 'bg-emerald-600 dark:bg-emerald-500 text-white',
     indigo: 'bg-indigo-600 dark:bg-indigo-500 text-white',
     error: 'bg-red-600 dark:bg-red-500 text-white',
   },
+};
+
+type SelectOptionStylesProps = {
+  colorScheme?: ColorSchemeVariants;
 };
 
 function selectOptionStyles(
