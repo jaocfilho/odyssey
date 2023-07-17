@@ -32,10 +32,10 @@ function selectOptionStyles(
   active: boolean,
   { colorScheme = 'indigo' }: SelectOptionStylesProps
 ) {
-  const peido = styling({ colorScheme }, styles);
+  const baseStyle = styling({ colorScheme }, styles);
 
   return classNames(
-    peido,
+    baseStyle,
     active ? '' : 'text-gray-400 bg-inherit dark:bg-inherit'
   );
 }

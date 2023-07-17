@@ -8,17 +8,14 @@ import { SelectOptions } from './SelectOptions';
 import { SelectLabel } from './SelectLabel';
 import { ColorSchemeVariants, GraySchemeVariants } from '../../utils';
 
-export type SelectStylesProps = {
-  colorScheme?: ColorSchemeVariants;
-  grayScheme?: GraySchemeVariants;
-};
-
-export type SelectProps = SelectStylesProps & {
+export type SelectProps = {
   options: SelectItem[];
   onChange: (option: any) => void;
   value: any;
   label?: string;
   placeholder?: string;
+  colorScheme?: ColorSchemeVariants;
+  grayScheme?: GraySchemeVariants;
 };
 
 export function Select({

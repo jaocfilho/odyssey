@@ -1,23 +1,21 @@
 import { CheckIcon } from '@heroicons/react/20/solid';
 
-import { classNames } from '../../../utils';
-import { SelectStylesProps } from '..';
+import {
+  ColorSchemeVariants,
+  StyleConfig,
+  classNames,
+  styling,
+} from '../../../utils';
 
-const selectedIconCommonStyles =
-  'absolute inset-y-0 right-0 flex items-center pr-4';
+const styles: StyleConfig = {
+  commonStyles: 'absolute inset-y-0 right-0 flex items-center pr-4',
 
-const activeStyles = 'text-white';
-
-type ColorSchemeVariants = NonNullable<SelectStylesProps['colorScheme']>;
-
-type ColorSchemeVariantsStyles = {
-  [key in ColorSchemeVariants]: string;
-};
-
-const colorSchemeVariantsStyles: ColorSchemeVariantsStyles = {
-  emerald: 'text-emerald-600 dark:text-emerald-500',
-  indigo: 'text-indigo-600 dark:text-indigo-500',
-  error: 'text-red-600 dark:text-red-500',
+  colorSchemeVariantsStyles: {
+    default: 'text-indigo-600 dark:text-indigo-500',
+    emerald: 'text-emerald-600 dark:text-emerald-500',
+    indigo: 'text-indigo-600 dark:text-indigo-500',
+    error: 'text-red-600 dark:text-red-500',
+  },
 };
 
 type SelectedIconStylesProps = {
@@ -28,12 +26,9 @@ function selectedIconStyles(
   active: boolean,
   { colorScheme = 'indigo' }: SelectedIconStylesProps
 ) {
-  const colorSchemeStyles = colorSchemeVariantsStyles[colorScheme];
+  const baseStyle = styling({ colorScheme }, styles);
 
-  return classNames(
-    active ? activeStyles : colorSchemeStyles,
-    selectedIconCommonStyles
-  );
+  return classNames(baseStyle, active ? 'text-white dark:text-white' : '');
 }
 
 type SelectedIconProps = SelectedIconStylesProps & {
