@@ -1,6 +1,6 @@
 import { Supabase } from '@/lib/supabase/types';
 
-type BaseSelectMessageCreditsByOrganizationIdParams = {
+export type BaseSelectMessageCreditsByOrganizationIdParams = {
   organizationId: string;
 };
 
