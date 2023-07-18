@@ -225,26 +225,26 @@ export interface Database {
       organization_message_credits: {
         Row: {
           created_at: string | null
-          credit_amount: number | null
+          credit_amount: number
           id: number
           organization_id: string
-          remaining_credits: number | null
+          remaining_credits: number
           updated_at: string | null
         }
         Insert: {
           created_at?: string | null
-          credit_amount?: number | null
+          credit_amount?: number
           id?: number
           organization_id: string
-          remaining_credits?: number | null
+          remaining_credits?: number
           updated_at?: string | null
         }
         Update: {
           created_at?: string | null
-          credit_amount?: number | null
+          credit_amount?: number
           id?: number
           organization_id?: string
-          remaining_credits?: number | null
+          remaining_credits?: number
           updated_at?: string | null
         }
         Relationships: [
