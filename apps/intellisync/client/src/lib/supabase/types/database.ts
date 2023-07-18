@@ -188,40 +188,6 @@ export interface Database {
         }
         Relationships: []
       }
-      organization_credits: {
-        Row: {
-          created_at: string | null
-          credit_amount: number | null
-          id: number
-          organization_id: string
-          remaining_credits: number | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          credit_amount?: number | null
-          id?: number
-          organization_id: string
-          remaining_credits?: number | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          credit_amount?: number | null
-          id?: number
-          organization_id?: string
-          remaining_credits?: number | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "organization_credits_organization_id_fkey"
-            columns: ["organization_id"]
-            referencedRelation: "organizations"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
       organization_members: {
         Row: {
           created_at: string | null
@@ -252,6 +218,40 @@ export interface Database {
             foreignKeyName: "organization_members_profile_id_fkey"
             columns: ["profile_id"]
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      organization_message_credits: {
+        Row: {
+          created_at: string | null
+          credit_amount: number | null
+          id: number
+          organization_id: string
+          remaining_credits: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          credit_amount?: number | null
+          id?: number
+          organization_id: string
+          remaining_credits?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          credit_amount?: number | null
+          id?: number
+          organization_id?: string
+          remaining_credits?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "organization_message_credits_organization_id_fkey"
+            columns: ["organization_id"]
+            referencedRelation: "organizations"
             referencedColumns: ["id"]
           }
         ]
