@@ -40,5 +40,10 @@ export function useCurrentOrganization(
     return data;
   };
 
-  return useQuery({ queryKey, queryFn, initialData: options?.initialData });
+  return useQuery({
+    queryKey,
+    queryFn,
+    enabled: !!profileQuery.data?.last_used_organization,
+    initialData: options?.initialData,
+  });
 }
