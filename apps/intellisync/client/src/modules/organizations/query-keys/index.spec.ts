@@ -22,4 +22,9 @@ describe('organizationsQueryKeys', () => {
     const queryKey = organizationsQueryKeys.current();
     expect(queryKey).toEqual(['organizations', 'current']);
   });
+
+  it('should return the message credits key', () => {
+    const queryKey = organizationsQueryKeys.messageCredits('any');
+    expect(queryKey).toEqual(['organizations', 'any', 'message-credits']);
+  });
 });
