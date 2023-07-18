@@ -11,5 +11,7 @@ export async function baseSelectMessageCreditsByOrganizationId(
   return await supabase
     .from('organization_message_credits')
     .select('*')
-    .eq('organization_id', organizationId);
+    .eq('organization_id', organizationId)
+    .limit(1)
+    .single();
 }
