@@ -9,6 +9,7 @@ import { ChatbotsSettingsRow } from '@/modules/chatbots/entities';
 import { PersonasRow } from '@/modules/personas/entities';
 import { useChatbot } from '@/modules/chatbots/hooks/use-chatbot';
 import { apiEndpoints } from '@/modules/requests/endpoints';
+import { useOrganizationMessageCredits } from '@/modules/message-credits/hooks/use-organization-message-credits';
 
 type ChatProps = {
   chatbotId: string;
@@ -30,11 +31,15 @@ export function Chat({
     initialMessages,
   });
 
+  const messageCreditsQuery = useOrganizationMessageCredits();
+
   const api = apiEndpoints.chatbots.chat(chatbotId);
   const { messages, append, isLoading } = useChat({
     initialMessages: initialMessagesQuery.data,
     api: `/${api}`,
   });
+
+  console.log(messageCreditsQuery.data);
 
   return (
     <div className="max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
