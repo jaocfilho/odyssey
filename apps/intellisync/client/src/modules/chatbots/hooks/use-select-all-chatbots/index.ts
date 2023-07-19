@@ -6,7 +6,6 @@ import {
   type BaseSelectAllChatbotsParams,
 } from '../../api/base';
 import { chatbotsQueryKeys } from '../../query-keys';
-import { useProfile } from '@/modules/profiles/hooks/use-profile';
 
 export function useBaseSelectAllChatbots() {
   const { supabase } = useSupabase();
@@ -20,21 +19,23 @@ export function useBaseSelectAllChatbots() {
   return { selectAllChatbots };
 }
 
-export function useSelectAllChatbots() {
+type UseSelectAllChatbotsOptions = {
+  enabled?: boolean;
+};
+
+export function useSelectAllChatbots(
+  { organizationId }: BaseSelectAllChatbotsParams,
+  options?: UseSelectAllChatbotsOptions
+) {
   const { selectAllChatbots } = useBaseSelectAllChatbots();
-  const profileQuery = useProfile();
 
   const queryKey = chatbotsQueryKeys.all();
   const queryFn = async () => {
-    if (!profileQuery.data) return null;
-
-    const { last_used_organization } = profileQuery.data;
-
     const { data } = await selectAllChatbots({
-      organizationId: last_used_organization!,
+      organizationId,
     });
     return data;
   };
 
-  return useQuery({ queryKey, queryFn });
+  return useQuery({ queryKey, queryFn, enabled: options?.enabled });
 }

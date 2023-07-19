@@ -1,11 +1,11 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { useSelectAllChatbots } from '@/modules/chatbots/hooks/use-select-all-chatbots';
+import { useChatbots } from '@/modules/chatbots/hooks/use-chatbots';
 import { ClientComponent } from '.';
 
-vi.mock('@/modules/chatbots/hooks/use-select-all-chatbots', () => ({
-  useSelectAllChatbots: vi.fn(),
+vi.mock('@/modules/chatbots/hooks/use-chatbots', () => ({
+  useChatbots: vi.fn(),
 }));
 
 vi.mock('@/modules/chatbots/hooks/use-is-current-chatbot-path', () => ({
@@ -27,7 +27,7 @@ describe('ClientComponent', () => {
       { id: '2', name: 'Chatbot 2' },
     ];
 
-    vi.mocked(useSelectAllChatbots).mockReturnValue({
+    vi.mocked(useChatbots).mockReturnValue({
       data,
     } as any);
 
@@ -44,7 +44,7 @@ describe('ClientComponent', () => {
       { id: '2', name: 'Chatbot 2' },
     ];
 
-    vi.mocked(useSelectAllChatbots).mockReturnValue({
+    vi.mocked(useChatbots).mockReturnValue({
       data,
     } as any);
 
@@ -54,7 +54,7 @@ describe('ClientComponent', () => {
   });
 
   it('should render a loading component if there is no data', () => {
-    vi.mocked(useSelectAllChatbots).mockReturnValue({
+    vi.mocked(useChatbots).mockReturnValue({
       data: null,
       isLoading: true,
     } as any);
@@ -70,7 +70,7 @@ describe('ClientComponent', () => {
       { id: '2', name: 'Chatbot 2' },
     ];
 
-    vi.mocked(useSelectAllChatbots).mockReturnValue({
+    vi.mocked(useChatbots).mockReturnValue({
       data,
       isLoading: true,
     } as any);
@@ -84,7 +84,7 @@ describe('ClientComponent', () => {
   });
 
   it('should render nothing if there is no data and is not loading', () => {
-    vi.mocked(useSelectAllChatbots).mockReturnValue({
+    vi.mocked(useChatbots).mockReturnValue({
       data: null,
       isLoading: false,
     } as any);

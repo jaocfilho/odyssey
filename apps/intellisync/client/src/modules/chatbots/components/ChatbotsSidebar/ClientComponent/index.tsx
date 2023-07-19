@@ -1,15 +1,16 @@
 'use client';
 
-import { useSelectAllChatbots } from '@/modules/chatbots/hooks/use-select-all-chatbots';
+import { type ReactNode } from 'react';
+
 import { ChatbotsArea } from '../ChatbotsArea';
-import { ReactNode } from 'react';
+import { useChatbots } from '@/modules/chatbots/hooks/use-chatbots';
 
 type ClientComponentProps = {
   loading: ReactNode;
 };
 
 export function ClientComponent({ loading }: ClientComponentProps) {
-  const chatbotsQuery = useSelectAllChatbots();
+  const chatbotsQuery = useChatbots();
 
   if (chatbotsQuery.data) {
     return <ChatbotsArea chatbots={chatbotsQuery.data} />;
