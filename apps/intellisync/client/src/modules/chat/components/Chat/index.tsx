@@ -34,12 +34,10 @@ export function Chat({
   const messageCreditsQuery = useOrganizationMessageCredits();
 
   const api = apiEndpoints.chatbots.chat(chatbotId);
-  const { messages, append, isLoading } = useChat({
+  const { messages, append } = useChat({
     initialMessages: initialMessagesQuery.data,
     api: `/${api}`,
   });
-
-  console.log(messageCreditsQuery.data);
 
   return (
     <div className="max-w-6xl flex flex-col h-full justify-between mx-auto p-4">
