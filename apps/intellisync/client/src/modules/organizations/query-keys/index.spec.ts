@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { organizationsQueryKeys } from '.';
+import { organizationsQueryKeys, organizationQueryKey } from '.';
 
 describe('organizationsQueryKeys', () => {
   it('should return the base key', () => {
@@ -26,5 +26,12 @@ describe('organizationsQueryKeys', () => {
   it('should return the message credits key', () => {
     const queryKey = organizationsQueryKeys.messageCredits('any');
     expect(queryKey).toEqual(['organizations', 'any', 'message-credits']);
+  });
+});
+
+describe('organizationQueryKey', () => {
+  it('should return the single organization key', () => {
+    const queryKey = organizationQueryKey('any');
+    expect(queryKey).toEqual(['organizations', 'any']);
   });
 });

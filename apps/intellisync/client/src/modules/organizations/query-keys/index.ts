@@ -11,3 +11,7 @@ export const organizationsQueryKeys = {
 export function currentOrganizationQueryKey() {
   return organizationsQueryKeys.current();
 }
+
+export function organizationQueryKey(id: string) {
+  return organizationsQueryKeys.organization(id);
+}

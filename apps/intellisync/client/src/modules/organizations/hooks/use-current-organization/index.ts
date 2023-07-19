@@ -1,49 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-
-import { useSupabase } from '@/lib/supabase/Provider';
-import {
-  baseSelectOrganizationById,
-  type BaseSelectOrganizationByIdParams,
-  type BaseSelectOrganizationByIdReturnData,
-} from '../../api/base';
-import { currentOrganizationQueryKey } from '../../query-keys';
 import { useProfile } from '@/modules/profiles/hooks/use-profile';
+import { useSelectOrganizationById } from '../use-select-organization-by-id';
 
-export function useBaseSelectOrganizationById() {
-  const { supabase } = useSupabase();
-
-  const selectOrganizationById = async ({
-    id,
-  }: BaseSelectOrganizationByIdParams) => {
-    return await baseSelectOrganizationById({ id }, supabase);
-  };
-
-  return { selectOrganizationById };
-}
-
-export type UseSelectOrganizationByIdOptions = {
-  initialData?: BaseSelectOrganizationByIdReturnData;
-};
-
-export function useCurrentOrganization(
-  options?: UseSelectOrganizationByIdOptions
-) {
+export function useCurrentOrganization() {
   const profileQuery = useProfile();
 
-  const { selectOrganizationById } = useBaseSelectOrganizationById();
-
-  const queryKey = currentOrganizationQueryKey();
-  const queryFn = async () => {
-    const id = profileQuery.data?.last_used_organization!;
-
-    const { data } = await selectOrganizationById({ id });
-    return data;
-  };
-
-  return useQuery({
-    queryKey,
-    queryFn,
-    enabled: !!profileQuery.data?.last_used_organization,
-    initialData: options?.initialData,
-  });
+  return useSelectOrganizationById(
+    {
+      id: profileQuery.data?.last_used_organization!,
+    },
+    { enabled: !!profileQuery.data?.last_used_organization }
+  );
 }
