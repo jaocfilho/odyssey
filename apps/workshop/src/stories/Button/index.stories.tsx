@@ -9,6 +9,7 @@ const meta: Meta<typeof ButtonComponent> = {
     children: 'Button',
     disabled: false,
     loading: false,
+    href: '',
   },
 };
 

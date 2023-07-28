@@ -57,4 +57,10 @@ describe('Button', () => {
 
     assertButtonIsInTheDocument('button', { disabled: true });
   });
+
+  it('should render a link when href is provided', () => {
+    render(<Button href="/link">button</Button>);
+
+    expect(screen.getByRole('link', { name: 'button' })).toBeInTheDocument();
+  });
 });
