@@ -1,7 +1,11 @@
 import { useParams } from 'next/navigation';
 
+type UseGetCurrentChatbotIdReturn = {
+  chatbotId: string;
+};
+
 export function useGetCurrentChatbotId() {
   const { id: chatbotId } = useParams();
 
-  return { chatbotId };
+  return { chatbotId } as UseGetCurrentChatbotIdReturn;
 }
