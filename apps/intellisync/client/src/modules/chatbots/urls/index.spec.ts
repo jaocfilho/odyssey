@@ -52,6 +52,10 @@ describe('chatbotsEndpoints', () => {
   it('should return correct chat url', () => {
     expect(chatbotsEndpoints.chat('id')).toBe('api/chatbots/id/chat');
   });
+
+  it('should return correct train url', () => {
+    expect(chatbotsEndpoints.train('id')).toBe('api/chatbots/id/train');
+  });
 });
 
 describe('isChatbotsPath', () => {

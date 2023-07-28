@@ -14,7 +14,7 @@ export async function baseUploadFiles({
 }: BaseUploadFilesParams) {
   const formData = createFormDataFromFiles(files);
 
-  const url = apiEndpoints.chatbots.upload(chatbotId);
+  const url = apiEndpoints.chatbots.train(chatbotId);
 
   return await fetch(`http://localhost:3000/${url}`, {
     method: 'POST',
