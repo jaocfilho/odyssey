@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from 'tailwind-ui';
 import { RegisterForm } from '../../RegisterForm';
 import { RegisterHeader } from '../../RegisterHeader';
 import { AlreadyMember } from './AlreadyMember';
