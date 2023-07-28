@@ -1,10 +1,9 @@
 import { type ButtonHTMLAttributes } from 'react';
 
-import Link from 'next/link';
-
 import { classNames } from '../../utils';
 import { type ButtonStylesProps, getButtonStyles } from './styles';
 import { Spinner } from '../Spinner';
+import { CustomLink } from '../../lib/next/Link';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonStylesProps & {
@@ -27,9 +26,9 @@ export function Button({
   const isDisabled = disabled || loading;
 
   return href ? (
-    <Link href={href} className={styles}>
+    <CustomLink href={href} className={styles}>
       {children}
-    </Link>
+    </CustomLink>
   ) : (
     <button
       type="button"
