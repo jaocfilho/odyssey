@@ -9,7 +9,7 @@ type ClientComponentProps = {
   loading: ReactNode;
 };
 
-export function ClientComponent({ loading }: ClientComponentProps) {
+export function Chatbots({ loading }: ClientComponentProps) {
   const chatbotsQuery = useChatbots();
 
   if (chatbotsQuery.data) {

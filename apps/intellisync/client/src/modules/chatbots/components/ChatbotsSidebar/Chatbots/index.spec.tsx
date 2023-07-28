@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useChatbots } from '@/modules/chatbots/hooks/use-chatbots';
-import { ClientComponent } from '.';
+import { Chatbots } from '.';
 
 vi.mock('@/modules/chatbots/hooks/use-chatbots', () => ({
   useChatbots: vi.fn(),
@@ -12,7 +12,7 @@ vi.mock('@/modules/chatbots/hooks/use-is-current-chatbot-path', () => ({
   useIsCurrentChatbotPath: vi.fn(),
 }));
 
-describe('ClientComponent', () => {
+describe('Chatbots', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
   });
@@ -31,7 +31,7 @@ describe('ClientComponent', () => {
       data,
     } as any);
 
-    render(<ClientComponent loading={null} />);
+    render(<Chatbots loading={null} />);
 
     data.forEach((chatbot) => {
       expect(screen.getByText(chatbot.name)).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe('ClientComponent', () => {
       data,
     } as any);
 
-    render(<ClientComponent loading={null} />);
+    render(<Chatbots loading={null} />);
 
     expect(screen.getByText('Chatbots (2)')).toBeInTheDocument();
   });
@@ -59,7 +59,7 @@ describe('ClientComponent', () => {
       isLoading: true,
     } as any);
 
-    render(<ClientComponent loading={<div>Loading...</div>} />);
+    render(<Chatbots loading={<div>Loading...</div>} />);
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
@@ -75,7 +75,7 @@ describe('ClientComponent', () => {
       isLoading: true,
     } as any);
 
-    render(<ClientComponent loading={<div>Loading...</div>} />);
+    render(<Chatbots loading={<div>Loading...</div>} />);
 
     expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
     data.forEach((chatbot) => {
@@ -89,7 +89,7 @@ describe('ClientComponent', () => {
       isLoading: false,
     } as any);
 
-    render(<ClientComponent loading={<div>Loading...</div>} />);
+    render(<Chatbots loading={<div>Loading...</div>} />);
 
     expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
   });
