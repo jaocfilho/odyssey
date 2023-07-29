@@ -48,7 +48,7 @@ type ServerParseFilesParams = {
   chatbotId: string;
 };
 
-type ServerParseFilesResponse = {
+export type ServerParseFilesResponse = {
   documents: Documents;
 };
 
