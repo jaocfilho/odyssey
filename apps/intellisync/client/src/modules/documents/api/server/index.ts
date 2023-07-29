@@ -5,6 +5,7 @@ import {
   baseSelectAllFileSourcesByChatbotId,
   type BaseSelectFileSourcesByChatbotIdParams,
 } from '../base';
+import { Documents } from '../../entities';
 
 type ResolveFilesParams = {
   files: FormDataEntryValue[];
@@ -40,4 +41,24 @@ export async function serverSelectAllFileSourcesByChatbotId({
   const supabase = createServerSupabase();
 
   return await baseSelectAllFileSourcesByChatbotId({ chatbot_id }, supabase);
+}
+
+type ServerParseFilesParams = {
+  files: FormDataEntryValue[];
+  chatbotId: string;
+};
+
+type ServerParseFilesResponse = {
+  documents: Documents;
+};
+
+export async function serverParseFiles({
+  chatbotId,
+  files,
+}: ServerParseFilesParams): Promise<ServerParseFilesResponse> {
+  const docs = await Promise.all(await resolveFiles({ files, chatbotId }));
+
+  const documents = docs.flat();
+
+  return { documents };
 }
