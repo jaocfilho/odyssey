@@ -1,6 +1,6 @@
 import { Document } from 'langchain/document';
 
-import { EssentialMetadata, FileExtensions } from '../../entities';
+import { Documents, EssentialMetadata, FileExtensions } from '../../entities';
 
 export function createFormDataFromFiles(files: FileList) {
   const formData = new FormData();
@@ -34,7 +34,7 @@ export function injectEssentialMetadaOnDocuments({
   documents,
   chatbotId,
   fileName,
-}: InjectEssentialMetadaOnDocumentsParams) {
+}: InjectEssentialMetadaOnDocumentsParams): Documents {
   return documents.map((document) => {
     const characters = document.pageContent.length;
     document.metadata.essential = {
@@ -43,5 +43,5 @@ export function injectEssentialMetadaOnDocuments({
       characters,
     } satisfies EssentialMetadata;
     return document;
-  });
+  }) as Documents;
 }

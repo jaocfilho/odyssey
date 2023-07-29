@@ -4,15 +4,17 @@ import { useRef } from 'react';
 
 import { Button } from 'tailwind-ui';
 import { useUploadFiles } from '../../hooks/use-upload-files';
+import { Documents } from '../../entities';
 
 type FileUploadProps = {
   chatbotId: string;
+  onUpload: (documents: Documents) => void;
 };
 
-export function FileUploadButton({ chatbotId }: FileUploadProps) {
+export function FileUploadButton({ chatbotId, onUpload }: FileUploadProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { uploadFiles } = useUploadFiles();
+  const { uploadFiles } = useUploadFiles({ onUpload });
 
   const handleClick = () => {
     fileInputRef.current?.click();

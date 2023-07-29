@@ -13,7 +13,7 @@ export function FilesTableSummary({ chatbotId }: FilesTableSummaryProps) {
         </h1>
       </div>
       <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        <FileUploadButton chatbotId={chatbotId} />
+        <FileUploadButton chatbotId={chatbotId} onUpload={console.log} />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { type TableRow } from '@/lib/supabase/types';
-import { Document } from 'langchain/document';
+import { Document as LangchainDocument } from 'langchain/document';
 
 export type FileExtensions = 'pdf' | 'docx' | 'txt' | 'json' | 'csv';
 
@@ -9,6 +9,12 @@ export interface EssentialMetadata {
   characters: number;
 }
 
-export type ChatbotsFilesSourcesRow = TableRow<'chatbots_files_sources'>;
+export type Document = LangchainDocument<
+  Record<string, any> & {
+    essential: EssentialMetadata;
+  }
+>;
 
-export type Documents = Document<Record<string, any>>[];
+export type Documents = Document[];
+
+export type ChatbotsFilesSourcesRow = TableRow<'chatbots_files_sources'>;
