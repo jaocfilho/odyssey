@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
 import { Documents } from '@/modules/documents/entities';
 import { Button } from 'tailwind-ui';
+import { groupArrayBy } from '@odyssey/arrays';
 
 const activityItems = [
   {

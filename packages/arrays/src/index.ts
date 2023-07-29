@@ -2,6 +2,7 @@ export * from './errors';
 
 export * from './array-difference';
 export * from './array-intersection';
+export * from './group-array-by';
 export * from './insert-item-at-index';
 export * from './is-index-out-of-bound';
 export * from './map-range';
