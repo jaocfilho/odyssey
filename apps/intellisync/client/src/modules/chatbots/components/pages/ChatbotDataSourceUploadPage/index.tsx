@@ -39,20 +39,33 @@ export function ChatbotDataSourceUploadPage({
 }: ChatbotDataSourceUploadPageProps) {
   const [documents, setDocuments] = useState<Documents>([]);
 
-  console.log(documents);
+  const groupedDocuments = groupArrayBy(
+    documents,
+    (d) => d.metadata.essential.fileName
+  );
+
+  const docs = Object.entries(groupedDocuments).map(
+    ([fileName, documents]) => ({
+      characters: documents.reduce(
+        (acc, document) => acc + document.metadata.essential.characters,
+        0
+      ),
+      fileName,
+    })
+  );
 
   return (
     <div className="m-4 flex flex-col gap-8 h-full justify-between">
       <FileUploadButton chatbotId={chatbotId} onUpload={setDocuments} />
       <ul role="list" className="divide-y divide-white/5">
-        {documents.map((document, index) => (
-          <li key={index} className="py-4">
+        {docs.map((document) => (
+          <li key={document.fileName} className="py-4">
             <div className="flex items-center gap-x-3">
               <h3 className="flex-auto truncate text-sm font-semibold leading-6 text-white">
-                {document.metadata.essential.fileName}
+                {document.fileName}
               </h3>
               <p className="flex-none text-xs text-gray-500">
-                {document.metadata.essential.characters} characters
+                {document.characters} characters
               </p>
             </div>
           </li>
