@@ -38,6 +38,12 @@ describe('chatbotsUrls', () => {
   it('should returh the correct chat url', () => {
     expect(chatbotsUrls.details.chat('id')).toBe('/dashboard/chatbots/id/chat');
   });
+
+  it('should returh the correct data source upload url', () => {
+    expect(chatbotsUrls.details.dataSourceUpload('id')).toBe(
+      '/dashboard/chatbots/id/data-source/upload'
+    );
+  });
 });
 
 describe('chatbotsEndpoints', () => {

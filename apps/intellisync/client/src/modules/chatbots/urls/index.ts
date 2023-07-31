@@ -14,6 +14,8 @@ export const chatbotsUrls = {
       `${chatbotsUrls.details.base(id)}/settings` as const,
     dataSource: (id: string) =>
       `${chatbotsUrls.details.base(id)}/data-source` as const,
+    dataSourceUpload: (id: string) =>
+      `${chatbotsUrls.details.dataSource(id)}/upload` as const,
   },
 };
 

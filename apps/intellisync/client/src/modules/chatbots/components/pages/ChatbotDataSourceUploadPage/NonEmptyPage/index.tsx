@@ -5,6 +5,7 @@ import { NewDocumentsList } from '@/modules/documents/components/NewDocumentsLis
 import { NewDocumentsListItemProps } from '@/modules/documents/components/NewDocumentsList/NewDocumentsListItem';
 import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
+import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
 type NonEmptyPageProps = {
   items: NewDocumentsListItemProps[];
@@ -20,12 +21,13 @@ export function NonEmptyPage({
   documents,
 }: NonEmptyPageProps) {
   const mutation = useTrainChatbot();
+  const { redirectToChatbotDataSource } = useNavigation();
 
   const handleClick = () => {
     mutation.mutate(
       { chatbotId, documents },
       {
-        onSuccess: () => console.log('ah vamo nessa'),
+        onSuccess: () => redirectToChatbotDataSource(chatbotId),
       }
     );
   };

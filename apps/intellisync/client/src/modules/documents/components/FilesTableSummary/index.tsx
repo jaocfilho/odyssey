@@ -1,10 +1,14 @@
+import { Button } from 'tailwind-ui';
 import { FileUploadButton } from '../FileUploadButton';
+import { urlPaths } from '@/modules/navigation/urls';
 
 type FilesTableSummaryProps = {
   chatbotId: string;
 };
 
 export function FilesTableSummary({ chatbotId }: FilesTableSummaryProps) {
+  const url = urlPaths.chatbots.details.dataSourceUpload(chatbotId);
+
   return (
     <div className="sm:flex sm:items-center">
       <div className="sm:flex-auto">
@@ -13,7 +17,7 @@ export function FilesTableSummary({ chatbotId }: FilesTableSummaryProps) {
         </h1>
       </div>
       <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        {/* <FileUploadButton chatbotId={chatbotId} onUpload={console.log} /> */}
+        <Button href={url}>Add data source</Button>
       </div>
     </div>
   );
