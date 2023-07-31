@@ -4,9 +4,8 @@ import { useState } from 'react';
 
 import { groupArrayBy } from '@odyssey/arrays';
 import { Documents } from '@/modules/documents/entities';
-import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
-import { NewDocumentsList } from '@/modules/documents/components/NewDocumentsList';
 import { EmptyPage } from './EmptyPage';
+import { NonEmptyPage } from './NonEmptyPage';
 
 function groupDocuments(documents: Documents) {
   const groupedDocuments = groupArrayBy(
@@ -38,7 +37,7 @@ export function ChatbotDataSourceUploadPage({
   return (
     <>
       {!isEmpty ? (
-        <NewDocumentsList items={groupedDocuments} />
+        <NonEmptyPage items={groupedDocuments} />
       ) : (
         <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
       )}
