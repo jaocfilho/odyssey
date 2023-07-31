@@ -31,13 +31,18 @@ export function ChatbotDataSourceUploadPage({
 }: ChatbotDataSourceUploadPageProps) {
   const [documents, setDocuments] = useState<Documents>([]);
 
+  const resetDocuments = () => setDocuments([]);
+
   const groupedDocuments = groupDocuments(documents);
   const isEmpty = groupedDocuments.length === 0;
 
   return (
     <>
       {!isEmpty ? (
-        <NonEmptyPage items={groupedDocuments} />
+        <NonEmptyPage
+          items={groupedDocuments}
+          resetDocuments={resetDocuments}
+        />
       ) : (
         <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
       )}

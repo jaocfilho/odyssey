@@ -8,7 +8,7 @@ type EmptyPageProps = {
 
 export function EmptyPage({ chatbotId, onUpload }: EmptyPageProps) {
   return (
-    <div className="flex flex-col m-4 h-full justify-center">
+    <div className="flex flex-col h-full justify-center">
       <EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />
     </div>
   );
