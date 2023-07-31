@@ -62,3 +62,14 @@ export async function serverParseFiles({
 
   return { documents };
 }
+
+type ServerUploadDocumentsParams = {
+  documents: Documents;
+};
+
+export async function serverUploadDocuments({
+  documents,
+}: ServerUploadDocumentsParams) {
+  const vectorStore = getSupabaseVectorStore();
+  await vectorStore.addDocuments(documents);
+}

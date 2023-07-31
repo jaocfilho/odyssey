@@ -40,8 +40,10 @@ export function ChatbotDataSourceUploadPage({
     <>
       {!isEmpty ? (
         <NonEmptyPage
+          chatbotId={chatbotId}
           items={groupedDocuments}
           resetDocuments={resetDocuments}
+          documents={documents}
         />
       ) : (
         <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />

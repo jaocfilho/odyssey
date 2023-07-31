@@ -10,6 +10,7 @@ vi.mock('@/modules/documents/components/NewDocumentsList', () => ({
 }));
 
 describe('NonEmptyPage', () => {
+  const chatbotId = 'chatbotId';
   const resetDocuments = vi.fn();
   const items = [
     { characters: 1, fileName: 'file1' },
@@ -25,19 +26,40 @@ describe('NonEmptyPage', () => {
   });
 
   it('should render without crashing', () => {
-    render(<NonEmptyPage items={items} resetDocuments={resetDocuments} />);
+    render(
+      <NonEmptyPage
+        documents={[]}
+        chatbotId={chatbotId}
+        items={items}
+        resetDocuments={resetDocuments}
+      />
+    );
 
     expect(true).toBe(true);
   });
 
   it('should render two buttons', () => {
-    render(<NonEmptyPage items={items} resetDocuments={resetDocuments} />);
+    render(
+      <NonEmptyPage
+        documents={[]}
+        chatbotId={chatbotId}
+        items={items}
+        resetDocuments={resetDocuments}
+      />
+    );
 
     expect(screen.getAllByRole('button')).toHaveLength(2);
   });
 
   it('should call resetDocuments when cancel button is clicked', async () => {
-    render(<NonEmptyPage items={items} resetDocuments={resetDocuments} />);
+    render(
+      <NonEmptyPage
+        documents={[]}
+        chatbotId={chatbotId}
+        items={items}
+        resetDocuments={resetDocuments}
+      />
+    );
 
     await clickButton('Cancel');
 

@@ -1,4 +1,3 @@
-import { invalidateChatbotFileSourceQuery } from '@/modules/chatbots/query-keys';
 import { baseUploadFiles, type BaseUploadFilesParams } from '../../api/base';
 import { Documents } from '../../entities';
 import { ServerParseFilesResponse } from '../../api/server';
@@ -13,7 +12,6 @@ export function useUploadFiles({ onUpload }: UseUploadFiles) {
     if (response.status === 200) {
       const { documents } = (await response.json()) as ServerParseFilesResponse;
       onUpload(documents);
-      await invalidateChatbotFileSourceQuery(chatbotId);
     }
   };
 
