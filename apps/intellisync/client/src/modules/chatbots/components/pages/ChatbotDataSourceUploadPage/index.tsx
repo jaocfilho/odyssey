@@ -7,6 +7,7 @@ import { Button } from 'tailwind-ui';
 import { Documents } from '@/modules/documents/entities';
 import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
 import { NewDocumentsList } from '@/modules/documents/components/NewDocumentsList';
+import { EmptyDocumentsList } from '@/modules/documents/components/EmptyDocumentsList';
 
 function groupDocuments(documents: Documents) {
   const groupedDocuments = groupArrayBy(
@@ -33,11 +34,15 @@ export function ChatbotDataSourceUploadPage({
   const [documents, setDocuments] = useState<Documents>([]);
 
   const groupedDocuments = groupDocuments(documents);
+  const isEmpty = groupedDocuments.length === 0;
 
   return (
     <div className="m-4 flex flex-col gap-8 h-full justify-between">
-      <FileUploadButton chatbotId={chatbotId} onUpload={setDocuments} />
-      <NewDocumentsList items={groupedDocuments} />
+      {!isEmpty ? (
+        <NewDocumentsList items={groupedDocuments} />
+      ) : (
+        <EmptyDocumentsList chatbotId={chatbotId} onUpload={setDocuments} />
+      )}
       <Button className="self-end">Train chatbot</Button>
     </div>
   );
