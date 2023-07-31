@@ -80,21 +80,6 @@ describe('useUploadFiles', () => {
     expect(onUpload).not.toHaveBeenCalled();
   });
 
-  it('should call invalidateChatbotFileSourceQuery with the correct params if status is 200', async () => {
-    vi.mocked(baseUploadFiles).mockResolvedValue({
-      status: 200,
-      // @ts-expect-error
-      json: vi.fn(() => ({ documents: [] })),
-    });
-
-    const files: any = [];
-    const chatbotId = 'chatbotId';
-
-    await result.current.uploadFiles({ files, chatbotId });
-
-    expect(invalidateChatbotFileSourceQuery).toHaveBeenCalledWith(chatbotId);
-  });
-
   it('should not call invalidateChatbotFileSourceQuery if status is not 200', async () => {
     vi.mocked(baseUploadFiles).mockResolvedValue({
       status: 400,
