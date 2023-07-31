@@ -3,11 +3,10 @@
 import { useState } from 'react';
 
 import { groupArrayBy } from '@odyssey/arrays';
-import { Button } from 'tailwind-ui';
 import { Documents } from '@/modules/documents/entities';
 import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
 import { NewDocumentsList } from '@/modules/documents/components/NewDocumentsList';
-import { EmptyDocumentsList } from '@/modules/documents/components/EmptyDocumentsList';
+import { EmptyPage } from './EmptyPage';
 
 function groupDocuments(documents: Documents) {
   const groupedDocuments = groupArrayBy(
@@ -37,13 +36,12 @@ export function ChatbotDataSourceUploadPage({
   const isEmpty = groupedDocuments.length === 0;
 
   return (
-    <div className="m-4 flex flex-col gap-8 h-full justify-between">
+    <>
       {!isEmpty ? (
         <NewDocumentsList items={groupedDocuments} />
       ) : (
-        <EmptyDocumentsList chatbotId={chatbotId} onUpload={setDocuments} />
+        <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
       )}
-      <Button className="self-end">Train chatbot</Button>
-    </div>
+    </>
   );
 }
