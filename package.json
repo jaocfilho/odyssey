@@ -17,6 +17,7 @@
     "intell-client": "pnpm --filter @intellisync/client",
     "intell-server": "pnpm --filter @intellisync/server",
     "workshop": "pnpm --filter workshop",
+    "hooks": "pnpm --filter @odyssey/react-hooks",
     "ui": "pnpm --filter tailwind-ui"
   },
   "devDependencies": {
