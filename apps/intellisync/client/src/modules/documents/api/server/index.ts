@@ -18,23 +18,6 @@ export async function resolveFiles({ files, chatbotId }: ResolveFilesParams) {
   );
 }
 
-type StoreVectorsFromDocumentsParams = {
-  files: FormDataEntryValue[];
-  chatbotId: string;
-};
-
-export async function storeVectorsFromFiles({
-  files,
-  chatbotId,
-}: StoreVectorsFromDocumentsParams) {
-  const docs = await Promise.all(await resolveFiles({ files, chatbotId }));
-
-  const documents = docs.flat();
-
-  const vectorStore = getSupabaseVectorStore();
-  await vectorStore.addDocuments(documents);
-}
-
 export async function serverSelectAllFileSourcesByChatbotId({
   chatbot_id,
 }: BaseSelectFileSourcesByChatbotIdParams) {

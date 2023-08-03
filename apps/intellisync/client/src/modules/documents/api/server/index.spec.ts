@@ -4,7 +4,7 @@ import { Document } from 'langchain/document';
 
 import { getSupabaseVectorStore } from '../../vector_stores';
 import { createDocumentsFromFile } from '../../helpers/server/createDocumentsFromFile';
-import { resolveFiles, storeVectorsFromFiles } from '.';
+import { resolveFiles } from '.';
 
 vi.mock('../../helpers/server/createDocumentsFromFile', () => ({
   createDocumentsFromFile: vi.fn(() => {
@@ -41,18 +41,5 @@ describe('resolveFiles', () => {
         chatbotId: 'any',
       });
     });
-  });
-});
-
-describe('storeVectorsFromFiles', () => {
-  beforeEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it('should call getSupabaseVectorStore', async () => {
-    const files = [new Blob(), new Blob()] as FormDataEntryValue[];
-    await storeVectorsFromFiles({ files, chatbotId: 'any' });
-
-    expect(getSupabaseVectorStore).toHaveBeenCalled();
   });
 });
