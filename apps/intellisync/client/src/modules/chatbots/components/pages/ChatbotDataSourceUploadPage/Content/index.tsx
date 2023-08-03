@@ -7,19 +7,19 @@ import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 
-type NonEmptyPageProps = {
+type ContentProps = {
   items: NewDocumentsListItemProps[];
   resetDocuments: () => void;
   chatbotId: string;
   documents: Documents;
 };
 
-export function NonEmptyPage({
+export function Content({
   items,
   resetDocuments,
   chatbotId,
   documents,
-}: NonEmptyPageProps) {
+}: ContentProps) {
   const mutation = useTrainChatbot();
   const { redirectToChatbotDataSource } = useNavigation();
 
