@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-
 import { groupArrayBy } from '@odyssey/arrays';
-import { Documents } from '@/modules/documents/entities';
+import { useArrayState } from '@odyssey/react-hooks';
+import { Document } from '@/modules/documents/entities';
 import { EmptyPage } from './EmptyPage';
 import { Content } from './Content';
 
-function groupDocuments(documents: Documents) {
+function groupDocuments(documents: Document[]) {
   const groupedDocuments = groupArrayBy(
     documents,
     (d) => d.metadata.essential.fileName
@@ -29,9 +28,9 @@ type ChatbotDataSourceUploadPageProps = {
 export function ChatbotDataSourceUploadPage({
   chatbotId,
 }: ChatbotDataSourceUploadPageProps) {
-  const [documents, setDocuments] = useState<Documents>([]);
+  const [documents, controller] = useArrayState<Document>();
 
-  const resetDocuments = () => setDocuments([]);
+  const resetDocuments = () => controller.clear();
 
   const groupedDocuments = groupDocuments(documents);
   const isEmpty = groupedDocuments.length === 0;
@@ -39,12 +38,13 @@ export function ChatbotDataSourceUploadPage({
   return (
     <>
       {isEmpty ? (
-        <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
+        <EmptyPage chatbotId={chatbotId} onUpload={controller.set} />
       ) : (
         <Content
           chatbotId={chatbotId}
           items={groupedDocuments}
           resetDocuments={resetDocuments}
+          removeDocument={controller.remove}
           documents={documents}
         />
       )}

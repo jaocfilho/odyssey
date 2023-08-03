@@ -15,8 +15,10 @@ describe('NewDocumentsList', () => {
     { fileName: 'anyName3', characters: 3000 },
   ];
 
+  const removeDocument = vi.fn();
+
   it('should render an item for each document on the array', () => {
-    render(<NewDocumentsList items={items} />);
+    render(<NewDocumentsList items={items} removeDocument={removeDocument} />);
 
     expect(NewDocumentsListItem).toHaveBeenCalledTimes(items.length);
   });
