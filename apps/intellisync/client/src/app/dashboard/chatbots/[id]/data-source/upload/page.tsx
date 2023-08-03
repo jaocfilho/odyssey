@@ -1,11 +1,11 @@
-import { ChatbotDataSourceUploadPage } from '@/modules/chatbots/components/pages/ChatbotDataSourceUploadPage';
+import { ChatbotDataSourceUploadPage as Page } from '@/modules/chatbots/components/pages/ChatbotDataSourceUploadPage';
 
 type Params = {
   params: { id: string };
 };
 
-export default function ChatbotDetailsDataSourcePage({ params }: Params) {
+export default function ChatbotDataSourceUploadPage({ params }: Params) {
   const { id } = params;
 
-  return <ChatbotDataSourceUploadPage chatbotId={id} />;
+  return <Page chatbotId={id} />;
 }

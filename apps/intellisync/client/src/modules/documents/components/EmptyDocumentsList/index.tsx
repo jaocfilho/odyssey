@@ -1,5 +1,7 @@
+import { Button } from 'tailwind-ui';
 import { Documents } from '../../entities';
 import { FileUploadButton } from '../FileUploadButton';
+import { urlPaths } from '@/modules/navigation/urls';
 
 type EmptyDocumentsListProps = {
   chatbotId: string;
@@ -10,6 +12,8 @@ export function EmptyDocumentsList({
   chatbotId,
   onUpload,
 }: EmptyDocumentsListProps) {
+  const cancelUrl = urlPaths.chatbots.details.dataSource(chatbotId);
+
   return (
     <div className="text-center flex flex-col">
       <svg
@@ -31,7 +35,10 @@ export function EmptyDocumentsList({
       <p className="mt-1 text-sm dark:text-grayScheme-500">
         Get started by uploading a file.
       </p>
-      <div className="mt-6 self-center">
+      <div className="flex gap-2 mt-6 self-center">
+        <Button colorScheme="gray" href={cancelUrl}>
+          Cancel
+        </Button>
         <FileUploadButton chatbotId={chatbotId} onUpload={onUpload} />
       </div>
     </div>
