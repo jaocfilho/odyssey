@@ -1,14 +1,14 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { FileUploadButton } from '../FileUploadButton';
-import { EmptyDocumentsList } from '.';
+import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
+import { EmptyPage } from '.';
 
-vi.mock('../FileUploadButton', () => ({
+vi.mock('@/modules/documents/components/FileUploadButton', () => ({
   FileUploadButton: vi.fn(),
 }));
 
-describe('EmptyDocumentsList', () => {
+describe('EmptyPage', () => {
   const onUpload = vi.fn();
   const chatbotId = 'chatbotId';
 
@@ -21,7 +21,7 @@ describe('EmptyDocumentsList', () => {
   });
 
   it('should render without crashing', () => {
-    render(<EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />);
+    render(<EmptyPage chatbotId={chatbotId} onUpload={onUpload} />);
 
     const element = screen.getByText('No files uploaded');
 
@@ -29,13 +29,13 @@ describe('EmptyDocumentsList', () => {
   });
 
   it('should pass chatbotId and onUpload to FileUploadButton', () => {
-    render(<EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />);
+    render(<EmptyPage chatbotId={chatbotId} onUpload={onUpload} />);
 
     expect(FileUploadButton).toHaveBeenCalledWith({ chatbotId, onUpload }, {});
   });
 
   it('should pass chatbotId to FileUploadButton', () => {
-    render(<EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />);
+    render(<EmptyPage chatbotId={chatbotId} onUpload={onUpload} />);
 
     expect(FileUploadButton).toHaveBeenCalledWith(
       expect.objectContaining({ chatbotId }),
@@ -44,7 +44,7 @@ describe('EmptyDocumentsList', () => {
   });
 
   it('should pass onUpload to FileUploadButton', () => {
-    render(<EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />);
+    render(<EmptyPage chatbotId={chatbotId} onUpload={onUpload} />);
 
     expect(FileUploadButton).toHaveBeenCalledWith(
       expect.objectContaining({ onUpload }),
@@ -53,7 +53,7 @@ describe('EmptyDocumentsList', () => {
   });
 
   it('should render a cancel link', () => {
-    render(<EmptyDocumentsList chatbotId={chatbotId} onUpload={onUpload} />);
+    render(<EmptyPage chatbotId={chatbotId} onUpload={onUpload} />);
 
     const cancelButton = screen.getByRole('link', { name: 'Cancel' });
 
