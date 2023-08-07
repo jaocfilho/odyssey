@@ -34,7 +34,14 @@ describe('useArrayState', () => {
   });
 
   it('should return the correct functions on the controller', () => {
-    const properties = ['add', 'removeByIndex', 'remove', 'clear', 'set'];
+    const properties = [
+      'add',
+      'removeByIndex',
+      'remove',
+      'filter',
+      'clear',
+      'set',
+    ];
 
     const controller = result.current[1];
 
@@ -43,6 +50,7 @@ describe('useArrayState', () => {
     expect(typeof controller.add).toBe('function');
     expect(typeof controller.removeByIndex).toBe('function');
     expect(typeof controller.remove).toBe('function');
+    expect(typeof controller.filter).toBe('function');
     expect(typeof controller.clear).toBe('function');
     expect(typeof controller.set).toBe('function');
   });
@@ -125,5 +133,15 @@ describe('useArrayState', () => {
     expect(result.current[0]).toHaveLength(2);
     expect(result.current[0][0]).toBe('test');
     expect(result.current[0][1]).toBe('test2');
+  });
+
+  it('should filter the array', () => {
+    const controller = result.current[1];
+
+    controller.add('test', 'test2', 'test3');
+    controller.filter((item) => item === 'test2');
+
+    expect(result.current[0]).toHaveLength(1);
+    expect(result.current[0][0]).toBe('test2');
   });
 });

@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react';
 
-type RemovePredicate<T> = (value: T, index: number, obj: T[]) => boolean;
+type Predicate<T> = (value: T, index: number, obj: T[]) => boolean;
 
 type ArrayStateController<T> = {
   add: (...items: T[]) => void;
   removeByIndex: (index: number) => void;
-  remove: (predicate: RemovePredicate<T>) => void;
+  remove: (predicate: Predicate<T>) => void;
+  filter: (predicate: Predicate<T>) => void;
   clear: () => void;
   set: (items: T[]) => void;
 };
@@ -20,6 +21,7 @@ type ArrayState<T> = [T[], ArrayStateController<T>];
  *
  * controller.add('test');
  * controller.removeByIndex(0);
+ * controller.remove((item) => item === 'item');
  * controller.clear();
  * controller.set(['test2']);
  *
@@ -46,7 +48,7 @@ export function useArrayState<T>(): ArrayState<T> {
   );
 
   const remove = useCallback(
-    (predicate: RemovePredicate<T>) => {
+    (predicate: Predicate<T>) => {
       setArray((prev) => {
         const newArray = [...prev];
         const index = newArray.findIndex(predicate);
@@ -60,6 +62,16 @@ export function useArrayState<T>(): ArrayState<T> {
     [setArray]
   );
 
+  const filter = useCallback(
+    (predicate: Predicate<T>) => {
+      setArray((prev) => {
+        const newArray = [...prev];
+        return newArray.filter(predicate);
+      });
+    },
+    [setArray]
+  );
+
   const clear = useCallback(() => setArray([]), [setArray]);
 
   const set = useCallback((items: T[]) => setArray(items), [setArray]);
@@ -68,6 +80,7 @@ export function useArrayState<T>(): ArrayState<T> {
     add,
     removeByIndex,
     remove,
+    filter,
     clear,
     set,
   };
