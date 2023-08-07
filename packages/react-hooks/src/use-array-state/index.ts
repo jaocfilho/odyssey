@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 type ArrayStateController<T> = {
   add: (...items: T[]) => void;
+  removeByIndex: (index: number) => void;
   remove: (index: number) => void;
   clear: () => void;
   set: (items: T[]) => void;
@@ -31,6 +32,17 @@ export function useArrayState<T>(): ArrayState<T> {
     [setArray]
   );
 
+  const removeByIndex = useCallback(
+    (index: number) => {
+      setArray((prev) => {
+        const newArray = [...prev];
+        newArray.splice(index, 1);
+        return newArray;
+      });
+    },
+    [setArray]
+  );
+
   const remove = useCallback(
     (index: number) => {
       setArray((prev) => {
@@ -48,6 +60,7 @@ export function useArrayState<T>(): ArrayState<T> {
 
   const controller = {
     add,
+    removeByIndex,
     remove,
     clear,
     set,

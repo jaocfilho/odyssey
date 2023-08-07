@@ -34,13 +34,14 @@ describe('useArrayState', () => {
   });
 
   it('should return the correct functions on the controller', () => {
-    const properties = ['add', 'remove', 'clear', 'set'];
+    const properties = ['add', 'removeByIndex', 'remove', 'clear', 'set'];
 
     const controller = result.current[1];
 
     assertObjectProperties(properties, controller);
 
     expect(typeof controller.add).toBe('function');
+    expect(typeof controller.removeByIndex).toBe('function');
     expect(typeof controller.remove).toBe('function');
     expect(typeof controller.clear).toBe('function');
     expect(typeof controller.set).toBe('function');
@@ -65,11 +66,11 @@ describe('useArrayState', () => {
     expect(result.current[0][1]).toBe('test2');
   });
 
-  it('should remove an element from the array', () => {
+  it('should remove an element from the given index', () => {
     const controller = result.current[1];
 
     controller.add('test', 'test2');
-    controller.remove(0);
+    controller.removeByIndex(0);
 
     expect(result.current[0]).toHaveLength(1);
     expect(result.current[0][0]).toBe('test2');
