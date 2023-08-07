@@ -22,6 +22,7 @@ type ArrayState<T> = [T[], ArrayStateController<T>];
  * controller.add('test');
  * controller.removeByIndex(0);
  * controller.remove((item) => item === 'item');
+ * controller.filter((item) => item === 'item');
  * controller.clear();
  * controller.set(['test2']);
  *
