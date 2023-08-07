@@ -44,7 +44,7 @@ export function ChatbotDataSourceUploadPage({
           chatbotId={chatbotId}
           items={groupedDocuments}
           resetDocuments={resetDocuments}
-          removeDocument={controller.remove}
+          removeDocument={controller.removeByIndex}
           documents={documents}
         />
       )}

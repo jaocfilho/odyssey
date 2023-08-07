@@ -1,9 +1,11 @@
 import { useCallback, useState } from 'react';
 
+type RemovePredicate<T> = (value: T, index: number, obj: T[]) => boolean;
+
 type ArrayStateController<T> = {
   add: (...items: T[]) => void;
   removeByIndex: (index: number) => void;
-  remove: (index: number) => void;
+  remove: (predicate: RemovePredicate<T>) => void;
   clear: () => void;
   set: (items: T[]) => void;
 };
@@ -17,7 +19,7 @@ type ArrayState<T> = [T[], ArrayStateController<T>];
  * const [array, controller] = useArrayState();
  *
  * controller.add('test');
- * controller.remove(0);
+ * controller.removeByIndex(0);
  * controller.clear();
  * controller.set(['test2']);
  *
@@ -44,9 +46,13 @@ export function useArrayState<T>(): ArrayState<T> {
   );
 
   const remove = useCallback(
-    (index: number) => {
+    (predicate: RemovePredicate<T>) => {
       setArray((prev) => {
         const newArray = [...prev];
+        const index = newArray.findIndex(predicate);
+        if (index === -1) {
+          return newArray;
+        }
         newArray.splice(index, 1);
         return newArray;
       });

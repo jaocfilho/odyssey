@@ -94,4 +94,36 @@ describe('useArrayState', () => {
     expect(result.current[0]).toHaveLength(1);
     expect(result.current[0][0]).toBe('test3');
   });
+
+  it('should remove an element from the array if the callback returns true', () => {
+    const controller = result.current[1];
+
+    controller.add('test', 'test2');
+    controller.remove((item) => item === 'test2');
+
+    expect(result.current[0]).toHaveLength(1);
+    expect(result.current[0][0]).toBe('test');
+  });
+
+  it('should not remove an element from the array if the callback return false', () => {
+    const controller = result.current[1];
+
+    controller.add('test', 'test2');
+    controller.remove((item) => item === 'test3');
+
+    expect(result.current[0]).toHaveLength(2);
+    expect(result.current[0][0]).toBe('test');
+    expect(result.current[0][1]).toBe('test2');
+  });
+
+  it('should only remove the first occurency of the element', () => {
+    const controller = result.current[1];
+
+    controller.add('test', 'test2', 'test2');
+    controller.remove((item) => item === 'test2');
+
+    expect(result.current[0]).toHaveLength(2);
+    expect(result.current[0][0]).toBe('test');
+    expect(result.current[0][1]).toBe('test2');
+  });
 });
