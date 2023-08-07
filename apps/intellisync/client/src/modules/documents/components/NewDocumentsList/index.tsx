@@ -5,20 +5,20 @@ import {
 
 type NewDocumentsListProps = {
   items: TNewDocumentsListItem[];
-  removeDocument: (index: number) => void;
+  removeDocuments: (fileName: string) => void;
 };
 
 export function NewDocumentsList({
   items,
-  removeDocument,
+  removeDocuments,
 }: NewDocumentsListProps) {
   return (
     <ul role="list" className="divide-y divide-white/5">
-      {items.map((item, index) => (
+      {items.map((item) => (
         <NewDocumentsListItem
           key={item.fileName}
           {...item}
-          removeDocument={() => removeDocument(index)}
+          removeDocuments={removeDocuments}
         />
       ))}
     </ul>

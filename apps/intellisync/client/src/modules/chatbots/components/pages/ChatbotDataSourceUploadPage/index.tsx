@@ -1,25 +1,8 @@
 'use client';
 
-import { groupArrayBy } from '@odyssey/arrays';
-import { useArrayState } from '@odyssey/react-hooks';
-import { Document } from '@/modules/documents/entities';
 import { EmptyPage } from './EmptyPage';
 import { Content } from './Content';
-
-function groupDocuments(documents: Document[]) {
-  const groupedDocuments = groupArrayBy(
-    documents,
-    (d) => d.metadata.essential.fileName
-  );
-
-  return Object.entries(groupedDocuments).map(([fileName, documents]) => ({
-    characters: documents.reduce(
-      (acc, document) => acc + document.metadata.essential.characters,
-      0
-    ),
-    fileName,
-  }));
-}
+import { useGroupedDocuments } from '@/modules/documents/hooks/use-grouped-documents';
 
 type ChatbotDataSourceUploadPageProps = {
   chatbotId: string;
@@ -28,23 +11,28 @@ type ChatbotDataSourceUploadPageProps = {
 export function ChatbotDataSourceUploadPage({
   chatbotId,
 }: ChatbotDataSourceUploadPageProps) {
-  const [documents, controller] = useArrayState<Document>();
+  const {
+    documents,
+    groupedDocuments,
+    removeDocuments,
+    resetDocuments,
+    setDocuments,
+  } = useGroupedDocuments();
 
-  const resetDocuments = () => controller.clear();
-
-  const groupedDocuments = groupDocuments(documents);
   const isEmpty = groupedDocuments.length === 0;
+
+  console.log(documents);
 
   return (
     <>
       {isEmpty ? (
-        <EmptyPage chatbotId={chatbotId} onUpload={controller.set} />
+        <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
       ) : (
         <Content
           chatbotId={chatbotId}
           items={groupedDocuments}
           resetDocuments={resetDocuments}
-          removeDocument={controller.removeByIndex}
+          removeDocuments={removeDocuments}
           documents={documents}
         />
       )}

@@ -6,14 +6,16 @@ export type TNewDocumentsListItem = {
 };
 
 type NewDocumentsListItemProps = TNewDocumentsListItem & {
-  removeDocument: () => void;
+  removeDocuments: (fileName: string) => void;
 };
 
 export function NewDocumentsListItem({
   characters,
   fileName,
-  removeDocument,
+  removeDocuments,
 }: NewDocumentsListItemProps) {
+  const handleClick = () => removeDocuments(fileName);
+
   return (
     <li key={fileName} className="py-4">
       <div className="flex items-center gap-x-4">
@@ -23,7 +25,7 @@ export function NewDocumentsListItem({
         <p className="flex-none text-sm dark:text-grayScheme-400">
           {characters} characters
         </p>
-        <span role="button" onClick={removeDocument}>
+        <span role="button" onClick={handleClick}>
           <XMarkIcon className="h-4 w-4 cursor-pointer dark:text-grayScheme-500 dark:hover:text-grayScheme-400" />
         </span>
       </div>

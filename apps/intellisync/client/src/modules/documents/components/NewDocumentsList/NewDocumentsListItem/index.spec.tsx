@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { NewDocumentsListItem } from '.';
 
 describe('NewDocumentsListItem', () => {
-  const removeDocument = vi.fn();
+  const removeDocuments = vi.fn();
 
   beforeEach(() => {
     vi.restoreAllMocks();
@@ -18,7 +18,7 @@ describe('NewDocumentsListItem', () => {
   it('should render the file name', () => {
     render(
       <NewDocumentsListItem
-        removeDocument={removeDocument}
+        removeDocuments={removeDocuments}
         fileName="anyName"
         characters={1000}
       />
@@ -31,7 +31,7 @@ describe('NewDocumentsListItem', () => {
   it('should render the number of characters', () => {
     render(
       <NewDocumentsListItem
-        removeDocument={removeDocument}
+        removeDocuments={removeDocuments}
         fileName="anyName"
         characters={1000}
       />
@@ -44,7 +44,7 @@ describe('NewDocumentsListItem', () => {
   it('should render the x button', () => {
     render(
       <NewDocumentsListItem
-        removeDocument={removeDocument}
+        removeDocuments={removeDocuments}
         fileName="anyName"
         characters={1000}
       />
@@ -54,10 +54,10 @@ describe('NewDocumentsListItem', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('should call removeDocument when the x button is clicked', async () => {
+  it('should call removeDocuments when the x button is clicked', async () => {
     render(
       <NewDocumentsListItem
-        removeDocument={removeDocument}
+        removeDocuments={removeDocuments}
         fileName="anyName"
         characters={1000}
       />
@@ -66,6 +66,21 @@ describe('NewDocumentsListItem', () => {
     const element = screen.getByRole('button');
     await userEvent.click(element);
 
-    expect(removeDocument).toHaveBeenCalled();
+    expect(removeDocuments).toHaveBeenCalled();
+  });
+
+  it('should pass the file name to removeDocuments when the x button is clicked', async () => {
+    render(
+      <NewDocumentsListItem
+        removeDocuments={removeDocuments}
+        fileName="anyName"
+        characters={1000}
+      />
+    );
+
+    const element = screen.getByRole('button');
+    await userEvent.click(element);
+
+    expect(removeDocuments).toHaveBeenCalledWith('anyName');
   });
 });

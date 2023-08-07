@@ -10,7 +10,7 @@ import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 type ContentProps = {
   items: TNewDocumentsListItem[];
   resetDocuments: () => void;
-  removeDocument: (index: number) => void;
+  removeDocuments: (fileName: string) => void;
   chatbotId: string;
   documents: Documents;
 };
@@ -18,7 +18,7 @@ type ContentProps = {
 export function Content({
   items,
   resetDocuments,
-  removeDocument,
+  removeDocuments,
   chatbotId,
   documents,
 }: ContentProps) {
@@ -36,7 +36,7 @@ export function Content({
 
   return (
     <div className="flex flex-col m-8 h-full justify-between">
-      <NewDocumentsList removeDocument={removeDocument} items={items} />
+      <NewDocumentsList removeDocuments={removeDocuments} items={items} />
       <div className="flex self-end mt-6 gap-4">
         <Button colorScheme="gray" onClick={resetDocuments}>
           Cancel
