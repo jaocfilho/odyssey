@@ -21,8 +21,6 @@ export function ChatbotDataSourceUploadPage({
 
   const isEmpty = groupedDocuments.length === 0;
 
-  console.log(documents);
-
   return (
     <>
       {isEmpty ? (
