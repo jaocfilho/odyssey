@@ -1,4 +1,4 @@
-import { TNewDocumentsListItem } from '../NewDocumentsList/NewDocumentsListItem';
+import { TNewDocumentsListItem } from '../NewDocumentsListItem';
 
 type TableRowProps = {
   label: string;

@@ -6,7 +6,7 @@ import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { TokenCheckoutArea } from './TokenCheckoutArea';
-import { TNewDocumentsListItem } from './NewDocumentsList/NewDocumentsListItem';
+import { TNewDocumentsListItem } from './NewDocumentsListItem';
 
 type ContentProps = {
   items: TNewDocumentsListItem[];

@@ -1,7 +1,7 @@
 import {
   TNewDocumentsListItem,
   NewDocumentsListItem,
-} from './NewDocumentsListItem';
+} from '../NewDocumentsListItem';
 
 type NewDocumentsListProps = {
   items: TNewDocumentsListItem[];

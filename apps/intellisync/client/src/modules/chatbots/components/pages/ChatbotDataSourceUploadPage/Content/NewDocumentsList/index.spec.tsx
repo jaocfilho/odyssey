@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { NewDocumentsListItem } from './NewDocumentsListItem';
+import { NewDocumentsListItem } from '../NewDocumentsListItem';
 import { NewDocumentsList } from '.';
 
-vi.mock('./NewDocumentsListItem', () => ({
+vi.mock('../NewDocumentsListItem', () => ({
   NewDocumentsListItem: vi.fn(),
 }));
 
