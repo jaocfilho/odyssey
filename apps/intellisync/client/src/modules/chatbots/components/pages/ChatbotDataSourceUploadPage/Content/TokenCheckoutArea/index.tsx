@@ -36,6 +36,22 @@ export function TotalCharactersRow({
   return <TableRow label="Total characters" value={totalCharacters} />;
 }
 
+type StorageTokensRowProps = {
+  storageTokens: number;
+};
+
+export function StorageTokensRow({ storageTokens }: StorageTokensRowProps) {
+  return <TableRow label="Storage tokens balance" value={storageTokens} />;
+}
+
+type NewBalanceRowProps = {
+  newBalance: number;
+};
+
+export function NewBalanceRow({ newBalance }: NewBalanceRowProps) {
+  return <TableRow label="New balance" value={newBalance} font="semibold" />;
+}
+
 type TokenCheckoutAreaProps = {
   items: TNewDocumentsListItem[];
 };
@@ -53,8 +69,8 @@ export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
       </colgroup>
       <tfoot>
         <TotalCharactersRow totalCharacters={totalCharacters} />
-        <TableRow label="Storage tokens balance" value={10000} />
-        <TableRow label="New balance" value={6000} font="semibold" />
+        <StorageTokensRow storageTokens={10000} />
+        <NewBalanceRow newBalance={10000 - totalCharacters} />
       </tfoot>
     </table>
   );
