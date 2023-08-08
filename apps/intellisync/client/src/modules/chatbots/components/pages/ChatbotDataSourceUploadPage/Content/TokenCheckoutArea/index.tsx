@@ -1,4 +1,4 @@
-import { TNewDocumentsListItem } from '@/modules/documents/components/NewDocumentsList/NewDocumentsListItem';
+import { TNewDocumentsListItem } from '../NewDocumentsList/NewDocumentsListItem';
 
 type TableRowProps = {
   label: string;

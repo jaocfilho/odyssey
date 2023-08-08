@@ -1,12 +1,12 @@
 'use client';
 
 import { Button } from 'tailwind-ui';
-import { NewDocumentsList } from '@/modules/documents/components/NewDocumentsList';
-import { TNewDocumentsListItem } from '@/modules/documents/components/NewDocumentsList/NewDocumentsListItem';
+import { NewDocumentsList } from '@/modules/chatbots/components/pages/ChatbotDataSourceUploadPage/Content/NewDocumentsList';
 import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { TokenCheckoutArea } from './TokenCheckoutArea';
+import { TNewDocumentsListItem } from './NewDocumentsList/NewDocumentsListItem';
 
 type ContentProps = {
   items: TNewDocumentsListItem[];
