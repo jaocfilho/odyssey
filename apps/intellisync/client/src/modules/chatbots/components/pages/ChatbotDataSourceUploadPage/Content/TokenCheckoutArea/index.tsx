@@ -26,6 +26,16 @@ function TableRow({ label, value, font = 'normal' }: TableRowProps) {
   );
 }
 
+type TotalCharactersRowProps = {
+  totalCharacters: number;
+};
+
+export function TotalCharactersRow({
+  totalCharacters,
+}: TotalCharactersRowProps) {
+  return <TableRow label="Total characters" value={totalCharacters} />;
+}
+
 type TokenCheckoutAreaProps = {
   items: TNewDocumentsListItem[];
 };
@@ -42,7 +52,7 @@ export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
         <col />
       </colgroup>
       <tfoot>
-        <TableRow label="Total characters" value={totalCharacters} />
+        <TotalCharactersRow totalCharacters={totalCharacters} />
         <TableRow label="Storage tokens balance" value={10000} />
         <TableRow label="New balance" value={6000} font="semibold" />
       </tfoot>
