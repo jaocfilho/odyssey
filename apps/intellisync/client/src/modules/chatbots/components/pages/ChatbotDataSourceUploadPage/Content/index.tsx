@@ -40,7 +40,7 @@ export function Content({
       <div className="flex flex-col h-full divide-y dark:divide-white/5">
         <NewDocumentsList removeDocuments={removeDocuments} items={items} />
         <div>
-          <TokenCheckoutArea />
+          <TokenCheckoutArea items={items} />
         </div>
       </div>
       <div className="flex self-end mt-6 gap-4">

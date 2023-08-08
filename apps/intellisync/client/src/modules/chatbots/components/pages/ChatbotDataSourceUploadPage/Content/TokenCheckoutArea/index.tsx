@@ -1,6 +1,8 @@
+import { TNewDocumentsListItem } from '@/modules/documents/components/NewDocumentsList/NewDocumentsListItem';
+
 type TableRowProps = {
   label: string;
-  value: string;
+  value: number;
   font?: 'normal' | 'semibold';
 };
 
@@ -24,7 +26,13 @@ function TableRow({ label, value, font = 'normal' }: TableRowProps) {
   );
 }
 
-export function TokenCheckoutArea() {
+type TokenCheckoutAreaProps = {
+  items: TNewDocumentsListItem[];
+};
+
+export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
+  const totalCharacters = items.reduce((acc, item) => acc + item.characters, 0);
+
   return (
     <table className="mt-6 w-full whitespace-nowrap text-left text-sm leading-6">
       <colgroup>
@@ -34,9 +42,9 @@ export function TokenCheckoutArea() {
         <col />
       </colgroup>
       <tfoot>
-        <TableRow label="Total characters" value="4000" />
-        <TableRow label="Storage tokens balance" value="10000" />
-        <TableRow label="New balance" value="6000" font="semibold" />
+        <TableRow label="Total characters" value={totalCharacters} />
+        <TableRow label="Storage tokens balance" value={10000} />
+        <TableRow label="New balance" value={6000} font="semibold" />
       </tfoot>
     </table>
   );
