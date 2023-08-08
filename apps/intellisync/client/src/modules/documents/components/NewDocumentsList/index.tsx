@@ -13,7 +13,7 @@ export function NewDocumentsList({
   removeDocuments,
 }: NewDocumentsListProps) {
   return (
-    <ul role="list" className="divide-y divide-white/5">
+    <ul role="list" className="divide-y dark:divide-white/5 h-full">
       {items.map((item) => (
         <NewDocumentsListItem
           key={item.fileName}
