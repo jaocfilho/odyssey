@@ -1,3 +1,6 @@
+'use client';
+
+import { useStorageTokens } from '@/modules/storage-tokens/hooks/use-storage-tokens';
 import { TNewDocumentsListItem } from '../NewDocumentsListItem';
 
 type TableRowProps = {
@@ -57,6 +60,8 @@ type TokenCheckoutAreaProps = {
 };
 
 export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
+  const storageTokensQuery = useStorageTokens();
+
   const totalCharacters = items.reduce((acc, item) => acc + item.characters, 0);
 
   return (
@@ -69,7 +74,11 @@ export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
       </colgroup>
       <tfoot>
         <TotalCharactersRow totalCharacters={totalCharacters} />
-        <StorageTokensRow storageTokens={10000} />
+        {!!storageTokensQuery.data && (
+          <StorageTokensRow
+            storageTokens={storageTokensQuery.data?.remaining_storage_tokens}
+          />
+        )}
         <NewBalanceRow newBalance={10000 - totalCharacters} />
       </tfoot>
     </table>
