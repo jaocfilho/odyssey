@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from 'tailwind-ui';
-import { NewDocumentsList } from '@/modules/chatbots/components/pages/ChatbotDataSourceUploadPage/Content/NewDocumentsList';
+import { NewDocumentsList } from './NewDocumentsList';
 import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';

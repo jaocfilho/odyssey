@@ -1,4 +1,4 @@
-import { ChatbotDataSourceUploadPage as Page } from '@/modules/chatbots/components/pages/ChatbotDataSourceUploadPage';
+import { ChatbotDataSourceUploadPage as Page } from '@/modules/pages/ChatbotDataSourceUploadPage';
 
 type Params = {
   params: { id: string };
