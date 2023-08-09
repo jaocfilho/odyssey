@@ -7,6 +7,7 @@ import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { TokenCheckoutArea } from './TokenCheckoutArea';
 import { TNewDocumentsListItem } from './NewDocumentsListItem';
+import { useStorageTokens } from '@/modules/storage-tokens/hooks/use-storage-tokens';
 
 type ContentProps = {
   items: TNewDocumentsListItem[];
@@ -26,6 +27,8 @@ export function Content({
   const mutation = useTrainChatbot();
   const { redirectToChatbotDataSource } = useNavigation();
 
+  const storageTokensQuery = useStorageTokens();
+
   const handleClick = () => {
     mutation.mutate(
       { chatbotId, documents },
@@ -34,6 +37,8 @@ export function Content({
       }
     );
   };
+
+  console.log(storageTokensQuery.data);
 
   return (
     <div className="flex flex-col m-8 h-full justify-between">
