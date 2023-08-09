@@ -27,6 +27,11 @@ describe('organizationsQueryKeys', () => {
     const queryKey = organizationsQueryKeys.messageCredits('any');
     expect(queryKey).toEqual(['organizations', 'any', 'message-credits']);
   });
+
+  it('should return the storage tokens key', () => {
+    const queryKey = organizationsQueryKeys.storageTokens('any');
+    expect(queryKey).toEqual(['organizations', 'any', 'storage-tokens']);
+  });
 });
 
 describe('organizationQueryKey', () => {

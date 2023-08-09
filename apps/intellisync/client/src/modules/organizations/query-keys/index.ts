@@ -6,6 +6,8 @@ export const organizationsQueryKeys = {
   current: () => [...organizationsQueryKeys.base, 'current'] as const,
   messageCredits: (id: string) =>
     [...organizationsQueryKeys.base, id, 'message-credits'] as const,
+  storageTokens: (id: string) =>
+    [...organizationsQueryKeys.base, id, 'storage-tokens'] as const,
 };
 
 export function currentOrganizationQueryKey() {
