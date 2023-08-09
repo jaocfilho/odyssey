@@ -2,14 +2,14 @@
 
 import { Button } from 'tailwind-ui';
 import { NewDocumentsList } from './NewDocumentsList';
-import { useTrainChatbot } from '@/modules/documents/hooks/use-train-chatbot';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { TokenCheckoutArea } from './TokenCheckoutArea';
 import { TNewDocumentsListItem } from './NewDocumentsListItem';
+import { TrainChatbotButton } from '@/modules/documents/components/TrainChatbotButton';
 
 type ContentProps = {
-  items: TNewDocumentsListItem[];
+  groupedDocuments: TNewDocumentsListItem[];
   resetDocuments: () => void;
   removeDocuments: (fileName: string) => void;
   chatbotId: string;
@@ -17,37 +17,36 @@ type ContentProps = {
 };
 
 export function Content({
-  items,
+  groupedDocuments,
   resetDocuments,
   removeDocuments,
   chatbotId,
   documents,
 }: ContentProps) {
-  const mutation = useTrainChatbot();
   const { redirectToChatbotDataSource } = useNavigation();
 
-  const handleClick = () => {
-    mutation.mutate(
-      { chatbotId, documents },
-      {
-        onSuccess: () => redirectToChatbotDataSource(chatbotId),
-      }
-    );
-  };
+  const handleSuccess = () => redirectToChatbotDataSource(chatbotId);
 
   return (
     <div className="flex flex-col m-8 h-full justify-between">
       <div className="flex flex-col h-full divide-y dark:divide-white/5">
-        <NewDocumentsList removeDocuments={removeDocuments} items={items} />
+        <NewDocumentsList
+          removeDocuments={removeDocuments}
+          items={groupedDocuments}
+        />
         <div>
-          <TokenCheckoutArea items={items} />
+          <TokenCheckoutArea items={groupedDocuments} />
         </div>
       </div>
       <div className="flex self-end mt-6 gap-4">
         <Button colorScheme="gray" onClick={resetDocuments}>
           Cancel
         </Button>
-        <Button onClick={handleClick}>Train chatbot</Button>
+        <TrainChatbotButton
+          chatbotId={chatbotId}
+          documents={documents}
+          onSuccess={handleSuccess}
+        />
       </div>
     </div>
   );

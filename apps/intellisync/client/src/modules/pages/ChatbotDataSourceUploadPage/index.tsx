@@ -28,7 +28,7 @@ export function ChatbotDataSourceUploadPage({
       ) : (
         <Content
           chatbotId={chatbotId}
-          items={groupedDocuments}
+          groupedDocuments={groupedDocuments}
           resetDocuments={resetDocuments}
           removeDocuments={removeDocuments}
           documents={documents}
