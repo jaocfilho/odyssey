@@ -256,6 +256,40 @@ export interface Database {
           }
         ]
       }
+      organization_storage_tokens: {
+        Row: {
+          created_at: string
+          id: number
+          organization_id: string
+          remaining_storage_tokens: number
+          storage_token_amount: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          organization_id: string
+          remaining_storage_tokens?: number
+          storage_token_amount?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          organization_id?: string
+          remaining_storage_tokens?: number
+          storage_token_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "organization_storage_tokens_organization_id_fkey"
+            columns: ["organization_id"]
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       organizations: {
         Row: {
           created_at: string
