@@ -9,9 +9,14 @@ import { useGetCurrentChatbotId } from '@/modules/chatbots/hooks/use-get-current
 type ButtonsAreaProps = {
   resetDocuments: () => void;
   documents: Documents;
+  hasSuficientTokens: boolean;
 };
 
-export function ButtonsArea({ documents, resetDocuments }: ButtonsAreaProps) {
+export function ButtonsArea({
+  documents,
+  resetDocuments,
+  hasSuficientTokens,
+}: ButtonsAreaProps) {
   const { redirectToChatbotDataSource } = useNavigation();
   const { chatbotId } = useGetCurrentChatbotId();
 
@@ -26,6 +31,7 @@ export function ButtonsArea({ documents, resetDocuments }: ButtonsAreaProps) {
         chatbotId={chatbotId}
         documents={documents}
         onSuccess={handleSuccess}
+        disabled={!hasSuficientTokens}
       />
     </div>
   );

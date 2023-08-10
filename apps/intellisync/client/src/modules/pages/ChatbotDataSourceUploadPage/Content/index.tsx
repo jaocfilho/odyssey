@@ -47,7 +47,11 @@ export function Content({
           />
         </div>
       </div>
-      <ButtonsArea resetDocuments={resetDocuments} documents={documents} />
+      <ButtonsArea
+        resetDocuments={resetDocuments}
+        documents={documents}
+        hasSuficientTokens={hasSuficientTokens}
+      />
     </div>
   );
 }

@@ -8,12 +8,14 @@ type TrainChatbotButtonProps = {
   chatbotId: string;
   documents: Documents;
   onSuccess: () => void;
+  disabled?: boolean;
 };
 
 export function TrainChatbotButton({
   chatbotId,
   documents,
   onSuccess,
+  disabled,
 }: TrainChatbotButtonProps) {
   const mutation = useTrainChatbot();
 
@@ -26,5 +28,9 @@ export function TrainChatbotButton({
     );
   };
 
-  return <Button onClick={handleClick}>Train chatbot</Button>;
+  return (
+    <Button disabled={disabled} onClick={handleClick}>
+      Train chatbot
+    </Button>
+  );
 }
