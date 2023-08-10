@@ -62,16 +62,12 @@ describe('DocumentsArea', () => {
     expect(within(totalCharactersRow).getByText('300')).toBeInTheDocument();
   });
 
-  it('should render the remaining storage tokens from useStorageTokens', () => {
-    vi.mocked(useStorageTokens).mockReturnValue({
-      // @ts-expect-error
-      data: { remaining_storage_tokens: 1000 },
-    });
-
+  it('should render the remaining storage row', () => {
     render(
       <DocumentsArea
         groupedDocuments={groupedDocuments}
         removeDocuments={removeDocuments}
+        storageTokens={1000}
       />
     );
 
@@ -87,11 +83,12 @@ describe('DocumentsArea', () => {
     ).toBeInTheDocument();
   });
 
-  it('should not render the remaining storage tokens if useStorageTokens returns falsy', () => {
+  it('should not render the remaining storage tokens if storageTokens is falsy', () => {
     render(
       <DocumentsArea
         groupedDocuments={groupedDocuments}
         removeDocuments={removeDocuments}
+        storageTokens={0}
       />
     );
 

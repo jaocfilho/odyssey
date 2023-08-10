@@ -50,6 +50,19 @@ export function NewBalanceRow({ newBalance }: NewBalanceRowProps) {
   return <TableRow label="New balance" value={newBalance} font="semibold" />;
 }
 
+export function InsuficientStorageTokensRow() {
+  return (
+    <tr>
+      <th scope="row" className="sm:hidden">
+        Insuficient storage tokens
+      </th>
+      <th scope="row" colSpan={4} className="hidden text-right  sm:table-cell">
+        Insuficient storage tokens
+      </th>
+    </tr>
+  );
+}
+
 type TokenCheckoutAreaProps = {
   totalCharacters: number;
   storageTokens?: number;
@@ -59,6 +72,9 @@ export function TokenCheckoutArea({
   totalCharacters,
   storageTokens,
 }: TokenCheckoutAreaProps) {
+  const hasSuficientTokens =
+    storageTokens && storageTokens - totalCharacters >= 0;
+
   return (
     <table className="mt-6 w-full whitespace-nowrap text-left text-sm leading-6">
       <colgroup>
@@ -70,7 +86,11 @@ export function TokenCheckoutArea({
       <tfoot>
         <TotalCharactersRow totalCharacters={totalCharacters} />
         {!!storageTokens && <StorageTokensRow storageTokens={storageTokens} />}
-        <NewBalanceRow newBalance={10000 - totalCharacters} />
+        {hasSuficientTokens ? (
+          <NewBalanceRow newBalance={10000 - totalCharacters} />
+        ) : (
+          <InsuficientStorageTokensRow />
+        )}
       </tfoot>
     </table>
   );
