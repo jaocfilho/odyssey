@@ -161,4 +161,26 @@ describe('TokenCheckoutArea', () => {
 
     expect(insufficientBalanceMessage).toHaveLength(0);
   });
+
+  it('should render the correct new balance when new balance row is rendered', () => {
+    const totalCharacters = 100;
+    const storageTokens = 1000;
+
+    render(
+      <TokenCheckoutArea
+        hasSuficientTokens={true}
+        totalCharacters={totalCharacters}
+        storageTokens={storageTokens}
+      />
+    );
+
+    const checkoutRows = screen.getAllByRole('row');
+    const newBalanceRow = checkoutRows[checkoutRows.length - 1];
+
+    expect(within(newBalanceRow).getAllByText('New balance')).toHaveLength(2);
+
+    expect(
+      within(newBalanceRow).getByText(storageTokens - totalCharacters)
+    ).toBeInTheDocument();
+  });
 });
