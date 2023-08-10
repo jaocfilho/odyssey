@@ -27,7 +27,6 @@ export function ChatbotDataSourceUploadPage({
         <EmptyPage chatbotId={chatbotId} onUpload={setDocuments} />
       ) : (
         <Content
-          chatbotId={chatbotId}
           groupedDocuments={groupedDocuments}
           resetDocuments={resetDocuments}
           removeDocuments={removeDocuments}
