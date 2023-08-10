@@ -1,8 +1,3 @@
-'use client';
-
-import { useStorageTokens } from '@/modules/storage-tokens/hooks/use-storage-tokens';
-import { TNewDocumentsListItem } from '../NewDocumentsListItem';
-
 type TableRowProps = {
   label: string;
   value: number;
@@ -56,14 +51,14 @@ export function NewBalanceRow({ newBalance }: NewBalanceRowProps) {
 }
 
 type TokenCheckoutAreaProps = {
-  items: TNewDocumentsListItem[];
+  totalCharacters: number;
+  storageTokens?: number;
 };
 
-export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
-  const storageTokensQuery = useStorageTokens();
-
-  const totalCharacters = items.reduce((acc, item) => acc + item.characters, 0);
-
+export function TokenCheckoutArea({
+  totalCharacters,
+  storageTokens,
+}: TokenCheckoutAreaProps) {
   return (
     <table className="mt-6 w-full whitespace-nowrap text-left text-sm leading-6">
       <colgroup>
@@ -74,11 +69,7 @@ export function TokenCheckoutArea({ items }: TokenCheckoutAreaProps) {
       </colgroup>
       <tfoot>
         <TotalCharactersRow totalCharacters={totalCharacters} />
-        {!!storageTokensQuery.data && (
-          <StorageTokensRow
-            storageTokens={storageTokensQuery.data?.remaining_storage_tokens}
-          />
-        )}
+        {!!storageTokens && <StorageTokensRow storageTokens={storageTokens} />}
         <NewBalanceRow newBalance={10000 - totalCharacters} />
       </tfoot>
     </table>
