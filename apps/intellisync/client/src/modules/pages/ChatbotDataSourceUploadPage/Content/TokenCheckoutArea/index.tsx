@@ -65,16 +65,15 @@ export function InsuficientStorageTokensRow() {
 
 type TokenCheckoutAreaProps = {
   totalCharacters: number;
+  hasSuficientTokens: boolean;
   storageTokens?: number;
 };
 
 export function TokenCheckoutArea({
   totalCharacters,
+  hasSuficientTokens,
   storageTokens,
 }: TokenCheckoutAreaProps) {
-  const hasSuficientTokens =
-    storageTokens && storageTokens - totalCharacters >= 0;
-
   return (
     <table className="mt-6 w-full whitespace-nowrap text-left text-sm leading-6">
       <colgroup>
@@ -87,7 +86,7 @@ export function TokenCheckoutArea({
         <TotalCharactersRow totalCharacters={totalCharacters} />
         {!!storageTokens && <StorageTokensRow storageTokens={storageTokens} />}
         {hasSuficientTokens ? (
-          <NewBalanceRow newBalance={10000 - totalCharacters} />
+          <NewBalanceRow newBalance={storageTokens! - totalCharacters} />
         ) : (
           <InsuficientStorageTokensRow />
         )}
