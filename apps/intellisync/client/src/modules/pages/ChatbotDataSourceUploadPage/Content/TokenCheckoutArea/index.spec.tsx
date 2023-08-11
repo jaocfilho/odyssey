@@ -41,7 +41,7 @@ describe('NewBalanceRow', () => {
   it('should render the new balance row', () => {
     render(<NewBalanceRow newBalance={100} />);
 
-    const rowHeaders = screen.getAllByText('New balance');
+    const rowHeaders = screen.getAllByText('Approximate new balance');
     const rowValue = screen.getByText('100');
 
     expect(rowHeaders).toHaveLength(2);
@@ -157,7 +157,7 @@ describe('TokenCheckoutArea', () => {
       />
     );
 
-    const rowHeaders = screen.getAllByText('New balance');
+    const rowHeaders = screen.getAllByText('Approximate new balance');
 
     expect(rowHeaders).toHaveLength(2);
   });
@@ -173,7 +173,7 @@ describe('TokenCheckoutArea', () => {
       />
     );
 
-    const rowHeaders = screen.queryAllByText('New balance');
+    const rowHeaders = screen.queryAllByText('Approximate new balance');
 
     expect(rowHeaders).toHaveLength(0);
   });
@@ -231,7 +231,9 @@ describe('TokenCheckoutArea', () => {
     const checkoutRows = screen.getAllByRole('row');
     const newBalanceRow = checkoutRows[checkoutRows.length - 1];
 
-    expect(within(newBalanceRow).getAllByText('New balance')).toHaveLength(2);
+    expect(
+      within(newBalanceRow).getAllByText('Approximate new balance')
+    ).toHaveLength(2);
 
     expect(
       within(newBalanceRow).getByText(storageTokens - totalCharacters)

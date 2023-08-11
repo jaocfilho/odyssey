@@ -64,7 +64,13 @@ type NewBalanceRowProps = {
 };
 
 export function NewBalanceRow({ newBalance }: NewBalanceRowProps) {
-  return <TableRow label="New balance" value={newBalance} font="semibold" />;
+  return (
+    <TableRow
+      label="Approximate new balance"
+      value={newBalance}
+      font="semibold"
+    />
+  );
 }
 
 export function InsuficientStorageTokensRow() {

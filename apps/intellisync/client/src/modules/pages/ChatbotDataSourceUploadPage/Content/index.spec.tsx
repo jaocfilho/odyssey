@@ -253,7 +253,9 @@ describe('Content', () => {
     const checkoutRows = screen.getAllByRole('row');
     const newBalanceRow = checkoutRows[checkoutRows.length - 1];
 
-    expect(within(newBalanceRow).getAllByText('New balance')).toHaveLength(2);
+    expect(
+      within(newBalanceRow).getAllByText('Approximate new balance')
+    ).toHaveLength(2);
 
     // storageTokens - totalCharacters
     expect(within(newBalanceRow).getByText('700')).toBeInTheDocument();
