@@ -1,11 +1,12 @@
 import { cleanup, render, screen, within } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 
 import {
   TokenCheckoutArea,
   TotalCharactersRow,
   StorageTokensRow,
   NewBalanceRow,
+  TokenUsageRow,
 } from '.';
 
 afterEach(() => {
@@ -48,10 +49,27 @@ describe('NewBalanceRow', () => {
   });
 });
 
+describe('TokenUsageRow', () => {
+  it('should render the token usage row', () => {
+    render(<TokenUsageRow minTokenUsage={100} maxTokenUsage={200} />);
+
+    const rowHeaders = screen.getAllByText('Approximate token usage');
+    const rowValue = screen.getByText('100 tokens - 200 tokens');
+
+    expect(rowHeaders).toHaveLength(2);
+    expect(rowValue).toBeInTheDocument();
+  });
+});
+
 describe('TokenCheckoutArea', () => {
   it('should render the total characters row', () => {
     render(
-      <TokenCheckoutArea hasSuficientTokens={false} totalCharacters={100} />
+      <TokenCheckoutArea
+        hasSuficientTokens={false}
+        totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
+      />
     );
 
     const checkoutRows = screen.getAllByRole('row');
@@ -64,17 +82,41 @@ describe('TokenCheckoutArea', () => {
     expect(within(totalCharactersRow).getByText('100')).toBeInTheDocument();
   });
 
+  it('should render the token usage row', () => {
+    render(
+      <TokenCheckoutArea
+        hasSuficientTokens={false}
+        totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
+      />
+    );
+
+    const checkoutRows = screen.getAllByRole('row');
+    const tokenUsageRow = checkoutRows[1];
+
+    expect(
+      within(tokenUsageRow).getAllByText('Approximate token usage')
+    ).toHaveLength(2);
+
+    expect(
+      within(tokenUsageRow).getByText('50 tokens - 150 tokens')
+    ).toBeInTheDocument();
+  });
+
   it('should not render the storage tokens row if storageTokens is falsy', () => {
     render(
       <TokenCheckoutArea
         hasSuficientTokens={false}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={0}
       />
     );
 
     const checkoutRows = screen.getAllByRole('row');
-    const remainingStorageTokensRow = checkoutRows[1];
+    const remainingStorageTokensRow = checkoutRows[2];
 
     expect(
       within(remainingStorageTokensRow).queryAllByText('Storage tokens balance')
@@ -86,12 +128,14 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={false}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={100}
       />
     );
 
     const checkoutRows = screen.getAllByRole('row');
-    const remainingStorageTokensRow = checkoutRows[1];
+    const remainingStorageTokensRow = checkoutRows[2];
 
     expect(
       within(remainingStorageTokensRow).getAllByText('Storage tokens balance')
@@ -107,6 +151,8 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={true}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={100}
       />
     );
@@ -121,6 +167,8 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={false}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={0}
       />
     );
@@ -135,6 +183,8 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={false}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={0}
       />
     );
@@ -151,6 +201,8 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={true}
         totalCharacters={100}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={0}
       />
     );
@@ -170,6 +222,8 @@ describe('TokenCheckoutArea', () => {
       <TokenCheckoutArea
         hasSuficientTokens={true}
         totalCharacters={totalCharacters}
+        minTokenUsage={50}
+        maxTokenUsage={150}
         storageTokens={storageTokens}
       />
     );

@@ -1,6 +1,6 @@
 type TableRowProps = {
   label: string;
-  value: number;
+  value: number | string;
   font?: 'normal' | 'semibold';
 };
 
@@ -42,6 +42,23 @@ export function StorageTokensRow({ storageTokens }: StorageTokensRowProps) {
   return <TableRow label="Storage tokens balance" value={storageTokens} />;
 }
 
+type TokenUsageRowProps = {
+  minTokenUsage: number;
+  maxTokenUsage: number;
+};
+
+export function TokenUsageRow({
+  minTokenUsage,
+  maxTokenUsage,
+}: TokenUsageRowProps) {
+  return (
+    <TableRow
+      label="Approximate token usage"
+      value={`${minTokenUsage} tokens - ${maxTokenUsage} tokens`}
+    />
+  );
+}
+
 type NewBalanceRowProps = {
   newBalance: number;
 };
@@ -66,12 +83,16 @@ export function InsuficientStorageTokensRow() {
 type TokenCheckoutAreaProps = {
   totalCharacters: number;
   hasSuficientTokens: boolean;
+  minTokenUsage: number;
+  maxTokenUsage: number;
   storageTokens?: number;
 };
 
 export function TokenCheckoutArea({
   totalCharacters,
   hasSuficientTokens,
+  maxTokenUsage,
+  minTokenUsage,
   storageTokens,
 }: TokenCheckoutAreaProps) {
   return (
@@ -84,6 +105,10 @@ export function TokenCheckoutArea({
       </colgroup>
       <tfoot>
         <TotalCharactersRow totalCharacters={totalCharacters} />
+        <TokenUsageRow
+          minTokenUsage={minTokenUsage}
+          maxTokenUsage={maxTokenUsage}
+        />
         {!!storageTokens && <StorageTokensRow storageTokens={storageTokens} />}
         {hasSuficientTokens ? (
           <NewBalanceRow newBalance={storageTokens! - totalCharacters} />

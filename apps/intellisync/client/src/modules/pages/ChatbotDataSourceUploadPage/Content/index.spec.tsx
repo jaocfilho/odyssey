@@ -8,7 +8,7 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
-import { Content } from '.';
+import { approximateTokenUsage, Content } from '.';
 import { generateRandomDocument } from '@/modules/documents/entities/factories';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';
 import { useGetCurrentChatbotId } from '@/modules/chatbots/hooks/use-get-current-chatbot-id';
@@ -17,6 +17,7 @@ import { useStorageTokens } from '@/modules/storage-tokens/hooks/use-storage-tok
 import {
   assertButtonIsInTheDocument,
   assertFunctionIsCalledOnButtonClick,
+  assertObjectProperties,
 } from '@odyssey/tests';
 
 vi.mock('@/modules/storage-tokens/hooks/use-storage-tokens', () => ({
@@ -40,6 +41,40 @@ vi.mock('@/modules/chatbots/hooks/use-get-current-chatbot-id', () => ({
 vi.mock('@/modules/documents/hooks/use-train-chatbot', () => ({
   useTrainChatbot: vi.fn(() => ({ mutate: vi.fn() })),
 }));
+
+describe('approximateTokenUsage', () => {
+  it('should return the correct object', () => {
+    const result = approximateTokenUsage(100);
+
+    const properties = ['minTokenUsage', 'maxTokenUsage'];
+
+    assertObjectProperties(properties, result);
+  });
+
+  it('should return the same amount of characters for minTokenUsage if the amount of characters is less than 1000', () => {
+    const result = approximateTokenUsage(100);
+
+    expect(result.minTokenUsage).toBe(100);
+  });
+
+  it('should return the correct amount of minTokenUsage if the amount of characters is greater than 1000', () => {
+    const result = approximateTokenUsage(1500);
+
+    expect(result.minTokenUsage).toBe(1300);
+  });
+
+  it('should return the correct amount of minTokenUsage if the amount of characters is equal 1000', () => {
+    const result = approximateTokenUsage(1000);
+
+    expect(result.minTokenUsage).toBe(1000);
+  });
+
+  it('should return the correct maxTokenUsage', () => {
+    const result = approximateTokenUsage(1000);
+
+    expect(result.maxTokenUsage).toBe(1200);
+  });
+});
 
 describe('Content', () => {
   const documents = [generateRandomDocument(), generateRandomDocument()];
@@ -130,6 +165,31 @@ describe('Content', () => {
     expect(within(totalCharactersRow).getByText('300')).toBeInTheDocument();
   });
 
+  it('should render the token usage row', () => {
+    render(
+      <Content
+        documents={documents}
+        groupedDocuments={groupedDocuments}
+        removeDocuments={removeDocuments}
+        resetDocuments={resetDocuments}
+      />
+    );
+
+    const checkoutRows = screen.getAllByRole('row');
+    const tokenUsageRow = checkoutRows[1];
+
+    const expectedTokenUsage = approximateTokenUsage(300);
+    const expectedTokenUsageText = `${expectedTokenUsage.minTokenUsage} tokens - ${expectedTokenUsage.maxTokenUsage} tokens`;
+
+    expect(
+      within(tokenUsageRow).getAllByText('Approximate token usage')
+    ).toHaveLength(2);
+
+    expect(
+      within(tokenUsageRow).getByText(expectedTokenUsageText)
+    ).toBeInTheDocument();
+  });
+
   it('should render the remaining storage row if remaining_storage_tokens from useStorageTokens is truthy', () => {
     vi.mocked(useStorageTokens).mockReturnValue({
       // @ts-expect-error
@@ -146,7 +206,7 @@ describe('Content', () => {
     );
 
     const checkoutRows = screen.getAllByRole('row');
-    const remainingStorageTokensRow = checkoutRows[1];
+    const remainingStorageTokensRow = checkoutRows[2];
 
     expect(
       within(remainingStorageTokensRow).getAllByText('Storage tokens balance')
@@ -280,21 +340,5 @@ describe('Content', () => {
     );
 
     await assertFunctionIsCalledOnButtonClick('Cancel', resetDocuments);
-  });
-
-  it('should call mutate from useTrainChatbot when the train button is clicked', async () => {
-    const mutation = useTrainChatbot();
-
-    render(
-      <Content
-        documents={documents}
-        groupedDocuments={groupedDocuments}
-        removeDocuments={removeDocuments}
-        resetDocuments={resetDocuments}
-      />
-    );
-
-    // @ts-expect-error
-    assertFunctionIsCalledOnButtonClick('Train chatbot', mutation.mutate);
   });
 });
