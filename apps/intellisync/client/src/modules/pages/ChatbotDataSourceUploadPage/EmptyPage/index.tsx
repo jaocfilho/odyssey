@@ -1,4 +1,4 @@
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 import { FileUploadButton } from '@/modules/documents/components/FileUploadButton';
 import { Documents } from '@/modules/documents/entities';
 import { urlPaths } from '@/modules/navigation/urls';

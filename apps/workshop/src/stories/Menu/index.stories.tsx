@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Menu as MenuComponent, MenuItem } from 'tailwind-ui';
+import { Menu as MenuComponent, MenuItem } from 'cosmic-ui';
 
 const meta: Meta<typeof MenuComponent> = {
   title: 'Components/Overlay/Menu',

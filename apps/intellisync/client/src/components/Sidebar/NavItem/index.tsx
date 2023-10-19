@@ -1,4 +1,4 @@
-import { classNames } from 'tailwind-ui';
+import { classNames } from 'cosmic-ui';
 import { NavIcon, TIcon } from '../NavIcon';
 
 const currentItemStyles = 'dark:bg-grayScheme-800 dark:text-white';

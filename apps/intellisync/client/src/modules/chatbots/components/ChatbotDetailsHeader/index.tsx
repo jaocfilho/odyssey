@@ -1,4 +1,4 @@
-import { Dot } from 'tailwind-ui';
+import { Dot } from 'cosmic-ui';
 
 type ChatbotDetailsHeaderProps = {
   name: string | undefined;

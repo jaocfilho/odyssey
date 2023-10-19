@@ -6,7 +6,7 @@ import { Form } from '@/modules/forms/components';
 import { TextInput } from '@/modules/forms/components/Inputs';
 import { useCustomForm } from '@/modules/forms/hooks/use-custom-form';
 import { useSupabase } from '@/lib/supabase/Provider';
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 
 const waitlistSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),

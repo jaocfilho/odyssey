@@ -5,7 +5,7 @@ import {
   ColorSchemeVariants,
   GraySchemeVariants,
   Select as SelectComponent,
-} from 'tailwind-ui';
+} from 'cosmic-ui';
 
 const options = [
   { label: 'Option 1', value: 'option-1' },

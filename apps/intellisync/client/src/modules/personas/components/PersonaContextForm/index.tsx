@@ -1,6 +1,6 @@
 'use client';
 
-import { Textarea } from 'tailwind-ui';
+import { Textarea } from 'cosmic-ui';
 import { RemoveRowButton } from './RemoveRowButton';
 import { FormRow } from './FormRow';
 import { LastRow } from './LastRow';

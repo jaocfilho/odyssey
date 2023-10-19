@@ -3,7 +3,7 @@
 import { Form } from '@/modules/forms/components';
 import { RememberMe } from '../RememberMe';
 import { useLoginForm } from '@/modules/auth/hooks/use-login-form';
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 
 export function LoginFormComponent() {
   const { login, methods } = useLoginForm();

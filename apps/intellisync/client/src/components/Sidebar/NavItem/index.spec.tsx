@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { classNames } from 'tailwind-ui';
+import { classNames } from 'cosmic-ui';
 import { getStyles, navItemStyles } from '.';
 
-vi.mock('tailwind-ui', () => ({
+vi.mock('cosmic-ui', () => ({
   classNames: vi.fn(),
 }));
 

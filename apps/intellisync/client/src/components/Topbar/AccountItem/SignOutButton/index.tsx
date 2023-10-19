@@ -1,7 +1,7 @@
 'use client';
 
 import { useSignOut } from '@/modules/auth/hooks/use-signout';
-import { MenuItem } from 'tailwind-ui';
+import { MenuItem } from 'cosmic-ui';
 
 export function SignOutButton() {
   const { signOut } = useSignOut();

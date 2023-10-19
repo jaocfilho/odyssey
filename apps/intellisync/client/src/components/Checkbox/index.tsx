@@ -1,6 +1,6 @@
 import { type InputHTMLAttributes } from 'react';
 
-import { classNames } from 'tailwind-ui';
+import { classNames } from 'cosmic-ui';
 
 const commonStyles = 'cursor-pointer bg-inherit h-4 w-4 rounded';
 const darkStyles =

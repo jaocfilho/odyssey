@@ -1,7 +1,7 @@
 'use client';
 
 import { useBooleanState } from '@odyssey/react-hooks';
-import { Button, Modal } from 'tailwind-ui';
+import { Button, Modal } from 'cosmic-ui';
 import { useDeleteMutation } from './useDeleteMutation';
 
 type DeleteChatbotButtonProps = {

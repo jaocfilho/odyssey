@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from 'tailwind-ui';
+import { Button, type ButtonProps } from 'cosmic-ui';
 
 type CancelButtonProps = ButtonProps;
 

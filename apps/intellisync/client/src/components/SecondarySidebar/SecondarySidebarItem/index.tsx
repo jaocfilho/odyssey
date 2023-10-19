@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { classNames } from 'tailwind-ui';
+import { classNames } from 'cosmic-ui';
 
 const commonStyles =
   'group flex gap-x-3 rounded-md p-1 pl-3 text-sm font-semibold cursor-pointer leading-6';

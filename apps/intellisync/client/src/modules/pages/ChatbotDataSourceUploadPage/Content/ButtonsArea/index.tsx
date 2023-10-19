@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 import { TrainChatbotButton } from '@/modules/documents/components/TrainChatbotButton';
 import { Documents } from '@/modules/documents/entities';
 import { useNavigation } from '@/modules/navigation/hooks/use-navigation';

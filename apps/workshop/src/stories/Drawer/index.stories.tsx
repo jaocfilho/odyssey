@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import {
-  Drawer as DrawerComponent,
-  Button,
-  type DrawerProps,
-} from 'tailwind-ui';
+import { Drawer as DrawerComponent, Button, type DrawerProps } from 'cosmic-ui';
 
 const meta: Meta<typeof DrawerComponent> = {
   title: 'Components/Overlay/Drawer',

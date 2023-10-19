@@ -18,7 +18,7 @@
     "intell-server": "pnpm --filter @intellisync/server",
     "workshop": "pnpm --filter workshop",
     "hooks": "pnpm --filter @odyssey/react-hooks",
-    "ui": "pnpm --filter tailwind-ui"
+    "ui": "pnpm --filter cosmic-ui"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",

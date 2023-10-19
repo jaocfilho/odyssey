@@ -2,7 +2,7 @@
 
 import { useGetCurrentChatbotId } from '@/modules/chatbots/hooks/use-get-current-chatbot-id';
 import { useDeleteChatbotFileSourceById } from '@/modules/documents/hooks/use-delete-chatbot-file-source-by-id';
-import { MenuItem } from 'tailwind-ui';
+import { MenuItem } from 'cosmic-ui';
 
 type DeleteItemProps = {
   fileId: string;

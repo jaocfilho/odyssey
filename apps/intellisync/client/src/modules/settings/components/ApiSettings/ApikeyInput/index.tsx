@@ -1,6 +1,6 @@
 import { serverSelectApikeyByOrganizationId } from '@/modules/api-keys/api/server';
 import { getLastUsedOrganization } from '@/modules/organizations/helpers/server';
-import { Input } from 'tailwind-ui';
+import { Input } from 'cosmic-ui';
 
 async function getApikey() {
   const { lastUsedOrganization } = await getLastUsedOrganization();

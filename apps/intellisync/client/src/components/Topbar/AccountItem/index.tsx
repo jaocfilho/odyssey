@@ -1,6 +1,6 @@
 import { UserIcon } from '@heroicons/react/24/outline';
 
-import { Menu } from 'tailwind-ui';
+import { Menu } from 'cosmic-ui';
 import { MenuHeader } from './MenuHeader';
 import { SignOutButton } from './SignOutButton';
 import { serverGetSessionUser } from '@/modules/auth/api/server';

@@ -7,10 +7,7 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
-import {
-  Select as TuiSelect,
-  SelectProps as TuiSelectProps,
-} from 'tailwind-ui';
+import { Select as TuiSelect, SelectProps as TuiSelectProps } from 'cosmic-ui';
 
 type BaseSelectProps = Omit<TuiSelectProps, 'onChange' | 'value'> & {
   name: string;

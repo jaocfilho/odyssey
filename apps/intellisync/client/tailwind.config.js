@@ -7,7 +7,7 @@ module.exports = {
   content: [
     // app content
     './src/**/*.{js,ts,jsx,tsx}',
-    '../../../packages/tailwind-ui/src/**/*.{js,ts,jsx,tsx}',
+    '../../../packages/cosmic-ui/src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     fontFamily: {

@@ -1,4 +1,4 @@
-import { Drawer, type DrawerProps } from 'tailwind-ui';
+import { Drawer, type DrawerProps } from 'cosmic-ui';
 import { ChatbotForm } from '../ChatbotForm';
 import { useCreateChatbotForm } from './use-create-chatbot-form';
 import { SubmitButton } from './SubmitButton';

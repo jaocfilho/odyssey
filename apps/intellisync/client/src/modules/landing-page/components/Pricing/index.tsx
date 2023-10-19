@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
 
-import { classNames, Button } from 'tailwind-ui';
+import { classNames, Button } from 'cosmic-ui';
 
 type PlanTypes = 'monthly' | 'annually';
 

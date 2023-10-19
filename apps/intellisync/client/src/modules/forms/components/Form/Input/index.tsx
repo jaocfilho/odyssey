@@ -2,10 +2,7 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import {
-  Input as TuiInput,
-  type InputProps as TuiInputProps,
-} from 'tailwind-ui';
+import { Input as TuiInput, type InputProps as TuiInputProps } from 'cosmic-ui';
 
 export type InputProps = TuiInputProps & {
   name: string;

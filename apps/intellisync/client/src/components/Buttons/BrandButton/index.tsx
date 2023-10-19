@@ -1,7 +1,7 @@
 import {
   Button as TuiButton,
   type ButtonProps as TuiButtonProps,
-} from 'tailwind-ui';
+} from 'cosmic-ui';
 
 type BrandButtonProps = TuiButtonProps;
 

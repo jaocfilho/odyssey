@@ -5,7 +5,7 @@ const nextConfig = {
     '@odyssey/type-utils',
     '@odyssey/arrays',
     '@odyssey/objects',
-    'tailwind-ui',
+    'cosmic-ui',
   ],
 };
 

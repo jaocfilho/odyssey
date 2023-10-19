@@ -4,7 +4,7 @@ import { TextareaHTMLAttributes } from 'react';
 
 import { useFormContext } from 'react-hook-form';
 
-import { Textarea as TuiTextarea } from 'tailwind-ui';
+import { Textarea as TuiTextarea } from 'cosmic-ui';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   name: string;

@@ -1,6 +1,6 @@
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 
-import { Menu } from 'tailwind-ui';
+import { Menu } from 'cosmic-ui';
 import { DeleteItem } from './DeleteItem';
 
 type SettingsCellProps = {

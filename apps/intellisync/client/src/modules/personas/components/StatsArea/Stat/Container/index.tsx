@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { classNames } from 'tailwind-ui';
+import { classNames } from 'cosmic-ui';
 
 const commonStyles = 'border-t py-6 px-4 sm:px-6 lg:px-8';
 const darkStyles = 'dark:border-white/5';

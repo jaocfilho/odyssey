@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Input as InputComponent } from 'tailwind-ui';
+import { Input as InputComponent } from 'cosmic-ui';
 
 const meta: Meta<typeof InputComponent> = {
   title: 'Components/Forms/Input',

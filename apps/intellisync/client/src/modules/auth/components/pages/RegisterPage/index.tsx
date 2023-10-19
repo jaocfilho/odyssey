@@ -1,4 +1,4 @@
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 import { RegisterForm } from '../../RegisterForm';
 import { RegisterHeader } from '../../RegisterHeader';
 import { AlreadyMember } from './AlreadyMember';

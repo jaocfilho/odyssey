@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button as ButtonComponent } from 'tailwind-ui';
+import { Button as ButtonComponent } from 'cosmic-ui';
 
 const meta: Meta<typeof ButtonComponent> = {
   title: 'Components/Forms/Button',

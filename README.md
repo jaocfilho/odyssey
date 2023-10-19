@@ -11,10 +11,10 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `workshop`: built with [Storybook](https://storybook.js.org/) to test the components from tailwind-ui
+- `workshop`: built with [Storybook](https://storybook.js.org/) to test the components from cosmic-ui
 - `intellisync-client`: built with [Next.js 13](https://nextjs.org/), this repository has the source code for the [IntellisyncAI](https://www.intellisyncai.com/) frontend.
 - `intellisync-server`: built with [Supabase](https://supabase.com/), this repository has the source code for the [IntellisyncAI](https://www.intellisyncai.com/) backend.
-- `tailwind-ui`: a React component library built with [Tailwind](https://tailwindcss.com/) shared by all apps.
+- `cosmic-ui`: a React component library built with [Tailwind](https://tailwindcss.com/) shared by all apps.
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
@@ -40,7 +40,7 @@ All the following command can be applied to specific subsets of packages. You ca
 But the most common filters already have a shortcut:
 - `intell-client`: filter for `@intellisync/client`
 - `intell-server`: filter for `@intellisync/server`
-- `ui`: filter for `tailwind-ui`
+- `ui`: filter for `cosmic-ui`
 - `workshop`: filter for `workshop`
 - `turboflux`: filter for `@turboflux/client`
 

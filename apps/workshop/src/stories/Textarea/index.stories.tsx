@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Textarea as TextareaComponent } from 'tailwind-ui';
+import { Textarea as TextareaComponent } from 'cosmic-ui';
 
 const meta: Meta<typeof TextareaComponent> = {
   title: 'Components/Forms/Textarea',

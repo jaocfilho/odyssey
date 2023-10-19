@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 
-import { Button } from 'tailwind-ui';
+import { Button } from 'cosmic-ui';
 import { useUploadFiles } from '../../hooks/use-upload-files';
 import { Documents } from '../../entities';
 
