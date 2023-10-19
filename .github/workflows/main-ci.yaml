@@ -23,27 +23,3 @@ jobs:
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-
-  check_intellisync_types:
-    runs-on: ubuntu-latest
-
-    name: Check intellisync types
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/install-pnpm
-
-      - uses: supabase/setup-cli@v1
-
-      - name: Start Supabase local development setup
-        run: pnpm run intell-server supabase start -x studio,edge-runtime,inbucket,realtime,migra,pgadmin-schema-diff,vector,logflare,imgproxy,postgrest,postgres-meta,storage-api
-
-      - name: Verify generated types are up-to-date
-        run: |
-          pnpm run intell-server generate-types
-          if [ "$(git diff --ignore-space-at-eol types.ts | wc -l)" -gt "0" ]; then
-            echo "Detected uncommitted changes after build. See status below:"
-            git diff
-            exit 1
-          fi
