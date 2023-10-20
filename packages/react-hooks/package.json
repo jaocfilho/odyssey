@@ -15,13 +15,13 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
+    "@vitejs/plugin-react": "^4.1.0",
     "eslint": "8.46.0",
     "eslint-config-custom": "workspace:*",
     "jsdom": "^22.1.0",
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.6"
   }
 }
