@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.16",
     "@odyssey/react-hooks": "workspace:*",
     "@odyssey/tests": "workspace:*",
-    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/forms": "^0.5.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
