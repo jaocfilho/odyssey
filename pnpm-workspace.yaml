@@ -1,5 +1,4 @@
 packages:
   - "apps/intellisync/*"
-  - "apps/turboflux/*"
   - "apps/*"
   - "packages/*"
