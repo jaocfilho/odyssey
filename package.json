@@ -13,9 +13,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "turboflux": "pnpm --filter @turboflux/client",
-    "intell-client": "pnpm --filter @intellisync/client",
-    "intell-server": "pnpm --filter @intellisync/server",
     "workshop": "pnpm --filter workshop",
     "hooks": "pnpm --filter @odyssey/react-hooks",
     "ui": "pnpm --filter cosmic-ui"
