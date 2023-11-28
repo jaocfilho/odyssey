@@ -40,23 +40,28 @@ function getStylesClassNames<T extends Styles>(
     return variantStyles[variantKey as keyof typeof variantStyles] as string;
   });
 
-  return classNames(props.className ?? '', ...classNamesArray);
+  return classNamesArray;
 }
 
 export function createComponent<T extends Styles>(
   componentType: ComponentType,
-  styles: T
+  styles?: T
 ) {
-  return function Component(props: ComponentProps<T>) {
-    const className = getStylesClassNames(styles, props);
+  return function Component({ className, ...rest }: ComponentProps<T>) {
+    const classNamesArray = getStylesClassNames(styles ?? {}, rest);
+
+    const classNamesWithStyles = classNames(
+      className ?? '',
+      ...classNamesArray
+    );
 
     return React.createElement(
       componentType,
       {
-        className,
-        ...props,
+        className: classNamesWithStyles,
+        ...rest,
       },
-      props.children
+      rest.children
     );
   };
 }
