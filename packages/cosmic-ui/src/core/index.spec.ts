@@ -1,9 +1,9 @@
-import { getStyleVariants } from './index';
+import { getStyleProps } from './index';
 import { describe, expect, it } from 'vitest';
 
-describe('getStyleVariants', () => {
+describe('getStyleProps', () => {
   it('should return an array of style variant keys', () => {
-    const result = getStyleVariants({
+    const result = getStyleProps({
       colorScheme: {
         amber: 'anyStyle',
       },
@@ -16,13 +16,13 @@ describe('getStyleVariants', () => {
   });
 
   it('should return an empty array if no style variants are found', () => {
-    const result = getStyleVariants({});
+    const result = getStyleProps({});
 
     expect(result).toEqual([]);
   });
 
   it('should ignore the default style variant', () => {
-    const result = getStyleVariants({
+    const result = getStyleProps({
       default: 'anyStyle',
     });
 
