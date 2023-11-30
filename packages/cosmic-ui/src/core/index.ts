@@ -7,7 +7,7 @@ type CreateElementParams = Parameters<typeof React.createElement>;
 
 type ComponentType = CreateElementParams[0];
 
-type CustomComponentProps = CreateElementParams[1] & {
+type ComponentProps = CreateElementParams[1] & {
   className?: string;
   children?: CreateElementParams[2];
 };
@@ -18,9 +18,13 @@ type StyleKeys<T extends Styles> = {
     : never;
 };
 
-type ComponentProps<T extends Styles> = {
+type StyleProps<T extends Styles> = {
   [K in keyof StyleKeys<T>]: StyleKeys<T>[K];
-} & CustomComponentProps;
+};
+
+type CustomComponentProps<T extends Styles> = {
+  [K in keyof StyleKeys<T>]: StyleKeys<T>[K];
+} & ComponentProps;
 
 type AvailableStyleProps<T extends Styles> = Array<keyof T>;
 
@@ -39,17 +43,17 @@ export function getStyleProps<T extends Styles>(styles: T) {
  * Retrieves the style variant value from the provided styles object based on the given props and style property.
  *
  * @param {T} styles - The styles object containing the style variants.
- * @param {ComponentProps<T>} props - The props object containing the variant key.
+ * @param {CustomComponentProps<T>} props - The props object containing the variant key.
  * @param {keyof T} styleProps - The style property to retrieve the variant from.
  * @returns {string} - The style variant value.
  */
 function getStylePropsVariant<T extends Styles>(
   styles: T,
-  props: ComponentProps<T>,
+  props: CustomComponentProps<T>,
   styleProps: keyof T
 ) {
   const variantStyles = styles[styleProps];
-  const variantKey = props[styleProps as keyof ComponentProps<T>];
+  const variantKey = props[styleProps as keyof CustomComponentProps<T>];
   return variantStyles[variantKey as keyof typeof variantStyles] as string;
 }
 
@@ -62,7 +66,7 @@ function getStylePropsVariant<T extends Styles>(
  */
 function getStylesClassNames<T extends Styles>(
   styles: T,
-  props: ComponentProps<T>
+  props: CustomComponentProps<T>
 ) {
   const availableStyleProps = getStyleProps(styles);
 
@@ -73,22 +77,27 @@ function getStylesClassNames<T extends Styles>(
   return classNamesArray;
 }
 
-export function createComponent<T extends Styles>(
+export function createComponent<S extends Styles>(
   componentType: ComponentType,
-  styles?: T
+  styles = { default: '' } as S
 ) {
-  return function Component({ className, ...rest }: ComponentProps<T>) {
-    const classNamesArray = getStylesClassNames(styles ?? {}, rest);
+  const defaultClassName = styles.default!;
 
-    const classNamesWithStyles = classNames(
-      className ?? '',
-      ...classNamesArray
+  return <P extends ComponentProps>(props: P & StyleProps<S>) => {
+    const stylesClassNames = getStylesClassNames(styles, props);
+
+    const { className, ...rest } = props;
+
+    const classNamesWithStlyes = classNames(
+      defaultClassName,
+      ...stylesClassNames,
+      className ?? ''
     );
 
     return React.createElement(
       componentType,
       {
-        className: classNamesWithStyles,
+        className: classNamesWithStlyes,
         ...rest,
       },
       rest.children
