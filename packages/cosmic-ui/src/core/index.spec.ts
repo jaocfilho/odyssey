@@ -1,31 +1,43 @@
-import { getStyleProps } from './index';
-import { describe, expect, it } from 'vitest';
+import { buildStyles } from '.';
 
-describe('getStyleProps', () => {
-  it('should return an array of style variant keys', () => {
-    const result = getStyleProps({
-      colorScheme: {
-        amber: 'anyStyle',
-      },
-      size: {
-        md: 'anyStyle',
-      },
-    });
-
-    expect(result).toEqual(['colorScheme', 'size']);
+describe('buildStyles', () => {
+  const styles = buildStyles({
+    base: 'base',
+    size: {
+      xs: 'size-xs',
+      sm: 'size-sm',
+      md: 'size-md',
+      lg: 'size-lg',
+      xl: 'size-xl',
+    },
+    grayScale: {
+      default: 'grayScale-gray',
+      gray: 'grayScale-gray',
+      stone: 'grayScale-stone',
+      slate: 'grayScale-slate',
+      zinc: 'grayScale-zinc',
+      neutral: 'grayScale-neutral',
+    },
   });
 
-  it('should return an empty array if no style variants are found', () => {
-    const result = getStyleProps({});
+  it('should return an empty string when there are no variant definitions for that style', () => {
+    const expected = styles.getClassNames('colorScheme', 'default');
 
-    expect(result).toEqual([]);
+    expect(expected).toEqual('');
   });
 
-  it('should ignore the default style variant', () => {
-    const result = getStyleProps({
-      default: 'anyStyle',
+  it('should return the className for the variant', () => {
+    const expected = styles.getClassNames('size', 'xs');
+
+    expect(expected).toEqual('size-xs');
+  });
+
+  it('should return the correct styles', () => {
+    const expected = styles.getStyles({
+      size: 'xs',
+      grayScale: 'gray',
     });
 
-    expect(result).toEqual([]);
+    expect(expected).toEqual('base size-xs grayScale-gray');
   });
 });

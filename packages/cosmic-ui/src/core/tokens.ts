@@ -1,5 +1,5 @@
 type StyleVariant<T extends string> = {
-  [key in T]?: string;
+  [key in T]: string;
 };
 
 type SizeTokens = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -38,9 +38,18 @@ type GrayScaleTokens =
 
 type GrayScaleVariants = StyleVariant<GrayScaleTokens>;
 
-export type Styles = {
-  default?: string;
+export type StylesVariantsTokens = {
+  size?: SizeTokens;
+  colorScheme?: ColorSchemeTokens;
+  grayScale?: GrayScaleTokens;
+};
+
+export type StylesVariantsConfig = {
   size?: SizeVariants;
   colorScheme?: ColorSchemeVariants;
   grayScale?: GrayScaleVariants;
+};
+
+export type StylesConfig = StylesVariantsConfig & {
+  base: string;
 };
