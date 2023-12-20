@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button as ButtonComponent } from 'cosmic-ui';
+import { Button as ButtonComponent } from 'cosmic-ui/button';
 
 const meta: Meta<typeof ButtonComponent> = {
   title: 'Components/Forms/Button',
@@ -9,7 +9,6 @@ const meta: Meta<typeof ButtonComponent> = {
     children: 'Button',
     disabled: false,
     loading: false,
-    href: '',
   },
 };
 
