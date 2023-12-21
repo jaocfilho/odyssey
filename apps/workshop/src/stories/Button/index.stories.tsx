@@ -1,14 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button as ButtonComponent } from 'cosmic-ui/button';
+import {
+  Button as ButtonComponent,
+  buttonColorOptions,
+} from 'cosmic-ui/components/button';
 
 const meta: Meta<typeof ButtonComponent> = {
-  title: 'Components/Forms/Button',
+  title: 'Components/Button',
   component: ButtonComponent,
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+      },
+      options: buttonColorOptions,
+    },
+  },
   args: {
     children: 'Button',
     disabled: false,
     loading: false,
+    color: 'blue',
   },
 };
 
