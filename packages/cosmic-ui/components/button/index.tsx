@@ -2,6 +2,7 @@ import { Button as HeadlessButton } from '@headlessui/react';
 import clsx from 'clsx';
 import { ForwardedRef, forwardRef, type ButtonHTMLAttributes } from 'react';
 import { Spinner } from '../spinner';
+import { TouchTarget } from '../touch-target';
 import { ButtonStyleProps, buttonStyles } from './styles';
 export { buttonColorOptions, buttonVariantOptions } from './styles';
 
@@ -39,8 +40,10 @@ export const BaseButton = (
       disabled={isDisabled}
       ref={ref}
     >
-      {loading ? <Spinner className="mr-2" /> : null}
-      {children}
+      <TouchTarget>
+        {loading ? <Spinner className="mr-2" /> : null}
+        {children}
+      </TouchTarget>
     </HeadlessButton>
   );
 };
