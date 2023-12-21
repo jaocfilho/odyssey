@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-type AvatarProps = {
+export type AvatarProps = {
   src?: string | null;
   square?: boolean;
   initials?: string;
