@@ -4,7 +4,7 @@ module.exports = {
   extends: ['custom', 'next/babel', 'next/core-web-vitals'],
   settings: {
     next: {
-      rootDir: ['turboflux/*/'],
+      rootDir: ['apps/pms/features/*', 'packages/*'],
     },
   },
 };

@@ -1,7 +1,16 @@
 {
   "name": "@pms/features",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsup ./issues/index.ts --format esm,cjs --dts",
+    "lint": "eslint *.ts*"
+  },
   "devDependencies": {
-    "tsup": "^8.0.1"
+    "tsup": "^8.0.1",
+    "eslint": "8.56.0",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
   }
 }

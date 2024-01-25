@@ -4,9 +4,9 @@ const issueStatus = {
   DONE: 'DONE',
 } as const;
 
-type IssueStatus = typeof issueStatus[keyof typeof issueStatus];
+export type IssueStatus = typeof issueStatus[keyof typeof issueStatus];
 
-type Issue = {
+export type Issue = {
   id: string;
   title: string;
   description: string;
