@@ -22,7 +22,7 @@
     "@types/testing-library__jest-dom": "6.0.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
-    "eslint": "8.42.0",
+    "eslint": "8.56.0",
     "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.32",
     "resize-observer-polyfill": "^1.5.1",

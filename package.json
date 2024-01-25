@@ -15,7 +15,8 @@
     "test:watch": "turbo run test:watch",
     "workshop": "pnpm --filter workshop",
     "hooks": "pnpm --filter @odyssey/react-hooks",
-    "ui": "pnpm --filter cosmic-ui"
+    "ui": "pnpm --filter cosmic-ui",
+    "pms/features": "pnpm --filter @pms/features"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",

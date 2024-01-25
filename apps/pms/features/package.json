@@ -1,0 +1,7 @@
+{
+  "name": "@pms/features",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.0.1"
+  }
+}
